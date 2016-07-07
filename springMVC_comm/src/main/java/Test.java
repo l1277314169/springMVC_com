@@ -1,5 +1,3 @@
-package com;
-
 /**
  * Created by liuhonger on 2016/7/6.
  */

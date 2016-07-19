@@ -2,4 +2,4 @@
 <%
     String path = request.getContextPath();
 %>
-<jsp:forward page="${path}/jap/system/admin/login.jsp" />
+<jsp:forward page="${path}/WEB-INF/pages/login.ftl" />

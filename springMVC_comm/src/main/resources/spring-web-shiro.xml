@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+	default-lazy-init="true">
+
+	<description>Shiro Configuration</description>
+
+	<!-- Shiro's main business-tier object for web-enabled applications -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="shiroDbRealm" />
+		<property name="cacheManager" ref="cacheManager" />
+		<!--<property name="sessionManager" ref="sessionManager"/>-->
+		<!-- 记住我 -->
+		<property name="rememberMeManager" ref="rememberMeManager"/>
+	</bean>
+
+	<!-- 項目自定义的Realm -->
+	<bean id="shiroDbRealm" class="com.comm.MyRealm">
+		<property name="credentialsMatcher" ref="credentialsMatcher"/>
+	</bean>
+
+	<!-- 凭证匹配器 -->
+	<bean id="credentialsMatcher"
+		  class="com.shiro.RepeatPasswordNumber">
+		<property name="hashAlgorithmName" value="md5" />
+		<property name="hashIterations" value="1" />
+	</bean>
+	<!-- Shiro Filter -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+        <!--认证失败 跳转login.ftl-->
+		<property name="loginUrl" value="/login" />
+		<property name="successUrl" value="/welcom" />
+        <!--s授权失败 跳转unauthorized.ftl-->
+        <property name="unauthorizedUrl" value="unauthorized.ftl"/>
+		<property name="filters">
+			<map>
+				<entry key="authc" value-ref="loginFormAuthenticationFilter"/>
+			</map>
+		</property>
+		<property name="filterChainDefinitions">
+			<value>
+				/css/** = anon
+				/images/** = anon
+				/js/** = anon
+				/logout = logout
+				/welcom = user
+				/** = authc
+			</value>
+		</property>
+	</bean>
+
+	<bean id="loginFormAuthenticationFilter" class="com.shiro.LoginFormAuthenticationFilter"/>
+
+
+	<bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+		<property name="cacheManager" ref="ehcache"/>
+	</bean>
+
+	<bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+		<property name="configLocation" value="classpath:ehcache.xml"/>
+		<property name="shared" value="true"/>
+	</bean>
+	<!-- 保证实现了Shiro内部lifecycle函数的bean执行 -->
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+
+	<!-- rememberMeManager管理器，写cookie，取出cookie生成用户信息 -->
+	<bean id="rememberMeManager" class="org.apache.shiro.web.mgt.CookieRememberMeManager">
+		<property name="cookie" ref="rememberMeCookie" />
+	</bean>
+	<!-- 记住我cookie -->
+	<bean id="rememberMeCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+		<!-- rememberMe是cookie的名字 -->
+		<constructor-arg value="rememberMe" />
+		<!-- 记住我cookie生效时间30天 -->
+		<property name="maxAge" value="2592000" />
+	</bean>
+
+	<!-- 会话管理器 -->
+	<!--<bean id="sessionManager"-->
+		  <!--class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">-->
+		<!--<property name="globalSessionTimeout" value="1800000"/>-->
+		<!--<property name="sessionIdCookie" ref="rememberMeCookie"/>-->
+	<!--</bean>-->
+
+
+</beans>

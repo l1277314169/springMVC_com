@@ -24,7 +24,7 @@
 <form id="loginForm" action="/login" method="post">
     <table width="350" bgcolor="#ccffcc" style="border-color" border="1">
         <tr align=center>
-            <td>用户名</td>
+            <td>用户名aa</td>
             <td><input type="text" name="username" id="username"></td>
         </tr>
         <tr align=center>

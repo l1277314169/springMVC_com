@@ -44,6 +44,8 @@
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
+        
+
         <!--tableName:指定要生成的表名
             enableXXX:XXX代表多种SQL方法，该属性用来指定是否生成对应的XXX语句。-->
         <!--<table tableName="USER" domainObjectName="User" enableSelectByPrimaryKey="true"-->

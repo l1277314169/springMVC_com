@@ -1,56 +1,113 @@
 package com.controller;
 
+import com.comm.BaseController;
+import com.comm.CustomException;
+import com.comm.ResultMessage;
+import com.comm.page.Page;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.po.Role;
 import com.po.User;
+import com.service.RoleService;
 import com.service.UserService;
-
-import net.sf.json.JSONArray;
+import com.utils.ResourceUtil;
+import org.apache.commons.lang3.time.DateFormatUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-
-import java.security.PublicKey;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.servlet.http.HttpServletResponse;
+import java.util.*;
 
 /**
  * Created by liuhonger on 2016/3/29.
  */
 @Controller(value = "userController")
 @RequestMapping(value = "/user")
-public class UserController {
+public class UserController extends BaseController{
+
+    private static final Log LOG = LogFactory.getLog(UserController.class);
+
+    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+
     @Autowired
     private UserService userService;
-@RequestMapping(value = "/query")
-    public  String query(Model model){
+    @Autowired
+    private RoleService roleService;
+
+    @RequestMapping(value = "/query")
+    public  String query(Model model,Page page)  {
         Map<String,Object> parameperMap =new HashMap<String, Object>();
+    //parameperMap.put("username","zhangsan");
+        int countUserlist =  userService.countUser(parameperMap);
+        page.setTotalResult(countUserlist);
+        int showCount = page.getShowCount()==0?10:page.getShowCount();
+        page.setShowCount(showCount);
+        int courrentPage = page.getCurrentPage()==0?1:page.getCurrentPage();
+        parameperMap.put("_start",(courrentPage-1)*showCount);
+        parameperMap.put("_size",showCount);
         List<User> userList = userService.queryUserlist(parameperMap);
-        if(userList !=  null && !userList.isEmpty()){
-            //JSONArray jsonArray=JSONArray.fromObject(userList);
-            model.addAttribute("userList",userList);
+        List<Role> rolesList =roleService.queryRolelist(parameperMap);
+         try {
+            String userlist = OBJECT_MAPPER.writeValueAsString(userList);
+             String roleslist = OBJECT_MAPPER.writeValueAsString(rolesList);
+            LOG.info("js===>"+userlist);
+            model.addAttribute("userlist",userlist);
+             model.addAttribute("roleslist",rolesList);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
         }
         return "user";
     }
     @RequestMapping(value="/addUser")
-    public int add(User user){
+    @ResponseBody
+    public Object add(User user) throws CustomException {
         int userId =userService.addUser(user);
-        return userId;
+        if(userId > 0){
+            return ResultMessage.ADD_SUCCESS_RESULT;
+        }else{
+            return ResultMessage.DELETE_FAIL_RESULT;
+        }
     }
 
     @RequestMapping(value = "/updateUser")
-    public int update (User user){
-    int userId = userService.updateUser(user);
-        return userId;
+    @ResponseBody
+    public Object update (User user){
+        int userId = userService.updateUser(user);
+        if(userId > 0){
+            return ResultMessage.UPDATE_SUCCESS_RESULT;
+        }else{
+            return ResultMessage.DELETE_FAIL_RESULT;
+        }
+    }
+    @RequestMapping(value = "/deleteUser")
+    @ResponseBody
+    public  Object delete(int userId){
+        int id = userService.deleteUser(userId);
+        if(id > 0){
+            return ResultMessage.DELETE_SUCCESS_RESULT;
+        }else{
+            return ResultMessage.DELETE_FAIL_RESULT;
+        }
+    }
+    @RequestMapping(value = "/exportExcel")
+    public void exportExcel(HttpServletResponse response){
+        String templatePath = "/WEB-INF/template/aa.xlsx";
+        String outputFile="aa_"+ DateFormatUtils.format(new Date(), "yyyyMMddHHmmss")+".xlsx";
+        Map<String,Object> beans = new HashMap<String,Object>();
+        List<User> userList = userService.queryUserlist(null);
+        beans.put("userList", userList);
+        ResourceUtil.exportXLS(beans, templatePath,outputFile,response);
     }
 
-    public  int delete(int userId){
-        int id = userService.deleteUser(userId);
-        return id;
+    public static void main(String[] args) {
+
     }
+
 
 
 }

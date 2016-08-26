@@ -1,7 +1,5 @@
 package com.shiroTemplate;
 
-import org.apache.shiro.subject.Subject;
-
 public class LacksRoleTag extends RoleTag
 {
   protected boolean showTagBody(String roleName)

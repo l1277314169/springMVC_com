@@ -4,10 +4,9 @@ import freemarker.core.Environment;
 import freemarker.log.Logger;
 import freemarker.template.TemplateDirectiveBody;
 import freemarker.template.TemplateException;
+
 import java.io.IOException;
 import java.util.Map;
-
-import org.apache.shiro.subject.Subject;
 
 public class AuthenticatedTag extends SecureTag
 {

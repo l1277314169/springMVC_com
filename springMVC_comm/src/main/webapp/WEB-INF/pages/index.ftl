@@ -90,7 +90,11 @@
             }
 
             .leftsidebar_box dd {
-                background-color: #317eb4;
+                background-color: #4DA5E2;
+                padding-left: 40px;
+            }
+            .leftsidebar_box dd:hover{
+                background-color: #147DC5;
                 padding-left: 40px;
             }
 
@@ -149,30 +153,22 @@
 <div class="top">
     <a href="javascript:void(0);" id="but">退出登录</a>
 </div>
-<div class="container">
+<div>
     <div class="leftsidebar_box">
-        <dt onClick="changeImage()">系统管理${base}<img src="images/left/select_xl01.png"></dt>
-        <#list activeUser.menus as menu>
-            <dd><a href="${base}${menu.url}">${menu.description}</a></dd>
-        </#list>
+        <dl class="system_log">
+            <dt>系统管理${base}<img src="images/left/select_xl01.png"></dt>
+            <#list activeUser.menus as menu>
+                <dd><a target="mainFrame" href="${base}/${menu.url}">${menu.description}</a></dd>
+            </#list>
+        </dl>
 
-
-
-        <#--<dl class="system_log">-->
-            <#--<dt onClick="changeImage()">系统记录<img src="images/left/select_xl01.png"></dt>-->
-            <#--<dd class="first_dd"><a href="#">充值记录</a></dd>-->
-            <#--<dd><a href="#">短信充值记录</a></dd>-->
-            <#--<dd><a href="#">消费记录</a></dd>-->
-            <#--<dd><a href="#">操作记录</a></dd>-->
-        <#--</dl>-->
-
-        <#--<dl class="custom">-->
-            <#--<dt onClick="changeImage()">客户管理<img src="images/left/select_xl01.png"></dt>-->
-            <#--<dd class="first_dd"><a href="#">客户管理</a></dd>-->
-            <#--<dd><a href="#">试用/成交客户管理</a></dd>-->
-            <#--<dd><a href="#">未成交客户管理</a></dd>-->
-            <#--<dd><a href="#">即将到期客户管理</a></dd>-->
-        <#--</dl>-->
+        <dl class="custom">
+            <dt onClick="changeImage()">客户管理<img src="images/left/select_xl01.png"></dt>
+            <dd class="first_dd"><a href="#">客户管理</a></dd>
+            <dd><a href="#">试用/成交客户管理</a></dd>
+            <dd><a href="#">未成交客户管理</a></dd>
+            <dd><a href="#">即将到期客户管理</a></dd>
+        </dl>
 
         <#--<dl class="channel">-->
             <#--<dt>渠道管理<img src="images/left/select_xl01.png"></dt>-->
@@ -221,9 +217,15 @@
 
     </div>
 
+    <div style="margin-left: 162px;">
+        <iframe name="mainFrame" id="mainFrame" frameborder="0" style="width: 100%;height: 870px;"></iframe>
+    </div>
+
+
 </div>
 
-<script type="text/javascript" src="${request.contextPath}/js/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="${base}/js/jquery-1.9.0.min.js"></script>
+
 <script type="text/javascript">
     $(".leftsidebar_box dt").css({"background-color": "#3992d0"});
     $(".leftsidebar_box dt img").attr("src", "${base}/images/left/select_xl01.png");

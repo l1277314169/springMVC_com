@@ -31,10 +31,10 @@
             <td>密 码</td>
             <td><input type="password" name="password" id="password"></td>
         </tr>
-        <tr>
-            <TD></TD>
-            <td><input type="checkbox" name="rememberMe" />自动登陆</td>
-        </tr>
+        <#--<tr>-->
+            <#--<TD></TD>-->
+            <#--<td><input type="checkbox" name="rememberMe" />自动登陆</td>-->
+        <#--</tr>-->
         <tr align=center>
             <td colspan="2">
                 <p style="color: red"><#if errorMessage??>${errorMessage}</#if></p>

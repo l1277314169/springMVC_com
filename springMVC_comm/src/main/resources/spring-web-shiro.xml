@@ -46,7 +46,7 @@
 				/images/** = anon
 				/js/** = anon
 				/logout = logout
-				/welcom = user
+				/index = user
 				/** = authc
 			</value>
 		</property>

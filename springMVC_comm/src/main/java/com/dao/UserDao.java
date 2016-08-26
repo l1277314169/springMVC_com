@@ -3,11 +3,13 @@ package com.dao;
 import com.po.User;
 import org.springframework.stereotype.Repository;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
 @Repository
 public interface UserDao {
+
     int deleteByPrimaryKey(Integer id);
 
     int insert(User record);
@@ -20,10 +22,12 @@ public interface UserDao {
 
     int updateByPrimaryKey(User record);
 
-    User selectByPrimaryName(String userName);
+    User selectByPrimaryName(Map<String,Object> map);
 
 
     List<User> selectUserList(Map<String,Object> map);
+
+    int countUserList(Map<String,Object> map);
 
 
 }

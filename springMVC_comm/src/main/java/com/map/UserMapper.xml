@@ -108,5 +108,16 @@
     <if test="username != null" >
          and  username = #{username,jdbcType=INTEGER}
     </if>
+    <include refid="basic.mysqlPageSelectFoot"/>
   </select>
+  <select id="countUserList" resultType="java.lang.Integer" parameterType="java.util.HashMap" >
+    select
+      count(*)
+    from user
+    where 1=1
+    <if test="username != null" >
+      and  username = #{username,jdbcType=INTEGER}
+    </if>
+  </select>
+
 </mapper>

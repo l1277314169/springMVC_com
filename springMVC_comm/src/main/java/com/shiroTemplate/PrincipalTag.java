@@ -5,16 +5,12 @@ import freemarker.log.Logger;
 import freemarker.template.TemplateDirectiveBody;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateModelException;
+
 import java.beans.BeanInfo;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
 import java.io.IOException;
-import java.io.Writer;
-import java.lang.reflect.Method;
 import java.util.Map;
-
-import org.apache.shiro.subject.PrincipalCollection;
-import org.apache.shiro.subject.Subject;
 
 public class PrincipalTag extends SecureTag
 {

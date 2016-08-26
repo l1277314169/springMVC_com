@@ -1,6 +1,7 @@
 package com.service;
 
 import com.po.Role;
+
 import java.util.List;
 import java.util.Map;
 
@@ -13,4 +14,5 @@ public interface RoleService {
     public int deleteRole(Integer Role);
     public Role findRoleId(Integer RoleId);
     public List<Role> queryRolelist(Map<String,Object> parameterMap);
+    public int serlectRoleCount(Map<String,Object> parameterMap);
 }

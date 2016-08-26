@@ -16,6 +16,20 @@
     from role
     where id = #{id,jdbcType=INTEGER}
   </select>
+
+  <select id="selectRoleByMap" resultMap="BaseResultMap" parameterType="java.util.HashMap" >
+    select
+    <include refid="Base_Column_List" />
+    from role
+    <include refid="basic.mysqlPageSelectFoot"/>
+  </select>
+
+  <select id="selectRoleCount" resultType="java.lang.Integer" parameterType="java.util.HashMap" >
+    select
+    count(*)
+    from role
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from role
     where id = #{id,jdbcType=INTEGER}

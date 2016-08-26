@@ -34,6 +34,13 @@ public class RoleServiceImpl implements RoleService{
     }
 
     public List<Role> queryRolelist(Map<String, Object> parameterMap) {
-        return null;
+        return roleDao.selectRoleByMap(parameterMap);
     }
+
+    @Override
+    public int serlectRoleCount(Map<String, Object> parameterMap) {
+        return roleDao.selectRoleCount(parameterMap);
+    }
+
+
 }

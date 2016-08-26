@@ -1,10 +1,7 @@
 package com.po;
 
 import java.io.Serializable;
-import java.util.Iterator;
 import java.util.List;
-
-import com.sun.org.apache.bcel.internal.generic.NEW;
 
 /**
  * 用户身份信息，存入session 由于tomcat将session会序列化在本地硬盘上，所以使用Serializable接口

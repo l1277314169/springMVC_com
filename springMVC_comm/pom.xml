@@ -102,6 +102,11 @@
       <version>1.8.3</version>
     </dependency>
     <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.1</version>
+    </dependency>
+    <dependency>
       <groupId>commons-logging</groupId>
       <artifactId>commons-logging</artifactId>
       <version>1.1.1</version>
@@ -189,18 +194,63 @@
       <artifactId>jedis</artifactId>
       <version>2.7.3</version>
     </dependency>
+    <dependency>
+      <groupId>org.apache.activemq</groupId>
+      <artifactId>activemq-core</artifactId>
+      <version>5.7.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.xbean</groupId>
+      <artifactId>xbean-spring</artifactId>
+      <version>3.11.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.6.6</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <version>1.6.6</version>
+    </dependency>
+
+    <dependency>
+      <groupId>net.sf.jxls</groupId>
+      <artifactId>jxls-core</artifactId>
+      <version>1.0</version>
+    </dependency>
+    <!--jackson start-->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>2.6.3</version>
+  </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.6.3</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+      <version>2.6.3</version>
+    </dependency>
+    <!--jackson end -->
   </dependencies>
 
   <build>
     <finalName>springMVC_comm</finalName>
     <resources>
-      <resource>
-        <directory>src/main/resources</directory>
-        <includes>
-          <include>*.properties</include>
-          <include>**/*.xml</include>
-        </includes>
-      </resource>
+      <!--<resource>-->
+        <!--<directory>src/main/resources</directory>-->
+        <!--<includes>-->
+          <!--<include>*.properties</include>-->
+          <!--<include>**/*.xml</include>-->
+        <!--</includes>-->
+      <!--</resource>-->
 
       <resource>
         <directory>src/main/java</directory>
@@ -222,6 +272,14 @@
             <version>5.1.38</version>
           </dependency>
         </dependencies>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
       </plugin>
     </plugins>
   </build>

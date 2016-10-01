@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.po.Permission" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="url" property="url" jdbcType="VARCHAR" />
-    <result column="permission" property="permission" jdbcType="VARCHAR" />
+    <result column="permission_name" property="permission" jdbcType="VARCHAR" />
     <result column="parentid" property="parentid" jdbcType="INTEGER" />
     <result column="description" property="description" jdbcType="VARCHAR" />
   </resultMap>
@@ -100,7 +100,7 @@
   </select>
 
   <select id="findUrlList" resultMap="BaseResultMap" parameterType="java.lang.Integer">
-    select p.url,p.description,p.permission  from user u
+    select p.url,p.permission_name  from user u
     LEFT JOIN user_role ur on u.id=ur.user_id
     LEFT JOIN  role_permission rp on ur.role_id =rp.role_id
     LEFT JOIN permission p on rp.permission_id= p.id

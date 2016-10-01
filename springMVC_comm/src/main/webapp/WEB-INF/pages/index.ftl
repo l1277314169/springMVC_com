@@ -158,7 +158,7 @@
         <dl class="system_log">
             <dt>系统管理${base}<img src="images/left/select_xl01.png"></dt>
             <#list activeUser.menus as menu>
-                <dd><a target="mainFrame" href="${base}/${menu.url}">${menu.description}</a></dd>
+                <dd><a target="mainFrame" href="${base}/${menu.url}">${menu.permission}</a></dd>
             </#list>
         </dl>
 

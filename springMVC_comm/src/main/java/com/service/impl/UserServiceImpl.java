@@ -27,6 +27,7 @@ public class UserServiceImpl implements UserService {
     public int addUser(User user) {
         String salt = "12345";
         String password = null;
+
         try {
             password = new Md5Hash(user.getPassword(), salt).toString();
         } catch (Exception e) {

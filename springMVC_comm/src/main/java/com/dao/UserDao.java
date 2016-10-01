@@ -2,6 +2,7 @@ package com.dao;
 
 import com.po.User;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestPart;
 
 import java.sql.SQLException;
 import java.util.List;

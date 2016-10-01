@@ -9,7 +9,7 @@
     <result column="locked" property="locked" jdbcType="BIT" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, username, password, salt, locked
+    id, user_name, password, salt, locked
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -22,7 +22,7 @@
     select
     <include refid="Base_Column_List" />
     from user
-    where username = #{username,jdbcType=VARCHAR}
+    where user_name = #{username,jdbcType=VARCHAR}
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >

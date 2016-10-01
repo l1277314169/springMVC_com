@@ -3,12 +3,11 @@
 <mapper namespace="com.dao.RoleDao" >
   <resultMap id="BaseResultMap" type="com.po.Role" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="role" property="role" jdbcType="VARCHAR" />
-    <result column="description" property="description" jdbcType="VARCHAR" />
-    <result column="available" property="available" jdbcType="BIT" />
+    <result column="role_name" property="role" jdbcType="VARCHAR" />
+
   </resultMap>
   <sql id="Base_Column_List" >
-    id, role, description, available
+    id, role_name
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 

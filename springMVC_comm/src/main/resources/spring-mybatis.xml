@@ -79,6 +79,7 @@
 
     <import resource="spring-web-shiro.xml"/>
     <import resource="spring-redis.xml"/>
-    <import resource="ActiveMQ.xml"/>
+    <!--<import resource="ActiveMQ_Queue.xml"/>-->
+    <import resource="ActiveMQ_Topic.xml"/>
 
 </beans>

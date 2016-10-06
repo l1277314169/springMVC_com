@@ -1,19 +1,16 @@
-package com.jms;
+package jms.queue;
+
+import org.junit.Test;
+
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.TextMessage;
 
-import org.springframework.stereotype.Component;
+import static org.junit.Assert.*;
 
-/**
- * @作者 Goofy
- * @邮件 252878950@qq.com
- * @日期 2014-4-1上午10:11:51
- * @描述 队列消息监听器
- */
-@Component
-public class QueueReceiver implements MessageListener {
+public class QueueReceiverTest implements MessageListener {
+
 
     @Override
     public void onMessage(Message message) {
@@ -23,5 +20,4 @@ public class QueueReceiver implements MessageListener {
             e.printStackTrace();
         }
     }
-
 }

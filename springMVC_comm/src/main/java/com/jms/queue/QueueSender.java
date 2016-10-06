@@ -1,6 +1,7 @@
-package com.jms;
+package com.jms.queue;
 
 
+import com.po.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
@@ -14,8 +15,6 @@ import javax.jms.Session;
 /**
  * @描述 发送消息到队列
  */
-@Component
-@RequestMapping("/queue")
 public class QueueSender {
 
     @Autowired
@@ -23,17 +22,15 @@ public class QueueSender {
 
     /**
      * 发送一条消息到指定的队列（目标）
-     * @param queueName 队列名称
      * @param message 消息内容
      */
     @RequestMapping(value = "/send")
-    public void send(String queueName,final String message){
-        jmsTemplate.send("test.queue", new MessageCreator() {
-            @Override
-            public Message createMessage(Session session) throws JMSException {
-                return session.createTextMessage("你好！");
-            }
-        });
+
+    public void send(final String message){
+        User user = new User();
+        user.setUsername("hao");
+        user.setId(23);
+        jmsTemplate.convertAndSend(user);
     }
 
 }

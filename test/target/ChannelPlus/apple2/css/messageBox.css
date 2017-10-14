@@ -1,0 +1,196 @@
+﻿/*.modalPopupMessageBox
+{
+	background-color: White;
+	margin:0px;
+	padding:0px;
+	overflow:visible;
+	border: solid 0px #376092;
+	width: 400px;
+}
+.modalMessageHeader
+{
+	background-color: #376092;
+	padding: 5px;
+}
+.modalMessageHeader .Title
+{
+	font-size: 12px;
+	line-height: 110%;
+	font-weight:bold;
+	color:White;
+	line-height: 150%;
+}
+.modalMessageHeaderXButtonContainer
+{
+}
+.buttonX
+{
+	background-image: url(../Images/Icons/IconGrid_Delete.gif);
+	background-repeat:no-repeat;
+	background-color:Transparent;
+	border-style: none;
+	cursor:pointer;	
+	width:23px;
+	height:23px;
+	background-position:bottom;
+}
+.buttonX:hover
+{
+	background-position: top;
+}
+.buttonYes
+{
+	background-image: url(../Images/Buttons/ButtonYes.gif);
+	background-repeat:no-repeat;
+	background-color:Transparent;
+	border-style: none;
+	cursor:pointer;	
+	width:45px;
+	height:24px;
+	background-position:top;
+}
+.buttonYes:hover
+{
+	background-position: bottom;
+}
+.buttonNo
+{
+	background-image: url(../Images/Buttons/ButtonNo.gif);
+	background-repeat:no-repeat;
+	background-color:Transparent;
+	border-style: none;
+	cursor:pointer;	
+	width:45px;
+	height:24px;
+	background-position:top;
+}
+.buttonNo:hover
+{
+	background-position: bottom;
+}
+.buttonOk
+{
+	background-image: url(../Images/Buttons/buttonOk.gif);
+	background-repeat:no-repeat;
+	background-color:Transparent;
+	border-style: none;
+	cursor:pointer;	
+	width:45px;
+	height:24px;
+	background-position:top;
+}
+.buttonOk:hover
+{
+	background-position: bottom;
+}
+.buttonContinue
+{
+	background-image: url(../Images/Buttons/ButtonContinue.gif);
+	background-repeat:no-repeat;
+	background-color:Transparent;
+	border-style: none;
+	cursor:pointer;	
+	width:60px;
+	height:24px;
+	background-position:top;
+}
+.buttonContinue:hover
+{
+	background-position: bottom;
+}
+
+.modalMessageBody
+{
+	padding: 2px 8px 2px 8px;
+}
+.modalMessageContent
+{
+	padding: 15px 35px 15px 35px;
+	border-bottom: solid 1px #C0C0C0;
+	margin-bottom: 8px;
+	text-align: left;
+}
+
+#msg__divConfirm
+{
+	text-align:right;
+	padding-bottom: 5px;
+}
+#msg__divAlert
+{
+	text-align:right;
+	padding-bottom: 5px;
+}
+#msg__divContinue
+{
+	text-align:right;
+	padding-bottom: 5px;
+}
+.modalPopupIF
+{
+	background-color: #fff;
+	margin:0px;
+	padding:0px;
+	width:452px;
+	font-size: 12px;
+	overflow:visible;
+	text-align:center;
+	border: solid 5px #376092;
+}
+.modalIFHeader
+{
+	background-color:#376092;
+	padding: 5px;
+	font-size: 10pt;
+	line-height: 110%;
+	font-weight:bold;
+	color:White;
+}
+.modalIFHeader .left
+{
+	width: 2px;
+}
+.modalIFHeader .middle
+{
+	text-transform:none;
+	font-size: 12px;
+}
+.modalIFHeader .right
+{
+	width: 2px;
+}
+
+.CommentCanvas
+{
+	background-color: #376092;
+	padding: 5px 8px 8px 8px;
+}
+
+.CommentDiv
+{
+	 overflow-x: hidden;
+	 overflow-y: auto;
+}
+
+.Comment
+{
+	font-style: italic;
+}
+
+.RejectReasonCanvas
+{
+	background-color: #376092;
+	padding: 5px 8px 8px 8px;
+}
+
+.RejectReasonLabel
+{
+	color: White;	
+	font-size: 12px;
+}
+
+.RejectReasonDetail
+{
+	font-style: italic;
+	color: White;	
+}*/

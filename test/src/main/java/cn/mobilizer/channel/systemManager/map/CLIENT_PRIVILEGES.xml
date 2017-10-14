@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="CLIENT_PRIVILEGES" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.systemManager.po.ClientPrivileges" >
+    <id column="client_privilege_id" property="clientPrivilegeId" jdbcType="INTEGER" />
+    <result column="priv_code" property="privCode" jdbcType="VARCHAR" />
+    <result column="priv_name" property="privName" jdbcType="VARCHAR" />
+    <result column="priv_name_en" property="privNameEn" jdbcType="VARCHAR" />
+    <result column="sequence" property="sequence" jdbcType="INTEGER" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="css_class" property="cssClass" jdbcType="VARCHAR" />
+    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+    <result column="priv_type" property="privType" jdbcType="TINYINT" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  
+   <resultMap id="TreeNodeResultMap" type="cn.mobilizer.channel.base.vo.TreeNodeVO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="pId" property="pId" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="isParent" property="isParent" jdbcType="VARCHAR" />
+    <result column="parentId" property="parentId" jdbcType="INTEGER" />
+    <result column="checked" property="checked" jdbcType="VARCHAR" />
+    <result column="cId" property="cId" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    client_privilege_id, priv_code, priv_name, priv_name_en, sequence, url, css_class, 
+    parent_id, priv_type, client_id,  is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from client_privileges
+    where client_privilege_id = #{clientPrivilegeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from client_privileges
+    where client_privilege_id = #{clientPrivilegeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.systemManager.po.ClientPrivileges" >
+    insert into client_privileges (client_privilege_id, priv_code, priv_name, 
+      priv_name_en, sequence, url, 
+      css_class, parent_id, priv_type, 
+      client_id, 
+      is_delete)
+    values (#{clientPrivilegeId,jdbcType=INTEGER}, #{privCode,jdbcType=VARCHAR}, #{privName,jdbcType=VARCHAR}, 
+      #{privNameEn,jdbcType=VARCHAR}, #{sequence,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, 
+      #{cssClass,jdbcType=VARCHAR}, #{parentId,jdbcType=INTEGER}, #{privType,jdbcType=TINYINT}, 
+      #{clientId,jdbcType=INTEGER},  
+      #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.systemManager.po.ClientPrivileges" >
+    insert into client_privileges
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="clientPrivilegeId != null" >
+        client_privilege_id,
+      </if>
+      <if test="privCode != null" >
+        priv_code,
+      </if>
+      <if test="privName != null" >
+        priv_name,
+      </if>
+      <if test="privNameEn != null" >
+        priv_name_en,
+      </if>
+      <if test="sequence != null" >
+        sequence,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="cssClass != null" >
+        css_class,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+      <if test="privType != null" >
+        priv_type,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+   
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="clientPrivilegeId != null" >
+        #{clientPrivilegeId,jdbcType=INTEGER},
+      </if>
+      <if test="privCode != null" >
+        #{privCode,jdbcType=VARCHAR},
+      </if>
+      <if test="privName != null" >
+        #{privName,jdbcType=VARCHAR},
+      </if>
+      <if test="privNameEn != null" >
+        #{privNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null" >
+        #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="cssClass != null" >
+        #{cssClass,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="privType != null" >
+        #{privType,jdbcType=TINYINT},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.systemManager.po.ClientPrivileges" >
+    update client_privileges
+    <set >
+      <if test="privCode != null" >
+        priv_code = #{privCode,jdbcType=VARCHAR},
+      </if>
+      <if test="privName != null" >
+        priv_name = #{privName,jdbcType=VARCHAR},
+      </if>
+      <if test="privNameEn != null" >
+        priv_name_en = #{privNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null" >
+        sequence = #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="cssClass != null" >
+        css_class = #{cssClass,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="privType != null" >
+        priv_type = #{privType,jdbcType=TINYINT},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+     
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where client_privilege_id = #{clientPrivilegeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.systemManager.po.ClientPrivileges" >
+    update client_privileges
+    set priv_code = #{privCode,jdbcType=VARCHAR},
+      priv_name = #{privName,jdbcType=VARCHAR},
+      priv_name_en = #{privNameEn,jdbcType=VARCHAR},
+      sequence = #{sequence,jdbcType=INTEGER},
+      url = #{url,jdbcType=VARCHAR},
+      css_class = #{cssClass,jdbcType=VARCHAR},
+      parent_id = #{parentId,jdbcType=INTEGER},
+      priv_type = #{privType,jdbcType=TINYINT},
+      client_id = #{clientId,jdbcType=INTEGER},
+      
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where client_privilege_id = #{clientPrivilegeId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="getUserPermissionsByClientUserId" resultType="java.lang.String" parameterType="java.lang.Integer">
+	SELECT cp.priv_code 
+	FROM client_privileges cp 
+	INNER JOIN client_roles_privileges crp ON cp.client_privilege_id = crp.client_privilege_id  AND crp.is_delete = 0
+	INNER JOIN client_roles_user_mapping crum ON crp.role_id = crum.role_id AND crum.is_delete = 0
+	AND crum.client_user_id = #{clientUserId,jdbcType=INTEGER}
+	AND cp.is_delete = 0
+	GROUP BY cp.client_privilege_id 
+  </select>
+  
+  <select id="getUserMenu" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+	SELECT cp.* 
+	FROM client_privileges cp 
+	INNER JOIN client_roles_privileges crp ON cp.client_privilege_id = crp.client_privilege_id  AND crp.is_delete = 0
+	INNER JOIN client_roles_user_mapping crum ON crp.role_id = crum.role_id AND crum.is_delete = 0
+	AND crum.client_user_id = #{clientUserId,jdbcType=INTEGER}
+	AND cp.priv_type = 1
+	AND cp.is_delete = 0
+	GROUP BY cp.client_privilege_id 
+	ORDER BY cp.parent_id, cp.sequence
+  </select>
+  
+  <select id="getWebTreeNode" parameterType="java.util.Map"  resultMap="TreeNodeResultMap">
+	SELECT
+		cp.client_privilege_id AS id, cp.parent_id AS pId, cp.priv_name AS name, 
+		CASE WHEN crp.mapping_id IS NOT NULL THEN 'true' ELSE 'false' END AS checked
+	FROM
+		client_privileges cp 
+	LEFT JOIN client_roles_privileges crp ON cp.client_privilege_id = crp.client_privilege_id
+	AND crp.role_id = #{roleId} AND crp.is_delete = 0 
+	WHERE cp.client_id = #{clientId}
+	AND cp.is_delete = 0 
+	ORDER BY cp.parent_id, cp.sequence
+  </select>
+</mapper>

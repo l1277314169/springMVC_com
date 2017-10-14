@@ -1,0 +1,964 @@
+﻿.MenuButton 
+{
+	font-size:14px;
+	font-weight:bold;
+	color:#989898;
+	border:none;
+	background-color:transparent;
+	cursor:pointer;
+	text-transform:uppercase;
+}
+
+.MenuButton:hover
+{
+	color:#43434e;
+}
+
+.MenuButtonSelected
+{
+	font-size:14px;
+	font-weight:bold;
+	color:#43434e;
+	border:none;
+	background-color:transparent;
+	cursor:pointer;
+	text-transform:uppercase;
+}
+
+.btnDownload
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnDownload.png);
+	width:103px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+/*.btnDownload:hover
+{
+	background-position:bottom;
+}*/
+
+.btnBack
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnBack.png);
+	width:77px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+/*.btnBack:hover
+{
+	background-position:bottom;
+}*/
+
+.btnEdit
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnEdit.png);
+	width:77px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+/*.btnEdit:hover
+{
+	background-position:bottom;
+}*/
+
+.btnDelete
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnDelete.png);
+	width:103px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+/*.btnDelete:hover
+{
+	background-position:bottom;
+}*/
+
+.tabPhotoSelected
+{
+	background-position:top left;
+	color:#43434e;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/tabPhoto.png);
+	width:70px;
+	height:28px;
+	font-weight:bold;
+	
+	padding-bottom:5px;
+}
+.tabPhoto
+{
+	background-position:bottom left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/tabPhoto.png);
+	width:70px;
+	height:28px;
+	color:#efefef;
+	
+	padding-bottom:5px;
+}
+.tabPhoto:hover
+{
+	background-position:top;
+	color:#43434e;
+	font-weight:bold;
+}
+
+.tabMainQuestSelected
+{
+	background-position:top left;
+	color:#43434e;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/tabMainQuest.png);
+	width:147px;
+	height:28px;
+	font-weight:bold;
+	
+	padding-bottom:5px;
+}
+.tabMainQuest
+{
+	background-position:bottom left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/tabMainQuest.png);
+	width:147px;
+	height:28px;
+	color:#efefef;
+	
+	padding-bottom:5px;
+}
+.tabMainQuest:hover
+{
+	background-position:top;
+	color:#43434e;
+	font-weight:bold;
+}
+
+
+.tabAddOnQuestSelected
+{
+	background-position:top left;
+	color:#43434e;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/tabAddOnQuest.png);
+	width:210px;
+	height:28px;
+	font-weight:bold;
+	
+	padding-bottom:5px;
+}
+.tabAddOnQuest
+{
+	background-position:bottom left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/tabAddOnQuest.png);
+	width:210px;
+	height:28px;
+	color:#efefef;
+	
+	padding-bottom:5px;
+}
+.tabAddOnQuest:hover
+{
+	background-position:top;
+	color:#43434e;
+	font-weight:bold;
+}
+
+.btnSave
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnSave.png);
+	width:77px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+
+.btnSaveAsDraft
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnSaveAsDraft.png);
+	width:160px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+/*.btnSave:hover
+{
+	background-position:bottom;
+}*/
+
+.btnCancel
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnCancel.png);
+	width:103px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+/*.btnCancel:hover
+{
+	background-position:bottom;
+}*/
+
+.btnUploadPhoto
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnUploadPhoto.png);
+	width:160px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+/*.btnUploadPhoto:hover
+{
+	background-position:bottom;
+}*/
+
+.btnDownloadTemplate
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnDownloadTemplate.png);
+	width:180px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+/*.btnDownloadTemplate:hover
+{
+	background-position:bottom;
+}*/
+
+.btnUploadExcel
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnUploadExcel.png);
+	width:160px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+/*.btnUploadExcel:hover
+{
+	background-position:bottom;
+}*/
+
+.btnNewCallReport
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnNewCallReport.png);
+	width:160px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+/*.btnNewCallReport:hover
+{
+	background-position:bottom;
+}*/
+
+.btnRefresh
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnRefresh.png);
+	width:103px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+/*.btnRefresh:hover
+{
+	background-position:bottom;
+}*/
+
+.btnView
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnView.png);
+	width:77px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+/*.btnView:hover
+{
+	background-position:bottom;
+}*/
+
+.icoView
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/icoView.png);
+	width:39px;
+	height:26px;
+	color:#efefef;
+	padding:0px;
+	margin-top:2px;
+}
+/*.icoView:hover
+{
+	background-position:bottom;
+}*/
+
+.icoEdit
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/icoEdit.png);
+	width:39px;
+	height:26px;
+	color:#efefef;
+	padding:0px;
+	margin-top:2px;
+}
+/*.icoEdit:hover
+{
+	background-position:bottom;
+}*/
+
+.btnSubmit
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnSubmit.png);
+	width:103px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+/*.btnSubmit:hover
+{
+	background-position:bottom;
+}*/
+
+.btnNewAccount
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnNewAccount.png);
+	width:160px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+/*.btnNewAccount:hover
+{
+	background-position:bottom;
+}*/
+
+.btnResetPassword
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnResetPassword.png);
+	width:180px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+/*.btnResetPassword:hover
+{
+	background-position:bottom;
+}*/
+
+.btnLogin
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnLogin.png);
+	width:103px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+/*.btnLogin:hover
+{
+	background-position:bottom;
+}*/
+
+.btnOKYes
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnOKYes.png);
+	width:77px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+/*.btnOKYes:hover
+{
+	background-position:bottom;
+}*/
+
+.tabDMQuestSelected
+{
+	background-position:top left;
+	color:#43434e;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/tabDMQuest.png);
+	width:147px;
+	height:28px;
+	font-weight:bold;
+	
+	padding-bottom:5px;
+}
+.tabDMQuest
+{
+	background-position:bottom left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/tabDMQuest.png);
+	width:147px;
+	height:28px;
+	color:#efefef;
+	
+	padding-bottom:5px;
+}
+.tabDMQuest:hover
+{
+	background-position:top;
+	color:#43434e;
+	font-weight:bold;
+}
+
+.icoAddRow
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/icoAddRow.png);
+	width:39px;
+	height:26px;
+	color:#efefef;
+	padding:0px;
+	margin-top:2px;
+}
+/*.icoAddRow:hover
+{
+	background-position:bottom;
+}*/
+
+.icoDeleteRow
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/icoDeleteRow.png);
+	width:39px;
+	height:26px;
+	color:#efefef;
+	padding:0px;
+	margin-top:2px;
+}
+/*.icoDeleteRow:hover
+{
+	background-position:bottom;
+}*/
+
+.icoDelete
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/icoDelete.png);
+	width:25px;
+	height:25px;
+	
+	padding:0px;
+	margin-top:2px;
+}
+
+.tabSecondDisplayQuestSelected
+{
+	background-position:top left;
+	color:#43434e;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/secondDisplayQuest.png);
+	width:228px;
+	height:28px;
+	font-weight:bold;
+	
+	padding-bottom:5px;
+}
+.tabSecondDisplayQuest
+{
+	background-position:bottom left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/secondDisplayQuest.png);
+	width:228px;
+	height:28px;
+	color:#efefef;
+	
+	padding-bottom:5px;
+}
+.tabSecondDisplayQuest:hover
+{
+	background-position:top;
+	color:#43434e;
+	font-weight:bold;
+}
+
+.icoMenu
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/icoMenu.png);
+	width:22px;
+	height:22px;
+	
+}
+.icoFilter
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/icoFilter.png);
+	width:22px;
+	height:22px;
+	
+}
+.icoSave
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/icoSave.png);
+	width:22px;
+	height:22px;
+	
+}
+.btnPreviousReport
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnPreviousReport.png);
+	width:137px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+/*.btnPreviousReport:hover
+{
+	background-position:bottom;
+}*/
+
+.btnMenu
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnMenu.png);
+	width:77px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+/*.btnBack:hover
+{
+	background-position:bottom;
+}*/
+
+.btnBackToDashboard
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnBackToDashboard.png);
+	width:159px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+/*.btnBackToDashboard:hover
+{
+	background-position:bottom;
+}*/
+
+.icoSaveRow
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/icoSaveRow.png);
+	width:22px;
+	height:22px;
+	
+}
+
+.btnNewCity
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnNewCity.png);
+	width:109px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+/*.btnNewCity:hover
+{
+	background-position:bottom;
+}*/
+
+.btnNewProvince
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnNewProvince.png);
+	width:160px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+/*.btnNewProvince:hover
+{
+	background-position:bottom;
+}*/
+
+.btnNewKeyAccount
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnNewKeyAccount.png);
+	width:110px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+/*.btnNewKeyAccount:hover
+{
+	background-position:bottom;
+}*/
+
+.btnNewStoreHierarchy
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnNewStoreHierarchy.png);
+	width:186px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+/*.btnNewKeyAccount:hover
+{
+	background-position:bottom;
+}*/
+
+.btnNewStore
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnNewStore.png);
+	width:123px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+/*.btnNewStore:hover
+{
+	background-position:bottom;
+}*/
+
+.btnNewSKU
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnNewSKU.png);
+	width:114px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+/*.btnNewSKU:hover
+{
+	background-position:bottom;
+}*/
+
+.btnNewBrand
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnNewBrand.png);
+	width:125px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+/*.btnNewBrand:hover
+{
+	background-position:bottom;
+}*/
+
+.btnNewKeySKU
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnNewKeySKU.png);
+	width:134px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+/*.btnNewKeySKU:hover
+{
+	background-position:bottom;
+}*/
+
+.btnNewRRSP
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnNewRRSP.png);
+	width:114px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+/*.btnNewRRSP:hover
+{
+	background-position:bottom;
+}*/
+
+.btnNewPromoSKU
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnNewPromoSKU.png);
+	width:152px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+/*.btnNewPromoSKU:hover
+{
+	background-position:bottom;
+}*/
+
+.btnNewDisplayType
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnNewDisplayType.png);
+	width:152px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+/*.btnNewPromoSKU:hover
+{
+	background-position:bottom;
+}*/
+.icoError
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Icons/IWarning.png);
+	width:14px;
+	height:13px;
+	
+}
+

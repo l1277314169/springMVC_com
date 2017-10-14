@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="REPORT_DATA">
+  
+   <resultMap type="cn.mobilizer.channel.export.po.DumpDataSetting" id="dumpDataSettingMap">
+       <result column="setting_id" property="settingId" jdbcType="INTEGER" />
+       <result column="name" property="name" jdbcType="VARCHAR" />
+       <result column="filters" property="filters" jdbcType="VARCHAR" />
+       <result column="parameters" property="parameters" jdbcType="VARCHAR" />
+       <result column="column_lists" property="columnLists" jdbcType="VARCHAR" />
+       <result column="sql_template" property="sqlTemplate" jdbcType="VARCHAR" />
+       <result column="remark" property="remark" jdbcType="VARCHAR" />
+       <result column="client_id" property="clientId" jdbcType="INTEGER" />
+       <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+       <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+       <result column="func_list" property="funcList" jdbcType="VARCHAR" />
+       
+   </resultMap>
+   
+   <resultMap type="java.util.TreeMap" id="dataList"></resultMap>
+   
+   <select id="getExportData" statementType="CALLABLE" parameterType="java.util.Map" resultMap="dataList,dataList,dataList,dataList,dataList,dataList,dataList,dataList,dataList,dataList,dataList,dataList,dataList,dataList,dataList,dataList,dataList,dataList,dataList,dataList,dataList,dataList,dataList,dataList,dataList,dataList,dataList,dataList,dataList,dataList,dataList,dataList,dataList,dataList,dataList,dataList,dataList,dataList,dataList,dataList" >
+	 call ${arg_procedure}
+   </select>
+   
+   <select id="getDumpDataSettingInfo" parameterType="java.util.Map" resultMap="dumpDataSettingMap">
+       select dds.setting_id,dds.name,dds.filters,dds.parameters,dds.column_lists,dds.sql_template,dds.remark,dds.client_id,dds.create_time,dds.last_update_time,dds.func_list
+ 		from dump_data_setting dds where dds.setting_id = #{settingId} and dds.client_id = #{clientId} and dds.is_delete = #{isDelete}
+   </select>
+   
+   
+</mapper>

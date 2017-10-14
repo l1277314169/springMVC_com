@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ATTENDANCE">
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.visit.po.Attendance" >
+    <id column="attendance_id" property="attendanceId" jdbcType="CHAR" />
+    <result column="client_user_id" property="clientUserId" jdbcType="INTEGER" />
+    <result column="leave_type" property="leaveType" jdbcType="INTEGER" />
+    <result column="in_time" property="inTime" jdbcType="TIMESTAMP" />
+    <result column="in_longitude" property="inLongitude" jdbcType="VARCHAR" />
+    <result column="in_latitude" property="inLatitude" jdbcType="VARCHAR" />
+    <result column="in_pic" property="inPic" jdbcType="VARCHAR" />
+    <result column="out_time" property="outTime" jdbcType="TIMESTAMP" />
+    <result column="out_longitude" property="outLongitude" jdbcType="VARCHAR" />
+    <result column="out_latitude" property="outLatitude" jdbcType="VARCHAR" />
+    <result column="out_pic" property="outPic" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="submit_time" property="submitTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+    <result column="client_user_name" property="clientUserName" jdbcType="VARCHAR" />
+    <result column="structure_name" property="structureName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    attendance_id, client_user_id, leave_type, in_time, in_longitude, in_latitude, in_pic, 
+    out_time, out_longitude, out_latitude, out_pic, remark, client_id, 
+     is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from attendance
+    where attendance_id = #{attendanceId,jdbcType=CHAR} and is_delete = 0
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from attendance
+    where attendance_id = #{attendanceId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.visit.po.Attendance" >
+    insert into attendance (attendance_id, client_user_id, leave_type, 
+      in_time, in_longitude, in_latitude, 
+      in_pic, out_time, out_longitude, 
+      out_latitude, out_pic, remark, 
+      client_id,  is_delete)
+    values (#{attendanceId,jdbcType=CHAR}, #{clientUserId,jdbcType=INTEGER}, #{leaveType,jdbcType=INTEGER}, 
+      #{inTime,jdbcType=TIMESTAMP}, #{inLongitude,jdbcType=VARCHAR}, #{inLatitude,jdbcType=VARCHAR}, 
+      #{inPic,jdbcType=VARCHAR}, #{outTime,jdbcType=TIMESTAMP}, #{outLongitude,jdbcType=VARCHAR}, 
+      #{outLatitude,jdbcType=VARCHAR}, #{outPic,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{clientId,jdbcType=INTEGER},  #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.visit.po.Attendance" >
+    insert into attendance
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="attendanceId != null" >
+        attendance_id,
+      </if>
+      <if test="clientUserId != null" >
+        client_user_id,
+      </if>
+      <if test="leaveType != null" >
+        leave_type,
+      </if>
+      <if test="inTime != null" >
+        in_time,
+      </if>
+      <if test="inLongitude != null" >
+        in_longitude,
+      </if>
+      <if test="inLatitude != null" >
+        in_latitude,
+      </if>
+      <if test="inPic != null" >
+        in_pic,
+      </if>
+      <if test="outTime != null" >
+        out_time,
+      </if>
+      <if test="outLongitude != null" >
+        out_longitude,
+      </if>
+      <if test="outLatitude != null" >
+        out_latitude,
+      </if>
+      <if test="outPic != null" >
+        out_pic,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+     
+      <if test="isDelete != null and isDelete != ''" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="attendanceId != null" >
+        #{attendanceId,jdbcType=CHAR},
+      </if>
+      <if test="clientUserId != null" >
+        #{clientUserId,jdbcType=INTEGER},
+      </if>
+      <if test="leaveType != null" >
+        #{leaveType,jdbcType=INTEGER},
+      </if>
+      <if test="inTime != null" >
+        #{inTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="inLongitude != null" >
+        #{inLongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="inLatitude != null" >
+        #{inLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="inPic != null" >
+        #{inPic,jdbcType=VARCHAR},
+      </if>
+      <if test="outTime != null" >
+        #{outTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="outLongitude != null" >
+        #{outLongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="outLatitude != null" >
+        #{outLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="outPic != null" >
+        #{outPic,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.visit.po.Attendance" >
+    update attendance
+    <set >
+      <if test="clientUserId != null" >
+        client_user_id = #{clientUserId,jdbcType=INTEGER},
+      </if>
+      <if test="leaveType != null" >
+        leave_type = #{leaveType,jdbcType=INTEGER},
+      </if>
+      <if test="inTime != null" >
+        in_time = #{inTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="inLongitude != null" >
+        in_longitude = #{inLongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="inLatitude != null" >
+        in_latitude = #{inLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="inPic != null" >
+        in_pic = #{inPic,jdbcType=VARCHAR},
+      </if>
+      <if test="outTime != null" >
+        out_time = #{outTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="outLongitude != null" >
+        out_longitude = #{outLongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="outLatitude != null" >
+        out_latitude = #{outLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="outPic != null" >
+        out_pic = #{outPic,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+     
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where attendance_id = #{attendanceId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.visit.po.Attendance" >
+    update attendance
+    set client_user_id = #{clientUserId,jdbcType=INTEGER},
+      leave_type = #{leaveType,jdbcType=INTEGER},
+      in_time = #{inTime,jdbcType=TIMESTAMP},
+      in_longitude = #{inLongitude,jdbcType=VARCHAR},
+      in_latitude = #{inLatitude,jdbcType=VARCHAR},
+      in_pic = #{inPic,jdbcType=VARCHAR},
+      out_time = #{outTime,jdbcType=TIMESTAMP},
+      out_longitude = #{outLongitude,jdbcType=VARCHAR},
+      out_latitude = #{outLatitude,jdbcType=VARCHAR},
+      out_pic = #{outPic,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where attendance_id = #{attendanceId,jdbcType=CHAR}
+  </update>
+  <select id="selectTodayAttendance" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from attendance
+    where client_Id = #{clientId} and client_user_id = #{clientUserId,jdbcType=INTEGER} and in_time &gt; #{startTime,jdbcType=VARCHAR} and in_time &lt; #{endTime,jdbcType=VARCHAR} and is_delete = 0
+  </select>
+  
+  <select id="queryTotalCount" parameterType="java.util.Map" resultType="Integer">
+	select  count(1)
+	from attendance a
+    	inner join client_user cu on a.client_user_id = cu.client_user_id 
+		where 1=1
+  		<include refid="Base_Query_Column_List" />
+	</select>
+
+  	<sql id="select_by_param">
+		select
+		a.attendance_id,a.client_user_id, a.leave_type, a.in_time, a.in_longitude,a.in_latitude, 
+		a.in_pic,a.out_time, a.out_longitude, a.out_latitude, a.out_pic, a.remark, a.client_id, a.create_time, 
+		a.submit_time,a.last_update_time, a.is_delete,cu.name as client_user_name, cu.login_name as loginName,cs.structure_name as structure_name
+		from attendance a
+		inner join client_user cu on a.client_user_id = cu.client_user_id 
+		left join client_structure cs on cu.client_structure_id = cs.client_structure_id
+		where 1=1
+		<include refid="Base_Query_Column_List" />
+		ORDER BY a.in_time DESC
+	</sql>
+	
+	<sql id="Base_Query_Column_List">
+		and (FIND_IN_SET(cu.client_structure_id,#{subStructureId})>0 or find_in_set(cu.client_user_id,#{subordinates})>0)
+		<if test="clientUserName != null and clientUserName != ''">
+			and cu.name like CONCAT('%',#{clientUserName},'%')
+		</if>
+		<if test="clientId != null and clientId !=''">
+			and a.client_id = #{clientId}
+		</if>
+		<if test="isDelete != null">
+			and a.is_delete = #{isDelete}
+		</if>
+		<if test="isDelete == null">
+			and a.is_delete = 0
+		</if>
+			<![CDATA[ and a.in_time >= #{startInTime}]]>
+			<![CDATA[ and a.in_time <= #{endInTime}]]>
+	</sql>
+	
+	<select id="selectByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+		<include refid="select_by_param" />
+		<include refid="basic.mysqlPageSearchFoot"/>  
+	</select>
+	
+	<insert id="insertBylist" parameterType="java.util.List">
+		INSERT INTO attendance (client_user_id,in_time,out_time,remark,client_id) VALUES
+		<foreach collection="list" item="item" index="index" separator=",">
+			(#{item.clientUserId},#{item.inTime},#{item.outTime},#{item.remark},#{item.clientId})
+		</foreach>
+	</insert>
+	
+	
+	
+	<select id="findAttendanceByTime" parameterType="java.util.Map" resultMap="BaseResultMap">
+	SELECT * FROM attendance a WHERE 1 = 1 AND a.is_delete = 0
+	AND a.client_id = #{clientId} and a.client_user_id = #{clientUserId} 
+	AND (DATE_FORMAT(IF(DATE_FORMAT(a.in_time,'%T') &lt; '05:59:59',DATE_ADD(a.in_time, INTERVAL - 1 DAY),a.in_time),'%Y-%m-%d') = #{startDate} )
+	</select>
+	
+	<!-- unicharm 列表 start-->
+	<sql id="unicharm_Query_Column_List">
+		and (FIND_IN_SET(cu.client_structure_id,#{subStructureId})>0 or find_in_set(cu.client_user_id,#{subordinates})>0)
+		<if test="clientUserName != null and clientUserName != ''">
+			and cu.name like CONCAT('%',#{clientUserName},'%')
+		</if>
+		<if test="clientId != null">
+			and cu.client_id = #{clientId}
+		</if>
+		<if test="isDelete == null">
+			and cu.is_delete = 0
+		</if>
+	</sql>
+	
+	<select id="unicharmQueryCount" parameterType="java.util.Map" resultType="Integer">
+		SELECT count(1) from client_user cu 
+		INNER JOIN client_roles_user_mapping b on cu.client_user_id = b.client_user_id and b.is_delete = 0 and b.client_id = #{clientId}
+		INNER JOIN client_roles c on c.role_id = b.role_id  and c.is_delete = 0 and c.client_id = #{clientId}
+		INNER join client_structure e on cu.client_structure_id = e.client_structure_id and e.is_delete = 0 and e.client_id = #{clientId}
+		LEFT  JOIN attendance a on cu.client_user_id = a.client_user_id and a.is_delete = 0 and a.client_id = #{clientId}
+		<![CDATA[ and a.in_time >= #{startInTime}]]>
+		<![CDATA[ and a.in_time <= #{endInTime}]]>
+		where  c.role_name = #{roleName}
+		<include refid="unicharm_Query_Column_List" />
+	</select>
+	
+	
+	<select id="unicharmQueryColumnList" parameterType="java.util.Map" resultMap="BaseResultMap">
+		SELECT cu.client_user_id,a.attendance_id, a.leave_type, a.in_time, a.in_longitude,a.in_latitude, 
+		a.in_pic,a.out_time, a.out_longitude, a.out_latitude, a.out_pic, a.remark,cu.login_name as loginName,
+		cu.name as clientUserName,e.structure_name,cu.client_id as clientId from client_user cu 
+		INNER JOIN client_roles_user_mapping b on cu.client_user_id = b.client_user_id and b.is_delete = 0 and b.client_id = #{clientId}
+		INNER JOIN client_roles c on c.role_id = b.role_id  and c.is_delete = 0 and c.client_id = #{clientId}
+		INNER join client_structure e on cu.client_structure_id = e.client_structure_id and e.is_delete = 0 and e.client_id = #{clientId}
+		LEFT  JOIN attendance a on cu.client_user_id = a.client_user_id and a.is_delete = 0 and a.client_id = #{clientId}
+		<![CDATA[ and a.in_time >= #{startInTime}]]>
+		<![CDATA[ and a.in_time <= #{endInTime}]]>
+		where  c.role_name = #{roleName}
+		<include refid="unicharm_Query_Column_List" />
+		ORDER BY a.in_time DESC
+		<include refid="basic.mysqlPageSearchFoot"/>  
+	</select>
+	<!--unicharm end  -->
+	
+</mapper>

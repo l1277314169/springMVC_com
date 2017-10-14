@@ -1,0 +1,880 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="CLIENT_USER" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.base.po.ClientUser" >
+    <id column="client_user_id" property="clientUserId" jdbcType="INTEGER" />
+    <result column="user_no" property="userNo" jdbcType="VARCHAR" />
+    <result column="login_name" property="loginName" jdbcType="VARCHAR" />
+    <result column="login_pwd" property="loginPwd" jdbcType="VARCHAR" />
+    <result column="mobile_no" property="mobileNo" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="client_position_id" property="clientPositionId" jdbcType="INTEGER" />
+    <result column="client_structure_id" property="clientStructureId" jdbcType="INTEGER" />
+    <result column="sex" property="sex" jdbcType="TINYINT" />
+    <result column="telephone_no" property="telephoneNo" jdbcType="VARCHAR" />
+    <result column="province_id" property="provinceId" jdbcType="INTEGER" />
+    <result column="city_id" property="cityId" jdbcType="INTEGER" />
+    <result column="district_id" property="districtId" jdbcType="INTEGER" />
+    <result column="addr" property="addr" jdbcType="VARCHAR" />
+    <result column="postcode" property="postcode" jdbcType="VARCHAR" />
+    <result column="idcard" property="idcard" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="is_activation" property="isActivation" jdbcType="TINYINT" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+    <result column="salt" property="salt" jdbcType="VARCHAR" />
+    <result column="roles" property="roles" jdbcType="VARCHAR" />
+    <result column="position_name" property="positionName" jdbcType="VARCHAR" />
+    <result column="structure_name" property="structureName" jdbcType="VARCHAR" />
+    <result column="home_page" property="homePage" jdbcType="VARCHAR" />
+     <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="col1" property="col1" jdbcType="VARCHAR" />
+    <result column="col2" property="col2" jdbcType="VARCHAR" />
+    <result column="col3" property="col3" jdbcType="VARCHAR" />
+    
+    <result column="province" property="province"/>
+    <result column="city" property="city"/>
+    <result column="district" property="district"/>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    client_user_id, user_no, login_name, login_pwd, mobile_no, name, client_position_id, 
+    client_structure_id, sex, telephone_no, province_id, city_id, district_id, addr, 
+    postcode, idcard, remark, status, is_activation, client_id, create_time, last_update_time, 
+    is_delete, salt, roles ,col1,col2,col3,email
+  </sql>
+ 
+  
+   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from client_user
+    where client_user_id = #{clientUserId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from client_user
+    where client_user_id = #{clientUserId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.base.po.ClientUser" >
+    insert into client_user (client_user_id, user_no, login_name, 
+      login_pwd, mobile_no, name, 
+      client_position_id, client_structure_id, sex, 
+      telephone_no, province_id, city_id, 
+      district_id, addr, postcode, 
+      idcard, remark, status, 
+      is_activation, client_id, is_delete, salt, 
+      roles,col1,col2,col3,email)
+    values (#{clientUserId,jdbcType=INTEGER}, #{userNo,jdbcType=VARCHAR}, #{loginName,jdbcType=VARCHAR}, 
+      #{loginPwd,jdbcType=VARCHAR}, #{mobileNo,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{clientPositionId,jdbcType=INTEGER}, #{clientStructureId,jdbcType=INTEGER}, #{sex,jdbcType=TINYINT}, 
+      #{telephoneNo,jdbcType=VARCHAR}, #{provinceId,jdbcType=INTEGER}, #{cityId,jdbcType=INTEGER}, 
+      #{districtId,jdbcType=INTEGER}, #{addr,jdbcType=VARCHAR}, #{postcode,jdbcType=VARCHAR}, 
+      #{idcard,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, 
+      #{isActivation,jdbcType=TINYINT}, #{clientId,jdbcType=INTEGER}, #{isDelete,jdbcType=TINYINT}, #{salt,jdbcType=VARCHAR}, 
+      #{roles,jdbcType=VARCHAR},#{col1,jdbcType=VARCHAR},#{col2,jdbcType=VARCHAR},#{col3,jdbcType=VARCHAR},#{email,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelectiveclient" parameterType="cn.mobilizer.channel.base.po.ClientUser" useGeneratedKeys="true" keyProperty="clientUserId" >
+    insert into client_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="clientUserId != null" >
+        client_user_id,
+      </if>
+      <if test="userNo != null" >
+        user_no,
+      </if>
+      <if test="loginName != null" >
+        login_name,
+      </if>
+      <if test="loginPwd != null" >
+        login_pwd,
+      </if>
+      <if test="mobileNo != null" >
+        mobile_no,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="clientPositionId != null" >
+        client_position_id,
+      </if>
+      <if test="clientStructureId != null" >
+        client_structure_id,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="telephoneNo != null" >
+        telephone_no,
+      </if>
+      <if test="provinceId != null" >
+        province_id,
+      </if>
+      <if test="cityId != null" >
+        city_id,
+      </if>
+      <if test="districtId != null" >
+        district_id,
+      </if>
+      <if test="addr != null" >
+        addr,
+      </if>
+      <if test="postcode != null" >
+        postcode,
+      </if>
+      <if test="idcard != null" >
+        idcard,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="isActivation != null" >
+        is_activation,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="salt != null" >
+        salt,
+      </if>
+      <if test="roles != null" >
+        roles,
+      </if>
+      <if test="col1 != null" >
+        col1,
+      </if>
+      <if test="col2 != null" >
+        col2,
+      </if>
+      <if test="col3 != null" >
+        col3,
+      </if>
+       <if test="email != null" >
+        email,
+      </if>
+      
+      
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="clientUserId != null" >
+        #{clientUserId,jdbcType=INTEGER},
+      </if>
+      <if test="userNo != null" >
+        #{userNo,jdbcType=VARCHAR},
+      </if>
+      <if test="loginName != null" >
+        #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginPwd != null" >
+        #{loginPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileNo != null" >
+        #{mobileNo,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="clientPositionId != null" >
+        #{clientPositionId,jdbcType=INTEGER},
+      </if>
+      <if test="clientStructureId != null" >
+        #{clientStructureId,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="telephoneNo != null" >
+        #{telephoneNo,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceId != null" >
+        #{provinceId,jdbcType=INTEGER},
+      </if>
+      <if test="cityId != null" >
+        #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="districtId != null" >
+        #{districtId,jdbcType=INTEGER},
+      </if>
+      <if test="addr != null" >
+        #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="postcode != null" >
+        #{postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null" >
+        #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="isActivation != null" >
+        #{isActivation,jdbcType=TINYINT},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="salt != null" >
+        #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="roles != null" >
+        #{roles,jdbcType=VARCHAR},
+      </if>
+       <if test="col1 != null" >
+        #{col1,jdbcType=VARCHAR},
+      </if>
+       <if test="col2 != null" >
+        #{col2,jdbcType=VARCHAR},
+      </if>
+       <if test="col3 != null" >
+        #{col3,jdbcType=VARCHAR},
+      </if>
+        <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.base.po.ClientUser" >
+    update client_user
+    <set >
+      <if test="userNo != null" >
+        user_no = #{userNo,jdbcType=VARCHAR},
+      </if>
+      <if test="loginName != null" >
+        login_name = #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginPwd != null" >
+        login_pwd = #{loginPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileNo != null" >
+        mobile_no = #{mobileNo,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="clientPositionId != null" >
+        client_position_id = #{clientPositionId,jdbcType=INTEGER},
+      </if>
+      <if test="clientStructureId != null" >
+        client_structure_id = #{clientStructureId,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="sex == null" >
+        sex = null,
+      </if>
+      <if test="telephoneNo != null" >
+        telephone_no = #{telephoneNo,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceId != null" >
+        province_id = #{provinceId,jdbcType=INTEGER},
+      </if>
+      <if test="provinceId == null" >
+        province_id = null,
+      </if>
+      <if test="cityId != null" >
+        city_id = #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="cityId == null" >
+        city_id = null,
+      </if>
+      <if test="districtId != null" >
+        district_id = #{districtId,jdbcType=INTEGER},
+      </if>
+      <if test="districtId == null" >
+        district_id = null,
+      </if>
+      <if test="addr != null" >
+        addr = #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="postcode != null" >
+        postcode = #{postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null" >
+        idcard = #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="isActivation != null" >
+        is_activation = #{isActivation,jdbcType=TINYINT},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="salt != null" >
+        salt = #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="roles != null" >
+        roles = #{roles,jdbcType=VARCHAR},
+      </if>
+      <if test="col1 != null" >
+        col1 = #{col1,jdbcType=VARCHAR},
+      </if>
+      <if test="col2 != null" >
+        col2 = #{col2,jdbcType=VARCHAR},
+      </if>
+      <if test="col3 != null" >
+        col3 = #{col3,jdbcType=VARCHAR},
+      </if>
+        <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where client_user_id = #{clientUserId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.base.po.ClientUser" >
+    update client_user
+    set user_no = #{userNo,jdbcType=VARCHAR},
+      login_name = #{loginName,jdbcType=VARCHAR},
+      login_pwd = #{loginPwd,jdbcType=VARCHAR},
+      mobile_no = #{mobileNo,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      client_position_id = #{clientPositionId,jdbcType=INTEGER},
+      client_structure_id = #{clientStructureId,jdbcType=INTEGER},
+      sex = #{sex,jdbcType=TINYINT},
+      telephone_no = #{telephoneNo,jdbcType=VARCHAR},
+      province_id = #{provinceId,jdbcType=INTEGER},
+      city_id = #{cityId,jdbcType=INTEGER},
+      district_id = #{districtId,jdbcType=INTEGER},
+      addr = #{addr,jdbcType=VARCHAR},
+      postcode = #{postcode,jdbcType=VARCHAR},
+      idcard = #{idcard,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      is_activation = #{isActivation,jdbcType=TINYINT},
+      client_id = #{clientId,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=TINYINT},
+      salt = #{salt,jdbcType=VARCHAR},
+      roles = #{roles,jdbcType=VARCHAR},
+      col1 = #{col1,jdbcType=VARCHAR},
+      col2 = #{col2,jdbcType=VARCHAR},
+      col3 = #{col3,jdbcType=VARCHAR},
+       email = #{email,jdbcType=VARCHAR}
+    where client_user_id = #{clientUserId,jdbcType=INTEGER}
+  </update>
+
+	<sql id="select_by_param">
+		select
+		<include refid="Base_Column_List" />
+		from CLIENT_USER
+		where 1=1
+		<include refid="Base_Query_Column_List" />
+	</sql>
+	
+	<sql id="Base_Query_Column_List">
+		<if test="loginName != null and loginName != ''">
+			and login_name = #{loginName}
+		</if>
+		<if test="clientId != null ">
+			and client_id = #{clientId}
+		</if>
+		<if test="isDelete != null ">
+			and is_delete = #{isDelete}
+		</if>
+		<if test="isDelete == null">
+			and is_delete = 0
+		</if>
+		<if test="name != null and name != ''">
+			and name like CONCAT('%',#{name},'%') 
+		</if>
+		<if test="clientStructureId != null">
+			and client_structure_id = #{clientStructureId}
+		</if>
+	</sql>
+	
+	<select id="selectByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+		<include refid="select_by_param" />
+		<include refid="basic.mysqlPageSearchFoot"/>  
+	</select>
+
+	<select id="selectByLoginNameAndClientName" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		select cu.*, c.logo_prefix as logoPrefix, cue.last_login_time as lastLoginTime, cue.client_user_id as clientUserExpandId,c.home_page
+		from client_user cu inner join client c on cu.client_id = c.client_id 
+		left join client_user_expand cue on cu.client_user_id = cue.client_user_id
+		where cu.is_activation = 1
+		and cu.status = 1
+		and cu.login_name = #{loginName} 
+		and c.client_name = #{clientName}
+		and cu.is_delete = 0 
+		and c.is_delete = 0 
+		<!-- and FIND_IN_SET('user',cu.roles) > 0  -->
+	</select>
+	
+	<select id="queryTotalCount" parameterType="java.util.Map" resultType="Integer">
+	select count(1)	from (select  cu.*
+		from CLIENT_USER cu
+    	LEFT JOIN CLIENT_USER_RELATION cur ON cur.client_id=cu.client_id and cu.client_user_id = cur.client_user_id and cur.is_delete = 0
+    	LEFT JOIN CLIENT_ROLES_USER_MAPPING cm on cu.client_user_id = cm.client_user_id and cm.is_delete = 0
+	    where 1=1
+		<include refid="Query_Column_List" />
+		<if test="parentId != null">
+			and cur.parent_id = #{parentId}
+		</if>
+		<if test="clientPositionIds != null and clientPositionIds != ''">
+			and FIND_IN_SET(cu.client_position_id,#{clientPositionIds})>0 
+		</if>
+		 GROUP BY cu.client_user_id) ccu
+	</select>
+	
+	<select id="findListByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+			select
+			cu.*, cp.position_name as position_name, cs.structure_name as structure_name,cu_1.name as parentName,GROUP_CONCAT(crs.role_name) as roleNames
+			from CLIENT_USER cu 
+			LEFT JOIN CLIENT_POSITION cp ON cu.client_position_id = cp.client_position_id
+			LEFT JOIN CLIENT_STRUCTURE cs ON cu.client_structure_id = cs.client_structure_id
+			LEFT JOIN CLIENT_USER_RELATION cur ON cur.client_id=cu.client_id and cu.client_user_id = cur.client_user_id and cur.is_delete = 0
+			LEFT JOIN CLIENT_USER cu_1 on cu_1.client_user_id= cur.parent_id 
+			LEFT JOIN CLIENT_ROLES_USER_MAPPING cm on cu.client_user_id = cm.client_user_id and cm.is_delete = 0
+			LEFT JOIN CLIENT_ROLES crs on crs.role_id = cm.role_id and crs.is_delete = 0
+			where 1=1 
+		<include refid="Query_Column_List" />
+		<if test="parentId != null">
+			and cur.parent_id = #{parentId}
+		</if>
+		<if test="clientPositionIds != null and clientPositionIds != ''">
+			and FIND_IN_SET(cu.client_position_id,#{clientPositionIds})>0 
+		</if>
+		 GROUP BY cu.client_user_id
+		 ORDER BY cu.status DESC,cu.is_activation DESC,cu.create_time DESC
+		<include refid="basic.mysqlPageSearchFoot"/>
+	</select>
+	
+	<select id="exportClientUserByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+			select
+			cu.*, cp.position_name as position_name, cs.structure_name as structure_name,cu_1.name as parentName,GROUP_CONCAT(crs.role_name) as roleNames
+			,province.province,city.city,district.district
+			from CLIENT_USER cu 
+			LEFT JOIN CLIENT_POSITION cp ON cu.client_position_id = cp.client_position_id
+			LEFT JOIN CLIENT_STRUCTURE cs ON cu.client_structure_id = cs.client_structure_id
+			LEFT JOIN CLIENT_USER_RELATION cur ON cur.client_id=cu.client_id and cu.client_user_id = cur.client_user_id and cur.is_delete = 0
+			LEFT JOIN CLIENT_USER cu_1 on cu_1.client_user_id= cur.parent_id 
+			LEFT JOIN CLIENT_ROLES_USER_MAPPING cm on cu.client_user_id = cm.client_user_id and cm.is_delete = 0
+			LEFT JOIN CLIENT_ROLES crs on crs.role_id = cm.role_id and crs.is_delete = 0
+			LEFT JOIN province on province.province_id = cu.province_id and province.is_delete = 0
+			LEFT JOIN city on city.city_id = cu.city_id and city.is_delete = 0
+			LEFT JOIN district on district.district_id = cu.district_id and district.is_delete = 0
+			where 1=1 
+		<include refid="Query_Column_List" />
+		<if test="parentId != null">
+			and cur.parent_id = #{parentId}
+		</if>
+		<if test="clientPositionIds != null and clientPositionIds != ''">
+			and FIND_IN_SET(cu.client_position_id,#{clientPositionIds})>0 
+		</if>
+		 GROUP BY cu.client_user_id
+		 ORDER BY cu.status DESC,cu.is_activation DESC,cu.create_time DESC
+		<include refid="basic.mysqlPageSearchFoot"/>
+	</select>
+	
+	<sql id="Query_Column_List">
+		AND FIND_IN_SET('admin', ifnull(cu.roles,''))=0
+		AND (
+		FIND_IN_SET(cu.client_structure_id,#{subStructureId})>0 
+		<if test="isLower == 1">
+		or find_in_set(cu.client_user_id,#{subordinates})>0
+		</if>
+		)
+		<if test="clientId != null">
+			and cu.client_id = #{clientId}
+		</if>
+		<if test="clientPositionId != null">
+			and cu.client_position_id = #{clientPositionId}
+		</if>
+		<if test="loginName != null and loginName !=''" >
+			and cu.login_name like CONCAT('%',#{loginName},'%')
+		</if>
+		<if test="isDelete != null">
+			and cu.is_delete = #{isDelete}
+		</if>
+		<if test="isActivation != null">
+			and cu.is_activation = #{isActivation}
+		</if>
+		<if test="inService != null">
+			and cu.is_activation != 0
+		</if>
+		<if test="status != null">
+			and cu.status = #{status}
+		</if>
+		<if test="rolesId != null">
+			and cm.role_id = #{rolesId}
+		</if>
+		<if test="name != null and name != ''">
+			and cu.name like CONCAT('%',#{name},'%') 
+		</if>
+		<if test="userNo != null and userNo != ''" >
+			and cu.user_no like CONCAT('%',#{userNo},'%') 
+		</if>
+	</sql>
+	
+	 <select id="selectByPrimaryKeys" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+	    select 
+	    cu.*
+	    ,structure_name , cr.parent_id as parentId,cr.relation_id as relationId
+	    from client_user cu 
+	    LEFT JOIN CLIENT_STRUCTURE cs ON cu.client_structure_id = cs.client_structure_id
+	    LEFT JOIN CLIENT_USER_RELATION  cr on cu.client_user_id=cr.client_user_id
+	    where cu.client_user_id = #{clientUserId,jdbcType=INTEGER}
+  </select>
+
+	<select id="getClientUserWithoutSelf" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select cu.client_user_id as id,cu.client_user_id,concat(IFNULL(cu.name,''),if(cs.structure_name is null,'',concat('--',cs.structure_name)))as name 
+		from CLIENT_USER cu left join client_structure cs
+		on cu.client_structure_id = cs.client_structure_id
+		where cu.client_id = #{clientId}
+		and	cu.is_delete = 0 and cu.name !='' 
+		<if test="clientUserId != null">
+			and cu.client_user_id != #{clientUserId}
+		</if>
+		<if test="name != null and name !=''">
+			and (cu.name like CONCAT('%',#{name},'%') or cs.structure_name like CONCAT('%',#{name},'%')) 
+		</if>
+	</select>
+	
+	<select id="getParentClientUser" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select cu.client_user_id as id,cu.client_user_id,concat(IFNULL(cu.name,''),if(cs.structure_name is null,'',concat('--',cs.structure_name)))as name 
+		from CLIENT_USER cu 
+		inner join CLIENT_USER_RELATION cur
+		on cu.client_user_id = cur.parent_id 
+		left join client_structure cs
+		on cu.client_structure_id = cs.client_structure_id
+		where cur.client_user_id = #{clientUserId}
+		and cu.client_id = #{clientId}
+		and cur.is_delete = 0 
+		and	cu.is_delete = 0 and cu.name !='' 
+	</select>
+	
+	<select id="getParentClientUserClientPosition" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select cu.client_user_id as id,cu.client_user_id,concat(IFNULL(cu.name,''),if(cs.position_name is null,'',concat('--',cs.position_name)))as name 
+		from CLIENT_USER cu 
+		inner join CLIENT_USER_RELATION cur
+		on cu.client_user_id = cur.parent_id 
+		left join client_position cs
+		on cu.client_position_id = cs.client_position_id
+		where cur.client_user_id = #{clientUserId}
+		and cu.client_id = #{clientId}
+		and cur.is_delete = 0 
+		and	cu.is_delete = 0 and cu.name !='' 
+	</select>
+	
+	<select id="findByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		select
+		cu.*, cp.position_name as position_name, cs.structure_name as structure_name
+		from CLIENT_USER cu 
+		LEFT JOIN CLIENT_POSITION cp ON cu.client_position_id = cp.client_position_id 
+		LEFT JOIN CLIENT_STRUCTURE cs ON cu.client_structure_id = cs.client_structure_id
+		where cu.client_user_id = #{clientUserId,jdbcType=INTEGER}
+	</select>
+	
+	<select id="findFullUserInfoByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		select
+		cu.*,
+		cp.position_name as position_name, cs.structure_name as structure_name,cr.parent_id as parentId
+		from CLIENT_USER cu 
+		LEFT JOIN CLIENT_POSITION cp ON cu.client_position_id = cp.client_position_id 
+		LEFT JOIN CLIENT_STRUCTURE cs ON cu.client_structure_id = cs.client_structure_id
+		LEFT JOIN CLIENT_USER_RELATION  cr on cu.client_user_id=cr.client_user_id and cr.is_delete=0
+		where cu.client_user_id = #{clientUserId,jdbcType=INTEGER}
+	</select>
+	
+	<select id="getClientUserPosition" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select cu.client_user_id as id,cu.client_user_id,concat(IFNULL(cu.name,''),if(cp.position_name is null,'',concat('--',cp.position_name)))as name 
+		from CLIENT_USER cu 
+		left join client_position cp
+		on cu.client_position_id = cp.client_position_id
+		where cu.client_id = #{clientId}
+		and	cu.is_delete = 0 and cu.name !='' and cu.is_activation != 0 
+		AND (FIND_IN_SET(cu.client_structure_id,#{subStructureId})>0 or find_in_set(cu.client_user_id,#{subordinates})>0)
+		<if test="clientUserId != null">
+			and cu.client_user_id != #{clientUserId}
+		</if>
+		<if test="clientUserIdChill != null and clientUserIdChill != ''">
+			and find_in_set(cu.client_user_id,#{clientUserIdChill}) = 0
+		</if>
+		<if test="clientPositionIds != null and clientPositionIds != ''">
+			and find_in_set(cp.client_position_id,#{clientPositionIds}) > 0
+		</if>
+		<if test="name != null and name !=''">
+			and (cu.name like CONCAT('%',#{name},'%') or cp.position_name like CONCAT('%',#{name},'%')) 
+		</if>
+	</select>
+	
+	<select id="getClientUserPositionBystoreId" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select cu.client_user_id as id,cu.client_user_id,concat(IFNULL(cu.name,''),if(cp.position_name is null,'',concat('--',cp.position_name)))as name 
+		from CLIENT_USER cu 
+		inner join store_user_mapping sum on cu.client_user_id = sum.client_user_id and sum.is_delete = 0
+		inner join store on sum.store_id  = store.store_id and store.is_delete = 0
+		left join client_position cp
+		on cu.client_position_id = cp.client_position_id
+		where cu.client_id = #{clientId}
+		and	cu.is_delete = 0 and cu.name !='' and cu.is_activation != 0 
+		AND (FIND_IN_SET(cu.client_structure_id,#{subStructureId})>0 or find_in_set(cu.client_user_id,#{subordinates})>0)
+		<if test="clientUserId != null">
+			and cu.client_user_id != #{clientUserId}
+		</if>
+		<if test="clientUserIdChill != null and clientUserIdChill != ''">
+			and find_in_set(cu.client_user_id,#{clientUserIdChill}) = 0
+		</if>
+		<if test="storeId !=null and storeId !=''">
+			and store.store_id = #{storeId}
+		</if>
+		<if test="name != null and name !=''">
+			and (cu.name like CONCAT('%',#{name},'%') or cp.position_name like CONCAT('%',#{name},'%')) 
+		</if>
+	</select>
+	
+	<select id="getClientUserPositionById" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select cu.client_user_id ,cu.client_user_id,concat(IFNULL(cu.name,''),if(cp.position_name is null,'',concat('--',cp.position_name)))as name 
+		from CLIENT_USER cu 
+		left join client_position cp
+		on cu.client_position_id = cp.client_position_id
+		where 1=1 and cu.client_user_id = #{clientUserId}
+		and cp.client_position_id = #{clientPositionId}
+		and	cu.is_delete = 0
+	</select>
+	 <select id="selectLogName" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from client_user 
+    where login_name = #{loginName}  and is_delete = 0 and client_id=#{clientId}
+  </select>
+  
+  <select id="getParentClientUserToDistributor" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select cu.client_user_id as id,cu.client_user_id,concat(IFNULL(cu.name,''),if(cs.position_name is null,'',concat('--',cs.position_name)))as name 
+		from CLIENT_USER cu 
+		inner join distributor_user_mapping cur
+		on cu.client_user_id = cur.client_user_id 
+		left join client_position cs
+		on cu.client_position_id = cs.client_position_id
+		where cur.client_user_id = #{clientUserId}
+		and cu.client_id = #{clientId}
+		and cur.is_delete = 0 
+		and	cu.is_delete = 0 and cu.name !='' 
+	</select>
+	
+	<select id="findByName" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select *
+    from client_user 
+    where login_name = #{loginName}  and is_delete = 0 and client_id = #{clientId}
+  	</select>
+  
+   <select id="findSubordinatesWhoHasApproveCallPlanning" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select *
+    from client_user cu
+    inner join client_user_relation cup on cu.client_user_id = cup.client_user_id and cup.is_delete = 0
+    inner join pending_schedule ps on ps.client_user_id = cu.client_user_id and ps.is_delete = 0 and ps.status = 0
+    where cup.parent_id = #{clientUserId}
+  	</select>
+	
+	<select id="selectClientUserAndPosition" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select cu.client_id as clientId,cu.client_user_id as id,concat(IFNULL(cu.name,''),if(cp.position_name is null,'',concat('(',cp.position_name,')')))as name 
+		from CLIENT_USER cu 
+		INNER JOIN pending_schedule ps on ps.client_user_id=cu.client_user_id and ps.is_delete=0 and ps.status = 0
+		left join client_position cp
+		on cu.client_position_id = cp.client_position_id and cp.is_delete=0 and cp.client_id = #{clientId}
+		where 1=1 and FIND_IN_SET(cu.client_user_id,#{strClientUserId})
+		and	cu.is_delete = 0 and cu.client_id = #{clientId} AND ps.call_date BETWEEN #{startDate}
+		AND #{endDate}
+		group by cu.client_user_id,cu.name,cp.position_name
+	</select>
+	
+	<select id="findAllClientUser" parameterType="java.util.Map" resultType="java.lang.String">
+			select GROUP_CONCAT(DISTINCT cu.client_user_id) from CLIENT_USER cu 
+			LEFT JOIN CLIENT_POSITION cp ON cu.client_position_id = cp.client_position_id
+			LEFT JOIN CLIENT_STRUCTURE cs ON cu.client_structure_id = cs.client_structure_id
+			LEFT JOIN CLIENT_USER_RELATION cur ON cur.client_id=cu.client_id and cu.client_user_id = cur.client_user_id and cur.is_delete = 0
+			LEFT JOIN CLIENT_USER cu_1 on cu_1.client_user_id= cur.parent_id 
+			where 1=1 
+			and cu.is_delete = 0
+			<include refid="Query_Column_List" />
+	</select>
+	
+		<select id="replaceAllsClientUser" parameterType="java.util.Map" resultType="String">
+			select GROUP_CONCAT(DISTINCT aa.client_user_id) as name from (select
+			cu.*
+			from CLIENT_USER cu 
+			LEFT JOIN CLIENT_POSITION cp ON cu.client_position_id = cp.client_position_id
+			LEFT JOIN CLIENT_STRUCTURE cs ON cu.client_structure_id = cs.client_structure_id
+			LEFT JOIN CLIENT_USER_RELATION cur ON cur.client_id=cu.client_id and cu.client_user_id = cur.client_user_id and cur.is_delete = 0
+			LEFT JOIN CLIENT_USER cu_1 on cu_1.client_user_id= cur.parent_id 
+			LEFT JOIN CLIENT_ROLES_USER_MAPPING cm on cu.client_user_id = cm.client_user_id and cm.is_delete = 0
+			LEFT JOIN CLIENT_ROLES crs on crs.role_id = cm.role_id and crs.is_delete = 0
+			where 1=1 
+		<if test="clientPositionIds != null and clientPositionIds != ''" >
+			and FIND_IN_SET(cu.client_position_id,#{clientPositionIds}) > 0
+		</if>
+		<if test="clientRole != null" >
+			and crs.role_id = #{clientRole}
+		</if>
+		<include refid="Query_Column_List" />
+		AND cu.is_delete = 0
+		<if test="parentId != null">
+			and cur.parent_id = #{parentId}
+		</if>
+		GROUP BY
+			cu.client_user_id) aa
+	</select>
+	
+	  <select id="findListByParamsMessage" parameterType="java.util.Map" resultMap="BaseResultMap">
+			select md.client_user_id as messageclientUserId,bb.* from (select
+			cu.*, cp.position_name as position_name, cs.structure_name as structure_name,cu_1.name as parentName,GROUP_CONCAT(crs.role_name) as roleNames
+			from CLIENT_USER cu 
+			LEFT JOIN CLIENT_POSITION cp ON cu.client_position_id = cp.client_position_id
+			LEFT JOIN CLIENT_STRUCTURE cs ON cu.client_structure_id = cs.client_structure_id
+			LEFT JOIN CLIENT_USER_RELATION cur ON cur.client_id=cu.client_id and cu.client_user_id = cur.client_user_id and cur.is_delete = 0
+			LEFT JOIN CLIENT_USER cu_1 on cu_1.client_user_id= cur.parent_id 
+			LEFT JOIN CLIENT_ROLES_USER_MAPPING cm on cu.client_user_id = cm.client_user_id and cm.is_delete = 0
+			LEFT JOIN CLIENT_ROLES crs on crs.role_id = cm.role_id and crs.is_delete = 0
+			where 1=1 
+		<include refid="Query_Column_List" />
+		<if test="parentId != null">
+			and cur.parent_id = #{parentId}
+		</if>
+		 GROUP BY cu.client_user_id) bb
+		 LEFT JOIN message_details md on md.client_user_id = bb.client_user_id and md.is_delete = 0 and md.client_id = #{clientId}
+		 <if test="messageId != null">
+		 	and md.message_id = #{messageId}
+		 </if>
+		 where 1=1
+		 ORDER BY md.CLIENT_USER_ID DESC
+		<include refid="basic.mysqlPageSearchFoot"/>
+	</select>
+	
+	<select id="findMessageDetailsRelateUser" parameterType="java.util.Map" resultMap="BaseResultMap">
+		SELECT
+			cu.*, 
+			cp.position_name AS position_name,
+			cs.structure_name AS structure_name	
+		FROM
+			CLIENT_USER cu
+		LEFT JOIN CLIENT_POSITION cp ON cu.client_position_id = cp.client_position_id 
+		AND cp.is_delete = 0 AND cp.client_id = #{clientId} 
+		LEFT JOIN CLIENT_STRUCTURE cs ON cu.client_structure_id = cs.client_structure_id
+		AND cs.is_delete = 0 AND cs.client_id = #{clientId}
+		LEFT JOIN message_details md ON md.client_user_id = cu.client_user_id 
+		AND md.is_delete = 0
+		AND md.client_id = #{clientId}
+		 <if test="messageId != null">
+		 	and md.message_id = #{messageId}
+		 </if>
+		WHERE
+			1 = 1
+		<include refid="Query_Column_List" />
+		AND cu.client_id = #{clientId}
+		AND cu.is_delete = 0
+		ORDER BY
+			md.CLIENT_USER_ID DESC
+		<include refid="basic.mysqlPageSearchFoot"/>
+	</select>
+	
+	
+	<select id="selectUserStoreRelation" parameterType="java.util.Map" resultType="java.lang.Integer">
+		SELECT COUNT(1) FROM store_user_mapping a WHERE a.client_id = #{clientId} AND a.client_user_id = #{clientUserId} AND a.is_delete = ${isDelete}
+	</select>
+	
+	<select id="findClientUserList" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		SELECT * from client_user cu
+		where cu.is_delete = 0 and cu.client_id = #{clientId}
+	</select>
+	
+	<select id="selectUserNoByStoreUser" parameterType="java.util.Map" resultType="java.lang.String">
+		select GROUP_CONCAT(cu.user_no) from  store_user_mapping sump inner join client_user cu on sump.client_user_id = cu.client_user_id and sump.client_id = #{clientId} 
+		where sump.store_id = #{storeId} and cu.is_delete = 0 and sump.is_delete = 0 and cu.client_id = #{clientId}
+	</select>
+	
+	<select id="selectClientUserByUserNo" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select * from client_user cu where cu.user_no = #{userNo} and cu.client_id =#{clientId} and cu.is_delete = 0 limit 1
+	</select>
+	
+	<select id="findClientUserByKeylogName" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select * from client_user cu 
+		<if test="roleName != null">
+			INNER  JOIN client_roles_user_mapping cr on cr.client_user_id = cu.client_user_id and cr.is_delete = 0 and cr.client_id = #{clientId}
+			INNER  JOIN client_roles cs on cs.role_id = cr.role_id and cs.is_delete = 0 and cs.client_id = #{clientId} 
+		</if>
+		where cu.is_delete = 0 and cu.client_id = #{clientId} and  FIND_IN_SET(cu.client_position_id,#{clientPositionIds})
+		<if test="roleName != null">
+			and cs.role_name = #{roleName}
+		</if>
+	</select>
+	
+	<select id="findClientUserBylogName" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select * from client_user cu where cu.is_delete = 0 and cu.client_id = #{clientId} 
+	</select>
+	
+	<insert id="insertList" parameterType="java.util.List">
+		insert into client_user (user_no, login_name,mobile_no, name,
+	  client_position_id, client_structure_id,
+	  sex, telephone_no, province_id, city_id, 
+      district_id, addr, postcode, 
+      idcard, remark, status, 
+      is_activation, client_id,col1,col2,col3,
+      salt,roles,join_date,leave_date,login_pwd) values 
+      <foreach collection="list" index="index" item="item" separator=",">
+      	(#{item.userNo},#{item.loginName},#{item.mobileNo},#{item.name},#{item.clientPositionId},#{item.clientStructureId},
+      	#{item.sex},#{item.telephoneNo},#{item.provinceId},#{item.cityId},#{item.districtId},#{item.addr},#{item.postcode},
+      	#{item.idcard},#{item.remark},#{item.status},#{item.isActivation},#{item.clientId},#{item.col1},#{item.col2},#{item.col3},
+      	#{item.salt},#{item.roles},#{item.joinDate},#{item.leaveDate},#{item.loginPwd})
+      </foreach>
+	</insert>
+	
+	<select id="getClientUserBylogName" parameterType="java.util.Map" resultMap="BaseResultMap">
+	select client_user_id,login_name,name from client_user a where a.is_delete = 0 and a.client_id = #{clientId} and a.login_name in
+		<foreach item="item" index="index" collection="list" open="(binary" separator="," close=")">  
+		 	#{item}
+		</foreach>
+	</select>
+	
+	
+	<select id="getClientUserByClientId" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select cu.client_user_id,cu.login_name,cu.name from client_user cu where cu.is_delete = 0 and cu.client_id = #{clientId} 
+	</select>
+	
+	<select id="getCMClientPosition" parameterType="java.util.Map" resultMap="BaseResultMap">
+		SELECT p.position_name,c.client_user_id,c.login_name as loginName from client_user c 
+		INNER JOIN client_position p on p.client_position_id = c.client_position_id and p.is_delete = 0 
+		where c.is_delete = 0 and c.client_id = #{clientId}
+	</select>
+	<select id="queryAllClinetUser" parameterType="java.util.Map" resultMap="BaseResultMap">
+		SELECT CONCAT(u.mobile_no,",",u.`name`) as keyName,u.client_user_id from client_user u where client_id = #{clientId} and is_delete = 0;
+	</select>
+	
+	
+	<select id="queryAllClinetUserByLogin" parameterType="java.util.Map" resultMap="BaseResultMap">
+		SELECT u.login_name from client_user u where client_id = #{clientId} and is_delete = 0;
+	</select>
+	<select id="selectclientuserId" resultType="java.lang.Integer" parameterType="java.util.Map" >
+    select 
+     count(*) 
+    from client_user   
+    where  name=#{name} and is_delete = 0 and client_id=#{clientId}
+  </select>
+  
+  <select id="getClientUserByCol1" resultType="java.lang.Integer" parameterType="java.util.Map" >
+  		SELECT client_user_id from client_user WHERE col1 = #{col} and is_delete = 0 and client_id = #{clientId}
+  </select>
+	
+	<select id="selectLoginName" parameterType="java.util.Map" resultMap="BaseResultMap">
+	   SELECT a.client_user_id,a.`login_name`FROM client_user a INNER JOIN client_position b ON a.client_position_id = b.client_position_id 
+       AND a.client_id =#{clientId}  AND b.client_id =#{clientId}  AND a.is_delete = 0 AND b.is_delete = 0 AND a.is_activation = 1 AND b.position_name = #{positionName};
+	</select>
+</mapper>

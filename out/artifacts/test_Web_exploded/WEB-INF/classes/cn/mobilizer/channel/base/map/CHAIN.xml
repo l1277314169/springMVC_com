@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="CHAIN" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.base.po.Chain" >
+    <id column="chain_id" property="chainId" jdbcType="INTEGER" />
+    <result column="chain_name" property="chainName" jdbcType="VARCHAR" />
+    <result column="chain_name_en" property="chainNameEn" jdbcType="VARCHAR" />
+    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+     <result column="channel_id" property="channelId" jdbcType="INTEGER" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+    <result column="grade" property="grade" jdbcType="TINYINT" />
+  </resultMap>
+  
+  
+    <resultMap id="TreeNodeResultMap" type="cn.mobilizer.channel.base.vo.TreeNodeVO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="pId" property="pId" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="isParent" property="isParent" jdbcType="VARCHAR" />
+    <result column="parentId" property="parentId" jdbcType="INTEGER" />
+    <result column="cId" property="cId" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    chain_id, chain_name, chain_name_en, parent_id, grade,channel_id, client_id, create_time, last_update_time,
+    is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from chain 
+    where chain_id = #{chainId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from chain
+    where chain_id = #{chainId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.base.po.Chain" >
+    insert into chain (chain_id, chain_name, chain_name_en, 
+      parent_id,grade, client_id, is_delete)
+    values (#{chainId,jdbcType=INTEGER}, #{chainName,jdbcType=VARCHAR}, #{chainNameEn,jdbcType=VARCHAR}, 
+      #{parentId,jdbcType=INTEGER},#{grade,jdbcType=INTEGER} #{clientId,jdbcType=INTEGER}, #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.base.po.Chain" >
+    insert into chain
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="chainId != null" >
+        chain_id,
+      </if>
+      <if test="chainName != null" >
+        chain_name,
+      </if>
+      <if test="chainNameEn != null" >
+        chain_name_en,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+       <if test="grade != null" >
+        grade,
+      </if>
+        <if test="channelId != null" >
+        channel_id,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="chainId != null" >
+        #{chainId,jdbcType=INTEGER},
+      </if>
+      <if test="chainName != null" >
+        #{chainName,jdbcType=VARCHAR},
+      </if>
+      <if test="chainNameEn != null" >
+        #{chainNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="grade != null" >
+        #{grade,jdbcType=INTEGER},
+      </if>
+      <if test="channelId != null" >
+        #{channelId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.base.po.Chain" >
+    update chain
+    <set >
+      <if test="chainName != null" >
+        chain_name = #{chainName,jdbcType=VARCHAR},
+      </if>
+      <if test="chainNameEn != null" >
+        chain_name_en = #{chainNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+       <if test="parentId == null">
+        parent_id =null,
+      </if>
+      <if test="grade != null" >
+        grade = #{grade,jdbcType=INTEGER},
+      </if>
+       <if test="channelId != null" >
+        channel_id = #{channelId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where chain_id = #{chainId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.base.po.Chain" >
+    update chain
+    set chain_name = #{chainName,jdbcType=VARCHAR},
+      chain_name_en = #{chainNameEn,jdbcType=VARCHAR},
+      parent_id = #{parentId,jdbcType=INTEGER},
+      grade = #{grade,jdbcType=INTEGER},
+      client_id = #{clientId,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where chain_id = #{chainId,jdbcType=INTEGER}
+  </update>
+	<sql id="select_by_param">
+		select
+		cl1.*, cl2.chain_name as parentName,cl.channel_name as channelName
+		from chain cl1
+		LEFT JOIN chain cl2 ON cl1.parent_id = cl2.chain_id
+		left join channel cl on cl1.channel_id = cl.channel_id
+		where 1=1
+		<include refid="Query_Column_List" />
+		ORDER BY cl1.chain_id 
+	</sql>
+	
+	<select id="getTreeNodesByPId" parameterType="java.util.Map"  resultMap="TreeNodeResultMap">
+		SELECT cl.chain_id AS id, cl.parent_id AS pId, cl.chain_name AS name 
+		FROM chain cl
+		<if test="channelId != null">
+			INNER  JOIN channel c on c.channel_id = cl.channel_id and c.is_delete = 0 and c.client_id = #{clientId}
+		</if>
+		WHERE 1=1 
+			<if test="clientId != null" >
+				and  cl.client_id = #{clientId}
+			</if>
+			<if test="id &gt; 0" >
+				and  cl.parent_id = #{id} 
+			</if>
+			<if test="id == 0" >
+				and  cl.parent_id is null 
+			</if>
+			<if test="channelId != null">
+				and c.channel_id= #{channelId}
+			</if>
+		AND cl.is_delete = 0
+	</select>
+	<select id="selectByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+		<include refid="select_by_param" />
+		<include refid="basic.mysqlPageSearchFoot"/>  
+	</select>
+	<select id="findByParams"  parameterType="java.util.Map" resultMap="BaseResultMap">
+	    select * from chain cl1 where 1=1 
+	 <include refid="Query_Column_List" />
+	</select>
+	<select id="queryTotalCount" parameterType="java.util.Map" resultType="Integer">
+		select  count(1)
+		from CHAIN cl1
+	     where 1=1
+		<include refid="Query_Column_List" />
+	</select>
+	
+	<sql id="Query_Column_List">
+		<if test="clientId != null">
+			and cl1.client_id = #{clientId}
+		</if>
+		<if test="isDelete != null">
+			and cl1.is_delete = #{isDelete}
+		</if>
+		<if test="chainId != null">
+			and cl1.chain_id != #{chainId}
+		</if>
+		<if test="grade != null">
+			and cl1.grade = #{grade}
+		</if>
+		<if test="parentId != null">
+			and cl1.parent_id = #{parentId}
+		</if>
+		<if test="isDelete == null">
+			and cl1.is_delete = 0
+		</if>
+		<if test="searchName != null and searchName != ''">
+			and cl1.chain_name like CONCAT('%',#{searchName},'%')
+		</if>
+		<if test="searchNameEn != null and searchNameEn != ''">
+			and cl1.chain_name_en like CONCAT('%',#{searchNameEn},'%')
+		</if>
+	</sql>
+	
+	<select id="findChainAndChannel" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select 
+    	cn.*,cl.channel_name as channelName
+    	from chain cn
+		LEFT JOIN channel cl on cl.channel_id = cn.channel_id and cl.is_delete = 0 
+    	where chain_id = #{chainId}
+	</select>
+	
+	<select id="findChainByChainName" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select * from chain where is_delete = 0 and chain_name  = #{chainName} and client_id = #{clientId}
+	</select>
+	
+	<select id="getChainMap" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select * from chain a where a.is_delete = 0 and a.client_id = #{clientId} 
+	</select>
+	
+</mapper>

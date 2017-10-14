@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html>
 <#assign base=request.contextPath />
 <head>
@@ -10,7 +10,7 @@
 </head>
 <body>
 <div>
-    <form action="#" method="post" name="userForm" id="userForm">
+    <form action="${base}/role/query" method="post" name="userForm" id="userForm">
         <table>
             <tbody>
             <tr>
@@ -42,7 +42,7 @@
                 <tr>
                     <td>${x.id}</td>
                     <td>${x.role}</td>
-                    <td>${x.description}</td>
+                    <td>fff</td>
                     <td width="80px">
                             <a href="javascript:void(0)" ng-click="showAllocationPage($index)">分配权限</a>
                             <a href="javascript:void(0)" ng-click="showUpdateData($index)">修改</a>

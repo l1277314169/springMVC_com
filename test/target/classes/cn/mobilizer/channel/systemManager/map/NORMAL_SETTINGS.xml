@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="NORMAL_SETTINGS" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.systemManager.po.NormalSettings" >
+    <id column="setting_id" property="settingId" jdbcType="INTEGER" />
+    <result column="key_code" property="keyCode" jdbcType="VARCHAR" />
+    <result column="key_value" property="keyValue" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    setting_id, key_code, key_value, remark, client_id, 
+    is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from normal_settings
+    where setting_id = #{settingId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from normal_settings
+    where setting_id = #{settingId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.systemManager.po.NormalSettings" >
+    insert into normal_settings (setting_id, key_code, key_value, 
+      remark, client_id, 
+      is_delete)
+    values (#{settingId,jdbcType=INTEGER}, #{keyCode,jdbcType=VARCHAR}, #{keyValue,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{clientId,jdbcType=INTEGER},
+       #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.systemManager.po.NormalSettings" >
+    insert into normal_settings
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="settingId != null" >
+        setting_id,
+      </if>
+      <if test="keyCode != null" >
+        key_code,
+      </if>
+      <if test="keyValue != null" >
+        key_value,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+    
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="settingId != null" >
+        #{settingId,jdbcType=INTEGER},
+      </if>
+      <if test="keyCode != null" >
+        #{keyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="keyValue != null" >
+        #{keyValue,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+     
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.systemManager.po.NormalSettings" >
+    update normal_settings
+    <set >
+      <if test="keyCode != null" >
+        key_code = #{keyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="keyValue != null" >
+        key_value = #{keyValue,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+     
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where setting_id = #{settingId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.systemManager.po.NormalSettings" >
+    update normal_settings
+    set key_code = #{keyCode,jdbcType=VARCHAR},
+      key_value = #{keyValue,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+     
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where setting_id = #{settingId,jdbcType=INTEGER}
+  </update>
+  
+    <select id="selectByKeyCode" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from normal_settings
+    where key_code = #{keyCode,jdbcType=INTEGER} and client_id = #{clientId,jdbcType=INTEGER}
+  </select>
+</mapper>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="COLGATE">
+  
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.colgate.vo.OverViewVo" >
+    <id column="display_type" property="displayType" jdbcType="VARCHAR" />
+    <result column="display_desc" property="displayDesc" jdbcType="VARCHAR" />
+    <result column="category" property="category" jdbcType="INTEGER" />
+    <result column="value" property="value" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <resultMap type="java.lang.Integer" id="items">  
+    <result column="num_of_store" jdbcType="INTEGER" javaType="Integer" />   
+  </resultMap>
+  
+  <resultMap id="distributionResultMap" type="cn.mobilizer.channel.colgate.vo.DataVo" >
+    <result column="category" property="Category" jdbcType="VARCHAR" />
+    <result column="brand" property="SubCategory" jdbcType="VARCHAR" />
+    <result column="sku_name" property="Label" jdbcType="VARCHAR" />
+    <result column="rate_of_dist" property="Value" jdbcType="NUMERIC" />
+  </resultMap>
+  
+  <resultMap id="ShareOfShelfResultMap" type="cn.mobilizer.channel.colgate.vo.DataVo" >
+    <result column="category" property="Category" jdbcType="VARCHAR" />
+    <result column="brand" property="Label" jdbcType="VARCHAR" />
+    <result column="SOS" property="Value" jdbcType="NUMERIC" />
+  </resultMap>
+  
+  <resultMap id="PriceResultMap" type="cn.mobilizer.channel.colgate.vo.PriceDataVo" >
+    <result column="category" property="Category" jdbcType="VARCHAR" />
+    <result column="sku_name" property="Label" jdbcType="VARCHAR" />
+    <result column="num_of_store" property="ExtraInfo1" jdbcType="VARCHAR" />
+    <result column="rrsp" property="ExtraInfo2" jdbcType="VARCHAR" />
+    <result column="avg_price" property="ExtraInfo3" jdbcType="VARCHAR" />
+    <result column="out_rrsp_range" property="Value" jdbcType="NUMERIC" />
+  </resultMap>
+  
+  <resultMap id="SkuOnShelfResultMap" type="cn.mobilizer.channel.colgate.vo.DataVo" >
+    <result column="category" property="Category" jdbcType="VARCHAR" />
+    <result column="brand" property="Label" jdbcType="VARCHAR" />
+    <result column="avg_num" property="Value" jdbcType="NUMERIC" />
+  </resultMap>
+  
+  <select id="loadOverView" statementType="CALLABLE" resultMap="BaseResultMap" parameterType="cn.mobilizer.channel.colgate.vo.FilterVo" >
+  		call sp_db_overview_4_colgate1(
+  		<if test="argFilterUserIds == null">''</if><if test="argFilterUserIds != null">#{argFilterUserIds}</if>,
+  		<if test="argFilterStructureIds == null">''</if><if test="argFilterStructureIds != null">#{argFilterStructureIds}</if>,
+  		<if test="argDeptIds == null">''</if><if test="argDeptIds != null">#{argDeptIds}</if>,
+  		#{argMonthId},
+  		<if test="argChannelIds == null">''</if><if test="argChannelIds != null">#{argChannelIds}</if>,
+  		<if test="argChainIds == null">''</if><if test="argChainIds != null">#{argChainIds}</if>,
+  		<if test="argAccountIds == null">''</if><if test="argAccountIds != null">#{argAccountIds}</if>
+  		);
+  </select>
+  
+  <select id="loadColgateDistribution" statementType="CALLABLE" parameterType="cn.mobilizer.channel.colgate.vo.FilterVo" resultMap="items,distributionResultMap">
+  	call sp_db_sku_distribution_4_colgate1(
+  		<if test="argFilterUserIds == null">''</if><if test="argFilterUserIds != null">#{argFilterUserIds}</if>,
+  		<if test="argFilterStructureIds == null">''</if><if test="argFilterStructureIds != null">#{argFilterStructureIds}</if>,
+  		<if test="argDeptIds == null">''</if><if test="argDeptIds != null">#{argDeptIds}</if>,
+  		#{argMonthId},
+  		<if test="argCategorys == null">''</if><if test="argCategorys != null">#{argCategorys}</if>,
+  		<if test="argBrandName == null">''</if><if test="argBrandName != null">#{argBrandName}</if>,
+  		<if test="argChannelIds == null">''</if><if test="argChannelIds != null">#{argChannelIds}</if>,
+  		<if test="argChainIds == null">''</if><if test="argChainIds != null">#{argChainIds}</if>,
+  		<if test="argAccountIds == null">''</if><if test="argAccountIds != null">#{argAccountIds}</if>
+  		);
+  </select>
+  
+  <select id="loadColgateShareOfShelf" statementType="CALLABLE" parameterType="cn.mobilizer.channel.colgate.vo.FilterVo" resultMap="items,ShareOfShelfResultMap">
+  	call sp_db_sos_4_colgate1(
+		<if test="argFilterUserIds == null">''</if><if test="argFilterUserIds != null">#{argFilterUserIds}</if>,
+		<if test="argFilterStructureIds == null">''</if><if test="argFilterStructureIds != null">#{argFilterStructureIds}</if>,
+		<if test="argDeptIds == null">''</if><if test="argDeptIds != null">#{argDeptIds}</if>,
+		#{argMonthId},
+		<if test="argCategorys == null">''</if><if test="argCategorys != null">#{argCategorys}</if>,
+		<if test="argBrandName == null">''</if><if test="argBrandName != null">#{argBrandName}</if>,
+		<if test="argChannelIds == null">''</if><if test="argChannelIds != null">#{argChannelIds}</if>,
+		<if test="argChainIds == null">''</if><if test="argChainIds != null">#{argChainIds}</if>,
+		<if test="argAccountIds == null">''</if><if test="argAccountIds != null">#{argAccountIds}</if>
+		);
+  </select>
+  
+  <select id="loadColgatePrice" statementType="CALLABLE" parameterType="cn.mobilizer.channel.colgate.vo.FilterVo" resultMap="items,PriceResultMap">
+  		call sp_db_sku_price_4_colgate1(
+			<if test="argFilterUserIds == null">''</if><if test="argFilterUserIds != null">#{argFilterUserIds}</if>,
+			<if test="argFilterStructureIds == null">''</if><if test="argFilterStructureIds != null">#{argFilterStructureIds}</if>,
+			<if test="argDeptIds == null">''</if><if test="argDeptIds != null">#{argDeptIds}</if>,
+			#{argMonthId},
+			<if test="argCategorys == null">''</if><if test="argCategorys != null">#{argCategorys}</if>,
+			<if test="argChannelIds == null">''</if><if test="argChannelIds != null">#{argChannelIds}</if>,
+			<if test="argChainIds == null">''</if><if test="argChainIds != null">#{argChainIds}</if>,
+			<if test="argAccountIds == null">''</if><if test="argAccountIds != null">#{argAccountIds}</if>
+			);
+  </select>
+  
+  <select id="loadColgateSkuOnShelf" statementType="CALLABLE" parameterType="cn.mobilizer.channel.colgate.vo.FilterVo" resultMap="items,SkuOnShelfResultMap">
+		call sp_db_sku_on_shelf_4_colgate1(
+		<if test="argFilterUserIds == null">''</if><if test="argFilterUserIds != null">#{argFilterUserIds}</if>,
+		<if test="argFilterStructureIds == null">''</if><if test="argFilterStructureIds != null">#{argFilterStructureIds}</if>,
+		<if test="argDeptIds == null">''</if><if test="argDeptIds != null">#{argDeptIds}</if>,
+		#{argMonthId},
+		<if test="argCategorys == null">''</if><if test="argCategorys != null">#{argCategorys}</if>,
+		<if test="argBrandName == null">''</if><if test="argBrandName != null">#{argBrandName}</if>,
+		<if test="argChannelIds == null">''</if><if test="argChannelIds != null">#{argChannelIds}</if>,
+		<if test="argChainIds == null">''</if><if test="argChainIds != null">#{argChainIds}</if>,
+		<if test="argAccountIds == null">''</if><if test="argAccountIds != null">#{argAccountIds}</if>
+		);
+  </select>
+  
+</mapper>

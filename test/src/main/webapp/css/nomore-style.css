@@ -1,0 +1,311 @@
+.bold_font {
+	font-weight:bold;
+}
+.font12 {
+	font-size:12px;
+}
+.div_border_ddd {
+	border:1px solid #DDD;
+}
+.margin_20_20 {
+	margin:20px 20px;
+}
+.margin_10_10 {
+	margin:10px 10px;
+}
+.padding_5_8 {
+	padding:5px 8px;
+}
+.padding_top_5 {
+	paddint-top:5px;
+}
+.padding_left_20 {
+	padding-left:20px;
+}
+.padding_left_10 {
+	padding-left:10px;
+}
+.line_height_30 {
+	line-height:30px;
+}
+.margin_left_20 {
+	margin-left:20px;
+}
+.tr_border {
+	border:1px solid #ddd;
+}
+.tr_border:hover {
+	border:1px solid #ddd;
+	background:#e6f9f5;
+}
+.tr_black_title {
+	background-color:#4d4d50;
+	color:white;
+	border:1px solid #434346;
+	height:35px;
+	line-height:35px;
+	font-weight:normal;
+	font-size:12px;
+}
+.normal_font {
+	font-weight:normal;
+	font-size:12px;
+}
+.structure_expand {
+	list-style:square inside url('../images/arrow-down.png');
+	font-size:12px;
+	cursor:pointer;
+	height:auto;
+}
+.structure_normal {
+	list-style:square inside url('../images/arrow-right.png');
+	font-size:12px;
+	cursor:pointer;
+	height:30px;
+}
+.structure_edit_div {
+	height:80%;width:30%;float:left;margin-top:20px;margin-left:40px;line-height:55px;padding-top:20px;
+}
+.structure_edit_div_title {
+	font-size:15px;font-weight:bold;align:center;text-align:center;height:50px;width:60%;
+}
+.structure_edit_div_label {
+	width:80px;display:-moz-inline-box;display:inline-block;text-align:right;vertical-align:middle;
+}
+.structure_edit_div_input {
+	vertical-align:middle;height:25px;width:180px;
+	border:1px solid #DDD;
+}
+/* CSS Tree menu styles */
+ol.tree
+{
+	padding: 0 0 0 30px;
+	width: 300px;
+	line-height:30px;
+}
+ol.tree li 
+{ 
+	position: relative; 
+	margin-left: -15px;
+	list-style: none;
+}
+
+ol.tree li.branch a
+{
+	padding-left: 21px;
+	text-decoration: none;
+	display: block;
+}
+ol.tree li input
+{
+	position: absolute;
+	left: 0;
+	margin-left: 0;
+	opacity: 0;
+	z-index: 2;
+	cursor: pointer;
+	height: 1em;
+	width: 1em;
+	top: 0;
+}
+ol.tree li input + ol
+{
+	background: url(../images/toggle-small-expand.png) 40px 0 no-repeat;/*  arrow-down.png*/
+	margin: -28px 0 0 -44px; 
+	xdisplay: block;
+	height: 1.5em;
+}
+ol.tree li input + ol > li { height: 0; overflow: hidden; margin-left: -15px !important; padding-left: 1px; }
+ol.tree li label
+{
+	cursor: pointer;
+	display: block;
+	padding-left: 15px;
+}
+ol.tree li input:checked + ol
+{
+	background: url(../images/toggle-small.png) 40px 5px no-repeat; /*arrow-right.png*/
+	margin: -33px 0 0 -44px;
+	padding: 1.563em 0 0 80px;
+	height: auto;
+}
+ol.tree li input:checked + ol > li { height: auto; margin: 0 0 0.125em; }
+ol.tree li input:checked + ol > li:last-child { margin: 0 0 0.063em; }
+/* task */
+.title_bar {
+line-height:35px;height:35px;padding-left:20px;font-size:15px;font-weight:bold;font-family:����;border-bottom:1px solid #ddd;vertical-align:middle;
+}
+.input_180 {
+	vertical-align:middle;height:25px;width:180px;
+	border:1px solid #DDD;
+}
+.tab_normal {
+	list-style:none;
+	display:inline-block;
+	border:1px solid #DDD;
+	height:30px;
+	width:100px;
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+	background-color:#F5F5F5;
+	color:#989898;
+	text-align:center;
+	line-height:30px;
+}
+.tab_current {
+	color:#00bb9d;
+	background-color:#fff;
+	list-style:none;
+	display:inline-block;
+	border:1px solid #DDD;
+	border-bottom:1px solid white;
+	height:30px;
+	width:100px;
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+	text-align:center;
+	line-height:30px;
+}
+.tab_cur_num_label {
+	background:url(../images/tab_bg.png) no-repeat;background-position:center;
+	margin-right:10px;
+	margin-left:-10px;
+	padding-left:0px;
+	width:40px;
+	display:inline-block;
+	color:#fff;
+}
+.tab_num_label {
+	background:url(../images/tab_bg.png) no-repeat;background-position:center;
+	margin-right:10px;
+	margin-left:-10px;
+	padding-left:0px;
+	width:40px;
+	display:inline-block;
+	color:#fff;
+}
+.tab_close {
+	border:0;float:right;margin:5px;
+}
+.save_span {
+	width:18px;
+	height:19px;
+	background:url(../images/save_bg.png) no-repeat;
+	display:inline-block;
+	cursor:pointer;
+}
+.delete_span {
+	width:18px;
+	height:21px;
+	background:url(../images/delete_bg.png) no-repeat;
+	display:inline-block;
+	cursor:pointer;
+}
+.input_160 {
+	border-radius:2px;
+	border:1px solid #ddd;
+	color:#ddd;
+	width:160px;
+	height:25px;
+}
+.input_50 {
+	border-radius:2px;
+	border:1px solid #ddd;
+	width:50px;
+	height:25px;
+}
+.select_150 {
+	border-radius:2px;
+	border:1px solid #ddd;
+	color:#ddd;
+	width:150px;
+	height:25px;
+}
+.btn_green_80 {
+	border-radius:2px;
+	border:1px solid #00bc9c;
+	background-color:#00bc9c;
+	width:80px;
+	height:28px;
+	color:#fff;
+	font-weight:normal;
+	font-size:12px;
+	display:inline-block;
+	line-height:26px;
+	padding-left:8px;
+	cursor:pointer;
+}
+.btn_white_100 {
+	border-radius:2px;
+	border:1px solid #00bc9c;
+	width:100px;
+	height:35px;
+	color:#00bc9c;
+	font-weight:normal;
+	font-size:12px;
+	display:inline-block;
+	line-height:33px;
+	cursor:pointer;
+}
+.btn_green_100 {
+	border-radius:2px;
+	border:1px solid #00bc9c;
+	background-color:#00bc9c;
+	width:100px;
+	height:28px;
+	color:#fff;
+	font-weight:normal;
+	font-size:12px;
+	display:inline-block;
+	line-height:33px;
+	cursor:pointer;
+	text-align:center;
+}
+.btn_green_p {
+	border-radius:2px;
+	border:1px solid #00bc9c;
+	background-color:#00bc9c;
+	width:100px;
+	height:28px;
+	color:#fff;
+	font-weight:normal;
+	font-size:12px;
+	display:inline-block;
+	line-height:26px;
+	padding-left:8px;
+	cursor:pointer;
+	text-align:center;
+}
+.popClass_cur{
+	background-color:#00bc9c;
+	list-style:none;
+	display:inline-block;
+	height:30px;
+	width:100%;
+	border:1px solid #DDD;
+	border-top:1px solid white;
+	border-top-radius:5px;
+	border-top-radius:5px;
+	text-align:left;
+	text-color:#00bb9d;
+	line-height:15px;
+}
+.popClass_nor{
+	color:#989898;
+	background-color:#fff;
+	list-style:none;
+	display:inline-block;
+	height:30px;
+	width:100%;
+	border:1px solid #DDD;
+	border-top:1px solid white;
+	border-top-radius:5px;
+	border-top--radius:5px;
+	text-align:left;
+	line-height:15px;
+}
+.leftUl li span{ float:left;} 
+div.content_wrap {width: 600px;height:380px;}
+div.content_wrap div.left{float: left;width: 250px;}
+div.content_wrap div.right{float: right;width: 340px;}
+div.zTreeDemoBackground {width:250px;height:362px;text-align:left;}

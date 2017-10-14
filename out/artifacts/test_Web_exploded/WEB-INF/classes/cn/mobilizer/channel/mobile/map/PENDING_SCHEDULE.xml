@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="PENDING_SCHEDULE" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.mobile.po.PendingSchedule" >
+    <id column="schedule_id" property="scheduleId" jdbcType="CHAR" />
+    <result column="client_user_id" property="clientUserId" jdbcType="INTEGER" />
+    <result column="call_date" property="callDate" jdbcType="TIMESTAMP" />
+    <result column="pop_id" property="popId" jdbcType="VARCHAR" />
+    <result column="pop_type" property="popType" jdbcType="INTEGER" />
+    <result column="sequence" property="sequence" jdbcType="INTEGER" />
+    <result column="planning_type" property="planningType" jdbcType="TINYINT" />
+    <result column="visit_type" property="visitType" jdbcType="TINYINT" />
+    <result column="work_type" property="workType" jdbcType="TINYINT" />
+    <result column="enum_value" property="enumValue" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="submit_time" property="submitTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    schedule_id, client_user_id, call_date, pop_id, pop_type, sequence, planning_type, 
+    visit_type, status, client_id, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from pending_schedule
+    where schedule_id = #{scheduleId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from pending_schedule
+    where schedule_id = #{scheduleId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.mobile.po.PendingSchedule" >
+    insert into pending_schedule (schedule_id, client_user_id, call_date, 
+      pop_id, pop_type, sequence, 
+      planning_type, visit_type, status, 
+      client_id,  is_delete)
+    values (#{scheduleId,jdbcType=CHAR}, #{clientUserId,jdbcType=INTEGER}, #{callDate,jdbcType=TIMESTAMP}, 
+      #{popId,jdbcType=VARCHAR}, #{popType,jdbcType=INTEGER}, #{sequence,jdbcType=INTEGER}, 
+      #{planningType,jdbcType=TINYINT}, #{visitType,jdbcType=TINYINT}, #{status,jdbcType=TINYINT}, 
+      #{clientId,jdbcType=INTEGER}, #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.mobile.po.PendingSchedule" >
+    insert into pending_schedule
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="scheduleId != null" >
+        schedule_id,
+      </if>
+      <if test="clientUserId != null" >
+        client_user_id,
+      </if>
+      <if test="callDate != null" >
+        call_date,
+      </if>
+      <if test="popId != null" >
+        pop_id,
+      </if>
+      <if test="popType != null" >
+        pop_type,
+      </if>
+      <if test="sequence != null" >
+        sequence,
+      </if>
+      <if test="planningType != null" >
+        planning_type,
+      </if>
+      <if test="visitType != null" >
+        visit_type,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="scheduleId != null" >
+        #{scheduleId,jdbcType=CHAR},
+      </if>
+      <if test="clientUserId != null" >
+        #{clientUserId,jdbcType=INTEGER},
+      </if>
+      <if test="callDate != null" >
+        #{callDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="popId != null" >
+        #{popId,jdbcType=VARCHAR},
+      </if>
+      <if test="popType != null" >
+        #{popType,jdbcType=INTEGER},
+      </if>
+      <if test="sequence != null" >
+        #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="planningType != null" >
+        #{planningType,jdbcType=TINYINT},
+      </if>
+      <if test="visitType != null" >
+        #{visitType,jdbcType=TINYINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.mobile.po.PendingSchedule" >
+    update pending_schedule
+    <set >
+      <if test="clientUserId != null" >
+        client_user_id = #{clientUserId,jdbcType=INTEGER},
+      </if>
+      <if test="callDate != null" >
+        call_date = #{callDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="popId != null" >
+        pop_id = #{popId,jdbcType=VARCHAR},
+      </if>
+      <if test="popType != null" >
+        pop_type = #{popType,jdbcType=INTEGER},
+      </if>
+      <if test="sequence != null" >
+        sequence = #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="planningType != null" >
+        planning_type = #{planningType,jdbcType=TINYINT},
+      </if>
+      <if test="visitType != null" >
+        visit_type = #{visitType,jdbcType=TINYINT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where schedule_id = #{scheduleId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.mobile.po.PendingSchedule" >
+    update pending_schedule
+    set client_user_id = #{clientUserId,jdbcType=INTEGER},
+      call_date = #{callDate,jdbcType=TIMESTAMP},
+      pop_id = #{popId,jdbcType=VARCHAR},
+      pop_type = #{popType,jdbcType=INTEGER},
+      sequence = #{sequence,jdbcType=INTEGER},
+      planning_type = #{planningType,jdbcType=TINYINT},
+      visit_type = #{visitType,jdbcType=TINYINT},
+      status = #{status,jdbcType=TINYINT},
+      client_id = #{clientId,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where schedule_id = #{scheduleId,jdbcType=CHAR}
+  </update>
+  
+  <sql id="Query_Column_List">
+		<if test="clientId != null">
+			and ps.client_id = #{clientId}
+		</if>
+		<if test="clientUserId != null">
+			and ps.client_user_id = #{clientUserId}
+		</if>
+		<if test="date != null">
+			and ps.call_date = #{date}
+		</if>
+		<if test="isDelete != null">
+			and ps.is_delete = #{isDelete}
+		</if>
+			<if test="isDelete == null">
+			and ps.is_delete = 0
+		</if>
+			<if test="startDate !=null">
+			<![CDATA[ and call_date >= #{startDate}]]>
+		</if>
+		<if test="endDate != null">
+			<![CDATA[ and call_date <= #{endDate}]]>
+		</if>
+		
+	</sql>
+  <select id="queryPendingScheduleByClientUserId" parameterType="java.util.Map" resultMap="BaseResultMap">
+		SELECT
+		ps.*, s.option_value AS soa,
+			s.option_text AS sob
+		FROM
+			pending_schedule ps
+		LEFT JOIN OPTIONS s ON s.option_value = ps.enum_value
+		AND s.option_name = 'work_type'
+		AND s.is_delete = 0
+		AND s.client_id = #{clientId}
+		WHERE
+			1 = 1
+		AND ps. STATUS = 0
+		AND ps.work_type = 1
+		AND	ps.client_user_id = #{clientUserId}
+		AND ps.call_date BETWEEN #{startDate}
+		AND #{endDate}
+		AND ps.is_delete = 0
+UNION ALL
+		SELECT
+			ps.*, st.store_name AS soa,
+			st.addr AS sob
+		FROM
+			pending_schedule ps
+		LEFT JOIN store st ON st.store_id = ps.pop_id
+		AND st.is_delete = 0
+		AND st.client_id = #{clientId}
+		WHERE
+			1 = 1
+		AND ps. STATUS = 0
+		AND ps.work_type = 0
+		AND	ps.client_user_id = #{clientUserId}
+		AND ps.call_date BETWEEN #{startDate}
+		AND #{endDate}
+		AND ps.is_delete = 0
+  </select>
+  
+  <select id="findPendingSchedule" parameterType="java.util.Map" resultMap="BaseResultMap">
+  		SELECT
+		ps.schedule_id
+		FROM
+			pending_schedule ps
+		LEFT JOIN OPTIONS s ON s.option_value = ps.enum_value
+		AND s.option_name = 'work_type'
+		AND s.is_delete = 0
+		AND s.client_id = #{clientId}
+		WHERE
+			1 = 1
+		AND ps. STATUS = 0
+		AND ps.work_type = 1
+		AND	ps.client_user_id = #{clientUserId}
+		AND ps.call_date BETWEEN #{startDate}
+		AND #{endDate}
+		AND ps.is_delete = 0
+UNION ALL
+		SELECT
+			ps.schedule_id
+		FROM
+			pending_schedule ps
+		LEFT JOIN store st ON st.store_id = ps.pop_id
+		AND st.is_delete = 0
+		AND st.client_id = #{clientId}
+		WHERE
+			1 = 1
+		AND ps. STATUS = 0
+		AND ps.work_type = 0
+		AND	ps.client_user_id = #{clientUserId}
+		AND ps.call_date BETWEEN #{startDate}
+		AND #{endDate}
+		AND ps.is_delete = 0
+  </select>
+  
+  <update id="updatePendingSchedule"  parameterType="java.util.Map" >
+  	update pending_schedule ps set ps.STATUS = #{status} where ps.client_id = #{clientId} and ps.is_delete = 0 and FIND_IN_SET(ps.schedule_id,#{ids})
+  </update>
+</mapper>

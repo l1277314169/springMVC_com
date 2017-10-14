@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="SURVEY" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.survey.po.Survey" >
+    <id column="survey_id" property="surveyId" jdbcType="INTEGER" />
+    <result column="survey_no" property="surveyNo" jdbcType="VARCHAR" />
+    <result column="survey_name" property="surveyName" jdbcType="VARCHAR" />
+    <result column="survey_group" property="surveyGroup" jdbcType="INTEGER" />
+    <result column="start_date" property="startDate" jdbcType="TIMESTAMP" />
+    <result column="end_date" property="endDate" jdbcType="TIMESTAMP" />
+    <result column="start_locating" property="startLocating" jdbcType="TINYINT" />
+    <result column="end_locating" property="endLocating" jdbcType="TINYINT" />
+    <result column="start_pic" property="startPic" jdbcType="TINYINT" />
+    <result column="end_pic" property="endPic" jdbcType="TINYINT" />
+    <result column="cycle_type" property="cycleType" jdbcType="TINYINT" />
+    <result column="valid_from" property="validFrom" jdbcType="INTEGER" />
+    <result column="valid_end" property="validEnd" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+    <result column="survey_id" property="id" jdbcType="TINYINT" />
+    <result column="survey_name" property="name" jdbcType="VARCHAR" />
+  </resultMap>
+  
+   <resultMap id="SurveyListVoMap" type="cn.mobilizer.channel.survey.vo.SurveyListVo" >
+    <result column="feedback_date" property="feedbackDate" jdbcType="TIMESTAMP" />
+    <result column="survey_name" property="surveyName" jdbcType="VARCHAR" />
+    <result column="store_name" property="storeName" jdbcType="VARCHAR" />
+    <result column="store_no" property="storeNo" jdbcType="VARCHAR" />
+    <result column="store_id" property="storeId" jdbcType="VARCHAR" />
+    <result column="survey_no" property="surveyNo" jdbcType="VARCHAR" />
+    <result column="feedback_id" property="feedbackId" jdbcType="VARCHAR" />
+    <result column="survey_id" property="surveyId" jdbcType="VARCHAR" />
+    <result column="cycle_type" property="cycleType" jdbcType="INTEGER" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="submit_time" property="submitTime" jdbcType="TIMESTAMP" />
+    <result column="visitor" property="visitor" jdbcType="VARCHAR" />
+    <result column="status" property="status"/>
+    <result column="addr" property="addr" />
+    <result column="store_type" property="storeType" />
+  </resultMap>
+  
+  <resultMap id="SurveyImageVoMap" type="cn.mobilizer.channel.survey.vo.SurveyImageVo" >
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="store_no" property="storeNo" jdbcType="VARCHAR" />
+    <result column="value" property="value" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    survey_id, survey_no, survey_name, survey_group, start_date, end_date, start_locating, 
+    end_locating, start_pic, end_pic, cycle_type, valid_from, valid_end, remark, client_id, 
+    create_time, last_update_time, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from survey
+    where survey_id = #{surveyId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from survey
+    where survey_id = #{surveyId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.survey.po.Survey" >
+    insert into survey (survey_id, survey_no, survey_name, 
+      survey_group, start_date, end_date, 
+      start_locating, end_locating, start_pic, 
+      end_pic, cycle_type, valid_from, 
+      valid_end, remark, client_id, 
+      create_time, last_update_time, is_delete
+      )
+    values (#{surveyId,jdbcType=INTEGER}, #{surveyNo,jdbcType=VARCHAR}, #{surveyName,jdbcType=VARCHAR}, 
+      #{surveyGroup,jdbcType=INTEGER}, #{startDate,jdbcType=TIMESTAMP}, #{endDate,jdbcType=TIMESTAMP}, 
+      #{startLocating,jdbcType=TINYINT}, #{endLocating,jdbcType=TINYINT}, #{startPic,jdbcType=TINYINT}, 
+      #{endPic,jdbcType=TINYINT}, #{cycleType,jdbcType=TINYINT}, #{validFrom,jdbcType=INTEGER}, 
+      #{validEnd,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{clientId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{lastUpdateTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.survey.po.Survey" >
+    insert into survey
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="surveyId != null" >
+        survey_id,
+      </if>
+      <if test="surveyNo != null" >
+        survey_no,
+      </if>
+      <if test="surveyName != null" >
+        survey_name,
+      </if>
+      <if test="surveyGroup != null" >
+        survey_group,
+      </if>
+      <if test="startDate != null" >
+        start_date,
+      </if>
+      <if test="endDate != null" >
+        end_date,
+      </if>
+      <if test="startLocating != null" >
+        start_locating,
+      </if>
+      <if test="endLocating != null" >
+        end_locating,
+      </if>
+      <if test="startPic != null" >
+        start_pic,
+      </if>
+      <if test="endPic != null" >
+        end_pic,
+      </if>
+      <if test="cycleType != null" >
+        cycle_type,
+      </if>
+      <if test="validFrom != null" >
+        valid_from,
+      </if>
+      <if test="validEnd != null" >
+        valid_end,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="surveyId != null" >
+        #{surveyId,jdbcType=INTEGER},
+      </if>
+      <if test="surveyNo != null" >
+        #{surveyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="surveyName != null" >
+        #{surveyName,jdbcType=VARCHAR},
+      </if>
+      <if test="surveyGroup != null" >
+        #{surveyGroup,jdbcType=INTEGER},
+      </if>
+      <if test="startDate != null" >
+        #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="startLocating != null" >
+        #{startLocating,jdbcType=TINYINT},
+      </if>
+      <if test="endLocating != null" >
+        #{endLocating,jdbcType=TINYINT},
+      </if>
+      <if test="startPic != null" >
+        #{startPic,jdbcType=TINYINT},
+      </if>
+      <if test="endPic != null" >
+        #{endPic,jdbcType=TINYINT},
+      </if>
+      <if test="cycleType != null" >
+        #{cycleType,jdbcType=TINYINT},
+      </if>
+      <if test="validFrom != null" >
+        #{validFrom,jdbcType=INTEGER},
+      </if>
+      <if test="validEnd != null" >
+        #{validEnd,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.survey.po.Survey" >
+    update survey
+    <set >
+      <if test="surveyNo != null" >
+        survey_no = #{surveyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="surveyName != null" >
+        survey_name = #{surveyName,jdbcType=VARCHAR},
+      </if>
+      <if test="surveyGroup != null" >
+        survey_group = #{surveyGroup,jdbcType=INTEGER},
+      </if>
+      <if test="startDate != null" >
+        start_date = #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        end_date = #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="startLocating != null" >
+        start_locating = #{startLocating,jdbcType=TINYINT},
+      </if>
+      <if test="endLocating != null" >
+        end_locating = #{endLocating,jdbcType=TINYINT},
+      </if>
+      <if test="startPic != null" >
+        start_pic = #{startPic,jdbcType=TINYINT},
+      </if>
+      <if test="endPic != null" >
+        end_pic = #{endPic,jdbcType=TINYINT},
+      </if>
+      <if test="cycleType != null" >
+        cycle_type = #{cycleType,jdbcType=TINYINT},
+      </if>
+      <if test="validFrom != null" >
+        valid_from = #{validFrom,jdbcType=INTEGER},
+      </if>
+      <if test="validEnd != null" >
+        valid_end = #{validEnd,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where survey_id = #{surveyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.survey.po.Survey" >
+    update survey
+    set survey_no = #{surveyNo,jdbcType=VARCHAR},
+      survey_name = #{surveyName,jdbcType=VARCHAR},
+      survey_group = #{surveyGroup,jdbcType=INTEGER},
+      start_date = #{startDate,jdbcType=TIMESTAMP},
+      end_date = #{endDate,jdbcType=TIMESTAMP},
+      start_locating = #{startLocating,jdbcType=TINYINT},
+      end_locating = #{endLocating,jdbcType=TINYINT},
+      start_pic = #{startPic,jdbcType=TINYINT},
+      end_pic = #{endPic,jdbcType=TINYINT},
+      cycle_type = #{cycleType,jdbcType=TINYINT},
+      valid_from = #{validFrom,jdbcType=INTEGER},
+      valid_end = #{validEnd,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where survey_id = #{surveyId,jdbcType=INTEGER}
+  </update>
+  
+  
+  <sql id="Query_Column_List">
+		<if test="storeNo!= null and ''!=storeNo " >
+        	and s.store_no = #{storeNo}
+      	</if>
+      	
+      	<if test="storeType!= null and ''!=storeType " >
+        	and s.store_type = #{storeType}
+      	</if>
+      	
+      	<if test="storeName!= null and ''!=storeName " >
+        	and s.store_name like CONCAT('%',#{storeName},'%')
+      	</if>
+      	
+      	<if test="visitor != null and ''!=visitor " >
+        	and sf.visitor like CONCAT('%',#{visitor},'%')
+      	</if>
+      	
+      	<if test="feedbackDate != null and ''!=feedbackDate " >
+        	and DATE_FORMAT(sf.feedback_date,'%Y%m')= #{feedbackDate}
+      	</if>
+      	
+      	<if test="provinceId != null and ''!=provinceId " >
+        	and s.province_id = #{provinceId}
+      	</if>
+      	
+      	<if test="cityId != null and ''!=cityId " >
+        	and s.city_id = #{cityId}
+      	</if>
+      	
+      	<if test="channelId != null and ''!=channelId " >
+        	and s.channel_id = #{channelId}
+      	</if>
+      	
+      	<if test="chainId != null and ''!=chainId " >
+        	and s.chain_id = #{chainId}
+      	</if>
+      	
+      	<if test="structureId != null and ''!=structureId " >
+        	and s.client_structure_id = #{structureId}
+      	</if>
+      	
+      	<if test="status != null and ''!=status " >
+        	and s.status = #{status}
+      	</if>
+      	
+	</sql>
+  
+  <select id="selectSurveyListVo" parameterType="java.util.Map" resultMap="SurveyListVoMap">
+	    SELECT sf.is_delete,sf.feedback_date,su.survey_name,s.store_name,s.addr,s.store_id,s.store_no,s.store_type,su.survey_no,sf.visitor,su.cycle_type,
+		sf.feedback_id,su.survey_id,sf.submit_time,sf.last_update_time,sf.status,p.province,c.city
+		FROM survey_feedback sf 
+		INNER JOIN store s ON sf.pop_id = s.store_id 
+		left join province p on s.province_id = p.province_id and p.is_delete = 0 
+		left join city c on c.city_id = s.city_id and c.is_delete = 0 
+		INNER JOIN survey su ON su.survey_id = sf.survey_id
+		where sf.is_delete = 0 and sf.client_id = #{clientId} 
+		and s.is_delete = 0 and s.client_id = #{clientId}
+		and su.is_delete = 0 and su.client_id = #{clientId} 
+		AND FIND_IN_SET(s.client_structure_id,#{clientStructureId})
+	    <include refid="Query_Column_List"/>
+	    <include refid="basic.mysqlPageSearchFoot"/>
+  </select>
+  
+  <select id="selectAllItems" parameterType="java.util.Map" resultType="INTEGER">
+	  	SELECT count(1)
+		FROM survey_feedback sf 
+		INNER JOIN store s ON sf.pop_id = s.store_id 
+		left join province p on s.province_id = p.province_id and p.is_delete = 0 
+		left join city c on c.city_id = s.city_id and c.is_delete = 0
+		INNER JOIN survey su ON su.survey_id = sf.survey_id	
+		where sf.is_delete = 0 and sf.client_id = #{clientId} 
+		and s.is_delete = 0 and s.client_id = #{clientId}
+		and su.is_delete = 0 and su.client_id = #{clientId} 
+		AND FIND_IN_SET(s.client_structure_id,#{clientStructureId})
+	    <include refid="Query_Column_List"/>
+  </select>
+  
+  <select id="getSurveyByName" parameterType="java.util.Map" resultMap="BaseResultMap" >
+	  	SELECT a.survey_id AS id,a.survey_name AS NAME FROM survey a where a.is_delete = 0 and a.client_id = #{clientId}
+	    <if test="surveyName != null and ''!=surveyName " >
+        	and a.survey_name like CONCAT('%',#{surveyName},'%')
+      	</if>
+  </select>
+  
+  <select id="getNewSurvey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+	  select 
+	  <include refid="Base_Column_List" />
+	  <![CDATA[	
+	  		 from survey s where s.is_delete = 0 and s.start_date <= SYSDATE() 
+	  		and s.client_id = #{clientId} order by s.last_update_time desc limit 1
+	  	]]>     
+  </select>
+  
+  <select id="getSurveyCycle" parameterType="java.util.Map" resultType="java.lang.Integer">
+  	select count(1) from survey_feedback b where b.survey_id = #{surveyId} and b.is_delete = 0 
+  	and b.client_id = #{clientId} and DATE_FORMAT(b.feedback_date,'%Y%m')= #{feedbackDate}
+  	and b.pop_id = #{storeId}
+  </select>
+  
+  
+  <select id="selectSurveyImages" parameterType="java.util.Map" resultMap="SurveyImageVoMap">
+  	SELECT if(c.city is null,"城市",c.city) as city,s.store_no,d.`value`
+		FROM survey_feedback sf 
+		INNER JOIN store s ON sf.pop_id = s.store_id 
+		left join province p on s.province_id = p.province_id and p.is_delete = 0 
+		left join city c on c.city_id = s.city_id and c.is_delete = 0 
+		INNER JOIN survey su ON su.survey_id = sf.survey_id
+		INNER JOIN survey_feedback_detail d on d.feedback_id = sf.feedback_id
+		INNER JOIN survey_parameter sp on sp.survey_parameter_id = d.survey_parameter_id
+		where sf.is_delete = 0 and sf.client_id = #{clientId}
+		and s.is_delete = 0 and s.client_id = #{clientId}
+		and su.is_delete = 0 and su.client_id = #{clientId}
+		and d.is_delete = 0 and d.client_id = #{clientId}
+		and sp.is_delete = 0 and sp.client_id = #{clientId}
+		and sp.control_type = 11 and d.`value` is not null and d.`value` != ''
+  </select>
+  
+</mapper>

@@ -1,0 +1,11 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "www.lvmama.com.conf.ElasticSearchConfig",
+      "name": "spring.data.elasticsearch.cluster-nodes",
+      "type": "www.lvmama.com.conf.ElasticSearchConfig"
+    }
+  ],
+  "properties": []
+}

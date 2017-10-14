@@ -1,0 +1,52 @@
+server:
+  port: 8080
+  context-path: /
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/shiro?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 123456
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      maximum-pool-size: 15
+      connection-test-query: SELECT 1
+
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  data:
+    mongodb:
+      uri: mongodb://127.0.0.1:27017/test
+      database: test
+
+  thymeleaf:
+    cache: false
+    content-type: text/html
+    encoding: utf-8
+    suffix: .html
+    prefix: classpath:/templates/
+    mode: LEGACYHTML5
+
+#    elasticsearch:
+#      cluster-name: elasticsearch
+#      cluster-nodes: 127.0.0.1:9300
+
+
+logging:
+  file: springboot.log
+
+
+management:
+  security:
+    enabled: false
+
+
+
+

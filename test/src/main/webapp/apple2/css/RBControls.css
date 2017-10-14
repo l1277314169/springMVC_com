@@ -1,0 +1,95 @@
+﻿.RBDropdownList 
+{
+	width:174px;
+	min-height:40px;
+	background-color:white;
+	font-family:Rockwell, Arila;
+	font-weight:bold;
+	font-size:12px;
+	
+}
+
+.RBDropdownList .leftColumn
+{
+	width:33px;
+}
+
+.RBDropdownList .midColumn
+{
+	width:108px;
+	padding:10px 0px 10px 0px;
+	text-align:center;
+}
+
+.RBDropdownList .rightColumn
+{
+	width:33px;
+}
+
+.RBDropdownList .midColumn .selectedData
+{
+	font-size:13px;
+	color:#c00700;
+	
+}
+.RBDropdownListItems
+{
+	width:175px;
+	background-color:#B2B2B2;
+	padding-top:10px;
+	padding-bottom:10px;
+	text-align:center;
+	max-height:200px;
+	overflow:auto;
+	opacity:0.9;
+	filter:alpha(opacity=90); /* For IE8 and earlier */
+}
+.RBDropdownListItem
+{
+	background-color:transparent;
+	border:none;
+	font-family:Rockwell, Arial;
+	text-align:center;
+	font-size:12px;
+	font-weight:bold;
+	padding:5px;
+	cursor:pointer;
+	
+}
+.RBDropdownCheckboxListItems
+{
+	width:175px;
+	background-color:#B2B2B2;
+	padding-top:10px;
+	padding-bottom:10px;
+	text-align:left;
+	max-height:200px;
+	overflow:auto;
+	opacity:0.9;
+	filter:alpha(opacity=90); /* For IE8 and earlier */
+}
+.RBDropdownCheckboxListItems label
+{
+	background-color:transparent;
+	border:none;
+	font-family:Rockwell, Arial;
+	text-align:center;
+	font-size:12px;
+	font-weight:bold;
+	padding:5px;
+	cursor:pointer;
+	color:Black;
+}
+
+.RBDropdownCheckboxListItem
+{
+	background-color:transparent;
+	border:none;
+	font-family:Rockwell, Arial;
+	text-align:left;
+	font-size:12px;
+	font-weight:bold;
+	padding:5px;
+	cursor:pointer;
+	
+}

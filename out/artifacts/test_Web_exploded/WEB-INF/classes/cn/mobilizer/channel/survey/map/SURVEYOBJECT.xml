@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="SURVEYOBJECT" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.survey.po.SurveyObject" >
+    <id column="object_id" property="objectId" jdbcType="INTEGER" />
+    <result column="sub_survey_id" property="subSurveyId" jdbcType="INTEGER" />
+    <result column="object_no" property="objectNo" jdbcType="VARCHAR" />
+    <result column="object_name" property="objectName" jdbcType="VARCHAR" />
+    <result column="sequence" property="sequence" jdbcType="INTEGER" />
+    <result column="col1" property="col1" jdbcType="VARCHAR" />
+    <result column="col2" property="col2" jdbcType="VARCHAR" />
+    <result column="col3" property="col3" jdbcType="VARCHAR" />
+    <result column="col4" property="col4" jdbcType="VARCHAR" />
+    <result column="col5" property="col5" jdbcType="VARCHAR" />
+    <result column="parameter_ids" property="parameterIds" jdbcType="VARCHAR" />
+    <result column="object_group_id" property="objectGroupId" jdbcType="INTEGER" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+    <result column="group_name" property="groupName" jdbcType="VARCHAR" />
+    <result column="grade" property="grade" jdbcType="VARCHAR" />
+    <result column="parent_id" property="parentId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    object_id, sub_survey_id, object_no, object_name, sequence, col1, col2, col3, col4, 
+    col5, parameter_ids, object_group_id, client_id, create_time, last_update_time, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from survey_object
+    where object_id = #{objectId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from survey_object
+    where object_id = #{objectId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.survey.po.SurveyObject" >
+    insert into survey_object (object_id, sub_survey_id, object_no, 
+      object_name, sequence, col1, 
+      col2, col3, col4, col5, 
+      parameter_ids, object_group_id, client_id, 
+      create_time, last_update_time, is_delete
+      )
+    values (#{objectId,jdbcType=INTEGER}, #{subSurveyId,jdbcType=INTEGER}, #{objectNo,jdbcType=VARCHAR}, 
+      #{objectName,jdbcType=VARCHAR}, #{sequence,jdbcType=INTEGER}, #{col1,jdbcType=VARCHAR}, 
+      #{col2,jdbcType=VARCHAR}, #{col3,jdbcType=VARCHAR}, #{col4,jdbcType=VARCHAR}, #{col5,jdbcType=VARCHAR}, 
+      #{parameterIds,jdbcType=VARCHAR}, #{objectGroupId,jdbcType=INTEGER}, #{clientId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{lastUpdateTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.survey.po.SurveyObject" >
+    insert into survey_object
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="objectId != null" >
+        object_id,
+      </if>
+      <if test="subSurveyId != null" >
+        sub_survey_id,
+      </if>
+      <if test="objectNo != null" >
+        object_no,
+      </if>
+      <if test="objectName != null" >
+        object_name,
+      </if>
+      <if test="sequence != null" >
+        sequence,
+      </if>
+      <if test="col1 != null" >
+        col1,
+      </if>
+      <if test="col2 != null" >
+        col2,
+      </if>
+      <if test="col3 != null" >
+        col3,
+      </if>
+      <if test="col4 != null" >
+        col4,
+      </if>
+      <if test="col5 != null" >
+        col5,
+      </if>
+      <if test="parameterIds != null" >
+        parameter_ids,
+      </if>
+      <if test="objectGroupId != null" >
+        object_group_id,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="objectId != null" >
+        #{objectId,jdbcType=INTEGER},
+      </if>
+      <if test="subSurveyId != null" >
+        #{subSurveyId,jdbcType=INTEGER},
+      </if>
+      <if test="objectNo != null" >
+        #{objectNo,jdbcType=VARCHAR},
+      </if>
+      <if test="objectName != null" >
+        #{objectName,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null" >
+        #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="col1 != null" >
+        #{col1,jdbcType=VARCHAR},
+      </if>
+      <if test="col2 != null" >
+        #{col2,jdbcType=VARCHAR},
+      </if>
+      <if test="col3 != null" >
+        #{col3,jdbcType=VARCHAR},
+      </if>
+      <if test="col4 != null" >
+        #{col4,jdbcType=VARCHAR},
+      </if>
+      <if test="col5 != null" >
+        #{col5,jdbcType=VARCHAR},
+      </if>
+      <if test="parameterIds != null" >
+        #{parameterIds,jdbcType=VARCHAR},
+      </if>
+      <if test="objectGroupId != null" >
+        #{objectGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.survey.po.SurveyObject" >
+    update survey_object
+    <set >
+      <if test="subSurveyId != null" >
+        sub_survey_id = #{subSurveyId,jdbcType=INTEGER},
+      </if>
+      <if test="objectNo != null" >
+        object_no = #{objectNo,jdbcType=VARCHAR},
+      </if>
+      <if test="objectName != null" >
+        object_name = #{objectName,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null" >
+        sequence = #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="col1 != null" >
+        col1 = #{col1,jdbcType=VARCHAR},
+      </if>
+      <if test="col2 != null" >
+        col2 = #{col2,jdbcType=VARCHAR},
+      </if>
+      <if test="col3 != null" >
+        col3 = #{col3,jdbcType=VARCHAR},
+      </if>
+      <if test="col4 != null" >
+        col4 = #{col4,jdbcType=VARCHAR},
+      </if>
+      <if test="col5 != null" >
+        col5 = #{col5,jdbcType=VARCHAR},
+      </if>
+      <if test="parameterIds != null" >
+        parameter_ids = #{parameterIds,jdbcType=VARCHAR},
+      </if>
+      <if test="objectGroupId != null" >
+        object_group_id = #{objectGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where object_id = #{objectId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.survey.po.SurveyObject" >
+    update survey_object
+    set sub_survey_id = #{subSurveyId,jdbcType=INTEGER},
+      object_no = #{objectNo,jdbcType=VARCHAR},
+      object_name = #{objectName,jdbcType=VARCHAR},
+      sequence = #{sequence,jdbcType=INTEGER},
+      col1 = #{col1,jdbcType=VARCHAR},
+      col2 = #{col2,jdbcType=VARCHAR},
+      col3 = #{col3,jdbcType=VARCHAR},
+      col4 = #{col4,jdbcType=VARCHAR},
+      col5 = #{col5,jdbcType=VARCHAR},
+      parameter_ids = #{parameterIds,jdbcType=VARCHAR},
+      object_group_id = #{objectGroupId,jdbcType=INTEGER},
+      client_id = #{clientId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where object_id = #{objectId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectBySubSurveyId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from survey_object
+    where sub_survey_id = #{subSurveyId} and is_delete = 0 and client_id = #{clientId}
+  </select>
+  
+  <select id="selectObjectBySubSurveyId" resultMap="BaseResultMap" >
+   SELECT sop.group_name,sop.parent_id,sop.grade,sop.sequence,sop.sub_survey_id,so.col1,so.col2,so.col3,so.col4,so.col5,so.object_group_id,so.object_id,so.object_name,so.object_no,so.parameter_ids from
+		survey_object_group sop LEFT JOIN survey_object so ON so.object_group_id = sop.object_group_id 
+    and sop.sub_survey_id = so.sub_survey_id and so.is_delete = 0  AND so.client_id = #{clientId}
+	where sop.sub_survey_id = #{subSurveyId} AND sop.is_delete = 0 and sop.client_id = #{clientId}
+    order by sop.sequence asc,so.sequence asc
+  </select>
+  
+  <select id="selectSurveyObject" resultMap="BaseResultMap" >
+   SELECT so.col1,so.col2,so.col3,so.col4,so.col5,so.object_group_id,so.object_id,so.object_name,so.object_no,so.parameter_ids,so.sub_survey_id FROM
+		survey_object so WHERE so.is_delete = 0 AND so.client_id = #{clientId} and so.sub_survey_id = #{subSurveyId} AND so.object_group_id IS NULL
+    ORDER BY so.sequence asc 
+  </select>
+  
+  <select id="selectSurveyObjectList" resultMap="BaseResultMap">
+  	SELECT so.col1,so.col2,so.col3,so.col4,so.col5,so.object_group_id,so.object_id,so.object_name,so.object_no,so.parameter_ids,so.sub_survey_id FROM
+		survey_object so WHERE so.is_delete = 0 AND so.client_id = #{clientId} and so.sub_survey_id = #{subSurveyId} ORDER BY so.sequence asc
+  </select>
+  
+  <select id="selectSurveyObjectByObjectNo" parameterType="java.util.Map" resultMap="BaseResultMap">
+  	select * from survey_object so where so.client_id = #{clientId} and so.object_no = #{objectNo} and so.is_delete = 0
+  </select>
+  
+  <select id="selectSurveyObjectByNameAndGroupId" parameterType="java.util.Map" resultMap="BaseResultMap">
+  	select * from survey_object so where so.client_id = #{clientId} 
+  	<if test="objectGroupId != null" >
+  		and so.object_group_id = #{objectGroupId} 
+  	</if>
+  	<if test="objectName != null" >
+  		and so.object_name like CONCAT('%',#{objectName},'%') 
+  	</if>
+  </select>
+  
+  <select id="selectSurveyObjectBySubSurveyId" parameterType="java.util.Map" resultMap="BaseResultMap">
+  	select * from survey_object so where so.client_id = #{clientId} and so.sub_survey_id = #{subSurveyId} and so.is_delete = 0
+  </select>
+  
+  <select id="selectAllSurveyObjectsByClientId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  	select * from survey_object so where so.client_id = #{clientId} and so.is_delete = 0 and so.object_no is not null
+  </select>
+</mapper>

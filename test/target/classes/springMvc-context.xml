@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="  
+http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans-3.1.xsd 
+http://www.springframework.org/schema/context 
+http://www.springframework.org/schema/context/spring-context-3.1.xsd 
+http://www.springframework.org/schema/aop 
+http://www.springframework.org/schema/aop/spring-aop-3.1.xsd 
+http://www.springframework.org/schema/tx 
+http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+http://www.springframework.org/schema/task 
+http://www.springframework.org/schema/task/spring-task-3.1.xsd">
+
+	<description>Spring-web MVC配置</description>
+	
+	<!-- 这两个类用来启动基于Spring MVC的注解功能，将控制器与方法映射加入到容器中 ，配置接口中返回的Date类型格式化成标准日期输出-->
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+				<property name="objectMapper">
+					<bean class="com.fasterxml.jackson.databind.ObjectMapper">
+						<property name="dateFormat">
+							<bean class="java.text.SimpleDateFormat">
+								<constructor-arg type="java.lang.String" value="yyyy-MM-dd HH:mm:ss" />
+							</bean>
+						</property>
+					</bean>
+				</property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+	
+	<!-- 对所有类进行扫描，以完成Bean创建和自动依赖注入的功能(不要包含Service的注解) -->
+	<context:component-scan base-package="cn.mobilizer.channel">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+	</context:component-scan>
+	
+	<task:annotation-driven />  
+
+	<!-- <mvc:view-controller path="/" view-name="forward:/welcome" /> -->
+	<mvc:view-controller path="/" view-name="welcome"/>
+	<mvc:view-controller path="/welcome" view-name="welcome"/>
+	<mvc:interceptors>
+		<bean class="cn.mobilizer.channel.comm.spring.HttpServletInterceptor"/>
+	</mvc:interceptors>
+	
+	<!-- 对某些静态资源，如css,图片等进行过滤 ,有引用 "/resources/**" 的路径引用转到工程的/resources/目录取资源 -->
+	<mvc:resources mapping="/css/**" location="/css/" />
+	<mvc:resources mapping="/js/**" location="/js/" />
+	<mvc:resources mapping="/images/**" location="/images/" />
+	<mvc:resources mapping="/img/**" location="/img/" />
+	<mvc:resources mapping="/font-awesome/**" location="/font-awesome/" />
+	<mvc:resources mapping="/import-template/**" location="/import-template/" />
+	<mvc:resources mapping="/download/**" location="/download/" />
+	<mvc:resources mapping="/app/**" location="/app/" />
+	<mvc:resources mapping="/colgate2/**" location="/colgate2/" />
+	<mvc:resources mapping="/apple2/**" location="/apple2/" />
+	<mvc:resources mapping="/attached/**" location="/attached/" />
+	<mvc:resources mapping="/attached_web/**" location="/attached_web/" />
+	<mvc:resources mapping="/error/**" location="/error/" />
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+		<property name="order" value="0" />
+		<property name="cache" value="true" />
+		<!-- 模板后缀，指定html页面为模板 -->
+		<property name="prefix" value=""/>
+        <property name="suffix" value=".ftl"/>
+		<!-- 使用这个模板类来解析视图 -->
+		<property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView" />
+		<property name="exposeSpringMacroHelpers" value="true" />
+		<!-- 允许访问请求属性，默认为false -->
+		<property name="exposeRequestAttributes" value="true" />
+		<!-- 允许访问会话属性，默认为false -->
+		<property name="exposeSessionAttributes" value="true" />
+		<!-- 页面上下文，类似于request.contextPath-->
+		<property name="requestContextAttribute" value="rc" />
+		<!-- 模板输出内容编码，此处应与defaultEncoding保持一致-->
+		<property name="contentType" value="text/html;charset=UTF-8" />
+	</bean>
+
+	<!--<bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">-->
+	<bean id="freemarkerConfig" class="cn.mobilizer.channel.web.freemarker.ShiroTagFreeMarkerConfigurer">
+		<!-- 模板文件所在目录-->
+		<property name="templateLoaderPath" value="/WEB-INF/pages/" />
+		<!-- 指定FreeMarker模板文件的编码格式-->
+		<property name="defaultEncoding" value="UTF-8" />
+		<!-- FreeMarker属性配置-->
+		<property name="freemarkerSettings">
+			<props>
+			    <!-- 每隔5小时检查模板是否更新，单位为秒如果不经常更新模板可将更新的延迟时间设定长一点-->
+				<prop key="template_update_delay">0</prop>
+				<!-- 指定地区语言环境，我们的语言是中文-->
+				<prop key="locale">zh_CN</prop>
+				<prop key="default_encoding">UTF-8</prop>
+                <prop key="number_format">0.##########</prop>
+                <prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
+                <prop key="classic_compatible">true</prop>
+                <prop key="template_exception_handler">ignore</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="multipartResolver" class="cn.mobilizer.channel.web.freemarker.MyMultipartResolver"  
+        p:defaultEncoding="UTF-8"  
+        p:maxUploadSize="540000000"  
+        p:uploadTempDir="fileUpload/temp" 
+     >  
+    </bean>
+</beans>

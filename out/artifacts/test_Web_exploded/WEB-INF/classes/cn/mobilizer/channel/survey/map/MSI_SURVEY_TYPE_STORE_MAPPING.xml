@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="MSI_SURVEY_TYPE_STORE_MAPPING" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.survey.po.MsiSurveyTypeStoreMapping" >
+    <id column="mapping_id" property="mappingId" jdbcType="INTEGER" />
+    <result column="msi_survey_type_id" property="msiSurveyTypeId" jdbcType="INTEGER" />
+    <result column="store_id" property="storeId" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    mapping_id, msi_survey_type_id, store_id, client_id, create_time, last_update_time, 
+    is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from msi_survey_type_store_mapping
+    where mapping_id = #{mappingId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from msi_survey_type_store_mapping
+    where mapping_id = #{mappingId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.survey.po.MsiSurveyTypeStoreMapping" >
+    insert into msi_survey_type_store_mapping (mapping_id, msi_survey_type_id, store_id, 
+      client_id, create_time, last_update_time, 
+      is_delete)
+    values (#{mappingId,jdbcType=INTEGER}, #{msiSurveyTypeId,jdbcType=INTEGER}, #{storeId,jdbcType=VARCHAR}, 
+      #{clientId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{lastUpdateTime,jdbcType=TIMESTAMP}, 
+      #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.survey.po.MsiSurveyTypeStoreMapping" >
+    insert into msi_survey_type_store_mapping
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mappingId != null" >
+        mapping_id,
+      </if>
+      <if test="msiSurveyTypeId != null" >
+        msi_survey_type_id,
+      </if>
+      <if test="storeId != null" >
+        store_id,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mappingId != null" >
+        #{mappingId,jdbcType=INTEGER},
+      </if>
+      <if test="msiSurveyTypeId != null" >
+        #{msiSurveyTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="storeId != null" >
+        #{storeId,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.survey.po.MsiSurveyTypeStoreMapping" >
+    update msi_survey_type_store_mapping
+    <set >
+      <if test="msiSurveyTypeId != null" >
+        msi_survey_type_id = #{msiSurveyTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="storeId != null" >
+        store_id = #{storeId,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where mapping_id = #{mappingId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.survey.po.MsiSurveyTypeStoreMapping" >
+    update msi_survey_type_store_mapping
+    set msi_survey_type_id = #{msiSurveyTypeId,jdbcType=INTEGER},
+      store_id = #{storeId,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where mapping_id = #{mappingId,jdbcType=INTEGER}
+  </update>
+  
+</mapper>

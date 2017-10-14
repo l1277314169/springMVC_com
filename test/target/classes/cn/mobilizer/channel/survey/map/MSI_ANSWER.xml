@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="MSI_ANSWER" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.survey.po.MsiAnswer" >
+    <id column="msi_answer_id" property="msiAnswerId" jdbcType="INTEGER" />
+    <result column="msi_question_id" property="msiQuestionId" jdbcType="INTEGER" />
+    <result column="answer_no" property="answerNo" jdbcType="VARCHAR" />
+    <result column="answer" property="answer" jdbcType="VARCHAR" />
+    <result column="is_reset" property="isReset" jdbcType="TINYINT" />
+    <result column="point" property="point" jdbcType="DECIMAL" />
+    <result column="sequence" property="sequence" jdbcType="INTEGER" />
+    <result column="col1" property="col1" jdbcType="VARCHAR" />
+    <result column="col2" property="col2" jdbcType="VARCHAR" />
+    <result column="col3" property="col3" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="parameter_ids" property="parameterIds" jdbcType="VARCHAR"/>
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    msi_answer_id, msi_question_id, answer_no, answer, is_reset, point, sequence, col1, 
+    col2, col3, remark, client_id, create_time, last_update_time, is_delete,parameter_ids
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from msi_answer
+    where msi_answer_id = #{msiAnswerId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from msi_answer
+    where msi_answer_id = #{msiAnswerId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.survey.po.MsiAnswer" >
+    insert into msi_answer (msi_answer_id, msi_question_id, answer_no, 
+      answer, is_reset, point, 
+      sequence, col1, col2, 
+      col3, remark, client_id, 
+      create_time, last_update_time, is_delete
+      )
+    values (#{msiAnswerId,jdbcType=INTEGER}, #{msiQuestionId,jdbcType=INTEGER}, #{answerNo,jdbcType=VARCHAR}, 
+      #{answer,jdbcType=VARCHAR}, #{isReset,jdbcType=TINYINT}, #{point,jdbcType=DECIMAL}, 
+      #{sequence,jdbcType=INTEGER}, #{col1,jdbcType=VARCHAR}, #{col2,jdbcType=VARCHAR}, 
+      #{col3,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{clientId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{lastUpdateTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.survey.po.MsiAnswer" >
+    insert into msi_answer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="msiAnswerId != null" >
+        msi_answer_id,
+      </if>
+      <if test="msiQuestionId != null" >
+        msi_question_id,
+      </if>
+      <if test="answerNo != null" >
+        answer_no,
+      </if>
+      <if test="answer != null" >
+        answer,
+      </if>
+      <if test="isReset != null" >
+        is_reset,
+      </if>
+      <if test="point != null" >
+        point,
+      </if>
+      <if test="sequence != null" >
+        sequence,
+      </if>
+      <if test="col1 != null" >
+        col1,
+      </if>
+      <if test="col2 != null" >
+        col2,
+      </if>
+      <if test="col3 != null" >
+        col3,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="msiAnswerId != null" >
+        #{msiAnswerId,jdbcType=INTEGER},
+      </if>
+      <if test="msiQuestionId != null" >
+        #{msiQuestionId,jdbcType=INTEGER},
+      </if>
+      <if test="answerNo != null" >
+        #{answerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="answer != null" >
+        #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="isReset != null" >
+        #{isReset,jdbcType=TINYINT},
+      </if>
+      <if test="point != null" >
+        #{point,jdbcType=DECIMAL},
+      </if>
+      <if test="sequence != null" >
+        #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="col1 != null" >
+        #{col1,jdbcType=VARCHAR},
+      </if>
+      <if test="col2 != null" >
+        #{col2,jdbcType=VARCHAR},
+      </if>
+      <if test="col3 != null" >
+        #{col3,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.survey.po.MsiAnswer" >
+    update msi_answer
+    <set >
+      <if test="msiQuestionId != null" >
+        msi_question_id = #{msiQuestionId,jdbcType=INTEGER},
+      </if>
+      <if test="answerNo != null" >
+        answer_no = #{answerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="answer != null" >
+        answer = #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="isReset != null" >
+        is_reset = #{isReset,jdbcType=TINYINT},
+      </if>
+      <if test="point != null" >
+        point = #{point,jdbcType=DECIMAL},
+      </if>
+      <if test="sequence != null" >
+        sequence = #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="col1 != null" >
+        col1 = #{col1,jdbcType=VARCHAR},
+      </if>
+      <if test="col2 != null" >
+        col2 = #{col2,jdbcType=VARCHAR},
+      </if>
+      <if test="col3 != null" >
+        col3 = #{col3,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where msi_answer_id = #{msiAnswerId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.survey.po.MsiAnswer" >
+    update msi_answer
+    set msi_question_id = #{msiQuestionId,jdbcType=INTEGER},
+      answer_no = #{answerNo,jdbcType=VARCHAR},
+      answer = #{answer,jdbcType=VARCHAR},
+      is_reset = #{isReset,jdbcType=TINYINT},
+      point = #{point,jdbcType=DECIMAL},
+      sequence = #{sequence,jdbcType=INTEGER},
+      col1 = #{col1,jdbcType=VARCHAR},
+      col2 = #{col2,jdbcType=VARCHAR},
+      col3 = #{col3,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where msi_answer_id = #{msiAnswerId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -32,13 +32,12 @@ public class RoleController {
     public String searchUserlist(Model model,Integer page,Integer pageSize,HttpServletRequest request){
         Integer currentPage = page == null ? 1 : page;
         Integer currentPageSize = pageSize == null? 10 : pageSize;
-
+String re = request.getParameter("name");
         Map<String,Object> parameperMap =new HashMap<String, Object>();
         int totalCount = roleService.serlectRoleCount(parameperMap);
         Page pageParam = Page.page(totalCount, currentPageSize, currentPage);
         parameperMap.put("_start",pageParam.getStartRows());
         parameperMap.put("_size",pageParam.getPageSize());
-
         List<Role> rolesList = roleService.queryRolelist(parameperMap);
         pageParam.buildUrl(request);
         pageParam.setItems(rolesList);

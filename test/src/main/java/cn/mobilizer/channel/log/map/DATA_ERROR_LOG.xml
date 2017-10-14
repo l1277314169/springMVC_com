@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="DATA_ERROR_LOG" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.log.po.DataErrorLog" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="client_user_id" property="clientUserId" jdbcType="INTEGER" />
+    <result column="file_name" property="fileName" jdbcType="VARCHAR" />
+    <result column="repeat_times" property="repeatTimes" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.mobilizer.channel.log.po.DataErrorLog" extends="BaseResultMap" >
+    <result column="error_log" property="errorLog" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, client_user_id, file_name, repeat_times, status, create_time, is_delete
+  </sql>
+  <sql id="Blob_Column_List" >
+    error_log
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from data_error_log
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <select id="findByClientUserIdAndFileName" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from data_error_log
+    where client_user_id = #{clientUserId,jdbcType=INTEGER} and file_name = #{fileName,jdbcType=VARCHAR} and is_delete = 0
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from data_error_log
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.log.po.DataErrorLog" >
+    insert into data_error_log (id, client_user_id, file_name, 
+      repeat_times, status, create_time, 
+      is_delete, error_log)
+    values (#{id,jdbcType=INTEGER}, #{clientUserId,jdbcType=INTEGER}, #{fileName,jdbcType=VARCHAR}, 
+      #{repeatTimes,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}, 
+      #{isDelete,jdbcType=TINYINT}, #{errorLog,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.log.po.DataErrorLog" useGeneratedKeys="true" keyProperty="id">
+    insert into data_error_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="clientUserId != null" >
+        client_user_id,
+      </if>
+      <if test="fileName != null" >
+        file_name,
+      </if>
+      <if test="repeatTimes != null" >
+        repeat_times,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="errorLog != null" >
+        error_log,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="clientUserId != null" >
+        #{clientUserId,jdbcType=INTEGER},
+      </if>
+      <if test="fileName != null" >
+        #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="repeatTimes != null" >
+        #{repeatTimes,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="errorLog != null" >
+        #{errorLog,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.log.po.DataErrorLog" >
+    update data_error_log
+    <set >
+      <if test="clientUserId != null" >
+        client_user_id = #{clientUserId,jdbcType=INTEGER},
+      </if>
+      <if test="fileName != null" >
+        file_name = #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="repeatTimes != null" >
+        repeat_times = #{repeatTimes,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="errorLog != null" >
+        error_log = #{errorLog,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.mobilizer.channel.log.po.DataErrorLog" >
+    update data_error_log
+    set client_user_id = #{clientUserId,jdbcType=INTEGER},
+      file_name = #{fileName,jdbcType=VARCHAR},
+      repeat_times = #{repeatTimes,jdbcType=INTEGER},
+      status = #{status,jdbcType=TINYINT},
+      is_delete = #{isDelete,jdbcType=TINYINT},
+      error_log = #{errorLog,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.log.po.DataErrorLog" >
+    update data_error_log
+    set client_user_id = #{clientUserId,jdbcType=INTEGER},
+      file_name = #{fileName,jdbcType=VARCHAR},
+      repeat_times = #{repeatTimes,jdbcType=INTEGER},
+      status = #{status,jdbcType=TINYINT},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

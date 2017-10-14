@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="SURVEYPARAMETER" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.survey.po.SurveyParameter" >
+    <id column="survey_parameter_id" property="surveyParameterId" jdbcType="INTEGER" />
+    <result column="parameter_name" property="parameterName" jdbcType="VARCHAR" />
+    <result column="sub_survey_id" property="subSurveyId" jdbcType="INTEGER" />
+    <result column="parameter_value" property="parameterValue" jdbcType="INTEGER" />
+    <result column="control_type" property="controlType" jdbcType="INTEGER" />
+    <result column="option_name" property="optionName" jdbcType="VARCHAR" />
+    <result column="min_value" property="minValue" jdbcType="DECIMAL" />
+    <result column="max_value" property="maxValue" jdbcType="DECIMAL" />
+    <result column="default_value" property="defaultValue" jdbcType="VARCHAR" />
+    <result column="is_verify" property="isVerify" jdbcType="TINYINT" />
+    <result column="is_editable" property="isEditable" jdbcType="TINYINT" />
+    <result column="calc_formula" property="calcFormula" jdbcType="VARCHAR" />
+    <result column="goto_question_id" property="gotoQuestionId" jdbcType="INTEGER" />
+    <result column="sequence" property="sequence" jdbcType="INTEGER" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+    <result column="width" property="width" jdbcType="VARCHAR" />
+    <result column="is_visible" property="isVisible" jdbcType="TINYINT" />
+    <result column="scale" property="scale" jdbcType="TINYINT" />
+    <result column="is_hidden" property="isHidden" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    survey_parameter_id, parameter_name, sub_survey_id, parameter_value, control_type, 
+    option_name, min_value, max_value, default_value, is_verify, is_editable, calc_formula, 
+    goto_question_id, sequence, client_id, create_time, last_update_time, is_delete,width,is_visible,scale,is_hidden
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from survey_parameter
+    where survey_parameter_id = #{surveyParameterId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from survey_parameter
+    where survey_parameter_id = #{surveyParameterId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.survey.po.SurveyParameter" >
+    insert into survey_parameter (survey_parameter_id, parameter_name, 
+      sub_survey_id, parameter_value, control_type, 
+      option_name, min_value, max_value, 
+      default_value, is_verify, is_editable, 
+      calc_formula, goto_question_id, sequence, 
+      client_id, create_time, last_update_time, 
+      is_delete)
+    values (#{surveyParameterId,jdbcType=INTEGER}, #{parameterName,jdbcType=VARCHAR}, 
+      #{subSurveyId,jdbcType=INTEGER}, #{parameterValue,jdbcType=INTEGER}, #{controlType,jdbcType=INTEGER}, 
+      #{optionName,jdbcType=VARCHAR}, #{minValue,jdbcType=DECIMAL}, #{maxValue,jdbcType=DECIMAL}, 
+      #{defaultValue,jdbcType=VARCHAR}, #{isVerify,jdbcType=TINYINT}, #{isEditable,jdbcType=TINYINT}, 
+      #{calcFormula,jdbcType=VARCHAR}, #{gotoQuestionId,jdbcType=INTEGER}, #{sequence,jdbcType=INTEGER}, 
+      #{clientId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{lastUpdateTime,jdbcType=TIMESTAMP}, 
+      #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.survey.po.SurveyParameter" >
+    insert into survey_parameter
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="surveyParameterId != null" >
+        survey_parameter_id,
+      </if>
+      <if test="parameterName != null" >
+        parameter_name,
+      </if>
+      <if test="subSurveyId != null" >
+        sub_survey_id,
+      </if>
+      <if test="parameterValue != null" >
+        parameter_value,
+      </if>
+      <if test="controlType != null" >
+        control_type,
+      </if>
+      <if test="optionName != null" >
+        option_name,
+      </if>
+      <if test="minValue != null" >
+        min_value,
+      </if>
+      <if test="maxValue != null" >
+        max_value,
+      </if>
+      <if test="defaultValue != null" >
+        default_value,
+      </if>
+      <if test="isVerify != null" >
+        is_verify,
+      </if>
+      <if test="isEditable != null" >
+        is_editable,
+      </if>
+      <if test="calcFormula != null" >
+        calc_formula,
+      </if>
+      <if test="gotoQuestionId != null" >
+        goto_question_id,
+      </if>
+      <if test="sequence != null" >
+        sequence,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="surveyParameterId != null" >
+        #{surveyParameterId,jdbcType=INTEGER},
+      </if>
+      <if test="parameterName != null" >
+        #{parameterName,jdbcType=VARCHAR},
+      </if>
+      <if test="subSurveyId != null" >
+        #{subSurveyId,jdbcType=INTEGER},
+      </if>
+      <if test="parameterValue != null" >
+        #{parameterValue,jdbcType=INTEGER},
+      </if>
+      <if test="controlType != null" >
+        #{controlType,jdbcType=INTEGER},
+      </if>
+      <if test="optionName != null" >
+        #{optionName,jdbcType=VARCHAR},
+      </if>
+      <if test="minValue != null" >
+        #{minValue,jdbcType=DECIMAL},
+      </if>
+      <if test="maxValue != null" >
+        #{maxValue,jdbcType=DECIMAL},
+      </if>
+      <if test="defaultValue != null" >
+        #{defaultValue,jdbcType=VARCHAR},
+      </if>
+      <if test="isVerify != null" >
+        #{isVerify,jdbcType=TINYINT},
+      </if>
+      <if test="isEditable != null" >
+        #{isEditable,jdbcType=TINYINT},
+      </if>
+      <if test="calcFormula != null" >
+        #{calcFormula,jdbcType=VARCHAR},
+      </if>
+      <if test="gotoQuestionId != null" >
+        #{gotoQuestionId,jdbcType=INTEGER},
+      </if>
+      <if test="sequence != null" >
+        #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.survey.po.SurveyParameter" >
+    update survey_parameter
+    <set >
+      <if test="parameterName != null" >
+        parameter_name = #{parameterName,jdbcType=VARCHAR},
+      </if>
+      <if test="subSurveyId != null" >
+        sub_survey_id = #{subSurveyId,jdbcType=INTEGER},
+      </if>
+      <if test="parameterValue != null" >
+        parameter_value = #{parameterValue,jdbcType=INTEGER},
+      </if>
+      <if test="controlType != null" >
+        control_type = #{controlType,jdbcType=INTEGER},
+      </if>
+      <if test="optionName != null" >
+        option_name = #{optionName,jdbcType=VARCHAR},
+      </if>
+      <if test="minValue != null" >
+        min_value = #{minValue,jdbcType=DECIMAL},
+      </if>
+      <if test="maxValue != null" >
+        max_value = #{maxValue,jdbcType=DECIMAL},
+      </if>
+      <if test="defaultValue != null" >
+        default_value = #{defaultValue,jdbcType=VARCHAR},
+      </if>
+      <if test="isVerify != null" >
+        is_verify = #{isVerify,jdbcType=TINYINT},
+      </if>
+      <if test="isEditable != null" >
+        is_editable = #{isEditable,jdbcType=TINYINT},
+      </if>
+      <if test="calcFormula != null" >
+        calc_formula = #{calcFormula,jdbcType=VARCHAR},
+      </if>
+      <if test="gotoQuestionId != null" >
+        goto_question_id = #{gotoQuestionId,jdbcType=INTEGER},
+      </if>
+      <if test="sequence != null" >
+        sequence = #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where survey_parameter_id = #{surveyParameterId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.survey.po.SurveyParameter" >
+    update survey_parameter
+    set parameter_name = #{parameterName,jdbcType=VARCHAR},
+      sub_survey_id = #{subSurveyId,jdbcType=INTEGER},
+      parameter_value = #{parameterValue,jdbcType=INTEGER},
+      control_type = #{controlType,jdbcType=INTEGER},
+      option_name = #{optionName,jdbcType=VARCHAR},
+      min_value = #{minValue,jdbcType=DECIMAL},
+      max_value = #{maxValue,jdbcType=DECIMAL},
+      default_value = #{defaultValue,jdbcType=VARCHAR},
+      is_verify = #{isVerify,jdbcType=TINYINT},
+      is_editable = #{isEditable,jdbcType=TINYINT},
+      calc_formula = #{calcFormula,jdbcType=VARCHAR},
+      goto_question_id = #{gotoQuestionId,jdbcType=INTEGER},
+      sequence = #{sequence,jdbcType=INTEGER},
+      client_id = #{clientId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where survey_parameter_id = #{surveyParameterId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectBysubSurveyId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from survey_parameter
+    where sub_survey_id = #{subSurveyId} and client_id = #{clientId} and is_delete = 0 order by sequence asc
+  </select>
+  
+</mapper>

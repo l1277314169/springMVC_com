@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="MESSAGE_DETAILS" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.systemManager.po.MessageDetails" >
+    <id column="message_detail_id" property="messageDetailId" jdbcType="INTEGER" />
+    <result column="message_id" property="messageId" jdbcType="INTEGER" />
+    <result column="client_user_id" property="clientUserId" jdbcType="INTEGER" />
+    <result column="is_read" property="isRead" jdbcType="TINYINT" />
+    <result column="read_time" property="readTime" jdbcType="TIMESTAMP" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    message_detail_id, message_id, client_user_id, is_read, read_time, client_id, create_time, 
+    last_update_time, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from message_details
+    where message_detail_id = #{messageDetailId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from message_details
+    where message_detail_id = #{messageDetailId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.systemManager.po.MessageDetails" >
+    insert into message_details (message_detail_id, message_id, client_user_id, 
+      is_read, read_time, client_id, 
+      is_delete
+      )
+    values (#{messageDetailId,jdbcType=INTEGER}, #{messageId,jdbcType=INTEGER}, #{clientUserId,jdbcType=INTEGER}, 
+      #{isRead,jdbcType=TINYINT}, #{readTime,jdbcType=TIMESTAMP}, #{clientId,jdbcType=INTEGER}, 
+      #{isDelete,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.systemManager.po.MessageDetails" >
+    insert into message_details
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="messageDetailId != null" >
+        message_detail_id,
+      </if>
+      <if test="messageId != null" >
+        message_id,
+      </if>
+      <if test="clientUserId != null" >
+        client_user_id,
+      </if>
+      <if test="isRead != null" >
+        is_read,
+      </if>
+      <if test="readTime != null" >
+        read_time,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="messageDetailId != null" >
+        #{messageDetailId,jdbcType=INTEGER},
+      </if>
+      <if test="messageId != null" >
+        #{messageId,jdbcType=INTEGER},
+      </if>
+      <if test="clientUserId != null" >
+        #{clientUserId,jdbcType=INTEGER},
+      </if>
+      <if test="isRead != null" >
+        #{isRead,jdbcType=TINYINT},
+      </if>
+      <if test="readTime != null" >
+        #{readTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.systemManager.po.MessageDetails" >
+    update message_details
+    <set >
+      <if test="messageId != null" >
+        message_id = #{messageId,jdbcType=INTEGER},
+      </if>
+      <if test="clientUserId != null" >
+        client_user_id = #{clientUserId,jdbcType=INTEGER},
+      </if>
+      <if test="isRead != null" >
+        is_read = #{isRead,jdbcType=TINYINT},
+      </if>
+      <if test="readTime != null" >
+        read_time = #{readTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where message_detail_id = #{messageDetailId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.systemManager.po.MessageDetails" >
+    update message_details
+    set message_id = #{messageId,jdbcType=INTEGER},
+      client_user_id = #{clientUserId,jdbcType=INTEGER},
+      is_read = #{isRead,jdbcType=TINYINT},
+      read_time = #{readTime,jdbcType=TIMESTAMP},
+      client_id = #{clientId,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where message_detail_id = #{messageDetailId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectByUserIdAndMessageId" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from message_details
+    where client_user_id = #{clientUserId,jdbcType=INTEGER} and message_id = #{messageId,jdbcType=INTEGER}
+    <if test="isDelete != null" >
+		and is_delete = #{isDelete}
+     </if>
+    ORDER BY is_delete, last_update_time DESC LIMIT 0,1
+  </select>
+  
+  <insert id="insertMessageDetails" parameterType="java.util.Map">
+ 	 insert into message_details (message_id,client_user_id,client_id) values
+	  <foreach collection="clientUserIds" item="item" index="index" separator=",">
+	  	(#{messageId},#{item},#{clientId})
+	  </foreach>
+  </insert>
+  
+  <update id="updateIsdelete" parameterType="java.util.Map">
+  	update message_details set is_delete = 1 where client_id = #{clientId} and message_id = #{messageId}
+  </update>
+  
+  <update id="deleteByMessageDetails" parameterType="java.util.Map">
+    update message_details
+    set is_delete = 1
+    where message_id = #{messageId} 
+    and find_in_set(client_user_id,#{clientUserIds})>0 and client_id = #{clientId}
+  </update>
+</mapper>

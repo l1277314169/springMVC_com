@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="OPTIONS" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.base.po.Options" >
+    <id column="option_id" property="optionId" jdbcType="INTEGER" />
+    <result column="option_name" property="optionName" jdbcType="VARCHAR" />
+    <result column="option_value" property="optionValue" jdbcType="INTEGER" />
+    <result column="option_text" property="optionText" jdbcType="VARCHAR" />
+    <result column="option_text_en" property="optionTextEn" jdbcType="VARCHAR" />
+    <result column="sequence" property="sequence" jdbcType="INTEGER" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    option_id, option_name, option_value, option_text, option_text_en, sequence, client_id, 
+    create_time, last_update_time, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from options
+    where option_id = #{optionId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from options
+    where option_id = #{optionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.base.po.Options" >
+    insert into options (option_id, option_name, option_value, 
+      option_text, option_text_en, sequence, 
+      client_id,
+      is_delete)
+    values (#{optionId,jdbcType=INTEGER}, #{optionName,jdbcType=VARCHAR}, #{optionValue,jdbcType=INTEGER}, 
+      #{optionText,jdbcType=VARCHAR}, #{optionTextEn,jdbcType=VARCHAR}, #{sequence,jdbcType=INTEGER}, 
+      #{clientId,jdbcType=INTEGER},
+      #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.base.po.Options" >
+    insert into options
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="optionId != null" >
+        option_id,
+      </if>
+      <if test="optionName != null" >
+        option_name,
+      </if>
+      <if test="optionValue != null" >
+        option_value,
+      </if>
+      <if test="optionText != null" >
+        option_text,
+      </if>
+      <if test="optionTextEn != null" >
+        option_text_en,
+      </if>
+      <if test="sequence != null" >
+        sequence,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="optionId != null" >
+        #{optionId,jdbcType=INTEGER},
+      </if>
+      <if test="optionName != null" >
+        #{optionName,jdbcType=VARCHAR},
+      </if>
+      <if test="optionValue != null" >
+        #{optionValue,jdbcType=INTEGER},
+      </if>
+      <if test="optionText != null" >
+        #{optionText,jdbcType=VARCHAR},
+      </if>
+      <if test="optionTextEn != null" >
+        #{optionTextEn,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null" >
+        #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.base.po.Options" >
+    update options
+    <set >
+      <if test="optionName != null" >
+        option_name = #{optionName,jdbcType=VARCHAR},
+      </if>
+      <if test="optionValue != null" >
+        option_value = #{optionValue,jdbcType=INTEGER},
+      </if>
+      <if test="optionText != null" >
+        option_text = #{optionText,jdbcType=VARCHAR},
+      </if>
+      <if test="optionTextEn != null" >
+        option_text_en = #{optionTextEn,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null" >
+        sequence = #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where option_id = #{optionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.base.po.Options" >
+    update options
+    set option_name = #{optionName,jdbcType=VARCHAR},
+      option_value = #{optionValue,jdbcType=INTEGER},
+      option_text = #{optionText,jdbcType=VARCHAR},
+      option_text_en = #{optionTextEn,jdbcType=VARCHAR},
+      sequence = #{sequence,jdbcType=INTEGER},
+      client_id = #{clientId,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where option_id = #{optionId,jdbcType=INTEGER}
+  </update>
+  
+  <sql id="Base_Query_Column_List">
+	<if test="clientId != null">
+		and client_id = #{clientId}
+	</if>
+	<if test="optionName != null">
+		and option_name = #{optionName}
+	</if>
+	<if test="isDelete != null">
+		and is_delete = #{isDelete}
+	</if>
+</sql>
+	<select id="selectByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from options
+		where 1=1
+		<include refid="Base_Query_Column_List" />
+		ORDER BY sequence 
+	</select>
+	
+	<select id="findOptionTextByParas" parameterType="java.util.Map" resultType="String">
+		select op.option_text as workType
+		from options op
+		where 1=1
+		and op.option_name = #{string}
+		and op.option_value= #{optionName}
+		and op.client_id = #{clientId}
+		and op.is_delete = 0;
+	</select>
+	
+	<select id="getOptionValue" parameterType="java.util.Map" resultType="java.lang.Byte">
+		select op.option_value as workType
+		from options op
+		where 1=1
+		and op.option_name = #{optionName}
+		and op.option_text= #{optionText}
+		and op.client_id = #{clientId}
+		and op.is_delete = 0;
+	</select>
+	
+	<select id="findAllOptions" resultMap="BaseResultMap">
+		select * from options op
+		where op.is_delete = 0;
+	</select>
+	
+	<select id="selectOptionsList" parameterType="java.util.Map" resultMap="BaseResultMap">
+		SELECT * from `options` s where s.option_name = #{optionName} and s.is_delete = 0 and s.client_id = #{clientId}
+	</select>
+	
+	<select id="findOptionValueByKey" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select * from options o where o.client_id = #{clientId} and o.is_delete = 0 and o.option_name = #{optionName} 
+	</select>
+
+</mapper>

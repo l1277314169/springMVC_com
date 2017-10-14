@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="WAREHOUSE" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.posm.po.Warehouse" >
+   <id column="warehouse_id" property="warehouseId" jdbcType="INTEGER" />
+    <result column="warehouse_no" property="warehouseNo" jdbcType="VARCHAR" />
+    <result column="warehouse_name" property="warehouseName" jdbcType="VARCHAR" />
+    <result column="client_structure_id" property="clientStructureId" jdbcType="INTEGER" />
+    <result column="province_id" property="provinceId" jdbcType="INTEGER" />
+    <result column="city_id" property="cityId" jdbcType="INTEGER" />
+    <result column="district_id" property="districtId" jdbcType="INTEGER" />
+    <result column="addr" property="addr" jdbcType="VARCHAR" />
+    <result column="longitude" property="longitude" jdbcType="VARCHAR" />
+    <result column="latitude" property="latitude" jdbcType="VARCHAR" />
+    <result column="area" property="area" jdbcType="DECIMAL" />
+    <result column="contact" property="contact" jdbcType="VARCHAR" />
+    <result column="telephone_no" property="telephoneNo" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_by" property="createBy" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_by" property="lastUpdateBy" jdbcType="INTEGER" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+    <result column="structure_name" property="structureName" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <resultMap id="BaseVoResultMap" type="cn.mobilizer.channel.posm.vo.WarehouseVo" extends="BaseResultMap">
+    <result column="structure_no" property="structureNo" jdbcType="VARCHAR" />
+    <result column="structure_name" property="structureName" jdbcType="VARCHAR" />
+    <result column="structure_name_en" property="structureNameEn" jdbcType="VARCHAR" />
+    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <sql id="BaseVo_Column_List" >
+    warehouse_id, warehouse_no, warehouse_name, client_structure_id, province_id, city_id, 
+    district_id, addr, longitude, latitude, area, contact, telephone_no, remark, client_id, 
+    create_by, create_time, last_update_by, last_update_time, is_delete
+  </sql>
+  
+  <sql id="Base_Column_List" >
+    warehouse_id, warehouse_no, warehouse_name, client_structure_id, province_id, city_id, 
+    district_id, addr, longitude, latitude, area, contact, telephone_no, remark, client_id, 
+    create_by, create_time, last_update_by, last_update_time, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from warehouse
+    where warehouse_id = #{warehouseId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from warehouse
+    where warehouse_id = #{warehouseId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.posm.po.Warehouse" >
+    insert into warehouse (warehouse_id, warehouse_no, warehouse_name, 
+      client_structure_id, province_id, city_id, 
+      district_id, addr, longitude, 
+      latitude, area, contact, 
+      telephone_no, remark, client_id, 
+      create_by, create_time, last_update_by, 
+      last_update_time, is_delete)
+    values (#{warehouseId,jdbcType=INTEGER}, #{warehouseNo,jdbcType=VARCHAR}, #{warehouseName,jdbcType=VARCHAR}, 
+      #{clientStructureId,jdbcType=INTEGER}, #{provinceId,jdbcType=INTEGER}, #{cityId,jdbcType=INTEGER}, 
+      #{districtId,jdbcType=INTEGER}, #{addr,jdbcType=VARCHAR}, #{longitude,jdbcType=VARCHAR}, 
+      #{latitude,jdbcType=VARCHAR}, #{area,jdbcType=DECIMAL}, #{contact,jdbcType=VARCHAR}, 
+      #{telephoneNo,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{clientId,jdbcType=INTEGER}, 
+      #{createBy,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{lastUpdateBy,jdbcType=INTEGER}, 
+      #{lastUpdateTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.posm.po.Warehouse" >
+    insert into warehouse
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="warehouseId != null" >
+        warehouse_id,
+      </if>
+      <if test="warehouseNo != null" >
+        warehouse_no,
+      </if>
+      <if test="warehouseName != null" >
+        warehouse_name,
+      </if>
+      <if test="clientStructureId != null" >
+        client_structure_id,
+      </if>
+      <if test="provinceId != null" >
+        province_id,
+      </if>
+      <if test="cityId != null" >
+        city_id,
+      </if>
+      <if test="districtId != null" >
+        district_id,
+      </if>
+      <if test="addr != null" >
+        addr,
+      </if>
+      <if test="longitude != null" >
+        longitude,
+      </if>
+      <if test="latitude != null" >
+        latitude,
+      </if>
+      <if test="area != null" >
+        area,
+      </if>
+      <if test="contact != null" >
+        contact,
+      </if>
+      <if test="telephoneNo != null" >
+        telephone_no,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="lastUpdateBy != null" >
+        last_update_by,
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="warehouseId != null" >
+        #{warehouseId,jdbcType=INTEGER},
+      </if>
+      <if test="warehouseNo != null" >
+        #{warehouseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="warehouseName != null" >
+        #{warehouseName,jdbcType=VARCHAR},
+      </if>
+      <if test="clientStructureId != null" >
+        #{clientStructureId,jdbcType=INTEGER},
+      </if>
+      <if test="provinceId != null" >
+        #{provinceId,jdbcType=INTEGER},
+      </if>
+      <if test="cityId != null" >
+        #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="districtId != null" >
+        #{districtId,jdbcType=INTEGER},
+      </if>
+      <if test="addr != null" >
+        #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null" >
+        #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null" >
+        #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        #{area,jdbcType=DECIMAL},
+      </if>
+      <if test="contact != null" >
+        #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="telephoneNo != null" >
+        #{telephoneNo,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateBy != null" >
+        #{lastUpdateBy,jdbcType=INTEGER},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  
+  
+  <insert id="batchInsertwarehouse" parameterType="java.util.List">
+  	insert into WAREHOUSE (warehouseId, warehouseNo, warehouseName, 
+      clientStructureId, cityId, client_id) values
+  	<foreach collection="list" item="item" index="index" separator=",">
+  		(#{item.warehouseId},#{item.warehouseNo},#{item.warehouseName},#{item.clientStructureId},
+  		#{item.cityId},#{item.client_id})
+  	</foreach>
+  </insert>
+  
+  
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.posm.po.Warehouse" >
+    update warehouse
+    <set >
+      <if test="warehouseNo != null" >
+        warehouse_no = #{warehouseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="warehouseName != null" >
+        warehouse_name = #{warehouseName,jdbcType=VARCHAR},
+      </if>
+      <if test="clientStructureId != null" >
+        client_structure_id = #{clientStructureId,jdbcType=INTEGER},
+      </if>
+      <if test="provinceId != null" >
+        province_id = #{provinceId,jdbcType=INTEGER},
+      </if>
+      <if test="cityId != null" >
+        city_id = #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="districtId != null" >
+        district_id = #{districtId,jdbcType=INTEGER},
+      </if>
+      <if test="addr != null" >
+        addr = #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null" >
+        longitude = #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null" >
+        latitude = #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        area = #{area,jdbcType=DECIMAL},
+      </if>
+      <if test="contact != null" >
+        contact = #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="telephoneNo != null" >
+        telephone_no = #{telephoneNo,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateBy != null" >
+        last_update_by = #{lastUpdateBy,jdbcType=INTEGER},
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where warehouse_id = #{warehouseId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.posm.po.Warehouse" >
+    update warehouse
+    set warehouse_no = #{warehouseNo,jdbcType=VARCHAR},
+      warehouse_name = #{warehouseName,jdbcType=VARCHAR},
+      client_structure_id = #{clientStructureId,jdbcType=INTEGER},
+      province_id = #{provinceId,jdbcType=INTEGER},
+      city_id = #{cityId,jdbcType=INTEGER},
+      district_id = #{districtId,jdbcType=INTEGER},
+      addr = #{addr,jdbcType=VARCHAR},
+      longitude = #{longitude,jdbcType=VARCHAR},
+      latitude = #{latitude,jdbcType=VARCHAR},
+      area = #{area,jdbcType=DECIMAL},
+      contact = #{contact,jdbcType=VARCHAR},
+      telephone_no = #{telephoneNo,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+      create_by = #{createBy,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_update_by = #{lastUpdateBy,jdbcType=INTEGER},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where warehouse_id = #{warehouseId,jdbcType=INTEGER}
+  </update>
+  <select id="queryTotalCount" parameterType="java.util.Map" resultType="Integer">
+		select  count(1)
+		from WAREHOUSE  
+	     where 1=1 and is_delete=0 
+		<include refid="Query_Column_List" />
+	</select>
+ 
+  
+   <select id="findListByid" parameterType="java.util.Map" resultMap="BaseResultMap">
+     	select 
+            <include refid="Base_Column_List" />
+     	from WAREHOUSE  
+     	 where 1=1 
+		<include refid="Query_Column_List" /> 
+  </select>
+  
+   <select id="findListByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+  	SELECT 
+	 wh.*, 
+	 cu.name AS name,
+ 	 cs.structure_name		 
+	 FROM 
+		WAREHOUSE wh
+	LEFT JOIN CLIENT_USER cu ON wh.create_by = cu.client_user_id and  cu.client_id = #{clientId} and cu.is_delete = 0
+	LEFT JOIN CLIENT_STRUCTURE cs ON wh.client_structure_id = cs.client_structure_id and cs.client_id = #{clientId} and cs.is_delete = 0
+		  where wh.is_delete=0 
+	  <include refid="Query_Column_List1" />
+		 GROUP BY wh.warehouse_id
+		 ORDER BY wh.warehouse_id desc
+		<include refid="basic.mysqlPageSearchFoot"/>  
+	</select>
+	
+	<select id="findListByParamsall" parameterType="java.util.Map" resultMap="BaseResultMap">
+  	SELECT 
+	 wh.*, 
+	 cu.name AS name,
+ 	 cs.structure_name,
+ 	 c.city,
+ 	 p.province	 
+	 FROM 
+		WAREHOUSE wh
+	LEFT JOIN CLIENT_USER cu ON wh.create_by = cu.client_user_id and  cu.client_id = #{clientId} and cu.is_delete = 0
+	LEFT JOIN CLIENT_STRUCTURE cs ON wh.client_structure_id = cs.client_structure_id and cs.client_id = #{clientId} and cs.is_delete = 0
+	LEFT JOIN CITY c ON wh.city_id = c.city_id and c.is_delete = 0
+	LEFT JOIN PROVINCE p ON wh.province_id = p.province_id and p.is_delete = 0
+		  where wh.is_delete=0 
+	  <include refid="Query_Column_List1" />
+		 GROUP BY wh.warehouse_id
+		 ORDER BY wh.warehouse_id desc
+	</select>
+ 
+   <select id="selectwarehouseName" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from WAREHOUSE 
+    where warehouse_name = #{WarehouseName}  and is_delete = 0 and client_id=#{clientId}
+  </select>
+   <select id="selectwarehouseNo" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from WAREHOUSE  
+    where warehouse_no = #{WarehouseNo}  and is_delete = 0 and client_id=#{clientId}
+  </select>
+  
+  <select id="selectwarehouseId" resultType="java.lang.Integer" parameterType="java.util.Map" >
+    select 
+     count(*) 
+    from WAREHOUSE   
+    where  warehouse_no=#{WarehouseNo} and is_delete = 0 and client_id=#{clientId}
+  </select>
+  <sql id="Query_Column_List1">
+		<if test="clientId != null and clientId !=''">
+			and wh.client_id = #{clientId}
+		</if>
+		<if test="warehouseId !=null and warehouseId !=''">
+			and wh.warehouse_id = #{warehouseId}
+		</if>
+		<if test="isDelete != null and isDelete != ''">
+			and wh.is_delete = #{isDelete}
+		</if>
+		<if test="WarehouseNo != null and WarehouseNo != ''">
+			and wh.warehouse_no  like CONCAT('%',#{WarehouseNo},'%')
+		</if>
+		<if test="WarehouseName != null and WarehouseName != ''">
+			and wh.warehouse_name like CONCAT('%',#{WarehouseName},'%') 
+		</if>
+	</sql>
+	 <sql id="Query_Column_List">
+		<if test="clientId != null and clientId !=''">
+			and client_id = #{clientId}
+		</if>
+		<if test="warehouseId !=null and warehouseId !=''">
+			and warehouse_id = #{warehouseId}
+		</if>
+		<if test="isDelete != null and isDelete != ''">
+			and is_delete = #{isDelete}
+		</if>
+		<if test="WarehouseNo != null and WarehouseNo != ''">
+			and warehouse_no = #{WarehouseNo}
+		</if>
+		<if test="WarehouseName != null and WarehouseName != ''">
+			and warehouse_name like CONCAT('%',#{WarehouseName},'%') 
+		</if>
+	</sql>
+	
+	
+	<select id="queryWarehouseMap" parameterType="java.util.Map" resultMap="BaseVoResultMap"> 
+		SELECT 
+			we.*,cs.structure_no,cs.structure_name,cs.structure_name_en,cs.parent_id
+		FROM warehouse AS we
+		INNER JOIN client_structure AS cs ON we.client_structure_id = cs.client_structure_id AND cs.is_delete = 0
+		where we.client_id = #{clientId}
+	</select>
+	
+	<select id="findWareHouseAjax" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		SELECT warehouse_id  ,warehouse_name FROM warehouse where client_id=#{clientId}
+	</select>
+	
+  <select id="selectAllWarehouse" resultMap="BaseResultMap" parameterType="java.util.Map">
+   select * from  WAREHOUSE where is_delete= 0 and client_id = #{clientId}
+  </select>
+</mapper>

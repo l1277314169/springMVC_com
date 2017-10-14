@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="BASE_REPORT">
+  
+  <resultMap id="ReportVoMap" type="cn.mobilizer.channel.report.po.ReportVo" >
+  	<result column="partsChartType" property="chartType" jdbcType="VARCHAR" />
+  	<result column="partsColumnList" property="columnList" jdbcType="VARCHAR" />
+  	<result column="partsLayout" property="layout" jdbcType="VARCHAR" />
+  	<result column="part_filter" property="partFilter" jdbcType="VARCHAR" />
+  	<result column="part_name" property="partName" jdbcType="VARCHAR" />
+  	<result column="report_id" property="reportId" jdbcType="INTEGER" />
+	<result column="element_id" property="elementId" jdbcType="INTEGER" />
+	<result column="part_id" property="partId" jdbcType="INTEGER" />
+	<result column="sql_template" property="sqlTemplate" jdbcType="VARCHAR" />
+	<result column="parameters" property="parameters" jdbcType="VARCHAR" />
+	<result column="chart_setting" property="chartSetting" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  
+  <resultMap id="reportMap" type="cn.mobilizer.channel.report.po.Report" >
+    <id column="report_id" property="reportId" jdbcType="INTEGER" />
+    <result column="report_name" property="reportName" jdbcType="VARCHAR" />
+    <result column="filter" property="reportFilter" jdbcType="VARCHAR" />
+    <result column="func_list" property="funcList" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="export_type" property="exportType" jdbcType="INTEGER" />
+    <result column="report_type" property="reportType" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <!-- 
+  <resultMap type="cn.mobilizer.channel.report.vo.Report" id="reports">
+  	<collection property="reportVo" resultMap="ReportVoMap" />
+  </resultMap>
+   -->
+  
+  <select id="selectReports" resultMap="reportMap" parameterType="java.util.Map" >
+      SELECT dr.report_name,dr.report_id,dr.filter,dr.func_list,dr.client_id,dr.export_type,dr.report_type,dr.remark FROM def_reports dr WHERE dr.client_id = #{clientId} 
+      	AND dr.is_delete = #{isDelete} AND  dr.report_id = #{reportId}
+  </select>
+
+   <select id="selectReportVoByReportId" resultMap="ReportVoMap" parameterType="java.lang.Integer">
+ 	select c.chart_type as partsChartType,c.column_list as partsColumnList,c.layout as partsLayout,c.part_filter,c.part_name,c.report_id,c.element_id,c.part_id,
+ 		b.sql_template,b.filter as eFilter,b.parameters,c.chart_setting
+		from def_report_elements b inner join def_report_parts c on c.element_id = b.element_id
+	and b.is_delete = #{isDelete} and c.is_delete= #{isDelete} and c.report_id = #{reportId} order by c.sequence
+   </select>
+   
+   <select id="selectReportVoByPartId" resultMap="ReportVoMap" parameterType="java.lang.Integer">
+ 	select c.chart_type as partsChartType,c.column_list as partsColumnList,c.layout as partsLayout,c.part_filter,c.part_name,c.report_id,c.element_id,c.part_id,
+ 		b.sql_template,b.filter as eFilter,b.parameters,c.chart_setting
+		from def_report_elements b inner join def_report_parts c on c.element_id = b.element_id
+	and b.is_delete = #{isDelete} and c.is_delete= #{isDelete} and c.part_id = #{partId} order by c.sequence
+   </select>
+   
+   <select id="selectReportVoByElementId" resultMap="ReportVoMap" parameterType="java.lang.Integer">
+ 	select c.chart_type as partsChartType,c.column_list as partsColumnList,c.layout as partsLayout,c.part_filter,c.part_name,c.report_id,c.element_id,c.part_id,
+ 		b.sql_template,b.filter as eFilter,b.parameters,c.chart_setting
+		from def_report_elements b inner join def_report_parts c on c.element_id = b.element_id
+	and b.is_delete = #{isDelete} and c.is_delete= #{isDelete} and c.element_id = #{elementId} order by c.sequence
+   </select>
+   
+   <resultMap type="java.util.TreeMap" id="reporMap"></resultMap>
+   <resultMap type="java.lang.Integer" id="count"></resultMap>
+    
+   <select id="getExecutionDataList" statementType="CALLABLE" parameterType="java.util.Map" resultMap="reporMap,count" >
+	   call ${arg_procedure}
+   </select>
+   
+   <select id="getDataList" statementType="CALLABLE" parameterType="java.util.Map" 
+   			resultMap="reporMap,reporMap,reporMap,reporMap,reporMap,reporMap,reporMap,reporMap,reporMap,reporMap,reporMap,reporMap,reporMap,reporMap,reporMap,reporMap,reporMap,reporMap,reporMap,reporMap,reporMap,reporMap,reporMap,reporMap,reporMap,reporMap,reporMap,reporMap,reporMap,reporMap" >
+	 call ${arg_procedure}
+   </select>
+   
+   <select id="loadDimWeek" parameterType="java.util.Map" resultType="cn.mobilizer.channel.report.po.DimWeek">
+   	select d.week_id as weekId,d.week_desc as weekDesc from dim_week d where d.client_id = #{clientId} 
+   </select>
+   
+   <select id="loadLongDimWeek" parameterType="java.util.Map" resultType="cn.mobilizer.channel.report.po.DimWeek">
+   		select d.week_id as weekId,d.week_long_desc as weekLongDesc from dim_week d where d.client_id = #{clientId} ORDER BY week_id desc
+   </select>
+   
+   <select id="getLastUpadateTime" resultType="java.util.Date" parameterType="java.lang.Integer">
+   		select max(last_update_time) from fact_store_info_mg where is_delete = 0 and client_id = #{clientId}
+   </select>
+   
+    <select id="getMonthlySalesLastUpdateTime" resultType="java.util.Date" parameterType="java.lang.Integer">
+   		select max(last_update_time) from fact_monthly_sales where is_delete = 0 and client_id = #{clientId}
+   </select>
+   
+   
+</mapper>

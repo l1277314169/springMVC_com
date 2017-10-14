@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="WR_CUSTOMER_BRAND_MAPPING" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.wrTask.po.WrCustomerBrandMapping" >
+    <id column="mapping_id" property="mappingId" jdbcType="INTEGER" />
+    <result column="customer_id" property="customerId" jdbcType="INTEGER" />
+    <result column="brand_id" property="brandId" jdbcType="INTEGER" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    mapping_id, customer_id, brand_id, client_id, create_time, last_update_time, is_delete
+  </sql>
+  <select id="selectByCustomerId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from wr_customer_brand_mapping
+    where customer_id = #{customerId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from wr_customer_brand_mapping
+    where mapping_id = #{mappingId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.wrTask.po.WrCustomerBrandMapping" >
+    insert into wr_customer_brand_mapping (mapping_id, customer_id, brand_id, 
+      client_id, create_time, last_update_time, 
+      is_delete)
+    values (#{mappingId,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, #{brandId,jdbcType=INTEGER}, 
+      #{clientId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{lastUpdateTime,jdbcType=TIMESTAMP}, 
+      #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.wrTask.po.WrCustomerBrandMapping" >
+    insert into wr_customer_brand_mapping
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mappingId != null" >
+        mapping_id,
+      </if>
+      <if test="customerId != null" >
+        customer_id,
+      </if>
+      <if test="brandId != null" >
+        brand_id,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mappingId != null" >
+        #{mappingId,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null" >
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="brandId != null" >
+        #{brandId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.wrTask.po.WrCustomerBrandMapping" >
+    update wr_customer_brand_mapping
+    <set >
+      <if test="customerId != null" >
+        customer_id = #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="brandId != null" >
+        brand_id = #{brandId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where mapping_id = #{mappingId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.wrTask.po.WrCustomerBrandMapping" >
+    update wr_customer_brand_mapping
+    set customer_id = #{customerId,jdbcType=INTEGER},
+      brand_id = #{brandId,jdbcType=INTEGER},
+      client_id = #{clientId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where mapping_id = #{mappingId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="getWrCustomerBrandMappingByCusId" resultMap="BaseResultMap" parameterType="java.util.Map">
+  		select * from wr_customer_brand_mapping where client_id = #{clientId} and customer_id = #{customerId} and is_delete = 0 limit 1
+  </select>
+  
+  <select id="queryTotal" parameterType="java.util.Map" resultType="Integer" >
+    select count(1)
+		from wr_customer_brand_mapping cbm1 where 1=1 and cbm1.is_delete = 0
+		<include refid="Base_Query_Column_List" />
+  </select>
+  <select id="queryWrCustomerBrandMappingList" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    <include refid="select_by_param"/>
+  </select>
+  <sql id="select_by_param">
+    		select
+		<include refid="Base_Column_List" /> 
+		 from wr_customer_brand_mapping  cbm1 where  1=1  and  cbm1.is_delete=0
+	 <include refid="Base_Query_Column_List" />
+	 <include refid="basic.mysqlPageSearchFoot"/>
+  </sql>
+  <sql id="Base_Query_Column_List">
+     <if test="mappingId != null">
+       and cbm1.mapping_id = #{mappingId}
+     </if>
+     <if test="customerId != null">
+       and cbm1.customer_id = #{customerId}
+     </if>
+     <if test="brandId != null">
+       and cbm1.brand_id = #{brandId}
+     </if>
+     <if test="clientId != null">
+       and cbm1.client_id = #{clientId}
+     </if>
+     <if test="createTime != null">
+        <![CDATA[ and cbm1.create_time >= #{createTime}]]>
+     </if>
+     <if test="lastUpdateTime != null">
+      <![CDATA[ and cbm1.last_update_time >= #{lastUpdateTime}]]>
+     </if>
+       <if test="isDelete != null" >
+       		and cbm1.is_delete = #{isDelete}
+      </if>
+      <if test="isDelete == null" >
+       		and cbm1.is_delete = 0
+      </if>
+       </sql>
+    <select id="customerAndBrandMapping" parameterType="java.util.Map"  resultMap="BaseResultMap">
+       select * from wr_customer_brand_mapping wc1 where wc1.brand_id =#{brandIds} and wc1.client_id =#{clientId} and wc1.customer_id =#{customerId}
+       order by wc1.is_delete,wc1.create_time desc limit 1
+    </select>  
+    
+   <update id="currentMapppingisdelte" parameterType="java.util.Map">
+  	update wr_customer_brand_mapping w set w.is_delete = 1 where w.client_id = #{clientId} AND FIND_IN_SET(w.brand_id, #{brandIds} ) > 0  and w.customer_id =#{customerId}
+  </update> 
+</mapper>

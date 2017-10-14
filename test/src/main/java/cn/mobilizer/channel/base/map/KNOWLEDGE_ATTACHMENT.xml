@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="KNOWLEDGE_ATTACHMENT" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.base.po.Knowledgeattachment" >
+    <id column="knowledge_attachment_id" property="knowledgeAttachmentId" jdbcType="INTEGER" />
+    <result column="knowledge_id" property="knowledgeId" jdbcType="INTEGER" />
+    <result column="file_name" property="fileName" jdbcType="VARCHAR" />
+    <result column="file_size" property="fileSize" jdbcType="VARCHAR" />
+    <result column="file_path" property="filePath" jdbcType="VARCHAR" />
+    <result column="sequence" property="sequence" jdbcType="INTEGER" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    knowledge_attachment_id, knowledge_id, file_name, file_size, file_path, sequence, 
+    client_id, create_time, last_update_time, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from knowledge_attachment
+    where knowledge_attachment_id = #{knowledgeAttachmentId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from knowledge_attachment
+    where knowledge_attachment_id = #{knowledgeAttachmentId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.base.po.Knowledgeattachment" >
+    insert into knowledge_attachment (knowledge_attachment_id, knowledge_id, 
+      file_name, file_size, file_path, 
+      sequence, client_id, create_time, 
+      last_update_time, is_delete)
+    values (#{knowledgeAttachmentId,jdbcType=INTEGER}, #{knowledgeId,jdbcType=INTEGER}, 
+      #{fileName,jdbcType=VARCHAR}, #{fileSize,jdbcType=VARCHAR}, #{filePath,jdbcType=VARCHAR}, 
+      #{sequence,jdbcType=INTEGER}, #{clientId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{lastUpdateTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.base.po.Knowledgeattachment" >
+    insert into knowledge_attachment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="knowledgeAttachmentId != null" >
+        knowledge_attachment_id,
+      </if>
+      <if test="knowledgeId != null" >
+        knowledge_id,
+      </if>
+      <if test="fileName != null" >
+        file_name,
+      </if>
+      <if test="fileSize != null" >
+        file_size,
+      </if>
+      <if test="filePath != null" >
+        file_path,
+      </if>
+      <if test="sequence != null" >
+        sequence,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="knowledgeAttachmentId != null" >
+        #{knowledgeAttachmentId,jdbcType=INTEGER},
+      </if>
+      <if test="knowledgeId != null" >
+        #{knowledgeId,jdbcType=INTEGER},
+      </if>
+      <if test="fileName != null" >
+        #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="fileSize != null" >
+        #{fileSize,jdbcType=VARCHAR},
+      </if>
+      <if test="filePath != null" >
+        #{filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null" >
+        #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.base.po.Knowledgeattachment" >
+    update knowledge_attachment
+    <set >
+      <if test="knowledgeId != null" >
+        knowledge_id = #{knowledgeId,jdbcType=INTEGER},
+      </if>
+      <if test="fileName != null" >
+        file_name = #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="fileSize != null" >
+        file_size = #{fileSize,jdbcType=VARCHAR},
+      </if>
+      <if test="filePath != null" >
+        file_path = #{filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null" >
+        sequence = #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where knowledge_attachment_id = #{knowledgeAttachmentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.base.po.Knowledgeattachment" >
+    update knowledge_attachment
+    set knowledge_id = #{knowledgeId,jdbcType=INTEGER},
+      file_name = #{fileName,jdbcType=VARCHAR},
+      file_size = #{fileSize,jdbcType=VARCHAR},
+      file_path = #{filePath,jdbcType=VARCHAR},
+      sequence = #{sequence,jdbcType=INTEGER},
+      client_id = #{clientId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where knowledge_attachment_id = #{knowledgeAttachmentId,jdbcType=INTEGER}
+  </update>
+</mapper>

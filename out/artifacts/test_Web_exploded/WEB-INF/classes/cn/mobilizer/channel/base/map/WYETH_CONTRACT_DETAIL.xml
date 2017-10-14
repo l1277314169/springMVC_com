@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="WYETH_CONTRACT_DETAIL" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.base.po.WyethContractDetail" >
+    <id column="detail_id" property="detailId" jdbcType="CHAR" />
+    <result column="contract_id" property="contractId" jdbcType="INTEGER" />
+    <result column="month_id" property="monthId" jdbcType="INTEGER" />
+    <result column="data_type" property="dataType" jdbcType="TINYINT" />
+    <result column="value" property="value" jdbcType="DECIMAL" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    detail_id, contract_id, month_id, data_type, value, create_time, last_update_time, 
+    is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wyeth_contract_detail
+    where detail_id = #{detailId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wyeth_contract_detail
+    where detail_id = #{detailId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.base.po.WyethContractDetail" >
+    insert into wyeth_contract_detail (detail_id, contract_id, month_id, 
+      data_type, value, create_time, 
+      last_update_time, is_delete)
+    values (#{detailId,jdbcType=CHAR}, #{contractId,jdbcType=INTEGER}, #{monthId,jdbcType=INTEGER}, 
+      #{dataType,jdbcType=TINYINT}, #{value,jdbcType=DECIMAL}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{lastUpdateTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.base.po.WyethContractDetail" >
+    insert into wyeth_contract_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="detailId != null" >
+        detail_id,
+      </if>
+      <if test="contractId != null" >
+        contract_id,
+      </if>
+      <if test="monthId != null" >
+        month_id,
+      </if>
+      <if test="dataType != null" >
+        data_type,
+      </if>
+      <if test="value != null" >
+        value,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="detailId != null" >
+        #{detailId,jdbcType=CHAR},
+      </if>
+      <if test="contractId != null" >
+        #{contractId,jdbcType=INTEGER},
+      </if>
+      <if test="monthId != null" >
+        #{monthId,jdbcType=INTEGER},
+      </if>
+      <if test="dataType != null" >
+        #{dataType,jdbcType=TINYINT},
+      </if>
+      <if test="value != null" >
+        #{value,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.base.po.WyethContractDetail" >
+    update wyeth_contract_detail
+    <set >
+      <if test="contractId != null" >
+        contract_id = #{contractId,jdbcType=INTEGER},
+      </if>
+      <if test="monthId != null" >
+        month_id = #{monthId,jdbcType=INTEGER},
+      </if>
+      <if test="dataType != null" >
+        data_type = #{dataType,jdbcType=TINYINT},
+      </if>
+      <if test="value != null" >
+        value = #{value,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where detail_id = #{detailId,jdbcType=CHAR}
+  </update>
+  <select id="findContractDetailByParams" resultMap="BaseResultMap" parameterType="java.util.Map">
+   select 
+    <include refid="Base_Column_List" />
+    from wyeth_contract_detail
+    where contract_id = #{contractId,jdbcType=CHAR}
+    and is_delete=0
+    and data_type=#{dataType}
+  	<include refid="basic.mysqlPageSearchFoot" />
+  </select>
+   <update id="updateByContractIdKeySelective" parameterType="cn.mobilizer.channel.base.po.WyethContractDetail" >
+    update wyeth_contract_detail
+    <set >
+      <if test="monthId != null" >
+        month_id = #{monthId,jdbcType=INTEGER},
+      </if>
+      <if test="dataType != null" >
+        data_type = #{dataType,jdbcType=TINYINT},
+      </if>
+      <if test="value != null" >
+        value = #{value,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where detail_id = #{detailId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.base.po.WyethContractDetail" >
+    update wyeth_contract_detail
+    set contract_id = #{contractId,jdbcType=INTEGER},
+      month_id = #{monthId,jdbcType=INTEGER},
+      data_type = #{dataType,jdbcType=TINYINT},
+      value = #{value,jdbcType=DECIMAL},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where detail_id = #{detailId,jdbcType=CHAR}
+  </update>
+  <insert id="batchAddSales" parameterType="java.util.List">
+		insert into wyeth_contract_detail
+		(detail_id, contract_id, month_id, data_type, value, is_delete)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{item.detailId},#{item.contractId},#{item.monthId},#{item.dataType},#{item.value},#{item.isDelete})
+		</foreach>
+	</insert>
+<select id="queryWyethContractDetailByContractId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wyeth_contract_detail
+    where contract_id = #{contractId,jdbcType=CHAR}
+    and is_delete=0
+  </select>
+  <update id="updateContractDetail" parameterType="java.util.List">
+  
+  <foreach collection="list" item="item" index="index"
+			separator=",">
+	 update wyeth_contract_detail
+    <set >
+      <if test="item.monthId != null" >
+        month_id = #{item.monthId,jdbcType=INTEGER},
+      </if>
+      <if test="item.dataType != null" >
+        data_type = #{item.dataType,jdbcType=TINYINT},
+      </if>
+      <if test="item.value != null" >
+        value = #{item.value,jdbcType=DECIMAL},
+      </if>
+      <if test="item.createTime != null" >
+        create_time = #{item.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="item.lastUpdateTime != null" >
+        last_update_time = #{item.lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="item.isDelete != null" >
+        is_delete = #{item.isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where detail_id = #{item.detailId,jdbcType=CHAR}
+	</foreach>
+  </update>
+
+</mapper>

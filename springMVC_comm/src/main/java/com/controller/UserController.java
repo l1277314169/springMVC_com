@@ -20,7 +20,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.PrintWriter;
 import java.util.*;
 
 /**
@@ -40,7 +42,13 @@ public class UserController extends BaseController{
     private RoleService roleService;
 
     @RequestMapping(value = "/query")
-    public  String query(Model model,Page page)  {
+    public  String query(Model model, Page page)  {
+
+        System.out.println(ResultMessage.ADD_SUCCESS_RESULT);
+        System.out.println(ResultMessage.ADD_SUCCESS_RESULT.getCode());
+        ResultMessage.ADD_SUCCESS_RESULT.setCode("bb");
+        System.out.println(ResultMessage.ADD_SUCCESS_RESULT.getCode());
+
         Map<String,Object> parameperMap =new HashMap<String, Object>();
     //parameperMap.put("username","zhangsan");
         int countUserlist =  userService.countUser(parameperMap);
@@ -51,14 +59,10 @@ public class UserController extends BaseController{
         parameperMap.put("_start",(courrentPage-1)*showCount);
         parameperMap.put("_size",showCount);
         List<User> userList = userService.queryUserlist(parameperMap);
-        List<Role> rolesList =roleService.queryRolelist(parameperMap);
          try {
-            String userlist = OBJECT_MAPPER.writeValueAsString(userList);
-             String roleslist = OBJECT_MAPPER.writeValueAsString(rolesList);
-            LOG.info("js===>"+userlist);
-            model.addAttribute("userlist",userlist);
-             model.addAttribute("roleslist",rolesList);
-        } catch (JsonProcessingException e) {
+            model.addAttribute("userlist",userList);
+             model.addAttribute("flag",true);
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return "user";
@@ -104,9 +108,12 @@ public class UserController extends BaseController{
         ResourceUtil.exportXLS(beans, templatePath,outputFile,response);
     }
 
-    public static void main(String[] args) {
+    public void show(final  String a){
+        System.out.println();
 
     }
+
+
 
 
 

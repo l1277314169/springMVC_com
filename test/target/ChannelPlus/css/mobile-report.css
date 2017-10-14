@@ -1,0 +1,25 @@
+body {font: normal 100% Helvetica, Arial, sans-serif;/*font-size:1.0em;*/margin:0px;*margin:0px;color:#666666;}
+table tr {border-bottom:1px solid #d9d9d9;}
+table tr td {height:20px;line-height:20px;vertical-align:middle;}
+.merge_td{line-height:10px;}
+table {/*max-width:100%;*/background-color:transparent;border-collapse:collapse;border-spacing:0;}
+.table {width:100%;}
+.table-fixed{table-layout: fixed;white-space:nowrap; overflow:hidden;}
+.table td {padding:8px;line-height:20px;text-align:left;vertical-align:top;border-top:1px solid #ddd;font-size:12px;border-collapse:collapse;white-space: nowrap;}
+.table th {padding:4px;line-height:10px;text-align:center;vertical-align:middle;border-top:1px solid #ddd;background:#efefef;font-size:12px;border-collapse:collapse;white-space: nowrap;}
+.table th {font-weight:bold; }
+.table thead th {vertical-align:center; text-align: center;}
+.table caption+thead tr:first-child th, .table caption+thead tr:first-child td, .table colgroup+thead tr:first-child th, .table colgroup+thead tr:first-child td, .table thead:first-child tr:first-child th, .table thead:first-child tr:first-child td {border-top:0}
+.table tbody+tbody {border-top:2px solid #ddd}
+.table-bordered {border:1px solid #ddd;border-collapse:separate;*border-collapse:collapse;border-left:0;-webkit-border-radius:0px;-moz-border-radius:0px;border-radius:0px}
+.table-bordered th, .table-bordered td {border-left:1px solid #ddd}
+.table-bordered caption+thead tr:first-child th, .table-bordered caption+tbody tr:first-child th, .table-bordered caption+tbody tr:first-child td, .table-bordered colgroup+thead tr:first-child th, .table-bordered colgroup+tbody tr:first-child th, .table-bordered colgroup+tbody tr:first-child td, .table-bordered thead:first-child tr:first-child th, .table-bordered tbody:first-child tr:first-child th, .table-bordered tbody:first-child tr:first-child td {border-top:0}
+.table-bordered thead:first-child tr:first-child>th:first-child, .table-bordered tbody:first-child tr:first-child>td:first-child, .table-bordered tbody:first-child tr:first-child>th:first-child {-webkit-border-top-left-radius:0px;border-top-left-radius:0px;-moz-border-radius-topleft:0px}
+.table-bordered thead:first-child tr:first-child>th:last-child, .table-bordered tbody:first-child tr:first-child>td:last-child, .table-bordered tbody:first-child tr:first-child>th:last-child {-webkit-border-top-right-radius:0px;border-top-right-radius:0px;-moz-border-radius-topright:0px}
+.table-bordered thead:last-child tr:last-child>th:first-child, .table-bordered tbody:last-child tr:last-child>td:first-child, .table-bordered tbody:last-child tr:last-child>th:first-child, .table-bordered tfoot:last-child tr:last-child>td:first-child, .table-bordered tfoot:last-child tr:last-child>th:first-child {-webkit-border-bottom-left-radius:4px;border-bottom-left-radius:0px;-moz-border-radius-bottomleft:0px}
+.table-bordered thead:last-child tr:last-child>th:last-child, .table-bordered tbody:last-child tr:last-child>td:last-child, .table-bordered tbody:last-child tr:last-child>th:last-child, .table-bordered tfoot:last-child tr:last-child>td:last-child, .table-bordered tfoot:last-child tr:last-child>th:last-child {-webkit-border-bottom-right-radius:4px;border-bottom-right-radius:0px;-moz-border-radius-bottomright:0px}
+.table-bordered tfoot+tbody:last-child tr:last-child td:first-child {-webkit-border-bottom-left-radius:0;border-bottom-left-radius:0;-moz-border-radius-bottomleft:0}
+.table-bordered tfoot+tbody:last-child tr:last-child td:last-child {-webkit-border-bottom-right-radius:0;border-bottom-right-radius:0;-moz-border-radius-bottomright:0}
+.table-bordered caption+thead tr:first-child th:first-child, .table-bordered caption+tbody tr:first-child td:first-child, .table-bordered colgroup+thead tr:first-child th:first-child, .table-bordered colgroup+tbody tr:first-child td:first-child {-webkit-border-top-left-radius:0px;border-top-left-radius:0px;-moz-border-radius-topleft:0px}.table-bordered caption+thead tr:first-child th:last-child, .table-bordered caption+tbody tr:first-child td:last-child, .table-bordered colgroup+thead tr:first-child th:last-child, .table-bordered colgroup+tbody tr:first-child td:last-child {-webkit-border-top-right-radius:0px;border-top-right-radius:0px;-moz-border-radius-topright:0px}
+.table tr:hover{ background:#f6f6f6;}
+.text_td{white-space:nowrap; overflow:hidden; text-overflow: ellipsis;}

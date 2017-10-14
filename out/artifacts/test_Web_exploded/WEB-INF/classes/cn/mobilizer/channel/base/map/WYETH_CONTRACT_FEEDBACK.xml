@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="WYETH_CONTRACT_FEEDBACK">
+	<resultMap id="BaseResultMap" type="cn.mobilizer.channel.base.po.WyethContractFeedback" >
+    <id column="feedback_id" property="feedbackId" jdbcType="CHAR" />
+    <result column="contract_id" property="contractId" jdbcType="CHAR" />
+    <result column="contract_no" property="contractNo" jdbcType="VARCHAR" />
+    <result column="month_id" property="monthId" jdbcType="INTEGER" />
+    <result column="num_of_gift" property="numOfGift" jdbcType="INTEGER" />
+    <result column="num_of_member" property="numOfMember" jdbcType="INTEGER" />
+    <result column="rate_of_review" property="rateOfReview" jdbcType="DECIMAL" />
+    <result column="num1_of_unqualified" property="num1OfUnqualified" jdbcType="INTEGER" />
+    <result column="num2_of_unqualified" property="num2OfUnqualified" jdbcType="INTEGER" />
+    <result column="num_of_verification" property="numOfVerification" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="reason" property="reason" jdbcType="VARCHAR" />
+    <result column="permit_pic" property="permitPic" jdbcType="VARCHAR" />
+    <result column="contract_pic" property="contractPic" jdbcType="VARCHAR" />
+    <result column="invoice_pic" property="invoicePic" jdbcType="VARCHAR" />
+    <result column="confirm_by" property="confirmBy" jdbcType="INTEGER" />
+    <result column="create_by" property="createBy" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_by" property="lastUpdateBy" jdbcType="INTEGER" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+	 <sql id="Base_Column_List" >
+    feedback_id, contract_id, contract_no, month_id, num_of_gift, num_of_member, rate_of_review, 
+    num1_of_unqualified, num2_of_unqualified, num_of_verification, status, reason, permit_pic, 
+    contract_pic, invoice_pic, confirm_by, create_by, create_time, last_update_by, last_update_time, 
+    is_delete
+  </sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from wyeth_contract_feedback
+		where feedback_id =
+		#{feedbackId,jdbcType=CHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from
+		wyeth_contract_feedback
+		where feedback_id = #{feedbackId,jdbcType=CHAR}
+	</delete>
+	<insert id="insert" parameterType="cn.mobilizer.channel.base.po.WyethContractFeedback" >
+    insert into wyeth_contract_feedback (feedback_id, contract_id, contract_no, 
+      month_id, num_of_gift, num_of_member, 
+      rate_of_review, num1_of_unqualified, num2_of_unqualified, 
+      num_of_verification, status, reason, 
+      permit_pic, contract_pic, invoice_pic, 
+      confirm_by, create_by, create_time, 
+      last_update_by, last_update_time, is_delete
+      )
+    values (#{feedbackId,jdbcType=CHAR}, #{contractId,jdbcType=CHAR}, #{contractNo,jdbcType=VARCHAR}, 
+      #{monthId,jdbcType=INTEGER}, #{numOfGift,jdbcType=INTEGER}, #{numOfMember,jdbcType=INTEGER}, 
+      #{rateOfReview,jdbcType=DECIMAL}, #{num1OfUnqualified,jdbcType=INTEGER}, #{num2OfUnqualified,jdbcType=INTEGER}, 
+      #{numOfVerification,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}, #{reason,jdbcType=VARCHAR}, 
+      #{permitPic,jdbcType=VARCHAR}, #{contractPic,jdbcType=VARCHAR}, #{invoicePic,jdbcType=VARCHAR}, 
+      #{confirmBy,jdbcType=INTEGER}, #{createBy,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{lastUpdateBy,jdbcType=INTEGER}, #{lastUpdateTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=TINYINT}
+      )
+  </insert>
+	<insert id="insertSelective" parameterType="cn.mobilizer.channel.base.po.WyethContractFeedback" >
+    insert into wyeth_contract_feedback
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="feedbackId != null" >
+        feedback_id,
+      </if>
+      <if test="contractId != null" >
+        contract_id,
+      </if>
+      <if test="contractNo != null" >
+        contract_no,
+      </if>
+      <if test="monthId != null" >
+        month_id,
+      </if>
+      <if test="numOfGift != null" >
+        num_of_gift,
+      </if>
+      <if test="numOfMember != null" >
+        num_of_member,
+      </if>
+      <if test="rateOfReview != null" >
+        rate_of_review,
+      </if>
+      <if test="num1OfUnqualified != null" >
+        num1_of_unqualified,
+      </if>
+      <if test="num2OfUnqualified != null" >
+        num2_of_unqualified,
+      </if>
+      <if test="numOfVerification != null" >
+        num_of_verification,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="reason != null" >
+        reason,
+      </if>
+      <if test="permitPic != null" >
+        permit_pic,
+      </if>
+      <if test="contractPic != null" >
+        contract_pic,
+      </if>
+      <if test="invoicePic != null" >
+        invoice_pic,
+      </if>
+      <if test="confirmBy != null" >
+        confirm_by,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="lastUpdateBy != null" >
+        last_update_by,
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="feedbackId != null" >
+        #{feedbackId,jdbcType=CHAR},
+      </if>
+      <if test="contractId != null" >
+        #{contractId,jdbcType=CHAR},
+      </if>
+      <if test="contractNo != null" >
+        #{contractNo,jdbcType=VARCHAR},
+      </if>
+      <if test="monthId != null" >
+        #{monthId,jdbcType=INTEGER},
+      </if>
+      <if test="numOfGift != null" >
+        #{numOfGift,jdbcType=INTEGER},
+      </if>
+      <if test="numOfMember != null" >
+        #{numOfMember,jdbcType=INTEGER},
+      </if>
+      <if test="rateOfReview != null" >
+        #{rateOfReview,jdbcType=DECIMAL},
+      </if>
+      <if test="num1OfUnqualified != null" >
+        #{num1OfUnqualified,jdbcType=INTEGER},
+      </if>
+      <if test="num2OfUnqualified != null" >
+        #{num2OfUnqualified,jdbcType=INTEGER},
+      </if>
+      <if test="numOfVerification != null" >
+        #{numOfVerification,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="reason != null" >
+        #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="permitPic != null" >
+        #{permitPic,jdbcType=VARCHAR},
+      </if>
+      <if test="contractPic != null" >
+        #{contractPic,jdbcType=VARCHAR},
+      </if>
+      <if test="invoicePic != null" >
+        #{invoicePic,jdbcType=VARCHAR},
+      </if>
+      <if test="confirmBy != null" >
+        #{confirmBy,jdbcType=INTEGER},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateBy != null" >
+        #{lastUpdateBy,jdbcType=INTEGER},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+<update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.base.po.WyethContractFeedback" >
+    update wyeth_contract_feedback
+    <set >
+      <if test="contractId != null" >
+        contract_id = #{contractId,jdbcType=CHAR},
+      </if>
+      <if test="contractNo != null" >
+        contract_no = #{contractNo,jdbcType=VARCHAR},
+      </if>
+      <if test="monthId != null" >
+        month_id = #{monthId,jdbcType=INTEGER},
+      </if>
+      <if test="numOfGift != null" >
+        num_of_gift = #{numOfGift,jdbcType=INTEGER},
+      </if>
+      <if test="numOfMember != null" >
+        num_of_member = #{numOfMember,jdbcType=INTEGER},
+      </if>
+      <if test="rateOfReview != null" >
+        rate_of_review = #{rateOfReview,jdbcType=DECIMAL},
+      </if>
+      <if test="num1OfUnqualified != null" >
+        num1_of_unqualified = #{num1OfUnqualified,jdbcType=INTEGER},
+      </if>
+      <if test="num2OfUnqualified != null" >
+        num2_of_unqualified = #{num2OfUnqualified,jdbcType=INTEGER},
+      </if>
+      <if test="numOfVerification != null" >
+        num_of_verification = #{numOfVerification,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="reason != null" >
+        reason = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="permitPic != null" >
+        permit_pic = #{permitPic,jdbcType=VARCHAR},
+      </if>
+      <if test="contractPic != null" >
+        contract_pic = #{contractPic,jdbcType=VARCHAR},
+      </if>
+      <if test="invoicePic != null" >
+        invoice_pic = #{invoicePic,jdbcType=VARCHAR},
+      </if>
+      <if test="confirmBy != null" >
+        confirm_by = #{confirmBy,jdbcType=INTEGER},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateBy != null" >
+        last_update_by = #{lastUpdateBy,jdbcType=INTEGER},
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where feedback_id = #{feedbackId,jdbcType=CHAR}
+  </update>
+  <update id="updateByContractIdKeySelective" parameterType="cn.mobilizer.channel.base.po.WyethContractFeedback" >
+    update wyeth_contract_feedback
+    <set >
+      <if test="contractNo != null" >
+        contract_no = #{contractNo,jdbcType=VARCHAR},
+      </if>
+      <if test="monthId != null" >
+        month_id = #{monthId,jdbcType=INTEGER},
+      </if>
+      <if test="numOfGift != null" >
+        num_of_gift = #{numOfGift,jdbcType=INTEGER},
+      </if>
+      <if test="numOfMember != null" >
+        num_of_member = #{numOfMember,jdbcType=INTEGER},
+      </if>
+      <if test="rateOfReview != null" >
+        rate_of_review = #{rateOfReview,jdbcType=DECIMAL},
+      </if>
+      <if test="num1OfUnqualified != null" >
+        num1_of_unqualified = #{num1OfUnqualified,jdbcType=INTEGER},
+      </if>
+      <if test="num2OfUnqualified != null" >
+        num2_of_unqualified = #{num2OfUnqualified,jdbcType=INTEGER},
+      </if>
+      <if test="numOfVerification != null" >
+        num_of_verification = #{numOfVerification,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="reason != null" >
+        reason = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="permitPic != null" >
+        permit_pic = #{permitPic,jdbcType=VARCHAR},
+      </if>
+      <if test="contractPic != null" >
+        contract_pic = #{contractPic,jdbcType=VARCHAR},
+      </if>
+      <if test="invoicePic != null" >
+        invoice_pic = #{invoicePic,jdbcType=VARCHAR},
+      </if>
+      <if test="confirmBy != null" >
+        confirm_by = #{confirmBy,jdbcType=INTEGER},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateBy != null" >
+        last_update_by = #{lastUpdateBy,jdbcType=INTEGER},
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where contract_id = #{contractId}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.base.po.WyethContractFeedback" >
+    update wyeth_contract_feedback
+    set contract_id = #{contractId,jdbcType=CHAR},
+      contract_no = #{contractNo,jdbcType=VARCHAR},
+      month_id = #{monthId,jdbcType=INTEGER},
+      num_of_gift = #{numOfGift,jdbcType=INTEGER},
+      num_of_member = #{numOfMember,jdbcType=INTEGER},
+      rate_of_review = #{rateOfReview,jdbcType=DECIMAL},
+      num1_of_unqualified = #{num1OfUnqualified,jdbcType=INTEGER},
+      num2_of_unqualified = #{num2OfUnqualified,jdbcType=INTEGER},
+      num_of_verification = #{numOfVerification,jdbcType=INTEGER},
+      status = #{status,jdbcType=TINYINT},
+      reason = #{reason,jdbcType=VARCHAR},
+      permit_pic = #{permitPic,jdbcType=VARCHAR},
+      contract_pic = #{contractPic,jdbcType=VARCHAR},
+      invoice_pic = #{invoicePic,jdbcType=VARCHAR},
+      confirm_by = #{confirmBy,jdbcType=INTEGER},
+      create_by = #{createBy,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_update_by = #{lastUpdateBy,jdbcType=INTEGER},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where feedback_id = #{feedbackId,jdbcType=CHAR}
+  </update>
+	<insert id="batchAddSales" parameterType="java.util.List">
+		insert into wyeth_contract_feedback(feedback_id,
+		contract_id,contract_no, month_id, num_of_gift, num_of_member,
+		status,create_by,last_update_by,is_delete)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{item.feedbackId},#{item.contractId},#{item.contractNo},#{item.monthId},#{item.numOfGift},#{item.numOfMember},#{item.status},#{item.createBy},#{item.lastUpdateBy},#{item.isDelete})
+		</foreach>
+	</insert>
+	<select id="queryWyethContractFeedbackList" parameterType="java.util.Map" resultMap="BaseResultMap">
+		 SELECT contract_id ,feedback_id,`status` from wyeth_contract_feedback  where `status`='0' AND is_delete = 0 AND month_id=#{monthId};
+	</select>
+	<select id="queryWyethContractFeedbackListByStatusAndMonthId" parameterType="java.util.Map" resultMap="BaseResultMap">
+	 	SELECT contract_id ,feedback_id,`status` from wyeth_contract_feedback  where `status`IN(0,1,3) AND is_delete = 0 AND month_id=#{monthId} ;
+	</select>
+	
+	<resultMap id="ContractFeedbackResultMap" type="cn.mobilizer.channel.base.vo.ContractFeedbackVo">
+		<result column="feedback_id" property="feedbackId" jdbcType="VARCHAR" />
+		<result column="store_no" property="storeCode" jdbcType="VARCHAR" />
+		<result column="store_name" property="storeName" jdbcType="VARCHAR" />
+		<result column="data_type" property="dataType" jdbcType="INTEGER" />
+		<result column="contract_id" property="contractId" jdbcType="VARCHAR" />
+		<result column="month_id" property="monthId" jdbcType="INTEGER" />
+		<result column="value" property="value" jdbcType="DECIMAL" />
+		<result column="num_of_gift" property="numOfGift" jdbcType="INTEGER" />
+		<result column="num_of_member" property="numOfMember" jdbcType="INTEGER" />
+		<result column="status" property="status" jdbcType="INTEGER" />
+	</resultMap>
+	
+	<select id="getContractFeedbackVo" resultMap="ContractFeedbackResultMap" parameterType="java.util.Map">
+		SELECT d.feedback_id,s.store_no,s.store_name,b.data_type,a.contract_id,b.month_id,b.`value`,d.num_of_gift,d.num_of_member,d.`status`
+		from wyeth_contract a INNER JOIN wyeth_contract_detail b on a.contract_id = b.contract_id
+		INNER JOIN store s on s.store_id = a.store_id 
+		INNER JOIN wyeth_contract_feedback d on d.contract_id = a.contract_id
+		where a.is_delete = 0 and a.client_id = #{clientId} and b.is_delete = 0
+		and s.is_delete = 0 and s.client_id = #{clientId}
+		and d.is_delete = 0
+		and d.`status` in('0','1')
+		AND b.month_id=d.month_id
+		and b.data_type in('1','2')
+		and a.contract_id = #{contractId};
+	</select>
+	<select id="queryBycontractId" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from wyeth_contract_feedback
+		where status=0 and is_delete=0 and contract_id =
+		#{contractId,jdbcType=CHAR}
+	</select>
+	
+	<select id="findBycontractId" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select * from wyeth_contract_feedback where is_delete=0 and feedback_id = #{feedbackId,jdbcType=CHAR}
+	</select>
+	<select id="findInvoicePicByParmas" parameterType="java.util.Map" resultMap="BaseResultMap" >
+		SELECT invoice_pic FROM wyeth_contract_feedback WHERE  is_delete=0 AND feedback_id=#{feedbackId}
+	</select>
+	
+	<update id="batchChecked" parameterType="java.lang.String">
+		update wyeth_contract_feedback set status = 3 where is_delete=0 and FIND_IN_SET(feedback_id,#{feedbackIds}) > 0
+	</update>
+	
+	<update id="batchDel" parameterType="java.lang.String">
+		update wyeth_contract_feedback set is_delete = 1 where is_delete=0 and FIND_IN_SET(feedback_id,#{feedbackIds}) > 0
+	</update>
+</mapper>

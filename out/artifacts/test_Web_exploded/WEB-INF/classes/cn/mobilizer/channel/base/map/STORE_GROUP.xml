@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="STORE_GROUP" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.base.po.StoreGroup" >
+    <id column="store_group_id" property="storeGroupId" jdbcType="INTEGER" />
+    <result column="group_name" property="groupName" jdbcType="VARCHAR" />
+    <result column="group_name_en" property="groupNameEn" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    store_group_id, group_name, group_name_en, remark, client_id, create_time, last_update_time, 
+    is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from store_group
+    where store_group_id = #{storeGroupId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from store_group
+    where store_group_id = #{storeGroupId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.base.po.StoreGroup" >
+    insert into store_group (store_group_id, group_name, group_name_en, 
+      remark, client_id, is_delete)
+    values (#{storeGroupId,jdbcType=INTEGER}, #{groupName,jdbcType=VARCHAR}, #{groupNameEn,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{clientId,jdbcType=INTEGER},  #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.base.po.StoreGroup" >
+    insert into store_group
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="storeGroupId != null" >
+        store_group_id,
+      </if>
+      <if test="groupName != null" >
+        group_name,
+      </if>
+      <if test="groupNameEn != null" >
+        group_name_en,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="storeGroupId != null" >
+        #{storeGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="groupName != null" >
+        #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="groupNameEn != null" >
+        #{groupNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.base.po.StoreGroup" >
+    update store_group
+    <set >
+      <if test="groupName != null" >
+        group_name = #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="groupNameEn != null" >
+        group_name_en = #{groupNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where store_group_id = #{storeGroupId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.base.po.StoreGroup" >
+    update store_group
+    set group_name = #{groupName,jdbcType=VARCHAR},
+      group_name_en = #{groupNameEn,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where store_group_id = #{storeGroupId,jdbcType=INTEGER}
+  </update>
+  
+  	<select id="findListByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select * 
+		from store_group  
+		where 1=1 
+		<include refid="Query_Column_List" /> 
+		<include refid="basic.mysqlPageSearchFoot"/>
+	</select>
+	
+	<sql id="Query_Column_List">
+		<if test="clientId != null and clientId !=''">
+			and client_id = #{clientId}
+		</if>
+		<if test="isDelete != null and isDelete != ''">
+			and is_delete = #{isDelete}
+		</if>
+	</sql>
+</mapper>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="DIMDAY" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.sales.po.DimDay" >
+    <id column="day_id" property="dayId" jdbcType="INTEGER" />
+    <id column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="day_desc" property="dayDesc" jdbcType="VARCHAR" />
+    <result column="day_desc_en" property="dayDescEn" jdbcType="VARCHAR" />
+    <result column="week_id" property="weekId" jdbcType="INTEGER" />
+    <result column="month_id" property="monthId" jdbcType="INTEGER" />
+    <result column="quarter_id" property="quarterId" jdbcType="INTEGER" />
+    <result column="year_id" property="yearId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    day_id, client_id, day_desc, day_desc_en, week_id, month_id, quarter_id, year_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="cn.mobilizer.channel.sales.po.DimDayKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from dim_day
+    where day_id = #{dayId,jdbcType=INTEGER}
+      and client_id = #{clientId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="cn.mobilizer.channel.sales.po.DimDayKey" >
+    delete from dim_day
+    where day_id = #{dayId,jdbcType=INTEGER}
+      and client_id = #{clientId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.sales.po.DimDay" >
+    insert into dim_day (day_id, client_id, day_desc, 
+      day_desc_en, week_id, month_id, 
+      quarter_id, year_id)
+    values (#{dayId,jdbcType=INTEGER}, #{clientId,jdbcType=INTEGER}, #{dayDesc,jdbcType=VARCHAR}, 
+      #{dayDescEn,jdbcType=VARCHAR}, #{weekId,jdbcType=INTEGER}, #{monthId,jdbcType=INTEGER}, 
+      #{quarterId,jdbcType=INTEGER}, #{yearId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.sales.po.DimDay" >
+    insert into dim_day
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dayId != null" >
+        day_id,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="dayDesc != null" >
+        day_desc,
+      </if>
+      <if test="dayDescEn != null" >
+        day_desc_en,
+      </if>
+      <if test="weekId != null" >
+        week_id,
+      </if>
+      <if test="monthId != null" >
+        month_id,
+      </if>
+      <if test="quarterId != null" >
+        quarter_id,
+      </if>
+      <if test="yearId != null" >
+        year_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dayId != null" >
+        #{dayId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="dayDesc != null" >
+        #{dayDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="dayDescEn != null" >
+        #{dayDescEn,jdbcType=VARCHAR},
+      </if>
+      <if test="weekId != null" >
+        #{weekId,jdbcType=INTEGER},
+      </if>
+      <if test="monthId != null" >
+        #{monthId,jdbcType=INTEGER},
+      </if>
+      <if test="quarterId != null" >
+        #{quarterId,jdbcType=INTEGER},
+      </if>
+      <if test="yearId != null" >
+        #{yearId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.sales.po.DimDay" >
+    update dim_day
+    <set >
+      <if test="dayDesc != null" >
+        day_desc = #{dayDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="dayDescEn != null" >
+        day_desc_en = #{dayDescEn,jdbcType=VARCHAR},
+      </if>
+      <if test="weekId != null" >
+        week_id = #{weekId,jdbcType=INTEGER},
+      </if>
+      <if test="monthId != null" >
+        month_id = #{monthId,jdbcType=INTEGER},
+      </if>
+      <if test="quarterId != null" >
+        quarter_id = #{quarterId,jdbcType=INTEGER},
+      </if>
+      <if test="yearId != null" >
+        year_id = #{yearId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where day_id = #{dayId,jdbcType=INTEGER}
+      and client_id = #{clientId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.sales.po.DimDay" >
+    update dim_day
+    set day_desc = #{dayDesc,jdbcType=VARCHAR},
+      day_desc_en = #{dayDescEn,jdbcType=VARCHAR},
+      week_id = #{weekId,jdbcType=INTEGER},
+      month_id = #{monthId,jdbcType=INTEGER},
+      quarter_id = #{quarterId,jdbcType=INTEGER},
+      year_id = #{yearId,jdbcType=INTEGER}
+    where day_id = #{dayId,jdbcType=INTEGER}
+      and client_id = #{clientId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="getDimDayByYearId"  parameterType="java.util.Map" resultMap="BaseResultMap">
+  	select * from dim_day where client_id = #{clientId}
+  </select>
+  
+</mapper>

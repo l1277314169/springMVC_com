@@ -1,0 +1,92 @@
+﻿
+.dashboardMenu
+{
+    width:930px;
+        	
+    float:left;
+}
+.dashboardFilter
+{
+    width:930px;
+        	
+    float:left;
+}
+.dashboard
+{
+    width:930px;
+   
+    float:left;
+}
+.DashboardTitle, .dashboardTitle
+{
+	color:#43434e;
+	font-size:24px;
+	font-weight:bold;
+}
+.rpDashboardMenuItem
+{
+	width:454px;
+	min-height:66px;
+	float:left;
+	margin-bottom:10px;
+	margin-right:10px;
+}
+.rpDashboardMenuItemName
+{
+	color:#43434e;
+	font-size:14px;
+	font-weight:bold;
+	
+}
+.rpDashboardMenuItemDesc
+{
+	color:#43434e;
+	font-size:12px;
+	padding-top:5px;
+}
+
+.rpDashboardMenuItem a,.rpDashboardMenuItem a:hover
+{
+	text-decoration:none;
+	cursor:pointer;
+}
+.filterPanel
+{
+	margin:0px 0px 10px 0px;
+	width:928px;
+	background-color:#efefef;
+	border:1px solid #bebebe;
+}
+.filterPanel table
+{
+	margin:5px;
+}
+.filterError
+{
+	color:#ff0000;
+	font-size:12px;
+}
+.overviewTop
+{
+	width:290px;
+	height:31px;
+	background-color:transparent;
+	background-image:url(../Images/overviewTop.png);
+	background-repeat:no-repeat;
+}
+.overviewMid
+{
+	width:290px;
+	
+	background-color:transparent;
+	background-image:url(../Images/overviewMid.png);
+	background-repeat:repeat-y;
+}
+.overviewBtm
+{
+	width:290px;
+	height:10px;
+	background-color:transparent;
+	background-image:url(../Images/overviewBtm.png);
+	background-repeat:no-repeat;
+}

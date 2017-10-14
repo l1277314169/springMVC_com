@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="USER_ACTIVITY_LOG" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.log.po.UserActivityLog" >
+    <id column="log_id" property="logId" jdbcType="INTEGER" />
+    <result column="client_user_id" property="clientUserId" jdbcType="INTEGER" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="log_type" property="logType" jdbcType="TINYINT" />
+    <result column="log_time" property="logTime" jdbcType="TIMESTAMP" />
+    <result column="app_version" property="appVersion" jdbcType="VARCHAR" />
+    <result column="platform" property="platform" jdbcType="VARCHAR" />
+    <result column="response_code" property="responseCode" jdbcType="VARCHAR" />
+    <result column="log_content" property="logContent" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    log_id, client_id, client_user_id, log_type, log_time, app_version, platform, response_code, 
+    log_content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_activity_log
+    where log_id = #{logId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user_activity_log
+    where log_id = #{logId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.log.po.UserActivityLog" >
+    insert into user_activity_log (log_id, client_user_id, log_type, 
+      log_time, app_version, platform, 
+      response_code, log_content)
+    values (#{logId,jdbcType=INTEGER}, #{clientUserId,jdbcType=INTEGER}, #{logType,jdbcType=TINYINT}, 
+      #{logTime,jdbcType=TIMESTAMP}, #{appVersion,jdbcType=VARCHAR}, #{platform,jdbcType=VARCHAR}, 
+      #{responseCode,jdbcType=VARCHAR}, #{logContent,jdbcType=VARCHAR}), #{clientId,jdbcType=INTEGER}
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.log.po.UserActivityLog" useGeneratedKeys="true" keyProperty="logId">
+    insert into user_activity_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="logId != null" >
+        log_id,
+      </if>
+      <if test="clientUserId != null" >
+        client_user_id,
+      </if>
+       <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="logType != null" >
+        log_type,
+      </if>
+      <if test="logTime != null" >
+        log_time,
+      </if>
+      <if test="appVersion != null" >
+        app_version,
+      </if>
+      <if test="platform != null" >
+        platform,
+      </if>
+      <if test="responseCode != null" >
+        response_code,
+      </if>
+      <if test="logContent != null" >
+        log_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="logId != null" >
+        #{logId,jdbcType=INTEGER},
+      </if>
+      <if test="clientUserId != null" >
+        #{clientUserId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="logType != null" >
+        #{logType,jdbcType=TINYINT},
+      </if>
+      <if test="logTime != null" >
+        #{logTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="appVersion != null" >
+        #{appVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="platform != null" >
+        #{platform,jdbcType=VARCHAR},
+      </if>
+      <if test="responseCode != null" >
+        #{responseCode,jdbcType=VARCHAR},
+      </if>
+      <if test="logContent != null" >
+        #{logContent,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.log.po.UserActivityLog" >
+    update user_activity_log
+    <set >
+      <if test="clientUserId != null" >
+        client_user_id = #{clientUserId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="logType != null" >
+        log_type = #{logType,jdbcType=TINYINT},
+      </if>
+      <if test="logTime != null" >
+        log_time = #{logTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="appVersion != null" >
+        app_version = #{appVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="platform != null" >
+        platform = #{platform,jdbcType=VARCHAR},
+      </if>
+      <if test="responseCode != null" >
+        response_code = #{responseCode,jdbcType=VARCHAR},
+      </if>
+      <if test="logContent != null" >
+        log_content = #{logContent,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where log_id = #{logId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.log.po.UserActivityLog" >
+    update user_activity_log
+    set client_user_id = #{clientUserId,jdbcType=INTEGER},
+    	client_id = #{clientId,jdbcType=INTEGER},
+      log_type = #{logType,jdbcType=TINYINT},
+      log_time = #{logTime,jdbcType=TIMESTAMP},
+      app_version = #{appVersion,jdbcType=VARCHAR},
+      platform = #{platform,jdbcType=VARCHAR},
+      response_code = #{responseCode,jdbcType=VARCHAR},
+      log_content = #{logContent,jdbcType=VARCHAR}
+    where log_id = #{logId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectBylogTime" resultMap="BaseResultMap">
+       select 
+    <include refid="Base_Column_List" />
+    from user_activity_log
+    where log_time BETWEEN #{startLogTime} AND #{endLogTime}
+  </select>
+  
+  
+  
+</mapper>

@@ -20,22 +20,22 @@ public class LoginController {
     @RequestMapping(value = "/login")
     public String login(HttpServletRequest request) throws Exception{
         String exceptionClassName = (String) request.getAttribute("shiroLoginFailure");
-        //æ ¹æ®shiroè¿”å›çš„å¼‚å¸¸ç±»è·¯å¾„åˆ¤æ–­ï¼ŒæŠ›å‡ºæŒ‡å®šå¼‚å¸¸ä¿¡æ¯
+        //¸ù¾İshiro·µ»ØµÄÒì³£ÀàÂ·¾¶ÅĞ¶Ï£¬Å×³öÖ¸¶¨Òì³£ĞÅÏ¢
         String message = "";
         if(exceptionClassName!=null){
             if (UnknownAccountException.class.getName().equals(exceptionClassName)) {
-                //æœ€ç»ˆä¼šæŠ›ç»™å¼‚å¸¸å¤„ç†å™¨
-                message="è´¦å·ä¸å­˜åœ¨";
+                //×îÖÕ»áÅ×¸øÒì³£´¦ÀíÆ÷
+                message="ÕËºÅ²»´æÔÚ";
             } else if (IncorrectCredentialsException.class.getName().equals(
                     exceptionClassName)) {
-                message="å¯†ç é”™è¯¯";
+                message="ÃÜÂë´íÎó";
             } else if("randomCodeError".equals(exceptionClassName)){
-                message="éªŒè¯ç é”™è¯¯ ";
+                message="ÑéÖ¤Âë´íÎó ";
             }else if (ExcessiveAttemptsException.class.getName().equals(
                     exceptionClassName)){
-                message="é‡å¤å¯†ç è¶…æ¬¡";
+                message="ÖØ¸´ÃÜÂë³¬´Î";
             }else {
-                throw new Exception();//æœ€ç»ˆåœ¨å¼‚å¸¸å¤„ç†å™¨ç”ŸæˆæœªçŸ¥é”™è¯¯
+                throw new Exception();//×îÖÕÔÚÒì³£´¦ÀíÆ÷Éú³ÉÎ´Öª´íÎó
             }
         }
         request.setAttribute("errorMessage",message);

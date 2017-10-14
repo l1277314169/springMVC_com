@@ -1,0 +1,20 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="${contextPath}/js/jquery-1.7.min.js?cVer=${cVer}"></script>
+<script type="text/javascript" src="${contextPath}/js/jquery.form.js?cVer=${cVer}"></script>
+<script type="text/javascript" src="${contextPath}/js/jquery.ui.custom.js?cVer=${cVer}"></script>
+<script type="text/javascript" src="${contextPath}/js/bootstrap.min.js?cVer=${cVer}"></script>
+<script type="text/javascript" src="${contextPath}/js/jquery.validate.min.js?cVer=${cVer}"></script>
+<script type="text/javascript" src="${contextPath}/js/jquery.validate.expand.js?cVer=${cVer}"></script>
+<script type="text/javascript" src="${contextPath}/js/jquery.validate-methods.js?cVer=${cVer}"></script>
+<script type="text/javascript" src="${contextPath}/js/jquery.gritter.min.js?cVer=${cVer}"></script>
+<script type="text/javascript" src="${contextPath}/js/matrix.js?cVer=${cVer}"></script>
+<script type="text/javascript" src="${contextPath}/js/excanvas.min.js?cVer=${cVer}"></script>
+<script type="text/javascript" src="${contextPath}/js/jquery.ztree.core-3.5.min.js?cVer=${cVer}"></script>
+<script type="text/javascript" src="${contextPath}/js/jquery.ztree.exedit-3.5.min.js?cVer=${cVer}"></script>
+<script type="text/javascript" src="${contextPath}/js/messages_zh.js?cVer=${cVer}"></script>
+<script type="text/javascript" src="${contextPath}/js/select2.js?cVer=${cVer}"></script>
+<script type="text/javascript" src="${contextPath}/js/select2_locale_zh-CN.js?cVer=${cVer}"></script>
+<script type="text/javascript" src="${contextPath}/js/jquery.ui.datepicker.js?cVer=${cVer}"></script>
+<script type="text/javascript" src="${contextPath}/js/jquery.ui.datepicker-zh-CN.js?cVer=${cVer}"></script>
+<script type="text/javascript" src="${contextPath}/js/jquery.showLoading.min.js?cVer=${cVer}"></script>
+<script type="text/javascript" src="${contextPath}/js/layer/layer.js?cVer=${cVer}"></script>

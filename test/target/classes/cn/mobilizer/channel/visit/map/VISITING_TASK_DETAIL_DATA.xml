@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="VISITING_TASK_DETAIL_DATA" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.visit.po.VisitingTaskDetailData" >
+    <id column="visiting_task_detail_data_id" property="visitingTaskDetailDataId" jdbcType="CHAR" />
+    <result column="visiting_task_data_id" property="visitingTaskDataId" jdbcType="CHAR" />
+    <result column="visiting_task_step_id" property="visitingTaskStepId" jdbcType="INTEGER" />
+    <result column="object_id" property="objectId" jdbcType="INTEGER" />
+    <result column="target1_id" property="target1Id" jdbcType="VARCHAR" />
+    <result column="target2_id" property="target2Id" jdbcType="VARCHAR" />
+    <result column="visiting_parameter_id" property="visitingParameterId" jdbcType="INTEGER" />
+    <result column="value" property="value" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="submit_time" property="submitTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    visiting_task_detail_data_id, visiting_task_data_id, visiting_task_step_id, object_id, 
+    target1_id, target2_id, visiting_parameter_id, value, client_id, 
+   is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from visiting_task_detail_data
+    where visiting_task_detail_data_id = #{visitingTaskDetailDataId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from visiting_task_detail_data
+    where visiting_task_detail_data_id = #{visitingTaskDetailDataId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.visit.po.VisitingTaskDetailData" >
+    insert into visiting_task_detail_data (visiting_task_detail_data_id, visiting_task_data_id, 
+      visiting_task_step_id, object_id, target1_id, 
+      target2_id, visiting_parameter_id, value, 
+      client_id, is_delete)
+    values (#{visitingTaskDetailDataId,jdbcType=CHAR}, #{visitingTaskDataId,jdbcType=CHAR}, 
+      #{visitingTaskStepId,jdbcType=INTEGER}, #{objectId,jdbcType=INTEGER}, #{target1Id,jdbcType=VARCHAR}, 
+      #{target2Id,jdbcType=VARCHAR}, #{visitingParameterId,jdbcType=INTEGER}, #{value,jdbcType=VARCHAR}, 
+      #{clientId,jdbcType=INTEGER}, 
+    #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.visit.po.VisitingTaskDetailData" >
+    insert into visiting_task_detail_data
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="visitingTaskDetailDataId != null" >
+        visiting_task_detail_data_id,
+      </if>
+      <if test="visitingTaskDataId != null" >
+        visiting_task_data_id,
+      </if>
+      <if test="visitingTaskStepId != null" >
+        visiting_task_step_id,
+      </if>
+      <if test="objectId != null" >
+        object_id,
+      </if>
+      <if test="target1Id != null" >
+        target1_id,
+      </if>
+      <if test="target2Id != null" >
+        target2_id,
+      </if>
+      <if test="visitingParameterId != null" >
+        visiting_parameter_id,
+      </if>
+      <if test="value != null" >
+        value,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="visitingTaskDetailDataId != null" >
+        #{visitingTaskDetailDataId,jdbcType=CHAR},
+      </if>
+      <if test="visitingTaskDataId != null" >
+        #{visitingTaskDataId,jdbcType=CHAR},
+      </if>
+      <if test="visitingTaskStepId != null" >
+        #{visitingTaskStepId,jdbcType=INTEGER},
+      </if>
+      <if test="objectId != null" >
+        #{objectId,jdbcType=INTEGER},
+      </if>
+      <if test="target1Id != null" >
+        #{target1Id,jdbcType=VARCHAR},
+      </if>
+      <if test="target2Id != null" >
+        #{target2Id,jdbcType=VARCHAR},
+      </if>
+      <if test="visitingParameterId != null" >
+        #{visitingParameterId,jdbcType=INTEGER},
+      </if>
+      <if test="value != null" >
+        #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+    
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.visit.po.VisitingTaskDetailData" >
+    update visiting_task_detail_data
+    <set >
+      <if test="visitingTaskDataId != null" >
+        visiting_task_data_id = #{visitingTaskDataId,jdbcType=CHAR},
+      </if>
+      <if test="visitingTaskStepId != null" >
+        visiting_task_step_id = #{visitingTaskStepId,jdbcType=INTEGER},
+      </if>
+      <if test="objectId != null" >
+        object_id = #{objectId,jdbcType=INTEGER},
+      </if>
+      <if test="target1Id != null" >
+        target1_id = #{target1Id,jdbcType=VARCHAR},
+      </if>
+      <if test="target2Id != null" >
+        target2_id = #{target2Id,jdbcType=VARCHAR},
+      </if>
+      <if test="visitingParameterId != null" >
+        visiting_parameter_id = #{visitingParameterId,jdbcType=INTEGER},
+      </if>
+      <if test="value != null" >
+        value = #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+    
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where visiting_task_detail_data_id = #{visitingTaskDetailDataId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.visit.po.VisitingTaskDetailData" >
+    update visiting_task_detail_data
+    set visiting_task_data_id = #{visitingTaskDataId,jdbcType=CHAR},
+      visiting_task_step_id = #{visitingTaskStepId,jdbcType=INTEGER},
+      object_id = #{objectId,jdbcType=INTEGER},
+      target1_id = #{target1Id,jdbcType=VARCHAR},
+      target2_id = #{target2Id,jdbcType=VARCHAR},
+      visiting_parameter_id = #{visitingParameterId,jdbcType=INTEGER},
+      value = #{value,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+     
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where visiting_task_detail_data_id = #{visitingTaskDetailDataId,jdbcType=CHAR}
+  </update>
+
+	<select id="findVisitTaskStepByDataId" resultMap="BaseResultMap" parameterType="java.util.Map">
+		SELECT vst.step_name as stepName, vsdd.*
+		FROM visiting_task_detail_data vsdd
+		LEFT JOIN visiting_task_step vst
+		ON vsdd.visiting_task_step_id = vst.visiting_task_step_id
+		AND vsdd.is_delete = 0
+		<if test="clientId != null" >
+			AND vsdd.client_id = #{clientId} 
+		</if>
+		<if test="visitingTaskDataId != null and visitingTaskDataId != ''" >
+			AND vsdd.visiting_task_data_id = #{visitingTaskDataId} 
+		</if>
+	</select>
+	
+	<select id="getTaskStepDataByParameter" resultMap="BaseResultMap" parameterType="java.util.Map">
+		SELECT vsdd.*,vp.control_type AS controlType,vp.control_name AS controlName
+		FROM visiting_task_detail_data vsdd
+		INNER JOIN visiting_task_data vtd
+		ON vsdd.visiting_task_data_id = vtd.visiting_task_data_id 
+		LEFT JOIN visiting_parameter vp 
+		ON vsdd.visiting_parameter_id = vp.visiting_parameter_id AND vp.client_id = #{clientId} AND vp.is_delete = 0
+		WHERE 1=1 
+		AND vtd.client_user_id = #{clientUserId}
+		AND vtd.client_id = #{clientId}
+		AND vsdd.visiting_task_step_id = #{visitingTaskStepId}
+		AND vtd.pop_id = #{popId}
+		AND vtd.pop_type = #{popType}
+		<![CDATA[ and vtd.in_time >= #{startInTime}]]>
+		<![CDATA[ and vtd.in_time <= #{endInTime}]]>
+		AND vsdd.is_delete = 0
+		And vtd.is_delete = 0
+		<if test="taskType != null" >
+			AND vtd.visit_type = #{taskType} 
+		</if>
+	</select>
+  
+</mapper>

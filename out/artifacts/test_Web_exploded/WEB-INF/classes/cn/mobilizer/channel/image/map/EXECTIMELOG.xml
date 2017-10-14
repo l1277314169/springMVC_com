@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="EXECTIMELOG" >
+  
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.image.po.ExecTimeLog" >
+    <id column="log_id" property="logId" jdbcType="INTEGER" />
+    <result column="keycode" property="keycode" jdbcType="VARCHAR" />
+    <result column="start_date" property="startDate" jdbcType="TIMESTAMP" />
+    <result column="end_date" property="endDate" jdbcType="TIMESTAMP" />
+    <result column="interval_value" property="intervalValue" jdbcType="INTEGER" />
+    <result column="last_executed" property="lastExecuted" jdbcType="TIMESTAMP" />
+    <result column="last_exec_times" property="lastExecTimes" jdbcType="INTEGER" />
+    <result column="last_exec_status" property="lastExecStatus" jdbcType="TINYINT" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  
+  
+  <sql id="Base_Column_List" >
+    log_id, keycode, start_date, end_date, interval_value, last_executed, last_exec_times, 
+    last_exec_status, client_id, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from exec_time_log
+    where log_id = #{logId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from exec_time_log
+    where log_id = #{logId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.image.po.ExecTimeLog" >
+    insert into exec_time_log (log_id, keycode, start_date, 
+      end_date, interval_value, last_executed, 
+      last_exec_times, last_exec_status, client_id, 
+      is_delete)
+    values (#{logId,jdbcType=INTEGER}, #{keycode,jdbcType=VARCHAR}, #{startDate,jdbcType=TIMESTAMP}, 
+      #{endDate,jdbcType=TIMESTAMP}, #{intervalValue,jdbcType=INTEGER}, #{lastExecuted,jdbcType=TIMESTAMP}, 
+      #{lastExecTimes,jdbcType=INTEGER}, #{lastExecStatus,jdbcType=TINYINT}, #{clientId,jdbcType=INTEGER}, 
+      #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.image.po.ExecTimeLog" >
+    insert into exec_time_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="logId != null" >
+        log_id,
+      </if>
+      <if test="keycode != null" >
+        keycode,
+      </if>
+      <if test="startDate != null" >
+        start_date,
+      </if>
+      <if test="endDate != null" >
+        end_date,
+      </if>
+      <if test="intervalValue != null" >
+        interval_value,
+      </if>
+      <if test="lastExecuted != null" >
+        last_executed,
+      </if>
+      <if test="lastExecTimes != null" >
+        last_exec_times,
+      </if>
+      <if test="lastExecStatus != null" >
+        last_exec_status,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="logId != null" >
+        #{logId,jdbcType=INTEGER},
+      </if>
+      <if test="keycode != null" >
+        #{keycode,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null" >
+        #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="intervalValue != null" >
+        #{intervalValue,jdbcType=INTEGER},
+      </if>
+      <if test="lastExecuted != null" >
+        #{lastExecuted,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastExecTimes != null" >
+        #{lastExecTimes,jdbcType=INTEGER},
+      </if>
+      <if test="lastExecStatus != null" >
+        #{lastExecStatus,jdbcType=TINYINT},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.image.po.ExecTimeLog" >
+    update exec_time_log
+    <set >
+      <if test="keycode != null" >
+        keycode = #{keycode,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null" >
+        start_date = #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        end_date = #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="intervalValue != null" >
+        interval_value = #{intervalValue,jdbcType=INTEGER},
+      </if>
+      <if test="lastExecuted != null" >
+        last_executed = #{lastExecuted,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastExecTimes != null" >
+        last_exec_times = #{lastExecTimes,jdbcType=INTEGER},
+      </if>
+      <if test="lastExecStatus != null" >
+        last_exec_status = #{lastExecStatus,jdbcType=TINYINT},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where log_id = #{logId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.image.po.ExecTimeLog" >
+    update exec_time_log
+    set keycode = #{keycode,jdbcType=VARCHAR},
+      start_date = #{startDate,jdbcType=TIMESTAMP},
+      end_date = #{endDate,jdbcType=TIMESTAMP},
+      interval_value = #{intervalValue,jdbcType=INTEGER},
+      last_executed = #{lastExecuted,jdbcType=TIMESTAMP},
+      last_exec_times = #{lastExecTimes,jdbcType=INTEGER},
+      last_exec_status = #{lastExecStatus,jdbcType=TINYINT},
+      client_id = #{clientId,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where log_id = #{logId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectExecTimeLog" resultMap="BaseResultMap" parameterType="java.util.Map" >
+	     SELECT <include refid="Base_Column_List" />
+		 FROM exec_time_log WHERE is_delete = #{isDelete} AND keycode = #{keyCode} ORDER BY last_executed DESC limit 1 
+   </select>
+  
+  <select id="selectNow" resultType="java.util.Date">
+      SELECT NOW()
+  </select>
+  
+</mapper>

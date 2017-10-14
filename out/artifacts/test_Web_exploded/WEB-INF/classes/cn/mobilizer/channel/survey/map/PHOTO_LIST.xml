@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="PHOTO_LIST" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.survey.po.PhotoList" >
+    <id column="photo_id" property="photoId" jdbcType="INTEGER" />
+    <result column="photo_name" property="photoName" jdbcType="VARCHAR" />
+    <result column="photo_path" property="photoPath" jdbcType="VARCHAR" />
+    <result column="photo_desc" property="photoDesc" jdbcType="VARCHAR" />
+    <result column="relation_type" property="relationType" jdbcType="TINYINT" />
+    <result column="relation_id" property="relationId" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+    <result column="sequence" property="sequence" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    photo_id, photo_name, photo_path, photo_desc, relation_type, relation_id, client_id, 
+    create_time, last_update_time, is_delete,sequence
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from photo_list
+    where photo_id = #{photoId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from photo_list
+    where photo_id = #{photoId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.survey.po.PhotoList" >
+    insert into photo_list (photo_id, photo_name, photo_path, 
+      photo_desc, relation_type, relation_id, 
+      client_id, create_time, last_update_time, 
+      is_delete)
+    values (#{photoId,jdbcType=INTEGER}, #{photoName,jdbcType=VARCHAR}, #{photoPath,jdbcType=VARCHAR}, 
+      #{photoDesc,jdbcType=VARCHAR}, #{relationType,jdbcType=TINYINT}, #{relationId,jdbcType=VARCHAR}, 
+      #{clientId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{lastUpdateTime,jdbcType=TIMESTAMP}, 
+      #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.survey.po.PhotoList" >
+    insert into photo_list
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="photoId != null" >
+        photo_id,
+      </if>
+      <if test="photoName != null" >
+        photo_name,
+      </if>
+      <if test="photoPath != null" >
+        photo_path,
+      </if>
+      <if test="photoDesc != null" >
+        photo_desc,
+      </if>
+      <if test="relationType != null" >
+        relation_type,
+      </if>
+      <if test="relationId != null" >
+        relation_id,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="photoId != null" >
+        #{photoId,jdbcType=INTEGER},
+      </if>
+      <if test="photoName != null" >
+        #{photoName,jdbcType=VARCHAR},
+      </if>
+      <if test="photoPath != null" >
+        #{photoPath,jdbcType=VARCHAR},
+      </if>
+      <if test="photoDesc != null" >
+        #{photoDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="relationType != null" >
+        #{relationType,jdbcType=TINYINT},
+      </if>
+      <if test="relationId != null" >
+        #{relationId,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.survey.po.PhotoList" >
+    update photo_list
+    <set >
+      <if test="photoName != null" >
+        photo_name = #{photoName,jdbcType=VARCHAR},
+      </if>
+      <if test="photoPath != null" >
+        photo_path = #{photoPath,jdbcType=VARCHAR},
+      </if>
+      <if test="photoDesc != null" >
+        photo_desc = #{photoDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="relationType != null" >
+        relation_type = #{relationType,jdbcType=TINYINT},
+      </if>
+      <if test="relationId != null" >
+        relation_id = #{relationId,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where photo_id = #{photoId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.survey.po.PhotoList" >
+    update photo_list
+    set photo_name = #{photoName,jdbcType=VARCHAR},
+      photo_path = #{photoPath,jdbcType=VARCHAR},
+      photo_desc = #{photoDesc,jdbcType=VARCHAR},
+      relation_type = #{relationType,jdbcType=TINYINT},
+      relation_id = #{relationId,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where photo_id = #{photoId,jdbcType=INTEGER}
+  </update>
+  <select id="selectEntityByTypeAndRelationId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+  	select * from photo_list where client_id = #{clientId} and is_delete = 0 
+  	and relation_id = #{relationId} and relation_type = #{relationType} ORDER BY sequence 
+  </select>
+</mapper>

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="SURVEYSUB" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.survey.po.SurveySub" >
+    <id column="sub_survey_id" property="subSurveyId" jdbcType="INTEGER" />
+    <result column="survey_id" property="surveyId" jdbcType="INTEGER" />
+    <result column="sub_survey_topic" property="subSurveyTopic" jdbcType="VARCHAR" />
+    <result column="sub_survey_type" property="subSurveyType" jdbcType="TINYINT" />
+    <result column="is_must_do" property="isMustDo" jdbcType="TINYINT" />
+    <result column="thead_cols" property="theadCols" jdbcType="VARCHAR" />
+    <result column="sequence" property="sequence" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sub_survey_id, survey_id, sub_survey_topic, sub_survey_type, is_must_do, thead_cols, 
+    sequence, remark, client_id, create_time, last_update_time, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from survey_sub
+    where sub_survey_id = #{subSurveyId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from survey_sub
+    where sub_survey_id = #{subSurveyId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.survey.po.SurveySub" >
+    insert into survey_sub (sub_survey_id, survey_id, sub_survey_topic, 
+      sub_survey_type, is_must_do, thead_cols, 
+      sequence, remark, client_id, 
+      create_time, last_update_time, is_delete
+      )
+    values (#{subSurveyId,jdbcType=INTEGER}, #{surveyId,jdbcType=INTEGER}, #{subSurveyTopic,jdbcType=VARCHAR}, 
+      #{subSurveyType,jdbcType=TINYINT}, #{isMustDo,jdbcType=TINYINT}, #{theadCols,jdbcType=VARCHAR}, 
+      #{sequence,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{clientId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{lastUpdateTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.survey.po.SurveySub" >
+    insert into survey_sub
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="subSurveyId != null" >
+        sub_survey_id,
+      </if>
+      <if test="surveyId != null" >
+        survey_id,
+      </if>
+      <if test="subSurveyTopic != null" >
+        sub_survey_topic,
+      </if>
+      <if test="subSurveyType != null" >
+        sub_survey_type,
+      </if>
+      <if test="isMustDo != null" >
+        is_must_do,
+      </if>
+      <if test="theadCols != null" >
+        thead_cols,
+      </if>
+      <if test="sequence != null" >
+        sequence,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="subSurveyId != null" >
+        #{subSurveyId,jdbcType=INTEGER},
+      </if>
+      <if test="surveyId != null" >
+        #{surveyId,jdbcType=INTEGER},
+      </if>
+      <if test="subSurveyTopic != null" >
+        #{subSurveyTopic,jdbcType=VARCHAR},
+      </if>
+      <if test="subSurveyType != null" >
+        #{subSurveyType,jdbcType=TINYINT},
+      </if>
+      <if test="isMustDo != null" >
+        #{isMustDo,jdbcType=TINYINT},
+      </if>
+      <if test="theadCols != null" >
+        #{theadCols,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null" >
+        #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.survey.po.SurveySub" >
+    update survey_sub
+    <set >
+      <if test="surveyId != null" >
+        survey_id = #{surveyId,jdbcType=INTEGER},
+      </if>
+      <if test="subSurveyTopic != null" >
+        sub_survey_topic = #{subSurveyTopic,jdbcType=VARCHAR},
+      </if>
+      <if test="subSurveyType != null" >
+        sub_survey_type = #{subSurveyType,jdbcType=TINYINT},
+      </if>
+      <if test="isMustDo != null" >
+        is_must_do = #{isMustDo,jdbcType=TINYINT},
+      </if>
+      <if test="theadCols != null" >
+        thead_cols = #{theadCols,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null" >
+        sequence = #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where sub_survey_id = #{subSurveyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.survey.po.SurveySub" >
+    update survey_sub
+    set survey_id = #{surveyId,jdbcType=INTEGER},
+      sub_survey_topic = #{subSurveyTopic,jdbcType=VARCHAR},
+      sub_survey_type = #{subSurveyType,jdbcType=TINYINT},
+      is_must_do = #{isMustDo,jdbcType=TINYINT},
+      thead_cols = #{theadCols,jdbcType=VARCHAR},
+      sequence = #{sequence,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where sub_survey_id = #{subSurveyId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="getSurveySubByBlockId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from survey_sub
+    where block_id = #{blockId} and is_delete = 0 order by sequence asc
+  </select>
+  
+  
+  <select id="getSurveySubBySurveyId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from survey_sub
+    where survey_id = #{surveyId} and is_delete = 0 order by sequence asc
+  </select>
+  
+  <select id="getSurveySubIdByBlockId" resultType="java.lang.String" parameterType="java.util.Map">
+  	select sub_survey_id from survey_sub where block_id = ${blockId} and is_delete = 0 and client_id = #{clientId}
+  </select>
+  
+</mapper>

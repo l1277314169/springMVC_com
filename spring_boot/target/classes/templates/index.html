@@ -1,0 +1,47 @@
+<html>
+<head>
+    <title>Title</title>
+    <script type="text/javascript" src="/js/jquery-1.9.0.min.js"></script>
+</head>
+<body>
+<form id="uploadForm" >
+    <input type="file" name="file"><br/>
+    <input type="text" id ="userName" name="userName"><br/>
+    <input id="btn" type="submit" value="提交">
+</form>
+</body>
+</html>
+
+<script>
+    $(document).ready(function(){
+        var a = $("userName").val();
+
+        $('#btn').click(function () {
+            var formData = new FormData($( "#uploadForm" )[0]);
+            $.ajax({
+                url: "/upload",
+                type: "POST",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    if (data.status == "true") {
+                        alert("上传成功！");
+                    }
+                    if (data.status == "error") {
+                        alert(data.msg);
+                    }
+                    $("#imgWait").hide();
+                },
+                error: function () {
+                    alert("上传失败！");
+                    $("#imgWait").hide();
+                }
+            });
+        });
+
+
+    });
+    
+    
+</script>

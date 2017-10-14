@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="WR_WORKPLACE_TASK_MAPPING" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.wrTask.po.WrWorkplaceTaskMapping" >
+    <id column="mapping_id" property="mappingId" jdbcType="INTEGER" />
+    <result column="workplace_id" property="workplaceId" jdbcType="INTEGER" />
+    <result column="wr_task_id" property="wrTaskId" jdbcType="INTEGER" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    mapping_id, workplace_id, wr_task_id, client_id, create_time, last_update_time, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from wr_workplace_task_mapping
+    where mapping_id = #{mappingId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from wr_workplace_task_mapping
+    where mapping_id = #{mappingId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.wrTask.po.WrWorkplaceTaskMapping" >
+    insert into wr_workplace_task_mapping (mapping_id, workplace_id, wr_task_id, 
+      client_id, create_time, last_update_time, 
+      is_delete)
+    values (#{mappingId,jdbcType=INTEGER}, #{workplaceId,jdbcType=INTEGER}, #{wrTaskId,jdbcType=INTEGER}, 
+      #{clientId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{lastUpdateTime,jdbcType=TIMESTAMP}, 
+      #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.wrTask.po.WrWorkplaceTaskMapping" >
+    insert into wr_workplace_task_mapping
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mappingId != null" >
+        mapping_id,
+      </if>
+      <if test="workplaceId != null" >
+        workplace_id,
+      </if>
+      <if test="wrTaskId != null" >
+        wr_task_id,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mappingId != null" >
+        #{mappingId,jdbcType=INTEGER},
+      </if>
+      <if test="workplaceId != null" >
+        #{workplaceId,jdbcType=INTEGER},
+      </if>
+      <if test="wrTaskId != null" >
+        #{wrTaskId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.wrTask.po.WrWorkplaceTaskMapping" >
+    update wr_workplace_task_mapping
+    <set >
+      <if test="workplaceId != null" >
+        workplace_id = #{workplaceId,jdbcType=INTEGER},
+      </if>
+      <if test="wrTaskId != null" >
+        wr_task_id = #{wrTaskId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where mapping_id = #{mappingId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.wrTask.po.WrWorkplaceTaskMapping" >
+    update wr_workplace_task_mapping
+    set workplace_id = #{workplaceId,jdbcType=INTEGER},
+      wr_task_id = #{wrTaskId,jdbcType=INTEGER},
+      client_id = #{clientId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where mapping_id = #{mappingId,jdbcType=INTEGER}
+  </update>
+</mapper>

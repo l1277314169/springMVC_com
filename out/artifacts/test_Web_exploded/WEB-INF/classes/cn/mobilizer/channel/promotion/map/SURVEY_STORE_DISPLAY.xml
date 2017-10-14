@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="SURVEY_STORE_DISPLAY" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.promotion.po.SurveyStoreDisplay" >
+    <id column="data_id" property="dataId" jdbcType="INTEGER" />
+    <result column="plan_code" property="planCode" jdbcType="VARCHAR" />
+    <result column="store_no" property="storeNo" jdbcType="VARCHAR" />
+    <result column="valid_from" property="validFrom" jdbcType="TIMESTAMP" />
+    <result column="valid_to" property="validTo" jdbcType="TIMESTAMP" />
+    <result column="display_type" property="displayType" jdbcType="INTEGER" />
+    <result column="display_type_desc" property="displayTypeDesc" jdbcType="VARCHAR" />
+    <result column="promo_sku" property="promoSku" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    data_id, plan_code, store_no, valid_from, valid_to, display_type, display_type_desc, 
+    promo_sku, client_id, create_time, last_update_time, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from survey_store_display
+    where data_id = #{dataId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from survey_store_display
+    where data_id = #{dataId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.promotion.po.SurveyStoreDisplay" >
+    insert into survey_store_display (data_id, plan_code, store_no, 
+      valid_from, valid_to, display_type, 
+      display_type_desc, promo_sku, client_id, 
+      create_time, last_update_time, is_delete
+      )
+    values (#{dataId,jdbcType=INTEGER}, #{planCode,jdbcType=VARCHAR}, #{storeNo,jdbcType=VARCHAR}, 
+      #{validFrom,jdbcType=TIMESTAMP}, #{validTo,jdbcType=TIMESTAMP}, #{displayType,jdbcType=INTEGER}, 
+      #{displayTypeDesc,jdbcType=VARCHAR}, #{promoSku,jdbcType=VARCHAR}, #{clientId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{lastUpdateTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.promotion.po.SurveyStoreDisplay" >
+    insert into survey_store_display
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dataId != null" >
+        data_id,
+      </if>
+      <if test="planCode != null" >
+        plan_code,
+      </if>
+      <if test="storeNo != null" >
+        store_no,
+      </if>
+      <if test="validFrom != null" >
+        valid_from,
+      </if>
+      <if test="validTo != null" >
+        valid_to,
+      </if>
+      <if test="displayType != null" >
+        display_type,
+      </if>
+      <if test="displayTypeDesc != null" >
+        display_type_desc,
+      </if>
+      <if test="promoSku != null" >
+        promo_sku,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dataId != null" >
+        #{dataId,jdbcType=INTEGER},
+      </if>
+      <if test="planCode != null" >
+        #{planCode,jdbcType=VARCHAR},
+      </if>
+      <if test="storeNo != null" >
+        #{storeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="validFrom != null" >
+        #{validFrom,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validTo != null" >
+        #{validTo,jdbcType=TIMESTAMP},
+      </if>
+      <if test="displayType != null" >
+        #{displayType,jdbcType=INTEGER},
+      </if>
+      <if test="displayTypeDesc != null" >
+        #{displayTypeDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="promoSku != null" >
+        #{promoSku,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.promotion.po.SurveyStoreDisplay" >
+    update survey_store_display
+    <set >
+      <if test="planCode != null" >
+        plan_code = #{planCode,jdbcType=VARCHAR},
+      </if>
+      <if test="storeNo != null" >
+        store_no = #{storeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="validFrom != null" >
+        valid_from = #{validFrom,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validTo != null" >
+        valid_to = #{validTo,jdbcType=TIMESTAMP},
+      </if>
+      <if test="displayType != null" >
+        display_type = #{displayType,jdbcType=INTEGER},
+      </if>
+      <if test="displayTypeDesc != null" >
+        display_type_desc = #{displayTypeDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="promoSku != null" >
+        promo_sku = #{promoSku,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where data_id = #{dataId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.promotion.po.SurveyStoreDisplay" >
+    update survey_store_display
+    set plan_code = #{planCode,jdbcType=VARCHAR},
+      store_no = #{storeNo,jdbcType=VARCHAR},
+      valid_from = #{validFrom,jdbcType=TIMESTAMP},
+      valid_to = #{validTo,jdbcType=TIMESTAMP},
+      display_type = #{displayType,jdbcType=INTEGER},
+      display_type_desc = #{displayTypeDesc,jdbcType=VARCHAR},
+      promo_sku = #{promoSku,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where data_id = #{dataId,jdbcType=INTEGER}
+  </update>
+  
+  <sql id="select_by_param">
+		select
+		<include refid="Base_Column_List" />
+		from survey_store_display
+		<include refid="Base_Query_Column_List" />
+	</sql>
+  
+  <select id="selectByParams" parameterType="java.util.Map" resultMap="BaseResultMap">		 
+		<include refid="select_by_param" />
+		<include refid="basic.mysqlPageSearchFoot" />		
+	</select>
+	
+	<select id="selectByParamCount" parameterType="java.util.Map" resultType="Integer">
+		select count(1) from survey_store_display
+		<include refid="Base_Query_Column_List" />
+	</select>
+	
+	<sql id="Base_Query_Column_List">
+  	<where>	 
+  		  is_delete = 0
+   		  <if test="planCode != null and planCode !=''" >
+	        and plan_code = #{planCode,jdbcType=VARCHAR}
+	      </if>
+	      <if test="storeNo != null and storeNo!=''" >
+	        and store_no = #{storeNo,jdbcType=VARCHAR}
+	      </if>
+	      <if test="validFrom != null and validFrom !=''" >
+	        and valid_from = #{validFrom,jdbcType=TIMESTAMP}
+	      </if>
+	      <if test="validTo != null and validTo !=''" >
+	        and valid_to = #{validTo,jdbcType=TIMESTAMP}
+	      </if>
+	      <if test="displayType != null and displayType !=''" >
+	        and display_type = #{displayType,jdbcType=INTEGER}
+	      </if>
+	      <if test="displayTypeDesc != null and displayTypeDesc !=''" >
+	        and display_type_desc = #{displayTypeDesc,jdbcType=VARCHAR}
+	      </if>
+	      <if test="promoSku != null and promoSku !=''" >
+	        and promo_sku = #{promoSku,jdbcType=VARCHAR}
+	      </if>
+	      <if test="clientId != null and clientId !=''" >
+	        and client_id = #{clientId,jdbcType=INTEGER}
+	      </if>
+	      <if test="createTime != null and createTime !=''" >
+	        and create_time = #{createTime,jdbcType=TIMESTAMP}
+	      </if>
+	      <if test="lastUpdateTime != null and lastUpdateTime !=''" >
+	        and last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP}
+	      </if>
+      </where>
+	</sql>
+  
+  <select id="selectEntityByPlanCode" parameterType="java.util.Map" resultMap="BaseResultMap">
+  	select * from survey_store_display where client_id =#{clientId} and is_delete = 0 and plan_code = #{planCode} limit 1 
+  </select>
+  
+  <select id="selectCountByPlancode" parameterType="java.util.Map" resultType="java.lang.Integer">
+  	select count(*) survey_store_display where client_id =#{clientId} and is_delete = 0 and plan_code = #{planCode} 
+  </select>
+  
+  <insert id="batchSaveSurveyStoreDisplay" parameterType="java.util.Map" >
+	  <![CDATA[
+	  INSERT INTO survey_store_display (
+        plan_code,store_no,valid_from,valid_to,display_type,display_type_desc,promo_sku,
+        client_id
+	  ) VALUES 
+	  ]]>
+	  <foreach collection="surveyStoreDisplays" item="item" index="index" separator=",">
+	  (
+	   #{item.planCode},
+	   #{item.storeNo},
+	   #{item.validFrom},
+	   #{item.validTo},
+	   #{item.displayType},
+	   #{item.displayTypeDesc},
+	   #{item.promoSku},
+	   #{item.clientId}
+	  )
+	  </foreach>
+	   ON DUPLICATE KEY UPDATE
+	   plan_code = VALUES(plan_code),
+	   store_no = VALUES(store_no),
+	   valid_from = VALUES(valid_from),
+	   valid_to = VALUES(valid_to),
+	   display_type = VALUES(display_type),
+	   display_type_desc = VALUES(display_type_desc),
+	   promo_sku = VALUES(promo_sku),
+	   client_id = VALUES(client_id)
+ </insert>
+ 
+  <!-- 导完之后陈列类型 -->
+ <update id="updateDisplayType" parameterType="java.util.Map">
+ 	 update survey_store_display a,`options` b
+		set a.display_type=b.option_value
+		where display_type is NULL and b.client_id=15 and b.option_name='survey_store_display'
+		and b.is_delete=0 and a.display_type_desc=b.option_text
+		and a.is_delete=0
+ </update>
+</mapper>

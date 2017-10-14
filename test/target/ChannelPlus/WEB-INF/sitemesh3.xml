@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemesh>
+  	<mapping path="/*" decorator="/WEB-INF/pages/decorators/default.jsp"/>
+	<mapping path="/layouts/*" exclude="true"/>
+	<mapping path="/admin/*" exclude="true"/>
+	<mapping path="/login*" exclude="true"/>
+	<mapping path="/static/*" exclude="true"/>
+	<mapping path="/api/*" exclude="true"/>
+	<mapping path="/css/*" exclude="true"/>
+	<mapping path="/images/*" exclude="true"/>
+	<mapping path="/img/*" exclude="true"/>
+	<mapping path="/decorators/*" exclude="true"/>
+	<mapping path="/font-awesome/*" exclude="true"/>
+	<mapping path="/download/*" exclude="true"/>
+	<mapping path="/js/*" exclude="true"/>
+	<mapping path="/remoting/*" exclude="true"/>
+</sitemesh>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="DOWNLOADDATALIST" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.colgate.po.DownloadDataList" >
+    <id column="data_id" property="dataId" jdbcType="INTEGER" />
+    <result column="period_id" property="periodId" jdbcType="INTEGER" />
+    <result column="period_desc" property="periodDesc" jdbcType="VARCHAR" />
+    <result column="data_desc" property="dataDesc" jdbcType="VARCHAR" />
+    <result column="data_created" property="dataCreated" jdbcType="TIMESTAMP" />
+    <result column="file_path" property="filePath" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    data_id, period_id, period_desc, data_desc, data_created, file_path, client_id, create_time, 
+    last_update_time, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from download_data_list
+    where data_id = #{dataId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from download_data_list
+    where data_id = #{dataId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.colgate.po.DownloadDataList" >
+    insert into download_data_list (data_id, period_id, period_desc, 
+      data_desc, data_created, file_path, 
+      client_id, create_time, last_update_time, 
+      is_delete)
+    values (#{dataId,jdbcType=INTEGER}, #{periodId,jdbcType=INTEGER}, #{periodDesc,jdbcType=VARCHAR}, 
+      #{dataDesc,jdbcType=VARCHAR}, #{dataCreated,jdbcType=TIMESTAMP}, #{filePath,jdbcType=VARCHAR}, 
+      #{clientId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{lastUpdateTime,jdbcType=TIMESTAMP}, 
+      #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.colgate.po.DownloadDataList" >
+    insert into download_data_list
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dataId != null" >
+        data_id,
+      </if>
+      <if test="periodId != null" >
+        period_id,
+      </if>
+      <if test="periodDesc != null" >
+        period_desc,
+      </if>
+      <if test="dataDesc != null" >
+        data_desc,
+      </if>
+      <if test="dataCreated != null" >
+        data_created,
+      </if>
+      <if test="filePath != null" >
+        file_path,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dataId != null" >
+        #{dataId,jdbcType=INTEGER},
+      </if>
+      <if test="periodId != null" >
+        #{periodId,jdbcType=INTEGER},
+      </if>
+      <if test="periodDesc != null" >
+        #{periodDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="dataDesc != null" >
+        #{dataDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="dataCreated != null" >
+        #{dataCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="filePath != null" >
+        #{filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.colgate.po.DownloadDataList" >
+    update download_data_list
+    <set >
+      <if test="periodId != null" >
+        period_id = #{periodId,jdbcType=INTEGER},
+      </if>
+      <if test="periodDesc != null" >
+        period_desc = #{periodDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="dataDesc != null" >
+        data_desc = #{dataDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="dataCreated != null" >
+        data_created = #{dataCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="filePath != null" >
+        file_path = #{filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where data_id = #{dataId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.colgate.po.DownloadDataList" >
+    update download_data_list
+    set period_id = #{periodId,jdbcType=INTEGER},
+      period_desc = #{periodDesc,jdbcType=VARCHAR},
+      data_desc = #{dataDesc,jdbcType=VARCHAR},
+      data_created = #{dataCreated,jdbcType=TIMESTAMP},
+      file_path = #{filePath,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where data_id = #{dataId,jdbcType=INTEGER}
+  </update>
+  
+  <resultMap type="java.util.TreeMap" id="mapDataList"></resultMap>
+  <select id="getSurveyMainQuestionnaire" statementType="CALLABLE" parameterType="java.util.Map" resultMap="mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList" >
+	  call sp_survey_Main_Questionnaire_4_colgate(#{startDate},#{endDate});
+   </select>
+  
+  <select id="getSurveySecondaryDisplayQuestionnaire" statementType="CALLABLE" parameterType="java.util.Map" resultMap="mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList" >
+	  call sp_survey_secondary_display_Questionnaire_4_colgate(#{startDate},#{endDate})
+   </select>
+  
+  <select id="getSupplementaryQuestionnaire" statementType="CALLABLE" parameterType="java.util.Map" resultMap="mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList" >
+	  call sp_survey_Supplementary_Questionnaire_4_colgate(#{startDate},#{endDate})
+   </select>
+    <select id="getTrend" statementType="CALLABLE" parameterType="java.util.Map" resultMap="mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList,mapDataList" >
+	  call sp_trend_4_colgate1(0,0,0,'','','',#{startDate},0,'','','',0,10,1)
+   </select>
+   <select id="getDownloadListInfo" parameterType="java.util.Map" resultMap="BaseResultMap">
+   		SELECT * from download_data_list where client_id = #{clientId} and is_delete = 0 and period_id = #{periodId} and data_desc = #{dataDesc}
+   </select>
+   
+  <update id="updateLastUpdateTime" parameterType="cn.mobilizer.channel.colgate.po.DownloadDataList" >
+   		update download_data_list set last_update_time = #{lastUpdateTime},data_created=#{dataCreated} where data_id = #{dataId}
+   </update>
+   
+  <select id="loadRawDataList" parameterType="java.util.Map" resultMap="BaseResultMap">
+   		SELECT * from download_data_list where client_id = #{clientId} and is_delete = 0 order by period_id desc
+   </select>
+  
+  
+</mapper>

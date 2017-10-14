@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="VISITING_TASK_CHANNEL_MAPPING" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.visit.po.VisitingTaskChannelMapping" >
+    <id column="mapping_id" property="mappingId" jdbcType="INTEGER" />
+    <result column="visiting_task_id" property="visitingTaskId" jdbcType="INTEGER" />
+    <result column="channel_id" property="channelId" jdbcType="INTEGER" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    mapping_id, visiting_task_id, channel_id, client_id,
+    is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from visiting_task_channel_mapping
+    where mapping_id = #{mappingId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from visiting_task_channel_mapping
+    where mapping_id = #{mappingId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.visit.po.VisitingTaskChannelMapping" >
+    insert into visiting_task_channel_mapping (mapping_id, visiting_task_id, channel_id, 
+      client_id, 
+      is_delete)
+    values (#{mappingId,jdbcType=INTEGER}, #{visitingTaskId,jdbcType=INTEGER}, #{channelId,jdbcType=INTEGER}, 
+      #{clientId,jdbcType=INTEGER},
+      #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.visit.po.VisitingTaskChannelMapping" >
+    insert into visiting_task_channel_mapping
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mappingId != null" >
+        mapping_id,
+      </if>
+      <if test="visitingTaskId != null" >
+        visiting_task_id,
+      </if>
+      <if test="channelId != null" >
+        channel_id,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+    
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mappingId != null" >
+        #{mappingId,jdbcType=INTEGER},
+      </if>
+      <if test="visitingTaskId != null" >
+        #{visitingTaskId,jdbcType=INTEGER},
+      </if>
+      <if test="channelId != null" >
+        #{channelId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+     
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.visit.po.VisitingTaskChannelMapping" >
+    update visiting_task_channel_mapping
+    <set >
+      <if test="visitingTaskId != null" >
+        visiting_task_id = #{visitingTaskId,jdbcType=INTEGER},
+      </if>
+      <if test="channelId != null" >
+        channel_id = #{channelId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where mapping_id = #{mappingId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.visit.po.VisitingTaskChannelMapping" >
+    update visiting_task_channel_mapping
+    set visiting_task_id = #{visitingTaskId,jdbcType=INTEGER},
+      channel_id = #{channelId,jdbcType=INTEGER},
+      client_id = #{clientId,jdbcType=INTEGER},
+    
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where mapping_id = #{mappingId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="getEntityByTaskId" parameterType="cn.mobilizer.channel.visit.po.VisitingTaskChannelMapping" resultMap="BaseResultMap">
+  	select * from visiting_task_channel_mapping vtcm where vtcm.is_delete = 0 and
+  	vtcm.client_id = #{clientId} and vtcm.visiting_task_id = #{visitingTaskId} limit 1  
+  </select>
+</mapper>

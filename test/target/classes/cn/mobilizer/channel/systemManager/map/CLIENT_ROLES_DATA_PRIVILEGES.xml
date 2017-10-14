@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="CLIENT_ROLES_DATA_PRIVILEGES" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.systemManager.po.ClientRolesDataPrivileges" >
+    <id column="privilege_id" property="privilegeId" jdbcType="INTEGER" />
+    <result column="role_id" property="roleId" jdbcType="INTEGER" />
+    <result column="client_structure_id" property="clientStructureId" jdbcType="INTEGER" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    privilege_id, role_id, client_structure_id, client_id, 
+    is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from client_roles_data_privileges
+    where privilege_id = #{privilegeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from client_roles_data_privileges
+    where privilege_id = #{privilegeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.systemManager.po.ClientRolesDataPrivileges" >
+    insert into client_roles_data_privileges (privilege_id, role_id, client_structure_id, 
+      client_id, 
+      is_delete)
+    values (#{privilegeId,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}, #{clientStructureId,jdbcType=INTEGER}, 
+      #{clientId,jdbcType=INTEGER},
+      #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.systemManager.po.ClientRolesDataPrivileges" >
+    insert into client_roles_data_privileges
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="privilegeId != null" >
+        privilege_id,
+      </if>
+      <if test="roleId != null" >
+        role_id,
+      </if>
+      <if test="clientStructureId != null" >
+        client_structure_id,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+     
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="privilegeId != null" >
+        #{privilegeId,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="clientStructureId != null" >
+        #{clientStructureId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.systemManager.po.ClientRolesDataPrivileges" >
+    update client_roles_data_privileges
+    <set >
+      <if test="roleId != null" >
+        role_id = #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="clientStructureId != null" >
+        client_structure_id = #{clientStructureId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+     
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where privilege_id = #{privilegeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.systemManager.po.ClientRolesDataPrivileges" >
+    update client_roles_data_privileges
+    set role_id = #{roleId,jdbcType=INTEGER},
+      client_structure_id = #{clientStructureId,jdbcType=INTEGER},
+      client_id = #{clientId,jdbcType=INTEGER},
+     
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where privilege_id = #{privilegeId,jdbcType=INTEGER}
+  </update>
+  
+  <update id="deleteByRoleId" parameterType="java.lang.Integer">
+    update client_roles_data_privileges
+    set is_delete = 1
+    where role_id = #{roleId}
+  </update>
+  
+  <update id="deleteByRoleAndPrivileges" parameterType="java.util.Map">
+    update client_roles_data_privileges
+    set is_delete = 1
+    where role_id = #{roleId} 
+    and find_in_set(client_structure_id,#{delPrivileges})>0
+  </update>
+  
+  <insert id="insertByRoleAndPrivileges"  parameterType="java.util.Map">
+    insert into client_roles_data_privileges (role_id,client_structure_id, client_id)
+    values 
+    <foreach collection="insPrivileges" item="item" index="index" separator="," >
+    	(#{roleId},#{item},#{clientId}) 
+    </foreach>
+  </insert>
+  
+  <select id="getUserPermissionsByClientUserId" resultType="java.lang.String" parameterType="java.lang.Integer">
+	SELECT crdp.client_structure_id 
+	FROM client_roles_data_privileges crdp 
+	INNER JOIN client_roles_user_mapping crum ON crdp.role_id = crum.role_id
+	AND crum.client_user_id = #{clientUserId,jdbcType=INTEGER} 
+	AND crdp.is_delete = 0 AND crum.is_delete = 0
+	GROUP BY crdp.client_structure_id
+	ORDER BY crdp.client_structure_id 
+  </select>
+  
+  <select id="getUserPermissionsByClientUserId2String" resultType="java.lang.String" parameterType="java.lang.Integer">
+	SELECT GROUP_CONCAT(crdp.client_structure_id)
+	FROM client_roles_data_privileges crdp 
+	INNER JOIN client_roles_user_mapping crum ON crdp.role_id = crum.role_id
+	AND crum.client_user_id = #{clientUserId,jdbcType=INTEGER} 
+	AND crdp.is_delete = 0 AND crum.is_delete = 0
+  </select>
+    
+  <select id="getSelfDataPrivileges" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select * 
+    from client_roles_data_privileges
+    where role_id = #{roleId} 
+    and client_structure_id = #{selfStructureId} 
+    and is_delete = 0
+  </select>
+  
+</mapper>

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="VISITING_TASK_STEP" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.visit.po.VisitingTaskStep" >
+    <id column="visiting_task_step_id" property="visitingTaskStepId" jdbcType="INTEGER" />
+    <result column="visiting_task_id" property="visitingTaskId" jdbcType="INTEGER" />
+    <result column="step_no" property="stepNo" jdbcType="VARCHAR" />
+    <result column="step_name" property="stepName" jdbcType="VARCHAR" />
+    <result column="step_name_en" property="stepNameEn" jdbcType="VARCHAR" />
+    <result column="step_type" property="stepType" jdbcType="TINYINT" />
+    <result column="is_must_do" property="isMustDo" jdbcType="TINYINT" />
+    <result column="step_priority" property="stepPriority" jdbcType="TINYINT" />
+    <result column="is_one_page" property="isOnePage" jdbcType="TINYINT" />
+    <result column="sort_by" property="sortBy" jdbcType="TINYINT" />
+    <result column="select_type" property="selectType" jdbcType="TINYINT" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    visiting_task_step_id, visiting_task_id, step_no, step_name, step_name_en, step_type, 
+    is_must_do, step_priority, is_one_page, sort_by, remark, client_id, 
+    is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from visiting_task_step
+    where visiting_task_step_id = #{visitingTaskStepId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from visiting_task_step
+    where visiting_task_step_id = #{visitingTaskStepId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.visit.po.VisitingTaskStep" >
+    insert into visiting_task_step (visiting_task_step_id, visiting_task_id, 
+      step_no, step_name, step_name_en, 
+      step_type, is_must_do, step_priority, 
+      is_one_page, sort_by, remark, client_id, 
+      is_delete
+      )
+    values (#{visitingTaskStepId,jdbcType=INTEGER}, #{visitingTaskId,jdbcType=INTEGER}, 
+      #{stepNo,jdbcType=VARCHAR}, #{stepName,jdbcType=VARCHAR}, #{stepNameEn,jdbcType=VARCHAR}, 
+      #{stepType,jdbcType=TINYINT}, #{isMustDo,jdbcType=TINYINT}, #{stepPriority,jdbcType=TINYINT}, 
+      #{isOnePage,jdbcType=TINYINT}, #{sort_by,jdbcType=TINYINT}, #{remark,jdbcType=VARCHAR}, #{clientId,jdbcType=INTEGER}, 
+       #{isDelete,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.visit.po.VisitingTaskStep" useGeneratedKeys="true" keyProperty="visitingTaskStepId" >
+    insert into visiting_task_step
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="visitingTaskStepId != null" >
+        visiting_task_step_id,
+      </if>
+      <if test="visitingTaskId != null" >
+        visiting_task_id,
+      </if>
+      <if test="stepNo != null" >
+        step_no,
+      </if>
+      <if test="stepName != null" >
+        step_name,
+      </if>
+      <if test="stepNameEn != null" >
+        step_name_en,
+      </if>
+      <if test="stepType != null" >
+        step_type,
+      </if>
+      <if test="isMustDo != null" >
+        is_must_do,
+      </if>
+      <if test="stepPriority != null" >
+        step_priority,
+      </if>
+      <if test="isOnePage != null" >
+        is_one_page,
+      </if>
+      <if test="sortBy != null" >
+        sort_by,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+   
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="visitingTaskStepId != null" >
+        #{visitingTaskStepId,jdbcType=INTEGER},
+      </if>
+      <if test="visitingTaskId != null" >
+        #{visitingTaskId,jdbcType=INTEGER},
+      </if>
+      <if test="stepNo != null" >
+        #{stepNo,jdbcType=VARCHAR},
+      </if>
+      <if test="stepName != null" >
+        #{stepName,jdbcType=VARCHAR},
+      </if>
+      <if test="stepNameEn != null" >
+        #{stepNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="stepType != null" >
+        #{stepType,jdbcType=TINYINT},
+      </if>
+      <if test="isMustDo != null" >
+        #{isMustDo,jdbcType=TINYINT},
+      </if>
+      <if test="stepPriority != null" >
+        #{stepPriority,jdbcType=TINYINT},
+      </if>
+      <if test="isOnePage != null" >
+        #{isOnePage,jdbcType=TINYINT},
+      </if>
+      <if test="sortBy != null" >
+        #{sort_by,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+     
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.visit.po.VisitingTaskStep" >
+    update visiting_task_step
+    <set >
+      <if test="visitingTaskId != null" >
+        visiting_task_id = #{visitingTaskId,jdbcType=INTEGER},
+      </if>
+      <if test="stepNo != null" >
+        step_no = #{stepNo,jdbcType=VARCHAR},
+      </if>
+      <if test="stepName != null" >
+        step_name = #{stepName,jdbcType=VARCHAR},
+      </if>
+      <if test="stepNameEn != null" >
+        step_name_en = #{stepNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="stepType != null" >
+        step_type = #{stepType,jdbcType=TINYINT},
+      </if>
+      <if test="isMustDo != null" >
+        is_must_do = #{isMustDo,jdbcType=TINYINT},
+      </if>
+      <if test="stepPriority != null" >
+        step_priority = #{stepPriority,jdbcType=TINYINT},
+      </if>
+      <if test="isOnePage != null" >
+        is_one_page = #{isOnePage,jdbcType=TINYINT},
+      </if>
+      <if test="sortBy != null" >
+        sort_by = #{sortBy,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+     
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where visiting_task_step_id = #{visitingTaskStepId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.visit.po.VisitingTaskStep" >
+    update visiting_task_step
+    set visiting_task_id = #{visitingTaskId,jdbcType=INTEGER},
+      step_no = #{stepNo,jdbcType=VARCHAR},
+      step_name = #{stepName,jdbcType=VARCHAR},
+      step_name_en = #{stepNameEn,jdbcType=VARCHAR},
+      step_type = #{stepType,jdbcType=TINYINT},
+      is_must_do = #{isMustDo,jdbcType=TINYINT},
+      step_priority = #{stepPriority,jdbcType=TINYINT},
+      is_one_page = #{isOnePage,jdbcType=TINYINT},
+      sort_by = #{sortBy,jdbcType=TINYINT},
+      remark = #{remark,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where visiting_task_step_id = #{visitingTaskStepId,jdbcType=INTEGER}
+  </update>
+
+	<select id="getVisitingTaskStepListByVtIds" parameterType="java.lang.String" resultMap="BaseResultMap">
+		SELECT * FROM visiting_task_step 
+		WHERE <![CDATA[FIND_IN_SET(visiting_task_id,#{visitingTaskIds})>0]]> 
+		AND is_delete = 0 
+		ORDER BY visiting_task_id, step_priority
+	</select>
+
+	<select id="getVisitingTaskStepListByVtId" parameterType="java.lang.String" resultMap="BaseResultMap">
+		SELECT * FROM visiting_task_step 
+		WHERE visiting_task_id = #{visitingTaskId,jdbcType=INTEGER}
+		AND is_delete = 0 
+		ORDER BY step_priority
+	</select>
+</mapper>

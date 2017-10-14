@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="MOBILE_VERSION" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.systemManager.po.MobileVersion" >
+    <id column="mobile_version_id" property="mobileVersionId" jdbcType="INTEGER" />
+    <result column="version" property="version" jdbcType="VARCHAR" />
+    <result column="version_desc" property="versionDesc" jdbcType="VARCHAR" />
+    <result column="app_code" property="appCode" jdbcType="VARCHAR" />
+    <result column="app_link" property="appLink" jdbcType="VARCHAR" />
+    <result column="enable_date" property="enableDate" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+    <result column="must_update" property="mustUpdate" jdbcType="INTEGER" />
+    <result column="for_all" property="forAll" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    mobile_version_id, version, version_desc, app_code, app_link, enable_date, remark, 
+    client_id,  is_delete, must_update,for_all
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from mobile_version
+    where mobile_version_id = #{mobileVersionId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from mobile_version
+    where mobile_version_id = #{mobileVersionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.systemManager.po.MobileVersion" >
+    insert into mobile_version (mobile_version_id, version, version_desc, 
+      app_code, app_link, enable_date, 
+      remark, client_id, 
+      is_delete)
+    values (#{mobileVersionId,jdbcType=INTEGER}, #{version,jdbcType=VARCHAR}, #{versionDesc,jdbcType=VARCHAR}, 
+      #{appCode,jdbcType=VARCHAR}, #{appLink,jdbcType=VARCHAR}, #{enableDate,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=VARCHAR}, #{clientId,jdbcType=INTEGER},
+     #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.systemManager.po.MobileVersion"  useGeneratedKeys="true" keyProperty="mobileVersionId">
+    insert into mobile_version
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mobileVersionId != null" >
+        mobile_version_id,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+      <if test="versionDesc != null" >
+        version_desc,
+      </if>
+      <if test="appCode != null" >
+        app_code,
+      </if>
+      <if test="appLink != null" >
+        app_link,
+      </if>
+      <if test="enableDate != null" >
+        enable_date,
+      </if>
+      <if test="mustUpdate != null">
+      	must_update,
+      </if>
+      <if test="forAll != null">
+      	for_all,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+     
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mobileVersionId != null" >
+        #{mobileVersionId,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="versionDesc != null" >
+        #{versionDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="appCode != null" >
+        #{appCode,jdbcType=VARCHAR},
+      </if>
+      <if test="appLink != null" >
+        #{appLink,jdbcType=VARCHAR},
+      </if>
+      <if test="enableDate != null" >
+        #{enableDate,jdbcType=TIMESTAMP},
+      </if>
+       <if test="mustUpdate != null">
+      	 #{mustUpdate,jdbcType=INTEGER},
+      </if>
+       <if test="forAll != null">
+      	#{forAll,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.systemManager.po.MobileVersion" >
+    update mobile_version
+    <set >
+      <if test="version != null" >
+        version = #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="versionDesc != null" >
+        version_desc = #{versionDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="appCode != null" >
+        app_code = #{appCode,jdbcType=VARCHAR},
+      </if>
+      <if test="appLink != null" >
+        app_link = #{appLink,jdbcType=VARCHAR},
+      </if>
+      <if test="enableDate != null" >
+        enable_date = #{enableDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mustUpdate != null" >
+        must_update = #{mustUpdate,jdbcType=INTEGER},
+      </if>
+       <if test="forAll != null">
+        for_all = #{forAll,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where mobile_version_id = #{mobileVersionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.systemManager.po.MobileVersion" >
+    update mobile_version
+    set version = #{version,jdbcType=VARCHAR},
+      version_desc = #{versionDesc,jdbcType=VARCHAR},
+      app_code = #{appCode,jdbcType=VARCHAR},
+      app_link = #{appLink,jdbcType=VARCHAR},
+      enable_date = #{enableDate,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+    
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where mobile_version_id = #{mobileVersionId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="getNewVersion" resultMap="BaseResultMap" parameterType="java.util.Map">
+    select *
+    from mobile_version
+    where client_id = #{clientId,jdbcType=INTEGER} and app_code = #{appCode,jdbcType=VARCHAR} and is_delete = 0 and enable_date &lt;= NOW()
+    and (for_all = 1 
+	or mobile_version_id in (select mobile_version_id from mobile_version_detail where client_user_id = #{clientUserId} and is_delete = 0))
+  </select>
+  
+  
+  <select id="queryTotalCount" parameterType="java.util.Map" resultType="Integer">
+		select  count(1)
+		from MOBILE_VERSION cl1
+	     where 1=1
+		<include refid="Query_Column_List" />
+	</select>
+  
+  
+  <sql id="Query_Column_List">
+		<if test="clientId != null and clientId !=''">
+			and cl1.client_id = #{clientId}
+		</if>
+		<if test="version != null and version !=''">
+			and cl1.version like CONCAT('%',#{version},'%')
+		</if>
+		<if test="appcode != null and appcode !=''">
+			and cl1.app_code like CONCAT('%',#{appcode},'%')
+		</if>
+		<if test="isDelete != null">
+			and cl1.is_delete = #{isDelete}
+		</if>
+		<if test="isDelete == null">
+			and cl1.is_delete = 0
+		</if>
+		
+	</sql>
+	
+	<sql id="select_by_param">
+		select *
+		from MOBILE_VERSION cl1
+		where 1=1
+		<include refid="Query_Column_List" />
+	</sql>
+	
+	
+	<select id="selectByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+		<include refid="select_by_param" />
+		<include refid="basic.mysqlPageSearchFoot"/>  
+	</select>
+	
+	<select id="queryUrlByParams" parameterType="java.util.Map" resultType="java.lang.String">
+		select mv.app_link from MOBILE_VERSION mv 
+		where mv.client_id = #{clientId} 
+		and mv.app_code = #{appCode}
+		<if test="isEnable">
+			and IFNULL(mv.enable_date,NOW()) &lt;= NOW()
+		</if>
+		and mv.is_delete = 0
+		ORDER BY mv.create_time desc
+		LIMIT 0,1
+	</select>
+</mapper>

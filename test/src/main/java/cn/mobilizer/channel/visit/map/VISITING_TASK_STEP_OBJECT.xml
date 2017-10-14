@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="VISITING_TASK_STEP_OBJECT" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.visit.po.VisitingTaskStepObject" >
+    <id column="object_id" property="objectId" jdbcType="INTEGER" />
+    <result column="visiting_task_step_id" property="visitingTaskStepId" jdbcType="INTEGER" />
+    <result column="target1_id" property="target1Id" jdbcType="VARCHAR" />
+    <result column="target2_id" property="target2Id" jdbcType="VARCHAR" />
+    <result column="sequence" property="sequence" jdbcType="INTEGER" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    object_id, visiting_task_step_id, target1_id, target2_id, sequence, client_id,  is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from visiting_task_step_object
+    where object_id = #{objectId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from visiting_task_step_object
+    where object_id = #{objectId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.visit.po.VisitingTaskStepObject" >
+    insert into visiting_task_step_object (object_id, visiting_task_step_id, target1_id, 
+      target2_id, sequence, client_id, 
+      is_delete
+      )
+    values (#{objectId,jdbcType=INTEGER}, #{visitingTaskStepId,jdbcType=INTEGER}, #{target1Id,jdbcType=VARCHAR}, 
+      #{target2Id,jdbcType=VARCHAR}, #{sequence,jdbcType=INTEGER}, #{clientId,jdbcType=INTEGER}, 
+      #{isDelete,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.visit.po.VisitingTaskStepObject" >
+    insert into visiting_task_step_object
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="objectId != null" >
+        object_id,
+      </if>
+      <if test="visitingTaskStepId != null" >
+        visiting_task_step_id,
+      </if>
+      <if test="target1Id != null" >
+        target1_id,
+      </if>
+      <if test="target2Id != null" >
+        target2_id,
+      </if>
+      <if test="sequence != null" >
+        sequence,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+     
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="objectId != null" >
+        #{objectId,jdbcType=INTEGER},
+      </if>
+      <if test="visitingTaskStepId != null" >
+        #{visitingTaskStepId,jdbcType=INTEGER},
+      </if>
+      <if test="target1Id != null" >
+        #{target1Id,jdbcType=VARCHAR},
+      </if>
+      <if test="target2Id != null" >
+        #{target2Id,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null" >
+        #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+     
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.visit.po.VisitingTaskStepObject" >
+    update visiting_task_step_object
+    <set >
+      <if test="visitingTaskStepId != null" >
+        visiting_task_step_id = #{visitingTaskStepId,jdbcType=INTEGER},
+      </if>
+      <if test="target1Id != null" >
+        target1_id = #{target1Id,jdbcType=VARCHAR},
+      </if>
+      <if test="target2Id != null" >
+        target2_id = #{target2Id,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null" >
+        sequence = #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where object_id = #{objectId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.visit.po.VisitingTaskStepObject" >
+    update visiting_task_step_object
+    set visiting_task_step_id = #{visitingTaskStepId,jdbcType=INTEGER},
+      target1_id = #{target1Id,jdbcType=VARCHAR},
+      target2_id = #{target2Id,jdbcType=VARCHAR},
+      sequence = #{sequence,jdbcType=INTEGER},
+      client_id = #{clientId,jdbcType=INTEGER},
+      
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where object_id = #{objectId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="getVisitingSkuList4jgztByParams" resultMap="BaseResultMap" parameterType="java.util.Map">
+	select aa.sku_name as objectName,aa.sku_id as target1Id
+	from sku aa,(
+		select sku_id 
+		from sku_price a,pop_sku_price_group_mapping b  
+		where a.sku_price_group_id=b.sku_price_group_id 
+		<if test="distributorId != null" >
+		and ifnull(b.distributor_id,#{distributorId})=#{distributorId} 
+		</if>
+		<if test="channelId != null" >
+		and ifnull(channel_id,#{channelId})=#{channelId} 
+		</if>
+		<if test="chainId != null" >
+		and ifnull(chain_id,#{chainId})=#{chainId} 
+		</if>
+		and a.is_delete=0 and b.is_delete=0 
+		union 
+		select b.target1_id 
+		from visiting_task_data a, visiting_task_detail_data b 
+		where a.visiting_task_data_id=b.visiting_task_data_id 
+		and a.in_time between #{startIntime} and #{endIntime}
+		and b.visiting_task_step_id=#{visitingTaskStepId} 
+		and a.client_user_id = #{clientUserId} 
+		and a.pop_id = #{popId} 
+		and a.is_delete=0 and b.is_delete=0 
+	) bb 
+	where aa.client_id=#{clientId} and aa.sku_id=bb.sku_id and aa.is_delete=0
+  </select>
+  
+  <select id="getVisitingSkuList4fxByParams" resultMap="BaseResultMap" parameterType="java.util.Map">
+	select aa.sku_name as objectName,aa.sku_id as target1Id
+	from sku aa,(
+		select sku_id from must_have_sku 
+		where client_id=#{clientId} and is_delete=0 
+		<if test="channelId != null" >
+		and ifnull(channel_id,#{channelId})=#{channelId} 
+		</if>
+		<if test="chainId != null" >
+		and ifnull(chain_id,#{chainId})=#{chainId} 
+		</if>
+		union 
+		select b.target1_id 
+		from visiting_task_data a, visiting_task_detail_data b 
+		where a.visiting_task_data_id=b.visiting_task_data_id 
+		and a.in_time between #{startIntime} and #{endIntime}
+		and b.visiting_task_step_id=#{visitingTaskStepId} 
+		and a.client_user_id = #{clientUserId} 
+		and a.pop_id = #{popId} 
+		and a.is_delete=0 and b.is_delete=0 
+	) bb 
+	where aa.client_id=#{clientId} and aa.sku_id=bb.sku_id and aa.is_delete=0
+  </select>
+  
+  <select id="getVisitingSkuListByParams" resultMap="BaseResultMap" parameterType="java.util.Map">
+	select * from 
+	(SELECT s.sku_name as objectName,vtso.target1_id as target1Id
+		FROM visiting_task_step_object vtso
+		INNER JOIN sku s
+		ON vtso.target1_id = s.sku_id
+		AND vtso.visiting_task_step_id = #{visitingTaskStepId}
+		AND vtso.client_id = #{clientId}
+		and vtso.is_delete = 0
+		and s.is_delete = 0
+		ORDER BY vtso.sequence
+	)t1
+	union 
+	select s.sku_name as objectName, b.target1_id as target1Id
+	from visiting_task_data a 
+	inner join visiting_task_detail_data b 
+	on a.visiting_task_data_id=b.visiting_task_data_id 
+	and a.in_time between #{startIntime} and #{endIntime}
+	and b.visiting_task_step_id=#{visitingTaskStepId} 
+	and a.client_user_id = #{clientUserId} 
+	and a.pop_id = #{popId} 
+	left join sku s 
+	on b.target1_id = s.sku_id 
+	where a.is_delete=0 and b.is_delete=0
+  </select>
+  
+  <select id="getVisitingBrandListByParams" resultMap="BaseResultMap" parameterType="java.util.Map">
+	SELECT b.brand_name as objectName,vtso.*
+	FROM visiting_task_step_object vtso
+	INNER JOIN brand b
+	ON vtso.target1_id = b.brand_id
+	AND vtso.visiting_task_step_id = #{visitingTaskStepId}
+	AND vtso.client_id = #{clientId}
+	ORDER BY vtso.sequence
+  </select>
+  
+  <select id="getVisitingCategoryListByParams" resultMap="BaseResultMap" parameterType="java.util.Map">
+	SELECT c.category_name as objectName,vtso.*
+	FROM visiting_task_step_object vtso
+	INNER JOIN category c
+	ON vtso.target1_id = c.category_id
+	AND vtso.visiting_task_step_id = #{visitingTaskStepId}
+	AND vtso.client_id = #{clientId}
+	ORDER BY vtso.sequence
+  </select>
+  
+  <select id="getVisitingPromotionListByParams" resultMap="BaseResultMap" parameterType="java.util.Map">
+	SELECT pm.material_name as objectName,vtso.*
+	FROM visiting_task_step_object vtso
+	INNER JOIN promotion_material pm
+	ON vtso.target1_id = pm.material_id
+	AND vtso.visiting_task_step_id = #{visitingTaskStepId}
+	AND vtso.client_id = #{clientId}
+	ORDER BY vtso.sequence
+  </select>
+  
+  <select id="getVisitingUserListByParams" resultMap="BaseResultMap" parameterType="java.util.Map">
+	SELECT cu.name as objectName,CONCAT(vtso.target1_id,'-',cu.client_user_id) as target1Id, 
+	vtso.object_id, vtso.visiting_task_step_id, vtso.target2_id, vtso.sequence, vtso.client_id, vtso.create_time, vtso.last_update_time, vtso.is_delete
+	FROM visiting_task_step_object vtso 
+	INNER JOIN client_user cu ON vtso.target1_id = cu.client_position_id 
+	AND cu.is_delete = 0
+	INNER JOIN store_user_mapping sum ON cu.client_user_id = sum.client_user_id 
+	AND sum.store_id =#{popId} 
+	AND sum.is_delete = 0
+	AND vtso.visiting_task_step_id = #{visitingTaskStepId}
+	AND vtso.client_id = #{clientId}
+	AND vtso.is_delete = 0
+	ORDER BY vtso.sequence
+  </select>
+  
+  <select id="getTarget1IdsByStepId" parameterType="java.util.Map" resultType="java.lang.String">
+  	select GROUP_CONCAT(vtso.target1_id) from visiting_task_step_object vtso where vtso.visiting_task_step_id = #{visitingTaskStepId} and vtso.client_id = #{clientId} and vtso.is_delete = 0
+  	and vtso.client_id = #{clientId}
+  </select>
+  
+   <update id="currentMapppingisdelte" parameterType="java.util.Map">
+  	update visiting_task_step_object vtso set vtso.is_delete = 1 where vtso.client_id = #{clientId} AND FIND_IN_SET(vtso.target1_id, #{objectIds}) > 0  and vtso.visiting_task_step_id = #{visitingTaskStepId}
+  </update>
+  
+</mapper>

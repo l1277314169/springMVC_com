@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="MSI_SURVEY_FEEDBACK" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.survey.po.MsiSurveyFeedback" >
+    <id column="feedback_id" property="feedbackId" jdbcType="VARCHAR" />
+    <result column="client_user_id" property="clientUserId" jdbcType="INTEGER" />
+    <result column="store_id" property="storeId" jdbcType="VARCHAR" />
+    <result column="feedback_date" property="feedbackDate" jdbcType="TIMESTAMP" />
+    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="msi_survey_id" property="msiSurveyId" jdbcType="INTEGER" />
+    <result column="visitor" property="visitor" jdbcType="VARCHAR" />
+    <result column="promoter" property="promoter" jdbcType="VARCHAR" />
+    <result column="promoter_no" property="promoterNo" jdbcType="VARCHAR" />
+    <result column="score" property="score" jdbcType="DECIMAL" />
+    <result column="initial_score" property="initialScore" jdbcType="DECIMAL" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="create_by" property="createBy" jdbcType="INTEGER" />
+    <result column="submit_time" property="submitTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+    <result column="on_duty" property="onDuty" jdbcType="TINYINT" />
+    <result column="data_type" property="dataType" jdbcType="TINYINT" />
+  </resultMap>
+  
+  <resultMap id="promoterVoMap" type="cn.mobilizer.channel.survey.po.PromoterVo" >
+  	<result column="promoter_no" property="promoterNo" jdbcType="VARCHAR" />
+  	<result column="promoter" property="promoter" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    feedback_id, client_user_id, store_id, feedback_date, start_time, end_time, msi_survey_id, 
+    visitor, promoter, promoter_no, score, status, client_id, create_time, create_by, 
+    submit_time, last_update_time, is_delete,on_duty,data_type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from msi_survey_feedback
+    where feedback_id = #{feedbackId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    update msi_survey_feedback set is_delete = 1
+    where feedback_id = #{feedbackId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.survey.po.MsiSurveyFeedback" >
+    insert into msi_survey_feedback (feedback_id, client_user_id, store_id, 
+      feedback_date, start_time, end_time, 
+      msi_survey_id, visitor, promoter, 
+      promoter_no, score, status,data_type, 
+      client_id, create_time, create_by, 
+      submit_time, last_update_time, is_delete,on_duty
+      )
+    values (#{feedbackId,jdbcType=VARCHAR}, #{clientUserId,jdbcType=INTEGER}, #{storeId,jdbcType=VARCHAR}, 
+      #{feedbackDate,jdbcType=TIMESTAMP}, #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, 
+      #{msiSurveyId,jdbcType=INTEGER}, #{visitor,jdbcType=VARCHAR}, #{promoter,jdbcType=VARCHAR}, 
+      #{promoterNo,jdbcType=VARCHAR}, #{score,jdbcType=DECIMAL}, #{status,jdbcType=TINYINT},#{dataType,jdbcType=TINYINT}, 
+      #{clientId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=INTEGER}, 
+      #{submitTime,jdbcType=TIMESTAMP}, #{lastUpdateTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=TINYINT},#{onDuty,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.survey.po.MsiSurveyFeedback" useGeneratedKeys="true" keyProperty="feedbackId">
+    insert into msi_survey_feedback
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="feedbackId != null" >
+        feedback_id,
+      </if>
+      <if test="clientUserId != null" >
+        client_user_id,
+      </if>
+      <if test="storeId != null" >
+        store_id,
+      </if>
+      <if test="feedbackDate != null" >
+        feedback_date,
+      </if>
+      <if test="startTime != null" >
+        start_time,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+      <if test="msiSurveyId != null" >
+        msi_survey_id,
+      </if>
+      <if test="visitor != null" >
+        visitor,
+      </if>
+      <if test="promoter != null" >
+        promoter,
+      </if>
+      <if test="promoterNo != null" >
+        promoter_no,
+      </if>
+      <if test="score != null" >
+        score,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="dataType != null" >
+        data_type,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="submitTime != null" >
+        submit_time,
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="onDuty != null" >
+        on_duty,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="feedbackId != null" >
+        #{feedbackId,jdbcType=VARCHAR},
+      </if>
+      <if test="clientUserId != null" >
+        #{clientUserId,jdbcType=INTEGER},
+      </if>
+      <if test="storeId != null" >
+        #{storeId,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbackDate != null" >
+        #{feedbackDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="msiSurveyId != null" >
+        #{msiSurveyId,jdbcType=INTEGER},
+      </if>
+      <if test="visitor != null" >
+        #{visitor,jdbcType=VARCHAR},
+      </if>
+      <if test="promoter != null" >
+        #{promoter,jdbcType=VARCHAR},
+      </if>
+      <if test="promoterNo != null" >
+        #{promoterNo,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="dataType != null" >
+        #{dataType,jdbcType=TINYINT},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=INTEGER},
+      </if>
+      <if test="submitTime != null" >
+        #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="onDuty != null" >
+      	#{onDuty,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.survey.po.MsiSurveyFeedback" >
+    update msi_survey_feedback
+    <set >
+      <if test="clientUserId != null" >
+        client_user_id = #{clientUserId,jdbcType=INTEGER},
+      </if>
+      <if test="storeId != null" >
+        store_id = #{storeId,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbackDate != null" >
+        feedback_date = #{feedbackDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="msiSurveyId != null" >
+        msi_survey_id = #{msiSurveyId,jdbcType=INTEGER},
+      </if>
+      <if test="visitor != null" >
+        visitor = #{visitor,jdbcType=VARCHAR},
+      </if>
+      <if test="promoter != null" >
+        promoter = #{promoter,jdbcType=VARCHAR},
+      </if>
+      <if test="promoterNo != null" >
+        promoter_no = #{promoterNo,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        score = #{score,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=INTEGER},
+      </if>
+      <if test="submitTime != null" >
+        submit_time = #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="onDuty != null" >
+        on_duty = #{onDuty,jdbcType=TINYINT},
+      </if>
+      <if test="dataType != null" >
+        data_type = #{dataType,jdbcType=TINYINT},
+      </if>
+    </set>
+    where feedback_id = #{feedbackId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.survey.po.MsiSurveyFeedback" >
+    update msi_survey_feedback
+    set client_user_id = #{clientUserId,jdbcType=INTEGER},
+      store_id = #{storeId,jdbcType=VARCHAR},
+      feedback_date = #{feedbackDate,jdbcType=TIMESTAMP},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      msi_survey_id = #{msiSurveyId,jdbcType=INTEGER},
+      visitor = #{visitor,jdbcType=VARCHAR},
+      promoter = #{promoter,jdbcType=VARCHAR},
+      promoter_no = #{promoterNo,jdbcType=VARCHAR},
+      score = #{score,jdbcType=DECIMAL},
+      status = #{status,jdbcType=TINYINT},
+      data_type = #{#dataType,jdbcType=TINYINT},
+      client_id = #{clientId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=INTEGER},
+      submit_time = #{submitTime,jdbcType=TIMESTAMP},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where feedback_id = #{feedbackId,jdbcType=VARCHAR}
+  </update>
+  
+  <sql id="Query_Column_List">
+  	<if test="msiSurveyId !=null and msiSurveyId !=''">
+  		AND msf.msi_survey_id = #{msiSurveyId}  
+  	</if>
+	<if test="storeName != null and storeName != ''">
+		AND s.store_name LIKE CONCAT('%',#{storeName},'%') 
+	</if>
+	<if test="storeNo != null and storeNo != ''">
+		AND s.store_no LIKE CONCAT('%',#{storeNo},'%') 
+	</if>
+	<if test="promoter != null and promoter != ''">
+		AND msf.promoter LIKE CONCAT('%',#{promoter},'%') 
+	</if>
+	<if test="visitor != null and visitor != ''">
+		AND msf.visitor LIKE CONCAT('%',#{visitor},'%') 
+	</if>
+	<if test="provinceId != null and provinceId !='' " >
+        and s.province_id = #{provinceId}
+    </if>
+    <if test="cityId != null and cityId !='' ">
+    	and s.city_id = #{cityId}
+    </if>
+   	<if test="deptIds != null">
+   		and FIND_IN_SET(s.client_structure_id,#{deptIds})>0
+	</if>
+	<if test="createBy != null">
+		AND msf.create_by = #{createBy}
+	</if>
+	<if test="startDate != null ">
+		<![CDATA[AND msf.feedback_date >= #{startDate}]]>
+	</if>
+	<if test="endDate != null ">
+		<![CDATA[AND msf.feedback_date <= #{endDate}]]>
+	</if>
+  </sql>
+  
+  	<select id="queryTotalCount" parameterType="java.util.Map" resultType="Integer">
+	  	SELECT count(*)
+		FROM msi_survey_feedback msf
+		LEFT JOIN store s ON msf.store_id = s.store_id AND s.client_id = #{clientId}
+		LEFT JOIN client_user cu ON msf.create_by = cu.client_user_id AND cu.client_id = #{clientId}
+		WHERE msf.client_id = #{clientId} AND msf.is_delete = 0 and msf.status = 0
+		<include refid="Query_Column_List" />
+	</select>
+	
+	<select id="queryAppleTotalCount" parameterType="java.util.Map" resultType="Integer">
+	  	SELECT count(*)
+		FROM msi_survey_feedback msf
+		LEFT JOIN store s ON msf.store_id = s.store_id AND s.client_id = #{clientId}
+		LEFT JOIN client_user cu ON msf.create_by = cu.client_user_id AND cu.client_id = #{clientId}
+		WHERE msf.client_id = #{clientId} AND msf.is_delete = 0 and msf.data_type = 1
+		<include refid="Query_Column_List" />
+	</select>
+	
+	<select id="findAppleListByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+		SELECT msf.*,s.store_no AS storeNo,s.store_name AS storeName,s.addr AS addr,cu.name AS createUserName
+		FROM msi_survey_feedback msf 
+		LEFT JOIN store s ON msf.store_id = s.store_id AND s.client_id = #{clientId}
+		LEFT JOIN client_user cu ON msf.create_by = cu.client_user_id AND cu.client_id = #{clientId}
+		WHERE msf.client_id = #{clientId} AND msf.is_delete = 0 and msf.data_type = 1
+		<include refid="Query_Column_List" />
+		ORDER BY msf.feedback_date DESC
+	<include refid="basic.mysqlPageSearchFoot"/>
+	</select>
+	
+	<select id="findListByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+		SELECT msf.*,s.store_no AS storeNo,s.store_name AS storeName,s.addr AS addr,cu.name AS createUserName
+		FROM msi_survey_feedback msf 
+		LEFT JOIN store s ON msf.store_id = s.store_id AND s.client_id = #{clientId}
+		LEFT JOIN client_user cu ON msf.create_by = cu.client_user_id AND cu.client_id = #{clientId}
+		WHERE msf.client_id = #{clientId} AND msf.is_delete = 0 
+		and msf.status = 0
+		<include refid="Query_Column_List" />
+		ORDER BY msf.feedback_date DESC
+	<include refid="basic.mysqlPageSearchFoot"/>
+	</select>
+	
+	<select id="findByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+	    select  msf.*, ms.point,ms.initial_score 
+	    from msi_survey_feedback msf inner join msi_survey ms on msf.msi_survey_id = ms.msi_survey_id 
+	    where feedback_id = #{feedbackId,jdbcType=VARCHAR} 
+    </select>
+    
+    <select id="getEntityByCycleDate" parameterType="java.util.Map" resultMap="BaseResultMap">
+    	select * from msi_survey_feedback msf where msf.client_user_id = #{clientUserId} and msf.client_id = #{clientId} 
+    	and msf.store_id = #{storeId} and msi_survey_id = #{msiSurveyId} and msf.is_delete = 0
+    	<![CDATA[AND msf.feedback_date >= #{beginDate}]]> 
+    	<![CDATA[AND msf.feedback_date <= #{endDate}]]>
+    </select>
+   	
+   	<select id="getMsiSurveyIdsByparams" parameterType="java.lang.Integer" resultType="java.lang.String">
+   		select group_concat(msf.msi_survey_id) from msi_survey msf where msf.client_id = #{clientId} and msf.is_delete = 0
+   	</select>
+   	
+   	<resultMap type="java.lang.String" id="titileMap"></resultMap>
+	<resultMap type="java.util.Map" id="dataMap"></resultMap>
+	<resultMap type="java.lang.String" id="titileMap2"></resultMap>
+	<resultMap type="java.util.Map" id="dataMap2"></resultMap>
+	
+ 	<select id="exportMsiSurveyFeedback" statementType="CALLABLE" parameterType="java.util.Map" resultMap="titileMap,dataMap,titileMap2,dataMap2">
+   		call sp_export_msi_data(#{clientId},#{clientUserIds},#{structureIds},
+		<if test="deptIds == null">''</if><if test="deptIds != null">#{deptIds}</if>,
+		<if test="storeNo == null">''</if><if test="storeNo != null">#{storeNo}</if>,
+		<if test="storeName == null">''</if><if test="storeName != null">#{storeName}</if>,
+		<if test="promoter == null">''</if><if test="promoter != null">#{promoter}</if>,
+    	<if test="provinceId == null">0</if><if test="provinceId != null">#{provinceId}</if>,
+		<if test="cityId == null">0</if><if test="cityId != null">#{cityId}</if>,
+		<if test="startTime == null">null</if><if test="startTime != null">#{startTime}</if>,
+		<if test="endTime == null">null</if><if test="endTime != null">#{endTime}</if>,#{msiSurveyIds});	
+   	</select>
+   	
+   	<select id="getMsiSurveyFeedbackCountByStoreId" parameterType="java.util.Map" resultType="cn.mobilizer.channel.survey.po.MsiSurveyFinishCount">
+   		 select count(1) as count,msf.msi_survey_id as surveyType,msf.survey_name as name from msi_survey msf inner join msi_survey_feedback msfd on msf.msi_survey_id = msfd.msi_survey_id 
+   		where msf.client_id = #{clientId} and msf.is_delete = 0 and msfd.is_delete = 0 and msf.msi_survey_id = #{msiSurveyType} and msfd.store_id = #{storeId} 
+   	</select>
+   	
+   	<select id="findApprovalDataByStoreIdAndDataType" parameterType="java.util.Map" resultMap="BaseResultMap">
+   		select * from msi_survey_feedback msf where msf.client_id = #{clientId} and msf.store_id = #{storeId} 
+   		and msf.msi_survey_id = #{msiSurveyId} and msf.is_delete = 0 and msf.data_type = #{dataType} limit 1
+   	</select>
+   	
+   	<select id="findMsiSurveyFeedbackByStoreId" parameterType="java.util.Map" resultMap="BaseResultMap">
+   		select * from msi_survey_feedback msf where msf.client_id = #{clientId} and msf.store_id = #{storeId} 
+   		and msi_survey_id = #{msiSurveyId} and msf.is_delete = 0 limit 1
+   	</select>
+   	
+   	<select id="findAppleExamFeedbackByStoreId" parameterType="java.util.Map" resultMap="BaseResultMap">
+   		select * from msi_survey_feedback msf where msf.client_id = #{clientId} and msf.store_id = #{storeId}
+   		and msi_survey_id = #{msiSurveyId} and msf.is_delete = 0 order by msf.create_time asc
+   	</select>
+</mapper>

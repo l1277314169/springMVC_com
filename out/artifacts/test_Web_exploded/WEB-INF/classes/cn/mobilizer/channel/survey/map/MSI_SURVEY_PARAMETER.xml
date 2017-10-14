@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="MSI_SURVEY_PARAMETER" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.survey.po.MsiSurveyParameter" >
+    <id column="msi_survey_parameter_id" property="msiSurveyParameterId" jdbcType="INTEGER" />
+    <result column="msi_question_id" property="msiQuestionId" jdbcType="INTEGER" />
+    <result column="parameter_name" property="parameterName" jdbcType="VARCHAR" />
+    <result column="parameter_value" property="parameterValue" jdbcType="INTEGER" />
+    <result column="control_type" property="controlType" jdbcType="INTEGER" />
+    <result column="option_name" property="optionName" jdbcType="VARCHAR" />
+    <result column="min_value" property="minValue" jdbcType="DECIMAL" />
+    <result column="max_value" property="maxValue" jdbcType="DECIMAL" />
+    <result column="default_value" property="defaultValue" jdbcType="VARCHAR" />
+    <result column="scale" property="scale" jdbcType="TINYINT" />
+    <result column="is_verify" property="isVerify" jdbcType="TINYINT" />
+    <result column="is_editable" property="isEditable" jdbcType="TINYINT" />
+    <result column="is_visible" property="isVisible" jdbcType="TINYINT" />
+    <result column="is_hidden" property="isHidden" jdbcType="TINYINT" />
+    <result column="sequence" property="sequence" jdbcType="INTEGER" />
+    <result column="col1" property="col1" jdbcType="VARCHAR" />
+    <result column="col2" property="col2" jdbcType="VARCHAR" />
+    <result column="col3" property="col3" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    msi_survey_parameter_id, msi_question_id, parameter_name, parameter_value, control_type, 
+    option_name, min_value, max_value, default_value, scale, is_verify, is_editable, 
+    is_visible, is_hidden, sequence, col1, col2, col3, client_id, create_time, last_update_time, 
+    is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from msi_survey_parameter
+    where msi_survey_parameter_id = #{msiSurveyParameterId,jdbcType=INTEGER} and is_delete = 0
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from msi_survey_parameter
+    where msi_survey_parameter_id = #{msiSurveyParameterId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.survey.po.MsiSurveyParameter" >
+    insert into msi_survey_parameter (msi_survey_parameter_id, msi_question_id, 
+      parameter_name, parameter_value, control_type, 
+      option_name, min_value, max_value, 
+      default_value, scale, is_verify, 
+      is_editable, is_visible, is_hidden, 
+      sequence, col1, col2, 
+      col3, client_id, create_time, 
+      last_update_time, is_delete)
+    values (#{msiSurveyParameterId,jdbcType=INTEGER}, #{msiQuestionId,jdbcType=INTEGER}, 
+      #{parameterName,jdbcType=VARCHAR}, #{parameterValue,jdbcType=INTEGER}, #{controlType,jdbcType=INTEGER}, 
+      #{optionName,jdbcType=VARCHAR}, #{minValue,jdbcType=DECIMAL}, #{maxValue,jdbcType=DECIMAL}, 
+      #{defaultValue,jdbcType=VARCHAR}, #{scale,jdbcType=TINYINT}, #{isVerify,jdbcType=TINYINT}, 
+      #{isEditable,jdbcType=TINYINT}, #{isVisible,jdbcType=TINYINT}, #{isHidden,jdbcType=TINYINT}, 
+      #{sequence,jdbcType=INTEGER}, #{col1,jdbcType=VARCHAR}, #{col2,jdbcType=VARCHAR}, 
+      #{col3,jdbcType=VARCHAR}, #{clientId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{lastUpdateTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.survey.po.MsiSurveyParameter" >
+    insert into msi_survey_parameter
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="msiSurveyParameterId != null" >
+        msi_survey_parameter_id,
+      </if>
+      <if test="msiQuestionId != null" >
+        msi_question_id,
+      </if>
+      <if test="parameterName != null" >
+        parameter_name,
+      </if>
+      <if test="parameterValue != null" >
+        parameter_value,
+      </if>
+      <if test="controlType != null" >
+        control_type,
+      </if>
+      <if test="optionName != null" >
+        option_name,
+      </if>
+      <if test="minValue != null" >
+        min_value,
+      </if>
+      <if test="maxValue != null" >
+        max_value,
+      </if>
+      <if test="defaultValue != null" >
+        default_value,
+      </if>
+      <if test="scale != null" >
+        scale,
+      </if>
+      <if test="isVerify != null" >
+        is_verify,
+      </if>
+      <if test="isEditable != null" >
+        is_editable,
+      </if>
+      <if test="isVisible != null" >
+        is_visible,
+      </if>
+      <if test="isHidden != null" >
+        is_hidden,
+      </if>
+      <if test="sequence != null" >
+        sequence,
+      </if>
+      <if test="col1 != null" >
+        col1,
+      </if>
+      <if test="col2 != null" >
+        col2,
+      </if>
+      <if test="col3 != null" >
+        col3,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="msiSurveyParameterId != null" >
+        #{msiSurveyParameterId,jdbcType=INTEGER},
+      </if>
+      <if test="msiQuestionId != null" >
+        #{msiQuestionId,jdbcType=INTEGER},
+      </if>
+      <if test="parameterName != null" >
+        #{parameterName,jdbcType=VARCHAR},
+      </if>
+      <if test="parameterValue != null" >
+        #{parameterValue,jdbcType=INTEGER},
+      </if>
+      <if test="controlType != null" >
+        #{controlType,jdbcType=INTEGER},
+      </if>
+      <if test="optionName != null" >
+        #{optionName,jdbcType=VARCHAR},
+      </if>
+      <if test="minValue != null" >
+        #{minValue,jdbcType=DECIMAL},
+      </if>
+      <if test="maxValue != null" >
+        #{maxValue,jdbcType=DECIMAL},
+      </if>
+      <if test="defaultValue != null" >
+        #{defaultValue,jdbcType=VARCHAR},
+      </if>
+      <if test="scale != null" >
+        #{scale,jdbcType=TINYINT},
+      </if>
+      <if test="isVerify != null" >
+        #{isVerify,jdbcType=TINYINT},
+      </if>
+      <if test="isEditable != null" >
+        #{isEditable,jdbcType=TINYINT},
+      </if>
+      <if test="isVisible != null" >
+        #{isVisible,jdbcType=TINYINT},
+      </if>
+      <if test="isHidden != null" >
+        #{isHidden,jdbcType=TINYINT},
+      </if>
+      <if test="sequence != null" >
+        #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="col1 != null" >
+        #{col1,jdbcType=VARCHAR},
+      </if>
+      <if test="col2 != null" >
+        #{col2,jdbcType=VARCHAR},
+      </if>
+      <if test="col3 != null" >
+        #{col3,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.survey.po.MsiSurveyParameter" >
+    update msi_survey_parameter
+    <set >
+      <if test="msiQuestionId != null" >
+        msi_question_id = #{msiQuestionId,jdbcType=INTEGER},
+      </if>
+      <if test="parameterName != null" >
+        parameter_name = #{parameterName,jdbcType=VARCHAR},
+      </if>
+      <if test="parameterValue != null" >
+        parameter_value = #{parameterValue,jdbcType=INTEGER},
+      </if>
+      <if test="controlType != null" >
+        control_type = #{controlType,jdbcType=INTEGER},
+      </if>
+      <if test="optionName != null" >
+        option_name = #{optionName,jdbcType=VARCHAR},
+      </if>
+      <if test="minValue != null" >
+        min_value = #{minValue,jdbcType=DECIMAL},
+      </if>
+      <if test="maxValue != null" >
+        max_value = #{maxValue,jdbcType=DECIMAL},
+      </if>
+      <if test="defaultValue != null" >
+        default_value = #{defaultValue,jdbcType=VARCHAR},
+      </if>
+      <if test="scale != null" >
+        scale = #{scale,jdbcType=TINYINT},
+      </if>
+      <if test="isVerify != null" >
+        is_verify = #{isVerify,jdbcType=TINYINT},
+      </if>
+      <if test="isEditable != null" >
+        is_editable = #{isEditable,jdbcType=TINYINT},
+      </if>
+      <if test="isVisible != null" >
+        is_visible = #{isVisible,jdbcType=TINYINT},
+      </if>
+      <if test="isHidden != null" >
+        is_hidden = #{isHidden,jdbcType=TINYINT},
+      </if>
+      <if test="sequence != null" >
+        sequence = #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="col1 != null" >
+        col1 = #{col1,jdbcType=VARCHAR},
+      </if>
+      <if test="col2 != null" >
+        col2 = #{col2,jdbcType=VARCHAR},
+      </if>
+      <if test="col3 != null" >
+        col3 = #{col3,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where msi_survey_parameter_id = #{msiSurveyParameterId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.survey.po.MsiSurveyParameter" >
+    update msi_survey_parameter
+    set msi_question_id = #{msiQuestionId,jdbcType=INTEGER},
+      parameter_name = #{parameterName,jdbcType=VARCHAR},
+      parameter_value = #{parameterValue,jdbcType=INTEGER},
+      control_type = #{controlType,jdbcType=INTEGER},
+      option_name = #{optionName,jdbcType=VARCHAR},
+      min_value = #{minValue,jdbcType=DECIMAL},
+      max_value = #{maxValue,jdbcType=DECIMAL},
+      default_value = #{defaultValue,jdbcType=VARCHAR},
+      scale = #{scale,jdbcType=TINYINT},
+      is_verify = #{isVerify,jdbcType=TINYINT},
+      is_editable = #{isEditable,jdbcType=TINYINT},
+      is_visible = #{isVisible,jdbcType=TINYINT},
+      is_hidden = #{isHidden,jdbcType=TINYINT},
+      sequence = #{sequence,jdbcType=INTEGER},
+      col1 = #{col1,jdbcType=VARCHAR},
+      col2 = #{col2,jdbcType=VARCHAR},
+      col3 = #{col3,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where msi_survey_parameter_id = #{msiSurveyParameterId,jdbcType=INTEGER}
+  </update>
+</mapper>

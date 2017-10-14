@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="CLIENT_USER_RELATION" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.base.po.ClientUserRelation" >
+    <id column="relation_id" property="relationId" jdbcType="INTEGER" />
+    <result column="client_user_id" property="clientUserId" jdbcType="INTEGER" />
+    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    relation_id, client_user_id, parent_id, client_id, create_time, last_update_time, 
+    is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from client_user_relation
+    where relation_id = #{relationId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from client_user_relation
+    where relation_id = #{relationId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.base.po.ClientUserRelation" >
+    insert into client_user_relation (relation_id, client_user_id, parent_id, 
+      client_id,
+      is_delete)
+    values (#{relationId,jdbcType=INTEGER}, #{clientUserId,jdbcType=INTEGER}, #{parentId,jdbcType=INTEGER}, 
+      #{clientId,jdbcType=INTEGER},
+      #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.base.po.ClientUserRelation" >
+    insert into client_user_relation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="relationId != null" >
+        relation_id,
+      </if>
+      <if test="clientUserId != null" >
+        client_user_id,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="relationId != null" >
+        #{relationId,jdbcType=INTEGER},
+      </if>
+      <if test="clientUserId != null" >
+        #{clientUserId,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.base.po.ClientUserRelation" >
+    update client_user_relation
+    <set >
+      <if test="clientUserId != null" >
+        client_user_id = #{clientUserId,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where relation_id = #{relationId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.base.po.ClientUserRelation" >
+    update client_user_relation
+    set client_user_id = #{clientUserId,jdbcType=INTEGER},
+      parent_id = #{parentId,jdbcType=INTEGER},
+      client_id = #{clientId,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where relation_id = #{relationId,jdbcType=INTEGER}
+  </update>
+  
+  <update id="updateIsdelete" parameterType="java.lang.Integer">
+   update CLIENT_USER_RELATION set is_delete = 1  where  client_user_id =#{client_user_id}
+  </update>
+  
+  <select id="selectOnById" resultMap="BaseResultMap" parameterType="java.util.Map">
+  select * from client_user_relation where client_user_id=#{ClientUserId} and parent_id=#{parentId}
+  </select>
+  
+  <update id="selectSubordinate" parameterType="java.lang.Integer" >
+    update  client_user_relation set is_delete= 1 where parent_id=#{clientUserId} or client_user_id = #{clientUserId}
+  </update>
+
+	<select id="selectSubordinates" parameterType="java.lang.String" resultType="java.lang.String">
+		select fn_get_user_child(#{ids})
+	</select>
+	
+	<select id="getSubordinatesWithOutSelf" parameterType="java.lang.String" resultType="java.lang.String">
+		select fn_get_user_subset(#{ids})
+	</select>
+	
+	<select id="getClientUserRelation"  parameterType="java.util.Map" resultMap="BaseResultMap">
+		select * from client_user_relation cr where cr.client_user_id = #{clientUserId} and cr.is_delete = 0 and client_id=#{clientId}
+	</select>
+	
+	<update id="findClientUserRelationByParentId"  parameterType="java.util.Map" >
+		update client_user_relation cr set cr.parent_id = #{parentId} where FIND_IN_SET(cr.client_user_id,#{clientUserId})>0 and cr.is_delete = 0 and cr.client_id=#{clientId}
+	</update>
+	<select id="findchildByParentId"  parameterType="java.util.Map" resultMap="BaseResultMap">
+		select GROUP_CONCAT(cr.client_user_id) as childAll from client_user_relation cr where cr.parent_id = #{clientUserId} and cr.is_delete = 0 and cr.client_id=#{clientId}
+	</select>
+	<select id="findDirectChilds" parameterType="java.util.Map" resultType="java.lang.String">
+		select GROUP_CONCAT(client_user_id) from client_user_relation where  parent_id=#{parentId} and client_id = #{clientId} and is_delete = 0
+	</select>
+	<update id="updateAllIsdelete" parameterType="java.util.Map">
+		  update CLIENT_USER_RELATION set is_delete = 1  where 1=1 
+		  <if test="clientUserId != null">
+		 	and  parent_id = #{clientUserId}
+		 </if>
+			and FIND_IN_SET(client_user_id,#{hiddenClientUserIds})>0 and client_id = #{clientId}
+	</update>
+	
+	<select id="findClientUserRelation" parameterType="java.util.Map" resultMap="BaseResultMap">
+		 select * from client_user_relation where 1=1
+		 <if test="clientId != null">
+			 and  client_id = #{clientId} 
+		 </if>
+		 <if test="clientUserIds != null">
+		 	and client_user_id = #{clientUserIds}
+		 </if>
+		 <if test="parentId != null">
+		 	and parent_id = #{parentId}
+		 </if>
+	</select>
+	
+	<select id="findClientUserRelationList" parameterType="java.util.Map" resultMap="BaseResultMap">
+		 select * from client_user_relation where 1=1
+		 <if test="clientId != null">
+			 and  client_id = #{clientId} 
+		 </if>
+		 <if test="clientUserIds != null">
+		 	and client_user_id = #{clientUserIds}
+		 </if>
+		 ORDER BY is_delete LIMIT 0,1
+	</select>
+	
+	<select id="findUserIdsByParentId" parameterType="java.lang.Integer" resultType="java.lang.String">
+		select GROUP_CONCAT(cur.client_user_id) from client_user_relation cur where cur.parent_id = #{clientUserId} and cur.is_delete = 0 
+	</select>
+	
+	<insert id="insertList">
+		insert into client_user_relation (client_user_id, parent_id, client_id) values
+		<foreach collection="list" index="index" item="item" separator=",">
+			(#{item.clientUserId},#{item.parentId},#{item.clientId})		
+		</foreach>
+	</insert>
+	
+</mapper>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+           
+ 	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+ 	
+ 	<context:annotation-config />
+ 	
+ 	<context:component-scan base-package="cn.mobilizer.channel, cn.mobilizer.channel.comm.dao">  
+ 		 <!-- 排除channel目录下Controller的service注入 -->         
+		 <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+	
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath*:jdbc-base.properties</value>
+				<value>classpath*:jdbc-report.properties</value>
+				<value>classpath*:jdbc-log.properties</value>
+				<value>classpath*:const.properties</value>
+				<value>classpath*:quartz.properties</value>
+				<value>classpath*:shiro.properties</value>
+				<!-- <value>classpath*:jms.properties</value> -->
+			</list>
+		</property>
+	</bean>
+	
+	<import resource="classpath*:applicationContext-channelPlus-database.xml" />
+	<!--<import resource="classpath*:applicationContext-channelPlus-shiro.xml" />-->
+	<!--<import resource="classpath*:applicationContext-channelPlus-trigger.xml"/>-->
+	<!-- <import resource="classpath*:applicationContext-comm-jms.xml"/>
+	<import resource="classpath*:applicationContext-channelplus-processer.xml"/> -->
+	
+	<bean class="cn.mobilizer.channel.comm.utils.SpringContextHolder" lazy-init="false" />
+	 
+	<!-- 初始化options -->
+	<bean id="initOptionsBean" class="cn.mobilizer.channel.comm.init.InitOptionsBean">
+	</bean>
+	<!-- 初始化client_business_definition -->
+	<bean id="initBusinessDefinitionBean" class="cn.mobilizer.channel.comm.init.InitBusinessDefinitionBean">
+	</bean>
+	
+	<!-- 初始化Excel导入验证类 -->
+	<bean id="importDataValidataManager" class="cn.mobilizer.channel.importData.validata.ImportDataValidataManager">
+		<!-- 通过key-value的形式来关联导入验证类 -->  
+	    <property name="validataManager"> 
+	    	 <!-- key为导入的表名 --> 
+	        <map>
+	            <entry value-ref="importStoreValidata" key="store"></entry>   
+	        </map>  
+	    </property> 
+	</bean>
+</beans>

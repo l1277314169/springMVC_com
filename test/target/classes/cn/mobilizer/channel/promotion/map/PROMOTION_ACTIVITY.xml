@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="PROMOTION_ACTIVITY" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.promotion.po.PromotionActivity">
+    <id column="activity_id" property="activityId" jdbcType="INTEGER" />
+    <result column="activity_no" property="activityNo" jdbcType="VARCHAR" />
+    <result column="activity_name" property="activityName" jdbcType="VARCHAR" />
+    <result column="activity_name_en" property="activityNameEn" jdbcType="VARCHAR" />
+    <result column="activity_content" property="activityContent" jdbcType="VARCHAR" />
+    <result column="activity_type" property="activityType" jdbcType="TINYINT" />
+    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="discount" property="discount" jdbcType="DECIMAL" />
+    <result column="bonus" property="bonus" jdbcType="DECIMAL" />
+    <result column="min_quantity" property="minQuantity" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    activity_id, activity_no, activity_name, activity_name_en, activity_content, activity_type, 
+    start_time, end_time, discount, bonus, min_quantity, remark, client_id,  is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from promotion_activity
+    where activity_id = #{activityId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from promotion_activity
+    where activity_id = #{activityId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.promotion.po.PromotionActivity" >
+    insert into promotion_activity (activity_id, activity_no, activity_name, 
+      activity_name_en, activity_content, activity_type, 
+      start_time, end_time, discount, 
+      bonus, min_quantity, remark, 
+      is_delete)
+    values (#{activityId,jdbcType=INTEGER}, #{activityNo,jdbcType=VARCHAR}, #{activityName,jdbcType=VARCHAR}, 
+      #{activityNameEn,jdbcType=VARCHAR}, #{activityContent,jdbcType=VARCHAR}, #{activityType,jdbcType=TINYINT}, 
+      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{discount,jdbcType=DECIMAL}, 
+      #{bonus,jdbcType=DECIMAL}, #{minQuantity,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
+      #{clientId,jdbcType=INTEGER},
+      #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.promotion.po.PromotionActivity" >
+    insert into promotion_activity
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="activityId != null" >
+        activity_id,
+      </if>
+      <if test="activityNo != null" >
+        activity_no,
+      </if>
+      <if test="activityName != null" >
+        activity_name,
+      </if>
+      <if test="activityNameEn != null" >
+        activity_name_en,
+      </if>
+      <if test="activityContent != null" >
+        activity_content,
+      </if>
+      <if test="activityType != null" >
+        activity_type,
+      </if>
+      <if test="startTime != null" >
+        start_time,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+      <if test="discount != null" >
+        discount,
+      </if>
+      <if test="bonus != null" >
+        bonus,
+      </if>
+      <if test="minQuantity != null" >
+        min_quantity,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="activityId != null" >
+        #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="activityNo != null" >
+        #{activityNo,jdbcType=VARCHAR},
+      </if>
+      <if test="activityName != null" >
+        #{activityName,jdbcType=VARCHAR},
+      </if>
+      <if test="activityNameEn != null" >
+        #{activityNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="activityContent != null" >
+        #{activityContent,jdbcType=VARCHAR},
+      </if>
+      <if test="activityType != null" >
+        #{activityType,jdbcType=TINYINT},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="discount != null" >
+        #{discount,jdbcType=DECIMAL},
+      </if>
+      <if test="bonus != null" >
+        #{bonus,jdbcType=DECIMAL},
+      </if>
+      <if test="minQuantity != null" >
+        #{minQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.promotion.po.PromotionActivity" >
+    update promotion_activity
+    <set >
+      <if test="activityNo != null" >
+        activity_no = #{activityNo,jdbcType=VARCHAR},
+      </if>
+      <if test="activityName != null" >
+        activity_name = #{activityName,jdbcType=VARCHAR},
+      </if>
+      <if test="activityNameEn != null" >
+        activity_name_en = #{activityNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="activityContent != null" >
+        activity_content = #{activityContent,jdbcType=VARCHAR},
+      </if>
+      <if test="activityType != null" >
+        activity_type = #{activityType,jdbcType=TINYINT},
+      </if>
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="discount != null" >
+        discount = #{discount,jdbcType=DECIMAL},
+      </if>
+      <if test="bonus != null" >
+        bonus = #{bonus,jdbcType=DECIMAL},
+      </if>
+      <if test="minQuantity != null" >
+        min_quantity = #{minQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where activity_id = #{activityId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.promotion.po.PromotionActivity" >
+    update promotion_activity
+    set activity_no = #{activityNo,jdbcType=VARCHAR},
+      activity_name = #{activityName,jdbcType=VARCHAR},
+      activity_name_en = #{activityNameEn,jdbcType=VARCHAR},
+      activity_content = #{activityContent,jdbcType=VARCHAR},
+      activity_type = #{activityType,jdbcType=TINYINT},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      discount = #{discount,jdbcType=DECIMAL},
+      bonus = #{bonus,jdbcType=DECIMAL},
+      min_quantity = #{minQuantity,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where activity_id = #{activityId,jdbcType=INTEGER}
+  </update>
+  
+      <sql id="Base_Query_Column_List" >
+      <if test="clientId != null and clientId !=''">
+			and p.client_id = #{clientId}
+	  </if>
+	  <if test="activityName != null and activityName != ''">
+			and p.activity_name like CONCAT('%',#{activityName},'%') 
+	  </if>
+	   <if test="activityType != null and activityType != ''">
+			and p.activity_type = #{activityType}
+	  </if>
+      <if test="isDelete != null" >
+       		and p.is_delete = #{isDelete}
+      </if>
+      <if test="isDelete == null" >
+       		and p.is_delete = 0
+      </if>
+  </sql>
+  
+   
+  	<select id="queryTotalCount" parameterType="java.util.Map" resultType="Integer">
+		select  count(1)
+		from PROMOTION_ACTIVITY p
+	     where 1=1
+		<include refid="Base_Query_Column_List" />
+	</select>
+  
+  
+  <select id="findListByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from PROMOTION_ACTIVITY  p
+		where 1=1
+		<include refid="Base_Query_Column_List" />
+		<include refid="basic.mysqlPageSearchFoot"/> 
+	</select>
+</mapper>

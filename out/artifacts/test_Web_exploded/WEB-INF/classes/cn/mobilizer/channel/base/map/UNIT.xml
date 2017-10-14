@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="UNIT" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.base.po.Unit" >
+    <id column="unit_id" property="unitId" jdbcType="INTEGER" />
+    <result column="unit_group_name" property="unitGroupName" jdbcType="VARCHAR" />
+    <result column="sub_unit_name" property="subUnitName" jdbcType="VARCHAR" />
+    <result column="sub_unit_name_en" property="subUnitNameEn" jdbcType="VARCHAR" />
+    <result column="sub_unit_status" property="subUnitStatus" jdbcType="TINYINT" />
+    <result column="unit_name" property="unitName" jdbcType="VARCHAR" />
+    <result column="unit_name_en" property="unitNameEn" jdbcType="VARCHAR" />
+    <result column="unit_status" property="unitStatus" jdbcType="INTEGER" />
+    <result column="super_unit_name" property="superUnitName" jdbcType="VARCHAR" />
+    <result column="super_unit_name_en" property="superUnitNameEn" jdbcType="VARCHAR" />
+    <result column="super_unit_status" property="superUnitStatus" jdbcType="INTEGER" />
+    <result column="to_sub_unit" property="toSubUnit" jdbcType="INTEGER" />
+    <result column="super_to_sub_unit" property="superToSubUnit" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    unit_id, unit_group_name, sub_unit_name, sub_unit_name_en, sub_unit_status, unit_name, 
+    unit_name_en, unit_status, super_unit_name, super_unit_name_en, super_unit_status, 
+    to_sub_unit, super_to_sub_unit, remark, client_id, create_time, last_update_time, 
+    is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from unit
+    where unit_id = #{unitId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from unit
+    where unit_id = #{unitId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.base.po.Unit" >
+    insert into unit (unit_id, unit_group_name, sub_unit_name, 
+      sub_unit_name_en, sub_unit_status, unit_name, 
+      unit_name_en, unit_status, super_unit_name, 
+      super_unit_name_en, super_unit_status, to_sub_unit, 
+      super_to_sub_unit, remark, client_id, 
+      is_delete
+      )
+    values (#{unitId,jdbcType=INTEGER}, #{unitGroupName,jdbcType=VARCHAR}, #{subUnitName,jdbcType=VARCHAR}, 
+      #{subUnitNameEn,jdbcType=VARCHAR}, #{subUnitStatus,jdbcType=TINYINT}, #{unitName,jdbcType=VARCHAR}, 
+      #{unitNameEn,jdbcType=VARCHAR}, #{unitStatus,jdbcType=INTEGER}, #{superUnitName,jdbcType=VARCHAR}, 
+      #{superUnitNameEn,jdbcType=VARCHAR}, #{superUnitStatus,jdbcType=INTEGER}, #{toSubUnit,jdbcType=INTEGER}, 
+      #{superToSubUnit,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{clientId,jdbcType=INTEGER}, 
+      #{isDelete,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.base.po.Unit" >
+    insert into unit
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="unitId != null" >
+        unit_id,
+      </if>
+      <if test="unitGroupName != null" >
+        unit_group_name,
+      </if>
+      <if test="subUnitName != null" >
+        sub_unit_name,
+      </if>
+      <if test="subUnitNameEn != null" >
+        sub_unit_name_en,
+      </if>
+      <if test="subUnitStatus != null" >
+        sub_unit_status,
+      </if>
+      <if test="unitName != null" >
+        unit_name,
+      </if>
+      <if test="unitNameEn != null" >
+        unit_name_en,
+      </if>
+      <if test="unitStatus != null" >
+        unit_status,
+      </if>
+      <if test="superUnitName != null" >
+        super_unit_name,
+      </if>
+      <if test="superUnitNameEn != null" >
+        super_unit_name_en,
+      </if>
+      <if test="superUnitStatus != null" >
+        super_unit_status,
+      </if>
+      <if test="toSubUnit != null" >
+        to_sub_unit,
+      </if>
+      <if test="superToSubUnit != null" >
+        super_to_sub_unit,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="unitId != null" >
+        #{unitId,jdbcType=INTEGER},
+      </if>
+      <if test="unitGroupName != null" >
+        #{unitGroupName,jdbcType=VARCHAR},
+      </if>
+      <if test="subUnitName != null" >
+        #{subUnitName,jdbcType=VARCHAR},
+      </if>
+      <if test="subUnitNameEn != null" >
+        #{subUnitNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="subUnitStatus != null" >
+        #{subUnitStatus,jdbcType=TINYINT},
+      </if>
+      <if test="unitName != null" >
+        #{unitName,jdbcType=VARCHAR},
+      </if>
+      <if test="unitNameEn != null" >
+        #{unitNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="unitStatus != null" >
+        #{unitStatus,jdbcType=INTEGER},
+      </if>
+      <if test="superUnitName != null" >
+        #{superUnitName,jdbcType=VARCHAR},
+      </if>
+      <if test="superUnitNameEn != null" >
+        #{superUnitNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="superUnitStatus != null" >
+        #{superUnitStatus,jdbcType=INTEGER},
+      </if>
+      <if test="toSubUnit != null" >
+        #{toSubUnit,jdbcType=INTEGER},
+      </if>
+      <if test="superToSubUnit != null" >
+        #{superToSubUnit,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.base.po.Unit" >
+    update unit
+    <set >
+      <if test="unitGroupName != null" >
+        unit_group_name = #{unitGroupName,jdbcType=VARCHAR},
+      </if>
+      <if test="subUnitName != null" >
+        sub_unit_name = #{subUnitName,jdbcType=VARCHAR},
+      </if>
+      <if test="subUnitNameEn != null" >
+        sub_unit_name_en = #{subUnitNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="subUnitStatus != null" >
+        sub_unit_status = #{subUnitStatus,jdbcType=TINYINT},
+      </if>
+      <if test="unitName != null" >
+        unit_name = #{unitName,jdbcType=VARCHAR},
+      </if>
+      <if test="unitNameEn != null" >
+        unit_name_en = #{unitNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="unitStatus != null" >
+        unit_status = #{unitStatus,jdbcType=INTEGER},
+      </if>
+      <if test="superUnitName != null" >
+        super_unit_name = #{superUnitName,jdbcType=VARCHAR},
+      </if>
+      <if test="superUnitNameEn != null" >
+        super_unit_name_en = #{superUnitNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="superUnitStatus != null" >
+        super_unit_status = #{superUnitStatus,jdbcType=INTEGER},
+      </if>
+      <if test="toSubUnit != null" >
+        to_sub_unit = #{toSubUnit,jdbcType=INTEGER},
+      </if>
+      <if test="superToSubUnit != null" >
+        super_to_sub_unit = #{superToSubUnit,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where unit_id = #{unitId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.base.po.Unit" >
+    update unit
+    set unit_group_name = #{unitGroupName,jdbcType=VARCHAR},
+      sub_unit_name = #{subUnitName,jdbcType=VARCHAR},
+      sub_unit_name_en = #{subUnitNameEn,jdbcType=VARCHAR},
+      sub_unit_status = #{subUnitStatus,jdbcType=TINYINT},
+      unit_name = #{unitName,jdbcType=VARCHAR},
+      unit_name_en = #{unitNameEn,jdbcType=VARCHAR},
+      unit_status = #{unitStatus,jdbcType=INTEGER},
+      super_unit_name = #{superUnitName,jdbcType=VARCHAR},
+      super_unit_name_en = #{superUnitNameEn,jdbcType=VARCHAR},
+      super_unit_status = #{superUnitStatus,jdbcType=INTEGER},
+      to_sub_unit = #{toSubUnit,jdbcType=INTEGER},
+      super_to_sub_unit = #{superToSubUnit,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where unit_id = #{unitId,jdbcType=INTEGER}
+  </update>
+  
+      <sql id="Base_Query_Column_List" >
+	  <if test="clientId != null" >
+      		and client_id = #{clientId}
+      </if>
+      <if test="isDelete != null" >
+       		and is_delete = #{isDelete}
+      </if>
+      <if test="isDelete == null" >
+       		and is_delete = 0
+      </if>
+  </sql>
+  <select id="select_by_param" resultMap="BaseResultMap" parameterType="java.util.Map">
+	select *
+	from unit  
+	where 1=1
+	<include refid="Base_Query_Column_List" />
+  </select>
+</mapper>

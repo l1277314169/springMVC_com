@@ -1,0 +1,1739 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="STORE">
+	<resultMap id="BaseResultMap" type="cn.mobilizer.channel.base.po.Store">
+		<id column="store_id" property="storeId" jdbcType="CHAR" />
+		<result column="store_no" property="storeNo" jdbcType="VARCHAR" />
+		<result column="store_name" property="storeName" jdbcType="VARCHAR" />
+		<result column="banner_photo" property="bannerPhoto" jdbcType="VARCHAR" />
+		<result column="channel_id" property="channelId" jdbcType="INTEGER" />
+		<result column="chain_id" property="chainId" jdbcType="INTEGER" />
+		<result column="province_id" property="provinceId" jdbcType="INTEGER" />
+		<result column="city_id" property="cityId" jdbcType="INTEGER" />
+		<result column="district_id" property="districtId" jdbcType="INTEGER" />
+		<result column="addr" property="addr" jdbcType="VARCHAR" />
+		<result column="longitude" property="longitude" jdbcType="VARCHAR" />
+		<result column="latitude" property="latitude" jdbcType="VARCHAR" />
+		<result column="client_structure_id" property="clientStructureId"
+			jdbcType="INTEGER" />
+		<result column="status" property="status" jdbcType="TINYINT" />
+		<result column="store_type" property="storeType" jdbcType="INTEGER" />
+		<result column="credit_period" property="creditPeriod"
+			jdbcType="INTEGER" />
+		<result column="credit_line" property="creditLine" jdbcType="DECIMAL" />
+		<result column="distributor_id" property="distributorId"
+			jdbcType="INTEGER" />
+		<result column="store_group_id" property="storeGroupId"
+			jdbcType="INTEGER" />
+		<result column="external_no" property="externalNo" jdbcType="VARCHAR" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+		<result column="client_id" property="clientId" jdbcType="INTEGER" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="last_update_time" property="lastUpdateTime"
+			jdbcType="TIMESTAMP" />
+		<result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+		<result column="contact" property="contact" jdbcType="VARCHAR" />
+		<result column="telephone_no" property="telephoneNo" jdbcType="VARCHAR" />
+		<result column="mobile_no" property="mobileNo" jdbcType="VARCHAR" />
+		<result column="fax" property="fax" jdbcType="VARCHAR" />
+		<!--关联client_structure表得来，改字段不要放入Base_Column_List -->
+		<result column="structure_name" property="structureName"
+			jdbcType="VARCHAR" />
+		<!--关联channel_name表得来，改字段不要放入Base_Column_List -->
+		<result column="channel_name" property="channelName" jdbcType="VARCHAR" />
+		<!-- 关联中间映射STORE_USER_MAPPING 表 -->
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="client_user_id" property="clientUserId"
+			jdbcType="INTEGER" />
+		<!-- 关联distributor表 -->
+		<result column="distributor_name" property="distributorName"
+			jdbcType="VARCHAR" />
+		<result column="isChecked" property="isChecked" jdbcType="INTEGER" />
+		<result column="cnt" property="cnt" jdbcType="INTEGER" />
+	</resultMap>
+	<resultMap id="BaseResultMapSingle" type="cn.mobilizer.channel.base.vo.StoreSingle">
+		<id column="store_id" property="storeId" jdbcType="CHAR" />
+		<result column="store_no" property="storeNo" jdbcType="VARCHAR" />
+		<result column="store_name" property="storeName" jdbcType="VARCHAR" />
+		<result column="banner_photo" property="bannerPhoto" jdbcType="VARCHAR" />
+		<result column="channel_id" property="channelId" jdbcType="INTEGER" />
+		<result column="chain_id" property="chainId" jdbcType="INTEGER" />
+		<result column="province_id" property="provinceId" jdbcType="INTEGER" />
+		<result column="city_id" property="cityId" jdbcType="INTEGER" />
+		<result column="district_id" property="districtId" jdbcType="INTEGER" />
+		<result column="addr" property="addr" jdbcType="VARCHAR" />
+		<result column="longitude" property="longitude" jdbcType="VARCHAR" />
+		<result column="latitude" property="latitude" jdbcType="VARCHAR" />
+		<result column="client_structure_id" property="clientStructureId"
+			jdbcType="INTEGER" />
+		<result column="status" property="status" jdbcType="TINYINT" />
+		<result column="credit_period" property="creditPeriod"
+			jdbcType="INTEGER" />
+		<result column="credit_line" property="creditLine" jdbcType="DECIMAL" />
+		<result column="distributor_id" property="distributorId"
+			jdbcType="INTEGER" />
+		<result column="store_group_id" property="storeGroupId"
+			jdbcType="INTEGER" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+		<result column="store_type" property="storeType" jdbcType="INTEGER" />
+		<result column="client_id" property="clientId" jdbcType="INTEGER" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="last_update_time" property="lastUpdateTime"
+			jdbcType="TIMESTAMP" />
+		<result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+		<result column="contact" property="contact" jdbcType="VARCHAR" />
+		<result column="telephone_no" property="telephoneNo" jdbcType="VARCHAR" />
+		<result column="mobile_no" property="mobileNo" jdbcType="VARCHAR" />
+		<result column="fax" property="fax" jdbcType="VARCHAR" />
+		<result column="external_no" property="externalNo" jdbcType="VARCHAR" />
+		<result column="keyName" property="keyName" jdbcType="VARCHAR" />
+	</resultMap>
+
+
+	<resultMap id="BaseResultStoreSearchVO" type="cn.mobilizer.channel.base.vo.StoreSearchVO">
+		<result column="store_id" property="strStoreId" jdbcType="VARCHAR" />
+		<result column="store_name" property="storeName" jdbcType="VARCHAR" />
+		<result column="store_no" property="storeNo" jdbcType="VARCHAR" />
+		<result column="chain_name" property="channelName" jdbcType="VARCHAR" />
+	</resultMap>
+
+
+
+
+
+	<sql id="Base_Column_List">
+		store_id, store_no, store_name, banner_photo, channel_id, chain_id,
+		province_id,
+		city_id, district_id, addr, longitude, latitude, client_structure_id, status,
+		store_type,credit_period,
+		credit_line, distributor_id, store_group_id,external_no, remark, client_id,
+		create_time, last_update_time,
+		is_delete, contact, telephone_no, mobile_no, fax
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from store
+		where store_id = #{storeId,jdbcType=CHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from store
+		where store_id = #{storeId,jdbcType=CHAR}
+	</delete>
+	<insert id="insert" parameterType="cn.mobilizer.channel.base.po.Store">
+		insert into store (store_id, store_no, store_name,
+		banner_photo, channel_id, chain_id,
+		province_id, city_id, district_id,
+		addr, longitude, latitude,
+		client_structure_id, status, store_type,credit_period,
+		credit_line, distributor_id, store_group_id,
+		external_no,remark, client_id, is_delete, contact,
+		telephone_no, mobile_no, fax
+		)
+		values (#{storeId,jdbcType=CHAR}, #{storeNo,jdbcType=VARCHAR},
+		#{storeName,jdbcType=VARCHAR},
+		#{bannerPhoto,jdbcType=VARCHAR}, #{channelId,jdbcType=INTEGER}, #{chainId,jdbcType=INTEGER},
+		#{provinceId,jdbcType=INTEGER}, #{cityId,jdbcType=INTEGER},
+		#{districtId,jdbcType=INTEGER},
+		#{addr,jdbcType=VARCHAR}, #{longitude,jdbcType=VARCHAR}, #{latitude,jdbcType=VARCHAR},
+		#{clientStructureId,jdbcType=INTEGER}, #{status,jdbcType=TINYINT},
+		#{storeType,jdbcType=INTEGER},#{creditPeriod,jdbcType=INTEGER},
+		#{creditLine,jdbcType=DECIMAL}, #{distributorId,jdbcType=INTEGER},
+		#{storeGroupId,jdbcType=INTEGER},
+		#{externalNo,jdbcType=VARCHAR},#{remark,jdbcType=VARCHAR},
+		#{clientId,jdbcType=INTEGER}, #{isDelete,jdbcType=TINYINT},
+		#{contact,jdbcType=VARCHAR},
+		#{telephoneNo,jdbcType=VARCHAR}, #{mobileNo,jdbcType=VARCHAR}, #{fax,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="cn.mobilizer.channel.base.po.Store"
+		useGeneratedKeys="true" keyProperty="storeId">
+		insert into store
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="storeId != null">
+				store_id,
+			</if>
+			<if test="storeNo != null">
+				store_no,
+			</if>
+			<if test="storeName != null">
+				store_name,
+			</if>
+			<if test="bannerPhoto != null">
+				banner_photo,
+			</if>
+			<if test="channelId != null">
+				channel_id,
+			</if>
+			<if test="chainId != null">
+				chain_id,
+			</if>
+			<if test="provinceId != null">
+				province_id,
+			</if>
+			<if test="cityId != null">
+				city_id,
+			</if>
+			<if test="districtId != null">
+				district_id,
+			</if>
+			<if test="addr != null">
+				addr,
+			</if>
+			<if test="longitude != null">
+				longitude,
+			</if>
+			<if test="latitude != null">
+				latitude,
+			</if>
+			<if test="clientStructureId != null">
+				client_structure_id,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+			<if test="storeType != null">
+				store_type,
+			</if>
+			<if test="creditPeriod != null">
+				credit_period,
+			</if>
+			<if test="creditLine != null">
+				credit_line,
+			</if>
+			<if test="distributorId != null">
+				distributor_id,
+			</if>
+			<if test="storeGroupId != null">
+				store_group_id,
+			</if>
+			<if test="externalNo != null">
+				external_no,
+			</if>
+			<if test="remark != null">
+				remark,
+			</if>
+			<if test="clientId != null">
+				client_id,
+			</if>
+			<if test="isDelete != null">
+				is_delete,
+			</if>
+			<if test="contact != null">
+				contact,
+			</if>
+			<if test="telephoneNo != null">
+				telephone_no,
+			</if>
+			<if test="mobileNo != null">
+				mobile_no,
+			</if>
+			<if test="fax != null">
+				fax,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="storeId != null">
+				#{storeId,jdbcType=CHAR},
+			</if>
+			<if test="storeNo != null">
+				#{storeNo,jdbcType=VARCHAR},
+			</if>
+			<if test="storeName != null">
+				#{storeName,jdbcType=VARCHAR},
+			</if>
+			<if test="bannerPhoto != null">
+				#{bannerPhoto,jdbcType=VARCHAR},
+			</if>
+			<if test="channelId != null">
+				#{channelId,jdbcType=INTEGER},
+			</if>
+			<if test="chainId != null">
+				#{chainId,jdbcType=INTEGER},
+			</if>
+			<if test="provinceId != null">
+				#{provinceId,jdbcType=INTEGER},
+			</if>
+			<if test="cityId != null">
+				#{cityId,jdbcType=INTEGER},
+			</if>
+			<if test="districtId != null">
+				#{districtId,jdbcType=INTEGER},
+			</if>
+			<if test="addr != null">
+				#{addr,jdbcType=VARCHAR},
+			</if>
+			<if test="longitude != null">
+				#{longitude,jdbcType=VARCHAR},
+			</if>
+			<if test="latitude != null">
+				#{latitude,jdbcType=VARCHAR},
+			</if>
+			<if test="clientStructureId != null">
+				#{clientStructureId,jdbcType=INTEGER},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=TINYINT},
+			</if>
+			<if test="storeType != null">
+				#{storeType,jdbcType=INTEGER},
+			</if>
+			<if test="creditPeriod != null">
+				#{creditPeriod,jdbcType=INTEGER},
+			</if>
+			<if test="creditLine != null">
+				#{creditLine,jdbcType=DECIMAL},
+			</if>
+			<if test="distributorId != null">
+				#{distributorId,jdbcType=INTEGER},
+			</if>
+			<if test="storeGroupId != null">
+				#{storeGroupId,jdbcType=INTEGER},
+			</if>
+			<if test="externalNo != null">
+				#{externalNo,jdbcType=VARCHAR},
+			</if>
+			<if test="remark != null">
+				#{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="clientId != null">
+				#{clientId,jdbcType=INTEGER},
+			</if>
+			<if test="isDelete != null">
+				#{isDelete,jdbcType=TINYINT},
+			</if>
+			<if test="contact != null">
+				#{contact,jdbcType=VARCHAR},
+			</if>
+			<if test="telephoneNo != null">
+				#{telephoneNo,jdbcType=VARCHAR},
+			</if>
+			<if test="mobileNo != null">
+				#{mobileNo,jdbcType=VARCHAR},
+			</if>
+			<if test="fax != null">
+				#{fax,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.base.po.Store">
+		update store
+		<set>
+			<if test="storeNo != null">
+				store_no = #{storeNo,jdbcType=VARCHAR},
+			</if>
+			<if test="storeName != null">
+				store_name = #{storeName,jdbcType=VARCHAR},
+			</if>
+			<if test="bannerPhoto != null">
+				banner_photo = #{bannerPhoto,jdbcType=VARCHAR},
+			</if>
+			<if test="bannerPhoto == null">
+				banner_photo = #{bannerPhoto,jdbcType=VARCHAR},
+			</if>
+			<if test="channelId != null">
+				channel_id = #{channelId,jdbcType=INTEGER},
+			</if>
+			<if test="chainId != null">
+				chain_id = #{chainId,jdbcType=INTEGER},
+			</if>
+			<if test="provinceId != null">
+				province_id = #{provinceId,jdbcType=INTEGER},
+			</if>
+			<if test="provinceId == null">
+				province_id = #{provinceId,jdbcType=INTEGER},
+			</if>
+			<if test="cityId != null">
+				city_id = #{cityId,jdbcType=INTEGER},
+			</if>
+			<if test="cityId == null">
+				city_id = #{cityId,jdbcType=INTEGER},
+			</if>
+			<if test="districtId != null">
+				district_id = #{districtId,jdbcType=INTEGER},
+			</if>
+			<if test="districtId == null">
+				district_id = #{districtId,jdbcType=INTEGER},
+			</if>
+			<if test="addr != null">
+				addr = #{addr,jdbcType=VARCHAR},
+			</if>
+			<if test="longitude != null">
+				longitude = #{longitude,jdbcType=VARCHAR},
+			</if>
+			<if test="latitude != null">
+				latitude = #{latitude,jdbcType=VARCHAR},
+			</if>
+			<if test="clientStructureId != null">
+				client_structure_id = #{clientStructureId,jdbcType=INTEGER},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=TINYINT},
+			</if>
+			<if test="storeType != null">
+				store_type = #{storeType,jdbcType=INTEGER},
+			</if>
+			<if test="status == null">
+				status = #{status,jdbcType=TINYINT},
+			</if>
+			<if test="creditPeriod != null">
+				credit_period = #{creditPeriod,jdbcType=INTEGER},
+			</if>
+			<if test="creditLine != null">
+				credit_line = #{creditLine,jdbcType=DECIMAL},
+			</if>
+			<if test="distributorId != null">
+				distributor_id = #{distributorId,jdbcType=INTEGER},
+			</if>
+			<if test="storeGroupId != null">
+				store_group_id = #{storeGroupId,jdbcType=INTEGER},
+			</if>
+			<if test="externalNo != null">
+				external_no = #{externalNo,jdbcType=VARCHAR},
+			</if>
+			<if test="remark != null">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="clientId != null">
+				client_id = #{clientId,jdbcType=INTEGER},
+			</if>
+			<if test="isDelete != null">
+				is_delete = #{isDelete,jdbcType=TINYINT},
+			</if>
+			<if test="contact != null">
+				contact = #{contact,jdbcType=VARCHAR},
+			</if>
+			<if test="telephoneNo != null">
+				telephone_no = #{telephoneNo,jdbcType=VARCHAR},
+			</if>
+			<if test="mobileNo != null">
+				mobile_no = #{mobileNo,jdbcType=VARCHAR},
+			</if>
+			<if test="fax != null">
+				fax = #{fax,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where store_id = #{storeId,jdbcType=CHAR}
+	</update>
+	<update id="updateByPrimarySelective" parameterType="cn.mobilizer.channel.base.po.Store">
+		update store
+		<set>
+			<if test="storeNo != null">
+				store_no = #{storeNo,jdbcType=VARCHAR},
+			</if>
+			<if test="storeName != null">
+				store_name = #{storeName,jdbcType=VARCHAR},
+			</if>
+			<if test="bannerPhoto != null">
+				banner_photo = #{bannerPhoto,jdbcType=VARCHAR},
+			</if>
+			<if test="bannerPhoto == null">
+				banner_photo = #{bannerPhoto,jdbcType=VARCHAR},
+			</if>
+			<if test="channelId != null">
+				channel_id = #{channelId,jdbcType=INTEGER},
+			</if>
+			<if test="chainId != null">
+				chain_id = #{chainId,jdbcType=INTEGER},
+			</if>
+			<if test="provinceId != null">
+				province_id = #{provinceId,jdbcType=INTEGER},
+			</if>
+			<if test="provinceId == null">
+				province_id = #{provinceId,jdbcType=INTEGER},
+			</if>
+			<if test="cityId != null">
+				city_id = #{cityId,jdbcType=INTEGER},
+			</if>
+			<if test="cityId == null">
+				city_id = #{cityId,jdbcType=INTEGER},
+			</if>
+			<if test="districtId != null">
+				district_id = #{districtId,jdbcType=INTEGER},
+			</if>
+			<if test="districtId == null">
+				district_id = #{districtId,jdbcType=INTEGER},
+			</if>
+			<if test="addr != null">
+				addr = #{addr,jdbcType=VARCHAR},
+			</if>
+			<if test="longitude != null">
+				longitude = #{longitude,jdbcType=VARCHAR},
+			</if>
+			<if test="latitude != null">
+				latitude = #{latitude,jdbcType=VARCHAR},
+			</if>
+			<if test="clientStructureId != null">
+				client_structure_id = #{clientStructureId,jdbcType=INTEGER},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=TINYINT},
+			</if>
+			<if test="storeType != null">
+				store_type = #{storeType,jdbcType=INTEGER},
+			</if>
+			<if test="status == null">
+				status = #{status,jdbcType=TINYINT},
+			</if>
+			<if test="creditPeriod != null">
+				credit_period = #{creditPeriod,jdbcType=INTEGER},
+			</if>
+			<if test="creditLine != null">
+				credit_line = #{creditLine,jdbcType=DECIMAL},
+			</if>
+			<if test="distributorId != null">
+				distributor_id = #{distributorId,jdbcType=INTEGER},
+			</if>
+			<if test="storeGroupId != null">
+				store_group_id = #{storeGroupId,jdbcType=INTEGER},
+			</if>
+			<if test="externalNo != null">
+				external_no = #{externalNo,jdbcType=VARCHAR},
+			</if>
+			<if test="remark != null">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="clientId != null">
+				client_id = #{clientId,jdbcType=INTEGER},
+			</if>
+			<if test="isDelete != null">
+				is_delete = #{isDelete,jdbcType=TINYINT},
+			</if>
+			<if test="contact != null">
+				contact = #{contact,jdbcType=VARCHAR},
+			</if>
+			<if test="telephoneNo != null">
+				telephone_no = #{telephoneNo,jdbcType=VARCHAR},
+			</if>
+			<if test="mobileNo != null">
+				mobile_no = #{mobileNo,jdbcType=VARCHAR},
+			</if>
+			<if test="fax != null">
+				fax = #{fax,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where banner_photo = #{bannerPhoto,jdbcType=CHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.base.po.Store">
+		update store
+		set store_no = #{storeNo,jdbcType=VARCHAR},
+		store_name = #{storeName,jdbcType=VARCHAR},
+		banner_photo = #{bannerPhoto,jdbcType=VARCHAR},
+		channel_id = #{channelId,jdbcType=INTEGER},
+		chain_id = #{chainId,jdbcType=INTEGER},
+		province_id = #{provinceId,jdbcType=INTEGER},
+		city_id = #{cityId,jdbcType=INTEGER},
+		district_id = #{districtId,jdbcType=INTEGER},
+		addr = #{addr,jdbcType=VARCHAR},
+		longitude = #{longitude,jdbcType=VARCHAR},
+		latitude = #{latitude,jdbcType=VARCHAR},
+		client_structure_id = #{clientStructureId,jdbcType=INTEGER},
+		status = #{status,jdbcType=TINYINT},
+		store_type = #{storeType,jdbcType=INTEGER},
+		credit_period = #{creditPeriod,jdbcType=INTEGER},
+		credit_line = #{creditLine,jdbcType=DECIMAL},
+		distributor_id = #{distributorId,jdbcType=INTEGER},
+		store_group_id = #{storeGroupId,jdbcType=INTEGER},
+		external_no = #{externalNo,jdbcType=VARCHAR},
+		remark = #{remark,jdbcType=VARCHAR},
+		client_id = #{clientId,jdbcType=INTEGER},
+		is_delete = #{isDelete,jdbcType=TINYINT},
+		contact = #{contact,jdbcType=VARCHAR},
+		telephone_no = #{telephoneNo,jdbcType=VARCHAR},
+		mobile_no = #{mobileNo,jdbcType=VARCHAR},
+		fax = #{fax,jdbcType=VARCHAR}
+		where store_id = #{storeId,jdbcType=CHAR}
+	</update>
+
+	<sql id="select_by_param">
+		select
+		se.*, cs.structure_name as structureName ,cl.channel_name as
+		channelName
+		from STORE se
+		LEFT JOIN CLIENT_STRUCTURE cs ON
+		se.client_structure_id = cs.client_structure_id
+		LEFT JOIN CHANNEL cl ON
+		se.channel_id = cl.channel_id
+		where 1=1
+		<include refid="Base_Query_Column_List" />
+	</sql>
+
+	<sql id="Base_Query_Column_List">
+		<if test="clientId != null and clientId !=''">
+			and se.client_id = #{clientId}
+		</if>
+		<if test="isDelete != null">
+			and se.is_delete = #{isDelete}
+		</if>
+		<if test="storeName != null and storeName != ''">
+			and se.store_name like CONCAT('%',#{storeName},'%')
+		</if>
+		<if test="addr != null and addr != ''">
+			and se.store_name like CONCAT('%',#{addr},'%')
+		</if>
+	</sql>
+
+	<select id="queryTotalCount" parameterType="java.util.Map"
+		resultType="Integer">
+		SELECT count(*)
+		FROM (
+		<if test="subordinates != null and subordinates != '' ">
+			SELECT
+			a.store_id,a.client_id,a.store_name,a.store_no,a.addr,a.channel_id,a.distributor_id,a.status
+			FROM STORE a
+			INNER JOIN STORE_USER_MAPPING b ON b.store_id = a.store_id and b.is_delete
+			= 0 and a.is_delete = 0
+			and a.client_id = #{clientId}
+			and b.client_user_id in (${subordinates})
+		</if>
+		<if test="subordinates == null or subordinates == '' ">
+			SELECT
+			a.store_id,a.client_id,a.store_name,a.store_no,a.addr,a.channel_id,a.distributor_id,a.status
+			FROM STORE a where 1=0
+		</if>
+		union
+		<if test="subStructureId != null and subStructureId != '' ">
+			select
+			store_id,client_id,store_name,store_no,addr,channel_id,distributor_id,status
+			from store
+			where client_id=#{clientId}
+			and client_structure_id in (${subStructureId})
+			and is_delete=0
+		</if>
+		<if test="subStructureId == null or subStructureId == '' ">
+			select
+			store_id,client_id,store_name,store_no,addr,channel_id,distributor_id,status
+			from store where 1=0
+		</if>
+		) se
+		<if test="clientUserId != null">
+			INNER JOIN STORE_USER_MAPPING sum ON sum.store_id =
+			se.store_id and sum.is_delete = 0 and sum.client_user_id =
+			#{clientUserId}
+		</if>
+		WHERE 1 = 1
+		<include refid="Query_Column_List" />
+	</select>
+
+	<select id="findListByParams" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		SELECT a.*,
+		GROUP_CONCAT(IFNULL(cu.name,''),if(cp.position_name is null,'',concat('[',cp.position_name,']'))) AS names,
+		cs2.structure_name AS structureName,
+		cs1.structure_name AS upStructureName,
+		cl2.channel_name AS channelName,
+		cl1.channel_name AS upChannelName,
+		ch.chain_name AS chainName,
+		pro.province AS provinceName,
+		city.city AS cityName,
+		ds.distributor_name,
+		op.option_text AS storeTypeName
+		FROM (
+		SELECT se.* FROM (
+		<if test="subordinates != null and subordinates != '' ">
+			SELECT a.*
+			FROM STORE a
+			INNER JOIN STORE_USER_MAPPING b ON b.store_id = a.store_id and b.is_delete
+			= 0 and a.is_delete = 0 and a.client_id = #{clientId}
+			and b.client_user_id in (${subordinates})
+		</if>
+		<if test="subordinates == null or subordinates == '' ">
+			SELECT a.*
+			FROM STORE a where 1=0
+		</if>
+		union
+		<if test="subStructureId != null and subStructureId != '' ">
+			select *
+			from store
+			where client_id=#{clientId}
+			and client_structure_id in (${subStructureId})
+			and is_delete=0
+		</if>
+		<if test="subStructureId == null or subStructureId == '' ">
+			select *
+			from store where 1=0
+		</if>
+		) se
+		<if test="clientUserId != null">
+			inner join STORE_USER_MAPPING sum ON sum.store_id =
+			se.store_id and sum.is_delete = 0 and sum.client_user_id =
+			#{clientUserId}
+		</if>
+		WHERE se.is_delete = 0
+		<include refid="Query_Column_List" />
+		<include refid="basic.mysqlPageSearchFoot" />
+		) a
+		LEFT JOIN STORE_USER_MAPPING sum ON sum.store_id = a.store_id AND
+		sum.is_delete = 0
+		LEFT JOIN CLIENT_USER cu ON cu.client_user_id =
+		sum.client_user_id and cu.is_delete = 0
+		LEFT JOIN CLIENT_POSITION cp on
+		cu.client_position_id = cp.client_position_id
+		LEFT JOIN
+		CLIENT_STRUCTURE cs2 ON a.client_structure_id =
+		cs2.client_structure_id
+		LEFT JOIN CLIENT_STRUCTURE cs1 ON
+		cs1.client_structure_id = cs2.parent_id
+		LEFT JOIN CHANNEL cl2 ON
+		a.channel_id = cl2.channel_id
+		LEFT JOIN CHANNEL cl1 ON cl1.channel_id =
+		cl2.parent_id
+		LEFT JOIN CHAIN ch ON ch.chain_id = a.chain_id
+		LEFT JOIN
+		PROVINCE pro ON pro.province_id = a.province_id
+		LEFT JOIN CITY city ON
+		city.city_id = a.city_id
+		LEFT JOIN DISTRIBUTOR ds ON ds.distributor_id
+		= a.distributor_id
+		LEFT JOIN OPTIONS op ON op.option_value =
+		a.store_type and op.option_name = #{storeType} and op.is_delete = 0
+		and op.client_id = #{clientId}
+		GROUP BY a.store_id
+		ORDER BY
+		a.LAST_UPDATE_TIME DESC
+	</select>
+
+	<select id="queryAppleTotalCount" parameterType="java.util.Map"
+		resultType="Integer">
+		SELECT count(*)
+		FROM (
+		<if test="subordinates != null and subordinates != '' ">
+			SELECT
+			a.store_id,a.client_id,a.store_name,a.store_no,a.addr,a.channel_id,a.distributor_id,a.status
+			FROM STORE a
+			INNER JOIN STORE_USER_MAPPING b ON b.store_id = a.store_id and b.is_delete
+			= 0 and a.is_delete = 0
+			and a.client_id = #{clientId}
+			and b.client_user_id in (${subordinates})
+		</if>
+		<if test="subordinates == null or subordinates == '' ">
+			SELECT
+			a.store_id,a.client_id,a.store_name,a.store_no,a.addr,a.channel_id,a.distributor_id,a.status
+			FROM STORE a where 1=0
+		</if>
+		union
+		<if test="subStructureId != null and subStructureId != '' ">
+			select
+			store_id,client_id,store_name,store_no,addr,channel_id,distributor_id,status
+			from store
+			where client_id=#{clientId}
+			and client_structure_id in (${subStructureId})
+			and is_delete=0
+		</if>
+		<if test="subStructureId == null or subStructureId == '' ">
+			select
+			store_id,client_id,store_name,store_no,addr,channel_id,distributor_id,status
+			from store where 1=0
+		</if>
+		<if test="storeType !=null and storeType !=''">
+			and store_type = #{storeType}
+		</if>
+		) se
+		<if test="clientUserId != null">
+			INNER JOIN STORE_USER_MAPPING sum ON sum.store_id =
+			se.store_id and sum.is_delete = 0 and sum.client_user_id =
+			#{clientUserId}
+		</if>
+		WHERE 1 = 1
+		<include refid="Query_Column_List" />
+	</select>
+
+	<select id="findAppleListByParams" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		SELECT a.*,
+		GROUP_CONCAT(IFNULL(cu.name,''),if(cp.position_name is null,'',concat('[',cp.position_name,']'))) AS names,
+		cs2.structure_name AS structureName,
+		cs1.structure_name AS upStructureName,
+		cl2.channel_name AS channelName,
+		cl1.channel_name AS upChannelName,
+		ch.chain_name AS chainName,
+		pro.province AS provinceName,
+		city.city AS cityName,
+		ds.distributor_name,
+		op.option_text AS storeTypeName
+		FROM (
+		SELECT se.* FROM (
+		<if test="subordinates != null and subordinates != '' ">
+			SELECT a.*
+			FROM STORE a
+			INNER JOIN STORE_USER_MAPPING b ON b.store_id = a.store_id and b.is_delete
+			= 0 and a.is_delete = 0 and a.client_id = #{clientId}
+			and b.client_user_id in (${subordinates})
+		</if>
+		<if test="subordinates == null or subordinates == '' ">
+			SELECT a.*
+			FROM STORE a where 1=0
+		</if>
+		union
+		<if test="subStructureId != null and subStructureId != '' ">
+			select *
+			from store
+			where client_id=#{clientId}
+			and client_structure_id in (${subStructureId})
+			and is_delete=0
+		</if>
+		<if test="subStructureId == null or subStructureId == '' ">
+			select *
+			from store where 1=0
+		</if>
+		) se
+		<if test="clientUserId != null">
+			inner join STORE_USER_MAPPING sum ON sum.store_id =
+			se.store_id and sum.is_delete = 0 and sum.client_user_id =
+			#{clientUserId}
+		</if>
+		WHERE se.is_delete = 0
+		<if test="storeType !=null and storeType !=''">
+			and store_type = #{storeType}
+		</if>
+		<include refid="Query_Column_List" />
+		<include refid="basic.mysqlPageSearchFoot" />
+		) a
+		LEFT JOIN STORE_USER_MAPPING sum ON sum.store_id = a.store_id AND
+		sum.is_delete = 0
+		LEFT JOIN CLIENT_USER cu ON cu.client_user_id =
+		sum.client_user_id and cu.is_delete = 0
+		LEFT JOIN CLIENT_POSITION cp on
+		cu.client_position_id = cp.client_position_id
+		LEFT JOIN
+		CLIENT_STRUCTURE cs2 ON a.client_structure_id =
+		cs2.client_structure_id
+		LEFT JOIN CLIENT_STRUCTURE cs1 ON
+		cs1.client_structure_id = cs2.parent_id
+		LEFT JOIN CHANNEL cl2 ON
+		a.channel_id = cl2.channel_id
+		LEFT JOIN CHANNEL cl1 ON cl1.channel_id =
+		cl2.parent_id
+		LEFT JOIN CHAIN ch ON ch.chain_id = a.chain_id
+		LEFT JOIN
+		PROVINCE pro ON pro.province_id = a.province_id
+		LEFT JOIN CITY city ON
+		city.city_id = a.city_id
+		LEFT JOIN DISTRIBUTOR ds ON ds.distributor_id
+		= a.distributor_id
+		LEFT JOIN OPTIONS op ON op.option_value =
+		a.store_type and op.option_name = #{storeType} and op.is_delete = 0
+		and op.client_id = #{clientId}
+		GROUP BY a.store_id
+		ORDER BY
+		a.LAST_UPDATE_TIME DESC
+	</select>
+
+	<select id="replaceStoreCount" parameterType="java.util.Map"
+		resultType="Integer">
+		select count(1) from store se
+		INNER JOIN store_user_mapping b on b.store_id=se.store_id and b.is_delete =
+		0 and b.client_id = #{clientId}
+		INNER JOIN client_user cu on cu.client_user_id=b.client_user_id and
+		cu.is_delete = 0 and cu.client_id = #{clientId}
+		INNER JOIN CLIENT_STRUCTURE cs ON se.client_structure_id =
+		cs.client_structure_id and cs.is_delete = 0 and cs.client_id =
+		#{clientId}
+		and se.client_id = #{clientId} and se.status != 3
+		AND (FIND_IN_SET(se.client_structure_id,#{subStructureId})>0 or
+		find_in_set(b.client_user_id,#{subordinates})>0) and se.is_delete = 0
+		<if test="clientUserId != null">
+			and cu.client_user_id =#{clientUserId}
+		</if>
+		<if test="storeName != null and storeName != ''">
+			and se.store_name like CONCAT('%',#{storeName},'%')
+		</if>
+	</select>
+
+	<select id="replaceStoreList" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		select se.store_id,cs.structure_name as
+		structureName,se.store_no,se.store_name,se.addr,CONCAT(IFNULL(cu.name,''),if(cp.position_name
+		is null,'',concat('[',cp.position_name,']'))) AS names from store se
+		INNER JOIN store_user_mapping b on b.store_id=se.store_id and
+		b.is_delete = 0 and b.client_id = #{clientId}
+		INNER JOIN client_user cu
+		on cu.client_user_id=b.client_user_id and cu.is_delete = 0 and
+		cu.client_id = #{clientId}
+		INNER JOIN CLIENT_STRUCTURE cs ON
+		se.client_structure_id = cs.client_structure_id and cs.is_delete = 0
+		and cs.client_id = #{clientId}
+		INNER JOIN CLIENT_POSITION cp on
+		cu.client_position_id = cp.client_position_id
+		and se.client_id =
+		#{clientId} and se.status != 3
+		AND
+		(FIND_IN_SET(se.client_structure_id,#{subStructureId})>0 or
+		find_in_set(b.client_user_id,#{subordinates})>0) and se.is_delete = 0
+		<if test="clientUserId != null">
+			and cu.client_user_id =#{clientUserId}
+		</if>
+		<if test="storeName != null and storeName != ''">
+			and se.store_name like CONCAT('%',#{storeName},'%')
+		</if>
+		<include refid="basic.mysqlPageSearchFoot" />
+	</select>
+
+	<select id="getBatchStoreUserNames" resultType="java.lang.String"
+		parameterType="java.util.Map">
+		select GROUP_CONCAT(NAMES) FROM (SELECT concat(
+		ifnull(cu. NAME, ''),IF ( cp.position_name IS NULL, '', concat('[',
+		cp.position_name, ']'))) AS NAMES FROM store se
+		LEFT JOIN store_user_mapping b ON b.store_id = se.store_id AND b.is_delete
+		= 0 AND b.client_id = #{clientId} and se.store_id = #{storeId}
+		LEFT JOIN client_user cu ON cu.client_user_id = b.client_user_id AND
+		cu.is_delete = 0 AND cu.client_id = #{clientId}
+		LEFT JOIN client_position cp ON cu.client_position_id =
+		cp.client_position_id WHERE se.client_id = #{clientId} and se.store_id
+		= #{storeId}) temp
+	</select>
+
+	<select id="getBatchStoreIdsUnStoreUser" resultType="java.lang.String"
+		parameterType="java.util.Map">
+		select GROUP_CONCAT(store_id) from (
+		select DISTINCT
+		cs.structure_name AS structurename,
+		se.store_no,se.store_id,se.store_name, se.addr from store se left join
+		store_user_mapping b on se.store_id = b.store_id
+		LEFT JOIN client_user cu ON cu.client_user_id = b.client_user_id AND
+		cu.is_delete = 0 AND cu.client_id = #{clientId}
+		LEFT JOIN
+		client_structure cs ON se.client_structure_id = cs.client_structure_id
+		AND cs.is_delete = 0 AND cs.client_id = #{clientId}
+		where b.store_id is
+		null and se.is_delete = 0 and find_in_set( se.client_structure_id,
+		#{subStructureId}) > 0 and se.status != 3
+		) temp
+	</select>
+
+	<select id="getBatchUnStoreUser" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		select cs.structure_name AS structurename,
+		se.store_no,se.store_id,se.store_name, se.addr
+		from store se
+		LEFT JOIN client_structure cs ON cs.client_id = #{clientId} AND
+		se.client_structure_id = cs.client_structure_id AND cs.is_delete = 0
+		left join (
+		select store_id
+		from store_user_mapping a,client_roles_user_mapping b
+		where a.client_id=#{clientId} and a.client_user_id=b.client_user_id and
+		b.role_id in (9,10) and b.is_delete=0
+		and a.is_delete = 0
+		group by store_id
+		) bb on se.store_id=bb.store_id
+		where se.client_id=#{clientId} and
+		find_in_set( se.client_structure_id, #{subStructureId}) > 0
+		<if test="storeNo != null and storeNo!=''">and se.store_no = #{storeNo}</if>
+		<if test="storeName != null and storeName!=''">and se.store_name like CONCAT('%',#{storeName},'%')</if>
+		and se.status != 3
+		and se.is_delete=0
+		and bb.store_id is null
+		<include refid="basic.mysqlPageSearchFoot" />
+	</select>
+
+	<select id="getBatchUnStoreUserCount" parameterType="java.util.Map"
+		resultType="Integer">
+		select count(1)
+		from store se
+		LEFT JOIN client_structure cs ON cs.client_id = #{clientId} AND
+		se.client_structure_id = cs.client_structure_id AND cs.is_delete = 0
+		left join (
+		select store_id
+		from store_user_mapping a,client_roles_user_mapping b
+		where a.client_id=#{clientId} and a.client_user_id=b.client_user_id and
+		b.role_id in (9,10) and b.is_delete=0
+		and a.is_delete = 0
+		group by store_id
+		) bb on se.store_id=bb.store_id
+		where se.client_id=#{clientId} and
+		find_in_set( se.client_structure_id, #{subStructureId}) > 0
+		<if test="storeNo != null and storeNo!=''">and se.store_no = #{storeNo}</if>
+		<if test="storeName != null and storeName!=''">and se.store_name like CONCAT('%',#{storeName},'%')</if>
+		and se.status != 3
+		and se.is_delete=0
+		and bb.store_id is null
+	</select>
+
+	<select id="batchChoiceStoreUserList" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		SELECT se.store_id,IF(b.store_id is null,'0','1') AS isChecked,
+		cs.structure_name AS structurename, se.store_no, se.store_name,
+		se.addr FROM store se
+		LEFT JOIN store_user_mapping b ON b.store_id = se.store_id AND b.is_delete
+		= 0 AND b.client_id = #{clientId}
+		<if test="clientUserId != null">
+			AND b.client_user_id = #{clientUserId}
+		</if>
+		LEFT JOIN client_user cu ON cu.client_user_id = b.client_user_id AND
+		cu.is_delete = 0 AND cu.client_id = #{clientId}
+		LEFT JOIN
+		client_structure cs ON se.client_structure_id = cs.client_structure_id
+		AND cs.is_delete = 0 AND cs.client_id = #{clientId}
+		WHERE se.client_id = #{clientId} AND find_in_set( se.client_structure_id,
+		#{subStructureId}) > 0
+		and se.is_delete = 0 and se.status != 3
+		<if test="storeNo != null and storeNo!=''">and se.store_no = #{storeNo}</if>
+		<if test="storeName != null and storeName!=''">and se.store_name like CONCAT('%',#{storeName},'%')</if>
+		order by isChecked desc
+		<include refid="basic.mysqlPageSearchFoot" />
+	</select>
+
+	<select id="batchChoiceStoreUserCount" parameterType="java.util.Map"
+		resultType="Integer">
+		select count(1) from (
+		SELECT se.store_id,IF(b.store_id is null,'0','1') AS isChecked,
+		cs.structure_name AS structurename, se.store_no, se.store_name,
+		se.addr FROM store se
+		LEFT JOIN store_user_mapping b ON b.store_id = se.store_id AND b.is_delete
+		= 0 AND b.client_id = #{clientId}
+		<if test="clientUserId != null">
+			AND b.client_user_id = #{clientUserId}
+		</if>
+		LEFT JOIN client_user cu ON cu.client_user_id = b.client_user_id AND
+		cu.is_delete = 0 AND cu.client_id = #{clientId}
+		LEFT JOIN client_structure cs ON se.client_structure_id =
+		cs.client_structure_id AND cs.is_delete = 0 AND cs.client_id =
+		#{clientId}
+		WHERE se.client_id = #{clientId} AND find_in_set( se.client_structure_id,
+		#{subStructureId}) > 0 and
+		se.is_delete = 0 and se.status != 3
+		<if test="storeNo != null and storeNo!=''">and se.store_no = #{storeNo}</if>
+		<if test="storeName != null and storeName!=''">and se.store_name like CONCAT('%',#{storeName},'%')</if>
+		order by isChecked desc
+		) temp
+	</select>
+
+	<select id="getBatchStore" resultType="java.lang.String"
+		parameterType="java.util.Map">
+		select GROUP_CONCAT(se.store_id) FROM store se
+		LEFT JOIN store_user_mapping b ON b.store_id = se.store_id AND b.is_delete
+		= 0 AND b.client_id = #{clientId}
+		<if test="clientUserId != null">
+			AND b.client_user_id = #{clientUserId}
+		</if>
+		LEFT JOIN client_user cu ON cu.client_user_id = b.client_user_id AND
+		cu.is_delete = 0 AND cu.client_id = #{clientId}
+		LEFT JOIN
+		client_structure cs ON se.client_structure_id = cs.client_structure_id
+		AND cs.is_delete = 0 AND cs.client_id = #{clientId}
+		LEFT JOIN client_position cp ON cu.client_position_id =
+		cp.client_position_id WHERE se.client_id = #{clientId}
+		AND find_in_set(
+		se.client_structure_id, #{subStructureId}) > 0 and se.is_delete = 0
+		and se.status != 3
+	</select>
+
+	<select id="getBatchCheckStoreUser" resultType="java.lang.String"
+		parameterType="java.util.Map">
+		SELECT GROUP_CONCAT(se.store_id) AS NAMES FROM store se LEFT JOIN
+		store_user_mapping
+		b ON b.store_id = se.store_id AND b.is_delete = 0 AND b.client_id =
+		#{clientId}
+		<if test="clientUserId != null">
+			AND b.client_user_id = #{clientUserId}
+		</if>
+		inner JOIN client_user cu ON cu.client_user_id = b.client_user_id AND
+		cu.is_delete = 0 AND cu.client_id = #{clientId}
+		and se.is_delete = 0
+		and se.status != 3
+	</select>
+
+	<sql id="Query_Column_List">
+		<if test="storeId != null">
+			and se.store_id = #{storeId}
+		</if>
+		<if test="storeName != null and storeName != ''">
+			and se.store_name like CONCAT('%',#{storeName},'%')
+		</if>
+		<if test="storeNo != null and storeNo != ''">
+			and se.store_no like CONCAT('%',#{storeNo},'%')
+		</if>
+		<if test="addr != null and addr !=''">
+			and se.addr like CONCAT('%',#{addr},'%')
+		</if>
+		<if test="status != null">
+			and se.status = #{status}
+		</if>
+		<if test="channelId != null ">
+			and find_in_set(se.channel_id,#{channelId})>0
+		</if>
+		<if test="distributorId != null ">
+			and se.distributor_id = #{distributorId}
+		</if>
+	</sql>
+
+	<select id="queryTotalStore" parameterType="java.util.Map"
+		resultType="String">
+		SELECT se.store_id
+		FROM STORE se
+		INNER JOIN STORE_USER_MAPPING sum ON sum.store_id = se.store_id and
+		sum.is_delete = 0 and sum.client_user_id = #{clientUserId}
+		<if test="clientUserId != null">
+			and sum.client_user_id = #{clientUserId}
+		</if>
+		WHERE se.is_delete = 0
+		<include refid="Query_Column_List" />
+	</select>
+
+	<select id="queryPopStoreCount" parameterType="java.util.Map"
+		resultType="Integer">
+		select
+		count(*)
+		from STORE se
+		where 1=1
+		<include refid="Base_Query_Column_List" />
+	</select>
+	<select id="selectByParams" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		<include refid="select_by_param" />
+		<include refid="basic.mysqlPageSearchFoot" />
+	</select>
+
+	<select id="selectByStoreId" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		st.*,cs.structure_name as structure_name,ch.channel_name as
+		channel_name,ds.distributor_name,a.chain_name as chainName
+		from store st
+		LEFT JOIN CLIENT_STRUCTURE cs ON st.client_structure_id =
+		cs.client_structure_id
+		LEFT JOIN CHANNEL ch ON st.channel_id = ch.channel_id
+		LEFT JOIN DISTRIBUTOR ds ON ds.distributor_id = st.distributor_id
+		LEFT JOIN CHAIN a ON a.chain_id = st.chain_id
+		where st.store_id = #{storeId,jdbcType=CHAR}
+	</select>
+
+	<select id="getRelationStore" resultMap="BaseResultMap"
+		parameterType="java.util.Map">
+		select st.store_id,st.store_name,vtd.in_time as inTime,vtd.out_time as
+		outTime
+		from store st
+		inner JOIN store_user_mapping sum ON st.store_id = sum.store_id
+		and sum.client_user_id = #{clientUserId} and sum.is_delete = 0
+		and st.is_delete = 0 and st.client_id = #{clientId}
+		LEFT JOIN visiting_task_data vtd ON st.store_id = vtd.pop_id
+		and vtd.client_user_id = #{clientUserId}
+		and vtd.visit_type = #{taskType}
+	   	<![CDATA[ and vtd.in_time >= #{startDate}]]>
+		<![CDATA[ and vtd.in_time <= #{endDate}]]>
+		and vtd.is_delete = 0
+		order by vtd.in_time desc
+	</select>
+
+	<select id="findStoreByStoreNo" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		SELECT se.* from store se
+		WHERE 1=1
+		and client_id = #{clientId}
+		and se.store_no = #{storeNo}
+		and is_delete = 0
+	</select>
+
+	<select id="findNoAddrStore" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		SELECT * from store
+		WHERE is_delete = 0 and addr is not null and longitude is
+		null and latitude is null and client_id = #{clientId}
+	</select>
+
+	<select id="getStoreCoordinatesList" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		SELECT * from store
+		WHERE is_delete = 0 and client_id = #{clientId} and
+		longitude is not null and latitude is not null
+	</select>
+
+	<select id="queryReplaceStoreList" parameterType="java.util.Map"
+		resultType="java.lang.String">
+		select GROUP_CONCAT(se.store_id) from store se
+		INNER JOIN store_user_mapping b on b.store_id=se.store_id and b.is_delete =
+		0 and b.client_id = #{clientId}
+		INNER JOIN client_user cu on
+		cu.client_user_id=b.client_user_id and cu.is_delete = 0 and
+		cu.client_id = #{clientId}
+		INNER JOIN CLIENT_STRUCTURE cs ON
+		se.client_structure_id = cs.client_structure_id and cs.is_delete = 0
+		and cs.client_id = #{clientId}
+		INNER JOIN CLIENT_POSITION cp on
+		cu.client_position_id = cp.client_position_id
+		and se.client_id =
+		#{clientId}
+		AND
+		(FIND_IN_SET(se.client_structure_id,#{subStructureId})>0 or
+		find_in_set(b.client_user_id,#{subordinates})>0) and se.is_delete = 0
+		<if test="clientUserId != null">
+			and cu.client_user_id =#{clientUserId}
+		</if>
+		<if test="storeName != null and storeName != ''">
+			and se.store_name like CONCAT('%',#{storeName},'%')
+		</if>
+		and se.status != 3
+	</select>
+
+	<select id="getStoreInfoByName" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		SELECT a.store_id as id,a.store_name as name from store a where a.client_id
+		= #{clientId} and a.is_delete = 0 and a.store_name like
+		CONCAT('%',#{storeName},'%')
+	</select>
+
+	<select id="selectStoreTask" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		select DISTINCT s.*,pro.province as provinceName,city.city as cityName
+		from store s
+		LEFT JOIN client_structure cs on cs.client_structure_id =
+		s.client_structure_id and cs.client_id = #{clientId} and cs.is_delete
+		= 0
+		INNER JOIN ct_task_pop_mapping ctpm on ctpm.pop_id = s.store_id and
+		ctpm.client_id = #{clientId} and ctpm.is_delete = 0
+		LEFT JOIN PROVINCE
+		pro ON pro.province_id = s.province_id
+		LEFT JOIN CITY city ON
+		city.city_id = s.city_id
+		where s.client_id = #{clientId} and
+		s.is_delete = 0 and ctpm.ct_task_id = #{ctTaskId} and ctpm.is_delete =
+		0 and
+		FIND_IN_SET(s.client_structure_id,#{subAllStructureId})>0
+		<if test="storeName != null and storeName !='' ">
+			and s.store_name like CONCAT('%',#{storeName},'%')
+		</if>
+		<if test="provinceId != null and provinceId !='' ">
+			and s.province_id = #{provinceId}
+		</if>
+		<if test="cityId != null and cityId !='' ">
+			and s.city_id = #{cityId}
+		</if>
+		<if test="storeNo != null and storeNo !='' ">
+			and s.store_no = #{storeNo}
+		</if>
+		<include refid="basic.mysqlPageSearchFoot" />
+	</select>
+
+	<select id="selectStoreTaskCount" parameterType="java.util.Map"
+		resultType="Integer">
+		select count(1) from(
+		select DISTINCT s.*,pro.province as provinceName,city.city as cityName
+		from store s
+		LEFT JOIN client_structure cs on cs.client_structure_id =
+		s.client_structure_id and cs.client_id = #{clientId} and cs.is_delete
+		= 0
+		INNER JOIN ct_task_pop_mapping ctpm on ctpm.pop_id = s.store_id and
+		ctpm.client_id = #{clientId} and ctpm.is_delete = 0
+		LEFT JOIN PROVINCE pro ON pro.province_id = s.province_id
+		LEFT JOIN CITY city ON city.city_id = s.city_id
+		where s.client_id = #{clientId} and s.is_delete = 0 and ctpm.ct_task_id =
+		#{ctTaskId} and ctpm.is_delete = 0 and
+		FIND_IN_SET(s.client_structure_id,#{subAllStructureId})>0
+		<if test="storeName != null and storeName !='' ">
+			and s.store_name like CONCAT('%',#{storeName},'%')
+		</if>
+		<if test="provinceId != null and provinceId !='' ">
+			and s.province_id = #{provinceId}
+		</if>
+		<if test="cityId != null and cityId !='' ">
+			and s.city_id = #{cityId}
+		</if>
+		<if test="storeNo != null and storeNo !='' ">
+			and s.store_no = #{storeNo}
+		</if>
+		) as temp
+	</select>
+
+	<select id="getStoreTaskByPosition" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		select DISTINCT store.*,pro.province as provinceName,city.city as
+		cityName from
+		ct_task_position_mapping ctpm inner join client_user cu on ctpm.client_position_id =
+		cu.client_position_id and cu.is_delete = 0
+		inner JOIN store_user_mapping sump on sump.client_user_id =
+		cu.client_user_id and sump.is_delete = 0
+		and sump.client_id = #{clientId} inner join store on store.store_id =
+		sump.store_id
+		LEFT JOIN PROVINCE pro ON pro.province_id = store.province_id
+		LEFT JOIN
+		CITY city ON city.city_id = store.city_id
+		where store.is_delete = 0 and
+		store.client_id = #{clientId} and ctpm.ct_task_id = #{ctTaskId} and
+		ctpm.is_delete = 0
+		AND (FIND_IN_SET(store.client_structure_id,#{subAllStructureId})>0 or
+		find_in_set(cu.client_user_id,#{clientUserIds})>0)
+		<if test="storeName != null and storeName !='' ">
+			and store.store_name like CONCAT('%',#{storeName},'%')
+		</if>
+		<if test="provinceId != null and provinceId !='' ">
+			and store.province_id = #{provinceId}
+		</if>
+		<if test="cityId != null and cityId !='' ">
+			and store.city_id = #{cityId}
+		</if>
+		<if test="storeNo != null and storeNo !='' ">
+			and store.store_no = #{storeNo}
+		</if>
+		<include refid="basic.mysqlPageSearchFoot" />
+	</select>
+
+	<select id="getStoreTaskCountByPosition" parameterType="java.util.Map"
+		resultType="java.lang.Integer">
+		select count(1) from(select DISTINCT store.*,pro.province as
+		provinceName,city.city as cityName from
+		ct_task_position_mapping ctpm inner join client_user cu on ctpm.client_position_id =
+		cu.client_position_id and cu.is_delete = 0
+		inner JOIN store_user_mapping sump on sump.client_user_id =
+		cu.client_user_id and sump.is_delete = 0
+		and sump.client_id = #{clientId} inner join store on store.store_id =
+		sump.store_id
+		LEFT JOIN PROVINCE pro ON pro.province_id = store.province_id
+		LEFT JOIN
+		CITY city ON city.city_id = store.city_id
+		where store.is_delete = 0 and store.client_id = #{clientId} and
+		ctpm.ct_task_id = #{ctTaskId} and ctpm.is_delete = 0
+		AND (FIND_IN_SET(store.client_structure_id,#{subAllStructureId})>0 or
+		find_in_set(cu.client_user_id,#{clientUserIds})>0)
+		<if test="storeName != null and storeName !='' ">
+			and store.store_name like CONCAT('%',#{storeName},'%')
+		</if>
+		<if test="provinceId != null and provinceId !='' ">
+			and store.province_id = #{provinceId}
+		</if>
+		<if test="cityId != null and cityId !='' ">
+			and store.city_id = #{cityId}
+		</if>
+		<if test="storeNo != null and storeNo !='' ">
+			and store.store_no = #{storeNo}
+		</if>
+		) a
+	</select>
+
+	<select id="getStoreById" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select store_id as id,store_name as name from store where store_id =
+		#{storeId} and is_delete = 0
+	</select>
+
+
+	<select id="getStoreByName" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		select store.store_id as id,store.store_name as name from
+		store
+		where store.client_id = #{clientId} and store.is_delete = 0 and
+		store.store_name like CONCAT('%',#{storeName},'%') and
+		FIND_IN_SET(store.client_structure_id,#{subAllStructureId})>0
+	</select>
+
+	<select id="getStoreByFullName" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		select * from store where store.client_id = #{clientId} and store.is_delete
+		= 0 and store.store_name = #{storeName} and store.client_structure_id
+		= #{clientStructureId}
+	</select>
+
+	<select id="loadStoreList" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		SELECT
+		s.store_id,s.store_no,s.store_name,s.addr,s.latitude,s.longitude,cs.structure_name
+		FROM store s INNER JOIN client_structure cs ON s.client_structure_id =
+		cs.client_structure_id
+		AND s.latitude IS NOT NULL AND s.longitude IS NOT NULL AND s.client_id =
+		cs.client_id AND s.is_delete = cs.is_delete AND s.client_id =
+		#{clientId} AND s.is_delete = 0
+
+		<if test="storeId != null and storeId !='' ">
+			and s.store_id = #{storeId}
+		</if>
+		<if test="structureId != null and structureId !='' ">
+			and s.client_structure_id = #{structureId}
+		</if>
+		<if test="storeNo != null and storeNo !='' ">
+			and s.store_no = #{storeNo}
+		</if>
+		<include refid="basic.mysqlPageSearchFoot" />
+	</select>
+
+
+	<select id="loadStoreListItems" parameterType="java.util.Map"
+		resultType="Integer">
+		SELECT COUNT(1) FROM store s INNER JOIN client_structure cs ON
+		s.client_structure_id = cs.client_structure_id
+		AND s.latitude IS NOT NULL AND s.longitude IS NOT NULL AND s.client_id =
+		cs.client_id AND s.is_delete = cs.is_delete AND s.client_id =
+		#{clientId} AND s.is_delete = 0
+
+		<if test="storeId != null and storeId !='' ">
+			and s.store_id = #{storeId}
+		</if>
+		<if test="structureId != null and structureId !='' ">
+			and s.client_structure_id = #{structureId}
+		</if>
+		<if test="storeNo != null and storeNo !='' ">
+			and s.store_no = #{storeNo}
+		</if>
+	</select>
+
+	<select id="loadStoreListGroupByCity" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		SELECT s.store_id,s.store_no,s.store_name,s.addr,c.center_latitude AS
+		latitude,c.center_longitude AS
+		longitude,cs.structure_name,COUNT(s.city_id) AS cnt,s.city_id,c.city
+		as name FROM store s INNER JOIN client_structure cs ON
+		s.client_structure_id = cs.client_structure_id INNER JOIN city c ON
+		c.city_id = s.city_id
+		AND s.latitude IS NOT NULL AND s.longitude IS NOT NULL AND s.client_id =
+		cs.client_id AND s.is_delete = cs.is_delete AND s.client_id =
+		#{clientId} AND s.is_delete = 0 AND c.is_delete = 0
+		AND c.center_latitude IS NOT NULL AND c.center_longitude IS NOT NULL
+		GROUP BY s.city_id
+	</select>
+
+	<select id="loadStoreListGroupByProvince" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		SELECT s.store_id,s.store_no,s.store_name,s.addr,p.center_latitude AS
+		latitude,p.center_longitude AS
+		longitude,cs.structure_name,COUNT(s.province_id) AS
+		cnt,s.province_id,p.province AS name FROM store s
+		INNER JOIN client_structure cs ON s.client_structure_id =
+		cs.client_structure_id INNER JOIN province p ON p.province_id =
+		s.province_id AND p.is_delete = 0
+		AND s.latitude IS NOT NULL AND s.longitude IS NOT NULL AND s.client_id =
+		cs.client_id AND s.is_delete = cs.is_delete AND s.client_id =
+		#{clientId} AND s.is_delete = 0
+		AND p.center_latitude IS NOT NULL AND p.center_longitude IS NOT NULL
+		GROUP BY s.province_id;
+
+	</select>
+
+	<select id="findStoreListByCity" parameterType="java.util.Map"
+		resultMap="BaseResultMapSingle">
+		SELECT * from store s
+		where s.client_id = #{clientId} and s.is_delete = 0 and s.city_id =
+		#{cityId}
+		<if test="lastUpdateTime != null">
+			and s.last_update_time BETWEEN #{lastUpdateTime} and #{currentTime}
+		</if>
+	</select>
+
+	<select id="findStoreCountInMsi" parameterType="java.util.Map"
+		resultType="Integer">
+		SELECT count(*) FROM
+		(SELECT
+		s.store_id,
+		s.store_no,
+		s.store_name,
+		s.addr,
+		GROUP_CONCAT(ifnull(cu. NAME, '')) AS NAMES
+		FROM
+		store s
+		LEFT JOIN store_user_mapping sum ON s.store_id = sum.store_id
+		AND sum.is_delete = 0
+		AND sum.client_id = #{clientId}
+		LEFT JOIN client_user cu ON cu.client_user_id = sum.client_user_id
+		AND cu.is_delete = 0
+		AND cu.client_id = #{clientId}
+		WHERE s.client_id = #{clientId}
+		AND s.is_delete = 0
+		<include refid="Msi_Query_Column_List" />
+		GROUP BY s.store_id) se
+	</select>
+
+	<select id="findStoreListInMsi" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		SELECT
+		s.store_id,
+		s.store_no,
+		s.store_name,
+		s.addr,
+		GROUP_CONCAT(ifnull(cu. NAME, '')) AS NAMES
+		FROM
+		store s
+		LEFT JOIN store_user_mapping sum ON s.store_id = sum.store_id
+		AND
+		sum.is_delete = 0
+		AND sum.client_id = #{clientId}
+		LEFT JOIN client_user
+		cu ON cu.client_user_id = sum.client_user_id
+		AND cu.is_delete = 0
+		AND
+		cu.client_id = #{clientId}
+		WHERE s.client_id = #{clientId}
+		AND
+		s.is_delete = 0
+		<include refid="Msi_Query_Column_List" />
+		GROUP BY s.store_id
+		ORDER BY s.LAST_UPDATE_TIME DESC
+		<include refid="basic.mysqlPageSearchFoot" />
+	</select>
+
+	<sql id="Msi_Query_Column_List">
+		<if test="storeName != null and storeName != ''">
+			and s.store_name like CONCAT('%',#{storeName},'%')
+		</if>
+		<if test="storeNo != null and storeNo != ''">
+			and s.store_no like CONCAT('%',#{storeNo},'%')
+		</if>
+		<if test="addr != null and addr !=''">
+			and s.addr like CONCAT('%',#{addr},'%')
+		</if>
+	</sql>
+
+	<select id="getStoreByStoreName" parameterType="java.util.Map"
+		resultType="java.lang.String">
+		SELECT * from store s where s.is_delete = 0 and s.client_id
+		= #{clientId} and s.store_name = #{storeName}
+	</select>
+
+
+	<select id="loadStoreListByClientId" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		SELECT s.store_id,s.store_name from store s where
+		s.is_delete = 0 and s.client_id = #{clientId}
+	</select>
+
+
+	<select id="getStoreItemsByStoreNo" parameterType="java.util.Map"
+		resultType="java.lang.Integer">
+		select count(1) from store s where s.is_delete = 0 and
+		s.store_no = #{storeNo} and s.client_id = #{clientId}
+	</select>
+
+	<select id="getStoreByStoreNo" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		select * from store s where s.is_delete = 0 and s.store_no =
+		#{storeNo} and s.client_id = #{clientId} limit 1
+	</select>
+
+	<insert id="batchSaveStores" parameterType="java.util.Map">
+	  <![CDATA[
+	  INSERT INTO store (
+        client_id,store_id,store_no,store_name,addr,client_structure_id,channel_id,chain_id,
+        store_type,remark
+	  ) VALUES 
+	  ]]>
+		<foreach collection="stores" item="item" index="index"
+			separator=",">
+			(
+			#{item.clientId},
+			#{item.storeId},
+			#{item.storeNo},
+			#{item.storeName},
+			#{item.addr},
+			#{item.clientStructureId},
+			#{item.channelId},
+			#{item.chainId},
+			#{item.storeType},
+			#{item.remark}
+			)
+		</foreach>
+		ON DUPLICATE KEY UPDATE
+		store_no = VALUES(store_no),
+		store_name = VALUES(store_name),
+		client_structure_id = VALUES(client_structure_id),
+		channel_id = VALUES(channel_id),
+		chain_id = VALUES(chain_id),
+		store_type = VALUES(store_type),
+		remark = VALUES(remark),
+		addr = VALUES(addr),
+		client_id = VALUES(client_id)
+	</insert>
+
+	<insert id="batchSaveBwybStores" parameterType="java.util.Map">
+		INSERT INTO store (
+		store_id, store_no, store_name, channel_id, chain_id, province_id,
+		city_id, addr, client_structure_id,client_id
+		) VALUES
+		<foreach collection="stores" item="item" index="index"
+			separator=",">
+			(
+			#{item.storeId},
+			#{item.storeNo},
+			#{item.storeName},
+			#{item.channelId},
+			#{item.chainId},
+			#{item.provinceId},
+			#{item.cityId},
+			#{item.addr},
+			#{item.clientStructureId},
+			#{item.clientId}
+			)
+		</foreach>
+	</insert>
+
+	<insert id="batchSaveWorkLogStores" parameterType="java.util.Map">
+		insert into store
+		(client_id,store_id,store_no,store_name,client_structure_id,province_id,
+		city_id,channel_id,chain_id,addr,remark
+		)values
+		<foreach collection="stores" item="item" index="index"
+			separator=",">
+			(
+			#{item.clientId},
+			#{item.storeId},
+			#{item.storeNo},
+			#{item.storeName},
+			#{item.clientStructureId},
+			#{item.provinceId},
+			#{item.cityId},
+			#{item.channelId},
+			#{item.chainId},
+			#{item.addr},
+			#{item.remark}
+			)
+		</foreach>
+	</insert>
+
+	<select id="getStoreNoMap" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		select * from store where is_delete = 0 and client_id = #{clientId}
+	</select>
+
+	<select id="getStoreByStoreTypeAndNo" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		select * from store where is_delete = 0 and store_type = #{storeType} and
+		store_no = #{storeNo} limit 1
+	</select>
+
+	<select id="getStoreNameMap" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		SELECT * from store s where s.is_delete = 0 and s.client_id =
+		#{clientId}
+		<if test="storeName != null and storeName != '' ">
+			and s.store_name = #{storeName}
+		</if>
+	</select>
+
+	<select id="getStoreIdMap" parameterType="java.util.Map"
+		resultType="String">
+		SELECT CONCAT(s.store_name,'@',s.addr) as storeNameAndaddr from store s
+		where s.is_delete = 0 and s.client_id = #{clientId}
+	</select>
+
+	<select id="getStoreIdList" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		SELECT s.store_id,CONCAT(s.store_name,'@',s.addr) as storeNameAndaddr from
+		store s where s.is_delete = 0 and s.client_id = #{clientId}
+	</select>
+
+	<select id="getStoreNameLoginNameMap" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		select *,u.status as status,u.is_activation as isActivation from
+		store_user_mapping sum
+		INNER JOIN client_user u on u.client_user_id = sum.client_user_id and
+		u.is_delete = 0 and u.client_id = #{clientId}
+		INNER JOIN store s on s.store_id = sum.store_id and s.is_delete = 0 and
+		s.client_id = #{clientId}
+		where sum.is_delete = 0 and sum.client_id =
+		#{clientId} and u.login_name = #{loginName} and s.store_name =
+		#{storeName} and u.client_position_id = #{clientPositionId}
+	</select>
+
+	<select id="findStoreByStoreNameAndCityName" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		select * from store s inner join city c on s.city_id = c.city_id where
+		s.store_name = #{storeName} and c.city_id = s.city_id and s.is_delete
+		= 0 and c.city = #{cityName} and s.client_id = #{clientId}
+	</select>
+
+	<select id="getStoreNoKey" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		select * from store a where a.client_id = #{clientId} and a.is_delete = 0
+	</select>
+
+
+	<select id="findStoreByNameAndNo" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		select * from store where client_id = #{clientId} and store_no = #{storeNo}
+		and is_delete = 0
+	</select>
+
+	<select id="getReClientPosition" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		SELECT
+		a.store_no,store_name,d.position_name,COUNT(d.client_position_id),c.`name`,c.client_user_id
+		from store a
+		LEFT JOIN store_user_mapping b on b.store_id = a.store_id
+		and b.is_delete = 0 and b.client_id = #{clientId}
+		LEFT JOIN client_user
+		c on c.client_user_id = b.client_user_id and c.is_delete = 0 and
+		c.client_id = #{clientId}
+		LEFT JOIN client_position d on
+		d.client_position_id =c.client_position_id and d.is_delete = 0 and
+		d.client_id = #{clientId}
+		where FIND_IN_SET(d.position_name,'CM,BM,RD')
+		> 0
+		GROUP BY a.store_no,store_name,d.client_position_id
+		HAVING COUNT(d.client_position_id) > 0
+	</select>
+
+	<update id="itemInsertStore" parameterType="java.util.List">
+		<foreach collection="list" index="index" item="item"
+			separator=";">
+			update store a set
+			a.store_no = #{item.storeNo,jdbcType=VARCHAR},
+			a.store_name = #{item.storeName,jdbcType=VARCHAR},
+			a.addr = #{item.addr,jdbcType=VARCHAR},
+			a.client_structure_id = #{item.clientStructureId,jdbcType=INTEGER},
+			a.channel_id = #{item.channelId,jdbcType=INTEGER},a.chain_id =
+			#{item.chainId,jdbcType=INTEGER},
+			a.store_type = #{item.storeType,jdbcType=INTEGER},
+			a.remark = #{item.remark,jdbcType=VARCHAR},
+			a.client_id = #{item.clientId,jdbcType=INTEGER}
+			where a.store_id = #{item.storeId,jdbcType=CHAR}
+		</foreach>
+	</update>
+	<select id="queryStoreListByNumber" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		SELECT s.store_no, s.store_id,s.store_name FROM store s WHERE client_id =
+		#{clientId} AND store_no LIKE #{storeNo} AND is_delete = 0 AND
+		FIND_IN_SET(s.client_structure_id,#{clientStructureId})
+	</select>
+		<select id="queryAllStore" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		SELECT * FROM store s WHERE client_id=#{clientId} AND
+		is_delete= 0
+	</select>
+	<select id="queryAllStoreStoreno" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		SELECT UPPER(s.store_no) FROM store s WHERE client_id=#{clientId} AND
+		is_delete= 0
+	</select>
+	<select id="queryAllStoreBannerPhoto" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		SELECT UPPER(s.store_no) as store_no, UPPER(s.banner_photo)  as banner_photo FROM store s WHERE client_id=#{clientId} AND
+		is_delete= 0
+	</select>
+	<select id="queryAllStoreKeyName" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		SELECT CONCAT(s.store_no,s.store_name) as keyName,s.store_id FROM store s WHERE client_id=#{clientId} AND
+		is_delete= 0
+	</select>
+	
+	<select id="queryAllStoreName" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		SELECT s.store_name,s.store_id FROM store s WHERE client_id=#{clientId} AND
+		is_delete= 0
+	</select>
+	<select id="findStoreNameValueByKey" parameterType="java.util.Map"
+		resultType="java.lang.String">
+		SELECT store_Name FROM store WHERE client_id=#{clientId} AND is_delete= 0
+		AND store_Name=#{storename}
+	</select>
+
+	<select id="querStoreSearchVo" resultMap="BaseResultStoreSearchVO" 	parameterType="java.util.Map">
+		SELECT  se.`store_id`,cn.`chain_name`,se.`store_no`,se.`store_name`
+		FROM store AS se
+		INNER JOIN CHAIN AS cn ON cn.`chain_id` = se.`chain_id` AND cn.`is_delete`	= 0
+		WHERE se.`is_delete` = 0 AND se.`client_id` = ${clientId}
+	</select>
+	
+	<select id="queryStoreByClientIdAndLinkeStroeName" resultMap="BaseResultMap" 	parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from store as se
+		where  1=1 AND se.`is_delete` = 0
+		AND se.`client_id` = ${clientId} AND store_Name like CONCAT('%',#{storeName},'%')
+	</select>
+	
+	<select id="getUserMappingStoreList" resultMap="BaseResultMap" parameterType="java.util.Map">
+		SELECT a.store_id,store_no,a.store_name from store a INNER JOIN store_user_mapping m on a.store_id = m.store_id
+		where a.client_id = #{clientId} and a.is_delete = 0
+		and m.client_id = #{clientId} and m.is_delete = 0
+		AND (FIND_IN_SET(a.client_structure_id,#{subStructureId})>0)
+		and a.store_no like CONCAT('%',#{storeNo},'%')
+		GROUP BY a.store_id;
+	</select>
+	
+</mapper>

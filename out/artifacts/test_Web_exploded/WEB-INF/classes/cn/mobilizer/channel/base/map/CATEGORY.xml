@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="CATEGORY" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.base.po.Category" >
+    <id column="category_id" property="categoryId" jdbcType="INTEGER" />
+    <result column="category_no" property="categoryNo" jdbcType="VARCHAR" />
+    <result column="category_name" property="categoryName" jdbcType="VARCHAR" />
+    <result column="category_name_en" property="categoryNameEn" jdbcType="VARCHAR" />
+    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+    <result column="grade" property="grade" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <resultMap id="TreeNodeResultMap" type="cn.mobilizer.channel.base.vo.TreeNodeVO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="pId" property="pId" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="isParent" property="isParent" jdbcType="VARCHAR" />
+    <result column="parentId" property="parentId" jdbcType="INTEGER" />
+    <result column="cId" property="cId" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    category_id, category_no, category_name, category_name_en, parent_id,grade, remark, client_id, 
+    create_time, last_update_time, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from category
+    where category_id = #{categoryId,jdbcType=INTEGER}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from category
+    where category_id = #{categoryId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.base.po.Category" >
+    insert into category (category_id, category_no, category_name, 
+      category_name_en, parent_id,grade, remark, 
+      client_id, is_delete)
+    values (#{categoryId,jdbcType=INTEGER}, #{categoryNo,jdbcType=VARCHAR}, #{categoryName,jdbcType=VARCHAR}, 
+      #{categoryNameEn,jdbcType=VARCHAR}, #{parentId,jdbcType=INTEGER}, #{grade,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
+      #{clientId,jdbcType=INTEGER},#{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.base.po.Category" >
+    insert into category
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="categoryId != null" >
+        category_id,
+      </if>
+      <if test="categoryNo != null" >
+        category_no,
+      </if>
+      <if test="categoryName != null" >
+        category_name,
+      </if>
+      <if test="categoryNameEn != null" >
+        category_name_en,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+      <if test="grade != null" >
+        grade,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="categoryId != null" >
+        #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="categoryNo != null" >
+        #{categoryNo,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryName != null" >
+        #{categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryNameEn != null" >
+        #{categoryNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="grade != null" >
+        #{grade,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.base.po.Category" >
+    update category
+    <set >
+      <if test="categoryNo != null" >
+        category_no = #{categoryNo,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryName != null" >
+        category_name = #{categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryNameEn != null" >
+        category_name_en = #{categoryNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="parentId == null" >
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="grade != null" >
+        grade = #{grade,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where category_id = #{categoryId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.base.po.Category" >
+    update category
+    set category_no = #{categoryNo,jdbcType=VARCHAR},
+      category_name = #{categoryName,jdbcType=VARCHAR},
+      category_name_en = #{categoryNameEn,jdbcType=VARCHAR},
+      parent_id = #{parentId,jdbcType=INTEGER},
+      grade = #{grade,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where category_id = #{categoryId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="queryTotalCount" parameterType="java.util.Map" resultType="Integer">
+		select  count(1)
+		from CATEGORY category
+	     where 1=1
+		<include refid="Query_Column_List" />
+	</select>
+	
+	<select id="findListByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		category.*
+		from CATEGORY category 
+		where 1=1 
+		<include refid="Query_Column_List" /> 
+		<include refid="basic.mysqlPageSearchFoot"/>  
+	</select>
+	
+	
+	<sql id="Query_Column_List">
+		<if test="clientId != null">
+			and category.client_id = #{clientId}
+		</if>
+		<if test="isDelete != null ">
+			and category.is_delete = #{isDelete}
+		</if>
+		<if test="categoryId != null ">
+			and category_id = #{categoryId}
+		</if>
+		<if test="categoryName != null and categoryName != ''">
+			and category.category_name like CONCAT('%',#{categoryName},'%') 
+		</if>
+		<if test="categoryNo != null and categoryNo != ''">
+			and category.category_no = #{categoryNo} 
+		</if>
+		<if test="grade !=  null">
+			and category.grade = #{grade}
+		</if>
+	</sql>
+	
+	 <select id="findListWithOutId" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		category.*
+		from CATEGORY category
+		where  1=1  
+		<if test="categoryId != null">
+			and category.category_id != #{categoryId,jdbcType=INTEGER}
+		</if>
+		<if test="grade !=  null">
+			and category.grade = #{grade}
+		</if>
+		<if test="clientId != null">
+			and category.client_id = #{clientId}
+		</if>
+		<if test="isDelete != null ">
+			and category.is_delete = #{isDelete}
+		</if>
+	</select>
+	
+	<select id="getTreeNodesByPId" parameterType="java.util.Map"  resultMap="TreeNodeResultMap">
+		SELECT category.category_id AS id, category.parent_id AS pId, category.category_name AS name 
+		FROM CATEGORY category
+		WHERE 1=1 
+			<if test="clientId != null" >
+				and  category.client_id = #{clientId}
+			</if>
+			
+			<if test="id &gt; 0" >
+				and  category.parent_id = #{id} 
+			</if>
+			<if test="id == 0" >
+				and  category.parent_id is null 
+			</if>
+		AND category.is_delete = 0
+		ORDER BY category.category_id
+	</select>
+	
+	<select id="getCategoryByClientIdAndId" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select * from category where client_id = #{clientId} and category_id = #{categoryId} and is_delete = 0 limit 1
+	</select>
+	
+	
+	<select id="getCategoryMap" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select * from category where client_id = #{clientId} and is_delete = 0
+	</select>
+	
+</mapper>

@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="STORE_USER_MAPPING" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.base.po.StoreUserMapping" >
+    <id column="mapping_id" property="mappingId" jdbcType="CHAR" />
+    <result column="store_id" property="storeId" jdbcType="CHAR" />
+    <result column="client_user_id" property="clientUserId" jdbcType="INTEGER" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    mapping_id, store_id, client_user_id, client_id, create_time, last_update_time, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from store_user_mapping
+    where mapping_id = #{mappingId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from store_user_mapping
+    where mapping_id = #{mappingId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.base.po.StoreUserMapping" >
+    insert into store_user_mapping (mapping_id, store_id, client_user_id, 
+      client_id,
+      is_delete)
+    values (#{mappingId,jdbcType=CHAR}, #{storeId,jdbcType=CHAR}, #{clientUserId,jdbcType=INTEGER}, 
+      #{clientId,jdbcType=INTEGER},
+      #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.base.po.StoreUserMapping" >
+    insert into store_user_mapping
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mappingId != null" >
+        mapping_id,
+      </if>
+      <if test="storeId != null" >
+        store_id,
+      </if>
+      <if test="clientUserId != null" >
+        client_user_id,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mappingId != null" >
+        #{mappingId,jdbcType=CHAR},
+      </if>
+      <if test="storeId != null" >
+        #{storeId,jdbcType=CHAR},
+      </if>
+      <if test="clientUserId != null" >
+        #{clientUserId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.base.po.StoreUserMapping" >
+    update store_user_mapping
+    <set >
+      <if test="storeId != null" >
+        store_id = #{storeId,jdbcType=CHAR},
+      </if>
+      <if test="clientUserId != null" >
+        client_user_id = #{clientUserId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where mapping_id = #{mappingId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.base.po.StoreUserMapping" >
+    update store_user_mapping
+    set store_id = #{storeId,jdbcType=CHAR},
+      client_user_id = #{clientUserId,jdbcType=INTEGER},
+      client_id = #{clientId,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where mapping_id = #{mappingId,jdbcType=CHAR}
+  </update>
+  <update id="updateByStoreId" parameterType="java.util.Map">
+  	update store_user_mapping
+  		set is_delete = 1 
+  		where store_id = #{storeId,jdbcType=CHAR}
+  </update>
+  <update id="deleteByStoreId" parameterType="String">
+  	update store_user_mapping
+  		set is_delete = 1 
+  		where store_id = #{storeId}
+  </update>
+  <update id="deleteByClientUserId">
+  	update store_user_mapping 
+  		set is_delete = 1
+  		where client_user_id =#{clientUserId}
+  </update>
+  <update id="deleteByStoreIdAndUserId" parameterType="java.util.Map">
+  	update store_user_mapping
+  		set is_delete = 1 
+  		where store_id = #{storeId}
+  		and FIND_IN_SET(client_user_id,#{deleteClientUserIds}) > 0
+  </update>
+   <select id="selectByStoreIdAndClientUserId" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select *
+    from store_user_mapping
+    where 1=1
+    <if test="storeId != null and storeId != ''">
+    	and store_id = #{storeId,jdbcType=CHAR}
+    </if>
+    <if test="clientUserId != null and clientUserId != ''">
+    	and client_user_id = #{clientUserId,jdbcType=INTEGER}
+    </if>
+    <if test="clientId != null and clientId != ''">
+    	and client_id = #{clientId,jdbcType=INTEGER}
+    </if>
+    <if test="Isdelete != null">
+    	and is_delete = #{Isdelete,jdbcType=INTEGER}
+    </if>
+  </select>
+  
+  <select id="selectStoreUserMappingByClientUserId" parameterType="java.util.Map" resultMap="BaseResultMap"> 
+  		select * from store_user_mapping where client_user_id=#{clientUserId} and client_id=#{clientId} and is_delete = 0
+   </select>
+  
+  <update id="isdeleteUserStoreMapping" parameterType="java.util.Map">
+  update store_user_mapping set is_delete = 1 where client_user_id = #{clientUserId} and is_delete = 0 and client_id = #{clientId}  
+  </update>
+  
+  <select id="queryTotalCount" parameterType="java.util.Map" resultType="Integer">
+	select COUNT(1) from (SELECT  DISTINCT a.*,cp.call_status as callStatus FROM ( SELECT se.*,cu.NAME AS NAME FROM store se
+				INNER JOIN store_user_mapping sum ON se.store_id = sum.store_id
+				INNER JOIN client_user cu ON cu.client_user_id = sum.client_user_id
+				AND cu.is_delete = 0
+				AND FIND_IN_SET(sum.client_user_id, #{chilStr}) > 0
+				AND sum.client_id = #{clientId}
+				AND se.is_delete = 0
+				<if test="LookIsdelete == null">
+					AND sum.is_delete = 0
+				</if>
+				<if test="storeName != null and storeName != ''">
+					AND se.store_name LIKE CONCAT('%' ,#{storeName}, '%')
+				</if>
+			) a 
+		LEFT JOIN call_planning cp ON a.store_id = cp.pop_id and a.client_id = cp.client_id
+		<![CDATA[ and cp.call_date >= #{startDate}]]>
+		<![CDATA[ and cp.call_date <= #{endDate}]]>
+		<if test="clientUserId != null">
+			AND cp.client_user_id = #{clientUserId}
+		</if>
+		<if test="visitType != null">
+			AND cp.visit_type = #{visitType}
+		</if>
+		<if test="workType != null">
+			AND cp.work_type = #{workType}
+		</if>
+		
+		AND cp.is_delete = 0) b where 1=1 
+		<if test="callStatus != null">
+		and	b.callStatus = #{callStatus}
+		</if>
+  </select>
+  <select id="queryStoreList" resultType="cn.mobilizer.channel.base.po.Store" parameterType="java.util.Map">
+	select bb.* from (SELECT
+	distinct aa.*, cp.pop_id as visitYesOrNot,cp.call_status as callStatus,cp.planning_type as planningType
+	FROM
+		( SELECT
+				se.addr,
+				se.store_id as storeId,
+				se.store_name as storeName,
+				se.store_no as storeNo,
+				se.client_id,
+				cu.name as name
+			FROM
+				store se
+			INNER JOIN store_user_mapping sum ON se.store_id = sum.store_id 
+			INNER JOIN client_user cu on cu.client_user_id = sum.client_user_id and cu.is_delete = 0
+			AND FIND_IN_SET(sum.client_user_id, #{chilStr}) > 0
+    		and sum.client_id = #{clientId,jdbcType=INTEGER}
+    		and se.is_delete = 0
+    		<if test="LookIsdelete == null">
+				AND sum.is_delete = 0
+			</if>
+    	<if test=" storeName != null and storeName != ''">
+    		and se.store_name like CONCAT('%',#{storeName},'%') 
+    	</if>
+		) aa
+	LEFT JOIN call_planning cp ON aa.storeId = cp.pop_id and aa.client_id = cp.client_id
+		<![CDATA[ and cp.call_date >= #{startDate}]]>
+		<![CDATA[ and cp.call_date <= #{endDate}]]>
+		<if test="clientUserId == null and visiByte == 1 ">
+			AND cp.client_user_id = null
+		</if>
+		<if test="clientUserId != null ">
+			AND cp.client_user_id = #{clientUserId,jdbcType=INTEGER}
+		</if>
+		<if test="visitType != null">
+			AND cp.visit_type = #{visitType}
+		</if>
+		<if test="workType != null">
+			AND cp.work_type = #{workType}
+		</if>
+    	and cp.is_delete = 0)bb where 1=1
+    	<if test="callStatus != null">
+    	and 	bb.callStatus = #{callStatus}
+    	</if>
+    	order by bb.visitYesOrNot desc,bb.storeId
+    <include refid="basic.mysqlPageSearchFoot"/>
+  </select>
+  <update id="replaceClientUserId" parameterType="java.util.Map">
+  	UPDATE store_user_mapping s SET s.client_user_id = #{clientUserId} WHERE s.client_id = #{clientId} AND FIND_IN_SET( s.store_id, #{storeIds} ) > 0 AND s.is_delete = 0
+  </update>
+  
+  <update id="currentMapppingisdelte" parameterType="java.util.Map">
+  	update store_user_mapping s set s.is_delete = 1 where s.client_id = #{clientId} AND FIND_IN_SET(s.store_id, #{storeIds} ) > 0  and s.client_user_id =#{clientUserId}
+  </update>
+  
+  <select id="userAndStoreMapping" parameterType="java.util.Map"  resultMap="BaseResultMap">
+  	select * from store_user_mapping s where s.store_id =#{strStoreIds} and s.client_id =#{clientId} and s.client_user_id =#{clientUserId2} order by s.is_delete,s.create_time desc limit 1;
+  </select>
+  
+  <select id="initStoreMappingData" parameterType="java.util.Map"  resultType="String" >
+  	SELECT
+	GROUP_CONCAT(sum.client_user_id)
+	FROM
+		store_user_mapping sum 
+	LEFT JOIN client_user cu ON sum.client_user_id = cu.client_user_id AND cu.is_delete = 0 AND cu.client_id = #{clientId}
+	LEFT JOIN client_position cp ON cu.client_position_id = cp.client_position_id AND cp.is_delete = 0 AND cp.client_id = #{clientId}
+	WHERE
+	sum.is_delete = 0
+	AND sum.client_id = #{clientId}
+	AND sum.store_id = #{storeId}
+	<if test="clientPositionIds != null and clientPositionIds != ''">
+		AND FIND_IN_SET(cp.client_position_id, #{clientPositionIds}) > 0
+	</if>
+  </select>
+  
+  <select id="getStoreUserMappingByStoreId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select sum.*,concat(IFNULL(cu.name,''),if(cp.position_name is null,'',concat('--',cp.position_name)))as name 
+    from store_user_mapping sum 
+    inner join client_user cu on sum.client_user_id = cu.client_user_id and cu.is_delete = 0 and cu.client_id = #{clientId}
+    left join client_position cp on cu.client_position_id = cp.client_position_id and cp.client_id = #{clientId}
+    where  sum.is_delete = 0 
+    and cu.name !=''
+    and sum.client_id = #{clientId} 
+    and sum.store_id = #{storeId,jdbcType=CHAR} 
+    <if test="clientPositionIds != null and clientPositionIds != ''">
+		AND FIND_IN_SET(cp.client_position_id, #{clientPositionIds}) > 0
+	</if>
+  </select>
+  
+  	<sql id="select_by_param">
+		select
+		<include refid="Base_Column_List" />
+		from store_user_mapping
+		where 1=1
+		<include refid="Base_Query_Column_List" />
+	</sql>
+	
+	<sql id="Base_Query_Column_List">
+		<if test="storeId != null and storeId != ''">
+	    	and store_id = #{storeId,jdbcType=CHAR}
+	    </if>
+	    <if test="clientUserId != null and clientUserId != ''">
+	    	and client_user_id = #{clientUserId,jdbcType=INTEGER}
+	    </if>
+	    <if test="clientId != null and clientId != ''">
+	    	and client_id = #{clientId,jdbcType=INTEGER}
+	    </if>
+	</sql>
+	
+	<select id="selectByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from store_user_mapping
+		where 1=1
+		and is_delete = 0
+		<include refid="Base_Query_Column_List" />
+	</select>
+	
+ 	<insert id="batchInsertStoreUserMapping"  parameterType="java.util.Map">
+		insert into store_user_mapping (mapping_id, store_id, client_user_id, client_id)
+	    values 
+	    <foreach collection="storeUserMappings" item="item" index="index" separator="," >
+	    	(#{item.mappingId},#{item.storeId},#{item.clientUserId},#{item.clientId}) 
+	    </foreach>
+  	</insert>
+  	
+  	<update id="deleteStoreUserMappingByStoreId" parameterType="java.util.Map">
+  		update store_user_mapping s set s.is_delete = 1 where s.client_id = #{clientId} and s.store_id = #{storeId} and s.is_delete = 0
+  	</update>
+  	
+  	<select id="selectStoreUserMappingMap" parameterType="java.util.Map" resultMap="BaseResultMap">
+  		select
+		<include refid="Base_Column_List" />
+		from store_user_mapping
+		where is_delete = 0 and client_id = #{clientId}
+  	</select>
+  	
+  	<update id="batchUpdateStoreUserMapping" parameterType="java.util.List">
+  		<foreach collection="list" index="index" item="item" separator=";">
+  		update store_user_mapping a 
+	  	set a.client_user_id = #{item.clientUserId},a.store_id = #{item.storeId},a.client_id = #{item.clientId}  where a.mapping_id = #{item.mappingId}  
+  		</foreach>
+  	</update>
+  	
+  	<select id="getReMappingClientPosition" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+ 		SELECT a.store_id,a.store_no,store_name,d.position_name,COUNT(d.client_position_id),c.`name`,c.client_user_id,CONCAT(d.position_name,'@',a.store_no) as clientUserIdAndStoreNo,b.client_id,b.mapping_id from store a
+		LEFT JOIN store_user_mapping b on b.store_id = a.store_id and b.is_delete = 0 and b.client_id = #{clientId}
+		LEFT JOIN client_user c on c.client_user_id = b.client_user_id and c.is_delete = 0 and c.client_id = #{clientId}
+		LEFT JOIN client_position d on d.client_position_id =c.client_position_id and d.is_delete = 0 and d.client_id = #{clientId}
+		where FIND_IN_SET(d.position_name,'CM,DM,RM') > 0
+		GROUP BY a.store_no,store_name,d.client_position_id
+		 HAVING COUNT(d.client_position_id) > 0 
+ 	</select>
+  	
+</mapper>

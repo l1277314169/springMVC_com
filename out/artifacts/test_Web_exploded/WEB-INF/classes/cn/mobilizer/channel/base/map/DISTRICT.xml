@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="DISTRICT" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.base.po.District" >
+    <id column="district_id" property="districtId" jdbcType="INTEGER" />
+    <result column="city_id" property="cityId" jdbcType="INTEGER" />
+    <result column="district" property="district" jdbcType="VARCHAR" />
+    <result column="district_en" property="districtEn" jdbcType="VARCHAR" />
+    <result column="district_no" property="districtNo" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    district_id, city_id, district, district_en, district_no, create_time, last_update_time, 
+    is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from district
+    where district_id = #{districtId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from district
+    where district_id = #{districtId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.base.po.District" >
+    insert into district (district_id, city_id, district, 
+      district_en, district_no, is_delete)
+    values (#{districtId,jdbcType=INTEGER}, #{cityId,jdbcType=INTEGER}, #{district,jdbcType=VARCHAR}, 
+      #{districtEn,jdbcType=VARCHAR}, #{districtNo,jdbcType=VARCHAR},#{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.base.po.District" >
+    insert into district
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="districtId != null" >
+        district_id,
+      </if>
+      <if test="cityId != null" >
+        city_id,
+      </if>
+      <if test="district != null" >
+        district,
+      </if>
+      <if test="districtEn != null" >
+        district_en,
+      </if>
+      <if test="districtNo != null" >
+        district_no,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="districtId != null" >
+        #{districtId,jdbcType=INTEGER},
+      </if>
+      <if test="cityId != null" >
+        #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="district != null" >
+        #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="districtEn != null" >
+        #{districtEn,jdbcType=VARCHAR},
+      </if>
+      <if test="districtNo != null" >
+        #{districtNo,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.base.po.District" >
+    update district
+    <set >
+      <if test="cityId != null" >
+        city_id = #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="district != null" >
+        district = #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="districtEn != null" >
+        district_en = #{districtEn,jdbcType=VARCHAR},
+      </if>
+      <if test="districtNo != null" >
+        district_no = #{districtNo,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where district_id = #{districtId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.base.po.District" >
+    update district
+    set city_id = #{cityId,jdbcType=INTEGER},
+      district = #{district,jdbcType=VARCHAR},
+      district_en = #{districtEn,jdbcType=VARCHAR},
+      district_no = #{districtNo,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where district_id = #{districtId,jdbcType=INTEGER}
+  </update>
+  
+  <sql id="Base_Query_Column_List" >
+      <if test="clientId != null and clientId !=''">
+			and client_id = #{clientId}
+	  </if>
+	  <if test="district != null" >
+      		and district = #{district}
+      </if>
+      <if test="isDelete != null" >
+       		and is_delete = #{isDelete}
+      </if>
+      <if test="isDelete == null" >
+       		and is_delete = 0
+       		
+      </if>
+  </sql>
+  <select id="select_by_param" resultMap="BaseResultMap" parameterType="java.util.Map">
+	select *
+	from district  
+	where 1=1
+	<include refid="Base_Query_Column_List" />
+  </select>
+  
+   <select id="select_by_cityId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+   select * from  district where city_id=#{cityId}
+  </select>
+  	<select id="queryTotalCount" parameterType="java.util.Map" resultType="Integer">
+		select  count(1)
+		from DISTRICT 
+	     where 1=1
+		<include refid="Base_Query_Column_List" />
+	</select>
+</mapper>

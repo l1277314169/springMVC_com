@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="CLIENT_ROLES" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.systemManager.po.ClientRoles" >
+    <id column="role_id" property="roleId" jdbcType="INTEGER" />
+    <result column="role_name" property="roleName" jdbcType="VARCHAR" />
+    <result column="role_name_en" property="roleNameEn" jdbcType="VARCHAR" />
+    <result column="web_login" property="webLogin" jdbcType="TINYINT" />
+    <result column="app_login" property="appLogin" jdbcType="TINYINT" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="role_level" property="roleLevel" jdbcType="TINYINT" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    role_id, role_name, role_name_en, web_login, app_login, client_id,role_level,
+    is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from client_roles
+    where role_id = #{roleId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from client_roles
+    where role_id = #{roleId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.systemManager.po.ClientRoles" >
+    insert into client_roles (role_id, role_name, role_name_en, 
+      web_login, app_login, client_id, role_level,
+      is_delete
+      )
+    values (#{roleId,jdbcType=INTEGER}, #{roleName,jdbcType=VARCHAR}, #{roleNameEn,jdbcType=VARCHAR}, 
+      #{webLogin,jdbcType=TINYINT}, #{appLogin,jdbcType=TINYINT}, #{clientId,jdbcType=INTEGER},#{roleLevel,jdbcType=TINYINT}, 
+      #{isDelete,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.systemManager.po.ClientRoles" >
+    insert into client_roles
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="roleId != null" >
+        role_id,
+      </if>
+      <if test="roleName != null" >
+        role_name,
+      </if>
+      <if test="roleNameEn != null" >
+        role_name_en,
+      </if>
+      <if test="webLogin != null" >
+        web_login,
+      </if>
+      <if test="appLogin != null" >
+        app_login,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="roleLevel != null" >
+        role_level,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="roleId != null" >
+        #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="roleName != null" >
+        #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="roleNameEn != null" >
+        #{roleNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="webLogin != null" >
+        #{webLogin,jdbcType=TINYINT},
+      </if>
+      <if test="appLogin != null" >
+        #{appLogin,jdbcType=TINYINT},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="roleLevel != null" >
+        #{roleLevel,jdbcType=TINYINT},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.systemManager.po.ClientRoles" >
+    update client_roles
+    <set >
+      <if test="roleName != null" >
+        role_name = #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="roleNameEn != null" >
+        role_name_en = #{roleNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="webLogin != null" >
+        web_login = #{webLogin,jdbcType=TINYINT},
+      </if>
+      <if test="appLogin != null" >
+        app_login = #{appLogin,jdbcType=TINYINT},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="roleLevel != null" >
+        role_level = #{roleLevel,jdbcType=TINYINT},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where role_id = #{roleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.systemManager.po.ClientRoles" >
+    update client_roles
+    set role_name = #{roleName,jdbcType=VARCHAR},
+      role_name_en = #{roleNameEn,jdbcType=VARCHAR},
+      web_login = #{webLogin,jdbcType=TINYINT},
+      app_login = #{appLogin,jdbcType=TINYINT},
+      client_id = #{clientId,jdbcType=INTEGER},
+      role_level = #{roleLevel,jdbcType=TINYINT},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where role_id = #{roleId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="getUserRolesByClientUserId" resultType="java.lang.String" parameterType="java.lang.Integer">
+	SELECT cr.role_id FROM client_roles cr INNER JOIN client_roles_user_mapping crum ON cr.role_id = crum.role_id 
+	AND crum.is_delete = 0  AND crum.client_user_id = #{clientUserId,jdbcType=INTEGER}  AND cr.is_delete = 0;
+  </select>
+  
+  
+  <select id="queryTotalCount" parameterType="java.util.Map" resultType="Integer">
+		select  count(1)
+		from CLIENT_ROLES client_roles
+	     where 1=1
+		<include refid="Query_Column_List" />
+  </select>
+	
+	<sql id="Query_Column_List">
+		<if test="clientId != null and clientId !=''">
+			and client_roles.client_id = #{clientId}
+		</if>
+		<if test="isDelete != null">
+			and client_roles.is_delete = #{isDelete}
+		</if>
+		<if test="roleNameEn != null">
+			and client_roles.role_name_en = #{roleNameEn}
+		</if>
+		<if test="roleName != null and roleName != ''">
+			and client_roles.role_name like CONCAT('%',#{roleName},'%') 
+		</if>
+	</sql>
+	
+	<select id="findListByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		client_roles.*
+		from CLIENT_ROLES client_roles 
+		where 1=1 
+		<include refid="Query_Column_List" /> 
+		<include refid="basic.mysqlPageSearchFoot"/>  
+	</select>
+	
+	<select id="findListByParams1" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		client_roles.role_id as id,client_roles.role_name as name
+		from CLIENT_ROLES client_roles  
+		where client_roles.client_id = #{clientId}
+		and	client_roles.is_delete = 0 and client_roles.role_name !='' 
+	</select>
+
+	<select id="getClientRoleByRoleName" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		client_roles.*
+		from CLIENT_ROLES client_roles 
+		where 1=1 
+		<if test="clientId != null and clientId !=''">
+			and client_roles.client_id = #{clientId}
+		</if>
+		<if test="roleName != null">
+			and client_roles.role_name = #{roleName}
+		</if>
+		and client_roles.is_delete = 0
+	</select>
+	
+	<select id="getWebAppRoles" parameterType="java.lang.String" resultMap="BaseResultMap">
+		SELECT GROUP_CONCAT(cr.web_login) as webstr ,GROUP_CONCAT(cr.app_login) as appstr FROM client_roles cr WHERE FIND_IN_SET(cr.role_id,#{webIdAppId});
+	</select>
+	
+		<select id="getClientUserPosition" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select cu.client_user_id as id,cu.client_user_id,concat(IFNULL(cu.name,''),if(cp.position_name is null,'',concat('--',cp.position_name)))as name 
+		from CLIENT_USER cu 
+		left join client_position cp
+		on cu.client_position_id = cp.client_position_id
+		where cu.client_id = #{clientId}
+		and	cu.is_delete = 0 and cu.name !='' 
+		<if test="clientUserId != null">
+			and cu.client_user_id != #{clientUserId}
+		</if>
+		<if test="childId != null and childId != ''">
+			and find_in_set(cu.client_user_id,#{childId}) = 0
+		</if>
+		<if test="name != null and name !=''">
+			and (cu.name like CONCAT('%',#{name},'%') or cp.position_name like CONCAT('%',#{name},'%')) 
+		</if>
+	</select>
+	
+  	<select id="findRolesbyselectTwo" parameterType="java.util.Map" resultMap="BaseResultMap">
+  		select cs.role_id as id,cs.role_id,cs.role_name as name from client_roles cs where 1=1 and cs.is_delete = 0  
+  		<if test="clientId != null">
+			and cs.client_id = #{clientId}
+		</if>
+  		<if test="name != null and name !=''">
+			and (cs.role_name like CONCAT('%',#{name},'%')) 
+		</if>
+  	</select>
+  	<select id="getRolesById" parameterType="java.util.Map" resultMap="BaseResultMap">
+  		select cs.role_id as id,cs.role_id,cs.role_name as name from client_roles cs where 1=1 and cs.is_delete = 0
+  		 and cs.role_id = #{roleId}
+  	</select>
+  	
+  	<select id="findClientRolesByUserId" parameterType="java.util.Map" resultMap="BaseResultMap">
+		SELECT
+			cr.*
+		FROM
+			client_roles cr
+		INNER JOIN client_roles_user_mapping crum ON cr.role_id = crum.role_id
+		AND cr.client_id = #{clientId}
+		AND crum.client_user_id = #{clientUserId}
+		AND cr.is_delete = 0
+		AND crum.is_delete = 0
+		AND cr.role_level IS NOT NULL
+		ORDER BY cr.role_level ASC
+	</select>
+	
+	<select id="findSystemRolesByClientIdAndRoleLevel" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		client_roles.role_id as id,client_roles.role_name as name
+		from CLIENT_ROLES client_roles  
+		where client_roles.client_id = #{clientId}
+		and	client_roles.is_delete = 0 
+		and client_roles.role_level > #{level}
+		ORDER BY client_roles.role_level
+	</select>
+	<select id="getObjectList" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select * from CLIENT_ROLES a where a.is_delete = 0 and a.client_id = #{clientId}
+	</select>
+	
+	<select id="getRoleNameMyClientID" resultMap="BaseResultMap"  parameterType="java.lang.Integer">
+		SELECT a.role_id,a.role_name  FROM CLIENT_ROLES a WHERE a.is_delete = 0 AND a.client_id = #{clientId}
+	</select>
+	
+	<select id="getBusinessRoles" parameterType="java.util.Map" resultMap="BaseResultMap">
+		SELECT a.role_id,a.role_name  FROM CLIENT_ROLES a WHERE a.is_delete = 0 AND a.client_id = #{clientId} and find_in_set(a.role_name,#{roleNames}) > 0
+	</select>
+	
+	<select id="selectByParam" resultMap="BaseResultMap" parameterType="java.util.Map">
+	select *
+	from CLIENT_ROLES  
+	where 1=1 and is_delete = 0 AND client_id = #{clientId} 
+  </select>
+</mapper>

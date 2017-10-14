@@ -36,7 +36,7 @@ public class MD5 {
 		String salt = "hello";
 		String password = null;
 		try {
-			password = new Md5Hash("123", salt).toString();
+			password = new Md5Hash("123456", salt).toString();
 			System.out.println(password);
 		} catch (Exception e) {
 			e.printStackTrace();

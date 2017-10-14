@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="SYS_PRIVILEGES" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.systemManager.po.SysPrivileges" >
+    <id column="sys_privilege_id" property="sysPrivilegeId" jdbcType="INTEGER" />
+    <result column="priv_code" property="privCode" jdbcType="VARCHAR" />
+    <result column="priv_name" property="privName" jdbcType="VARCHAR" />
+    <result column="priv_name_en" property="privNameEn" jdbcType="VARCHAR" />
+    <result column="sequence" property="sequence" jdbcType="INTEGER" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="css_class" property="cssClass" jdbcType="VARCHAR" />
+    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+    <result column="priv_type" property="privType" jdbcType="TINYINT" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sys_privilege_id, priv_code, priv_name, priv_name_en, sequence, url, css_class, parent_id, 
+    priv_type, client_id,  is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_privileges
+    where sys_privilege_id = #{sysPrivilegeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_privileges
+    where sys_privilege_id = #{sysPrivilegeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.systemManager.po.SysPrivileges" >
+    insert into sys_privileges (sys_privilege_id, priv_code, priv_name, 
+      priv_name_en, sequence, url, 
+      css_class, parent_id, priv_type, 
+      client_id, 
+      is_delete)
+    values (#{sysPrivilegeId,jdbcType=INTEGER}, #{privCode,jdbcType=VARCHAR}, #{privName,jdbcType=VARCHAR}, 
+      #{privNameEn,jdbcType=VARCHAR}, #{sequence,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, 
+      #{cssClass,jdbcType=VARCHAR}, #{parentId,jdbcType=INTEGER}, #{privType,jdbcType=TINYINT}, 
+      #{clientId,jdbcType=INTEGER},  
+      #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.systemManager.po.SysPrivileges" >
+    insert into sys_privileges
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sysPrivilegeId != null" >
+        sys_privilege_id,
+      </if>
+      <if test="privCode != null" >
+        priv_code,
+      </if>
+      <if test="privName != null" >
+        priv_name,
+      </if>
+      <if test="privNameEn != null" >
+        priv_name_en,
+      </if>
+      <if test="sequence != null" >
+        sequence,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="cssClass != null" >
+        css_class,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+      <if test="privType != null" >
+        priv_type,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+    
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sysPrivilegeId != null" >
+        #{sysPrivilegeId,jdbcType=INTEGER},
+      </if>
+      <if test="privCode != null" >
+        #{privCode,jdbcType=VARCHAR},
+      </if>
+      <if test="privName != null" >
+        #{privName,jdbcType=VARCHAR},
+      </if>
+      <if test="privNameEn != null" >
+        #{privNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null" >
+        #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="cssClass != null" >
+        #{cssClass,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="privType != null" >
+        #{privType,jdbcType=TINYINT},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+     
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.systemManager.po.SysPrivileges" >
+    update sys_privileges
+    <set >
+      <if test="privCode != null" >
+        priv_code = #{privCode,jdbcType=VARCHAR},
+      </if>
+      <if test="privName != null" >
+        priv_name = #{privName,jdbcType=VARCHAR},
+      </if>
+      <if test="privNameEn != null" >
+        priv_name_en = #{privNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null" >
+        sequence = #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="cssClass != null" >
+        css_class = #{cssClass,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="privType != null" >
+        priv_type = #{privType,jdbcType=TINYINT},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where sys_privilege_id = #{sysPrivilegeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.systemManager.po.SysPrivileges" >
+    update sys_privileges
+    set priv_code = #{privCode,jdbcType=VARCHAR},
+      priv_name = #{privName,jdbcType=VARCHAR},
+      priv_name_en = #{privNameEn,jdbcType=VARCHAR},
+      sequence = #{sequence,jdbcType=INTEGER},
+      url = #{url,jdbcType=VARCHAR},
+      css_class = #{cssClass,jdbcType=VARCHAR},
+      parent_id = #{parentId,jdbcType=INTEGER},
+      priv_type = #{privType,jdbcType=TINYINT},
+      client_id = #{clientId,jdbcType=INTEGER},
+  
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where sys_privilege_id = #{sysPrivilegeId,jdbcType=INTEGER}
+  </update>
+</mapper>

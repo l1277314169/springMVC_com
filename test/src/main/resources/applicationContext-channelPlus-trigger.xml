@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="UTF-8"?> 
+<beans xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:context="http://www.springframework.org/schema/context" 
+    xmlns:aop="http://www.springframework.org/schema/aop" 
+    xmlns:tx="http://www.springframework.org/schema/tx" 
+    xsi:schemaLocation="
+http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+http://www.springframework.org/schema/context 
+http://www.springframework.org/schema/context/spring-context-4.0.xsd 
+http://www.springframework.org/schema/aop 
+http://www.springframework.org/schema/aop/spring-aop-4.0.xsd 
+http://www.springframework.org/schema/tx 
+http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+	<!-- 定时任务 -->
+	<!--在spring配置文件中创建bean，创建schedule -->
+	<bean id="schedule" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<!-- <ref bean="pictureMoveTrigger" /> -->
+				<ref bean="pushMessageTrigger" />
+				<ref bean="imageTrigger" />
+				<ref bean="imageMoveTrigger" />
+				<ref bean="usersTrigger" />
+				<ref bean="removeImageZipTrigger" />
+				<ref bean="importImageZipTrigger"/>
+				<ref bean="colgateRawDataTrigger" />
+			</list>
+		</property>
+	</bean>
+	<!--2. 在spring配置文件中创建bean，创建你的triggers -->
+	<!-- <bean id="pictureMoveTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="pictureMoveJobDetail" />
+		<property name="cronExpression" value="0 0/2 * * * ?" />
+	</bean> -->
+	<!--3. 在spring配置文件中创建bean，指定定时器作用在那个类那个方法上面 -->
+	<!-- <bean id="pictureMoveJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="pictureMoveTask" />
+		<property name="targetMethod" value="checkAndMovePictures" />
+	</bean> -->
+	<!-- //注明：把定时器作用在targetTestService对象中的timerTest方法上面 4. 当然还得把你作用的对象交Spring来管理，所以在spring配置文件中创建作用类的 
+		bean -->
+	<!-- <bean id="pictureMoveTask" class="cn.mobilizer.channel.task.PictureMoveTask" scope="prototype">
+	</bean> -->
+	
+	<!-- 消息推送job -->
+	<bean id="pushMessageTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="pushMessageJobDetail" />
+		<property name="cronExpression"><value>${quartz.pushMessageTrigger}</value></property>
+	</bean>
+	
+	<bean id="pushMessageJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="pushMessageTask" />
+		<property name="targetMethod" value="pushMessages" />
+	</bean>
+	
+	<bean id="pushMessageTask" class="cn.mobilizer.channel.task.PushMessageTask" scope="prototype"/>
+	
+	<bean id="smsProcessorManager" class="cn.mobilizer.channel.log.service.impl.SmsProcessorManager" scope="prototype">
+		<!-- 通过key-value的形式来关联消息推送 -->  
+	    <property name="processorMap">  
+	        <map key-type="java.lang.String">
+	            <entry value-ref="androidSmsPushProcessor" key="androidSms"></entry>   
+	            <entry value-ref="iosSmsPushProcessor" key="iosSms"></entry>   
+	        </map>  
+	    </property> 
+	</bean>
+	
+	<!-- 生成缩略图定时器 -->
+	<bean id="imageTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="imageJobDetail" />
+		<property name="cronExpression"><value>${quartz.imageTrigger}</value></property><!-- 每1分钟一次调度 -->
+	</bean>
+	<bean id="imageJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="imageTask" />
+		<property name="targetMethod" value="processImage" />
+	</bean>
+	<bean id="imageTask" class="cn.mobilizer.channel.task.ImageTask" scope="prototype"/>
+	
+	<!-- ehr同步定时器 -->
+	<bean id="usersTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="usersJobDetail" />
+		<property name="cronExpression"><value>${quartz.usersTrigger}</value></property><!-- 每1分钟一次调度 -->
+	</bean>
+	<bean id="usersJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="usersTask" />
+		<property name="targetMethod" value="processUser" />
+	</bean>
+	<bean id="usersTask" class="cn.mobilizer.channel.task.UsersTask" scope="prototype"/>
+	
+	<!-- 移动历史图片 -->
+	<bean id="imageMoveTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="imageMoveJobDetail" />
+		<property name="cronExpression"><value>${quartz.imageMoveTrigger}</value></property><!-- 每10分钟一次调度 0 0/10 03,05 * * ?  -->
+	</bean>
+	<bean id="imageMoveJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="imageMoveTask" />
+		<property name="targetMethod" value="processMove" />
+	</bean>
+	<bean id="imageMoveTask" class="cn.mobilizer.channel.task.ImageMoveTask" scope="prototype"/>
+	
+	<!-- 生成缩略图定时器 -->
+	<bean id="removeImageZipTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="removeImageZipTaskJobDetail" />
+		<property name="cronExpression"><value>${quartz.removeImageZipTrigger}</value></property> 
+	</bean>
+	<bean id="removeImageZipTask" class="cn.mobilizer.channel.task.RemoveImageZipTask" scope="prototype"/>
+	<bean id="removeImageZipTaskJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="removeImageZipTask" />
+		<property name="targetMethod" value="removeImageZip" />
+	</bean>
+	
+	<!-- 发送邮件定时器 -->
+	<bean id="importImageZipTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="importImageZipTaskJobDetail" />
+		<property name="cronExpression"><value>${quartz.importImageZipTrigger}</value></property> <!-- 每5分钟一次调度   -->
+	</bean>
+	<bean id="importImageZipTask" class="cn.mobilizer.channel.task.ImportImageZipTask" scope="prototype"/>
+	<bean id="importImageZipTaskJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="importImageZipTask" />
+		<property name="targetMethod" value="importImageZip" />
+	</bean>
+	
+	<!-- 高露洁RawDta数据生成定时任务 -->
+	<bean id="colgateRawDataTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="colgateRawDataTaskJobDetail" />
+		<property name="cronExpression"><value>${quartz.colgateRawDataTrigger}</value></property> <!-- 每10分钟一次调度   -->
+	</bean>
+	<bean id="colgateRawDataTask" class="cn.mobilizer.channel.task.ColgateRawDataTask" scope="prototype"/>
+	<bean id="colgateRawDataTaskJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="colgateRawDataTask" />
+		<property name="targetMethod" value="processData" />
+	</bean>
+	
+</beans>

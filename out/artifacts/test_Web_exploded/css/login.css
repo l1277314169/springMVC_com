@@ -1,0 +1,51 @@
+BODY {
+	FONT-SIZE: 12px; FONT-FAMILY: Arial; BACKGROUND: url(../images/login_bg2.jpg) repeat-x left -10px; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
+}
+P {
+	MARGIN: 0px; LINE-HEIGHT: 30px
+}
+INPUT {
+	FONT-SIZE: 12px; FONT-FAMILY: Arial
+}
+SELECT {
+	FONT-SIZE: 12px; FONT-FAMILY: Arial
+}
+IMG {
+	BORDER-LEFT-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-TOP-WIDTH: 0px
+}
+#container {
+	OVERFLOW: hidden; HEIGHT: 492px; WIDTH: 811px; BACKGROUND: url(../images/mg_login_bg.png) no-repeat left top; MARGIN: 40px auto 0px
+}
+#container #main {
+	WIDTH: 350px; MARGIN: 100px 0px 0px 100px
+}
+#container #main FORM {
+	HEIGHT: 160px; WIDTH: 350px; PADDING-TOP: 50px
+}
+#container #main FORM .input {
+	BORDER-TOP: #cddaf8 1px solid; BORDER-RIGHT: #cddaf8 1px solid; BORDER-BOTTOM: #cddaf8 1px solid; BORDER-LEFT: #cddaf8 1px solid
+}
+#container #main FORM SELECT {
+	BORDER-TOP: #cddaf8 1px solid; BORDER-RIGHT: #cddaf8 1px solid; BORDER-BOTTOM: #cddaf8 1px solid; BORDER-LEFT: #cddaf8 1px solid
+}
+#container #main FORM P {
+	HEIGHT: 36px; CLEAR: both; DISPLAY: block; LINE-HEIGHT: 36px
+}
+#container #main H2 {
+	FONT-SIZE: 12px; FONT-FAMILY: "Î¢ÈíÑÅºÚ"; FONT-WEIGHT: normal; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 30px 0px 0px; PADDING-RIGHT: 50px
+}
+#container #main H2 SPAN {
+	FONT-SIZE: 14px
+}
+.button1 {
+	FONT-SIZE: 14px; BORDER-TOP: 0px; HEIGHT: 32px; FONT-FAMILY: "Î¢ÈíÑÅºÚ"; BORDER-RIGHT: 0px; WIDTH: 92px; BACKGROUND: url(../images/button.gif) no-repeat left 50%; BORDER-BOTTOM: 0px; FONT-WEIGHT: bold; COLOR: white; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 20px 0px 0px; BORDER-LEFT: 0px; LINE-HEIGHT: 32px; PADDING-RIGHT: 0px
+}
+.button2 {
+	FONT-SIZE: 14px; BORDER-TOP: 0px; HEIGHT: 32px; FONT-FAMILY: "Î¢ÈíÑÅºÚ"; BORDER-RIGHT: 0px; WIDTH: 92px; BACKGROUND: url(../images/button.gif) no-repeat left 50%; BORDER-BOTTOM: 0px; FONT-WEIGHT: bold; COLOR: white; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; LINE-HEIGHT: 32px; PADDING-RIGHT: 0px
+}
+#footer {
+	OVERFLOW: hidden; WIDTH: 450px; FLOAT: none; COLOR: black; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 10px; PADDING-LEFT: 0px; MARGIN-LEFT: 30px; CLEAR: both; PADDING-RIGHT: 0px
+}
+#footer P {
+	LINE-HEIGHT: 20px
+}

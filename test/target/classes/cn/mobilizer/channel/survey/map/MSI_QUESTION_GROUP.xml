@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="MSI_QUESTION_GROUP" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.survey.po.MsiQuestionGroup" >
+    <id column="question_group_id" property="questionGroupId" jdbcType="INTEGER" />
+    <result column="msi_survey_id" property="msiSurveyId" jdbcType="INTEGER" />
+    <result column="group_name" property="groupName" jdbcType="VARCHAR" />
+    <result column="grade" property="grade" jdbcType="INTEGER" />
+    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+    <result column="sequence" property="sequence" jdbcType="INTEGER" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    question_group_id, msi_survey_id, group_name, grade, parent_id, sequence, client_id, 
+    create_time, last_update_time, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from msi_question_group
+    where question_group_id = #{questionGroupId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from msi_question_group
+    where question_group_id = #{questionGroupId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.survey.po.MsiQuestionGroup" >
+    insert into msi_question_group (question_group_id, msi_survey_id, group_name, 
+      grade, parent_id, sequence, 
+      client_id, create_time, last_update_time, 
+      is_delete)
+    values (#{questionGroupId,jdbcType=INTEGER}, #{msiSurveyId,jdbcType=INTEGER}, #{groupName,jdbcType=VARCHAR}, 
+      #{grade,jdbcType=INTEGER}, #{parentId,jdbcType=INTEGER}, #{sequence,jdbcType=INTEGER}, 
+      #{clientId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{lastUpdateTime,jdbcType=TIMESTAMP}, 
+      #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.survey.po.MsiQuestionGroup" >
+    insert into msi_question_group
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="questionGroupId != null" >
+        question_group_id,
+      </if>
+      <if test="msiSurveyId != null" >
+        msi_survey_id,
+      </if>
+      <if test="groupName != null" >
+        group_name,
+      </if>
+      <if test="grade != null" >
+        grade,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+      <if test="sequence != null" >
+        sequence,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="questionGroupId != null" >
+        #{questionGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="msiSurveyId != null" >
+        #{msiSurveyId,jdbcType=INTEGER},
+      </if>
+      <if test="groupName != null" >
+        #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null" >
+        #{grade,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="sequence != null" >
+        #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.survey.po.MsiQuestionGroup" >
+    update msi_question_group
+    <set >
+      <if test="msiSurveyId != null" >
+        msi_survey_id = #{msiSurveyId,jdbcType=INTEGER},
+      </if>
+      <if test="groupName != null" >
+        group_name = #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null" >
+        grade = #{grade,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="sequence != null" >
+        sequence = #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where question_group_id = #{questionGroupId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.survey.po.MsiQuestionGroup" >
+    update msi_question_group
+    set msi_survey_id = #{msiSurveyId,jdbcType=INTEGER},
+      group_name = #{groupName,jdbcType=VARCHAR},
+      grade = #{grade,jdbcType=INTEGER},
+      parent_id = #{parentId,jdbcType=INTEGER},
+      sequence = #{sequence,jdbcType=INTEGER},
+      client_id = #{clientId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where question_group_id = #{questionGroupId,jdbcType=INTEGER}
+  </update>
+  <select id="findEntitysByMsiSurveyId" resultMap="BaseResultMap">
+  	select * from msi_question_group where 
+  	client_id = #{clientId} and msi_survey_id = #{msiSurveyId} and is_delete = 0 
+  	<choose>
+		<when test="parentId != null and parentId !=''">
+			and parent_id = #{parentId}
+		</when>
+		<otherwise>
+			and parent_id is null
+		</otherwise>
+	</choose>
+  </select>
+</mapper>

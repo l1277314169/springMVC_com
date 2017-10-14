@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="CT_TASK_DATA_ATTACHMENT" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.ctTask.po.CtTaskDataAttachment" >
+    <id column="attachment_id" property="attachmentId" jdbcType="CHAR" />
+    <result column="ct_task_data_id" property="ctTaskDataId" jdbcType="CHAR" />
+    <result column="attachment" property="attachment" jdbcType="VARCHAR" />
+    <result column="col1" property="col1" jdbcType="VARCHAR" />
+    <result column="col2" property="col2" jdbcType="VARCHAR" />
+    <result column="col3" property="col3" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="submit_time" property="submitTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    attachment_id, ct_task_data_id, attachment, col1, col2, col3, client_id, create_time, 
+    submit_time, last_update_time, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ct_task_data_attachment
+    where attachment_id = #{attachmentId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ct_task_data_attachment
+    where attachment_id = #{attachmentId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.ctTask.po.CtTaskDataAttachment" >
+    insert into ct_task_data_attachment (attachment_id, ct_task_data_id, attachment, 
+      col1, col2, col3, client_id, 
+      create_time, submit_time, last_update_time, 
+      is_delete)
+    values (#{attachmentId,jdbcType=CHAR}, #{ctTaskDataId,jdbcType=CHAR}, #{attachment,jdbcType=VARCHAR}, 
+      #{col1,jdbcType=VARCHAR}, #{col2,jdbcType=VARCHAR}, #{col3,jdbcType=VARCHAR}, #{clientId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{submitTime,jdbcType=TIMESTAMP}, #{lastUpdateTime,jdbcType=TIMESTAMP}, 
+      #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.ctTask.po.CtTaskDataAttachment" >
+    insert into ct_task_data_attachment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="attachmentId != null" >
+        attachment_id,
+      </if>
+      <if test="ctTaskDataId != null" >
+        ct_task_data_id,
+      </if>
+      <if test="attachment != null" >
+        attachment,
+      </if>
+      <if test="col1 != null" >
+        col1,
+      </if>
+      <if test="col2 != null" >
+        col2,
+      </if>
+      <if test="col3 != null" >
+        col3,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="submitTime != null" >
+        submit_time,
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="attachmentId != null" >
+        #{attachmentId,jdbcType=CHAR},
+      </if>
+      <if test="ctTaskDataId != null" >
+        #{ctTaskDataId,jdbcType=CHAR},
+      </if>
+      <if test="attachment != null" >
+        #{attachment,jdbcType=VARCHAR},
+      </if>
+      <if test="col1 != null" >
+        #{col1,jdbcType=VARCHAR},
+      </if>
+      <if test="col2 != null" >
+        #{col2,jdbcType=VARCHAR},
+      </if>
+      <if test="col3 != null" >
+        #{col3,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="submitTime != null" >
+        #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.ctTask.po.CtTaskDataAttachment" >
+    update ct_task_data_attachment
+    <set >
+      <if test="ctTaskDataId != null" >
+        ct_task_data_id = #{ctTaskDataId,jdbcType=CHAR},
+      </if>
+      <if test="attachment != null" >
+        attachment = #{attachment,jdbcType=VARCHAR},
+      </if>
+      <if test="col1 != null" >
+        col1 = #{col1,jdbcType=VARCHAR},
+      </if>
+      <if test="col2 != null" >
+        col2 = #{col2,jdbcType=VARCHAR},
+      </if>
+      <if test="col3 != null" >
+        col3 = #{col3,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="submitTime != null" >
+        submit_time = #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where attachment_id = #{attachmentId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.ctTask.po.CtTaskDataAttachment" >
+    update ct_task_data_attachment
+    set ct_task_data_id = #{ctTaskDataId,jdbcType=CHAR},
+      attachment = #{attachment,jdbcType=VARCHAR},
+      col1 = #{col1,jdbcType=VARCHAR},
+      col2 = #{col2,jdbcType=VARCHAR},
+      col3 = #{col3,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      submit_time = #{submitTime,jdbcType=TIMESTAMP},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where attachment_id = #{attachmentId,jdbcType=CHAR}
+  </update>
+  
+  <select id="getEntityByCtTaskDataId" parameterType="java.util.Map" resultMap="BaseResultMap">
+  	select * from ct_task_data_attachment ctda where ctda.ct_task_data_id = #{ctTaskDataId} and 
+  	ctda.client_id = #{clientId} and ctda.is_delete = #{isDelete}
+  	<if test="attachment != null and attachment !=''" >
+        and ctda.attachment = #{attachment}
+      </if>
+  </select>
+  
+  <select id="getAttachmentsByCtTaskDataId" parameterType="java.util.Map" resultType="java.lang.String">
+  	select GROUP_CONCAT(attachment) from ct_task_data_attachment ctda where ctda.ct_task_data_id = #{ctTaskDataId} and 
+  	ctda.client_id = #{clientId} and ctda.is_delete = 0
+  </select>
+  
+  <select id="deleteAttachmentsByImageNames" parameterType="java.util.Map" >
+  	update ct_task_data_attachment ctda set is_delete = 1 where ct_task_data_id = #{ctTaskDataId} and client_id = #{clientId} AND FIND_IN_SET(attachment, #{attachments}) > 0
+  </select>
+  
+  <select id="updateDelByCtTaskDataId" parameterType="java.util.Map">
+  	update ct_task_data_attachment ctda set is_delete = 0 where ctda.ct_task_data_id = #{ctTaskDataId} and 
+  	ctda.client_id = #{clientId} and ctda.attachment = #{attachment}
+  </select>
+</mapper>

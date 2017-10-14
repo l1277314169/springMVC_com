@@ -17,8 +17,9 @@ public class UuidUtil {
 	}
 	
 	public static void main(String[] args) throws UnsupportedEncodingException {
-		System.out.println(get32UUID());
-			List<Object> lst =new ArrayList<Object>();
+		String aa= "";
+		StringBuilder  sb =new StringBuilder (aa);
+		System.out.println(sb.insert(4,"-").insert(7,"-").toString());
 
 	}
 }

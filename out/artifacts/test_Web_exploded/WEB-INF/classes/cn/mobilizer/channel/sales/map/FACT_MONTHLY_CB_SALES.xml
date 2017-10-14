@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="FACT_MONTHLY_CB_SALES" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.sales.po.FactMonthlyCbSales" >
+    <id column="data_id" property="dataId" jdbcType="INTEGER" />
+    <result column="month_id" property="monthId" jdbcType="INTEGER" />
+    <result column="client_user_id" property="clientUserId" jdbcType="INTEGER" />
+    <result column="store_id" property="storeId" jdbcType="CHAR" />
+    <result column="client_structure_id" property="clientStructureId" jdbcType="INTEGER" />
+    <result column="category_id" property="categoryId" jdbcType="INTEGER" />
+    <result column="brand_id" property="brandId" jdbcType="INTEGER" />
+    <result column="sales_volume" property="salesVolume" jdbcType="DECIMAL" />
+    <result column="sales_amount" property="salesAmount" jdbcType="DECIMAL" />
+    <result column="order_type" property="orderType" jdbcType="TINYINT" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    data_id, month_id, client_user_id, store_id, client_structure_id, category_id, brand_id, 
+    sales_volume, sales_amount, order_type, client_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from fact_monthly_cb_sales
+    where data_id = #{dataId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from fact_monthly_cb_sales
+    where data_id = #{dataId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.sales.po.FactMonthlyCbSales" >
+    insert into fact_monthly_cb_sales (data_id, month_id, client_user_id, 
+      store_id, client_structure_id, category_id, 
+      brand_id, sales_volume, sales_amount, 
+      order_type, client_id)
+    values (#{dataId,jdbcType=INTEGER}, #{monthId,jdbcType=INTEGER}, #{clientUserId,jdbcType=INTEGER}, 
+      #{storeId,jdbcType=CHAR}, #{clientStructureId,jdbcType=INTEGER}, #{categoryId,jdbcType=INTEGER}, 
+      #{brandId,jdbcType=INTEGER}, #{salesVolume,jdbcType=DECIMAL}, #{salesAmount,jdbcType=DECIMAL}, 
+      #{orderType,jdbcType=TINYINT}, #{clientId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.sales.po.FactMonthlyCbSales" >
+    insert into fact_monthly_cb_sales
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dataId != null" >
+        data_id,
+      </if>
+      <if test="monthId != null" >
+        month_id,
+      </if>
+      <if test="clientUserId != null" >
+        client_user_id,
+      </if>
+      <if test="storeId != null" >
+        store_id,
+      </if>
+      <if test="clientStructureId != null" >
+        client_structure_id,
+      </if>
+      <if test="categoryId != null" >
+        category_id,
+      </if>
+      <if test="brandId != null" >
+        brand_id,
+      </if>
+      <if test="salesVolume != null" >
+        sales_volume,
+      </if>
+      <if test="salesAmount != null" >
+        sales_amount,
+      </if>
+      <if test="orderType != null" >
+        order_type,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dataId != null" >
+        #{dataId,jdbcType=INTEGER},
+      </if>
+      <if test="monthId != null" >
+        #{monthId,jdbcType=INTEGER},
+      </if>
+      <if test="clientUserId != null" >
+        #{clientUserId,jdbcType=INTEGER},
+      </if>
+      <if test="storeId != null" >
+        #{storeId,jdbcType=CHAR},
+      </if>
+      <if test="clientStructureId != null" >
+        #{clientStructureId,jdbcType=INTEGER},
+      </if>
+      <if test="categoryId != null" >
+        #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="brandId != null" >
+        #{brandId,jdbcType=INTEGER},
+      </if>
+      <if test="salesVolume != null" >
+        #{salesVolume,jdbcType=DECIMAL},
+      </if>
+      <if test="salesAmount != null" >
+        #{salesAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="orderType != null" >
+        #{orderType,jdbcType=TINYINT},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.sales.po.FactMonthlyCbSales" >
+    update fact_monthly_cb_sales
+    <set >
+      <if test="monthId != null" >
+        month_id = #{monthId,jdbcType=INTEGER},
+      </if>
+      <if test="clientUserId != null" >
+        client_user_id = #{clientUserId,jdbcType=INTEGER},
+      </if>
+      <if test="storeId != null" >
+        store_id = #{storeId,jdbcType=CHAR},
+      </if>
+      <if test="clientStructureId != null" >
+        client_structure_id = #{clientStructureId,jdbcType=INTEGER},
+      </if>
+      <if test="categoryId != null" >
+        category_id = #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="brandId != null" >
+        brand_id = #{brandId,jdbcType=INTEGER},
+      </if>
+      <if test="salesVolume != null" >
+        sales_volume = #{salesVolume,jdbcType=DECIMAL},
+      </if>
+      <if test="salesAmount != null" >
+        sales_amount = #{salesAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="orderType != null" >
+        order_type = #{orderType,jdbcType=TINYINT},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where data_id = #{dataId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.sales.po.FactMonthlyCbSales" >
+    update fact_monthly_cb_sales
+    set month_id = #{monthId,jdbcType=INTEGER},
+      client_user_id = #{clientUserId,jdbcType=INTEGER},
+      store_id = #{storeId,jdbcType=CHAR},
+      client_structure_id = #{clientStructureId,jdbcType=INTEGER},
+      category_id = #{categoryId,jdbcType=INTEGER},
+      brand_id = #{brandId,jdbcType=INTEGER},
+      sales_volume = #{salesVolume,jdbcType=DECIMAL},
+      sales_amount = #{salesAmount,jdbcType=DECIMAL},
+      order_type = #{orderType,jdbcType=TINYINT},
+      client_id = #{clientId,jdbcType=INTEGER}
+    where data_id = #{dataId,jdbcType=INTEGER}
+  </update>
+  
+  
+  
+  <insert id="batchInsertSales" parameterType="java.util.List">
+  	insert into fact_monthly_cb_sales (data_id, month_id, client_user_id, 
+      store_id, client_structure_id, category_id, 
+      brand_id, sales_volume, sales_amount, 
+      order_type, client_id) values
+  	<foreach collection="list" item="item" index="index" separator=",">
+  		(#{item.dataId},#{item.monthId},#{item.clientUserId},#{item.storeId},
+  		#{item.clientStructureId},#{item.categoryId},#{item.brandId},
+  		#{item.salesVolume},#{item.salesAmount},#{item.orderType},
+  		#{item.clientId})
+  	</foreach>
+  </insert>
+  
+  
+  <select id="getSalesByMonth" parameterType="java.util.Map" resultMap="BaseResultMap" >
+  	select <include refid="Base_Column_List" />
+  	from fact_monthly_cb_sales where client_id = #{clientId} and month_id = #{monthId}
+  </select>
+  
+</mapper>

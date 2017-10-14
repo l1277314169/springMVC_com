@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="SKU" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.base.po.Sku" >
+    <id column="sku_id" property="skuId" jdbcType="INTEGER" />
+    <result column="sku_no" property="skuNo" jdbcType="VARCHAR" />
+    <result column="sku_name" property="skuName" jdbcType="VARCHAR" />
+    <result column="sku_name_en" property="skuNameEn" jdbcType="VARCHAR" />
+    <result column="sku_name_abbr" property="skuNameAbbr" jdbcType="VARCHAR" />
+    <result column="barcode" property="barcode" jdbcType="VARCHAR" />
+    <result column="brand_id" property="brandId" jdbcType="INTEGER" />
+    <result column="category_id" property="categoryId" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="spec" property="spec" jdbcType="VARCHAR" />
+    <result column="pack_spec" property="packSpec" jdbcType="VARCHAR" />
+    <result column="weight" property="weight" jdbcType="DECIMAL" />
+    <result column="volume" property="volume" jdbcType="DECIMAL" />
+    <result column="unit_id" property="unitId" jdbcType="INTEGER" />
+    <result column="sku_type_id" property="skuTypeId" jdbcType="INTEGER" />
+     <result column="sku_series_id" property="skuSeriesId" jdbcType="INTEGER" />
+    <result column="is_main" property="isMain" jdbcType="TINYINT" />
+    <result column="sku_group_id" property="skuGroupId" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+    <!--关联brand表得来，改字段不要放入Base_Column_List-->
+    <result column="brand_name" property="brandName" jdbcType="VARCHAR" />
+    <!--关联category表得来，改字段不要放入Base_Column_List-->
+    <result column="category_name" property="categoryName" jdbcType="VARCHAR" />
+    <!--关联sku_type表得来，改字段不要放入Base_Column_List-->
+    <result column="sku_type_name" property="skuTypeName" jdbcType="VARCHAR" />
+    <!--关联sku_series表得来，改字段不要放入Base_Column_List-->
+    <result column="sku_series_name" property="skuSeriesName" jdbcType="VARCHAR" />
+    <!-- 关联 sku_group_mapping,-->
+    <result column="group_name" property="groupName" jdbcType="VARCHAR"/>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sku_id, sku_no, sku_name, sku_name_en, sku_name_abbr, barcode, brand_id, category_id, 
+    price, spec, pack_spec, weight, volume, unit_id, is_main, sku_group_id, remark, client_id, 
+    create_time, last_update_time, is_delete,sku_type_id,sku_series_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sku
+    where sku_id = #{skuId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sku
+    where sku_id = #{skuId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.base.po.Sku" >
+    insert into sku (sku_id, sku_no, sku_name, 
+      sku_name_en, sku_name_abbr, barcode, 
+      brand_id, category_id, price, 
+      spec, pack_spec, weight, 
+      volume, unit_id, is_main, 
+      sku_group_id, remark, client_id, 
+      is_delete,sku_type_id,
+      sku_series_id
+      )
+    values (#{skuId,jdbcType=INTEGER}, #{skuNo,jdbcType=VARCHAR}, #{skuName,jdbcType=VARCHAR}, 
+      #{skuNameEn,jdbcType=VARCHAR}, #{skuNameAbbr,jdbcType=VARCHAR}, #{barcode,jdbcType=VARCHAR}, 
+      #{brandId,jdbcType=INTEGER}, #{categoryId,jdbcType=INTEGER}, #{price,jdbcType=DECIMAL}, 
+      #{spec,jdbcType=VARCHAR}, #{packSpec,jdbcType=VARCHAR}, #{weight,jdbcType=DECIMAL}, 
+      #{volume,jdbcType=DECIMAL}, #{unitId,jdbcType=INTEGER}, #{isMain,jdbcType=TINYINT}, 
+      #{skuGroupId,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{clientId,jdbcType=INTEGER}, 
+      #{isDelete,jdbcType=TINYINT}, #{skuTypeId,jdbcType=INTEGER}, #{skuSeriesId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.base.po.Sku" useGeneratedKeys="true" keyProperty="skuId" >
+    insert into sku
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="skuId != null" >
+        sku_id,
+      </if>
+      <if test="skuNo != null" >
+        sku_no,
+      </if>
+      <if test="skuName != null" >
+        sku_name,
+      </if>
+      <if test="skuNameEn != null" >
+        sku_name_en,
+      </if>
+      <if test="skuNameAbbr != null" >
+        sku_name_abbr,
+      </if>
+      <if test="barcode != null" >
+        barcode,
+      </if>
+      <if test="brandId != null" >
+        brand_id,
+      </if>
+      <if test="categoryId != null" >
+        category_id,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="spec != null" >
+        spec,
+      </if>
+      <if test="packSpec != null" >
+        pack_spec,
+      </if>
+      <if test="weight != null" >
+        weight,
+      </if>
+      <if test="volume != null" >
+        volume,
+      </if>
+      <if test="unitId != null" >
+        unit_id,
+      </if>
+      <if test="isMain != null" >
+        is_main,
+      </if>
+      <if test="skuGroupId != null" >
+        sku_group_id,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+       <if test="skuTypeId != null" >
+        sku_type_id,
+      </if>
+       <if test="skuSeriesId != null" >
+        sku_series_id,
+      </if>
+      
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="skuId != null" >
+        #{skuId,jdbcType=INTEGER},
+      </if>
+      <if test="skuNo != null" >
+        #{skuNo,jdbcType=VARCHAR},
+      </if>
+      <if test="skuName != null" >
+        #{skuName,jdbcType=VARCHAR},
+      </if>
+      <if test="skuNameEn != null" >
+        #{skuNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="skuNameAbbr != null" >
+        #{skuNameAbbr,jdbcType=VARCHAR},
+      </if>
+      <if test="barcode != null" >
+        #{barcode,jdbcType=VARCHAR},
+      </if>
+      <if test="brandId != null" >
+        #{brandId,jdbcType=INTEGER},
+      </if>
+      <if test="categoryId != null" >
+        #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="spec != null" >
+        #{spec,jdbcType=VARCHAR},
+      </if>
+      <if test="packSpec != null" >
+        #{packSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null" >
+        #{weight,jdbcType=DECIMAL},
+      </if>
+      <if test="volume != null" >
+        #{volume,jdbcType=DECIMAL},
+      </if>
+      <if test="unitId != null" >
+        #{unitId,jdbcType=INTEGER},
+      </if>
+      <if test="isMain != null" >
+        #{isMain,jdbcType=TINYINT},
+      </if>
+      <if test="skuGroupId != null" >
+        #{skuGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+       <if test="skuTypeId != null" >
+       #{skuTypeId,jdbcType=INTEGER}, 
+      </if>
+       <if test="skuSeriesId != null" >
+       #{skuSeriesId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.base.po.Sku" >
+    update sku
+    <set >
+      <if test="skuNo != null" >
+        sku_no = #{skuNo,jdbcType=VARCHAR},
+      </if>
+      <if test="skuName != null" >
+        sku_name = #{skuName,jdbcType=VARCHAR},
+      </if>
+      <if test="skuNameEn != null" >
+        sku_name_en = #{skuNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="skuNameAbbr != null" >
+        sku_name_abbr = #{skuNameAbbr,jdbcType=VARCHAR},
+      </if>
+      <if test="barcode != null" >
+        barcode = #{barcode,jdbcType=VARCHAR},
+      </if>
+      <if test="brandId != null" >
+        brand_id = #{brandId,jdbcType=INTEGER},
+      </if>
+      <if test="categoryId != null" >
+        category_id = #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="price != null " >
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="price == null " >
+        price = null,
+      </if>
+      <if test="spec != null" >
+        spec = #{spec,jdbcType=VARCHAR},
+      </if>
+      <if test="packSpec != null" >
+        pack_spec = #{packSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null" >
+        weight = #{weight,jdbcType=DECIMAL},
+      </if>
+      <if test="weight == null" >
+        weight = null,
+      </if>
+      <if test="volume != null" >
+        volume = #{volume,jdbcType=DECIMAL},
+      </if>
+      <if test="volume == null" >
+        volume = null,
+      </if>
+      <if test="unitId != null" >
+        unit_id = #{unitId,jdbcType=INTEGER},
+      </if>
+      <if test="isMain != null" >
+        is_main = #{isMain,jdbcType=TINYINT},
+      </if>
+      <if test="skuGroupId != null" >
+        sku_group_id = #{skuGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="skuTypeId != null" >
+        sku_type_id= #{skuTypeId,jdbcType=INTEGER}, 
+      </if>
+       <if test="skuSeriesId != null" >
+        sku_series_id=#{skuSeriesId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where sku_id = #{skuId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.base.po.Sku" >
+    update sku
+    set sku_no = #{skuNo,jdbcType=VARCHAR},
+      sku_name = #{skuName,jdbcType=VARCHAR},
+      sku_name_en = #{skuNameEn,jdbcType=VARCHAR},
+      sku_name_abbr = #{skuNameAbbr,jdbcType=VARCHAR},
+      barcode = #{barcode,jdbcType=VARCHAR},
+      brand_id = #{brandId,jdbcType=INTEGER},
+      category_id = #{categoryId,jdbcType=INTEGER},
+      price = #{price,jdbcType=DECIMAL},
+      spec = #{spec,jdbcType=VARCHAR},
+      pack_spec = #{packSpec,jdbcType=VARCHAR},
+      weight = #{weight,jdbcType=DECIMAL},
+      volume = #{volume,jdbcType=DECIMAL},
+      unit_id = #{unitId,jdbcType=INTEGER},
+      is_main = #{isMain,jdbcType=TINYINT},
+      sku_group_id = #{skuGroupId,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=TINYINT},
+      sku_type_id= #{skuTypeId,jdbcType=INTEGER}, 
+      sku_series_id=#{skuSeriesId,jdbcType=INTEGER}
+    where sku_id = #{skuId,jdbcType=INTEGER}
+  </update>
+  
+ <sql id="select_by_param">
+		select
+		<include refid="Base_Column_List" />
+		from SKU
+		where 1=1
+		<include refid="Base_Query_Column_List" />
+	</sql>
+  
+  <sql id="Base_Query_Column_List">
+		<if test="clientId != null and clientId !=''">
+			and client_id = #{clientId}
+		</if>
+		<if test="isDelete != null ">
+			and is_delete = #{isDelete}
+		</if>
+		<if test="skuId != null ">
+			and sku_id = #{skuId}
+		</if>		
+		<if test="skuName != null and skuName != ''">
+			and sku_name like CONCAT('%',#{skuName},'%') 
+		</if>
+	</sql>
+  
+  	<select id="queryTotalCount" parameterType="java.util.Map" resultType="Integer">
+	select count(1)	from (select sku.*,GROUP_CONCAT(sku.sku_id) AS skuIds
+		from SKU sku
+		LEFT JOIN BRAND bd ON sku.brand_id = bd.brand_id and bd.client_id = #{clientId} and bd.is_delete = 0
+		LEFT JOIN CATEGORY cy ON sku.category_id = cy.category_id and cy.client_id = #{clientId} and cy.is_delete = 0
+		LEFT JOIN sku_distribution_mapping sdm ON sdm.sku_id = sku.sku_id and sdm.client_id = #{clientId} and sdm.is_delete = 0
+	     where 1=1
+		<include refid="Query_Column_List" />
+		GROUP BY sku.sku_id)
+		aa
+	</select>
+	
+	<select id="findListByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+	SELECT
+	sku.*,
+	bd.brand_name AS brand_name,
+		cy.category_name AS category_name,
+		sp.sku_id as priceSkuId,
+		sp.price as skuPrice
+	FROM
+		SKU sku
+	LEFT JOIN BRAND bd ON sku.brand_id = bd.brand_id and bd.client_id = #{clientId} and bd.is_delete = 0
+	LEFT JOIN CATEGORY cy ON sku.category_id = cy.category_id and cy.client_id = #{clientId} and cy.is_delete = 0
+	LEFT JOIN sku_distribution_mapping sdm ON sdm.sku_id = sku.sku_id and sdm.client_id = #{clientId} and sdm.is_delete = 0
+		<if test="skuDistributionId != null">
+			and sdm.sku_distribution_id = #{skuDistributionId}
+		</if>
+		LEFT JOIN sku_price sp on sp.sku_id = sku.sku_id
+		<if test="skuPriceGroupId != null">
+			and sp.sku_price_group_id = #{skuPriceGroupId}
+		</if>
+		AND sp.client_id = #{clientId}
+		AND sp.is_delete = 0
+		where 1=1 
+		<include refid="Query_Column_List" />
+		GROUP BY sku.sku_id
+		ORDER BY sp.sku_id desc,sdm.sku_id desc
+		<include refid="basic.mysqlPageSearchFoot"/>  
+	</select>
+	
+		<select id="findSkuIdAndPriceByParamter" parameterType="java.util.Map" resultType="cn.mobilizer.channel.base.vo.SkuPriceVO">
+	SELECT
+	sku.sku_id as skuId,sku.price as price
+	FROM
+		SKU sku
+	LEFT JOIN BRAND bd ON sku.brand_id = bd.brand_id and bd.client_id = #{clientId} and bd.is_delete = 0
+	LEFT JOIN CATEGORY cy ON sku.category_id = cy.category_id and cy.client_id = #{clientId} and cy.is_delete = 0
+	LEFT JOIN sku_distribution_mapping sdm ON sdm.sku_id = sku.sku_id and sdm.client_id = #{clientId} and sdm.is_delete = 0
+		where 1=1 
+		<include refid="Query_Column_List" />
+		GROUP BY sku.sku_id
+		ORDER BY sdm.sku_id desc
+	</select>
+	
+	<sql id="Query_Column_List">
+		<if test="clientId != null">
+			and sku.client_id = #{clientId}
+		</if>
+		<if test="isDelete != null ">
+			and sku.is_delete = #{isDelete}
+		</if>
+		<if test="skuName != null and skuName != ''">
+			and sku.sku_name like CONCAT('%',#{skuName},'%') 
+		</if>
+		<if test="skuId != null">
+			and sku.sku_id = #{skuId}
+		</if>
+		<if test="skuNo != null and skuNo != ''">
+			and sku.sku_no  like CONCAT('%',#{skuNo},'%') 
+		</if>
+		<if test="brandId != null">
+			and sku.brand_id = #{brandId}
+		</if>
+		<if test="categoryId != null">
+			and sku.category_id = #{categoryId}
+		</if>
+		<if test="lookSkuDistributionId != null">
+			and sdm.sku_distribution_id = #{lookSkuDistributionId}
+		</if>
+	</sql>
+	
+	<select id="getSKUBySOB">
+	    SELECT aa.*
+	    FROM sku aa 
+	    INNER JOIN ( SELECT a.sku_id FROM sku_price a INNER JOIN sku_price_group b ON b.sku_price_group_id = a.sku_price_group_id 
+	    INNER JOIN pop_sku_price_group_mapping c ON c.distributor_id = #{distributorId} AND c.is_delete = 0 AND b.sku_price_group_id = c.sku_price_group_id 
+	    UNION SELECT CAST (a.target1_id AS int) AS sku_id FROM visiting_task_step_object a WHERE a.visiting_task_step_id = #{visitingTaskStepId} AND a.is_delete = 0 ) bb ON aa.sku_id = bb.sku_id 
+	    LEFT JOIN ( SELECT target1_id FROM visiting_task_detail_data WHERE visiting_task_data_id =#{visitingTaskDataId} AND visiting_task_step_id =#{visitingTaskStepId} AND is_delete = 0 GROUP BY target1_id ) cc ON CAST (aa.sku_id AS varchar) = cc.target1_id 
+	    LEFT JOIN category category ON category.is_delete = 0 AND category.category_id = aa.category_id 
+	    WHERE aa.is_delete = 0 order by category.sequence, aa.category_id ,aa.barcode 
+	</select>
+	
+	<select id="getSkuByBarcode" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select * from sku where barcode = #{barcode} and is_delete = 0
+	</select>
+	
+  <select id="getSkuByName" parameterType="java.util.Map" resultMap="BaseResultMap">
+	SELECT a.sku_id as id,a.sku_name as name from sku a where a.client_id = #{clientId} and a.is_delete = 0 and a.sku_name like CONCAT('%',#{skuName},'%') 		
+  </select>
+  
+  <select id="findAllSkuIds" parameterType="java.util.Map" resultType="String">
+  		select GROUP_CONCAT(sku.sku_id) AS skuIds
+		from SKU sku
+	     where 1=1
+		<include refid="Query_Column_List" />
+  </select>
+  
+  <select id="getSkuByIdAndClientId" parameterType="java.util.Map" resultMap="BaseResultMap">
+  		select * from sku where sku_id=#{skuId} and client_id=#{clientId} and is_delete=0 limit 1
+  </select>
+  
+  <select id="selectBySelectTwo" parameterType="java.util.Map" resultMap="BaseResultMap">
+ 	 SELECT a.sku_id as id,a.sku_name as name from sku a where a.client_id = #{clientId} and a.is_delete = 0 
+  </select>
+  
+  <select id="getSkuNoMap" parameterType="java.util.Map" resultMap="BaseResultMap" >
+  	select * from sku where is_delete = 0 and client_id = #{clientId}
+  </select>
+  
+  <insert id="insertList" parameterType="java.util.List">
+  	insert into sku (sku_no,price,client_id) VALUES 
+  	<foreach collection="list" item="item" index="index" separator=",">
+  		(#{item.skuNo},#{item.price},#{item.clientId})
+  	</foreach>
+  </insert>
+  
+  <update id="updatePrice" parameterType="java.util.List">
+  	update sku s set s.price = #{price} where s.is_delete = 0 and s.client_id = #{clientId} and s.sku_no = #{skuNo}
+  </update>
+  
+</mapper>

@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="POSMINOUT" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.posm.po.PosmInOut" >
+   <id column="in_out_id" property="inOutId" jdbcType="INTEGER" />
+    <result column="warehouse_id" property="warehouseId" jdbcType="INTEGER" />
+    <result column="store_id" property="storeId" jdbcType="CHAR" />
+    <result column="in_out_time" property="inOutTime" jdbcType="TIMESTAMP" />
+    <result column="bill_type" property="billType" jdbcType="TINYINT" />
+    <result column="material_id" property="materialId" jdbcType="INTEGER" />
+    <result column="quantity" property="quantity" jdbcType="INTEGER" />
+    <result column="handler" property="handler" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_by" property="createBy" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_by" property="lastUpdateBy" jdbcType="INTEGER" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+    <result column="receiving_warehouse_id" property="receivingWarehouseId" jdbcType="INTEGER" />
+    <result column="batch" property="batch" jdbcType="VARCHAR" />
+  </resultMap>
+  
+   <resultMap type="cn.mobilizer.channel.posm.vo.PosmInOutExcelVo" id="ExportResultMap">
+  <result column="material_name" property="materialName" jdbcType="VARCHAR" />
+  <result column="brand" property="brand" jdbcType="VARCHAR" />
+  <result column="category" property="category" jdbcType="VARCHAR" />
+  <result column="batch" property="batch" jdbcType="VARCHAR" />
+  <result column="spec" property="spec" jdbcType="VARCHAR" />
+  <result column="quantity" property="quantity" jdbcType="INTEGER" />
+  <result column="bill_type" property="billType" jdbcType="TINYINT" />
+  <result column="receiving_warehouse_id" property="receivingWarehouseId" jdbcType="INTEGER" />
+  <result column="in_out_time" property="inOutTime" jdbcType="TIMESTAMP" />
+  <result column="store_id" property="storeId" jdbcType="CHAR" />
+  <result column="handler" property="handler" jdbcType="VARCHAR" />
+  <result column="store_no" property="storeNo" jdbcType="VARCHAR" />
+  <result column="store_name" property="storeName" jdbcType="VARCHAR" />
+  <result column="structure_name" property="structureName" jdbcType="VARCHAR" />
+  <result column="city" property="cityName" jdbcType="VARCHAR" />
+  <result column="warehouse_no" property="warehouseNo" jdbcType="VARCHAR" />
+  <result column="addr" property="addr" jdbcType="VARCHAR" />
+  <result column="remark" property="remark" jdbcType="VARCHAR" />
+  <result column="material_name" property="materialName" jdbcType="VARCHAR" />
+  <result column="material_code" property="materialCode" jdbcType="VARCHAR" />
+  <result column="client_name" property="clientName" jdbcType="VARCHAR" />
+  <result column="receive_warehouse_no" property="receiveWarehouseNo" jdbcType="VARCHAR" />
+  <result column="chain_name" property="chainName" jdbcType="VARCHAR" />
+  <result column="inOutId" property="inOutId" jdbcType="TINYINT"/>
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    in_out_id, warehouse_id, store_id, in_out_time, bill_type, material_id, quantity, 
+    handler, remark, client_id, create_by, create_time, last_update_by, last_update_time, 
+    is_delete,receiving_warehouse_id,batch
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from posm_in_out
+    where in_out_id = #{inOutId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from posm_in_out
+    where in_out_id = #{inOutId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.posm.po.PosmInOut" >
+    insert into posm_in_out (batch,receiving_warehouse_id,in_out_id, warehouse_id, store_id, 
+      in_out_time, bill_type, material_id, 
+      quantity, handler, remark, 
+      client_id, create_by, create_time, 
+      last_update_by, last_update_time, is_delete
+      )
+    values (#{batch,jdbcType=VARCHAR},#{receivingWarehouseId,jdbcType=INTEGER},#{inOutId,jdbcType=INTEGER}, #{warehouseId,jdbcType=INTEGER}, #{storeId,jdbcType=CHAR}, 
+      #{inOutTime,jdbcType=TIMESTAMP}, #{billType,jdbcType=TINYINT}, #{materialId,jdbcType=INTEGER}, 
+      #{quantity,jdbcType=INTEGER}, #{handler,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{clientId,jdbcType=INTEGER}, #{createBy,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{lastUpdateBy,jdbcType=INTEGER}, #{lastUpdateTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.posm.po.PosmInOut" >
+    insert into posm_in_out
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="batch != null" >
+        batch,
+      </if>
+      <if test="receivingWarehouseId != null" >
+        receiving_warehouse_id,
+      </if>
+      <if test="inOutId != null" >
+        in_out_id,
+      </if>
+      <if test="warehouseId != null" >
+        warehouse_id,
+      </if>
+      <if test="storeId != null" >
+        store_id,
+      </if>
+      <if test="inOutTime != null" >
+        in_out_time,
+      </if>
+      <if test="billType != null" >
+        bill_type,
+      </if>
+      <if test="materialId != null" >
+        material_id,
+      </if>
+      <if test="quantity != null" >
+        quantity,
+      </if>
+      <if test="handler != null" >
+        handler,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="lastUpdateBy != null" >
+        last_update_by,
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="batch != null" >
+        #{batch,jdbcType=VARCHAR},
+      </if>
+      <if test="receivingWarehouseId != null" >
+        #{receivingWarehouseId,jdbcType=INTEGER},
+      </if>
+      <if test="inOutId != null" >
+        #{inOutId,jdbcType=INTEGER},
+      </if>
+      <if test="warehouseId != null" >
+        #{warehouseId,jdbcType=INTEGER},
+      </if>
+      <if test="storeId != null" >
+        #{storeId,jdbcType=CHAR},
+      </if>
+      <if test="inOutTime != null" >
+        #{inOutTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="billType != null" >
+        #{billType,jdbcType=TINYINT},
+      </if>
+      <if test="materialId != null" >
+        #{materialId,jdbcType=INTEGER},
+      </if>
+      <if test="quantity != null" >
+        #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="handler != null" >
+        #{handler,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateBy != null" >
+        #{lastUpdateBy,jdbcType=INTEGER},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.posm.po.PosmInOut" >
+    update posm_in_out
+    <set >
+      <if test="batch != null" >
+        batch = #{batch,jdbcType=VARCHAR},
+      </if>
+      <if test="receivingWarehouseId != null" >
+        receiving_warehouse_id = #{receivingWarehouseId,jdbcType=INTEGER},
+      </if>
+      <if test="warehouseId != null" >
+        warehouse_id = #{warehouseId,jdbcType=INTEGER},
+      </if>
+      <if test="storeId != null" >
+        store_id = #{storeId,jdbcType=CHAR},
+      </if>
+      <if test="inOutTime != null" >
+        in_out_time = #{inOutTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="billType != null" >
+        bill_type = #{billType,jdbcType=TINYINT},
+      </if>
+      <if test="materialId != null" >
+        material_id = #{materialId,jdbcType=INTEGER},
+      </if>
+      <if test="quantity != null" >
+        quantity = #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="handler != null" >
+        handler = #{handler,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateBy != null" >
+        last_update_by = #{lastUpdateBy,jdbcType=INTEGER},
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where in_out_id = #{inOutId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.posm.po.PosmInOut" >
+    update posm_in_out
+    set 
+      batch = #{batch,jdbcType=VARCHAR},
+      receiving_warehouse_id = #{receivingWarehouseId,jdbcType=INTEGER},
+      warehouse_id = #{warehouseId,jdbcType=INTEGER},
+      store_id = #{storeId,jdbcType=CHAR},
+      in_out_time = #{inOutTime,jdbcType=TIMESTAMP},
+      bill_type = #{billType,jdbcType=TINYINT},
+      material_id = #{materialId,jdbcType=INTEGER},
+      quantity = #{quantity,jdbcType=INTEGER},
+      handler = #{handler,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+      create_by = #{createBy,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_update_by = #{lastUpdateBy,jdbcType=INTEGER},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where in_out_id = #{inOutId,jdbcType=INTEGER}
+  </update>
+  
+  
+  <select id="selectselectPInOutsCount" parameterType="java.util.Map" resultType="Integer">
+	select   count(1)  FROM posm_in_out AS pio 
+	<include refid="selectPInOutSQL"/>
+  </select>
+  
+  <select id="selectPInOuts" parameterType="java.util.Map" resultMap="ExportResultMap" >
+SELECT
+  <include refid="Export_Column_List" />
+    FROM posm_in_out AS pio
+    INNER JOIN warehouse AS we ON 1=1 
+    <if test="warehouseName != null and warehouseName != ''">
+			AND we.`warehouse_name` LIKE #{warehouseName,jdbcType=VARCHAR}  
+		</if>
+		<if test="warehouseNo != null and warehouseNo != ''">
+		and we.`warehouse_no` LIKE #{warehouseNo,jdbcType=INTEGER}
+		</if>
+		AND we.`warehouse_id` = pio.`warehouse_id` AND we.client_id=pio.client_id AND we.`is_delete` = 0
+    LEFT JOIN warehouse AS wera ON wera.warehouse_id = pio.receiving_warehouse_id AND wera.client_id=pio.client_id AND wera.is_delete = 0
+    INNER JOIN promotion_material AS pm ON 1=1 AND pm.status = 1 
+	<if test="materialName != null and  materialName != ''">
+			AND pm.`material_name` LIKE #{materialName,jdbcType=VARCHAR}
+		</if>
+	<if test="materialCode != null and materialCode != ''">
+			 and pm.`material_code` LIKE #{materialCode,jdbcType=INTEGER}
+		 </if>
+	AND pm.`material_id` = pio.`material_id` AND pm.client_id=pio.client_id AND pm.`is_delete` = 0
+    INNER JOIN CLIENT AS c ON c.`client_id` = pio.`client_id` AND c.`is_delete` = 0
+    LEFT JOIN store AS st ON st.store_id = pio.`store_id` AND st.client_id=pio.client_id AND st.is_delete = 0
+    LEFT JOIN CHAIN AS cn ON cn.`chain_id` = st.`chain_id` AND cn.`is_delete`= 0
+    LEFT JOIN city AS ci ON ci.city_id = we.city_id AND ci.is_delete = 0
+    LEFT JOIN client_structure AS cs ON cs.client_structure_id = we.client_structure_id AND cs.client_id=pio.client_id AND cs.is_delete = 0
+    WHERE 1=1 
+    <if test="billType != null ">
+	 	and pio.`bill_type` = #{billType}
+	 </if>
+    AND pio.is_delete = 0  
+    ORDER BY pio.`in_out_id` DESC 
+      <include refid="basic.mysqlPageSearchFoot"/>
+  </select>
+  
+  
+  <sql id="selectPInOutSQL">
+	LEFT JOIN warehouse AS we ON we.`warehouse_id` = pio.`warehouse_id` AND we.`is_delete` = 0 
+		<if test="warehouseName != null and warehouseName != ''">
+			AND we.`warehouse_name` LIKE #{warehouseName,jdbcType=VARCHAR}
+		</if>
+	LEFT JOIN promotion_material AS pm ON pm.`material_id` = pio.`material_id` AND pm.`is_delete` = 0
+		<if test="materialName != null and materialName != ''">
+			AND pm.`material_name` LIKE #{materialName,jdbcType=VARCHAR}
+		</if>
+	WHERE 
+		pio.`is_delete` = 0 AND pio.`warehouse_id` LIKE #{warehouseId,jdbcType=INTEGER} OR pio.`material_id` LIKE #{materialId,jdbcType=INTEGER}
+  </sql>
+  
+  
+  
+  <insert id="insertPosmInOuts" parameterType="java.util.List"> 
+    insert into posm_in_out (batch,receiving_warehouse_id,store_id, warehouse_id,  in_out_time, bill_type, material_id, quantity, handler, remark,  client_id, create_by )
+    values
+    <foreach collection="list" item="item" index="index" open="" close="" separator=",">
+     (
+      #{item.batch,jdbcType=VARCHAR},
+      #{item.receivingWarehouseId,jdbcType=INTEGER},
+      #{item.storeId,jdbcType=CHAR}, #{item.warehouseId,jdbcType=INTEGER}, 
+      #{item.inOutTime,jdbcType=TIMESTAMP}, #{item.billType,jdbcType=TINYINT},
+      #{item.materialId,jdbcType=INTEGER},#{item.quantity,jdbcType=INTEGER}, 
+      #{item.handler,jdbcType=VARCHAR}, #{item.remark,jdbcType=VARCHAR}, 
+      #{item.clientId,jdbcType=INTEGER}, #{item.createBy,jdbcType=INTEGER}
+      )
+     </foreach>
+  </insert>
+  
+  <sql id="Export_Column_List" >
+         cs.structure_name,ci.city,we.warehouse_no,pm.brand,pm.category,
+    pm.material_name,pm.material_code,pm.batch,pio.bill_type,
+    pm.spec,pio.quantity,pio.in_out_time,st.store_no,pio.in_out_id as inOutId,
+    c.client_name,st.store_name,we.addr,pio.handler,pio.remark,wera.warehouse_no AS receive_warehouse_no ,cn.`chain_name`
+  </sql>
+  
+  <select id="selectPInOutExport" resultMap="ExportResultMap" parameterType="java.util.Map">
+     SELECT
+  <include refid="Export_Column_List" />
+    FROM posm_in_out AS pio
+    INNER JOIN warehouse AS we ON 1=1 
+    <if test="warehouseName != null and warehouseName != ''">
+			AND we.`warehouse_name` LIKE #{warehouseName,jdbcType=VARCHAR}  
+		</if>
+		<if test="warehouseNo != null and warehouseNo != ''">
+		and we.`warehouse_no` LIKE #{warehouseNo,jdbcType=INTEGER}
+		</if>
+		AND we.`warehouse_id` = pio.`warehouse_id` AND we.client_id=pio.client_id AND we.`is_delete` = 0
+    LEFT JOIN warehouse AS wera ON wera.warehouse_id = pio.receiving_warehouse_id AND wera.client_id=pio.client_id AND wera.is_delete = 0
+    INNER JOIN promotion_material AS pm ON 1=1 
+	<if test="materialName != null and  materialName != ''">
+			AND pm.`material_name` LIKE #{materialName,jdbcType=VARCHAR}
+		</if>
+	<if test="materialCode != null and materialCode != ''">
+			 and pm.`material_code` LIKE #{materialCode,jdbcType=INTEGER}
+		 </if>
+	AND pm.`material_id` = pio.`material_id` AND pm.client_id=pio.client_id AND pm.`is_delete` = 0
+    INNER JOIN CLIENT AS c ON c.`client_id` = pio.`client_id` AND c.`is_delete` = 0
+    LEFT JOIN store AS st ON st.store_id = pio.`store_id` AND st.client_id=pio.client_id AND st.is_delete = 0
+    LEFT JOIN CHAIN AS cn ON cn.`chain_id` = st.`chain_id` AND cn.`is_delete`= 0
+    LEFT JOIN city AS ci ON ci.city_id = we.city_id AND ci.is_delete = 0
+    LEFT JOIN client_structure AS cs ON cs.client_structure_id = we.client_structure_id AND cs.client_id=pio.client_id AND cs.is_delete = 0
+    WHERE pio.is_delete = 0  
+	</select>
+	
+	 <select id="selectPInOutListCount" parameterType="java.util.Map" resultType="Integer">
+    SELECT
+ 	count(1)
+    FROM posm_in_out AS pio
+    INNER JOIN warehouse AS we ON 1=1 
+    	<if test="warehouseName != null and warehouseName != ''">
+			AND we.`warehouse_name` LIKE #{warehouseName,jdbcType=VARCHAR}  
+		</if>
+		<if test="warehouseNo != null and warehouseNo != ''">
+		and we.`warehouse_no` LIKE #{warehouseNo,jdbcType=INTEGER}
+		</if>
+		AND we.`warehouse_id` = pio.`warehouse_id` AND we.client_id=pio.client_id AND we.`is_delete` = 0
+    LEFT JOIN warehouse AS wera ON wera.warehouse_id = pio.receiving_warehouse_id AND wera.client_id=pio.client_id AND wera.is_delete = 0
+    	<if test="warehouseName != null and warehouseName != ''">
+			AND wera.`warehouse_name` LIKE #{warehouseName,jdbcType=VARCHAR}  
+		</if>
+    INNER JOIN promotion_material AS pm ON 1=1 AND pm.status = 1 
+	<if test="materialName != null and  materialName != ''">
+			AND pm.`material_name` LIKE #{materialName,jdbcType=VARCHAR}
+		</if>
+	<if test="materialCode != null and materialCode != ''">
+			 and pm.`material_code` LIKE #{materialCode,jdbcType=INTEGER}
+		 </if>
+	AND pm.`material_id` = pio.`material_id` AND pm.client_id=pio.client_id AND pm.`is_delete` = 0
+    INNER JOIN CLIENT AS c ON c.`client_id` = pio.`client_id` AND c.`is_delete` = 0
+    LEFT JOIN store AS st ON st.store_id = pio.`store_id` AND st.client_id=pio.client_id AND st.is_delete = 0
+    LEFT JOIN CHAIN AS cn ON cn.`chain_id` = st.`chain_id` AND cn.`is_delete`= 0
+    LEFT JOIN city AS ci ON ci.city_id = we.city_id AND ci.is_delete = 0
+    LEFT JOIN client_structure AS cs ON cs.client_structure_id = we.client_structure_id AND cs.client_id=pio.client_id AND cs.is_delete = 0
+    WHERE 1 = 1 AND pio.is_delete = 0  
+    <if test="billType != null ">
+		and pio.`bill_type` = #{billType}
+	</if>
+    ORDER BY pio.`in_out_id` DESC
+	</select>
+	
+</mapper>

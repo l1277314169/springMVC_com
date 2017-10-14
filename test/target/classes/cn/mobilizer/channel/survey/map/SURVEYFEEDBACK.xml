@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="SURVEYFEEDBACK" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.survey.po.SurveyFeedback" >
+    <id column="feedback_id" property="feedbackId" jdbcType="CHAR" />
+    <result column="pop_id" property="popId" jdbcType="VARCHAR" />
+    <result column="client_user_id" property="clientUserId" jdbcType="INTEGER" />
+    <result column="feedback_date" property="feedbackDate" jdbcType="TIMESTAMP" />
+    <result column="survey_id" property="surveyId" jdbcType="INTEGER" />
+    <result column="in_time" property="inTime" jdbcType="TIMESTAMP" />
+    <result column="in_pic" property="inPic" jdbcType="VARCHAR" />
+    <result column="in_longitude" property="inLongitude" jdbcType="VARCHAR" />
+    <result column="in_latitude" property="inLatitude" jdbcType="VARCHAR" />
+    <result column="in_locating_type" property="inLocatingType" jdbcType="TINYINT" />
+    <result column="out_time" property="outTime" jdbcType="TIMESTAMP" />
+    <result column="out_pic" property="outPic" jdbcType="VARCHAR" />
+    <result column="out_longitude" property="outLongitude" jdbcType="VARCHAR" />
+    <result column="out_latitude" property="outLatitude" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="submit_time" property="submitTime" jdbcType="TIMESTAMP" />
+    <result column="submit_by" property="submitBy" jdbcType="INTEGER" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+    <result column="visitor" property="visitor" jdbcType="VARCHAR" />
+    <result column="feedback_no" property="feedbackNo" jdbcType="VARCHAR" />
+    <result column="store_no" property="storeNo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    feedback_id, pop_id, client_user_id, feedback_date, survey_id, in_time, in_pic, in_longitude, 
+    in_latitude, in_locating_type, out_time, out_pic, out_longitude, out_latitude, remark, 
+    status, client_id, create_time, submit_time, submit_by, last_update_time, is_delete,visitor,feedback_no
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from survey_feedback
+    where feedback_id = #{feedbackId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from survey_feedback
+    where feedback_id = #{feedbackId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.survey.po.SurveyFeedback" >
+    insert into survey_feedback (feedback_id, pop_id, client_user_id, 
+      feedback_date, survey_id, in_time, 
+      in_pic, in_longitude, in_latitude, 
+      in_locating_type, out_time, out_pic, 
+      out_longitude, out_latitude, remark, 
+      status, client_id, create_time, 
+      submit_time, submit_by, last_update_time, 
+      is_delete,visitor,feedback_no)
+    values (#{feedbackId,jdbcType=CHAR}, #{popId,jdbcType=VARCHAR}, #{clientUserId,jdbcType=INTEGER}, 
+      #{feedbackDate,jdbcType=TIMESTAMP}, #{surveyId,jdbcType=INTEGER}, #{inTime,jdbcType=TIMESTAMP}, 
+      #{inPic,jdbcType=VARCHAR}, #{inLongitude,jdbcType=VARCHAR}, #{inLatitude,jdbcType=VARCHAR}, 
+      #{inLocatingType,jdbcType=TINYINT}, #{outTime,jdbcType=TIMESTAMP}, #{outPic,jdbcType=VARCHAR}, 
+      #{outLongitude,jdbcType=VARCHAR}, #{outLatitude,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{status,jdbcType=TINYINT}, #{clientId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{submitTime,jdbcType=TIMESTAMP}, #{submitBy,jdbcType=INTEGER}, #{lastUpdateTime,jdbcType=TIMESTAMP}, 
+      #{isDelete,jdbcType=TINYINT},#{visitor,jdbcType=TINYINT},#{feedbackNo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.survey.po.SurveyFeedback" >
+    insert into survey_feedback
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="feedbackId != null" >
+        feedback_id,
+      </if>
+      <if test="popId != null" >
+        pop_id,
+      </if>
+      <if test="clientUserId != null" >
+        client_user_id,
+      </if>
+      <if test="feedbackDate != null" >
+        feedback_date,
+      </if>
+      <if test="surveyId != null" >
+        survey_id,
+      </if>
+      <if test="inTime != null" >
+        in_time,
+      </if>
+      <if test="inPic != null" >
+        in_pic,
+      </if>
+      <if test="inLongitude != null" >
+        in_longitude,
+      </if>
+      <if test="inLatitude != null" >
+        in_latitude,
+      </if>
+      <if test="inLocatingType != null" >
+        in_locating_type,
+      </if>
+      <if test="outTime != null" >
+        out_time,
+      </if>
+      <if test="outPic != null" >
+        out_pic,
+      </if>
+      <if test="outLongitude != null" >
+        out_longitude,
+      </if>
+      <if test="outLatitude != null" >
+        out_latitude,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="submitTime != null" >
+        submit_time,
+      </if>
+      <if test="submitBy != null" >
+        submit_by,
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      
+      <if test="visitor != null" >
+        visitor,
+      </if>
+      <if test="feedbackNo !=null">
+      	feedback_no,
+      </if>
+      
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="feedbackId != null" >
+        #{feedbackId,jdbcType=CHAR},
+      </if>
+      <if test="popId != null" >
+        #{popId,jdbcType=VARCHAR},
+      </if>
+      <if test="clientUserId != null" >
+        #{clientUserId,jdbcType=INTEGER},
+      </if>
+      <if test="feedbackDate != null" >
+        #{feedbackDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="surveyId != null" >
+        #{surveyId,jdbcType=INTEGER},
+      </if>
+      <if test="inTime != null" >
+        #{inTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="inPic != null" >
+        #{inPic,jdbcType=VARCHAR},
+      </if>
+      <if test="inLongitude != null" >
+        #{inLongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="inLatitude != null" >
+        #{inLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="inLocatingType != null" >
+        #{inLocatingType,jdbcType=TINYINT},
+      </if>
+      <if test="outTime != null" >
+        #{outTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="outPic != null" >
+        #{outPic,jdbcType=VARCHAR},
+      </if>
+      <if test="outLongitude != null" >
+        #{outLongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="outLatitude != null" >
+        #{outLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="submitTime != null" >
+        #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="submitBy != null" >
+        #{submitBy,jdbcType=INTEGER},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+      
+      <if test="visitor != null" >
+        #{visitor,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbackNo != null">
+      	#{feedbackNo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.survey.po.SurveyFeedback" >
+    update survey_feedback
+    <set >
+      <if test="popId != null" >
+        pop_id = #{popId,jdbcType=VARCHAR},
+      </if>
+      <if test="clientUserId != null" >
+        client_user_id = #{clientUserId,jdbcType=INTEGER},
+      </if>
+      <if test="feedbackDate != null" >
+        feedback_date = #{feedbackDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="surveyId != null" >
+        survey_id = #{surveyId,jdbcType=INTEGER},
+      </if>
+      <if test="inTime != null" >
+        in_time = #{inTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="inPic != null" >
+        in_pic = #{inPic,jdbcType=VARCHAR},
+      </if>
+      <if test="inLongitude != null" >
+        in_longitude = #{inLongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="inLatitude != null" >
+        in_latitude = #{inLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="inLocatingType != null" >
+        in_locating_type = #{inLocatingType,jdbcType=TINYINT},
+      </if>
+      <if test="outTime != null" >
+        out_time = #{outTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="outPic != null" >
+        out_pic = #{outPic,jdbcType=VARCHAR},
+      </if>
+      <if test="outLongitude != null" >
+        out_longitude = #{outLongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="outLatitude != null" >
+        out_latitude = #{outLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="submitTime != null" >
+        submit_time = #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="submitBy != null" >
+        submit_by = #{submitBy,jdbcType=INTEGER},
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="visitor != null" >
+        visitor = #{visitor,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbackNo != null" >
+        feedback_no = #{feedbackNo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where feedback_id = #{feedbackId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.survey.po.SurveyFeedback" >
+    update survey_feedback
+    set pop_id = #{popId,jdbcType=VARCHAR},
+      client_user_id = #{clientUserId,jdbcType=INTEGER},
+      feedback_date = #{feedbackDate,jdbcType=TIMESTAMP},
+      survey_id = #{surveyId,jdbcType=INTEGER},
+      in_time = #{inTime,jdbcType=TIMESTAMP},
+      in_pic = #{inPic,jdbcType=VARCHAR},
+      in_longitude = #{inLongitude,jdbcType=VARCHAR},
+      in_latitude = #{inLatitude,jdbcType=VARCHAR},
+      in_locating_type = #{inLocatingType,jdbcType=TINYINT},
+      out_time = #{outTime,jdbcType=TIMESTAMP},
+      out_pic = #{outPic,jdbcType=VARCHAR},
+      out_longitude = #{outLongitude,jdbcType=VARCHAR},
+      out_latitude = #{outLatitude,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      client_id = #{clientId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      submit_time = #{submitTime,jdbcType=TIMESTAMP},
+      submit_by = #{submitBy,jdbcType=INTEGER},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT},
+      visitor = #{visitor,jdbcType=VARCHAR}
+    where feedback_id = #{feedbackId,jdbcType=CHAR}
+  </update>
+  
+  <select id="getSurveyFeedbackByStoreId" resultMap="BaseResultMap" parameterType="java.lang.String">
+  	select * from survey_feedback where pop_id = #{storeId} and is_delete = 0
+  </select>
+  
+  <insert id="batchInsertSurveyFeedback"  parameterType="java.util.Map">
+	insert into survey_feedback (feedback_id,client_id,client_user_id,feedback_no,feedback_date,survey_id,remark,pop_id,last_update_time)
+    values 
+    <foreach collection="surveyFeedbacks" item="item" index="index" separator="," >
+    	(#{item.feedbackId},#{item.clientId},#{item.clientUserId},#{item.feedbackNo},#{item.feedbackDate},#{item.surveyId},#{item.remark},#{item.popId},#{item.lastUpdateTime}) 
+    </foreach>
+  </insert>
+  
+  <select id="selectSurveyFeedbackByNo" resultMap="BaseResultMap" parameterType="java.lang.String">
+  	select * from survey_feedback sf where sf.feedback_no = #{feedbackNo} and sf.is_delete = 0 limit 1 
+  </select>
+  
+  <select id="selectSurveyFeedbackByStoreNoAndDate" resultMap="BaseResultMap" parameterType="java.util.Map">
+  	select sf.*,store.store_no from survey_feedback sf  INNER JOIN store on sf.pop_id = store.store_id
+  	 where sf.client_id = #{clientId} 
+  	 and DATE_FORMAT(sf.feedback_date,'%Y-%m')=#{feedbackDate} and sf.is_delete = 0
+  </select>
+  
+  <select id="selectOneSurveyFeedbackByStoreNoAndDate" resultMap="BaseResultMap" parameterType="java.util.Map">
+  	select sf.*,store.store_no from survey_feedback sf  INNER JOIN store on sf.pop_id = store.store_id
+  	 where sf.client_id = #{clientId} and store.store_no = #{storeNo}
+  	 and sf.feedback_date like CONCAT('%',#{feedbackDate},'%') and sf.is_delete = 0 limit 1
+  </select>
+  
+  <select id="selectSurveyFeedbackByDate" resultMap="BaseResultMap" parameterType="java.util.Map">
+  	select * from survey_feedback where client_id = #{clientId} and feedback_date like CONCAT('%',#{feedbackDate},'%') and is_delete = 0
+  </select>
+</mapper>

@@ -1,0 +1,856 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="CT_TASK" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.ctTask.po.CtTask" >
+    <id column="ct_task_id" property="ctTaskId" jdbcType="INTEGER" />
+    <result column="task_name" property="taskName" jdbcType="VARCHAR" />
+    <result column="task_type" property="taskType" jdbcType="TINYINT" />
+    <result column="pop_type" property="popType" jdbcType="TINYINT" />
+    <result column="is_must_do" property="isMustDo" jdbcType="TINYINT" />
+    <result column="group_by" property="groupBy" jdbcType="TINYINT" />
+    <result column="start_date" property="startDate" jdbcType="TIMESTAMP" />
+    <result column="end_date" property="endDate" jdbcType="TIMESTAMP" />
+    <result column="start_locating" property="startLocating" jdbcType="TINYINT" />
+    <result column="end_locating" property="endLocating" jdbcType="TINYINT" />
+    <result column="start_pic" property="startPic" jdbcType="TINYINT" />
+    <result column="end_pic" property="endPic" jdbcType="TINYINT" />
+    <result column="cycle_type" property="cycleType" jdbcType="TINYINT" />
+    <result column="valid_from" property="validFrom" jdbcType="INTEGER" />
+    <result column="valid_end" property="validEnd" jdbcType="INTEGER" />
+    <result column="object_filter" property="objectFilter" jdbcType="VARCHAR" />
+    <result column="ct_task_group" property="ctTaskGroup" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  
+  <resultMap type="cn.mobilizer.channel.ctTask.vo.StoreTask" id="storeTaskMap">
+  	 <result column="store_id" property="storeId" jdbcType="VARCHAR" />
+  	 <result column="store_name" property="storeName" jdbcType="VARCHAR" />
+  	 <result column="client_structure_id" property="structureId" jdbcType="VARCHAR" />
+  	 <result column="structure_name" property="structureName" jdbcType="VARCHAR" />
+  	 <result column="userNames" property="userNames" jdbcType="VARCHAR" />
+  	 <result column="store_no" property="storeNo" />
+  	 <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+  	 <result column="create_time" property="createTime" />
+  	 <result column="last_update_user_id" property="lastUpdateUserId"/>
+  	 <result column="ct_task_id" property="ctTaskId" jdbcType="INTEGER" />
+  	 <result column="fax" property="fax" />
+  	 <result column="addr" property="addr" />
+  	 <result column="contact" property="contact" />
+  	 <result column="telephone_no" property="telephoneNo"/>
+  	 <result column="credit_period" property="creditPeriod" />
+  	 <result column="provinceName" property="provinceName" />
+  	 <result column="ct_task_data_id" property="ctTaskDataId"/>
+  	 <result column="name" property="clientUserName"/>
+  	 <result column="createClientUserName" property="createClientUserName"/>
+  	 <result column="start_time" property="startTime"/>
+  	 <result column="startDate" property="startDate" jdbcType="VARCHAR" />
+  	 <result column="endDate" property="endDate" jdbcType="VARCHAR" />
+  </resultMap> 
+  
+  <sql id="Base_Column_List" >
+    ct_task_id, task_name, task_type, pop_type, is_must_do, group_by, start_date, end_date, 
+    start_locating, end_locating, start_pic, end_pic, cycle_type, valid_from, valid_end, 
+    object_filter, ct_task_group, remark, client_id, create_time, last_update_time, 
+    is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ct_task
+    where ct_task_id = #{ctTaskId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ct_task
+    where ct_task_id = #{ctTaskId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.ctTask.po.CtTask" >
+    insert into ct_task (ct_task_id, task_name, task_type, 
+      pop_type, is_must_do, group_by, 
+      start_date, end_date, start_locating, 
+      end_locating, start_pic, end_pic, 
+      cycle_type, valid_from, valid_end, 
+      object_filter, ct_task_group, remark, 
+      client_id, create_time, last_update_time, 
+      is_delete)
+    values (#{ctTaskId,jdbcType=INTEGER}, #{taskName,jdbcType=VARCHAR}, #{taskType,jdbcType=TINYINT}, 
+      #{popType,jdbcType=TINYINT}, #{isMustDo,jdbcType=TINYINT}, #{groupBy,jdbcType=TINYINT}, 
+      #{startDate,jdbcType=TIMESTAMP}, #{endDate,jdbcType=TIMESTAMP}, #{startLocating,jdbcType=TINYINT}, 
+      #{endLocating,jdbcType=TINYINT}, #{startPic,jdbcType=TINYINT}, #{endPic,jdbcType=TINYINT}, 
+      #{cycleType,jdbcType=TINYINT}, #{validFrom,jdbcType=INTEGER}, #{validEnd,jdbcType=INTEGER}, 
+      #{objectFilter,jdbcType=VARCHAR}, #{ctTaskGroup,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
+      #{clientId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{lastUpdateTime,jdbcType=TIMESTAMP}, 
+      #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.ctTask.po.CtTask" >
+    insert into ct_task
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ctTaskId != null" >
+        ct_task_id,
+      </if>
+      <if test="taskName != null" >
+        task_name,
+      </if>
+      <if test="taskType != null" >
+        task_type,
+      </if>
+      <if test="popType != null" >
+        pop_type,
+      </if>
+      <if test="isMustDo != null" >
+        is_must_do,
+      </if>
+      <if test="groupBy != null" >
+        group_by,
+      </if>
+      <if test="startDate != null" >
+        start_date,
+      </if>
+      <if test="endDate != null" >
+        end_date,
+      </if>
+      <if test="startLocating != null" >
+        start_locating,
+      </if>
+      <if test="endLocating != null" >
+        end_locating,
+      </if>
+      <if test="startPic != null" >
+        start_pic,
+      </if>
+      <if test="endPic != null" >
+        end_pic,
+      </if>
+      <if test="cycleType != null" >
+        cycle_type,
+      </if>
+      <if test="validFrom != null" >
+        valid_from,
+      </if>
+      <if test="validEnd != null" >
+        valid_end,
+      </if>
+      <if test="objectFilter != null" >
+        object_filter,
+      </if>
+      <if test="ctTaskGroup != null" >
+        ct_task_group,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ctTaskId != null" >
+        #{ctTaskId,jdbcType=INTEGER},
+      </if>
+      <if test="taskName != null" >
+        #{taskName,jdbcType=VARCHAR},
+      </if>
+      <if test="taskType != null" >
+        #{taskType,jdbcType=TINYINT},
+      </if>
+      <if test="popType != null" >
+        #{popType,jdbcType=TINYINT},
+      </if>
+      <if test="isMustDo != null" >
+        #{isMustDo,jdbcType=TINYINT},
+      </if>
+      <if test="groupBy != null" >
+        #{groupBy,jdbcType=TINYINT},
+      </if>
+      <if test="startDate != null" >
+        #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="startLocating != null" >
+        #{startLocating,jdbcType=TINYINT},
+      </if>
+      <if test="endLocating != null" >
+        #{endLocating,jdbcType=TINYINT},
+      </if>
+      <if test="startPic != null" >
+        #{startPic,jdbcType=TINYINT},
+      </if>
+      <if test="endPic != null" >
+        #{endPic,jdbcType=TINYINT},
+      </if>
+      <if test="cycleType != null" >
+        #{cycleType,jdbcType=TINYINT},
+      </if>
+      <if test="validFrom != null" >
+        #{validFrom,jdbcType=INTEGER},
+      </if>
+      <if test="validEnd != null" >
+        #{validEnd,jdbcType=INTEGER},
+      </if>
+      <if test="objectFilter != null" >
+        #{objectFilter,jdbcType=VARCHAR},
+      </if>
+      <if test="ctTaskGroup != null" >
+        #{ctTaskGroup,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.ctTask.po.CtTask" >
+    update ct_task
+    <set >
+      <if test="taskName != null" >
+        task_name = #{taskName,jdbcType=VARCHAR},
+      </if>
+      <if test="taskType != null" >
+        task_type = #{taskType,jdbcType=TINYINT},
+      </if>
+      <if test="popType != null" >
+        pop_type = #{popType,jdbcType=TINYINT},
+      </if>
+      <if test="isMustDo != null" >
+        is_must_do = #{isMustDo,jdbcType=TINYINT},
+      </if>
+      <if test="groupBy != null" >
+        group_by = #{groupBy,jdbcType=TINYINT},
+      </if>
+      <if test="startDate != null" >
+        start_date = #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        end_date = #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="startLocating != null" >
+        start_locating = #{startLocating,jdbcType=TINYINT},
+      </if>
+      <if test="endLocating != null" >
+        end_locating = #{endLocating,jdbcType=TINYINT},
+      </if>
+      <if test="startPic != null" >
+        start_pic = #{startPic,jdbcType=TINYINT},
+      </if>
+      <if test="endPic != null" >
+        end_pic = #{endPic,jdbcType=TINYINT},
+      </if>
+      <if test="cycleType != null" >
+        cycle_type = #{cycleType,jdbcType=TINYINT},
+      </if>
+      <if test="validFrom != null" >
+        valid_from = #{validFrom,jdbcType=INTEGER},
+      </if>
+      <if test="validEnd != null" >
+        valid_end = #{validEnd,jdbcType=INTEGER},
+      </if>
+      <if test="objectFilter != null" >
+        object_filter = #{objectFilter,jdbcType=VARCHAR},
+      </if>
+      <if test="ctTaskGroup != null" >
+        ct_task_group = #{ctTaskGroup,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where ct_task_id = #{ctTaskId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.ctTask.po.CtTask" >
+    update ct_task
+    set task_name = #{taskName,jdbcType=VARCHAR},
+      task_type = #{taskType,jdbcType=TINYINT},
+      pop_type = #{popType,jdbcType=TINYINT},
+      is_must_do = #{isMustDo,jdbcType=TINYINT},
+      group_by = #{groupBy,jdbcType=TINYINT},
+      start_date = #{startDate,jdbcType=TIMESTAMP},
+      end_date = #{endDate,jdbcType=TIMESTAMP},
+      start_locating = #{startLocating,jdbcType=TINYINT},
+      end_locating = #{endLocating,jdbcType=TINYINT},
+      start_pic = #{startPic,jdbcType=TINYINT},
+      end_pic = #{endPic,jdbcType=TINYINT},
+      cycle_type = #{cycleType,jdbcType=TINYINT},
+      valid_from = #{validFrom,jdbcType=INTEGER},
+      valid_end = #{validEnd,jdbcType=INTEGER},
+      object_filter = #{objectFilter,jdbcType=VARCHAR},
+      ct_task_group = #{ctTaskGroup,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where ct_task_id = #{ctTaskId,jdbcType=INTEGER}
+  </update>
+  
+  <sql id="Base_Query_Column_List">
+  	<where>	 
+  		  is_delete = 0
+		  <if test="taskName != null and taskName !=''" >
+	       	and task_name like CONCAT('%',#{taskName},'%') 
+	      </if>
+	      <if test="taskType != null and taskType !=''" >
+	        and task_type = #{taskType}
+	      </if>
+	      <if test="popType != null and popType !=''" >
+	        and pop_type = #{popType}
+	      </if>
+	      <if test="isMustDo != null and isMustDo !=''" >
+	        and is_must_do = #{isMustDo}
+	      </if>
+	      <if test="groupBy != null and groupBy !=''" >
+	        and group_by = #{groupBy}
+	      </if>
+	      <if test="startLocating != null and startLocating !=''" >
+	        and start_locating = #{startLocating}
+	      </if>
+	      <if test="endLocating != null and endLocating !=''" >
+	        and end_locating = #{endLocating}
+	      </if>
+	      <if test="startPic != null and startPic !=''" >
+	        and start_pic = #{startPic}
+	      </if>
+	      <if test="endPic != null and endPic !=''" >
+	        and end_pic = #{endPic}
+	      </if>
+	      <if test="cycleType != null and cycleType !=''" >
+	        and cycle_type = #{cycleType}
+	      </if>
+	      <if test="validFrom != null and validFrom !=''" >
+	        and valid_from = #{validFrom}
+	      </if>
+	      <if test="validEnd != null and validEnd !=''" >
+	        and valid_end = #{validEnd}
+	      </if>
+	      <if test="objectFilter != null and objectFilter !=''" >
+	        and object_filter = #{objectFilter}
+	      </if>
+	      <if test="ctTaskGroup != null and ctTaskGroup !=''" >
+	        and ct_task_group = #{ctTaskGroup}
+	      </if>
+	      <if test="remark != null and remark !=''" >
+	        and remark = #{remark}
+	      </if>
+	      <if test="clientId != null and clientId !=''" >
+	        and client_id = #{clientId}
+	      </if>
+	      <if test="createTime != null and createTime!=''" >
+	        and create_time = #{createTime}
+	      </if>
+	      <if test="lastUpdateTime != null and lastUpdateTime !=''" >
+	        and last_update_time = #{lastUpdateTime}
+	      </if>
+      </where>
+	</sql>
+	
+	<sql id="select_by_param">
+		select
+		<include refid="Base_Column_List" />
+		from ct_task
+		<include refid="Base_Query_Column_List" />
+		order by sequence
+	</sql>
+	
+	<select id="selectByParams" parameterType="java.util.Map" resultMap="BaseResultMap">		 
+		<include refid="select_by_param" />
+		<include refid="basic.mysqlPageSearchFoot" />		
+	</select>
+	
+	<select id="selectByParamCount" parameterType="java.util.Map" resultType="Integer">
+		select count(1) from ct_task
+		<include refid="Base_Query_Column_List" />
+	</select>
+	
+	<select id="selectTaskDataStore" parameterType="java.util.Map" resultMap="storeTaskMap">
+		SELECT DISTINCT cus.name,cu_create.name as createClientUserName,ctd.last_update_time, pro.province AS provinceName,city.city AS cityName,store.store_id,store.store_name,store.store_no,store.addr,
+		#{startDate} as startDate,#{endDate} as endDate,ctd.ct_task_data_id,ctd.start_time
+		FROM ct_task_position_mapping ctpm
+		INNER JOIN client_user cu ON ctpm.client_position_id = cu.client_position_id
+		INNER JOIN store_user_mapping sump ON sump.client_user_id = cu.client_user_id
+		INNER JOIN store ON store.store_id = sump.store_id
+		LEFT JOIN PROVINCE pro ON pro.province_id = store.province_id
+		LEFT JOIN CITY city ON city.city_id = store.city_id
+		LEFT JOIN ct_task_data ctd on ctd.ct_task_id = ctpm.ct_task_id and ctd.pop_id = store.store_id and ctd.is_delete = 0 and ctd.client_id= #{clientId}
+		<![CDATA[  and ctd.create_time >= date_add(#{startDate},interval 1 month)   and   ctd.create_time <=   date_add(#{endDate},interval 1 month)      ]]>
+		left join client_user cus on cus.client_user_id = ctd.client_user_id and cus.is_delete = 0 and cus.client_id = #{clientId}
+		left join client_user cu_create on cu_create.client_user_id = ctd.create_by and cu.client_id = #{clientId}
+		WHERE store.is_delete = 0 AND store.client_id = #{clientId}
+		AND ctpm.ct_task_id = #{ctTaskId} AND ctpm.is_delete = 0 and ctpm.client_id = #{clientId}
+		AND cu.is_delete = 0 and cu.client_id = #{clientId}
+		AND sump.is_delete = 0 AND sump.client_id = #{clientId}
+		AND (
+			FIND_IN_SET(store.client_structure_id ,#{subAllStructureId}) > 0
+			OR find_in_set(cu.client_user_id ,#{clientUserIds}) > 0
+		)
+		<if test="isMobileSearch !=null">
+			and FIND_IN_SET(ctd.client_user_id,#{clientUserIds})>0	
+		</if>
+		<if test="provinceId != null and provinceId !='' " >
+	        and store.province_id = #{provinceId}
+	    </if>
+	    <if test="cityId != null and cityId !='' ">
+	    	and store.city_id = #{cityId}
+	    </if>
+	    <if test="storeNo != null and storeNo !='' " >
+	        and store.store_no = #{storeNo}
+	    </if>
+	    <if test="storeName != null and storeName !='' " >
+	        and store.store_name like CONCAT('%',#{storeName},'%') 
+	    </if>
+	    <if test="updateClientUserName !=null and updateClientUserName !=''">
+	    	and cu_create.name like CONCAT('%',#{updateClientUserName},'%') 
+	    </if>
+	    order by ctd.last_update_time desc
+		<include refid="basic.mysqlPageSearchFoot" />
+	</select>
+	
+	<select id="selectTaskDataStoreCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+		select count(1) from(
+		SELECT  DISTINCT cus.name,ctd.last_update_time, pro.province AS provinceName,city.city AS cityName,store.store_id,store.store_name,store.store_no,store.addr,
+		#{startDate} as startDate,#{endDate} as endDate,ctd.ct_task_data_id
+		FROM ct_task_position_mapping ctpm
+		INNER JOIN client_user cu ON ctpm.client_position_id = cu.client_position_id
+		INNER JOIN store_user_mapping sump ON sump.client_user_id = cu.client_user_id
+		INNER JOIN store ON store.store_id = sump.store_id
+		LEFT JOIN PROVINCE pro ON pro.province_id = store.province_id
+		LEFT JOIN CITY city ON city.city_id = store.city_id
+		LEFT JOIN ct_task_data ctd on ctd.ct_task_id = ctpm.ct_task_id and ctd.pop_id = store.store_id and ctd.is_delete = 0 and ctd.client_id= #{clientId}
+		<![CDATA[ and ctd.start_time >= #{startDate}  and ctd.start_time <= #{endDate}  ]]>
+		left join client_user cus on cus.client_user_id = ctd.last_update_by and cus.is_delete = 0 and cus.client_id = #{clientId}
+		WHERE store.is_delete = 0 AND store.client_id = #{clientId}
+		AND ctpm.ct_task_id = #{ctTaskId} AND ctpm.is_delete = 0 and ctpm.client_id = #{clientId}
+		AND cu.is_delete = 0 and cu.client_id = #{clientId}
+		AND sump.is_delete = 0 AND sump.client_id = #{clientId}
+		AND (
+			FIND_IN_SET(store.client_structure_id ,#{subAllStructureId}) > 0
+			OR find_in_set(cu.client_user_id ,#{clientUserIds}) > 0
+		)
+		<if test="provinceId != null and provinceId !='' " >
+	        and store.province_id = #{provinceId}
+	    </if>
+	    <if test="cityId != null and cityId !='' ">
+	    	and store.city_id = #{cityId}
+	    </if>
+	    <if test="storeNo != null and storeNo !='' " >
+	        and store.store_no = #{storeNo}
+	    </if>
+	    <if test="storeName != null and storeName !='' " >
+	        and store.store_name like CONCAT('%',#{storeName},'%') 
+	    </if>
+	    <if test="updateClientUserName !=null and updateClientUserName !=''">
+	    	and cu.name like CONCAT('%',#{updateClientUserName},'%') 
+	    </if>) temp
+	</select>
+	
+	
+	<select id="selectTaskDataStoreForDay" parameterType="java.util.Map" resultMap="storeTaskMap">
+		SELECT DISTINCT c.calendar_date as startDate,store.store_id,store.store_name,store.store_no, pro.province AS provinceName,city.city AS cityName,
+		ctd.ct_task_data_id,cus.name,cu_create.name as createClientUserName,ctd.last_update_time,ctd.start_time
+		FROM ct_task_position_mapping ctpm
+		INNER JOIN client_user cu ON cu.client_id=#{clientId} and ctpm.client_position_id = cu.client_position_id AND cu.is_delete = 0
+		INNER JOIN store_user_mapping sump ON sump.client_id = #{clientId} AND sump.client_user_id = cu.client_user_id AND sump.is_delete = 0
+		INNER JOIN store ON store.client_id = #{clientId} and store.store_id = sump.store_id AND store.is_delete = 0
+		INNER JOIN calendar c on c.client_id=#{clientId} and c.calendar_date between #{startDate} and #{endDate}
+		LEFT JOIN PROVINCE pro ON pro.province_id = store.province_id
+		LEFT JOIN CITY city ON city.city_id = store.city_id
+		LEFT JOIN ct_task_data ctd on ctd.client_id= #{clientId} and ctd.ct_task_id = ctpm.ct_task_id and ctd.pop_id = store.store_id 
+		and ctd.start_time between #{startDate} and #{endDate} and ctd.is_delete = 0
+		and DATEDIFF(c.calendar_date ,ctd.start_time)=0
+		left join client_user cus on cus.client_id = #{clientId} and cus.client_user_id = ctd.client_user_id and cus.is_delete = 0
+		left join client_user cu_create on cu_create.client_user_id = ctd.create_by and cu.client_id = #{clientId}
+		WHERE ctpm.client_id = #{clientId} AND ctpm.ct_task_id = #{ctTaskId} AND ctpm.is_delete = 0
+		AND (
+		    FIND_IN_SET(store.client_structure_id ,#{subAllStructureId}) > 0
+			OR find_in_set(cu.client_user_id ,#{clientUserIds}) > 0
+		)
+		<if test="isMobileSearch !=null">
+			and FIND_IN_SET(ctd.client_user_id,#{clientUserIds})>0	
+		</if>
+		<if test="provinceId != null and provinceId !='' " >
+	        and store.province_id = #{provinceId}
+	    </if>
+	    <if test="cityId != null and cityId !='' ">
+	    	and store.city_id = #{cityId}
+	    </if>
+	    <if test="storeNo != null and storeNo !='' " >
+	        and store.store_no = #{storeNo}
+	    </if>
+	    <if test="storeName != null and storeName !='' " >
+	        and store.store_name like CONCAT('%',#{storeName},'%') 
+	    </if>
+	    <if test="updateClientUserName !=null and updateClientUserName !=''">
+	    	and cu_create.name like CONCAT('%',#{updateClientUserName},'%') 
+	    </if>
+	    <if test="reportData != null and reportData !='' and  reportData==2 " >
+	        and ctd.ct_task_data_id is null
+	    </if>
+	    <if test="reportData != null and reportData !='' and  reportData==1 " >
+	        and ctd.ct_task_data_id is not null
+	    </if>
+	    order by ctd.last_update_time desc,c.calendar_date asc
+		<include refid="basic.mysqlPageSearchFoot" />
+	</select>
+	
+	
+	<select id="selectTaskDataStoreDayCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+		select count(1) from(
+		SELECT DISTINCT c.calendar_date as startDate,store.store_id,store.store_name,store.store_no, pro.province AS provinceName,city.city AS cityName,
+		ctd.ct_task_data_id,cus.name,ctd.last_update_time
+		FROM ct_task_position_mapping ctpm
+		INNER JOIN client_user cu ON cu.client_id=#{clientId} and ctpm.client_position_id = cu.client_position_id AND cu.is_delete = 0
+		INNER JOIN store_user_mapping sump ON sump.client_id = #{clientId} AND sump.client_user_id = cu.client_user_id AND sump.is_delete = 0
+		INNER JOIN store ON store.client_id = #{clientId} and store.store_id = sump.store_id AND store.is_delete = 0
+		INNER JOIN calendar c on c.client_id=#{clientId} and c.calendar_date between #{startDate} and #{endDate}
+		LEFT JOIN PROVINCE pro ON pro.province_id = store.province_id
+		LEFT JOIN CITY city ON city.city_id = store.city_id
+		LEFT JOIN ct_task_data ctd on ctd.client_id= #{clientId} and ctd.ct_task_id = ctpm.ct_task_id and ctd.pop_id = store.store_id 
+		and ctd.start_time between #{startDate} and #{endDate} and ctd.is_delete = 0
+		and DATEDIFF(c.calendar_date ,ctd.start_time)=0
+		left join client_user cus on cus.client_id = #{clientId} and cus.client_user_id = ctd.last_update_by and cus.is_delete = 0
+		WHERE ctpm.client_id = #{clientId} AND ctpm.ct_task_id = #{ctTaskId} AND ctpm.is_delete = 0
+		AND (
+		    FIND_IN_SET(store.client_structure_id ,#{subAllStructureId}) > 0
+			OR find_in_set(cu.client_user_id ,#{clientUserIds}) > 0
+		)
+		<if test="provinceId != null and provinceId !='' " >
+	        and store.province_id = #{provinceId}
+	    </if>
+	    <if test="cityId != null and cityId !='' ">
+	    	and store.city_id = #{cityId}
+	    </if>
+	    <if test="storeNo != null and storeNo !='' " >
+	        and store.store_no = #{storeNo}
+	    </if>
+	    <if test="storeName != null and storeName !='' " >
+	        and store.store_name like CONCAT('%',#{storeName},'%') 
+	    </if>
+	    <if test="updateClientUserName !=null and updateClientUserName !=''">
+	    	and cu.name like CONCAT('%',#{updateClientUserName},'%') 
+	    </if>
+	    <if test="reportData != null and reportData !='' and  reportData==2 " >
+	        and ctd.ct_task_data_id is null
+	    </if>
+	    <if test="reportData != null and reportData !='' and  reportData==1 " >
+	        and ctd.ct_task_data_id is not null
+	    </if>) temp
+	    
+	</select>
+	
+   <select id="selectTaskStoreByClinetPositionId"  parameterType="java.util.Map" resultMap="storeTaskMap">
+		select temp.*,GROUP_CONCAT(cu.name) as userNames,GROUP_CONCAT(cu.client_user_id) as userIds from (select DISTINCT store.store_id,store.store_name,store.client_structure_id,cs.structure_name from ct_task_position_mapping ctpm inner join 
+			client_user cu on ctpm.client_position_id = cu.client_position_id and cu.is_delete = 0 and ctpm.client_id = #{clientId} and FIND_IN_SET(cu.client_user_id,#{clientUserIds})>0
+			inner JOIN store_user_mapping sump on sump.client_user_id = cu.client_user_id and sump.is_delete = 0 and sump.client_id = #{clientId}
+			inner join store on store.store_id = sump.store_id  
+			left join ct_task_data ctd on ctd.ct_task_id = ctpm.ct_task_id  
+			
+			LEFT JOIN client_structure cs on cs.client_structure_id = store.client_structure_id and cs.client_id = #{clientId} 
+			where store.is_delete = 0 and store.client_id = #{clientId}  
+			<if test="clientStructureId != null and clientStructureId !='' " >
+		        and cs.client_structure_id = #{clientStructureId}
+		    </if>	    
+		    <if test="storeId != null and storeId !='' " >
+		        and store.store_id = #{storeId}
+		    </if>
+		) temp LEFT JOIN store_user_mapping sum on sum.store_id = temp.store_id and sum.client_id = #{clientId} and sum.is_delete = 0
+		LEFT JOIN client_user cu on cu.client_user_id = sum.client_user_id and cu.client_id = #{clientId} and cu.is_delete = 0
+		GROUP BY temp.store_id		
+		<include refid="basic.mysqlPageSearchFoot" />
+	</select>
+	
+	<select id="selectTaskStoreCountByPositionId"  parameterType="java.util.Map" resultType="java.lang.Integer">
+		select count(1) from(select DISTINCT store.* from ct_task_position_mapping ctpm inner join client_user cu on ctpm.client_position_id = cu.client_position_id 
+		and cu.is_delete = 0 and ctpm.client_id = #{clientId} and FIND_IN_SET(cu.client_user_id,#{clientUserIds})>0
+		inner JOIN store_user_mapping sump on sump.client_user_id = cu.client_user_id and sump.is_delete = 0 and sump.client_id = #{clientId}
+		inner join store on store.store_id = sump.store_id  
+		left join ct_task_data ctd on ctd.ct_task_id = ctpm.ct_task_id  
+		LEFT JOIN client_structure cs on cs.client_structure_id = store.client_structure_id and cs.client_id = #{clientId}  
+		<if test="clientStructureId != null and clientStructureId !='' " >
+	        and cs.client_structure_id = #{clientStructureId}
+	    </if>	    
+	    <if test="storeId != null and storeId !='' " >
+	        and store.store_id = #{storeId}
+	    </if>
+		where store.is_delete = 0 and store.client_id = #{clientId}) a
+	</select>
+	
+	<select id="selectTaskList" parameterType="java.util.Map" resultMap="BaseResultMap">
+		SELECT ct.task_name,ct.ct_task_id from ct_task ct inner JOIN ct_task_pop_mapping ctpm
+		on ct.ct_task_id = ctpm.ct_task_id and ct.client_id = #{clientId} and ct.is_delete = 0 and ctpm.pop_id = #{storeId}
+	</select>
+
+	<select id="selectTaskByPosition" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select * from ct_task as ct INNER JOIN ct_task_position_mapping as ctpm on 
+		ct.ct_task_id = ctpm.ct_task_id where ct.is_delete = 0 and ctpm.client_id = #{clientId} and FIND_IN_SET(ctpm.client_position_id,#{subPositions})>0
+	</select>
+	
+	<select id="getStoreByNameAndTaskId" parameterType="java.util.Map" resultMap="BaseResultMap">
+		<!-- select store.store_id as id,store.store_name as name from ct_task ct inner join ct_task_pop_mapping ctpm on ct.ct_task_id = ctpm.ct_task_id
+		inner join store on ctpm.pop_id = store.store_id 
+		where ct.task_Type = 1 and ct.ct_task_id = #{ctTaskId} and store.client_id = #{clientId} 
+		and store.is_delete = 0 and store.store_name like CONCAT('%',#{storeName},'%') and
+		FIND_IN_SET(store.client_structure_id,#{subAllStructureId})>0  -->			
+		select store.store_id as id,store.store_name as name from store  
+		where store.client_id = #{clientId} and store.is_delete = 0 and store.store_name like CONCAT('%',#{storeName},'%') and
+		FIND_IN_SET(store.client_structure_id,#{subAllStructureId})>0 
+	</select>
+	
+	<resultMap type="java.lang.String" id="titileMap"></resultMap>
+	<resultMap type="java.util.Map" id="DataMap"></resultMap>
+	
+	<select id="exportCtTaskData" statementType="CALLABLE" parameterType="java.util.Map" resultMap="titileMap,DataMap">
+		CALL sp_export_ct_task_data (#{clientUserId},#{clientId},#{userIds},#{structureIds},
+		<if test="deptIds == null">''</if><if test="deptIds != null">#{deptIds}</if>,
+		<if test="userName == null">''</if><if test="userName !=null">#{userName}</if>,
+		<if test="storeName == null">''</if><if test="storeName != null">#{storeName}</if>,
+		<if test="storeNo == null">''</if><if test="storeNo != null">#{storeNo}</if>,
+		<if test="provinceId == null">0</if><if test="provinceId != null">#{provinceId}</if>,
+		<if test="cityId == null">0</if><if test="cityId != null">#{cityId}</if>,
+		<if test="positionIds == null">''</if><if test="positionIds !=null">#{positionIds}</if>,
+		#{startTime},#{endTime},#{ctTaskId},#{ifReport},#{visitType});	
+	</select>
+	
+	<select id="selectTaskDataStoreForReportData" parameterType="java.util.Map" resultMap="storeTaskMap">
+		SELECT DISTINCT store.store_id,store.store_name,store.store_no,store.fax,store.addr,store.contact,store.telephone_no,store.credit_period,
+			pro.province as provinceName,ctd.create_time,ctd.start_time,ctd.last_update_time,ctd.last_update_by AS last_update_user_id,
+			ctd.ct_task_id,ctd.ct_task_data_id,cu.name,cu_create.name createClientUserName,#{startDate} as startDate, #{endDate} as endDate
+		FROM ct_task ct 
+		INNER JOIN ct_task_data ctd ON ct.ct_task_id = ctd.ct_task_id and ctd.is_delete = 0 
+		INNER JOIN store ON ctd.pop_id = store.store_id
+		left join client_user cu on cu.client_user_id = ctd.client_user_id and cu.client_id = #{clientId}
+		left join client_user cu_create on cu_create.client_user_id = ctd.create_by and cu.client_id = #{clientId}
+		LEFT JOIN PROVINCE pro ON pro.province_id = store.province_id
+		where store.is_delete = 0 and store.client_id = #{clientId} and ct.ct_task_id = #{ctTaskId} and ct.client_id = #{clientId}
+		and (FIND_IN_SET(store.client_structure_id,#{subAllStructureId})>0 or FIND_IN_SET(ctd.last_update_by,#{clientUserIds})>0)
+		<if test="isMobileSearch !=null">
+			and FIND_IN_SET(ctd.client_user_id,#{clientUserIds})>0	
+		</if>
+		<if test="provinceId != null and provinceId !='' " >
+	        and store.province_id = #{provinceId}
+	    </if>
+	    <if test="cityId != null and cityId !='' ">
+	    	and store.city_id = #{cityId}
+	    </if>
+	    <if test="storeNo != null and storeNo !='' " >
+	        and store.store_no = #{storeNo}
+	    </if>
+	    <if test="storeName != null and storeName !='' " >
+	        and store.store_name like CONCAT('%',#{storeName},'%') 
+	    </if>
+	     <if test="startDate != null and startDate != ''">
+			<![CDATA[
+				and ctd.start_time >= #{startDate} 
+			]]>
+		</if>
+		<if test="endDate != null and endDate != ''">
+			<![CDATA[ 
+  				and ctd.start_time <= #{endDate} 
+  			]]>
+		</if>
+		<include refid="basic.mysqlPageSearchFoot" />
+	</select>
+	
+	
+	<select id="selectTaskDataStoreDayForReportData" parameterType="java.util.Map" resultMap="storeTaskMap">
+		SELECT DISTINCT store.store_id,store.store_name,store.store_no,store.fax,store.addr,store.contact,store.telephone_no,store.credit_period,
+			pro.province as provinceName,ctd.create_time,#{startDate} as startDate, #{endDate} as endDate,ctd.last_update_time,ctd.last_update_by AS last_update_user_id,
+			ctd.ct_task_id,ctd.ct_task_data_id,cu.name,ctd.start_time
+		FROM ct_task ct 
+		INNER JOIN ct_task_data ctd ON ct.ct_task_id = ctd.ct_task_id and ctd.is_delete = 0 
+		INNER JOIN store ON ctd.pop_id = store.store_id
+		inner join client_user cu on cu.client_user_id = ctd.client_user_id and cu.client_id = #{clientId}
+		LEFT JOIN PROVINCE pro ON pro.province_id = store.province_id
+		where store.is_delete = 0 and store.client_id = #{clientId} and ct.ct_task_id = #{ctTaskId} and ct.client_id = #{clientId}
+		and (FIND_IN_SET(store.client_structure_id,#{subAllStructureId})>0 or FIND_IN_SET(ctd.last_update_by,#{clientUserIds})>0)
+		<if test="isMobileSearch !=null">
+			and FIND_IN_SET(ctd.client_user_id,#{clientUserIds})>0	
+		</if>
+		<if test="provinceId != null and provinceId !='' " >
+	        and store.province_id = #{provinceId}
+	    </if>
+	    <if test="cityId != null and cityId !='' ">
+	    	and store.city_id = #{cityId}
+	    </if>
+	    <if test="storeNo != null and storeNo !='' " >
+	        and store.store_no = #{storeNo}
+	    </if>
+	    <if test="storeName != null and storeName !='' " >
+	        and store.store_name like CONCAT('%',#{storeName},'%') 
+	    </if>
+	    <if test="updateClientUserName !=null and updateClientUserName !=''">
+	    	and cu.name like CONCAT('%',#{updateClientUserName},'%') 
+	    </if>
+	     <if test="startDate != null and startDate != ''">
+			<![CDATA[
+				and ctd.start_time >= #{startDate} 
+			]]>
+		</if>
+		<if test="endDate != null and endDate != ''">
+			<![CDATA[ 
+  				and ctd.start_time <= #{endDate} 
+  			]]>
+		</if>
+		order by ctd.last_update_time desc
+		<include refid="basic.mysqlPageSearchFoot" />
+	</select>
+	
+	
+	<select id="selectTaskDataStoreCountForReportData" parameterType="java.util.Map" resultType="java.lang.Integer">
+		SELECT count(DISTINCT store.store_id) FROM ct_task ct INNER JOIN ct_task_data ctd ON ct.ct_task_id = ctd.ct_task_id and ctd.is_delete = 0 
+		INNER JOIN store ON ctd.pop_id = store.store_id
+		inner join client_user cu on ctd.client_user_id = cu.client_user_id
+		where store.is_delete = 0 and store.client_id = #{clientId} and ct.ct_task_id = #{ctTaskId} and ct.client_id = #{clientId}
+		and (FIND_IN_SET(store.client_structure_id,#{subAllStructureId})>0 or FIND_IN_SET(ctd.last_update_by,#{clientUserIds})>0)
+		<if test="provinceId != null and provinceId !='' " >
+	        and store.province_id = #{provinceId}
+	    </if>
+	    <if test="cityId != null and cityId !='' ">
+	    	and store.city_id = #{cityId}
+	    </if>
+	    <if test="storeNo != null and storeNo !='' " >
+	        and store.store_no = #{storeNo}
+	    </if>
+	    <if test="updateClientUserName !=null and updateClientUserName !=''">
+	    	and cu.name like CONCAT('%',#{updateClientUserName},'%') 
+	    </if>
+	    <if test="storeName != null and storeName !='' " >
+	        and store.store_name like CONCAT('%',#{storeName},'%') 
+	    </if>
+	     <if test="startDate != null and startDate != ''">
+			<![CDATA[
+				and ctd.start_time >= #{startDate} 
+			]]>
+		</if>
+		<if test="endDate != null and endDate != ''">
+			<![CDATA[ 
+  				and ctd.start_time <= #{endDate} 
+  			]]>
+		</if>
+	</select>
+	
+	<select id="selectTaskDataStoreForDay2" parameterType="java.util.Map" resultMap="storeTaskMap">
+		SELECT DISTINCT #{startDate} as startDate, #{endDate} as endDate,store.store_id,store.store_name,store.store_no, pro.province AS provinceName,city.city AS cityName,
+		ctd.ct_task_data_id,cus.name,cu_create.name as createClientUserName,ctd.last_update_time,ctd.start_time
+		FROM ct_task_position_mapping ctpm
+		INNER JOIN client_user cu ON cu.client_id=#{clientId} and ctpm.client_position_id = cu.client_position_id AND cu.is_delete = 0
+		INNER JOIN store_user_mapping sump ON sump.client_id = #{clientId} AND sump.client_user_id = cu.client_user_id AND sump.is_delete = 0
+		INNER JOIN store ON store.client_id = #{clientId} and store.store_id = sump.store_id AND store.is_delete = 0
+		INNER JOIN (SELECT MAX(calendar_date),MIN(calendar_date) as calendar_date FROM calendar WHERE client_id = #{clientId} and calendar_date between #{startDate} and #{endDate}) c
+		on 1=1
+		LEFT JOIN PROVINCE pro ON pro.province_id = store.province_id
+		LEFT JOIN CITY city ON city.city_id = store.city_id
+		LEFT JOIN ct_task_data ctd on ctd.client_id= #{clientId} and ctd.ct_task_id = ctpm.ct_task_id and ctd.pop_id = store.store_id 
+		and ctd.start_time between #{startDate} and #{endDate} and ctd.is_delete = 0
+		left join client_user cus on cus.client_id = #{clientId} and cus.client_user_id = ctd.client_user_id and cus.is_delete = 0
+		left join client_user cu_create on cu_create.client_user_id = ctd.create_by and cu.client_id = #{clientId}
+		WHERE ctpm.client_id = #{clientId} AND ctpm.ct_task_id = #{ctTaskId} AND ctpm.is_delete = 0
+		AND (
+		    FIND_IN_SET(store.client_structure_id ,#{subAllStructureId}) > 0
+			OR find_in_set(cu.client_user_id ,#{clientUserIds}) > 0
+		)
+		<if test="isMobileSearch !=null">
+			and FIND_IN_SET(ctd.client_user_id,#{clientUserIds})>0	
+		</if>
+		<if test="provinceId != null and provinceId !='' " >
+	        and store.province_id = #{provinceId}
+	    </if>
+	    <if test="cityId != null and cityId !='' ">
+	    	and store.city_id = #{cityId}
+	    </if>
+	    <if test="storeNo != null and storeNo !='' " >
+	        and store.store_no = #{storeNo}
+	    </if>
+	    <if test="storeName != null and storeName !='' " >
+	        and store.store_name like CONCAT('%',#{storeName},'%') 
+	    </if>
+	    <if test="updateClientUserName !=null and updateClientUserName !=''">
+	    	and cu_create.name like CONCAT('%',#{updateClientUserName},'%') 
+	    </if>
+	    <if test="reportData != null and reportData !='' and  reportData==2 " >
+	        and ctd.ct_task_data_id is null
+	    </if>
+	    <if test="reportData != null and reportData !='' and  reportData==1 " >
+	        and ctd.ct_task_data_id is not null
+	    </if>
+	    order by ctd.last_update_time desc,c.calendar_date asc
+		<include refid="basic.mysqlPageSearchFoot" />
+	</select>
+	
+	<select id="selectTaskDataStoreDayCount2" parameterType="java.util.Map" resultType="java.lang.Integer">
+		SELECT count(DISTINCT store.store_id)
+		FROM ct_task_position_mapping ctpm
+		INNER JOIN client_user cu ON cu.client_id=#{clientId} and ctpm.client_position_id = cu.client_position_id AND cu.is_delete = 0
+		INNER JOIN store_user_mapping sump ON sump.client_id = #{clientId} AND sump.client_user_id = cu.client_user_id AND sump.is_delete = 0
+		INNER JOIN store ON store.client_id = #{clientId} and store.store_id = sump.store_id AND store.is_delete = 0
+		INNER JOIN (SELECT MAX(calendar_date),MIN(calendar_date) as calendar_date FROM calendar WHERE client_id = #{clientId} and calendar_date between #{startDate} and #{endDate}) c
+		on 1=1
+		LEFT JOIN PROVINCE pro ON pro.province_id = store.province_id
+		LEFT JOIN CITY city ON city.city_id = store.city_id
+		LEFT JOIN ct_task_data ctd on ctd.client_id= #{clientId} and ctd.ct_task_id = ctpm.ct_task_id and ctd.pop_id = store.store_id 
+		and ctd.start_time between #{startDate} and #{endDate} and ctd.is_delete = 0
+		left join client_user cus on cus.client_id = #{clientId} and cus.client_user_id = ctd.last_update_by and cus.is_delete = 0
+		WHERE ctpm.client_id = #{clientId} AND ctpm.ct_task_id = #{ctTaskId} AND ctpm.is_delete = 0
+		AND (
+		    FIND_IN_SET(store.client_structure_id ,#{subAllStructureId}) > 0
+			OR find_in_set(cu.client_user_id ,#{clientUserIds}) > 0
+		)
+		<if test="provinceId != null and provinceId !='' " >
+	        and store.province_id = #{provinceId}
+	    </if>
+	    <if test="cityId != null and cityId !='' ">
+	    	and store.city_id = #{cityId}
+	    </if>
+	    <if test="storeNo != null and storeNo !='' " >
+	        and store.store_no = #{storeNo}
+	    </if>
+	    <if test="storeName != null and storeName !='' " >
+	        and store.store_name like CONCAT('%',#{storeName},'%') 
+	    </if>
+	    <if test="updateClientUserName !=null and updateClientUserName !=''">
+	    	and cu.name like CONCAT('%',#{updateClientUserName},'%') 
+	    </if>
+	    <if test="reportData != null and reportData !='' and  reportData==2 " >
+	        and ctd.ct_task_data_id is null
+	    </if>
+	    <if test="reportData != null and reportData !='' and  reportData==1 " >
+	        and ctd.ct_task_data_id is not null
+	    </if>
+	    
+	</select>
+	
+</mapper>

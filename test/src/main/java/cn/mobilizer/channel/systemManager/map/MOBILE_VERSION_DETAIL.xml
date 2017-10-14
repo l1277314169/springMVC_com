@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="MOBILE_VERSION_DETAIL" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.systemManager.po.MobileVersionDetail" >
+    <id column="detail_id" property="detailId" jdbcType="INTEGER" />
+    <result column="mobile_version_id" property="mobileVersionId" jdbcType="INTEGER" />
+    <result column="client_user_id" property="clientUserId" jdbcType="INTEGER" />
+    <result column="must_update" property="mustUpdate" jdbcType="TINYINT" />
+    <result column="is_updated" property="isUpdated" jdbcType="INTEGER" />
+    <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+    <result column="upate_time" property="upateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    detail_id, mobile_version_id, client_user_id, must_update, is_updated, updated_time, 
+    client_id,  is_delete, upate_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from mobile_version_detail
+    where detail_id = #{detailId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from mobile_version_detail
+    where detail_id = #{detailId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.systemManager.po.MobileVersionDetail" >
+    insert into mobile_version_detail (detail_id, mobile_version_id, client_user_id, 
+      must_update, is_updated, updated_time, 
+      client_id, 
+      is_delete, upate_time)
+    values (#{detailId,jdbcType=INTEGER}, #{mobileVersionId,jdbcType=INTEGER}, #{clientUserId,jdbcType=INTEGER}, 
+      #{mustUpdate,jdbcType=TINYINT}, #{isUpdated,jdbcType=INTEGER}, #{updatedTime,jdbcType=TIMESTAMP}, 
+      #{clientId,jdbcType=INTEGER}, 
+      #{isDelete,jdbcType=TINYINT}, #{upateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.systemManager.po.MobileVersionDetail" >
+    insert into mobile_version_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="detailId != null" >
+        detail_id,
+      </if>
+      <if test="mobileVersionId != null" >
+        mobile_version_id,
+      </if>
+      <if test="clientUserId != null" >
+        client_user_id,
+      </if>
+      <if test="mustUpdate != null" >
+        must_update,
+      </if>
+      <if test="isUpdated != null" >
+        is_updated,
+      </if>
+      <if test="updatedTime != null" >
+        updated_time,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="upateTime != null" >
+        upate_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="detailId != null" >
+        #{detailId,jdbcType=INTEGER},
+      </if>
+      <if test="mobileVersionId != null" >
+        #{mobileVersionId,jdbcType=INTEGER},
+      </if>
+      <if test="clientUserId != null" >
+        #{clientUserId,jdbcType=INTEGER},
+      </if>
+      <if test="mustUpdate != null" >
+        #{mustUpdate,jdbcType=TINYINT},
+      </if>
+      <if test="isUpdated != null" >
+        #{isUpdated,jdbcType=INTEGER},
+      </if>
+      <if test="updatedTime != null" >
+        #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+     
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="upateTime != null" >
+        #{upateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.systemManager.po.MobileVersionDetail" >
+    update mobile_version_detail
+    <set >
+      <if test="mobileVersionId != null" >
+        mobile_version_id = #{mobileVersionId,jdbcType=INTEGER},
+      </if>
+      <if test="clientUserId != null" >
+        client_user_id = #{clientUserId,jdbcType=INTEGER},
+      </if>
+      <if test="mustUpdate != null" >
+        must_update = #{mustUpdate,jdbcType=TINYINT},
+      </if>
+      <if test="isUpdated != null" >
+        is_updated = #{isUpdated,jdbcType=INTEGER},
+      </if>
+      <if test="updatedTime != null" >
+        updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+     
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="upateTime != null" >
+        upate_time = #{upateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where detail_id = #{detailId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.systemManager.po.MobileVersionDetail" >
+    update mobile_version_detail
+    set mobile_version_id = #{mobileVersionId,jdbcType=INTEGER},
+      client_user_id = #{clientUserId,jdbcType=INTEGER},
+      must_update = #{mustUpdate,jdbcType=TINYINT},
+      is_updated = #{isUpdated,jdbcType=INTEGER},
+      updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+      client_id = #{clientId,jdbcType=INTEGER},
+  
+      is_delete = #{isDelete,jdbcType=TINYINT},
+      upate_time = #{upateTime,jdbcType=TIMESTAMP}
+    where detail_id = #{detailId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="queryMobileVersionDetailList" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+  select GROUP_CONCAT(client_user_id) as clientUserIds from mobile_version_detail where mobile_version_id =#{mobileVersionId} and is_delete = 0
+  </select>
+  
+  <update id="updateMobileVersionDetailIsdelete" parameterType="java.lang.Integer">
+  update mobile_version_detail set is_delete = 1 where mobile_version_id = #{mobileVersionId}
+  </update>
+  
+ <select id="findMobileVersionDetail" parameterType="java.util.Map" resultMap="BaseResultMap">
+  select * from mobile_version_detail where client_user_id = #{clientUserId,jdbcType=INTEGER} and mobile_version_id = #{mobileVersionId,jdbcType=INTEGER} 
+ </select>
+ 
+ <select id="findMobileVersionDetailForClientUser" parameterType="java.util.Map" resultMap="BaseResultMap">
+  select * from mobile_version_detail where client_user_id = #{clientUserId,jdbcType=INTEGER} and mobile_version_id = #{mobileVersionId,jdbcType=INTEGER} and is_delete = 0
+ </select>
+  
+</mapper>

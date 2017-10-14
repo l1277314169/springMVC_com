@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="CLIENT_BUSINESS_DEFINITION" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.systemManager.po.ClientBusinessDefinition" >
+    <id column="definition_id" property="definitionId" jdbcType="INTEGER" />
+    <result column="table_name" property="tableName" jdbcType="VARCHAR" />
+    <result column="column_name" property="columnName" jdbcType="VARCHAR" />
+    <result column="column_type" property="columnType" jdbcType="INTEGER" />
+    <result column="control_type" property="controlType" jdbcType="INTEGER" />
+    <result column="relation_value" property="relationValue" jdbcType="VARCHAR" />
+    <result column="min_length" property="minLength" jdbcType="INTEGER" />
+    <result column="max_length" property="maxLength" jdbcType="INTEGER" />
+    <result column="column_desc" property="columnDesc" jdbcType="VARCHAR" />
+    <result column="column_desc_en" property="columnDescEn" jdbcType="VARCHAR" />
+    <result column="enum_name" property="enumName" jdbcType="VARCHAR" />
+    <result column="enum_type" property="enumType" jdbcType="TINYINT" />
+    <result column="is_must_do" property="isMustDo" jdbcType="INTEGER" />
+    <result column="used_flag" property="usedFlag" jdbcType="INTEGER" />
+    <result column="editable" property="editable" jdbcType="TINYINT" />
+    <result column="edit_sequence" property="editSequence" jdbcType="INTEGER" />
+    <result column="list_sequence" property="listSequence" jdbcType="INTEGER" />
+    <result column="query_sequence" property="querySequence" jdbcType="INTEGER" />
+    <result column="import_sequence" property="importSequence" jdbcType="INTEGER" />
+    <result column="grid_width" property="gridWidth" jdbcType="DECIMAL" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    definition_id, table_name, column_name, column_type, control_type, relation_value, 
+    min_length, max_length, column_desc, column_desc_en, enum_name, enum_type, is_must_do, 
+    used_flag, editable, edit_sequence, list_sequence, query_sequence, import_sequence, grid_width, remark, client_id, 
+     is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from client_business_definition
+    where definition_id = #{definitionId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from client_business_definition
+    where definition_id = #{definitionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.systemManager.po.ClientBusinessDefinition" >
+    insert into client_business_definition (definition_id, table_name, column_name, 
+      column_type, control_type, relation_value, 
+      min_length, max_length, column_desc, 
+      column_desc_en, enum_name, enum_type, 
+      is_must_do, used_flag, editable, edit_sequence, 
+      list_sequence, query_sequence, import_sequence, grid_width, 
+      remark, client_id,  is_delete)
+    values (#{definitionId,jdbcType=INTEGER}, #{tableName,jdbcType=VARCHAR}, #{columnName,jdbcType=VARCHAR}, 
+      #{columnType,jdbcType=INTEGER}, #{controlType,jdbcType=INTEGER}, #{relationValue,jdbcType=VARCHAR}, 
+      #{minLength,jdbcType=INTEGER}, #{maxLength,jdbcType=INTEGER}, #{columnDesc,jdbcType=VARCHAR}, 
+      #{columnDescEn,jdbcType=VARCHAR}, #{enumName,jdbcType=VARCHAR}, #{enumType,jdbcType=TINYINT}, 
+      #{isMustDo,jdbcType=INTEGER}, #{usedFlag,jdbcType=INTEGER}, #{editable,jdbcType=TINYINT}, #{editSequence,jdbcType=INTEGER}, 
+      #{listSequence,jdbcType=INTEGER}, #{querySequence,jdbcType=INTEGER}, #{importSequence,jdbcType=INTEGER}, #{gridWidth,jdbcType=DECIMAL}, 
+      #{remark,jdbcType=VARCHAR}, #{clientId,jdbcType=INTEGER}, #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.systemManager.po.ClientBusinessDefinition" >
+    insert into client_business_definition
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="definitionId != null" >
+        definition_id,
+      </if>
+      <if test="tableName != null" >
+        table_name,
+      </if>
+      <if test="columnName != null" >
+        column_name,
+      </if>
+      <if test="columnType != null" >
+        column_type,
+      </if>
+      <if test="controlType != null" >
+        control_type,
+      </if>
+      <if test="relationValue != null" >
+        relation_value,
+      </if>
+      <if test="minLength != null" >
+        min_length,
+      </if>
+      <if test="maxLength != null" >
+        max_length,
+      </if>
+      <if test="columnDesc != null" >
+        column_desc,
+      </if>
+      <if test="columnDescEn != null" >
+        column_desc_en,
+      </if>
+      <if test="enumName != null" >
+        enum_name,
+      </if>
+      <if test="enumType != null" >
+        enum_type,
+      </if>
+      <if test="isMustDo != null" >
+        is_must_do,
+      </if>
+      <if test="usedFlag != null" >
+        used_flag,
+      </if>
+      <if test="editable != null" >
+        editable,
+      </if>
+      <if test="editSequence != null" >
+        edit_sequence,
+      </if>
+      <if test="listSequence != null" >
+        list_sequence,
+      </if>
+      <if test="querySequence != null" >
+        query_sequence,
+      </if>
+      <if test="importSequence != null" >
+        import_sequence,
+      </if>
+      <if test="gridWidth != null" >
+        grid_width,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+   
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="definitionId != null" >
+        #{definitionId,jdbcType=INTEGER},
+      </if>
+      <if test="tableName != null" >
+        #{tableName,jdbcType=VARCHAR},
+      </if>
+      <if test="columnName != null" >
+        #{columnName,jdbcType=VARCHAR},
+      </if>
+      <if test="columnType != null" >
+        #{columnType,jdbcType=INTEGER},
+      </if>
+      <if test="controlType != null" >
+        #{controlType,jdbcType=INTEGER},
+      </if>
+      <if test="relationValue != null" >
+        #{relationValue,jdbcType=VARCHAR},
+      </if>
+      <if test="minLength != null" >
+        #{minLength,jdbcType=INTEGER},
+      </if>
+      <if test="maxLength != null" >
+        #{maxLength,jdbcType=INTEGER},
+      </if>
+      <if test="columnDesc != null" >
+        #{columnDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="columnDescEn != null" >
+        #{columnDescEn,jdbcType=VARCHAR},
+      </if>
+      <if test="enumName != null" >
+        #{enumName,jdbcType=VARCHAR},
+      </if>
+      <if test="enumType != null" >
+        #{enumType,jdbcType=TINYINT},
+      </if>
+      <if test="isMustDo != null" >
+        #{isMustDo,jdbcType=INTEGER},
+      </if>
+      <if test="usedFlag != null" >
+        #{usedFlag,jdbcType=INTEGER},
+      </if>
+      <if test="editable != null" >
+        #{editable,jdbcType=TINYINT},
+      </if>
+      <if test="editSequence != null" >
+        #{editSequence,jdbcType=INTEGER},
+      </if>
+      <if test="listSequence != null" >
+        #{listSequence,jdbcType=INTEGER},
+      </if>
+      <if test="querySequence != null" >
+        #{querySequence,jdbcType=INTEGER},
+      </if>
+      <if test="importSequence != null" >
+        #{importSequence,jdbcType=INTEGER},
+      </if>
+      <if test="gridWidth != null" >
+        #{gridWidth,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.systemManager.po.ClientBusinessDefinition" >
+    update client_business_definition
+    <set >
+      <if test="tableName != null" >
+        table_name = #{tableName,jdbcType=VARCHAR},
+      </if>
+      <if test="columnName != null" >
+        column_name = #{columnName,jdbcType=VARCHAR},
+      </if>
+      <if test="columnType != null" >
+        column_type = #{columnType,jdbcType=INTEGER},
+      </if>
+      <if test="controlType != null" >
+        control_type = #{controlType,jdbcType=INTEGER},
+      </if>
+      <if test="relationValue != null" >
+        relation_value = #{relationValue,jdbcType=VARCHAR},
+      </if>
+      <if test="minLength != null" >
+        min_length = #{minLength,jdbcType=INTEGER},
+      </if>
+      <if test="maxLength != null" >
+        max_length = #{maxLength,jdbcType=INTEGER},
+      </if>
+      <if test="columnDesc != null" >
+        column_desc = #{columnDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="columnDescEn != null" >
+        column_desc_en = #{columnDescEn,jdbcType=VARCHAR},
+      </if>
+      <if test="enumName != null" >
+        enum_name = #{enumName,jdbcType=VARCHAR},
+      </if>
+      <if test="enumType != null" >
+        enum_type = #{enumType,jdbcType=TINYINT},
+      </if>
+      <if test="isMustDo != null" >
+        is_must_do = #{isMustDo,jdbcType=INTEGER},
+      </if>
+      <if test="usedFlag != null" >
+        used_flag = #{usedFlag,jdbcType=INTEGER},
+      </if>
+      <if test="editable != null" >
+        editable = #{editable,jdbcType=TINYINT},
+      </if>
+      <if test="editSequence != null" >
+        edit_sequence = #{editSequence,jdbcType=INTEGER},
+      </if>
+      <if test="listSequence != null" >
+        list_sequence = #{listSequence,jdbcType=INTEGER},
+      </if>
+      <if test="querySequence != null" >
+        query_sequence = #{querySequence,jdbcType=INTEGER},
+      </if>
+      <if test="importSequence != null" >
+        query_sequence = #{importSequence,jdbcType=INTEGER},
+      </if>
+      <if test="gridWidth != null" >
+        grid_width = #{gridWidth,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where definition_id = #{definitionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.systemManager.po.ClientBusinessDefinition" >
+    update client_business_definition
+    set table_name = #{tableName,jdbcType=VARCHAR},
+      column_name = #{columnName,jdbcType=VARCHAR},
+      column_type = #{columnType,jdbcType=INTEGER},
+      control_type = #{controlType,jdbcType=INTEGER},
+      relation_value = #{relationValue,jdbcType=VARCHAR},
+      min_length = #{minLength,jdbcType=INTEGER},
+      max_length = #{maxLength,jdbcType=INTEGER},
+      column_desc = #{columnDesc,jdbcType=VARCHAR},
+      column_desc_en = #{columnDescEn,jdbcType=VARCHAR},
+      enum_name = #{enumName,jdbcType=VARCHAR},
+      enum_type = #{enumType,jdbcType=TINYINT},
+      is_must_do = #{isMustDo,jdbcType=INTEGER},
+      used_flag = #{usedFlag,jdbcType=INTEGER},
+      editable = #{editable,jdbcType=TINYINT},
+      edit_sequence = #{editSequence,jdbcType=INTEGER},
+      list_sequence = #{listSequence,jdbcType=INTEGER},
+      query_sequence = #{querySequence,jdbcType=INTEGER},
+      import_sequence = #{importSequence,jdbcType=INTEGER},
+      grid_width = #{gridWidth,jdbcType=DECIMAL},
+      remark = #{remark,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where definition_id = #{definitionId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="findListByParams"  resultMap="BaseResultMap"  parameterType="java.util.Map">
+   select * from client_business_definition cd 
+    where 1=1
+		<include refid="Query_Column_List" />
+  </select>
+  
+  <sql id="Query_Column_List">
+		<if test="clientId != null">
+			and cd.client_id = #{clientId}
+		</if>
+		<if test="isDelete != null">
+			and cd.is_delete = #{isDelete}
+		</if>
+		<if test="tableName != null and tableName != '' ">
+			and cd.table_name = #{tableName}
+		</if>
+		<if test="isDelete == null">
+			and cd.is_delete = 0
+		</if>
+		<if test="usedFlag != null">
+			and cd.used_flag = #{usedFlag}
+		</if>
+	</sql>
+</mapper>

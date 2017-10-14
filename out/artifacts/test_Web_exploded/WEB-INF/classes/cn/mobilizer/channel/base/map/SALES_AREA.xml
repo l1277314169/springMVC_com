@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="SALES_AREA" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.base.po.SalesArea" >
+    <id column="area_id" property="areaId" jdbcType="INTEGER" />
+    <result column="area_no" property="areaNo" jdbcType="VARCHAR" />
+    <result column="area_name" property="areaName" jdbcType="VARCHAR" />
+    <result column="area_name_en" property="areaNameEn" jdbcType="VARCHAR" />
+    <result column="client_structure_id" property="clientStructureId" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    area_id, area_no, area_name, area_name_en, client_structure_id, remark, client_id, 
+    create_time, last_update_time, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sales_area
+    where area_id = #{areaId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sales_area
+    where area_id = #{areaId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.base.po.SalesArea" >
+    insert into sales_area (area_id, area_no, area_name, 
+      area_name_en, client_structure_id, remark, 
+      client_id, 
+      is_delete)
+    values (#{areaId,jdbcType=INTEGER}, #{areaNo,jdbcType=VARCHAR}, #{areaName,jdbcType=VARCHAR}, 
+      #{areaNameEn,jdbcType=VARCHAR}, #{clientStructureId,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
+      #{clientId,jdbcType=INTEGER},
+      #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.base.po.SalesArea" >
+    insert into sales_area
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="areaId != null" >
+        area_id,
+      </if>
+      <if test="areaNo != null" >
+        area_no,
+      </if>
+      <if test="areaName != null" >
+        area_name,
+      </if>
+      <if test="areaNameEn != null" >
+        area_name_en,
+      </if>
+      <if test="clientStructureId != null" >
+        client_structure_id,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="areaId != null" >
+        #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="areaNo != null" >
+        #{areaNo,jdbcType=VARCHAR},
+      </if>
+      <if test="areaName != null" >
+        #{areaName,jdbcType=VARCHAR},
+      </if>
+      <if test="areaNameEn != null" >
+        #{areaNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="clientStructureId != null" >
+        #{clientStructureId,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.base.po.SalesArea" >
+    update sales_area
+    <set >
+      <if test="areaNo != null" >
+        area_no = #{areaNo,jdbcType=VARCHAR},
+      </if>
+      <if test="areaName != null" >
+        area_name = #{areaName,jdbcType=VARCHAR},
+      </if>
+      <if test="areaNameEn != null" >
+        area_name_en = #{areaNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="clientStructureId != null" >
+        client_structure_id = #{clientStructureId,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where area_id = #{areaId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.base.po.SalesArea" >
+    update sales_area
+    set area_no = #{areaNo,jdbcType=VARCHAR},
+      area_name = #{areaName,jdbcType=VARCHAR},
+      area_name_en = #{areaNameEn,jdbcType=VARCHAR},
+      client_structure_id = #{clientStructureId,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where area_id = #{areaId,jdbcType=INTEGER}
+  </update>
+</mapper>

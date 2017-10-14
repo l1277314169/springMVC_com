@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="IMAGE">
+
+	<resultMap id="BaseResultMap" type="cn.mobilizer.channel.image.po.Image">
+		<result column="store_id" property="storeId" jdbcType="VARCHAR" />
+		<result column="store_name" property="storeName" jdbcType="VARCHAR" />
+		<result column="in_time" property="inTime" jdbcType="TIMESTAMP" />
+		<result column="value" property="value" jdbcType="VARCHAR" />
+		<result column="in_pic" property="inPic" jdbcType="VARCHAR" />
+		<result column="out_pic" property="out_pic" jdbcType="VARCHAR" />
+		<result column="parameter_name" property="parameterName" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	
+	<resultMap id="ColgateImageResultMap" type="cn.mobilizer.channel.image.vo.ColgateImage">
+		<result column="store_id" property="storeId" jdbcType="VARCHAR" />
+		<result column="store_name" property="storeName" jdbcType="VARCHAR" />
+		<result column="value" property="value" jdbcType="VARCHAR" />
+		<result column="addr" property="addr" jdbcType="VARCHAR" />
+		<result column="object_id" property="objectId" jdbcType="INTEGER" />
+	</resultMap>
+	
+	
+	<resultMap id="ImageVoResultMap" type="cn.mobilizer.channel.image.vo.ImageVo">
+		<result column="store_name" property="storeName" jdbcType="VARCHAR" />
+		<result column="store_no" property="storeNo" jdbcType="VARCHAR" />
+		<result column="value" property="imageName" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	
+	<select id="selectImageVoList" resultMap="ImageVoResultMap" parameterType="java.util.Map">
+			select s.store_name,s.store_no,a.`value` from survey_feedback_detail a 
+			INNER JOIN survey_feedback sf on a.feedback_id = sf.feedback_id 
+			INNER JOIN survey_parameter b on a.survey_parameter_id = b.survey_parameter_id			
+			INNER JOIN store s on sf.pop_id = s.store_id 
+			LEFT JOIN province d on d.province_id = s.province_id  and d.is_delete = 0
+			LEFT JOIN city e on e.city_id = s.city_id and e.is_delete = 0
+			INNER JOIN survey f on f.survey_id = sf.survey_id
+			where a.is_delete = 0 and a.client_id = #{clientId}
+			and b.is_delete = 0 and b.client_id = #{clientId}
+			and b.control_type = 11 and sf.is_delete = 0 and sf.client_id = #{clientId}
+			and s.is_delete = 0 and s.client_id = #{clientId}
+			and f.is_delete = 0 and f.client_id = #{clientId}
+			<include refid="Query_Column_List"/>
+	</select>
+
+	<select id="selectVisitingImage" resultMap="BaseResultMap" parameterType="java.util.Map">
+		<![CDATA[ SELECT a.value,c.store_id,c.store_name,b.in_time,b.in_pic,b.out_pic,f.parameter_name FROM visiting_task_data b
+			INNER JOIN visiting_task_detail_data a ON a.visiting_task_data_id = b.visiting_task_data_id 
+			INNER JOIN visiting_parameter f ON a.visiting_parameter_id = f.visiting_parameter_id AND f.control_type = 11 
+			INNER JOIN store c ON c.store_id = b.pop_id
+			where a.client_id = #{clientId} AND a.is_delete = 0 
+			AND b.client_id = #{clientId} AND b.is_delete = 0
+			AND f.client_id = #{clientId} AND f.is_delete = 0
+			AND c.client_id = #{clientId} AND c.is_delete = 0
+			AND DATE(b.in_time) BETWEEN #{startDate} AND #{endDate}
+		]]>
+		<if test="storeId != null and ''!=storeId ">
+			AND c.store_id = #{storeId}
+		</if>
+		<if test="storeNo != null and ''!=storeNo ">
+			AND c.store_no like CONCAT('%',#{storeNo},'%')
+		</if>
+		ORDER BY b.in_time ASC
+	</select>
+	
+	 <select id="selectSurveyImageList" parameterType="java.util.Map" resultMap="ColgateImageResultMap">
+	  	select s.addr,s.store_name,a.`value`,a.object_id,s.store_id
+		from survey_feedback_detail a
+		INNER JOIN survey_feedback sf on a.feedback_id = sf.feedback_id 
+		INNER JOIN store s on sf.pop_id = s.store_id 
+		LEFT JOIN province d on d.province_id = s.province_id  and d.is_delete = 0
+		LEFT JOIN city e on e.city_id = s.city_id and e.is_delete = 0
+		INNER JOIN survey f on f.survey_id = sf.survey_id
+		where a.survey_parameter_id = 5 and a.is_delete = 0 and a.client_id = #{clientId}
+		and sf.is_delete = 0 and sf.client_id = #{clientId}
+		and s.is_delete = 0 and s.client_id = #{clientId}
+		and f.is_delete = 0 and f.client_id = #{clientId}
+		<include refid="Query_Column_List"/>
+	  </select>
+	  
+	   <select id="selectSurveyDefaultImage" parameterType="java.util.Map" resultMap="ColgateImageResultMap">
+	  		select s.addr,s.store_name,a.`value`,a.object_id,s.store_id,p.control_type
+			from survey_feedback_detail a
+			INNER JOIN survey_feedback sf on a.feedback_id = sf.feedback_id 
+			INNER JOIN store s on sf.pop_id = s.store_id 
+			LEFT JOIN province d on d.province_id = s.province_id  and d.is_delete = 0
+			LEFT JOIN city e on e.city_id = s.city_id and e.is_delete = 0
+			INNER JOIN survey f on f.survey_id = sf.survey_id
+			INNER JOIN survey_parameter p on p.sub_survey_id = a.sub_survey_id
+			where a.is_delete = 0 and a.client_id = #{clientId}
+			and sf.is_delete = 0 and sf.client_id = #{clientId}
+			and s.is_delete = 0 and s.client_id = #{clientId}
+			and f.is_delete = 0 and f.client_id = #{clientId}
+			and p.is_delete = 0 and p.client_id = #{clientId}
+			and p.control_type = 11
+			<include refid="Query_Column_List"/>
+	  </select>
+	  
+	  <sql id="Query_Column_List">
+		<if test="storeNo!= null and ''!=storeNo " >
+        	and s.store_no = #{storeNo}
+      	</if>
+      	
+      	<if test="storeName!= null and ''!=storeName " >
+        	and s.store_name like CONCAT('%',#{storeName},'%')
+      	</if>
+      	
+      	<if test="visitor != null and ''!=visitor " >
+        	and sf.visitor like CONCAT('%',#{visitor},'%')
+      	</if>
+      	
+      	<if test="feedbackDate != null and ''!=feedbackDate " >
+        	and DATE_FORMAT(sf.feedback_date,'%Y%m')= #{feedbackDate}
+      	</if>
+      	
+      	<if test="provinceId != null and ''!=provinceId " >
+        	and s.province_id = #{provinceId}
+      	</if>
+      	
+      	<if test="cityId != null and ''!=cityId " >
+        	and s.city_id = #{cityId}
+      	</if>
+      	
+      	<if test="channelId != null and ''!=channelId " >
+        	and s.channel_id = #{channelId}
+      	</if>
+      	
+      	<if test="chainId != null and ''!=chainId " >
+        	and s.chain_id = #{chainId}
+      	</if>
+      	
+      	<if test="structureId != null and ''!=structureId " >
+        	and s.client_structure_id = #{structureId}
+      	</if>
+      	
+      	<if test="status != null and ''!=status " >
+        	and s.status = #{status}
+      	</if>
+      	
+	</sql>
+	
+
+</mapper>

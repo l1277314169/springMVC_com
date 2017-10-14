@@ -1,0 +1,375 @@
+﻿.btnDownload_CN
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnDownload_CN.png);
+	width:78px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+
+.btnSubmit_CN
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnSubmit_CN.png);
+	width:78px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+
+.btnCancel_CN
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnCancel_CN.png);
+	width:78px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+
+.btnSave_CN
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnSave_CN.png);
+	width:78px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+
+.btnDelete_CN
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnDelete_CN.png);
+	width:78px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+
+.btnEdit_CN
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnEdit_CN.png);
+	width:78px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+
+.btnBack_CN
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnBack_CN.png);
+	width:78px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+
+.btnRefresh_CN
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnRefresh_CN.png);
+	width:78px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+
+.btnUploadExcel_CN
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnUploadExcel_CN.png);
+	width:109px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+
+.btnDownloadTemplate_CN
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnDownloadTemplate_CN.png);
+	width:109px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+
+.btnUploadPhoto_CN
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnUploadPhoto_CN.png);
+	width:109px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+
+.btnNewCallReport_CN
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnNewCallReport_CN.png);
+	width:126px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}
+
+.tabPhotoSelected_CN
+{
+	background-position:top left;
+	color:#43434e;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/tabPhoto_CN.png);
+	width:95px;
+	height:28px;
+	font-weight:bold;
+	
+	padding-bottom:5px;
+}
+.tabPhoto_CN
+{
+	background-position:bottom left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/tabPhoto_CN.png);
+	width:95px;
+	height:28px;
+	color:#efefef;
+	
+	padding-bottom:5px;
+}
+.tabPhoto_CN:hover
+{
+	background-position:top;
+	color:#43434e;
+	font-weight:bold;
+}
+
+.tabMainQuestSelected_CN
+{
+	background-position:top left;
+	color:#43434e;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/tabMainQuest_CN.png);
+	width:121px;
+	height:28px;
+	font-weight:bold;
+	
+	padding-bottom:5px;
+}
+.tabMainQuest_CN
+{
+	background-position:bottom left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/tabMainQuest_CN.png);
+	width:121px;
+	height:28px;
+	color:#efefef;
+	
+	padding-bottom:5px;
+}
+.tabMainQuest_CN:hover
+{
+	background-position:top;
+	color:#43434e;
+	font-weight:bold;
+}
+
+
+.tabAddOnQuestSelected_CN
+{
+	background-position:top left;
+	color:#43434e;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/tabAddOnQuest_CN.png);
+	width:95px;
+	height:28px;
+	font-weight:bold;
+	
+	padding-bottom:5px;
+}
+.tabAddOnQuest_CN
+{
+	background-position:bottom left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/tabAddOnQuest_CN.png);
+	width:95px;
+	height:28px;
+	color:#efefef;
+	
+	padding-bottom:5px;
+}
+.tabAddOnQuest_CN:hover
+{
+	background-position:top;
+	color:#43434e;
+	font-weight:bold;
+}
+
+.tabDMQuestSelected_CN
+{
+	background-position:top left;
+	color:#43434e;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/tabDMQuest_CN.png);
+	width:95px;
+	height:28px;
+	font-weight:bold;
+	
+	padding-bottom:5px;
+}
+.tabDMQuest_CN
+{
+	background-position:bottom left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/tabDMQuest_CN.png);
+	width:95px;
+	height:28px;
+	color:#efefef;
+	
+	padding-bottom:5px;
+}
+.tabDMQuest_CN:hover
+{
+	background-position:top;
+	color:#43434e;
+	font-weight:bold;
+}
+
+.tabSecondDisplayQuestSelected_CN
+{
+	background-position:top left;
+	color:#43434e;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/secondDisplayQuest_CN.png);
+	width:121px;
+	height:28px;
+	font-weight:bold;
+	
+	padding-bottom:5px;
+}
+.tabSecondDisplayQuest_CN
+{
+	background-position:bottom left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/secondDisplayQuest_CN.png);
+	width:121px;
+	height:28px;
+	color:#efefef;
+	
+	padding-bottom:5px;
+}
+.tabSecondDisplayQuest_CN:hover
+{
+	background-position:top;
+	color:#43434e;
+	font-weight:bold;
+}
+
+.btnSaveAsDraft_CN
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnSaveAsDraft_CN.png);
+	width:117px;
+	height:30px;
+	color:#efefef;
+	padding-left:28px;
+	padding-bottom:5px;
+}

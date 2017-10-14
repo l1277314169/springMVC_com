@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="MSI_SURVEY_FEEDBACK_DETAIL" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.survey.po.MsiSurveyFeedbackDetail" >
+    <id column="detail_id" property="detailId" jdbcType="VARCHAR" />
+    <result column="feedback_id" property="feedbackId" jdbcType="VARCHAR" />
+    <result column="msi_question_id" property="msiQuestionId" jdbcType="INTEGER" />
+    <result column="msi_answer_id" property="msiAnswerId" jdbcType="INTEGER" />
+    <result column="score" property="score" jdbcType="DECIMAL" />
+    <result column="col1" property="col1" jdbcType="VARCHAR" />
+    <result column="col2" property="col2" jdbcType="VARCHAR" />
+    <result column="col3" property="col3" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="submit_time" property="submitTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    detail_id, feedback_id, msi_question_id, msi_answer_id, score, col1, col2, col3, 
+    client_id, create_time, submit_time, last_update_time, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from msi_survey_feedback_detail
+    where detail_id = #{detailId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from msi_survey_feedback_detail
+    where detail_id = #{detailId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.survey.po.MsiSurveyFeedbackDetail" >
+    insert into msi_survey_feedback_detail (detail_id, feedback_id, msi_question_id, 
+      msi_answer_id, score, col1, 
+      col2, col3, client_id, 
+      create_time, submit_time, last_update_time, 
+      is_delete)
+    values (#{detailId,jdbcType=VARCHAR}, #{feedbackId,jdbcType=VARCHAR}, #{msiQuestionId,jdbcType=INTEGER}, 
+      #{msiAnswerId,jdbcType=INTEGER}, #{score,jdbcType=DECIMAL}, #{col1,jdbcType=VARCHAR}, 
+      #{col2,jdbcType=VARCHAR}, #{col3,jdbcType=VARCHAR}, #{clientId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{submitTime,jdbcType=TIMESTAMP}, #{lastUpdateTime,jdbcType=TIMESTAMP}, 
+      #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.survey.po.MsiSurveyFeedbackDetail" >
+    insert into msi_survey_feedback_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="detailId != null" >
+        detail_id,
+      </if>
+      <if test="feedbackId != null" >
+        feedback_id,
+      </if>
+      <if test="msiQuestionId != null" >
+        msi_question_id,
+      </if>
+      <if test="msiAnswerId != null" >
+        msi_answer_id,
+      </if>
+      <if test="score != null" >
+        score,
+      </if>
+      <if test="col1 != null" >
+        col1,
+      </if>
+      <if test="col2 != null" >
+        col2,
+      </if>
+      <if test="col3 != null" >
+        col3,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="submitTime != null" >
+        submit_time,
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="detailId != null" >
+        #{detailId,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbackId != null" >
+        #{feedbackId,jdbcType=VARCHAR},
+      </if>
+      <if test="msiQuestionId != null" >
+        #{msiQuestionId,jdbcType=INTEGER},
+      </if>
+      <if test="msiAnswerId != null" >
+        #{msiAnswerId,jdbcType=INTEGER},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=DECIMAL},
+      </if>
+      <if test="col1 != null" >
+        #{col1,jdbcType=VARCHAR},
+      </if>
+      <if test="col2 != null" >
+        #{col2,jdbcType=VARCHAR},
+      </if>
+      <if test="col3 != null" >
+        #{col3,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="submitTime != null" >
+        #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.survey.po.MsiSurveyFeedbackDetail" >
+    update msi_survey_feedback_detail
+    <set >
+      <if test="feedbackId != null" >
+        feedback_id = #{feedbackId,jdbcType=VARCHAR},
+      </if>
+      <if test="msiQuestionId != null" >
+        msi_question_id = #{msiQuestionId,jdbcType=INTEGER},
+      </if>
+      <if test="msiAnswerId != null" >
+        msi_answer_id = #{msiAnswerId,jdbcType=INTEGER},
+      </if>
+      <if test="score != null" >
+        score = #{score,jdbcType=DECIMAL},
+      </if>
+      <if test="col1 != null" >
+        col1 = #{col1,jdbcType=VARCHAR},
+      </if>
+      <if test="col2 != null" >
+        col2 = #{col2,jdbcType=VARCHAR},
+      </if>
+      <if test="col3 != null" >
+        col3 = #{col3,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="submitTime != null" >
+        submit_time = #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where detail_id = #{detailId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.survey.po.MsiSurveyFeedbackDetail" >
+    update msi_survey_feedback_detail
+    set feedback_id = #{feedbackId,jdbcType=VARCHAR},
+      msi_question_id = #{msiQuestionId,jdbcType=INTEGER},
+      msi_answer_id = #{msiAnswerId,jdbcType=INTEGER},
+      score = #{score,jdbcType=DECIMAL},
+      col1 = #{col1,jdbcType=VARCHAR},
+      col2 = #{col2,jdbcType=VARCHAR},
+      col3 = #{col3,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      submit_time = #{submitTime,jdbcType=TIMESTAMP},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where detail_id = #{detailId,jdbcType=VARCHAR}
+  </update>
+  
+  <insert id="insertMsiSurveyFeedbackDetailBylist" parameterType="java.util.List">
+    INSERT INTO msi_survey_feedback_detail (detail_id, feedback_id, msi_question_id, msi_answer_id, score, client_id,col1,col2) 
+    VALUES 
+    <foreach collection="list" item="item" index="index" separator="," >
+     (#{item.detailId},#{item.feedbackId},#{item.msiQuestionId},#{item.msiAnswerId},#{item.score},#{item.clientId},#{item.col1},#{item.col2})
+    </foreach>
+  </insert>
+  
+  <select id="findMsiSurveyFeedbackDetailListByFeedbackId" parameterType="String" resultMap="BaseResultMap" >
+  	SELECT * FROM msi_survey_feedback_detail msfd WHERE msfd.feedback_id = #{feedbackId} AND msfd.is_delete = 0
+  </select> 
+  
+  <update id="deleteByFeedbackId" parameterType="String">
+    update msi_survey_feedback_detail
+    set is_delete = 1
+    where feedback_id = #{feedbackId}
+  </update>
+  
+  <select id="getMsiSurveyFeedbackDetailByParams" parameterType="java.util.Map" resultMap="BaseResultMap" >
+  	SELECT * FROM msi_survey_feedback_detail msfd WHERE msfd.feedback_id = #{feedbackId} AND msfd.msi_question_id = #{msiQuestionId}
+	<if test="msiAnswerId != null and msiAnswerId !=''">
+  		AND msfd.msi_answer_id = #{msiAnswerId}	
+  	</if>
+  	<if test="msiSurveyParameterId !=null and msiSurveyParameterId !=''">
+  		AND msfd.col2 = #{msiSurveyParameterId}
+  	</if>
+  </select> 
+ 
+</mapper>

@@ -1,0 +1,112 @@
+/*
+///////////////////////////////////////////////////////////////////////////////////////// 
+// Super Tables v0.30 - MIT Style License
+// Copyright (c) 2008 Matt Murphy --- www.matts411.com
+//
+// Contributors:
+// Joe Gallo
+///////////////////////////////////////////////////////////////////////////////////////// 
+*/
+.sBase {
+	position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* HEADERS */
+.sHeader {
+	position: absolute;
+	z-index: 3;
+	background-color: #ffffff;
+}
+.sHeaderInner {
+	position: relative;
+}
+.sHeaderInner table {
+	border-spacing: 0px 0px !important;
+	border-collapse: collapse !important;
+	width: 1px !important;
+	table-layout: fixed !important;
+	background-color: #ffffff; /* Here b/c of Opera 9.25 :( */
+}
+
+/* HEADERS - FIXED */
+.sFHeader {
+	position: absolute;
+	z-index: 4;
+	overflow: hidden;
+}
+.sFHeader table {
+	border-spacing: 0px 0px !important;
+	border-collapse: collapse !important;
+	width: 1px !important;
+	table-layout: fixed !important;
+	background-color: #ffffff; /* Here b/c of Opera 9.25 :( */
+}
+
+/* BODY */
+.sData {
+	position: absolute;
+	z-index: 2;
+	overflow: auto;
+	background-color: #ffffff;
+}
+.sData table {
+	border-spacing: 0px 0px !important;
+	border-collapse: collapse !important;
+	width: 1px !important;
+	table-layout: fixed !important;
+}
+
+/* BODY - FIXED */
+.sFData {
+	position: absolute;
+	z-index: 1;
+	background-color: #ffffff;
+}
+.sFDataInner {
+	position: relative;
+}
+.sFData table {
+	border-spacing: 0px 0px !important;
+	border-collapse: collapse !important;
+	width: 1px !important;	
+	table-layout: fixed !important;
+	background-color: #ffffff;
+}
+
+
+/*
+///////////////////////////////////////////////////////////////////////////////////////// 
+// Super Tables - Skin Classes
+// Remove if not needed
+///////////////////////////////////////////////////////////////////////////////////////// 
+*/
+
+/* sDefault */
+.sDefault {
+	margin: 0px;
+	padding: 6px 6px 6px 6px;	
+	border: none;
+	font-family: Verdana, Arial, sans serif;
+	/*font-size: 10pt;*/
+}
+.sDefault td {
+	border: 2px solid #cccccc;
+	padding: 3px 6px 3px 6px;
+	white-space: nowrap;
+}
+.sDefault th 
+{
+    border: 2px solid #cccccc;
+    border-color: #c5c5c5;
+	padding: 6px 6px 6px 6px;
+	white-space: nowrap;
+	background-color: #e5e5e5;
+}
+.sDefault-Fixed {
+	background-color: #eeeeee;
+	border-color: #c5c5c5;
+}
+

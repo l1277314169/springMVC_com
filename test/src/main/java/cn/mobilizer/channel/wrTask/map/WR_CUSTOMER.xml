@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="WR_CUSTOMER" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.wrTask.po.WrCustomer" >
+    <id column="customer_id" property="customerId" jdbcType="INTEGER" />
+    <result column="customer_name" property="customerName" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+    <result column="brandName" property="brandName" jdbcType="VARCHAR" />
+    <result column="brandIds" property="brandIds"/>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    customer_id, customer_name, remark, status, client_id, create_time, last_update_time, 
+    is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+     SELECT cus1.customer_id,cus1.*,GROUP_CONCAT(DISTINCT bra1.brand_name)AS brandName,GROUP_CONCAT(DISTINCT bra1.brand_id)AS brandIds 
+     FROM wr_customer cus1 
+    LEFT JOIN wr_customer_brand_mapping cbm1  ON cus1.customer_id=cbm1.customer_id  AND cbm1.is_delete =0 and cbm1.client_id = #{clientId}
+    LEFT JOIN brand bra1 ON cbm1.brand_id=bra1.brand_id and bra1.client_id = #{clientId}
+     where cus1.customer_id = #{customerId,jdbcType=INTEGER} and cus1.is_delete =0 and cus1.client_id = #{clientId}
+     GROUP BY cus1.customer_id
+  </select>
+  <update id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    update  wr_customer set is_delete =1 where customer_id = #{customerId}
+  </update>
+  <insert id="insert" parameterType="cn.mobilizer.channel.wrTask.po.WrCustomer" >
+    insert into wr_customer (customer_id, customer_name, remark, 
+      status, client_id, create_time, 
+      last_update_time, is_delete)
+    values (#{customerId,jdbcType=INTEGER}, #{customerName,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{status,jdbcType=TINYINT}, #{clientId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{lastUpdateTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.wrTask.po.WrCustomer" useGeneratedKeys="true" keyProperty="customerId">
+    insert into wr_customer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="customerId != null" >
+        customer_id,
+      </if>
+      <if test="customerName != null" >
+        customer_name,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="customerId != null" >
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="customerName != null" >
+        #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.wrTask.po.WrCustomer" >
+    update wr_customer
+    <set >
+      <if test="customerName != null" >
+        customer_name = #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where customer_id = #{customerId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.wrTask.po.WrCustomer" >
+    update wr_customer
+    set customer_name = #{customerName,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      client_id = #{clientId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where customer_id = #{customerId,jdbcType=INTEGER}
+  </update>
+  
+  
+  <select id="selectList" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from wr_customer
+    where client_id = #{clientId,jdbcType=INTEGER} and is_delete = 0
+  </select>
+  
+  <select id="queryTotalCount" parameterType="java.util.Map" resultType="Integer">
+     SELECT COUNT(1) FROM (SELECT  cus1.*
+		FROM wr_customer cus1
+    	LEFT JOIN wr_customer_brand_mapping cbm1 ON cus1.customer_id=cbm1.customer_id  AND cbm1.is_delete =0
+    	LEFT JOIN brand bra1 ON cbm1.brand_id=bra1.brand_id where  1=1  and cus1.is_delete =0 
+    <include refid="Base_Query_Column_List"/>
+    GROUP BY cus1.customer_id) AS cus
+  </select>
+  <select id="findWrCustomerListByParam" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    <include refid="select_by_param" />
+  </select>
+  <sql id="select_by_param">
+     SELECT cus1.customer_id,cus1.*,GROUP_CONCAT(DISTINCT bra1.brand_name)AS brandName 
+     FROM wr_customer cus1 
+    LEFT JOIN wr_customer_brand_mapping cbm1  ON cus1.customer_id=cbm1.customer_id AND cbm1.is_delete =0 
+    LEFT JOIN brand bra1 ON cbm1.brand_id=bra1.brand_id
+    where  1=1  and cus1.is_delete =0
+    <include refid="Base_Query_Column_List"/>
+     GROUP BY cus1.customer_id
+    <include refid="basic.mysqlPageSearchFoot"/>
+  </sql>
+  
+  <sql id="Base_Query_Column_List">
+    <if test="customerId != null">
+       and cus1.customer_id = #{customerId}
+    </if>
+    <if test="customerName != null and customerName != '' ">
+      and cus1.customer_name like CONCAT('%',#{customerName},'%')
+    </if>
+    <if test="remark != null">
+       and cus1.remark = #{remark}
+    </if>
+    <if test="status != null">
+       and cus1.status = #{status}
+    </if>
+    <if test="clientId != null">
+      and cus1.client_id =#{client_id}
+    </if>
+    <if test="createTime != null">
+      <![CDATA[ and cus1.create_time >= #{createTime}]]>
+    </if>
+    <if test="lastUpdateTime != null">
+      <![CDATA[ and cus1.last_update_time >= #{lastUpdateTime}]]>
+    </if>
+     <if test="isDelete != null" >
+       		and cus1.is_delete = #{isDelete}
+      </if>
+      <if test="isDelete == null" >
+       		and cus1.is_delete = 0
+      </if>
+  </sql>
+  	<update id="isdeleteWrCustomer" parameterType="java.util.Map">
+	 update wr_customer wc1 set wc1.is_delete = 1 where wc1.client_id = #{clientId}
+	  and FIND_IN_SET(wc1.brandIds,#{brandIds}) and wc1.customer_id = #{customerId} and wc1.is_delete=0
+	</update>
+</mapper>

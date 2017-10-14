@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="CLIENT_POSITION" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.base.po.ClientPosition" >
+    <id column="client_position_id" property="clientPositionId" jdbcType="INTEGER" />
+    <result column="position_no" property="positionNo" jdbcType="VARCHAR" />
+    <result column="position_name" property="positionName" jdbcType="VARCHAR" />
+    <result column="position_name_en" property="positionNameEn" jdbcType="VARCHAR" />
+    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+    <result column="sys_position" property="sysPosition" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  
+   <resultMap id="TreeNodeResultMap" type="cn.mobilizer.channel.base.vo.TreeNodeVO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="pId" property="pId" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    client_position_id, position_no, position_name, position_name_en, parent_id, sys_position, 
+    remark, client_id, create_time, last_update_time, is_delete
+  </sql>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from client_position
+    where client_position_id = #{clientPositionId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from client_position
+    where client_position_id = #{clientPositionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.base.po.ClientPosition" >
+    insert into client_position (client_position_id, position_no, position_name, 
+      position_name_en, parent_id, sys_position, 
+      remark, client_id,  is_delete)
+    values (#{clientPositionId,jdbcType=INTEGER}, #{positionNo,jdbcType=VARCHAR}, #{positionName,jdbcType=VARCHAR}, 
+      #{positionNameEn,jdbcType=VARCHAR}, #{parentId,jdbcType=INTEGER}, #{sysPosition,jdbcType=INTEGER}, 
+      #{remark,jdbcType=VARCHAR}, #{clientId,jdbcType=INTEGER},  #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.base.po.ClientPosition" >
+    insert into client_position
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="clientPositionId != null" >
+        client_position_id,
+      </if>
+      <if test="positionNo != null" >
+        position_no,
+      </if>
+      <if test="positionName != null" >
+        position_name,
+      </if>
+      <if test="positionNameEn != null" >
+        position_name_en,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+      <if test="sysPosition != null" >
+        sys_position,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="clientPositionId != null" >
+        #{clientPositionId,jdbcType=INTEGER},
+      </if>
+      <if test="positionNo != null" >
+        #{positionNo,jdbcType=VARCHAR},
+      </if>
+      <if test="positionName != null" >
+        #{positionName,jdbcType=VARCHAR},
+      </if>
+      <if test="positionNameEn != null" >
+        #{positionNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="sysPosition != null" >
+        #{sysPosition,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.base.po.ClientPosition" >
+    update client_position
+    <set >
+      <if test="positionNo != null" >
+        position_no = #{positionNo,jdbcType=VARCHAR},
+      </if>
+      <if test="positionName != null" >
+        position_name = #{positionName,jdbcType=VARCHAR},
+      </if>
+      <if test="positionNameEn != null" >
+        position_name_en = #{positionNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="sysPosition != null" >
+        sys_position = #{sysPosition,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where client_position_id = #{clientPositionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.base.po.ClientPosition" >
+    update client_position
+    set position_no = #{positionNo,jdbcType=VARCHAR},
+      position_name = #{positionName,jdbcType=VARCHAR},
+      position_name_en = #{positionNameEn,jdbcType=VARCHAR},
+      parent_id = #{parentId,jdbcType=INTEGER},
+      sys_position = #{sysPosition,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where client_position_id = #{clientPositionId,jdbcType=INTEGER}
+  </update>
+  
+   <select id="selectByPrimaryKeys" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    c1.*
+    from client_position c1
+    left join client_position c2 on c1.parent_id=c2.client_position_id
+    where c1.client_position_id = #{clientPositionId,jdbcType=INTEGER}
+  </select>
+  
+  <sql id="select_by_param" >
+		select cn.*,cl.position_name as parentName
+		from CLIENT_POSITION  cn
+		left join CLIENT_POSITION cl on cn.parent_id=cl.client_position_id and cl.is_delete = 0
+		where 1=1
+		<include refid="Base_Query_Column_List" />
+  </sql>
+  
+    <sql id="Base_Query_Column_List" >
+	  <if test="clientPositionId != null" >
+      		and  cn.client_position_id = #{clientPositionId}
+      </if>
+      <if test="positionName != null and positionName != ''" >
+       		and cn.position_name like CONCAT('%',#{positionName},'%') 
+      </if>
+      <if test="positionId != null " >
+       		and cn.client_position_id != #{positionId}
+      </if>
+	  <if test="positionNameEqual != null and positionNameEqual != ''" >
+       		and cn.position_name = #{positionNameEqual}
+      </if>
+       <if test="positionNo != null and positionNo != ''" >
+       		and cn.position_no like CONCAT('%',#{positionNo},'%') 
+      </if>
+      
+      <if test="clientId != null" >
+       		and cn.client_id = #{clientId}
+      </if>
+      <if test="isDelete != null" >
+       		and cn.is_delete = #{isDelete}
+      </if>
+      <if test="isDelete == null" >
+       		and cn.is_delete = 0
+      </if>
+  </sql>
+
+	<select id="queryTotalCount" parameterType="java.util.Map"
+		resultType="Integer">
+		select count(1)
+		from CLIENT_POSITION cn
+		left join CLIENT_POSITION cl on cn.parent_id=cl.client_position_id and cl.is_delete = 0
+		where 1=1
+		<include refid="Base_Query_Column_List" />
+	</select>
+
+	<select id="findListByParams" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		<include refid="select_by_param" />
+		<include refid="basic.mysqlPageSearchFoot" />
+	</select>
+
+	<select id="selectByParams" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		<include refid="select_by_param" />
+		<include refid="basic.mysqlPageSearchFoot" />
+	</select>
+	
+	<select id="findClientPositionByMobilePer" parameterType="java.util.Map" resultMap="BaseResultMap">
+		SELECT
+			cp.*
+		FROM
+			client_position cp
+		INNER JOIN client_user cu ON cp.client_position_id = cu.client_position_id
+		WHERE
+			cu.client_id = #{clientId}
+		AND cu.is_delete = 0
+		AND cp.is_delete = 0
+		AND FIND_IN_SET('mobile',cu.roles) > 0
+		GROUP BY cp.client_position_id;
+	</select>
+	
+	
+	<select id="getUserNameItems" resultType="java.lang.Integer" parameterType="java.util.Map" >
+    SELECT COUNT(1) from client_position b WHERE b.position_name = #{position_name} AND b.is_delete = 0 and b.client_id = #{clientId}
+    <if test="clientPositionId != null" >
+      		and  b.client_position_id != #{clientPositionId}
+    </if>
+    
+  </select>
+	
+	<select id="findPositionByStoreIdAndUserIds" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select GROUP_CONCAT(DISTINCT cp.client_position_id) as clientPositionIds from client_user as cu inner JOIN client_position as cp ON 
+		cu.client_position_id = cp.client_position_id 
+		INNER JOIN store as s on s.store_id = #{storeId}
+		inner join store_user_mapping as sum on sum.store_id = s.store_id
+		where FIND_IN_SET(sum.client_user_id,#{clientUserIds})>0 
+	</select>
+	
+	<select id="findClientPositionByName" resultMap="BaseResultMap" parameterType="java.util.Map">
+		SELECT * FROM client_position p WHERE p.client_id = #{clientId} AND p.position_name = #{promotingGrowth} OR p.position_name = #{promotingTeam};
+	</select>
+	
+	<select id="getAllClientPosition" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select * from client_position p where p.is_delete = 0 and p.client_id = #{clientId}
+	</select>
+	
+
+	<select id="getClientPositionByClientId" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select p.client_position_id,p.position_name  from client_position p where p.is_delete = 0 and p.client_id = #{clientId}
+	</select>
+	
+	
+
+	<select id="getTreeNodesByPId" parameterType="java.util.Map"  resultMap="TreeNodeResultMap">
+		select p.client_position_id as id,p.position_name as name from client_position p where p.is_delete = 0 and p.client_id = #{clientId}
+	</select>
+	
+	<select id="getClientPositionBusiness" parameterType="java.util.Map"  resultMap="BaseResultMap">
+		SELECT DISTINCT b.client_position_id,b.position_name from client_user a 
+		INNER JOIN client_position b on b.client_position_id = a.client_position_id and b.is_delete = 0 and b.client_id = #{clientId}
+		INNER JOIN client_roles_user_mapping c on c.client_user_id = a.client_user_id and c.is_delete = 0 and c.client_id = #{clientId}
+		INNER JOIN client_roles d on d.role_id = c.role_id and d.is_delete = 0 and d.client_id = #{clientId}
+		where a.is_delete = 0 and a.client_id = #{clientId} and FIND_IN_SET(d.role_name,#{roleNames}) > 0
+	</select>
+
+</mapper>

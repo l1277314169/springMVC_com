@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="MESSAGES" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.systemManager.po.Messages" >
+    <id column="message_id" property="messageId" jdbcType="INTEGER" />
+    <result column="message_type" property="messageType" jdbcType="INTEGER" />
+    <result column="message_no" property="messageNo" jdbcType="VARCHAR" />
+    <result column="message_title" property="messageTitle" jdbcType="VARCHAR" />
+    <result column="message_content" property="messageContent" jdbcType="VARCHAR" />
+    <result column="attachment" property="attachment" jdbcType="VARCHAR" />
+    <result column="publisher" property="publisher" jdbcType="VARCHAR" />
+    <result column="enable_date" property="enableDate" jdbcType="TIMESTAMP" />
+    <result column="expired_date" property="expiredDate" jdbcType="TIMESTAMP" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+    <result column="is_read" property="isRead" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    message_id, message_type, message_no, message_title, message_content, attachment, 
+    publisher, enable_date, expired_date, client_id, create_time, last_update_time, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from messages
+    where message_id = #{messageId,jdbcType=INTEGER}
+  </select>
+    <select id="selectByPrimaryKeyleftDetails" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  	select  ms.*,GROUP_CONCAT(md.client_user_id) as checkboxId from messages ms
+ 	left join message_details md on md.message_id = ms.message_id and md.is_delete = 0  
+    where ms.message_id = #{messageId,jdbcType=INTEGER} and ms.is_delete = 0
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from messages
+    where message_id = #{messageId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.systemManager.po.Messages" >
+    insert into messages (message_id, message_type, message_no, 
+      message_title, message_content, attachment, 
+      publisher, enable_date, expired_date, 
+      client_id,
+      is_delete)
+    values (#{messageId,jdbcType=INTEGER}, #{messageType,jdbcType=INTEGER}, #{messageNo,jdbcType=VARCHAR}, 
+      #{messageTitle,jdbcType=VARCHAR}, #{messageContent,jdbcType=VARCHAR}, #{attachment,jdbcType=VARCHAR}, 
+      #{publisher,jdbcType=VARCHAR}, #{enableDate,jdbcType=TIMESTAMP}, #{expiredDate,jdbcType=TIMESTAMP}, 
+      #{clientId,jdbcType=INTEGER},
+      #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.systemManager.po.Messages" useGeneratedKeys="true" keyProperty="messageId">
+    insert into messages
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="messageId != null" >
+        message_id,
+      </if>
+      <if test="messageType != null" >
+        message_type,
+      </if>
+      <if test="messageNo != null" >
+        message_no,
+      </if>
+      <if test="messageTitle != null" >
+        message_title,
+      </if>
+      <if test="messageContent != null" >
+        message_content,
+      </if>
+      <if test="attachment != null" >
+        attachment,
+      </if>
+      <if test="publisher != null" >
+        publisher,
+      </if>
+      <if test="enableDate != null" >
+        enable_date,
+      </if>
+      <if test="expiredDate != null" >
+        expired_date,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="messageId != null" >
+        #{messageId,jdbcType=INTEGER},
+      </if>
+      <if test="messageType != null" >
+        #{messageType,jdbcType=INTEGER},
+      </if>
+      <if test="messageNo != null" >
+        #{messageNo,jdbcType=VARCHAR},
+      </if>
+      <if test="messageTitle != null" >
+        #{messageTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="messageContent != null" >
+        #{messageContent,jdbcType=VARCHAR},
+      </if>
+      <if test="attachment != null" >
+        #{attachment,jdbcType=VARCHAR},
+      </if>
+      <if test="publisher != null" >
+        #{publisher,jdbcType=VARCHAR},
+      </if>
+      <if test="enableDate != null" >
+        #{enableDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expiredDate != null" >
+        #{expiredDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.systemManager.po.Messages" >
+    update messages
+    <set >
+      <if test="messageType != null" >
+        message_type = #{messageType,jdbcType=INTEGER},
+      </if>
+      <if test="messageNo != null" >
+        message_no = #{messageNo,jdbcType=VARCHAR},
+      </if>
+      <if test="messageTitle != null" >
+        message_title = #{messageTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="messageContent != null" >
+        message_content = #{messageContent,jdbcType=VARCHAR},
+      </if>
+      <if test="attachment != null" >
+        attachment = #{attachment,jdbcType=VARCHAR},
+      </if>
+      <if test="publisher != null" >
+        publisher = #{publisher,jdbcType=VARCHAR},
+      </if>
+      <if test="enableDate != null" >
+        enable_date = #{enableDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expiredDate != null" >
+        expired_date = #{expiredDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where message_id = #{messageId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.systemManager.po.Messages" >
+    update messages
+    set message_type = #{messageType,jdbcType=INTEGER},
+      message_no = #{messageNo,jdbcType=VARCHAR},
+      message_title = #{messageTitle,jdbcType=VARCHAR},
+      message_content = #{messageContent,jdbcType=VARCHAR},
+      attachment = #{attachment,jdbcType=VARCHAR},
+      publisher = #{publisher,jdbcType=VARCHAR},
+      enable_date = #{enableDate,jdbcType=TIMESTAMP},
+      expired_date = #{expiredDate,jdbcType=TIMESTAMP},
+      client_id = #{clientId,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where message_id = #{messageId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="getNewMessages" resultMap="BaseResultMap" parameterType="java.util.Map">
+    select msg.*,msgd.is_read from messages msg
+	inner join message_details msgd on msgd.message_id = msg.message_id and msgd.client_user_id = #{clientUserId,jdbcType=INTEGER} and msgd.last_update_time &gt; #{lastMessageTime,jdbcType=TIMESTAMP} and msgd.is_delete = 0
+	where msg.enable_date &lt;= NOW() AND IFNULL(msg.expired_date,'2099-1-1') &gt;= NOW() and msg.is_delete = 0
+  </select>
+  
+  <sql id="Query_Column_List">
+		<if test="clientId != null">
+			and m.client_id = #{clientId}
+		</if>
+		<if test="isDelete != null">
+			and m.is_delete = #{isDelete}
+		</if>
+		<if test="messageType != null">
+			and m.message_type = #{messageType}
+		</if>
+		<if test="enableDate != null">
+			and m.enable_date = #{enableDate}
+		</if>
+		<if test="expiredDate != null">
+			and m.expired_date = #{expiredDate}
+		</if>
+		<if test="publisher != null">
+			and m.publisher = #{publisher}
+		</if>
+	</sql>
+  <select id="queryCount" resultType="java.lang.Integer" parameterType="java.util.Map">
+  select count(1) from messages m where 1=1
+  <include refid="Query_Column_List" />
+  </select>
+  <select id="queryMessages" resultMap="BaseResultMap" parameterType="java.util.Map">
+  	select * from messages m where 1=1
+  	 <include refid="Query_Column_List" />
+  	 <include refid="basic.mysqlPageSearchFoot"/>  
+  </select>
+ <update id="deleteMessages"  parameterType="java.util.Map">
+ 	update messages m set m.is_delete = 1 where m.client_id = #{clientId}  and m.message_id = #{messageId} 
+ </update>
+  
+</mapper>

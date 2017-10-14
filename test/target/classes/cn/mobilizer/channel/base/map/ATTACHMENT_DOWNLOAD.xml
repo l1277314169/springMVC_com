@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ATTACHMENT_DOWNLOAD" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.base.po.AttachmentDownload" >
+    <id column="attachment_id" property="attachmentId" jdbcType="CHAR" />
+    <result column="attachment_name" property="attachmentName" jdbcType="VARCHAR" />
+    <result column="size" property="size" jdbcType="INTEGER" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="secret" property="secret" jdbcType="VARCHAR" />
+    <result column="invalid_time" property="invalidTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="filter" property="filter" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    attachment_id, attachment_name, size, url, secret, invalid_time, create_time, is_delete, 
+    status, client_id,email,filter
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from attachment_download
+    where attachment_id = #{attachmentId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from attachment_download
+    where attachment_id = #{attachmentId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.base.po.AttachmentDownload" >
+    insert into attachment_download (attachment_id, attachment_name, size, 
+      url, secret, invalid_time, 
+      create_time, is_delete, status, 
+      client_id)
+    values (#{attachmentId,jdbcType=CHAR}, #{attachmentName,jdbcType=VARCHAR}, #{size,jdbcType=INTEGER}, 
+      #{url,jdbcType=VARCHAR}, #{secret,jdbcType=VARCHAR}, #{invalidTime,jdbcType=TIMESTAMP}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=TINYINT}, #{status,jdbcType=TINYINT}, 
+      #{clientId,jdbcType=INTEGER},#{email,jdbcType=VARCHAR}),#{filter,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.base.po.AttachmentDownload" >
+    insert into attachment_download
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="attachmentId != null" >
+        attachment_id,
+      </if>
+      <if test="attachmentName != null" >
+        attachment_name,
+      </if>
+      <if test="size != null" >
+        size,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="secret != null" >
+        secret,
+      </if>
+      <if test="invalidTime != null" >
+        invalid_time,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="email != null">
+      	email,
+      </if>
+      <if test="filter != null">
+      	filter,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="attachmentId != null" >
+        #{attachmentId,jdbcType=CHAR},
+      </if>
+      <if test="attachmentName != null" >
+        #{attachmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null" >
+        #{size,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="secret != null" >
+        #{secret,jdbcType=VARCHAR},
+      </if>
+      <if test="invalidTime != null" >
+        #{invalidTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="email != null">
+      	#{email,jdbcType=VARCHAR},
+      </if>
+      <if test="filter != null">
+      	#{filter,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.base.po.AttachmentDownload" >
+    update attachment_download
+    <set >
+      <if test="attachmentName != null" >
+        attachment_name = #{attachmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null" >
+        size = #{size,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="secret != null" >
+        secret = #{secret,jdbcType=VARCHAR},
+      </if>
+      <if test="invalidTime != null" >
+        invalid_time = #{invalidTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="email != null">
+      	email = #{email,jdbcType=VARCHAR},
+      </if>
+       <if test="filter != null">
+      	filter = #{filter,jdbcType=VARCHAR},
+      </if>   
+    </set>
+    where attachment_id = #{attachmentId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.base.po.AttachmentDownload" >
+    update attachment_download
+    set attachment_name = #{attachmentName,jdbcType=VARCHAR},
+      size = #{size,jdbcType=INTEGER},
+      url = #{url,jdbcType=VARCHAR},
+      secret = #{secret,jdbcType=VARCHAR},
+      invalid_time = #{invalidTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT},
+      status = #{status,jdbcType=TINYINT},
+      client_id = #{clientId,jdbcType=INTEGER},
+      email = #{email,jdbcType=VARCHAR},
+      filter = #{filter,jdbcType=VARCHAR}
+    where attachment_id = #{attachmentId,jdbcType=CHAR}
+  </update>
+  
+  <select id="getEntitysByInvalidTime" parameterType="java.util.Map" resultMap="BaseResultMap">
+  	select * from attachment_download ad where ad.invalid_time &lt; now() and ad.is_delete = 0 and ad.status = 1
+	order by create_time asc
+	<include refid="basic.mysqlPageSearchFoot"/>
+  </select>
+  
+  <select id="getEntitysCountByInvalidTime" parameterType="java.util.Map" resultType="java.lang.Integer">
+  	select count(1) from attachment_download ad where ad.invalid_time &lt; now() and ad.is_delete = 0 and ad.status = 1
+  	order by create_time asc
+  </select>
+  
+  
+   <select id="getEntitysCountBycaeateidTime" parameterType="java.util.Map" resultType="java.lang.Integer">
+  select count(1) from attachment_download ad where ad.create_time &lt; now() and ad.is_delete = 0 and ad.status = 0
+	order by create_time asc
+  </select>
+  <select id="getEntitysBycaeateidTime" parameterType="java.util.Map" resultMap="BaseResultMap">
+	select * from attachment_download ad where  ad.is_delete = 0 and ad.status = #{status} order by create_time asc
+  </select>
+  <update id="updatestatus" parameterType="java.util.Map">
+   update attachment_download ad set  status=1 where ad.status = 0 and ad.attachment_id=#{attachmentid}
+  
+  </update>
+  
+</mapper>

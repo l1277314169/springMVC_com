@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="FACT_MONTHLY_SALES" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.sales.po.FactMonthlySales" >
+    <result column="data_id" property="dataId" jdbcType="BIGINT" />
+    <result column="month_id" property="monthId" jdbcType="INTEGER" />
+    <result column="client_user_id" property="clientUserId" jdbcType="INTEGER" />
+    <result column="store_id" property="storeId" jdbcType="CHAR" />
+    <result column="client_structure_id" property="clientStructureId" jdbcType="INTEGER" />
+    <result column="sku_id" property="skuId" jdbcType="INTEGER" />
+    <result column="sales_volume" property="salesVolume" jdbcType="DECIMAL" />
+    <result column="sales_amount" property="salesAmount" jdbcType="DECIMAL" />
+    <result column="order_type" property="orderType" jdbcType="TINYINT" />
+    <result column="last_update_by" property="lastUpdateBy" jdbcType="INTEGER" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+
+   <resultMap id="BaseResultMapVo" type="cn.mobilizer.channel.sales.po.FactMonthlySalesVo" >
+ 	<result column="data_id" property="dataId" jdbcType="BIGINT" />
+	<result column="store_no" property="storeNo"  />
+    <result column="store_name" property="storeName" />
+    <result column="sales_area" property="salesArea" />
+    <result column="sales_division" property="salesDivision" />
+    <result column="province" property="province" />
+    <result column="city" property="city" />
+    <result column="channel_name" property="channelName"  />
+    <result column="chain_name" property="chainName" />
+    <result column="distributor_name" property="distributorName"  />
+    <result column="month_desc" property="monthDesc"  />
+    <result column="barcode" property="barcode"  />
+    <result column="sku_name" property="skuName"  />
+    <result column="selling_price" property="sellingPrice"  />   
+    <result column="retail_price" property="retailPrice" />
+    <result column="price" property="price"   />
+    <result column="salesman" property="salesman"  />
+    <result column="sales_leader" property="salesLeader"  />    
+    <result column="promoter" property="promoter" />   
+    <result column="sales_volume" property="salesVolume" />
+    <result column="sales_amount" property="salesAmount" />
+    <result column="month_id" property="monthId" />
+    <result column="external_no" property="externalNo" />
+   </resultMap>
+  
+  <sql id="Base_Column_List" >
+    data_id, month_id, client_user_id, store_id, client_structure_id, sku_id, sales_volume, 
+    sales_amount, order_type, last_update_by, last_update_time, client_id, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from fact_monthly_sales
+    where data_id = #{dataId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from fact_monthly_sales
+    where data_id = #{dataId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.sales.po.FactMonthlySales" >
+    insert into fact_monthly_sales (data_id, month_id, client_user_id, 
+      store_id, client_structure_id, sku_id, 
+      sales_volume, sales_amount, order_type, 
+      last_update_by, client_id)
+    values (#{dataId,jdbcType=BIGINT}, #{monthId,jdbcType=INTEGER}, #{clientUserId,jdbcType=INTEGER}, 
+      #{storeId,jdbcType=CHAR}, #{clientStructureId,jdbcType=INTEGER}, #{skuId,jdbcType=INTEGER}, 
+      #{salesVolume,jdbcType=DECIMAL}, #{salesAmount,jdbcType=DECIMAL}, #{orderType,jdbcType=TINYINT}, 
+      #{lastUpdateBy,jdbcType=INTEGER}, #{clientId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.sales.po.FactMonthlySales" >
+    insert into fact_monthly_sales
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dataId != null" >
+        data_id,
+      </if>
+      <if test="monthId != null" >
+        month_id,
+      </if>
+      <if test="clientUserId != null" >
+        client_user_id,
+      </if>
+      <if test="storeId != null" >
+        store_id,
+      </if>
+      <if test="clientStructureId != null" >
+        client_structure_id,
+      </if>
+      <if test="skuId != null" >
+        sku_id,
+      </if>
+      <if test="salesVolume != null and salesVolume !=''" >
+        sales_volume,
+      </if>
+      <if test="salesAmount != null and salesAmount !=''" >
+        sales_amount,
+      </if>
+      <if test="orderType != null" >
+        order_type,
+      </if>
+      <if test="lastUpdateBy != null" >
+        last_update_by,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dataId != null" >
+        #{dataId,jdbcType=BIGINT},
+      </if>
+      <if test="monthId != null" >
+        #{monthId,jdbcType=INTEGER},
+      </if>
+      <if test="clientUserId != null" >
+        #{clientUserId,jdbcType=INTEGER},
+      </if>
+      <if test="storeId != null" >
+        #{storeId,jdbcType=CHAR},
+      </if>
+      <if test="clientStructureId != null" >
+        #{clientStructureId,jdbcType=INTEGER},
+      </if>
+      <if test="skuId != null" >
+        #{skuId,jdbcType=INTEGER},
+      </if>
+      <if test="salesVolume != null and salesVolume !=''" >
+        #{salesVolume,jdbcType=DECIMAL},
+      </if>
+      <if test="salesAmount != null and salesAmount !=''" >
+        #{salesAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="orderType != null" >
+        #{orderType,jdbcType=TINYINT},
+      </if>
+      <if test="lastUpdateBy != null" >
+        #{lastUpdateBy,jdbcType=INTEGER},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.sales.po.FactMonthlySales" >
+    update fact_monthly_sales
+    <set >
+      <if test="monthId != null" >
+        month_id = #{monthId,jdbcType=INTEGER},
+      </if>
+      <if test="clientUserId != null" >
+        client_user_id = #{clientUserId,jdbcType=INTEGER},
+      </if>
+      <if test="storeId != null" >
+        store_id = #{storeId,jdbcType=CHAR},
+      </if>
+      <if test="clientStructureId != null" >
+        client_structure_id = #{clientStructureId,jdbcType=INTEGER},
+      </if>
+      <if test="skuId != null" >
+        sku_id = #{skuId,jdbcType=INTEGER},
+      </if>
+      <if test="salesVolume != null and salesVolume !=''" >
+        sales_volume = #{salesVolume,jdbcType=DECIMAL},
+      </if>
+      <if test="salesAmount != null  and salesAmount !=''" >
+        sales_amount = #{salesAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="orderType != null" >
+        order_type = #{orderType,jdbcType=TINYINT},
+      </if>
+      <if test="lastUpdateBy != null" >
+        last_update_by = #{lastUpdateBy,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where data_id = #{dataId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.sales.po.FactMonthlySales" >
+    update fact_monthly_sales
+	<set>
+		 <if test="monthId != null and monthId !=''" >
+          sales_volume = #{salesVolume},
+      </if>
+       <if test="clientStructureId != null and clientStructureId !=''" >
+          client_structure_id = #{clientStructureId},
+      </if>
+       <if test="skuId != null and skuId !=''" >
+          sku_id = #{skuId},
+      </if>
+      <if test="lastUpdateBy != null and lastUpdateBy !=''" >
+          last_update_by = #{skuId},
+      </if>    
+      <if test="salesVolume != null and salesVolume !=''" >
+          sales_volume = #{salesVolume},
+      </if>
+      <if test="salesAmount != null and salesAmount !=''" >
+         sales_amount = #{salesAmount},
+      </if>      
+      <if test="isDelete != null and isDelete !=''" >
+         is_delete = #{isDelete},
+      </if>
+     </set>
+    where data_id = #{dataId,jdbcType=BIGINT}
+  </update>
+  
+  <sql id="Base_Query_Column_List">
+  	<where>	  
+  		1=1
+		<if test="dataId != null and dataId !=''" >
+	        and data_id = #{dataId}
+	      </if> 		 
+		  <if test="monthId != null and monthId !=''" >
+	        and month_id = #{monthId}
+	      </if>
+	      <if test="clientUserId != null and clientUserId !=''" >
+	        and client_user_id = #{clientUserId}
+	      </if>
+	      <if test="storeId != null and storeId !=''" >
+	        and store_id = #{storeId}
+	      </if>
+	      <if test="clientStructureId != null and clientStructureId !=''" >
+	        and client_structure_id = #{clientStructureId}
+	      </if>
+	      <if test="skuId != null and skuId !=''" >
+	        and sku_id = #{skuId}
+	      </if>
+	      <if test="salesVolume != null and salesVolume !=''" >
+	        and sales_volume = #{salesVolume}
+	      </if>
+	      <if test="salesAmount != null and salesAmount !=''" >
+	        and sales_amount = #{salesAmount}
+	      </if>
+	      <if test="orderType != null and orderType !=''" >
+	        and order_type = #{orderType}
+	      </if>
+	      <if test="lastUpdateBy != null and lastUpdateBy !=''" >
+	        and last_update_by = #{lastUpdateBy}
+	      </if>
+	      <if test="clientId != null and clientId !=''" >
+	        and	client_id = #{clientId}
+	      </if>
+	      <if test="isDelete != null and isDelete !=''" >
+	        and	is_delete = #{isDelete}
+	      </if>
+      </where>
+	</sql>
+	
+	<sql id="select_by_param">
+		select
+		<include refid="Base_Column_List" />
+		from fact_monthly_sales
+		<include refid="Base_Query_Column_List" />
+	</sql>
+	
+	<select id="selectByParams" parameterType="java.util.Map" resultMap="BaseResultMap">		 
+		<include refid="select_by_param" />
+		<include refid="basic.mysqlPageSearchFoot" />		
+	</select>
+	
+	<select id="selectByParamCount" parameterType="java.util.Map" resultType="Integer">
+		select count(1) from fact_monthly_sales
+		<include refid="Base_Query_Column_List" />
+	</select>
+	
+	<select id="getSkuIdNullEntityByParam" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select * from fact_monthly_sales where month_id = #{monthId} and store_id = #{storeId} and 
+		client_structure_id = #{clientStructureId} and client_id = #{clientId} and 
+		sku_id is null and is_delete = 0
+	</select>
+	
+    <resultMap type="java.lang.Integer" id="countMap"></resultMap>
+    
+    <select id="getEntityListByProcedure" statementType="CALLABLE" parameterType="java.util.Map" resultMap="BaseResultMapVo,countMap" >
+	     call sp_get_monthly_sales_detail(#{clientId},#{userIds},#{structureIds},#{monthId},
+	     <if test="structureId == null">''</if><if test="structureId != null">#{structureId}</if>,
+	     <if test="channelId == null" >''</if><if test="channelId != null" >#{channelId}</if>,
+	     <if test="chainId==null">''</if><if test="chainId != null">#{chainId}</if>,
+	     <if test="pageStart==null">null</if><if test="pageStart!=null">#{pageStart}</if>,
+	     <if test="pageStart==null">null</if><if test="pageStart!=null">#{pageSize}</if>,#{flag})     	 
+    </select>
+    
+    <select id="getEntityByDataId" resultMap="BaseResultMap" parameterType="java.util.Map">
+    	select * from fact_monthly_sales where data_id = #{dataId} and is_delete = 0
+    </select>
+</mapper>

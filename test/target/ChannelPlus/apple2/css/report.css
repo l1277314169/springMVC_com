@@ -1,0 +1,78 @@
+﻿.mask
+{
+    width:930px;
+    margin:20px 10px 20px 10px;
+        	
+    overflow:hidden;
+}
+.longContainer
+{
+    width:3200px;
+}
+.reportMenu
+{
+    width:930px;
+        	
+    float:left;
+}
+.reportFilter
+{
+    width:930px;
+        	
+    float:left;
+}
+.report
+{
+    width:930px;
+   
+    float:left;
+}
+.ReportTitle
+{
+	color:#43434e;
+	font-size:24px;
+	font-weight:bold;
+}
+.rpReportMenuItem
+{
+	width:454px;
+	min-height:66px;
+	float:left;
+	margin-bottom:10px;
+	margin-right:10px;
+}
+.rpReportMenuItemName
+{
+	color:#43434e;
+	font-size:14px;
+	font-weight:bold;
+	
+}
+.rpReportMenuItemDesc
+{
+	color:#43434e;
+	font-size:12px;
+	padding-top:5px;
+}
+
+.rpReportMenuItem a,.rpReportMenuItem a:hover
+{
+	text-decoration:none;
+	cursor:pointer;
+}
+.filterPanel
+{
+	margin:0px 0px 10px 0px;
+	width:928px;
+	background-color:#efefef;
+	border:1px solid #bebebe;
+}
+.filterPanel table
+{
+	margin:5px;
+}
+.filterError
+{
+	color:#ff0000;
+	font-size:12px;
+}

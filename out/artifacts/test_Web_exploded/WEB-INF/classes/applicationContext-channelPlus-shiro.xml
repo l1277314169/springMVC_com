@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd"
+	default-lazy-init="true">
+
+	<description>Shiro安全配置</description>
+
+	<!-- Shiro's main business-tier object for web-enabled applications -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="shiroDbRealm" />
+		<property name="sessionManager" ref="shiroSessionManager" />
+		<property name="cacheManager" ref="shiroMemCacheManager" />
+	</bean>
+
+	<!-- 項目自定义的Realm, 所有userService依赖的dao都需要用depends-on声明 -->
+	<bean id="shiroDbRealm" class="cn.mobilizer.channel.autho.ShiroDbRealm">
+	</bean>
+	
+	<!-- session配置 -->
+	<bean id="shiroSessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+		<!-- 设置全局会话超时时间，默认30分钟(1800000) -->  
+        <property name="globalSessionTimeout" value="3600000" />  
+        <!-- 是否在会话过期后会调用SessionDAO的delete方法删除会话 默认true -->  
+        <property name="deleteInvalidSessions" value="true" />  
+        <!-- 会话验证器调度时间 -->  
+        <property name="sessionValidationInterval" value="3600000" />  
+        <!-- session存储的实现 -->  
+        <property name="sessionDAO" ref="memSessionDAO" />  
+        <!-- sessionIdCookie的实现,用于重写覆盖容器默认的JSESSIONID -->  
+        <property name="sessionIdCookie" ref="shareSessionCookie" />  
+	</bean>
+	
+	<!-- session会话存储的实现类 -->  
+    <bean id="memSessionDAO" class="cn.mobilizer.channel.autho.MemSessionDAO">  
+    </bean>
+    
+	<!-- sessionIdCookie的实现,用于重写覆盖容器默认的JSESSIONID 下二级域名sessionIdCookie配置 -->
+    <bean id="shareSessionCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+        <!-- cookie的name,对应的默认是 JSESSIONID -->
+        <constructor-arg name="name" value="SHAREJSESSIONID" />
+        <!-- jsessionId的path为 / 用于多个系统共享jsessionId -->
+        <property name="path" value="/" />
+        <!-- .channelplus.cn -->
+        <property name="domain" value="${sessionIdCookie.domain}"/>
+    </bean>
+    
+	<!-- Shiro Filter -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+		<property name="loginUrl" value="/login" />
+		<property name="successUrl" value="/welcome" />
+		<property name="filters">  
+            <util:map>  
+                <entry key="authc" value-ref="loginAuthenFilter" />  
+            </util:map>  
+        </property>  
+		<property name="filterChainDefinitions">
+			<value>
+				/login = authc
+				/logout = logout
+				/static/** = anon
+				/api/** = anon
+				/mobile/** = anon
+				/css/** = anon
+				/images/** = anon
+				/img/** = anon
+				/app/** = anon
+				/colgate2/** = anon
+				/apple2/** = anon
+				/favicon.ico = anon
+				/index.jsp = anon
+				/font-awesome/** = anon
+				/download/** = anon
+				/js/** = anon
+				/register/** = anon
+				/index.do = anon
+				/test/** = anon
+				/remoting/** = anon
+				/attached/** = anon
+				/attached_web/** = anon
+				/sysInit/** = anon
+				/error/** = anon
+				/admin/** = roles[admin]
+				/** = user				
+			</value>
+		</property>
+	</bean>
+	
+	<!-- 自定义验证拦截器 -->  
+    <bean id="loginAuthenFilter" class="cn.mobilizer.channel.autho.LoginFormAuthenticationFilter" />  
+	
+	<!-- 用户授权信息Cache, 采用EhCache -->
+	<bean id="shiroMemCacheManager" class="cn.mobilizer.channel.autho.ShiroMemCacheManager">
+	</bean>
+	
+	<!-- 保证实现了Shiro内部lifecycle函数的bean执行 -->
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+</beans>

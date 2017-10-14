@@ -1,0 +1,502 @@
+﻿.autocomplete_completionListElement 
+{  
+	visibility : hidden;
+	margin : 0px!important;
+	background-color : #fff;
+	color : windowtext;
+	border : buttonshadow;
+	border-width : 1px;
+	border-style : solid;
+	cursor : 'default';
+	overflow : auto;
+	height : 200px;
+    text-align : left; 
+    list-style-type : none;
+    padding: 0px;
+}
+
+/* AutoComplete highlighted item */
+
+.autocomplete_highlightedListItem
+{
+	background-color: #ffff99;
+	color: black;
+	padding: 1px;
+	cursor:pointer;
+}
+
+/* AutoComplete item */
+
+.autocomplete_listItem 
+{
+	background-color : window;
+	color : windowtext;
+	padding : 1px;
+}
+/************************/
+/* Modal */
+/************************/
+
+.modalBackground
+{
+    background-color:#434343;
+    filter:alpha(opacity=90);
+    opacity:0.90;
+}
+.modalPopupLoading
+{
+	background-color: White;
+	margin:0px;
+	padding:20px;
+	width:360px;
+	font-size: 12px;
+	overflow:visible;
+}
+.modalPopupLoading .loading
+{
+	color: #626262;
+	font-size: 12px;
+	font-style:italic;	
+}
+
+.modalPopupBox
+{
+	background-color: #efefef;
+	margin:0px;
+	padding:0px;
+	width:360px;
+	font-size: 12px;
+	overflow:visible;
+	border: solid 4px #ccc;
+}
+.modalPopupBox .Title
+{
+	font-size: 14px;
+	line-height: 150%;
+	font-weight:bold;
+	color:#43434e;
+	display:none;
+}
+.modalPopupBox .Content
+{
+	color:#5a5a5a;
+	font-size: 13px;
+	line-height: 150%;
+	text-align:center;
+	display:block;
+}
+.msgbox_warning
+{
+	background-image: url(../Images/icons/icon_warning.png);
+	background-position:left middle;
+	background-repeat:no-repeat;
+	padding-left: 35px;
+	padding-top: 3px;
+	min-height: 30px;
+}
+.msgbox_error
+{
+	background-image: url(../Images/icons/icon_warning.png);
+	background-position:left middle;
+	background-repeat:no-repeat;
+	padding-left: 35px;
+	padding-top: 3px;
+	min-height: 30px;
+}
+.modalPopupIF
+{
+	background-color:#efefef;
+	margin:0px;
+	padding:5px;
+	width:452px;
+	font-size: 12px;
+	overflow:visible;
+	text-align:center;
+	 -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    border-radius: 3px;
+    position:relative;
+    
+}
+.modalIFHeader
+{
+	background-color:transparent;
+	height:20px;
+	padding: 5px;
+}
+.modalIFHeader .left
+{
+	width: 2px;
+}
+.modalIFHeader .middle
+{
+	text-transform:none;
+	font-size: 16px;
+}
+.modalIFHeader .right
+{
+	width: 2px;
+}
+
+
+.modalPopupMessageBox
+{
+	background-color: #efefef;
+	margin:0px;
+	padding:0px;
+	width:400px;
+	overflow:visible;
+	/*border: solid 4px #ccc;*/
+	border:none;
+	
+	 -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    border-radius: 3px;
+    /*
+    border-top-left-radius:8px;
+    border-top-right-radius:0px;
+    -moz-border-top-left-radius:8px;
+    -moz-border-top-right-radius:0px;
+    -webkit-border-top-left-radius:8px;
+    -webkit-border-top-right-radius:0px;
+    -khtml-border-top-left-radius:8px;
+    -khtml-border-top-right-radius:0px;*/
+   
+}
+.modalMessageHeader
+{
+	background-color: transparent;
+	/*background-color:#99CC01;*/
+	padding: 3px;
+	
+	border-top-left-radius:3px;
+    border-top-right-radius:3px;
+    -moz-border-top-left-radius:3px;
+    -moz-border-top-right-radius:3px;
+    -webkit-border-top-left-radius:3px;
+    -webkit-border-top-right-radius:3px;
+    -khtml-border-top-left-radius:3px;
+    -khtml-border-top-right-radius:3px;
+}
+.modalMessageHeader .Title
+{
+	font-size: 14px;
+	line-height: 110%;
+	font-weight:bold;
+	/*color:#474747;*/
+	color:#43434e;
+	/*display:none;*/
+}
+.modalMessageBody
+{
+	padding: 2px 8px 2px 8px;
+}
+.modalMessageContent
+{
+	padding: 15px 25px 15px 25px;
+	margin-bottom: 8px;
+	text-align: left;
+	
+	font-size:12px;
+}
+#msg__divConfirm
+{
+	text-align:center;
+	padding-bottom: 5px;
+}
+#msg__divAlert
+{
+	text-align:center;
+	padding-bottom: 5px;
+}
+#msg__divContinue
+{
+	text-align:center;
+	padding-bottom: 5px;
+	
+}
+
+.buttonX
+{
+	background-image: url(../Images/fancy_close.png);
+	background-repeat:no-repeat;
+	background-color:Transparent;
+	border-style: none;
+	cursor:pointer;	
+	width:30px;
+	height:30px;
+	margin:-15px -15px 0px 0px;
+}
+
+
+
+.buttonOk
+{
+	background-image: url(../Images/btnOK.png);
+	background-repeat:no-repeat;
+	background-color:Transparent;
+	background-position:top;
+	border-style: none;
+	cursor:pointer;	
+	width:77px;
+	height:30px;
+}
+.buttonOk:hover
+{
+	background-position:bottom;
+}
+
+
+
+.buttonYes
+{
+	background-image: url(../Images/btnYes.png);
+	background-repeat:no-repeat;
+	background-color:Transparent;
+	background-position:top;
+	border-style: none;
+	cursor:pointer;	
+	width:77px;
+	height:30px;
+}
+
+.buttonYes:hover
+{
+	background-position:bottom;
+}
+
+
+
+
+.buttonNo
+{
+	background-image: url(../Images/btnNo.png);
+	background-repeat:no-repeat;
+	background-color:Transparent;
+	background-position:top;
+	border-style: none;
+	cursor:pointer;	
+	width:77px;
+	height:30px;
+}
+
+.buttonNo:hover
+{
+	background-position:bottom;
+}
+.buttonContinue
+{
+	background-image: url(../Images/btnContinue.png);
+	background-repeat:no-repeat;
+	background-color:Transparent;
+	background-position:top;
+	border-style: none;
+	cursor:pointer;	
+	width:103px;
+	height:30px;
+}
+.buttonContinue:hover
+{
+	background-position:bottom;
+}
+/*
+.modalBackground
+{
+    background-color:#3F3D3E;
+    filter:alpha(opacity=90);
+    opacity:0.90;
+}
+.modalPopupLoading
+{
+	margin:0px;
+	padding:20px;
+	width:360px;
+	font-size: 12px;
+	overflow:visible;
+}
+.modalPopupLoading .loading
+{
+	color: #fff;
+	font-size: 12px;
+	font-style:italic;	
+	display:block;
+	padding:8px 5px;
+}
+.popupControl{
+	background-color:White;
+	position:absolute;
+	visibility:hidden;
+}
+.modalPopupMessageBox
+{
+	background-color: White;
+	margin:0px;
+	padding:0px;
+	overflow:visible;
+	border: solid 0px #376092;
+	width: 400px;
+}
+.modalMessageHeader
+{
+	background-color: #376092;
+	padding: 5px;
+	position:relative;
+}
+.modalMessageHeader .Title
+{
+	font-size: 12px;
+	line-height: 110%;
+	font-weight:bold;
+	color:White;
+	line-height: 150%;
+}
+.modalMessageHeaderXButtonContainer
+{
+}
+.buttonX
+{
+	background-image: url(../Images/Icons/fancy_close.png);
+	background-repeat:no-repeat;
+	background-color:Transparent;
+	border-style: none;
+	cursor:pointer;	
+	width:30px;
+	height:30px;
+	background-position:bottom;
+}
+.buttonX:hover
+{
+	background-position: top;
+}
+
+.modalMessageBody
+{
+	padding: 2px 8px 2px 8px;
+}
+.modalMessageContent
+{
+	padding: 15px 35px 15px 35px;
+	border-bottom: solid 1px #C0C0C0;
+	margin-bottom: 8px;
+	text-align: left;
+}
+
+#msg__divConfirm
+{
+	text-align:right;
+	padding-bottom: 5px;
+}
+#msg__divAlert
+{
+	text-align:right;
+	padding-bottom: 5px;
+}
+#msg__divContinue
+{
+	text-align:right;
+	padding-bottom: 5px;
+}
+.modalPopupIF
+{
+	background-color: #fff;
+	margin:0px;
+	padding:0px;
+	width:452px;
+	font-size: 12px;
+	overflow:visible;
+	text-align:center;
+	border: solid 1px #ccc;
+}
+.modalIFHeader
+{
+	background-color:#fff;
+	padding: 5px;
+	font-size: 10pt;
+	line-height: 110%;
+	font-weight:bold;
+	position: relative;
+}
+.modalIFHeader .left
+{
+	width: 2px;
+}
+.modalIFHeader .middle
+{
+	text-transform:none;
+	font-size: 12px;
+}
+.modalIFHeader .right
+{
+	width: 2px;
+}
+
+.modalIFHeader .buttonX {
+	position: absolute;
+	top: -10px;
+	right: -10px;
+}
+.modalMessageHeader .buttonx
+{
+	position: absolute;
+	top: -10px;
+	right: -10px;
+}*/
+
+
+
+/*****************/
+/*Pager*/
+/*****************/
+
+.PagerContainerTable
+{
+	font-size: 10px;
+	width: 100%;
+}
+.PagerSummaryCell
+{
+	
+	background-color:transparent;
+	padding: 0px 0px 0px 10px;
+	width: 120px;
+}
+.PagerNavCell
+{
+	text-align:right;
+	padding: 10px 10px 10px 10px;
+}
+.PagerNavCell table
+{
+	float:right;
+}
+.PagerOtherPageCells
+{
+	padding: 0px 5px;
+}
+.PagerCurrentPageCell
+{
+	padding: 0px 5px;
+	font-weight:bold;
+	text-decoration: underline;
+}
+.PagerHyperlinkStyleDisabled
+{
+	color: #888888;
+}
+a.PagerHyperlinkStyle
+{
+	text-decoration: none;
+	color: Black;
+}
+
+.PagerHyperlinkStyle:hover
+{
+	text-decoration: underline;
+	color: #C70000;
+}
+
+.ErrorMessage {
+	color: red;
+}

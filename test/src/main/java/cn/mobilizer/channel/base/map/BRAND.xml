@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="BRAND" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.base.po.Brand" >
+    <id column="brand_id" property="brandId" jdbcType="INTEGER" />
+    <result column="brand_no" property="brandNo" jdbcType="VARCHAR" />
+    <result column="brand_name" property="brandName" jdbcType="VARCHAR" />
+    <result column="brand_name_en" property="brandNameEn" jdbcType="VARCHAR" />
+    <result column="is_owner" property="isOwner" jdbcType="TINYINT" />
+    <result column="firm" property="firm" jdbcType="VARCHAR" />
+    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  
+   <resultMap id="TreeNodeResultMap" type="cn.mobilizer.channel.base.vo.TreeNodeVO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="pId" property="pId" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="isParent" property="isParent" jdbcType="VARCHAR" />
+    <result column="parentId" property="parentId" jdbcType="INTEGER" />
+    <result column="cId" property="cId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    brand_id, brand_no, brand_name, brand_name_en, is_owner, firm, parent_id, remark, 
+    client_id, create_time, last_update_time, is_delete,grade
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from brand
+    where brand_id = #{brandId,jdbcType=INTEGER}
+  </select>
+  
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from brand
+    where brand_id = #{brandId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.base.po.Brand" >
+    insert into brand (brand_id, brand_no, brand_name, 
+      brand_name_en, is_owner, firm, 
+      parent_id, grade,remark, client_id, 
+      is_delete
+      )
+    values (#{brandId,jdbcType=INTEGER}, #{brandNo,jdbcType=VARCHAR}, #{brandName,jdbcType=VARCHAR}, 
+      #{brandNameEn,jdbcType=VARCHAR}, #{isOwner,jdbcType=TINYINT}, #{firm,jdbcType=VARCHAR}, 
+      #{parentId,jdbcType=INTEGER}, #{grade,jdbcType=INTEGER},#{remark,jdbcType=VARCHAR}, #{clientId,jdbcType=INTEGER}, 
+      #{isDelete,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.base.po.Brand" >
+    insert into brand
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="brandId != null" >
+        brand_id,
+      </if>
+      <if test="brandNo != null" >
+        brand_no,
+      </if>
+      <if test="brandName != null" >
+        brand_name,
+      </if>
+      <if test="brandNameEn != null" >
+        brand_name_en,
+      </if>
+      <if test="isOwner != null" >
+        is_owner,
+      </if>
+      <if test="firm != null" >
+        firm,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+       <if test="grade != null" >
+        grade,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="brandId != null" >
+        #{brandId,jdbcType=INTEGER},
+      </if>
+      <if test="brandNo != null" >
+        #{brandNo,jdbcType=VARCHAR},
+      </if>
+      <if test="brandName != null" >
+        #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="brandNameEn != null" >
+        #{brandNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="isOwner != null" >
+        #{isOwner,jdbcType=TINYINT},
+      </if>
+      <if test="firm != null" >
+        #{firm,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="grade != null" >
+        #{grade,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.base.po.Brand" >
+    update brand
+    <set >
+      <if test="brandNo != null" >
+        brand_no = #{brandNo,jdbcType=VARCHAR},
+      </if>
+      <if test="brandName != null" >
+        brand_name = #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="brandNameEn != null" >
+        brand_name_en = #{brandNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="isOwner != null" >
+        is_owner = #{isOwner,jdbcType=TINYINT},
+      </if>
+      <if test="firm != null" >
+        firm = #{firm,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="parentId == null" >
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="grade != null" >
+        grade = #{grade,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where brand_id = #{brandId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.base.po.Brand" >
+    update brand
+    set brand_no = #{brandNo,jdbcType=VARCHAR},
+      brand_name = #{brandName,jdbcType=VARCHAR},
+      brand_name_en = #{brandNameEn,jdbcType=VARCHAR},
+      is_owner = #{isOwner,jdbcType=TINYINT},
+      firm = #{firm,jdbcType=VARCHAR},
+      parent_id = #{parentId,jdbcType=INTEGER},
+      grade = #{grade,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where brand_id = #{brandId,jdbcType=INTEGER}
+  </update>
+  
+	<select id="queryTotalCount" parameterType="java.util.Map" resultType="Integer">
+		select  count(1)
+		from BRAND brand
+	     where 1=1
+		<include refid="Query_Column_List" />
+	</select>
+	
+	<select id="findListByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		brand.*
+		from BRAND brand 
+		where 1=1 
+		<include refid="Query_Column_List" /> 
+		<include refid="basic.mysqlPageSearchFoot"/>  
+	</select>
+	
+	<sql id="Query_Column_List">
+		<if test="clientId != null">
+			and brand.client_id = #{clientId}
+		</if>
+		<if test="isDelete != null">
+			and brand.is_delete = #{isDelete}
+		</if>
+		<if test="brandName != null">
+			and brand.brand_name like CONCAT('%',#{brandName},'%') 
+		</if>
+		<if test="brandId !=null">
+			and brand.brand_id = #{brandId}
+		</if>
+		<if test="brandNo != null and brandNo != ''">
+			and brand.brand_no = #{brandNo}
+		</if>
+		<if test="isOwner != null">
+			and brand.is_owner = #{isOwner}
+		</if>
+		<if test="parentId != null">
+			and brand.parent_id = #{parentId}
+		</if>
+		<if test="grade != null">
+			and brand.grade = #{grade}
+		</if>
+		
+	</sql>
+	 <select id="selectGradeByClientId" resultType="java.util.List" parameterType="java.lang.Integer" >
+   		 select bd.grade 
+  		 from brand bd 
+  		 WHERE bd.client_id = #{clientId,jdbcType=INTEGER}
+   		 GROUP BY bd.grade order by bd.grade ;
+ 	 </select>
+ 	 
+ 	 <select id="findListWithOutId" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		brand.*
+		from BRAND brand  
+		where  1=1 
+		<if test="brandId != null">
+			 and brand.brand_id != #{brandId,jdbcType=INTEGER}
+		</if>
+		<if test="grade != null">
+			and brand.grade = #{grade}
+		</if>
+		<if test="isDelete != null">
+			and brand.is_delete = #{isDelete}
+		</if>
+		<if test="clientId != null">
+			and brand.client_id = #{clientId}
+		</if>
+	</select>
+	
+	
+	<select id="getTreeNodesByPId" parameterType="java.util.Map"  resultMap="TreeNodeResultMap">
+		SELECT brand.brand_id AS id, brand.parent_id AS pId, brand.brand_name AS name 
+		FROM BRAND brand
+		WHERE 1=1 
+			<if test="clientId != null" >
+				and  brand.client_id = #{clientId}
+			</if>
+			
+			<if test="id &gt; 0" >
+				and  brand.parent_id = #{id} 
+			</if>
+			<if test="id == 0" >
+				and  brand.parent_id is null 
+			</if>
+		AND brand.is_delete = 0
+		ORDER BY brand.brand_id
+	</select>
+	
+	<select id="getBrandByIdAndClientId" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select * from brand where brand_id = #{brandId} and client_id = #{clientId} and is_delete = 0 limit 1		
+	</select>
+	
+	<select id="selectBrandListBycustomerId" parameterType="java.util.Map" resultMap="BaseResultMap">
+		SELECT b.brand_name,b.brand_id from wr_customer_brand_mapping a INNER JOIN brand b on a.brand_id = b.brand_id  
+		where a.client_id = #{clientId} and b.client_id = #{clientId} and a.is_delete = 0 and 
+		b.is_delete = 0 and a.customer_id = #{customerId}
+	</select>
+	
+	
+</mapper>

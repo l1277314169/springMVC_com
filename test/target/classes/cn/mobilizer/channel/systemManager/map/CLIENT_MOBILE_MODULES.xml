@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="CLIENT_MOBILE_MODULES" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.systemManager.po.ClientMobileModules" >
+    <id column="client_module_id" property="clientModuleId" jdbcType="INTEGER" />
+    <result column="module_id" property="moduleId" jdbcType="INTEGER" />
+    <result column="module_name" property="moduleName" jdbcType="VARCHAR" />
+    <result column="module_name_en" property="moduleNameEn" jdbcType="VARCHAR" />
+    <result column="is_display" property="isDisplay" jdbcType="TINYINT" />
+    <result column="sequence" property="sequence" jdbcType="TINYINT" />
+    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+    
+   <resultMap id="TreeNodeResultMap" type="cn.mobilizer.channel.base.vo.TreeNodeVO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="pId" property="pId" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="isParent" property="isParent" jdbcType="VARCHAR" />
+    <result column="parentId" property="parentId" jdbcType="INTEGER" />
+    <result column="checked" property="checked" jdbcType="VARCHAR" />
+    <result column="cId" property="cId" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    client_module_id, module_id, module_name, module_name_en, is_display, sequence, parent_id, 
+    remark, client_id,  is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from client_mobile_modules
+    where client_module_id = #{clientModuleId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from client_mobile_modules
+    where client_module_id = #{clientModuleId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.systemManager.po.ClientMobileModules" >
+    insert into client_mobile_modules (client_module_id, module_id, module_name, 
+      module_name_en, is_display, sequence, 
+      parent_id, remark, client_id, 
+     is_delete
+      )
+    values (#{clientModuleId,jdbcType=INTEGER}, #{moduleId,jdbcType=INTEGER}, #{moduleName,jdbcType=VARCHAR}, 
+      #{moduleNameEn,jdbcType=VARCHAR}, #{isDisplay,jdbcType=TINYINT}, #{sequence,jdbcType=TINYINT}, 
+      #{parentId,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{clientId,jdbcType=INTEGER}, 
+      #{isDelete,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.systemManager.po.ClientMobileModules" >
+    insert into client_mobile_modules
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="clientModuleId != null" >
+        client_module_id,
+      </if>
+      <if test="moduleId != null" >
+        module_id,
+      </if>
+      <if test="moduleName != null" >
+        module_name,
+      </if>
+      <if test="moduleNameEn != null" >
+        module_name_en,
+      </if>
+      <if test="isDisplay != null" >
+        is_display,
+      </if>
+      <if test="sequence != null" >
+        sequence,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+     
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="clientModuleId != null" >
+        #{clientModuleId,jdbcType=INTEGER},
+      </if>
+      <if test="moduleId != null" >
+        #{moduleId,jdbcType=INTEGER},
+      </if>
+      <if test="moduleName != null" >
+        #{moduleName,jdbcType=VARCHAR},
+      </if>
+      <if test="moduleNameEn != null" >
+        #{moduleNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="isDisplay != null" >
+        #{isDisplay,jdbcType=TINYINT},
+      </if>
+      <if test="sequence != null" >
+        #{sequence,jdbcType=TINYINT},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.systemManager.po.ClientMobileModules" >
+    update client_mobile_modules
+    <set >
+      <if test="moduleId != null" >
+        module_id = #{moduleId,jdbcType=INTEGER},
+      </if>
+      <if test="moduleName != null" >
+        module_name = #{moduleName,jdbcType=VARCHAR},
+      </if>
+      <if test="moduleNameEn != null" >
+        module_name_en = #{moduleNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="isDisplay != null" >
+        is_display = #{isDisplay,jdbcType=TINYINT},
+      </if>
+      <if test="sequence != null" >
+        sequence = #{sequence,jdbcType=TINYINT},
+      </if>
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+     
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where client_module_id = #{clientModuleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.systemManager.po.ClientMobileModules" >
+    update client_mobile_modules
+    set module_id = #{moduleId,jdbcType=INTEGER},
+      module_name = #{moduleName,jdbcType=VARCHAR},
+      module_name_en = #{moduleNameEn,jdbcType=VARCHAR},
+      is_display = #{isDisplay,jdbcType=TINYINT},
+      sequence = #{sequence,jdbcType=TINYINT},
+      parent_id = #{parentId,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where client_module_id = #{clientModuleId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="getMobileTreeNode" parameterType="java.util.Map"  resultMap="TreeNodeResultMap">
+	SELECT mmc.module_id AS id , mmc.parent_id AS pId, cmm.module_name AS name ,cmm.client_module_id AS cId,
+		CASE WHEN crmm.mapping_id IS NOT NULL THEN 'true' ELSE 'false' END AS checked
+	FROM mobile_modules_config mmc 
+	INNER JOIN client_mobile_modules cmm ON mmc.module_id = cmm.module_id AND cmm.client_id = #{clientId}  AND cmm.is_delete = 0 
+	LEFT JOIN client_roles_module_mapping crmm ON cmm.client_module_id = crmm.client_module_id AND crmm.role_id = #{roleId} AND crmm.is_delete = 0 
+	ORDER BY cmm.sequence, cmm.module_id;
+  </select>
+</mapper>

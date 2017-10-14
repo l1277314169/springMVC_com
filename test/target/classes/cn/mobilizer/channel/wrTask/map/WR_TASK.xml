@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="WR_TASK" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.wrTask.po.WrTask" >
+    <id column="wr_task_id" property="wrTaskId" jdbcType="INTEGER" />
+    <result column="task_name" property="taskName" jdbcType="VARCHAR" />
+    <result column="task_type" property="taskType" jdbcType="TINYINT" />
+    <result column="pop_type" property="popType" jdbcType="TINYINT" />
+    <result column="is_must_do" property="isMustDo" jdbcType="TINYINT" />
+    <result column="group_by" property="groupBy" jdbcType="TINYINT" />
+    <result column="start_date" property="startDate" jdbcType="TIMESTAMP" />
+    <result column="end_date" property="endDate" jdbcType="TIMESTAMP" />
+    <result column="start_locating" property="startLocating" jdbcType="TINYINT" />
+    <result column="end_locating" property="endLocating" jdbcType="TINYINT" />
+    <result column="start_pic" property="startPic" jdbcType="TINYINT" />
+    <result column="end_pic" property="endPic" jdbcType="TINYINT" />
+    <result column="cycle_type" property="cycleType" jdbcType="TINYINT" />
+    <result column="valid_from" property="validFrom" jdbcType="INTEGER" />
+    <result column="valid_end" property="validEnd" jdbcType="INTEGER" />
+    <result column="object_filter" property="objectFilter" jdbcType="VARCHAR" />
+    <result column="wr_task_group" property="wrTaskGroup" jdbcType="INTEGER" />
+    <result column="view_style" property="viewStyle" jdbcType="TINYINT" />
+    <result column="sequence" property="sequence" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    wr_task_id, task_name, task_type, pop_type, is_must_do, group_by, start_date, end_date, 
+    start_locating, end_locating, start_pic, end_pic, cycle_type, valid_from, valid_end, 
+    object_filter, wr_task_group, view_style, sequence, remark, client_id, create_time, 
+    last_update_time, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from wr_task
+    where wr_task_id = #{wrTaskId,jdbcType=INTEGER}
+  </select>
+  
+  <sql id="select_by_param">
+		select
+		<include refid="Base_Column_List" />
+		from wr_task
+		<include refid="Base_Query_Column_List" />
+	</sql>
+  
+  <select id="selectByParams" parameterType="java.util.Map" resultMap="BaseResultMap">		 
+		<include refid="select_by_param" />
+		<include refid="basic.mysqlPageSearchFoot" />		
+	</select>
+	
+	<select id="selectByParamCount" parameterType="java.util.Map" resultType="Integer">
+		select count(1) from wr_task
+		<include refid="Base_Query_Column_List" />
+	</select>
+	
+	<sql id="Base_Query_Column_List">
+  	<where>	 
+  			 is_delete = 0
+	    	<if test="wrTaskId != null and wrTaskId !=''" >
+		        	and wr_task_id = #{wrTaskId}
+	      	 </if>
+		      <if test="taskName != null and taskName !=''" >
+		       		and task_name = #{taskName}
+		      </if>
+		      <if test="taskType != null and taskType !=''" >
+		        	and task_type = #{taskType}
+		      </if>
+		      <if test="popType != null and popType !=''" >
+		        	and pop_type = #{popType}
+		      </if>
+		      <if test="isMustDo != null and isMustDo !=''" >
+		        	and is_most_do = #{isMustDo}
+		      </if>
+		      <if test="groupBy != null and groupBy !=''" >
+		        	and group_by = #{groupBy}
+		      </if>
+		      <if test="startDate != null and startDate !=''" >
+		        	and start_date = #{startDate}
+		      </if>
+		      <if test="endDate != null and endDate !=''" >
+		        	and end_date = #{endDate}
+		      </if>
+		      <if test="startLocating != null and startLocating !=''" >
+		        	and start_locating = #{startLocating}
+		      </if>
+		      <if test="endLocating != null and endLocating !=''" >
+		        	and end_locating = #{endLocating}
+		      </if>
+		      <if test="startPic != null and startPic !=''" >
+		        	and start_pic = #{startPic}
+		      </if>
+		      <if test="endPic != null and endPic !=''" >
+		        	and end_pic = #{endPic}
+		      </if>
+		      <if test="cycleType != null and cycleType !=''" >
+		        	and cycle_type = #{cycleType}
+		      </if>
+		      <if test="validFrom != null and validFrom !=''" >
+		            and valid_from = #{validFrom}
+		      </if>
+		      <if test="validEnd != null and validEnd !=''" >
+		        	and valid_end = #{validEnd}
+		      </if>
+		      <if test="objectFilter != null and objectFilter !=''" >
+		        	and object_filter = #{objectFilter}
+		      </if>
+		      <if test="wrTaskGroup != null and wrTaskGroup !=''" >
+		        	and wr_task_group = #{wrTaskGroup}
+		      </if>
+		      <if test="viewStyle != null and viewStyle !=''" >
+		        	and view_style = #{viewStyle}
+		      </if>
+		      <if test="sequence != null and sequence !=''" >
+		        	and sequence = #{sequence}
+		      </if>
+		      <if test="remark != null and remark !=''" >
+		        	and remark = #{remark}
+		      </if>
+		      <if test="clientId != null and clientId !=''" >
+		        	and client_id = #{clientId}
+		      </if>
+		      <if test="createTime != null and createTime !=''" >
+		        	and create_time = #{createTime}
+		      </if>
+		      <if test="lastUpdateTime != null and lastUpdateTime" >
+		        	and last_update_time = #{lastUpdateTime}
+		      </if>
+		      <if test="isDelete != null and isDelete !=''" >
+		         	and is_delete = #{isDelete}
+		      </if>
+      </where>
+	</sql>
+	
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from wr_task
+    where wr_task_id = #{wrTaskId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.wrTask.po.WrTask" >
+    insert into wr_task (wr_task_id, task_name, task_type, 
+      pop_type, is_must_do, group_by, 
+      start_date, end_date, start_locating, 
+      end_locating, start_pic, end_pic, 
+      cycle_type, valid_from, valid_end, 
+      object_filter, wr_task_group, view_style, 
+      sequence, remark, client_id, 
+      create_time, last_update_time, is_delete
+      )
+    values (#{wrTaskId,jdbcType=INTEGER}, #{taskName,jdbcType=VARCHAR}, #{taskType,jdbcType=TINYINT}, 
+      #{popType,jdbcType=TINYINT}, #{isMustDo,jdbcType=TINYINT}, #{groupBy,jdbcType=TINYINT}, 
+      #{startDate,jdbcType=TIMESTAMP}, #{endDate,jdbcType=TIMESTAMP}, #{startLocating,jdbcType=TINYINT}, 
+      #{endLocating,jdbcType=TINYINT}, #{startPic,jdbcType=TINYINT}, #{endPic,jdbcType=TINYINT}, 
+      #{cycleType,jdbcType=TINYINT}, #{validFrom,jdbcType=INTEGER}, #{validEnd,jdbcType=INTEGER}, 
+      #{objectFilter,jdbcType=VARCHAR}, #{wrTaskGroup,jdbcType=INTEGER}, #{viewStyle,jdbcType=TINYINT}, 
+      #{sequence,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{clientId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{lastUpdateTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.wrTask.po.WrTask" >
+    insert into wr_task
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="wrTaskId != null" >
+        wr_task_id,
+      </if>
+      <if test="taskName != null" >
+        task_name,
+      </if>
+      <if test="taskType != null" >
+        task_type,
+      </if>
+      <if test="popType != null" >
+        pop_type,
+      </if>
+      <if test="isMustDo != null" >
+        is_must_do,
+      </if>
+      <if test="groupBy != null" >
+        group_by,
+      </if>
+      <if test="startDate != null" >
+        start_date,
+      </if>
+      <if test="endDate != null" >
+        end_date,
+      </if>
+      <if test="startLocating != null" >
+        start_locating,
+      </if>
+      <if test="endLocating != null" >
+        end_locating,
+      </if>
+      <if test="startPic != null" >
+        start_pic,
+      </if>
+      <if test="endPic != null" >
+        end_pic,
+      </if>
+      <if test="cycleType != null" >
+        cycle_type,
+      </if>
+      <if test="validFrom != null" >
+        valid_from,
+      </if>
+      <if test="validEnd != null" >
+        valid_end,
+      </if>
+      <if test="objectFilter != null" >
+        object_filter,
+      </if>
+      <if test="wrTaskGroup != null" >
+        wr_task_group,
+      </if>
+      <if test="viewStyle != null" >
+        view_style,
+      </if>
+      <if test="sequence != null" >
+        sequence,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="wrTaskId != null" >
+        #{wrTaskId,jdbcType=INTEGER},
+      </if>
+      <if test="taskName != null" >
+        #{taskName,jdbcType=VARCHAR},
+      </if>
+      <if test="taskType != null" >
+        #{taskType,jdbcType=TINYINT},
+      </if>
+      <if test="popType != null" >
+        #{popType,jdbcType=TINYINT},
+      </if>
+      <if test="isMustDo != null" >
+        #{isMustDo,jdbcType=TINYINT},
+      </if>
+      <if test="groupBy != null" >
+        #{groupBy,jdbcType=TINYINT},
+      </if>
+      <if test="startDate != null" >
+        #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="startLocating != null" >
+        #{startLocating,jdbcType=TINYINT},
+      </if>
+      <if test="endLocating != null" >
+        #{endLocating,jdbcType=TINYINT},
+      </if>
+      <if test="startPic != null" >
+        #{startPic,jdbcType=TINYINT},
+      </if>
+      <if test="endPic != null" >
+        #{endPic,jdbcType=TINYINT},
+      </if>
+      <if test="cycleType != null" >
+        #{cycleType,jdbcType=TINYINT},
+      </if>
+      <if test="validFrom != null" >
+        #{validFrom,jdbcType=INTEGER},
+      </if>
+      <if test="validEnd != null" >
+        #{validEnd,jdbcType=INTEGER},
+      </if>
+      <if test="objectFilter != null" >
+        #{objectFilter,jdbcType=VARCHAR},
+      </if>
+      <if test="wrTaskGroup != null" >
+        #{wrTaskGroup,jdbcType=INTEGER},
+      </if>
+      <if test="viewStyle != null" >
+        #{viewStyle,jdbcType=TINYINT},
+      </if>
+      <if test="sequence != null" >
+        #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.wrTask.po.WrTask" >
+    update wr_task
+    <set >
+      <if test="taskName != null" >
+        task_name = #{taskName,jdbcType=VARCHAR},
+      </if>
+      <if test="taskType != null" >
+        task_type = #{taskType,jdbcType=TINYINT},
+      </if>
+      <if test="popType != null" >
+        pop_type = #{popType,jdbcType=TINYINT},
+      </if>
+      <if test="isMustDo != null" >
+        is_must_do = #{isMustDo,jdbcType=TINYINT},
+      </if>
+      <if test="groupBy != null" >
+        group_by = #{groupBy,jdbcType=TINYINT},
+      </if>
+      <if test="startDate != null" >
+        start_date = #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        end_date = #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="startLocating != null" >
+        start_locating = #{startLocating,jdbcType=TINYINT},
+      </if>
+      <if test="endLocating != null" >
+        end_locating = #{endLocating,jdbcType=TINYINT},
+      </if>
+      <if test="startPic != null" >
+        start_pic = #{startPic,jdbcType=TINYINT},
+      </if>
+      <if test="endPic != null" >
+        end_pic = #{endPic,jdbcType=TINYINT},
+      </if>
+      <if test="cycleType != null" >
+        cycle_type = #{cycleType,jdbcType=TINYINT},
+      </if>
+      <if test="validFrom != null" >
+        valid_from = #{validFrom,jdbcType=INTEGER},
+      </if>
+      <if test="validEnd != null" >
+        valid_end = #{validEnd,jdbcType=INTEGER},
+      </if>
+      <if test="objectFilter != null" >
+        object_filter = #{objectFilter,jdbcType=VARCHAR},
+      </if>
+      <if test="wrTaskGroup != null" >
+        wr_task_group = #{wrTaskGroup,jdbcType=INTEGER},
+      </if>
+      <if test="viewStyle != null" >
+        view_style = #{viewStyle,jdbcType=TINYINT},
+      </if>
+      <if test="sequence != null" >
+        sequence = #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where wr_task_id = #{wrTaskId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.wrTask.po.WrTask" >
+    update wr_task
+    set task_name = #{taskName,jdbcType=VARCHAR},
+      task_type = #{taskType,jdbcType=TINYINT},
+      pop_type = #{popType,jdbcType=TINYINT},
+      is_must_do = #{isMustDo,jdbcType=TINYINT},
+      group_by = #{groupBy,jdbcType=TINYINT},
+      start_date = #{startDate,jdbcType=TIMESTAMP},
+      end_date = #{endDate,jdbcType=TIMESTAMP},
+      start_locating = #{startLocating,jdbcType=TINYINT},
+      end_locating = #{endLocating,jdbcType=TINYINT},
+      start_pic = #{startPic,jdbcType=TINYINT},
+      end_pic = #{endPic,jdbcType=TINYINT},
+      cycle_type = #{cycleType,jdbcType=TINYINT},
+      valid_from = #{validFrom,jdbcType=INTEGER},
+      valid_end = #{validEnd,jdbcType=INTEGER},
+      object_filter = #{objectFilter,jdbcType=VARCHAR},
+      wr_task_group = #{wrTaskGroup,jdbcType=INTEGER},
+      view_style = #{viewStyle,jdbcType=TINYINT},
+      sequence = #{sequence,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where wr_task_id = #{wrTaskId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="getWrTaskList" parameterType="java.util.Map" resultMap="BaseResultMap">
+  	SELECT * from wr_task where is_delete = 0 and client_id = #{clientId}
+  </select>
+  
+  
+</mapper>

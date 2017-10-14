@@ -1,0 +1,373 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0052)http://colgate.alwaysmkt.com.cn/StoreRadar/Home.aspx -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>
+
+</title>
+    
+    <script src="../js/jquery-1.8.2.js" type="text/javascript"></script>
+    <script src="../js/jquery-ui-1.9.1.custom.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../js/Common.js"></script>
+    <script type="text/javascript">
+        
+
+        function switchFontColor(obj, num,isOverview) {
+
+            if (num == 0) {
+
+                $(obj).stop().find('.rpNewDashboardMenuItemDesc').animate({ color: '#ffffff' }, 300);
+                $(obj).stop().find('.rpNewDashboardMenuItemName').animate({ color: '#ffffff' }, 300);
+                if (isOverview) {
+                    $(obj).find('img.arrow').attr('src', '../Images/RightArrowBigWhite.png');
+                }
+                else {
+                    $(obj).find('img').attr('src', '../Images/RightArrowWhite.png');
+                }
+	                
+            }
+            else {
+
+                $(obj).stop().find('.rpNewDashboardMenuItemDesc').animate({ color: '#7c7c7c' }, 300);
+                $(obj).stop().find('.rpNewDashboardMenuItemName').animate({ color: '#C91F27' }, 300);
+                if (isOverview) {
+                    $(obj).find('img.arrow').attr('src', '../Images/RightArrowBig.png');
+                }
+                else {
+                    $(obj).find('img').attr('src', '../Images/RightArrow.png');
+                }
+            }
+        }
+
+        $(document).ready(function () {
+            $('<img/>').src = '../Images/RightArrowWhite.png';
+            $('<img/>').src = '../Images/RightArrowBigWhite.png';
+
+            $('.rpNewDashboardMenuItem').hover(function () {
+                $(this).css('background-position', '-260px 0');
+                $(this).stop().animate({ "background-position": "0" }, 300, '', switchFontColor(this, 0, 0));
+
+
+            }, function () {
+                $(this).stop().animate({ "background-position": "-260px" }, 300, '', switchFontColor(this, 1, 0));
+            });
+
+
+
+
+            $('.rpNewDashboardMenuItemOverviewBG').hover(function () {
+                $(this).css('background-position', '-888px 0');
+                $(this).stop().animate({ "background-position": "0" }, 300, '', switchFontColor(this, 0, 1));
+
+
+            }, function () {
+                $(this).stop().animate({ "background-position": "-888px" }, 300, '', switchFontColor(this, 1, 1));
+            });
+
+
+
+        });
+    </script>
+<link href="../css/buttons.css" type="text/css" rel="stylesheet"><link href="../css/buttonsCN.css" type="text/css" rel="stylesheet"><link href="../css/dashboard.css" type="text/css" rel="stylesheet"><link href="../css/DataEntry.css" type="text/css" rel="stylesheet"><link href="../css/jquery.lightbox-0.5.css" type="text/css" rel="stylesheet"><link href="../css/messageBox.css" type="text/css" rel="stylesheet"><link href="../css/overview.css" type="text/css" rel="stylesheet"><link href="../css/RBControls.css" type="text/css" rel="stylesheet"><link href="../css/report.css" type="text/css" rel="stylesheet"><link href="../css/Site.css" type="text/css" rel="stylesheet"></head>
+<body style="background-image:none;background-color:White;">
+    <form method="post" action="" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="tm_HiddenField" id="tm_HiddenField" value=";;AjaxControlToolkit, Version=3.5.40412.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e:zh-CN:065e08c0-e2d1-42ff-9483-e5c14441b311:5546a2b:475a4ef5:497ef277:effe2a26:a43b07eb:751cdd15:dfad98a5:1d3ed089:3cf12cf1">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJMzI3MTQxNjQyD2QWAgIDD2QWBgIDD2QWBgIJDw9kFgIeB29uY2xpY2sFe19fU2hvd0xCX0ZyYW1lRGVsYXkoJ21vZGFsSUZIZWFkZXJUaXRsZScsJ0NoYW5nZSBQYXNzd29yZCcsJzYwMHB4JywnMjAwcHgnLCcvU3RvcmVSYWRhci9DaGFuZ2VQYXNzd29yZC5hc3B4Jyk7cmV0dXJuIGZhbHNlO2QCDw8PFgQeCENzc0NsYXNzBQ9idG5Ib21lU2VsZWN0ZWQeBF8hU0ICAmRkAhEPFgIeC18hSXRlbUNvdW50AgUWCmYPZBYCAgEPDxYGHgRUZXh0BQhPdmVydmlldx8BBQ1OZXdNZW51QnV0dG9uHwICAhYCHwAFPndpbmRvdy5sb2NhdGlvbi5ocmVmPSIvU3RvcmVSYWRhci9PdmVydmlldy5hc3B4IjtyZXR1cm4gZmFsc2U7ZAIBD2QWAgIBDw8WBh8EBQlEYXNoYm9hcmQfAQUNTmV3TWVudUJ1dHRvbh8CAgIWAh8ABVB3aW5kb3cubG9jYXRpb24uaHJlZj0iL1N0b3JlUmFkYXIvRGFzaGJvYXJkL0Rhc2hib2FyZC5hc3B4P2Q9NTAwMiI7cmV0dXJuIGZhbHNlO2QCAg9kFgICAQ8PFgYfBAUHUmVwb3J0cx8BBQ1OZXdNZW51QnV0dG9uHwICAhYCHwAFRXdpbmRvdy5sb2NhdGlvbi5ocmVmPSIvU3RvcmVSYWRhci9SZXBvcnRzL1JlcG9ydHMuYXNweCI7cmV0dXJuIGZhbHNlO2QCAw9kFgICAQ8PFgYfBAUIUmF3IERhdGEfAQUNTmV3TWVudUJ1dHRvbh8CAgIWAh8ABUd3aW5kb3cubG9jYXRpb24uaHJlZj0iL1N0b3JlUmFkYXIvUmVwb3J0cy9SYXdSZXBvcnQuYXNweCI7cmV0dXJuIGZhbHNlO2QCBA9kFgICAQ8PFgYfBAUHR2FsbGVyeR8BBQ1OZXdNZW51QnV0dG9uHwICAhYCHwAFPXdpbmRvdy5sb2NhdGlvbi5ocmVmPSIvU3RvcmVSYWRhci9HYWxsZXJ5LmFzcHgiO3JldHVybiBmYWxzZTtkAgUPFgIfBAWxAUNsYXNzaWZpZWQgYnkgNiBjYXRlZ29yaWVzIG9mIERpc3RyaWJ1dGlvbiwgU2hhcmUgb2YgU2hlbGYsIFByb21vdGlvbiAsRE0sIFBsYW4tTy1HcmFtLCBQcm9tb3Rlciwgd2hpY2ggbWFrZSBpdCBtb3JlIGNvbnZlbmllbnQgZm9yIGRhc2hib2FyZCBieSBSZWdpb24sIENsaWVudCBUeXBlIGFuZCBCcmFuZC4uIGQCBw8WAh8DAgcWDmYPZBYCZg8VBwQ1MDAyBDUwMDIENTAwMgxEaXN0cmlidXRpb25TVGhlIGRpc3RyaWJ1dGlvbiBzdGF0dXMgc3RhdGlzdGljcyBvZiBhbGwgY2F0ZWdvcmllcywgYnJhbmRzIGFuZCBrZXkgU0tVcyBieSBzdG9yZS5TVGhlIGRpc3RyaWJ1dGlvbiBzdGF0dXMgc3RhdGlzdGljcyBvZiBhbGwgY2F0ZWdvcmllcywgYnJhbmRzIGFuZCBrZXkgU0tVcyBieSBzdG9yZS4ENTAwMmQCAQ9kFgJmDxUHBDUwMDQENTAwNAQ1MDA0DlNoYXJlIG9mIFNoZWxmO1RoZSBTT1Mgc3RhdHVzIHN0YXRpc3RpY3Mgb2YgYWxsIGNhdGVnb3JpZXMgYW5kIGtleSBicmFuZHMuO1RoZSBTT1Mgc3RhdHVzIHN0YXRpc3RpY3Mgb2YgYWxsIGNhdGVnb3JpZXMgYW5kIGtleSBicmFuZHMuBDUwMDRkAgIPZBYCZg8VBwQ1MDAzBDUwMDMENTAwMw9QcmljZSAodnMgUlJTUCk7U3RhdGlzdGljcyBvZiBSU1AvIFJSU1Agb2YgYWxsIGNhdGVnb3JpZXMsIGJyYW5kcyBhbmQgU0tVcy47U3RhdGlzdGljcyBvZiBSU1AvIFJSU1Agb2YgYWxsIGNhdGVnb3JpZXMsIGJyYW5kcyBhbmQgU0tVcy4ENTAwM2QCAw9kFgJmDxUHBDUwMDYENTAwNgQ1MDA2DFNLVSBvbiBTaGVsZkRUaGUgU0tVIG9uIHNoZWxmIHN0YXR1cyBzdGF0aXN0aWNzIG9mIGFsbCBjYXRlZ29yaWVzIGFuZCBhbGwgYnJhbmRzLkRUaGUgU0tVIG9uIHNoZWxmIHN0YXR1cyBzdGF0aXN0aWNzIG9mIGFsbCBjYXRlZ29yaWVzIGFuZCBhbGwgYnJhbmRzLgQ1MDA2ZAIED2QWAmYPFQcENTAwNQQ1MDA1BDUwMDUCRE1LRE0gZGlzdHJpYnV0aW9uIHN0YXR1cyBzdGF0aXN0aWNzIG9mIGNhdGVnb3JpZXMgIGFuZCBhbGwgYnJhbmRzIGJ5IGN1c3RvbWVyS0RNIGRpc3RyaWJ1dGlvbiBzdGF0dXMgc3RhdGlzdGljcyBvZiBjYXRlZ29yaWVzICBhbmQgYWxsIGJyYW5kcyBieSBjdXN0b21lcgQ1MDA1ZAIFD2QWAmYPFQcENTAwNwQ1MDA3BDUwMDcRU2Vjb25kYXJ5IERpc3BsYXltQW5hbHl6ZSB0aGUgMm5kIGRpc3BsYXkgcXVhbnRpdHkvYXJlYSAgc2hhcmUgcmF0ZSBhbW9uZyBhbGwgdGhlIHN0b3JlcyBieSBkaXNwbGF5ICB0eXBlLCBjYXRlZ29yeSBhbmQgYnJhbmQuIG1BbmFseXplIHRoZSAybmQgZGlzcGxheSBxdWFudGl0eS9hcmVhICBzaGFyZSByYXRlIGFtb25nIGFsbCB0aGUgc3RvcmVzIGJ5IGRpc3BsYXkgIHR5cGUsIGNhdGVnb3J5IGFuZCBicmFuZC4gBDUwMDdkAgYPZBYCZg8VBwQ1MDA4BDUwMDgENTAwOBxTZWNvbmRhcnkgRGlzcGxheSAoTWF5IDIwMTMpbUFuYWx5emUgdGhlIDJuZCBkaXNwbGF5IHF1YW50aXR5L2FyZWEgIHNoYXJlIHJhdGUgYW1vbmcgYWxsIHRoZSBzdG9yZXMgYnkgZGlzcGxheSAgdHlwZSwgY2F0ZWdvcnkgYW5kIGJyYW5kLiBtQW5hbHl6ZSB0aGUgMm5kIGRpc3BsYXkgcXVhbnRpdHkvYXJlYSAgc2hhcmUgcmF0ZSBhbW9uZyBhbGwgdGhlIHN0b3JlcyBieSBkaXNwbGF5ICB0eXBlLCBjYXRlZ29yeSBhbmQgYnJhbmQuIAQ1MDA4ZGRCXxfJl5p6j/drz+kVJ+JFZsHnCqCIPbdt+oGlZVyT/g==">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="../css/WebResource.axd" type="text/javascript"></script>
+
+
+<script src="../css/ScriptResource.axd" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side framework failed to load.');
+//]]>
+</script>
+
+<script src="../css/ScriptResource(1).axd" type="text/javascript"></script>
+<script src="../css/Home.aspx" type="text/javascript"></script>
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAApstI9Z5ukpTEfnvR3lIJvz3YU3cla7vDoXFml+WODQa67zaTRhkz/GkeU/sOJdXmBI4YtxdGeQLYFg/BZKKHBJIlPOmi3VpIPRzci9EqkDueRoK9Ss5E1t6kFW1dXQ6LYIzfVOuyvQ4dPoekm5VpK5SMktfeHvumJEyN2BVcAypgLrfoW/b484Za7JGBOEIkHItTaA0/OEWszAa5AnYWMAMECTCPOmH0IHjpVN1t8RX+QZgjVs90nPojNMb2eLBDM=">
+</div>
+    <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('tm', 'form1', [], [], [], 90, '');
+//]]>
+</script>
+
+     
+<div class="headerNew">
+    
+   <div style="margin:0px auto;width:960px;">
+        <div style="text-align:right;padding-top:10px;padding-right:5px;">
+             <a id="ucHeader_hyChangePwd" class="headerLink" onclick_me="__ShowLB_FrameDelay(&#39;modalIFHeaderTitle&#39;,&#39;Change Password&#39;,&#39;600px&#39;,&#39;200px&#39;,&#39;/StoreRadar/ChangePassword.aspx&#39;);return false;" href="#" style="color:#ce1613;font-size:10px;text-decoration:none;">Change Password</a>
+        <span style="color:#c00700;">|</span>
+        <a id="ucHeader_hyLogout" class="headerLink" href="/colgate/page/Login.html" style="color:#c00700;font-size:10px;text-decoration:none;">Logout</a>
+    
+        </div>
+        <div>
+            <div style="float:left;">
+                <img src="../Images/equity_chevron.png">
+            </div>
+            <div style="float:left;color:#ce1613;font-family:Rockwell,Helvetica, Arial, sans-serif;font-style:italic;font-size:20px;margin:15px 0px 0px 10px;">
+                In-Store Tracking
+            </div>
+            
+            <div style="float:right;margin:23px 0px 0px 0px;text-align:right;width:540px;">
+                <table width="100%" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td>
+                            <input type="button" name="ucHeader$btnHome" value="" id="ucHeader_btnHome" class="btnHomeSelected">
+                        </td>
+                        
+                                <td style="padding-left:0px;border-left:solid 1px #969696;" align="center">
+                                    <a targer="_self" href="/colgate/overView"><input type="button" name="ucHeader$rpMenu$ctl00$btnMenu" value="Overview" onclick_me="window.location.href=&quot;/StoreRadar/Overview.aspx&quot;;return false;" id="ucHeader_rpMenu_btnMenu_0" class="NewMenuButton"></input></a>
+                                </td>
+                            
+                                <td style="padding-left:0px;border-left:solid 1px #969696;" align="center">
+                                     <a targer="_self" href="/colgate/page/Dashboard.html"><input type="button" name="ucHeader$rpMenu$ctl01$btnMenu" value="Dashboard" onclick_me="window.location.href=&quot;/StoreRadar/Dashboard/Dashboard.aspx?d=5002&quot;;return false;" id="ucHeader_rpMenu_btnMenu_1" class="NewMenuButton"></input></a>
+                                </td>
+                            
+                                <td style="padding-left:0px;border-left:solid 1px #969696;" align="center">
+                                    <a targer="_self" href="/colgate/page/Reports.html"><input type="button" name="ucHeader$rpMenu$ctl02$btnMenu" value="Reports" onclick_me="window.location.href=&quot;/StoreRadar/Reports/Reports.aspx&quot;;return false;" id="ucHeader_rpMenu_btnMenu_2" class="NewMenuButton"></input></a>
+                                </td>
+                            
+                                <td style="padding-left:0px;border-left:solid 1px #969696;" align="center">
+                                    <input type="button" name="ucHeader$rpMenu$ctl03$btnMenu" value="Raw Data" onclick_me="window.location.href=&quot;/StoreRadar/Reports/RawReport.aspx&quot;;return false;" id="ucHeader_rpMenu_btnMenu_3" class="NewMenuButton">
+                                </td>
+                            
+                                <td style="padding-left:0px;border-left:solid 1px #969696;" align="center">
+                                    <input type="button" name="ucHeader$rpMenu$ctl04$btnMenu" value="Gallery" onclick_me="window.location.href=&quot;/StoreRadar/Gallery.aspx&quot;;return false;" id="ucHeader_rpMenu_btnMenu_4" class="NewMenuButton">
+                                </td>
+                            
+                    </tr>
+                </tbody></table>
+               
+            </div>
+            
+        </div>
+   </div>
+   
+</div>
+    <div class="page">
+       
+        <div class="content">
+            <br>
+            <br>
+            <br>
+            <div class="HomePanel">
+                <div class="HomePanelTop">
+                
+                </div>
+                <div class="HomePanelMid">
+                    <div style="width:838px;margin:0px 0px 0px 0px;">
+                        <div id="overviewItem" class="rpNewDashboardMenuItemOverview" onclick_me="window.location.href = &#39;Overview.aspx&#39;" style="cursor:pointer;">
+                            <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-right:30px;">
+                                        <img alt="" src="../Images/OverviewStockImage.png">
+                                    </td>       
+                                    <td valign="top">
+                                        <div class="rpNewDashboardMenuItemOverviewBG">
+                                            <div style="float:left;">
+                                                <a href="/colgate/overView"><span class="rpNewDashboardMenuItemName" style="font-size:18px;">Overview</span></a>
+                                                <div class="rpNewDashboardMenuItemDesc" style="width:340px;font-size:12px;line-height:18px;">Classified by 6 categories of Distribution, Share of Shelf, Promotion ,DM, Plan-O-Gram, Promoter, which make it more convenient for dashboard by Region, Client Type and Brand.. </div>
+                                            </div>
+                                            <div style="float:right;padding:35px 0px 0px 0px;">
+                                                <a href="#">
+                                                <img class="arrow" style="border:none;" alt="" src="../Images/RightArrowBig.png"></a>
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                    </td>
+                                    
+                                </tr>
+                            </tbody></table>
+                        </div>
+                    </div>
+                    <div>
+                        
+                        
+                                <div class="rpNewDashboardMenuItem" id="divItem5002" onclick_me="window.location.href=&#39;Dashboard/Dashboard.aspx?d=5002&#39;" style="cursor:pointer;">
+                                    <table border="0" cellspacing="0" cellpadding="0">
+                                        <tbody><tr>
+                                           
+                                            <td valign="top">
+                                                <a href="#"><span class="rpNewDashboardMenuItemName">Distribution</span></a>
+                                                <div class="rpNewDashboardMenuItemDesc" id="aThe distribution status statistics of all categories, brands and key SKUs by store.">The distribution status statistics of all categories, brands and key SKUs by store.</div>
+                                            </td>
+                                                <td valign="top" align="right" style="padding:25px 5px 0px 10px;">
+                                                <a href="#">
+                                                    <img alt="" style="border:none;" src="../Images/RightArrow.png"></a>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div>
+                            
+                                <div class="rpNewDashboardMenuItem" id="divItem5004" onclick_me="window.location.href=&#39;Dashboard/Dashboard.aspx?d=5004&#39;" style="cursor:pointer;">
+                                    <table border="0" cellspacing="0" cellpadding="0">
+                                        <tbody><tr>
+                                           
+                                            <td valign="top">
+                                                <a href="#"><span class="rpNewDashboardMenuItemName">Share of Shelf</span></a>
+                                                <div class="rpNewDashboardMenuItemDesc" id="aThe SOS status statistics of all categories and key brands.">The SOS status statistics of all categories and key brands.</div>
+                                            </td>
+                                                <td valign="top" align="right" style="padding:25px 5px 0px 10px;">
+                                                <a href="#">
+                                                    <img alt="" style="border:none;" src="../Images/RightArrow.png"></a>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div>
+                            
+                                <div class="rpNewDashboardMenuItem" id="divItem5003" onclick_me="window.location.href=&#39;Dashboard/Dashboard.aspx?d=5003&#39;" style="cursor:pointer;">
+                                    <table border="0" cellspacing="0" cellpadding="0">
+                                        <tbody><tr>
+                                           
+                                            <td valign="top">
+                                                <a href="#"><span class="rpNewDashboardMenuItemName">Price (vs RRSP)</span></a>
+                                                <div class="rpNewDashboardMenuItemDesc" id="aStatistics of RSP/ RRSP of all categories, brands and SKUs.">Statistics of RSP/ RRSP of all categories, brands and SKUs.</div>
+                                            </td>
+                                                <td valign="top" align="right" style="padding:25px 5px 0px 10px;">
+                                                <a href="#">
+                                                    <img alt="" style="border:none;" src="../Images/RightArrow.png"></a>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div>
+                            
+                                <div class="rpNewDashboardMenuItem" id="divItem5006" onclick_me="window.location.href=&#39;Dashboard/Dashboard.aspx?d=5006&#39;" style="cursor:pointer;">
+                                    <table border="0" cellspacing="0" cellpadding="0">
+                                        <tbody><tr>
+                                           
+                                            <td valign="top">
+                                                <a href="#"><span class="rpNewDashboardMenuItemName">SKU on Shelf</span></a>
+                                                <div class="rpNewDashboardMenuItemDesc" id="aThe SKU on shelf status statistics of all categories and all brands.">The SKU on shelf status statistics of all categories and all brands.</div>
+                                            </td>
+                                                <td valign="top" align="right" style="padding:25px 5px 0px 10px;">
+                                                <a href="#">
+                                                    <img alt="" style="border:none;" src="../Images/RightArrow.png"></a>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div>
+                            
+                                <div class="rpNewDashboardMenuItem" id="divItem5005" onclick_me="window.location.href=&#39;Dashboard/Dashboard.aspx?d=5005&#39;" style="cursor:pointer;">
+                                    <table border="0" cellspacing="0" cellpadding="0">
+                                        <tbody><tr>
+                                           
+                                            <td valign="top">
+                                                <a href="#"><span class="rpNewDashboardMenuItemName">DM</span></a>
+                                                <div class="rpNewDashboardMenuItemDesc" id="aDM distribution status statistics of categories  and all brands by customer">DM distribution status statistics of categories  and all brands by customer</div>
+                                            </td>
+                                                <td valign="top" align="right" style="padding:25px 5px 0px 10px;">
+                                                <a href="#">
+                                                    <img alt="" style="border:none;" src="../Images/RightArrow.png"></a>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div>
+                            
+                                <div class="rpNewDashboardMenuItem" id="divItem5007" onclick_me="window.location.href=&#39;Dashboard/Dashboard.aspx?d=5007&#39;" style="cursor:pointer;">
+                                    <table border="0" cellspacing="0" cellpadding="0">
+                                        <tbody><tr>
+                                           
+                                            <td valign="top">
+                                                <a href="#"><span class="rpNewDashboardMenuItemName">Secondary Display</span></a>
+                                                <div class="rpNewDashboardMenuItemDesc" id="aAnalyze the 2nd display quantity/area  share rate among all the stores by display  type, category and brand. ">Analyze the 2nd display quantity/area  share rate among all the stores by display  type, category and brand. </div>
+                                            </td>
+                                                <td valign="top" align="right" style="padding:25px 5px 0px 10px;">
+                                                <a href="#">
+                                                    <img alt="" style="border:none;" src="../Images/RightArrow.png"></a>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div>
+                            
+                                <div class="rpNewDashboardMenuItem" id="divItem5008" onclick_me="window.location.href=&#39;Dashboard/Dashboard.aspx?d=5008&#39;" style="cursor:pointer;">
+                                    <table border="0" cellspacing="0" cellpadding="0">
+                                        <tbody><tr>
+                                           
+                                            <td valign="top">
+                                                <a href="#"><span class="rpNewDashboardMenuItemName">Secondary Display (May 2013)</span></a>
+                                                <div class="rpNewDashboardMenuItemDesc" id="aAnalyze the 2nd display quantity/area  share rate among all the stores by display  type, category and brand. ">Analyze the 2nd display quantity/area  share rate among all the stores by display  type, category and brand. </div>
+                                            </td>
+                                                <td valign="top" align="right" style="padding:25px 5px 0px 10px;">
+                                                <a href="#">
+                                                    <img alt="" style="border:none;" src="../Images/RightArrow.png"></a>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div>
+                            
+                            <div style="clear:left;">
+                            &nbsp;
+                            </div>
+                    </div>
+                </div>
+                <div class="HomePanelBtm">
+                
+                </div>
+            
+            </div>
+            <br>
+            <br>
+            <br>
+        </div>
+        
+<div class="footerNew">
+<div style="margin:5px 0px 0px 20px;">
+    Copyright© 2015 Mobilizer<br>
+  All Rights Reserved. <br>
+</div>
+  
+</div>
+
+    </div>
+    <input type="button" name="msg_btn" value="" id="msg_btn" style="display:none;visibility:hidden;"><div id="msg_pnl" class="modalPopupMessageBox" style="display: none; position: fixed;">
+	<div class="modalMessageHeader"><table width="100%" border="0"><tbody><tr><td><span class="Title" id="msglblHeader"></span></td></tr></tbody></table></div><div class="modalMessageBody"><div class="modalMessageContent"><span id="msgltMessage"></span></div> <div id="msg__divConfirm"><table border="0" cellspacing="0" cellpadding="0" width="100%"><tbody><tr><td align="center"><input type="button" class="buttonYes" onclick_me="__YesButton_Clicked();return false;">&nbsp;<input type="button" class="buttonNo" onclick_me="__NoButton_Clicked();"></td></tr></tbody></table></div><div id="msg__divAlert"><input type="button" class="buttonOk" onclick_me="__OkButton_Clicked();"></div><div id="msg__divContinue"><input type="button" class="buttonContinue" onclick_me="__ContinueButton_Clicked();"></div></div><div class="modalMessageHeaderXButtonContainer" align="right" style="position:absolute;top:0px;right:0px;"><input class="buttonX" onclick_me="__XButton_Clicked();return false;" type="button"></div>
+</div><input type="button" name="lbi_btn" value="" id="lbi_btn" style="display:none;visibility:hidden;"><div id="lbi_pnl" class="modalPopupIF" style="display: none; position: fixed;">
+	<div class="modalIFHeader"><table width="100%" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="left"></td><td class="middle" align="left"><div id="__ifHeaderImgTitle" class=""></div></td><td class="middle" align="right"></td><td class="right"></td></tr></tbody></table></div><iframe id="__iFModal" allowtransparency="true" style="background-color:Transparent;" scrolling="no" frameborder="0" marginheight="0" marginwidth="0"></iframe><div class="modalMessageHeaderXButtonContainer" align="right" style="position:absolute;top:0px;right:0px;"><input type="button" class="buttonX" onclick_me="__HideLB_Frame(&#39;&#39;);return false;"></div>
+</div><input type="button" name="lb_btn" value="" id="lb_btn" style="display:none;visibility:hidden;"><div id="lb_pnl" class="modalPopupLoading" style="display: none; position: fixed;">
+	<div><table width="100%" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td align="right"><img src="../css/WebResource(1).axd"></td><td>&nbsp;</td><td align="left"><span class="loading">This page is Loading, please wait....</span></td></tr></tbody></table></div>
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var __callback_LB;var __callback_LB_NoButton;var __curMode_LB;var __callBackDelay = 10;var __callBackBtnId;var __countDownTimer=0;var __countDownMsg;var __countDownTimeoutMsg;var __countDownObj;function __YesButton_Clicked() {$find("msg_mpeMessage").hide();if( __callback_LB && __callback_LB.length > 0 ) {setTimeout("__evalCallBack_LB()", __callBackDelay);} else {var prm = Sys.WebForms.PageRequestManager.getInstance();prm._doPostBack(__callBackBtnId, '');__callBackBtnId="";}}function __ContinueButton_Clicked() {$find("msg_mpeMessage").hide();__polling('SSU');if(__countDownObj){clearTimeout(__countDownObj);}}function __OkButton_Clicked() {$find("msg_mpeMessage").hide();setTimeout("__evalCallBack_LB()", __callBackDelay);}function __XButton_Clicked() {$find("msg_mpeMessage").hide();if( __curMode_LB == 0) {setTimeout("__evalCallBack_LB()", __callBackDelay);}else if(__curMode_LB==2){__pollingStart(30000);if(__countDownObj){clearTimeout(__countDownObj);}}}function __evalCallBack_LB() {eval(__callback_LB);__callback_LB = "";}function __evalCallBack_LB_No() {eval(__callback_LB_NoButton);__callback_LB_NoButton = "";}function __NoButton_Clicked() {$find("msg_mpeMessage").hide();if( __callback_LB_NoButton && __callback_LB_NoButton.length > 0 ) {setTimeout("__evalCallBack_LB_No()", __callBackDelay);}}function ShowMessageLBDelay(title, msg, bid, mode, callback) {if($find("msg_mpeMessage")) {ShowMessageLB(title, msg, bid, mode, callback);}else{setTimeout(function(){ShowMessageLBDelay(title, msg, bid, mode, callback)}, 20);}}function UpdateCountDown(){var tmp = __countDownMsg.replace('[TIMER]', __countDownTimer);$get("msgltMessage").innerHTML = tmp;__countDownTimer--; if( __countDownTimer >= 0 ){__countDownObj = setTimeout('UpdateCountDown()', 1000);}else {__curMode_LB=0;$get("msgltMessage").innerHTML = __countDownTimeoutMsg;$common.setVisible($get("msg__divAlert"), true);$common.setVisible($get("msg__divConfirm"), false);$common.setVisible($get("msg__divContinue"), false);}}function ShowMessageLBCountDown(title, msg, tmsg, bid, mode, callback, timer) {if($find("msg_mpeMessage")) {__countDownTimer=timer;__countDownMsg=msg;__countDownTimeoutMsg=tmsg;var tmp = __countDownMsg.replace('[TIMER]', __countDownTimer);ShowMessageLB(title, tmp, bid, mode, callback);UpdateCountDown();}else{setTimeout(function(){ShowMessageLBCountDown(title, msg, bid, mode, callback, timer)}, 20);}}function ShowMessageLBYesNo(title, msg, bid, mode, callbackYes, callbackJsNo) {__callback_LB_NoButton = callbackJsNo;ShowMessageLB(title,msg,bid,mode,callbackYes);}function ShowMessageLB(title, msg, bid, mode, callback) {__callback_LB = callback;__curMode_LB = mode;__callBackBtnId = bid;$get("msglblHeader").innerHTML = title;$get("msgltMessage").innerHTML = msg;if( mode && mode == 1){$common.setVisible($get("msg__divConfirm"), true);$common.setVisible($get("msg__divAlert"), false);$common.setVisible($get("msg__divContinue"), false);}else if( mode && mode == 2){$common.setVisible($get("msg__divConfirm"), false);$common.setVisible($get("msg__divAlert"), false);$common.setVisible($get("msg__divContinue"), true);} else {$common.setVisible($get("msg__divAlert"), true);$common.setVisible($get("msg__divConfirm"), false);$common.setVisible($get("msg__divContinue"), false);}$find("msg_mpeMessage").show();}function __ShowLB_FrameDelay(clsName, hText, width, height, url) {if( $find("lbi_mpeIframe") ){__ShowLB_Frame(clsName, hText, width, height, url);}else{setTimeout(new function(){__ShowLB_FrameDelay(clsName, hText, width, height, url)}, 100);}}function __SetTitle_Frame(hText){$get("__ifHeaderImgTitle").innerHTML = hText;}function __SetClass_Frame(clsName){$get("__ifHeaderImgTitle").className = clsName;}function __ShowLB_Frame(clsName, hText, width, height, url){var myi = $get("__ifHeaderImgTitle");var myf = $get("__iFModal");var div = $get("lbi_pnl");myi.className = clsName;myi.innerHTML = hText;div.style.width = width;myf.style.width = width;myf.style.height = height;myf.src = url;$find("lbi_mpeIframe").show();}function __HideLB_Frame(callbackJs){$find("lbi_mpeIframe").hide();$get("__iFModal").src = "";if( callbackJs && callbackJs != '' ){eval(callbackJs);}}__InitUpdateProgressPanel();
+WebForm_InitCallback();function __polling(message){var context = 'polling';WebForm_DoCallback('__Page',message,__pollingCallBack,context,__pollingErrorCallBack,true);}function __pollingCallBack(returnmessage, context){if(returnmessage.length > 0){eval(returnmessage)}else{__pollingStart(300000);}}function __pollingErrorCallBack(returnmessage, context){alert("Callback Error: " + returnmessage + ", " + context);}function __pollingStart(timeInterval){setTimeout("__polling('SS')", timeInterval);}__pollingStart(300000);(function() {var fn = function() {$get('tm_HiddenField').value = '';Sys.Application.remove_init(fn);};Sys.Application.add_init(fn);})();function __ShowLBLoading() { var lf = $find("lb_mpeLoading"); if( lf ) lf.show();} function __HideLBLoading() { var lf = $find("lb_mpeLoading"); if( lf ) lf.hide(); else setTimeout(function(){__HideLBLoading();}, 100);}Sys.Net.WebRequestManager.add_invokingRequest(__onInvoke); Sys.Net.WebRequestManager.add_completedRequest(__onComplete); var __loadingDigShowed = false; var __loadingST;var __showAjaxLoading=false;function __onInvoke(sender, args) { if( !__showAjaxLoading) return; __loadingST = setTimeout("__ShowLoadingDig()", 100);} function __ShowLoadingDig() { if( !__loadingDigShowed ) top.__ShowLBLoading(); __loadingDigShowed = true; } function __onComplete(sender, args) { __showAjaxLoading=false;if( __loadingDigShowed ) top.__HideLBLoading(); __loadingDigShowed = false; clearTimeout(__loadingST); } function pageUnload() { Sys.Net.WebRequestManager.remove_invokingRequest(__onInvoke); Sys.Net.WebRequestManager.remove_completedRequest(__onComplete); }Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.ModalPopupBehavior, {"BackgroundCssClass":"modalBackground","PopupControlID":"msg_pnl","dynamicServicePath":"/StoreRadar/Home.aspx","id":"msg_mpeMessage"}, null, null, $get("msg_btn"));
+});
+Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.ModalPopupBehavior, {"BackgroundCssClass":"modalBackground","PopupControlID":"lbi_pnl","dynamicServicePath":"/StoreRadar/Home.aspx","id":"lbi_mpeIframe"}, null, null, $get("lbi_btn"));
+});
+Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.ModalPopupBehavior, {"BackgroundCssClass":"modalBackground","PopupControlID":"lb_pnl","dynamicServicePath":"/StoreRadar/Home.aspx","id":"lb_mpeLoading"}, null, null, $get("lb_btn"));
+});
+//]]>
+</script>
+<div id="msg_mpeMessage_backgroundElement" class="modalBackground" style="display: none; position: fixed; left: 0px; top: 0px;"></div><div id="lbi_mpeIframe_backgroundElement" class="modalBackground" style="display: none; position: fixed; left: 0px; top: 0px;"></div><div id="lb_mpeLoading_backgroundElement" class="modalBackground" style="display: none; position: fixed; left: 0px; top: 0px;"></div></form>
+
+
+</body></html>

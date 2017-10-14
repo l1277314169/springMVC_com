@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="CT_TASK_DETAIL_DATA" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.ctTask.po.CtTaskDetailData" >
+    <id column="ct_task_detail_data_id" property="ctTaskDetailDataId" jdbcType="CHAR" />
+    <result column="ct_task_data_id" property="ctTaskDataId" jdbcType="CHAR" />
+    <result column="target1_id" property="target1Id" jdbcType="VARCHAR" />
+    <result column="target2_id" property="target2Id" jdbcType="VARCHAR" />
+    <result column="ct_task_parameter_id" property="ctTaskParameterId" jdbcType="INTEGER" />
+    <result column="value" property="value" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="submit_time" property="submitTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ct_task_detail_data_id, ct_task_data_id, target1_id, target2_id, ct_task_parameter_id, 
+    value, client_id, create_time, submit_time, last_update_time, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ct_task_detail_data
+    where ct_task_detail_data_id = #{ctTaskDetailDataId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ct_task_detail_data
+    where ct_task_detail_data_id = #{ctTaskDetailDataId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.ctTask.po.CtTaskDetailData" >
+    insert into ct_task_detail_data (ct_task_detail_data_id, ct_task_data_id, target1_id, 
+      target2_id, ct_task_parameter_id, value, 
+      client_id)
+    values (#{ctTaskDetailDataId,jdbcType=CHAR}, #{ctTaskDataId,jdbcType=CHAR}, #{target1Id,jdbcType=VARCHAR}, 
+      #{target2Id,jdbcType=VARCHAR}, #{ctTaskParameterId,jdbcType=INTEGER}, #{value,jdbcType=VARCHAR}, 
+      #{clientId,jdbcType=INTEGER})
+  </insert>
+  
+  <insert id="insertColgateCtTaskDetailData" parameterType="cn.mobilizer.channel.ctTask.po.CtTaskDetailData" >
+    insert into ct_task_detail_data (ct_task_detail_data_id, ct_task_data_id, target1_id, 
+      target2_id, ct_task_parameter_id, value, 
+      client_id,create_time,last_update_time)
+    values (#{ctTaskDetailDataId,jdbcType=CHAR}, #{ctTaskDataId,jdbcType=CHAR}, #{target1Id,jdbcType=VARCHAR}, 
+      #{target2Id,jdbcType=VARCHAR}, #{ctTaskParameterId,jdbcType=INTEGER}, #{value,jdbcType=VARCHAR}, 
+      #{clientId,jdbcType=INTEGER},#{createTime},#{lastUpdateTime})
+  </insert>
+  
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.ctTask.po.CtTaskDetailData" >
+    insert into ct_task_detail_data
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ctTaskDetailDataId != null" >
+        ct_task_detail_data_id,
+      </if>
+      <if test="ctTaskDataId != null" >
+        ct_task_data_id,
+      </if>
+      <if test="target1Id != null" >
+        target1_id,
+      </if>
+      <if test="target2Id != null" >
+        target2_id,
+      </if>
+      <if test="ctTaskParameterId != null" >
+        ct_task_parameter_id,
+      </if>
+      <if test="value != null" >
+        value,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="submitTime != null" >
+        submit_time,
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ctTaskDetailDataId != null" >
+        #{ctTaskDetailDataId,jdbcType=CHAR},
+      </if>
+      <if test="ctTaskDataId != null" >
+        #{ctTaskDataId,jdbcType=CHAR},
+      </if>
+      <if test="target1Id != null" >
+        #{target1Id,jdbcType=VARCHAR},
+      </if>
+      <if test="target2Id != null" >
+        #{target2Id,jdbcType=VARCHAR},
+      </if>
+      <if test="ctTaskParameterId != null" >
+        #{ctTaskParameterId,jdbcType=INTEGER},
+      </if>
+      <if test="value != null" >
+        #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="submitTime != null" >
+        #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.ctTask.po.CtTaskDetailData" >
+    update ct_task_detail_data
+    <set >
+      <if test="ctTaskDataId != null" >
+        ct_task_data_id = #{ctTaskDataId,jdbcType=CHAR},
+      </if>
+      <if test="target1Id != null" >
+        target1_id = #{target1Id,jdbcType=VARCHAR},
+      </if>
+      <if test="target2Id != null" >
+        target2_id = #{target2Id,jdbcType=VARCHAR},
+      </if>
+      <if test="ctTaskParameterId != null" >
+        ct_task_parameter_id = #{ctTaskParameterId,jdbcType=INTEGER},
+      </if>
+      <if test="value != null" >
+        value = #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="submitTime != null" >
+        submit_time = #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where ct_task_detail_data_id = #{ctTaskDetailDataId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.ctTask.po.CtTaskDetailData" >
+    update ct_task_detail_data
+    set ct_task_data_id = #{ctTaskDataId,jdbcType=CHAR},
+      target1_id = #{target1Id,jdbcType=VARCHAR},
+      target2_id = #{target2Id,jdbcType=VARCHAR},
+      ct_task_parameter_id = #{ctTaskParameterId,jdbcType=INTEGER},
+      value = #{value,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      submit_time = #{submitTime,jdbcType=TIMESTAMP},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where ct_task_detail_data_id = #{ctTaskDetailDataId,jdbcType=CHAR}
+  </update>
+  
+  <sql id="Base_Query_Column_List">
+  	  <where>
+	        is_delete = 0
+		 <if test="ctTaskDataId != null and ctTaskDataId !=''" >
+	        and ct_task_data_id = #{ctTaskDataId}
+	      </if>
+	      <if test="target1Id != null and target1Id !=''" >
+	        and target1_id = #{target1Id}
+	      </if>
+	      <if test="target2Id != null and target2Id !=''" >
+	        and target2_id = #{target2Id}
+	      </if>
+	      <if test="ctTaskParameterId != null and ctTaskParameterId !=''" >
+	        and ct_task_parameter_id = #{ctTaskParameterId}
+	      </if>
+	      <if test="value != null and value !=''" >
+	        and value = #{value}
+	      </if>
+	      <if test="clientId != null and clientId !=''" >
+	        and client_id = #{clientId}
+	      </if>
+	      <if test="createTime != null and createTime !=''" >
+	        and create_time = #{createTime}
+	      </if>
+	      <if test="submitTime != null and submitTime !=''" >
+	        and submit_time = #{submitTime}
+	      </if>
+	      <if test="lastUpdateTime != null and lastUpdateTime !=''" >
+	        and last_update_time = #{lastUpdateTime}
+	      </if>
+  	  </where>	
+  </sql>
+	
+	<sql id="select_by_param">
+		select
+		<include refid="Base_Column_List" />
+		from ct_task_detail_data
+		<include refid="Base_Query_Column_List" />
+	</sql>
+	
+	<select id="selectByParams" parameterType="java.util.Map" resultMap="BaseResultMap">		 
+		<include refid="select_by_param" />
+		<include refid="basic.mysqlPageSearchFoot" />		
+	</select>
+	
+	<select id="selectByParamCount" parameterType="java.util.Map" resultType="Integer">
+		select count(1) from ct_task_detail_data
+		<include refid="Base_Query_Column_List" />
+	</select>
+	
+	<select id="getDetailDataByTarget1AndParamid" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select * from ct_task_detail_data where ct_task_data_id = #{ctTaskDataId} and is_delete = 0 and
+		ct_task_parameter_id = #{ctTaskParameterId}
+		<if test="target1Id != null and target1Id !=''" >
+	        and target1_id = #{target1Id} 
+      	</if> 
+		and client_id = #{clientId}
+		 ORDER BY ct_task_detail_data.last_update_time desc LIMIT 1
+	</select>
+	
+	<select id="findDetailDatasByTarget1AndParamid" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select * from ct_task_detail_data where ct_task_data_id = #{ctTaskDataId} and is_delete = 0 and
+		ct_task_parameter_id = #{ctTaskParameterId}
+		<if test="target1Id != null and target1Id !=''" >
+	        and target1_id = #{target1Id} 
+      	</if> 
+		and client_id = #{clientId}
+		 ORDER BY ct_task_detail_data.last_update_time desc
+	</select>
+	
+	<insert id="batchSaveCtTaskDetailData" parameterType="java.util.Map" >
+	  <![CDATA[
+	  INSERT INTO ct_task_detail_data (
+        ct_task_detail_data_id, ct_task_data_id, target1_id, target2_id, ct_task_parameter_id, 
+   	 	value, client_id
+	  ) VALUES 
+	  ]]>
+	  <foreach collection="ctTaskDetailDatas" item="item" index="index" separator=",">
+	  (
+	   #{item.ctTaskDetailDataId},
+	   #{item.ctTaskDataId},
+	   #{item.target1Id},
+	   #{item.target2Id},
+	   #{item.ctTaskParameterId},
+	   #{item.value},
+	   #{item.clientId}
+	  )
+	  </foreach>
+	   ON DUPLICATE KEY UPDATE
+	   value = VALUES(value) 
+ 	</insert>
+	
+	<!-- <select id="selectDataDetailByPopIdAndTaskId" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select * from ct_task_data inner join ct_task_detail_data 
+		where client_id = #{clientId} and ct
+		
+		where is_delete = 0 and client_user_id = #{clientUserId} and pop_id = #{popId} and ct_task_id = #{ctTaskId} LIMIT 1
+	</select> -->
+</mapper>

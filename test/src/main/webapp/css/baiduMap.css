@@ -1,0 +1,96 @@
+#mapBG {
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+	height: 100%;
+}
+
+#map {
+	position: absolute;
+	margin-left: 302px;
+	height: 100%;
+	width: 90%;
+}
+
+.left_page {
+	text-align: center;
+	height: 20px;
+	line-height: 20px;
+	vertical-align: middle;
+	margin-top: 8px;
+	cursor: pointer;
+	font-size: 13px;
+}
+
+#map_list_table {
+	position: absolute;
+	width: 300px;
+	height: 100%;
+	background: #fbfbfb;
+	border: 1px solid #dbdbdb;
+	overflow: scroll;
+}
+
+.map_list_main_bg {
+	height: 91px;
+	border-bottom: 1px solid #dbdbdb;
+}
+
+.map_list_main_bg:hover {
+	background: #f6f6f6;
+	cursor: pointer;
+}
+
+.map_list_main_bg div {
+	height: 30px;
+	line-height: 30px;
+	vertical-align: middle;
+	padding-left: 10px;
+	font-size: 13px;
+	overflow: hidden;
+}
+
+.list_map_storeName {
+	color: #338FCC;
+}
+
+#filter_div {
+	width: 100%;
+	margin: 0 auto;
+	padding: 5px;
+	margin-top: 8px;
+	height: 50px;
+	line-height: 50px;
+	vertical-align: middle;
+}
+
+.filter_div_element {
+	float: left;
+	height: 50px;
+	margin-left: 30px;
+	line-height: 50px;
+	vertical-align: bottom;
+}
+
+.baidu_map_info {
+	position: absolute;
+	min-width: 100px;
+	height: 40px;
+	background:url("../images/mapBG.png") repeat;
+	font-size: 12px;
+	padding: 3px;
+	color: #fff;
+	text-align: center;
+	line-height: 20px;
+	vertical-align: middle;
+	margin-top: 15px;
+}
+
+.filter_div_element input[type='text'] {
+	height: 20px;
+	width: 150px;
+}
+
+ul li {
+	list-style-type: none;
+}

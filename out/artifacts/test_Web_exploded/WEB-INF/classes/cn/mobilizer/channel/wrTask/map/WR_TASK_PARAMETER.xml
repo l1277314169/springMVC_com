@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="WR_TASK_PARAMETER" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.wrTask.po.WrTaskParameter" >
+    <id column="wr_task_parameter_id" property="wrTaskParameterId" jdbcType="INTEGER" />
+    <result column="wr_task_id" property="wrTaskId" jdbcType="INTEGER" />
+    <result column="parameter_name" property="parameterName" jdbcType="VARCHAR" />
+    <result column="control_type" property="controlType" jdbcType="INTEGER" />
+    <result column="option_name" property="optionName" jdbcType="VARCHAR" />
+    <result column="sequence" property="sequence" jdbcType="INTEGER" />
+    <result column="max_value" property="maxValue" jdbcType="DECIMAL" />
+    <result column="min_value" property="minValue" jdbcType="DECIMAL" />
+    <result column="default_value" property="defaultValue" jdbcType="VARCHAR" />
+    <result column="scale" property="scale" jdbcType="TINYINT" />
+    <result column="unit" property="unit" jdbcType="VARCHAR" />
+    <result column="weight" property="weight" jdbcType="INTEGER" />
+    <result column="is_must_do" property="isMustDo" jdbcType="TINYINT" />
+    <result column="is_remember" property="isRemember" jdbcType="TINYINT" />
+    <result column="is_verify" property="isVerify" jdbcType="TINYINT" />
+    <result column="is_editable" property="isEditable" jdbcType="TINYINT" />
+    <result column="ext_attribute" property="extAttribute" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    wr_task_parameter_id, wr_task_id, parameter_name, control_type, option_name, sequence, 
+    max_value, min_value, default_value, scale, unit, weight, is_must_do, is_remember, 
+    is_verify, is_editable, ext_attribute, client_id, create_time, last_update_time, 
+    is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from wr_task_parameter
+    where wr_task_parameter_id = #{wrTaskParameterId,jdbcType=INTEGER}
+  </select>
+  
+   <sql id="select_by_param">
+		select
+		<include refid="Base_Column_List" />
+		from wr_task_parameter
+		<include refid="Base_Query_Column_List" />
+	</sql>
+  
+  <select id="selectByParams" parameterType="java.util.Map" resultMap="BaseResultMap">		 
+		<include refid="select_by_param" />
+		<include refid="basic.mysqlPageSearchFoot" />		
+	</select>
+	
+	<select id="selectByParamCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+		select count(1) from wr_task_parameter
+		<include refid="Base_Query_Column_List" />
+	</select>
+	
+	<sql id="Base_Query_Column_List">
+	  	<where>	 
+		 	   is_delete = 0  		      
+		      <if test="wrTaskParameterId != null and wrTaskParameterId !=''" >
+		        	and wr_task_parameter_id = #{wrTaskParameterId}
+		      </if>
+		      <if test="wrTaskId != null and wrTaskId !=''" >
+		         	and wr_task_id = #{wrTaskId}
+		      </if>
+		      <if test="parameterName != null and parameterName !=''" >
+		        	and parameter_name = #{parameterName}
+		      </if>
+		      <if test="controlType != null and controlType !=''" >
+		        	and control_type = #{controlType}
+		      </if>
+		      <if test="optionName != null and optionName !=''" >
+		        	and option_name = #{optionName}
+		      </if>
+		      <if test="sequence != null and sequence !=''" >
+		        	and sequence = #{sequence}
+		      </if>
+		      <if test="maxValue != null and maxValue !=''" >
+		        	and max_value = #{maxValue}
+		      </if>
+		      <if test="minValue != null and minValue !=''" >
+		        	and min_value = #{minValue}
+		      </if>
+		      <if test="defaultValue != null and defaultValue !=''" >
+		        	and default_value = #{defaultValue}
+		      </if>
+		      <if test="scale != null and scale !=''" >
+		        	and scale = #{scale}
+		      </if>
+		      <if test="unit != null and unit !=''" >
+		        	and unit = #{unit}
+		      </if>
+		      <if test="weight != null and weight !=''" >
+		        	and weight = #{weight}
+		      </if>
+		      <if test="isMustDo != null and isMustDo !=''" >
+		        	and is_must_do = #{isMustDo}
+		      </if>
+		      <if test="isRemember != null and isRemember !=''" >
+		        	and is_remember = #{isRemember}
+		      </if>
+		      <if test="isVerify != null and isVerify !=''" >
+		        	and is_verify = #{isVerify}
+		      </if>
+		      <if test="isEditable != null and isEditable !=''" >
+		        	and is_editable = #{isEditable}
+		      </if>
+		      <if test="extAttribute != null and extAttribute !=''" >
+		        	and ext_attribute = #{extAttribute}
+		      </if>
+		      <if test="clientId != null and clientId !=''" >
+		        	and client_id = #{clientId}
+		      </if>
+		      <if test="createTime != null and createTime !=''" >
+		        	and create_time = #{createTime}
+		      </if>
+		      <if test="lastUpdateTime != null and lastUpdateTime !=''" >
+		        	and last_update_time = #{lastUpdateTime}
+		      </if>
+		      <if test="isDelete != null and isDelete !=''" >
+		        	and is_delete = #{isDelete}
+		      </if>
+	      </where>
+	</sql>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from wr_task_parameter
+    where wr_task_parameter_id = #{wrTaskParameterId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.wrTask.po.WrTaskParameter" >
+    insert into wr_task_parameter (wr_task_parameter_id, wr_task_id, parameter_name, 
+      control_type, option_name, sequence, 
+      max_value, min_value, default_value, 
+      scale, unit, weight, 
+      is_must_do, is_remember, is_verify, 
+      is_editable, ext_attribute, client_id, 
+      create_time, last_update_time, is_delete
+      )
+    values (#{wrTaskParameterId,jdbcType=INTEGER}, #{wrTaskId,jdbcType=INTEGER}, #{parameterName,jdbcType=VARCHAR}, 
+      #{controlType,jdbcType=INTEGER}, #{optionName,jdbcType=VARCHAR}, #{sequence,jdbcType=INTEGER}, 
+      #{maxValue,jdbcType=DECIMAL}, #{minValue,jdbcType=DECIMAL}, #{defaultValue,jdbcType=VARCHAR}, 
+      #{scale,jdbcType=TINYINT}, #{unit,jdbcType=VARCHAR}, #{weight,jdbcType=INTEGER}, 
+      #{isMustDo,jdbcType=TINYINT}, #{isRemember,jdbcType=TINYINT}, #{isVerify,jdbcType=TINYINT}, 
+      #{isEditable,jdbcType=TINYINT}, #{extAttribute,jdbcType=VARCHAR}, #{clientId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{lastUpdateTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.wrTask.po.WrTaskParameter" >
+    insert into wr_task_parameter
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="wrTaskParameterId != null" >
+        wr_task_parameter_id,
+      </if>
+      <if test="wrTaskId != null" >
+        wr_task_id,
+      </if>
+      <if test="parameterName != null" >
+        parameter_name,
+      </if>
+      <if test="controlType != null" >
+        control_type,
+      </if>
+      <if test="optionName != null" >
+        option_name,
+      </if>
+      <if test="sequence != null" >
+        sequence,
+      </if>
+      <if test="maxValue != null" >
+        max_value,
+      </if>
+      <if test="minValue != null" >
+        min_value,
+      </if>
+      <if test="defaultValue != null" >
+        default_value,
+      </if>
+      <if test="scale != null" >
+        scale,
+      </if>
+      <if test="unit != null" >
+        unit,
+      </if>
+      <if test="weight != null" >
+        weight,
+      </if>
+      <if test="isMustDo != null" >
+        is_must_do,
+      </if>
+      <if test="isRemember != null" >
+        is_remember,
+      </if>
+      <if test="isVerify != null" >
+        is_verify,
+      </if>
+      <if test="isEditable != null" >
+        is_editable,
+      </if>
+      <if test="extAttribute != null" >
+        ext_attribute,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="wrTaskParameterId != null" >
+        #{wrTaskParameterId,jdbcType=INTEGER},
+      </if>
+      <if test="wrTaskId != null" >
+        #{wrTaskId,jdbcType=INTEGER},
+      </if>
+      <if test="parameterName != null" >
+        #{parameterName,jdbcType=VARCHAR},
+      </if>
+      <if test="controlType != null" >
+        #{controlType,jdbcType=INTEGER},
+      </if>
+      <if test="optionName != null" >
+        #{optionName,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null" >
+        #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="maxValue != null" >
+        #{maxValue,jdbcType=DECIMAL},
+      </if>
+      <if test="minValue != null" >
+        #{minValue,jdbcType=DECIMAL},
+      </if>
+      <if test="defaultValue != null" >
+        #{defaultValue,jdbcType=VARCHAR},
+      </if>
+      <if test="scale != null" >
+        #{scale,jdbcType=TINYINT},
+      </if>
+      <if test="unit != null" >
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null" >
+        #{weight,jdbcType=INTEGER},
+      </if>
+      <if test="isMustDo != null" >
+        #{isMustDo,jdbcType=TINYINT},
+      </if>
+      <if test="isRemember != null" >
+        #{isRemember,jdbcType=TINYINT},
+      </if>
+      <if test="isVerify != null" >
+        #{isVerify,jdbcType=TINYINT},
+      </if>
+      <if test="isEditable != null" >
+        #{isEditable,jdbcType=TINYINT},
+      </if>
+      <if test="extAttribute != null" >
+        #{extAttribute,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.wrTask.po.WrTaskParameter" >
+    update wr_task_parameter
+    <set >
+      <if test="wrTaskId != null" >
+        wr_task_id = #{wrTaskId,jdbcType=INTEGER},
+      </if>
+      <if test="parameterName != null" >
+        parameter_name = #{parameterName,jdbcType=VARCHAR},
+      </if>
+      <if test="controlType != null" >
+        control_type = #{controlType,jdbcType=INTEGER},
+      </if>
+      <if test="optionName != null" >
+        option_name = #{optionName,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null" >
+        sequence = #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="maxValue != null" >
+        max_value = #{maxValue,jdbcType=DECIMAL},
+      </if>
+      <if test="minValue != null" >
+        min_value = #{minValue,jdbcType=DECIMAL},
+      </if>
+      <if test="defaultValue != null" >
+        default_value = #{defaultValue,jdbcType=VARCHAR},
+      </if>
+      <if test="scale != null" >
+        scale = #{scale,jdbcType=TINYINT},
+      </if>
+      <if test="unit != null" >
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null" >
+        weight = #{weight,jdbcType=INTEGER},
+      </if>
+      <if test="isMustDo != null" >
+        is_must_do = #{isMustDo,jdbcType=TINYINT},
+      </if>
+      <if test="isRemember != null" >
+        is_remember = #{isRemember,jdbcType=TINYINT},
+      </if>
+      <if test="isVerify != null" >
+        is_verify = #{isVerify,jdbcType=TINYINT},
+      </if>
+      <if test="isEditable != null" >
+        is_editable = #{isEditable,jdbcType=TINYINT},
+      </if>
+      <if test="extAttribute != null" >
+        ext_attribute = #{extAttribute,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where wr_task_parameter_id = #{wrTaskParameterId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.wrTask.po.WrTaskParameter" >
+    update wr_task_parameter
+    set wr_task_id = #{wrTaskId,jdbcType=INTEGER},
+      parameter_name = #{parameterName,jdbcType=VARCHAR},
+      control_type = #{controlType,jdbcType=INTEGER},
+      option_name = #{optionName,jdbcType=VARCHAR},
+      sequence = #{sequence,jdbcType=INTEGER},
+      max_value = #{maxValue,jdbcType=DECIMAL},
+      min_value = #{minValue,jdbcType=DECIMAL},
+      default_value = #{defaultValue,jdbcType=VARCHAR},
+      scale = #{scale,jdbcType=TINYINT},
+      unit = #{unit,jdbcType=VARCHAR},
+      weight = #{weight,jdbcType=INTEGER},
+      is_must_do = #{isMustDo,jdbcType=TINYINT},
+      is_remember = #{isRemember,jdbcType=TINYINT},
+      is_verify = #{isVerify,jdbcType=TINYINT},
+      is_editable = #{isEditable,jdbcType=TINYINT},
+      ext_attribute = #{extAttribute,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where wr_task_parameter_id = #{wrTaskParameterId,jdbcType=INTEGER}
+  </update>
+</mapper>

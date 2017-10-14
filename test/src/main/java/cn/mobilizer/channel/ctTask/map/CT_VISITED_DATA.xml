@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="CT_VISITED_DATA" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.ctTask.po.CtVisitedData" >
+    <id column="ct_visited_data_id" property="ctVisitedDataId" jdbcType="CHAR" />
+    <result column="client_user_id" property="clientUserId" jdbcType="INTEGER" />
+    <result column="pop_id" property="popId" jdbcType="VARCHAR" />
+    <result column="pop_type" property="popType" jdbcType="TINYINT" />
+    <result column="in_time" property="inTime" jdbcType="TIMESTAMP" />
+    <result column="in_pic" property="inPic" jdbcType="VARCHAR" />
+    <result column="in_longitude" property="inLongitude" jdbcType="VARCHAR" />
+    <result column="in_latitude" property="inLatitude" jdbcType="VARCHAR" />
+    <result column="in_locating_type" property="inLocatingType" jdbcType="TINYINT" />
+    <result column="out_time" property="outTime" jdbcType="TIMESTAMP" />
+    <result column="out_pic" property="outPic" jdbcType="VARCHAR" />
+    <result column="out_longitude" property="outLongitude" jdbcType="VARCHAR" />
+    <result column="out_latitude" property="outLatitude" jdbcType="VARCHAR" />
+    <result column="out_locating_type" property="outLocatingType" jdbcType="TINYINT" />
+    <result column="summary" property="summary" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="submit_time" property="submitTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ct_visited_data_id, client_user_id, pop_id, pop_type, in_time, in_pic, in_longitude, 
+    in_latitude, in_locating_type, out_time, out_pic, out_longitude, out_latitude, out_locating_type, 
+    summary, client_id, create_time, submit_time, last_update_time, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ct_visited_data
+    where ct_visited_data_id = #{ctVisitedDataId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ct_visited_data
+    where ct_visited_data_id = #{ctVisitedDataId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.ctTask.po.CtVisitedData" >
+    insert into ct_visited_data (ct_visited_data_id, client_user_id, pop_id, 
+      pop_type, in_time, in_pic, 
+      in_longitude, in_latitude, in_locating_type, 
+      out_time, out_pic, out_longitude, 
+      out_latitude, out_locating_type, summary, 
+      client_id, create_time, submit_time, 
+      last_update_time, is_delete)
+    values (#{ctVisitedDataId,jdbcType=CHAR}, #{clientUserId,jdbcType=INTEGER}, #{popId,jdbcType=VARCHAR}, 
+      #{popType,jdbcType=TINYINT}, #{inTime,jdbcType=TIMESTAMP}, #{inPic,jdbcType=VARCHAR}, 
+      #{inLongitude,jdbcType=VARCHAR}, #{inLatitude,jdbcType=VARCHAR}, #{inLocatingType,jdbcType=TINYINT}, 
+      #{outTime,jdbcType=TIMESTAMP}, #{outPic,jdbcType=VARCHAR}, #{outLongitude,jdbcType=VARCHAR}, 
+      #{outLatitude,jdbcType=VARCHAR}, #{outLocatingType,jdbcType=TINYINT}, #{summary,jdbcType=VARCHAR}, 
+      #{clientId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{submitTime,jdbcType=TIMESTAMP}, 
+      #{lastUpdateTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.ctTask.po.CtVisitedData" >
+    insert into ct_visited_data
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ctVisitedDataId != null" >
+        ct_visited_data_id,
+      </if>
+      <if test="clientUserId != null" >
+        client_user_id,
+      </if>
+      <if test="popId != null" >
+        pop_id,
+      </if>
+      <if test="popType != null" >
+        pop_type,
+      </if>
+      <if test="inTime != null" >
+        in_time,
+      </if>
+      <if test="inPic != null" >
+        in_pic,
+      </if>
+      <if test="inLongitude != null" >
+        in_longitude,
+      </if>
+      <if test="inLatitude != null" >
+        in_latitude,
+      </if>
+      <if test="inLocatingType != null" >
+        in_locating_type,
+      </if>
+      <if test="outTime != null" >
+        out_time,
+      </if>
+      <if test="outPic != null" >
+        out_pic,
+      </if>
+      <if test="outLongitude != null" >
+        out_longitude,
+      </if>
+      <if test="outLatitude != null" >
+        out_latitude,
+      </if>
+      <if test="outLocatingType != null" >
+        out_locating_type,
+      </if>
+      <if test="summary != null" >
+        summary,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="submitTime != null" >
+        submit_time,
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ctVisitedDataId != null" >
+        #{ctVisitedDataId,jdbcType=CHAR},
+      </if>
+      <if test="clientUserId != null" >
+        #{clientUserId,jdbcType=INTEGER},
+      </if>
+      <if test="popId != null" >
+        #{popId,jdbcType=VARCHAR},
+      </if>
+      <if test="popType != null" >
+        #{popType,jdbcType=TINYINT},
+      </if>
+      <if test="inTime != null" >
+        #{inTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="inPic != null" >
+        #{inPic,jdbcType=VARCHAR},
+      </if>
+      <if test="inLongitude != null" >
+        #{inLongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="inLatitude != null" >
+        #{inLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="inLocatingType != null" >
+        #{inLocatingType,jdbcType=TINYINT},
+      </if>
+      <if test="outTime != null" >
+        #{outTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="outPic != null" >
+        #{outPic,jdbcType=VARCHAR},
+      </if>
+      <if test="outLongitude != null" >
+        #{outLongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="outLatitude != null" >
+        #{outLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="outLocatingType != null" >
+        #{outLocatingType,jdbcType=TINYINT},
+      </if>
+      <if test="summary != null" >
+        #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="submitTime != null" >
+        #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.ctTask.po.CtVisitedData" >
+    update ct_visited_data
+    <set >
+      <if test="clientUserId != null" >
+        client_user_id = #{clientUserId,jdbcType=INTEGER},
+      </if>
+      <if test="popId != null" >
+        pop_id = #{popId,jdbcType=VARCHAR},
+      </if>
+      <if test="popType != null" >
+        pop_type = #{popType,jdbcType=TINYINT},
+      </if>
+      <if test="inTime != null" >
+        in_time = #{inTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="inPic != null" >
+        in_pic = #{inPic,jdbcType=VARCHAR},
+      </if>
+      <if test="inLongitude != null" >
+        in_longitude = #{inLongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="inLatitude != null" >
+        in_latitude = #{inLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="inLocatingType != null" >
+        in_locating_type = #{inLocatingType,jdbcType=TINYINT},
+      </if>
+      <if test="outTime != null" >
+        out_time = #{outTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="outPic != null" >
+        out_pic = #{outPic,jdbcType=VARCHAR},
+      </if>
+      <if test="outLongitude != null" >
+        out_longitude = #{outLongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="outLatitude != null" >
+        out_latitude = #{outLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="outLocatingType != null" >
+        out_locating_type = #{outLocatingType,jdbcType=TINYINT},
+      </if>
+      <if test="summary != null" >
+        summary = #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="submitTime != null" >
+        submit_time = #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where ct_visited_data_id = #{ctVisitedDataId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.ctTask.po.CtVisitedData" >
+    update ct_visited_data
+    set client_user_id = #{clientUserId,jdbcType=INTEGER},
+      pop_id = #{popId,jdbcType=VARCHAR},
+      pop_type = #{popType,jdbcType=TINYINT},
+      in_time = #{inTime,jdbcType=TIMESTAMP},
+      in_pic = #{inPic,jdbcType=VARCHAR},
+      in_longitude = #{inLongitude,jdbcType=VARCHAR},
+      in_latitude = #{inLatitude,jdbcType=VARCHAR},
+      in_locating_type = #{inLocatingType,jdbcType=TINYINT},
+      out_time = #{outTime,jdbcType=TIMESTAMP},
+      out_pic = #{outPic,jdbcType=VARCHAR},
+      out_longitude = #{outLongitude,jdbcType=VARCHAR},
+      out_latitude = #{outLatitude,jdbcType=VARCHAR},
+      out_locating_type = #{outLocatingType,jdbcType=TINYINT},
+      summary = #{summary,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      submit_time = #{submitTime,jdbcType=TIMESTAMP},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where ct_visited_data_id = #{ctVisitedDataId,jdbcType=CHAR}
+  </update>
+  
+   <sql id="Base_Query_Column_List">
+  	<where>
+			<if test="clientUserId != null and clientUserId !=''" >
+	        client_user_id = #{clientUserId}
+	      </if>
+	      <if test="popId != null and popId !=''" >
+	        and pop_id = #{popId}
+	      </if>
+	      <if test="popType != null and popType !=''" >
+	        and pop_type = #{popType}
+	      </if>
+	      <if test="inTime != null and inTime !=''" >
+	        and in_time = #{inTime}
+	      </if>
+	      <if test="inPic != null and inPic !=''" >
+	        and in_pic = #{inPic}
+	      </if>
+	      <if test="inLongitude != null and inLongitude !=''" >
+	        and in_longitude = #{inLongitude}
+	      </if>
+	      <if test="inLatitude != null and inLatitude !=''" >
+	        and in_latitude = #{inLatitude}
+	      </if>
+	      <if test="inLocatingType != null and inLocatingType !=''" >
+	        and in_locating_type = #{inLocatingType}
+	      </if>
+	      <if test="outTime != null and outTime !=''" >
+	        and out_time = #{outTime}
+	      </if>
+	      <if test="outPic != null and outPic !=''" >
+	        and out_pic = #{outPic}
+	      </if>
+	      <if test="outLongitude != null and outLongitude !=''" >
+	        and out_longitude = #{outLongitude}
+	      </if>
+	      <if test="outLatitude != null and outLatitude !=''" >
+	        and out_latitude = #{outLatitude}
+	      </if>
+	      <if test="outLocatingType != null and outLocatingType !=''" >
+	        and out_locating_type = #{outLocatingType}
+	      </if>
+	      <if test="summary != null and summary !=''" >
+	        and summary = #{summary}
+	      </if>
+	      <if test="clientId != null and clientId !=''" >
+	        and client_id = #{clientId}
+	      </if>
+	      <if test="createTime != null and createTime !=''" >
+	        and create_time = #{createTime}
+	      </if>
+	      <if test="submitTime != null and submitTime !=''" >
+	        and submit_time = #{submitTime}
+	      </if>
+	      <if test="lastUpdateTime != null and lastUpdateTime !=''" >
+	        and last_update_time = #{lastUpdateTime}
+	      </if>
+	      <if test="isDelete != null and isDelete !=''" >
+	        and is_delete = #{isDelete}
+	      </if>	  
+      </where>
+	</sql>
+	
+	<sql id="select_by_param">
+		select
+		<include refid="Base_Column_List" />
+		from ct_visited_data
+		<include refid="Base_Query_Column_List" />
+	</sql>
+	
+	<select id="selectByParams" parameterType="java.util.Map" resultMap="BaseResultMap">		 
+		<include refid="select_by_param" />
+		<include refid="basic.mysqlPageSearchFoot" />		
+	</select>
+	
+	<select id="selectByParamCount" parameterType="java.util.Map" resultType="Integer">
+		select count(1) from ct_visited_data
+		<include refid="Base_Query_Column_List" />
+	</select>
+</mapper>

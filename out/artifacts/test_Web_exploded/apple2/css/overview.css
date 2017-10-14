@@ -1,0 +1,476 @@
+﻿.sideFilterPanel
+{
+	width:197px;float:left;
+}
+
+.sideFilterPanelTop
+{
+	width:192px;
+	background-color:transparent;
+	background-image:url(../Images/filterPanelTop.png);
+	background-repeat:no-repeat;
+	height:51px;
+	color:White;
+	font-size:18px;
+	font-weight:bold;
+	font-family:Rockwell,Times New Roman,Serif;
+	padding:12px 5px 0px 0px;
+	text-align:center;
+}
+.sideFilterPanelMid
+{
+	width:175px;
+	background-color:transparent;
+	background-image:url(../Images/filterPanelMid.png);
+	background-repeat:repeat-y;
+	padding-left:16px;
+	padding-right:5px;
+	color:#c00700;
+	font-weight:bold;
+	font-family:Rockwell,Times New Roman,Serif;
+}
+.sideFilterPanelBtm
+{
+	width:197px;
+	background-color:transparent;
+	background-image:url(../Images/filterPanelBtm.png);
+	height:14px;
+	background-repeat:no-repeat;
+	
+}
+
+.overviewPanel
+{
+	width:740px;float:right;
+}
+.filterIconBrand
+{
+	width:33px;
+	height:36px;
+	background-color:transparent;
+	background-repeat:no-repeat;
+	background-image:url(../Images/Icons/filterIconBrand.png);
+}
+.filterIconCategory
+{
+	width:33px;
+	height:36px;
+	background-color:transparent;
+	background-repeat:no-repeat;
+	background-image:url(../Images/Icons/filterIconCategory.png);
+}
+.filterIconRegion
+{
+	width:33px;
+	height:36px;
+	background-color:transparent;
+	background-repeat:no-repeat;
+	background-image:url(../Images/Icons/filterIconRegion.png);
+}
+.filterIconProvince
+{
+	width:33px;
+	height:36px;
+	background-color:transparent;
+	background-repeat:no-repeat;
+	background-image:url(../Images/Icons/filterIconProvince.png);
+}
+.filterIconCity
+{
+	width:33px;
+	height:36px;
+	background-color:transparent;
+	background-repeat:no-repeat;
+	background-image:url(../Images/Icons/filterIconCity.png);
+}
+.filterIconArrow
+{
+	width:33px;
+	height:36px;
+	background-color:transparent;
+	background-repeat:no-repeat;
+	background-image:url(../Images/Icons/filterIconArrow.png);
+}
+
+.labelTitle
+{
+	font-size:14px;font-weight:bold;
+	font-family:Rockwell, Arial, Sans-Serif;
+	color:#c00800;
+}
+
+.hbarchart
+{
+	background-color:transparent;
+	background-image:url(../Images/chartBackground.png);
+	height:14px;
+	background-position:top left;
+}
+
+.btnNewRefresh
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnNewRefresh.png);
+	width:104px;
+	height:27px;
+	
+}
+
+.btnNewRefreshLoading
+{
+	background-position:top left;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Buttons/btnLoading.gif);
+	width:104px;
+	height:27px;
+}
+
+.btnPeriod
+{
+	float:right;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	text-align:center;
+	border-bottom:3px solid #b6b6b6;
+	color:#b6b6b6;
+	font-size:12px;
+	font-weight:bold;
+	text-transform:uppercase;
+	width:230px;
+	margin:0px 1px 0px 1px;
+	
+}
+
+.btnPeriodLeft
+{
+	background-image:url(../Images/LeftArrow.png);
+	background-color:transparent;
+	border:none;
+	cursor:pointer;
+	width:12px;
+	height:19px;
+	background-repeat:no-repeat;
+}
+.btnPeriodRight
+{
+	background-image:url(../Images/RightArrow.png);
+	background-color:transparent;
+	border:none;
+	cursor:pointer;
+	width:12px;
+	height:19px;
+	background-repeat:no-repeat;
+	
+}
+
+.btnPeriod:hover, .btnPeriodSelected
+{
+	float:right;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	text-align:center;
+	border-bottom:3px solid #c00700;
+	color:#c00700;
+	font-size:12px;
+	font-weight:bold;
+	text-transform:uppercase;
+	width:230px;
+	margin:0px 1px 0px 1px;
+	
+}
+
+.filterIconChannel
+{
+	width:33px;
+	height:36px;
+	background-color:transparent;
+	background-repeat:no-repeat;
+	background-image:url(../Images/Icons/filterIconChannel.png);
+}
+
+.filterIconAPG
+{
+	width:33px;
+	height:36px;
+	background-color:transparent;
+	background-repeat:no-repeat;
+	background-image:url(../Images/Icons/filterIconAPG.png);
+}
+
+.filterIconCustomer
+{
+	width:33px;
+	height:36px;
+	background-color:transparent;
+	background-repeat:no-repeat;
+	background-image:url(../Images/Icons/filterIconCustomer.png);
+}
+
+.footerNew
+{
+
+    color: #c00700;
+    padding:0px;
+    margin: 0px auto;
+    width:960px;
+    height:64px;
+    background-image:url(../Images/NewFooter.png);
+    background-position:top center;
+    background-repeat:no-repeat;
+    position:absolute;
+    /*bottom:2px;*/
+    font-size:10px;
+    line-height:16px;
+}
+
+.footerNew a
+{
+	color:#c00700;
+	
+}
+
+.headerNew
+{
+	background-color:transparent;
+    background-image:url(../Images/newHeader.png);
+    background-position:top center;
+    margin: 0px;
+    padding: 0px;
+    background-repeat:no-repeat;
+    width: 100%;
+    height:90px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.NewMenuButton 
+{
+	font-size:14px;
+	font-weight:bold;
+	color:#969696;
+	border:none;
+	background-color:transparent;
+	cursor:pointer;
+	text-transform:uppercase;
+	font-family:Rockwell, Helvetica, Arial, Sans-Serif;
+	
+	
+}
+
+.NewMenuButton:hover
+{
+	color:#ce1613;
+	text-shadow: 0.05em 0.05em #dddddd;
+}
+
+.NewMenuButtonSelected
+{
+	font-size:14px;
+	font-weight:bold;
+	color:#ce1613;
+	border:none;
+	background-color:transparent;
+	cursor:pointer;
+	text-transform:uppercase;
+	font-family:Rockwell, Helvetica, Arial, Sans-Serif;
+	text-shadow: 0.05em 0.05em #dddddd;
+	
+}
+.btnHome
+{
+	background-position:top;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Icons/iconHome.png);
+	width:20px;
+	height:18px;
+	margin-right:10px;
+}
+
+.btnHome:hover
+{
+	background-position:bottom;
+}
+
+.btnHomeSelected
+{
+	background-position:bottom;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	background-color:transparent;
+	background-image:url(../Images/Icons/iconHome.png);
+	width:20px;
+	height:18px;
+	margin-right:10px;
+}
+
+.HomePanel
+{
+	margin:0px auto;
+}
+.HomePanelTop
+{
+	width:943px;
+	background-color:transparent;
+	background-image:url(../Images/HomePanelTop.png);
+	background-repeat:no-repeat;
+	height:75px;
+	
+}
+.HomePanelMid
+{
+	width:943px;
+	background-color:transparent;
+	background-image:url(../Images/HomePanelMid.png);
+	background-repeat:repeat-y;
+	padding:0px 0px 0px 50px;
+	
+}
+.HomePanelBtm
+{
+	width:943px;
+	background-color:transparent;
+	background-image:url(../Images/HomePanelBtm.png);
+	background-repeat:no-repeat;
+	height:15px;
+}
+.rpNewDashboardMenuItem
+{
+	width:210px;
+	height:70px;
+	float:left;
+	margin:15px 93px 15px 0px;
+	background-color:transparent;
+	padding:5px;
+	background-image:url(../Images/HomeItemBG.png);
+	background-position:-260px 0;
+	 -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -khtml-border-radius: 2px;
+    border-radius: 2px;
+	
+	
+	
+}
+.rpNewDashboardMenuItemOverview
+{
+	width:100%;height:125px;
+	float:left;
+	margin:15px 93px 15px 0px;
+	
+	padding:5px 5px 0px 5px;
+	
+	
+	
+}
+.rpNewDashboardMenuItemOverviewBG
+{
+	height:106px;
+	padding:5px;
+	background-image:url(../Images/HomeOverviewItemBG.png);
+	background-position:-888px 0;
+	 -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    border-radius: 3px;
+}
+.rpNewDashboardMenuItemName
+{
+	color:#C91F27;
+	font-size:14px;
+	font-weight:bold;
+	font-family:Rockwell,Helvetica,Arial,Sans-Serif;
+	
+}
+.rpNewDashboardMenuItemDesc
+{
+	color:#7c7c7c;
+	font-size:10px;
+	padding-top:5px;
+	width:185px;
+}
+
+.rpNewDashboardMenuItem a,.rpNewDashboardMenuItem a:hover,.rpNewDashboardMenuItemOverview a,.rpNewDashboardMenuItemOverview a:hover
+{
+	text-decoration:none;
+	cursor:pointer;
+}
+
+.btnDBLeft
+{
+	background-image:url(../Images/LeftArrowSmall.png);
+	background-color:transparent;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	width:9px;
+	height:14px;
+}
+.btnDBRight
+{
+	background-image:url(../Images/RightArrowSmall.png);
+	background-color:transparent;
+	background-repeat:no-repeat;
+	border:none;
+	cursor:pointer;
+	width:9px;
+	height:14px;
+}
+
+.NewReportPanel
+{
+	margin:0px auto;
+}
+.NewReportPanelTop
+{
+	width:930px;
+	background-color:transparent;
+	background-image:url(../Images/NewReportPanelTop.png);
+	background-repeat:no-repeat;
+	height:75px;
+	
+}
+.NewPanelTop
+{
+	width:900px;
+	background-color:transparent;
+	background-image:url(../Images/NewPanelTop.png);
+	background-repeat:no-repeat;
+	height:50px;
+	font-size:16px;
+	font-weight:bold;
+	font-family:Rockwell,Helvetica,Arial,Sans-Serif;
+	color:white;
+	padding-top:25px;
+	padding-left:30px;
+	
+}
+.NewReportPanelMid
+{
+	width:930px;
+	background-color:transparent;
+	background-image:url(../Images/NewReportPanelMid.png);
+	background-repeat:repeat-y;
+	padding:0px 0px 0px 50px;
+	
+}
+.NewReportPanelBtm
+{
+	width:930px;
+	background-color:transparent;
+	background-image:url(../Images/NewReportPanelBtm.png);
+	background-repeat:no-repeat;
+	height:15px;
+}

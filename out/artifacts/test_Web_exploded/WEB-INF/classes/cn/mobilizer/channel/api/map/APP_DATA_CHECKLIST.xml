@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="APP_DATA_CHECKLIST" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.api.po.AppDataChecklist" >
+    <id column="checklist_id" property="checklistId" jdbcType="BIGINT" />
+    <result column="table_name" property="tableName" jdbcType="VARCHAR" />
+    <result column="pk_data_id" property="pkDataId" jdbcType="VARCHAR" />
+    <result column="slave_table_rows" property="slaveTableRows" jdbcType="INTEGER" />
+    <result column="app_version" property="appVersion" jdbcType="VARCHAR" />
+    <result column="app_platform" property="appPlatform" jdbcType="VARCHAR" />
+    <result column="repeat_times" property="repeatTimes" jdbcType="INTEGER" />
+    <result column="log" property="log" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="client_user_id" property="clientUserId" jdbcType="INTEGER" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    checklist_id, table_name, pk_data_id, slave_table_rows, app_version, app_platform, 
+    repeat_times, log, status, client_user_id, client_id, create_time, last_update_time, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from app_data_checklist
+    where checklist_id = #{checklistId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from app_data_checklist
+    where checklist_id = #{checklistId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.api.po.AppDataChecklist" >
+    insert into app_data_checklist (checklist_id, table_name, pk_data_id, 
+      slave_table_rows, app_version, app_platform, 
+      repeat_times, log, status, client_user_id, 
+      client_id, create_time, last_update_time, 
+      is_delete)
+    values (#{checklistId,jdbcType=BIGINT}, #{tableName,jdbcType=VARCHAR}, #{pkDataId,jdbcType=VARCHAR}, 
+      #{slaveTableRows,jdbcType=INTEGER}, #{appVersion,jdbcType=VARCHAR}, #{appPlatform,jdbcType=VARCHAR}, 
+      #{repeatTimes,jdbcType=INTEGER}, #{log,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, #{clientUserId,jdbcType=INTEGER},
+      #{clientId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{lastUpdateTime,jdbcType=TIMESTAMP}, 
+      #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.api.po.AppDataChecklist" >
+    insert into app_data_checklist
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="checklistId != null" >
+        checklist_id,
+      </if>
+      <if test="tableName != null" >
+        table_name,
+      </if>
+      <if test="pkDataId != null" >
+        pk_data_id,
+      </if>
+      <if test="slaveTableRows != null" >
+        slave_table_rows,
+      </if>
+      <if test="appVersion != null" >
+        app_version,
+      </if>
+      <if test="appPlatform != null" >
+        app_platform,
+      </if>
+      <if test="repeatTimes != null" >
+        repeat_times,
+      </if>
+      <if test="log != null" >
+        log,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="clientUserId != null" >
+        client_user_id,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="checklistId != null" >
+        #{checklistId,jdbcType=BIGINT},
+      </if>
+      <if test="tableName != null" >
+        #{tableName,jdbcType=VARCHAR},
+      </if>
+      <if test="pkDataId != null" >
+        #{pkDataId,jdbcType=VARCHAR},
+      </if>
+      <if test="slaveTableRows != null" >
+        #{slaveTableRows,jdbcType=INTEGER},
+      </if>
+      <if test="appVersion != null" >
+        #{appVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="appPlatform != null" >
+        #{appPlatform,jdbcType=VARCHAR},
+      </if>
+      <if test="repeatTimes != null" >
+        #{repeatTimes,jdbcType=INTEGER},
+      </if>
+      <if test="log != null" >
+        #{log,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="clientUserId != null" >
+        #{clientUserId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.api.po.AppDataChecklist" >
+    update app_data_checklist
+    <set >
+      <if test="tableName != null" >
+        table_name = #{tableName,jdbcType=VARCHAR},
+      </if>
+      <if test="pkDataId != null" >
+        pk_data_id = #{pkDataId,jdbcType=VARCHAR},
+      </if>
+      <if test="slaveTableRows != null" >
+        slave_table_rows = #{slaveTableRows,jdbcType=INTEGER},
+      </if>
+      <if test="appVersion != null" >
+        app_version = #{appVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="appPlatform != null" >
+        app_platform = #{appPlatform,jdbcType=VARCHAR},
+      </if>
+      <if test="repeatTimes != null" >
+        repeat_times = #{repeatTimes,jdbcType=INTEGER},
+      </if>
+      <if test="log != null" >
+        log = #{log,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="clientUserId != null" >
+        client_user_id = #{clientUserId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where checklist_id = #{checklistId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.api.po.AppDataChecklist" >
+    update app_data_checklist
+    set table_name = #{tableName,jdbcType=VARCHAR},
+      pk_data_id = #{pkDataId,jdbcType=VARCHAR},
+      slave_table_rows = #{slaveTableRows,jdbcType=INTEGER},
+      app_version = #{appVersion,jdbcType=VARCHAR},
+      app_platform = #{appPlatform,jdbcType=VARCHAR},
+      repeat_times = #{repeatTimes,jdbcType=INTEGER},
+      log = #{log,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      client_user_id = #{clientUserId,jdbcType=INTEGER},
+      client_id = #{clientId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where checklist_id = #{checklistId,jdbcType=BIGINT}
+  </update>
+  
+  <select id="getVisitMasterDateCount" parameterType="java.util.Map" resultType="map">
+  	SELECT vtd.visiting_task_data_id as id, COUNT(vtdd.visiting_task_detail_data_id) as value
+	FROM visiting_task_detail_data vtdd INNER JOIN visiting_task_data vtd 
+	ON vtdd.visiting_task_data_id = vtd.visiting_task_data_id
+	WHERE 1=1
+	<![CDATA[ AND vtd.create_time >= #{startDate}]]>
+	<![CDATA[ AND vtd.create_time <= #{endDate}]]>
+	AND vtd.client_id = #{clientId}
+	AND vtd.client_user_id = #{clientUserId}
+	GROUP BY vtd.visiting_task_data_id
+  </select>
+  
+  <select id="getPlanningMasterDate" parameterType="java.util.Map" resultType="map">
+  	SELECT cp.planning_id as id,0 as value
+	FROM call_planning cp
+	WHERE 1=1
+	<![CDATA[ AND cp.create_time >= #{startDate}]]>
+	<![CDATA[ AND cp.create_time <= #{endDate}]]>
+	AND cp.client_id = #{clientId}
+	AND cp.client_user_id = #{clientUserId}
+  </select>
+  
+  <select id="getCtTaskData" parameterType="java.util.Map" resultType="map">
+  	SELECT ctd.ct_task_data_id as id, COUNT(ctdd.ct_task_detail_data_id) as value
+	FROM ct_task_data ctd INNER JOIN ct_task_detail_data ctdd 
+	ON ctd.ct_task_data_id = ctdd.ct_task_data_id
+	WHERE 1=1
+	<![CDATA[AND ctd.create_time >= #{startDate}]]>
+	<![CDATA[AND ctd.create_time <= #{endDate}]]>
+	AND ctd.client_id = #{clientId}
+	AND ctd.client_user_id = #{clientUserId}
+	GROUP BY ctd.ct_task_data_id
+  </select>
+  
+  <insert id="inertByList" parameterType="java.util.List">
+  	insert into app_data_checklist (table_name, pk_data_id, slave_table_rows, app_version, app_platform, log, status, client_user_id, client_id)
+	values
+	<foreach collection="list" item="item" index="index" separator="," >  
+        (#{item.tableName},#{item.pkDataId},#{item.slaveTableRows},#{item.appVersion},#{item.appPlatform},#{item.log},#{item.status},#{item.clientUserId},#{item.clientId})  
+    </foreach>
+  </insert>
+</mapper>

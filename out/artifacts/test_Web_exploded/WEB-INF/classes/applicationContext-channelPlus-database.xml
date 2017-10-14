@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<beans xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:context="http://www.springframework.org/schema/context" 
+    xmlns:aop="http://www.springframework.org/schema/aop" 
+    xmlns:tx="http://www.springframework.org/schema/tx" 
+    xsi:schemaLocation="
+http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+http://www.springframework.org/schema/context 
+http://www.springframework.org/schema/context/spring-context-4.0.xsd 
+http://www.springframework.org/schema/aop 
+http://www.springframework.org/schema/aop/spring-aop-4.0.xsd 
+http://www.springframework.org/schema/tx 
+http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+	<!-- base数据源 start -->
+    <bean id="dataSourceBase" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName"><value>${jdbc.base.driverClassName}</value></property>
+        <property name="url"> <value>${jdbc.base.url}</value></property>
+        <property name="username"> <value>${jdbc.base.username}</value></property>
+        <property name="password"><value>${jdbc.base.password}</value></property>
+        <property name="maxActive"><value>${jdbc.base.maxActive}</value></property>
+        <property name="maxWait"><value>${jdbc.base.maxWait}</value></property>
+        <property name="maxIdle"><value>${jdbc.base.maxIdle}</value></property>
+        <property name="initialSize"><value>${jdbc.base.initSize}</value></property>
+        <property name="removeAbandoned"><value>true</value></property>
+		<property name="testWhileIdle"><value>true</value></property>
+		<property name="testOnBorrow"><value>false</value></property>
+		<property name="validationQuery"><value>SELECT 1 FROM DUAL</value></property>
+    </bean>
+	<!-- base数据源 end -->
+	
+	<!-- report数据源 start -->
+    <bean id="dataSourceReport" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName"><value>${jdbc.report.driverClassName}</value></property>
+        <property name="url"> <value>${jdbc.report.url}</value></property>
+        <property name="username"> <value>${jdbc.report.username}</value></property>
+        <property name="password"><value>${jdbc.report.password}</value></property>
+        <property name="maxActive"><value>${jdbc.report.maxActive}</value></property>
+        <property name="maxWait"><value>${jdbc.report.maxWait}</value></property>
+        <property name="maxIdle"><value>${jdbc.report.maxIdle}</value></property>
+        <property name="initialSize"><value>${jdbc.report.initSize}</value></property>
+        <property name="removeAbandoned"><value>true</value></property>
+		<property name="testWhileIdle"><value>true</value></property>
+		<property name="testOnBorrow"><value>false</value></property>
+		<property name="validationQuery"><value>SELECT 1 FROM DUAL</value></property>
+    </bean>
+	<!-- report数据源 end -->
+	
+	<!-- log数据源 start -->
+    <bean id="dataSourceLog" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName"><value>${jdbc.log.driverClassName}</value></property>
+        <property name="url"> <value>${jdbc.log.url}</value></property>
+        <property name="username"> <value>${jdbc.log.username}</value></property>
+        <property name="password"><value>${jdbc.log.password}</value></property>
+        <property name="maxActive"><value>${jdbc.log.maxActive}</value></property>
+        <property name="maxWait"><value>${jdbc.log.maxWait}</value></property>
+        <property name="maxIdle"><value>${jdbc.log.maxIdle}</value></property>
+        <property name="initialSize"><value>${jdbc.log.initSize}</value></property>
+        <property name="removeAbandoned"><value>true</value></property>
+		<property name="testWhileIdle"><value>true</value></property>
+		<property name="testOnBorrow"><value>false</value></property>
+		<property name="validationQuery"><value>SELECT 1 FROM DUAL</value></property>
+    </bean>
+	<!-- log数据源 end -->
+	
+    <bean id="dynamicDataSource" class="cn.mobilizer.channel.comm.datasource.DynamicDataSource" >  
+	    <!-- 通过key-value的形式来关联数据源 -->  
+	    <property name="targetDataSources">  
+	        <map key-type="java.lang.String">  
+	            <entry value-ref="dataSourceBase" key="base"></entry>  
+	            <entry value-ref="dataSourceReport" key="report"></entry>  
+	            <entry value-ref="dataSourceLog" key="log"></entry>  
+	        </map>  
+	    </property>  
+	    <property name="defaultTargetDataSource" ref="dataSourceBase" >  
+	    </property>  
+	</bean> 
+	
+ 	<!-- Transaction manager for a single JDBC DataSource -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dynamicDataSource" />
+	</bean>
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dynamicDataSource" />
+		<property name="configLocation" value="classpath:sqlmap-config.xml" />
+		<property name="mapperLocations"> 
+			<value>classpath*:cn/mobilizer/channel/**/map/*.xml</value>
+		</property>
+	</bean>
+    
+    <bean id="sqlSession"  class="org.mybatis.spring.SqlSessionTemplate">  
+          <constructor-arg index="0" ref="sqlSessionFactory" />  
+    </bean> 
+      
+	<!-- 连接事务的注解配置 -->
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+	
+	<bean id="txInterceptor" class="org.springframework.transaction.interceptor.TransactionInterceptor">
+		<property name="transactionManager">
+			<ref bean="transactionManager"/>
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="add*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="insert*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="delete*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="update*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="create*">PROPAGATION_REQUIRED,-Exception</prop> 
+				<prop key="*">PROPAGATION_REQUIRED,readOnly</prop>
+				
+			</props>
+		</property>
+	</bean>
+	 
+	<bean id="autoProxyCreator" class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" />
+	
+	<bean id="aspectJExpressionPointcutAdvisor" class="org.springframework.aop.aspectj.AspectJExpressionPointcutAdvisor"> 
+		<property name="advice"> 
+			<ref bean="txInterceptor" /> 
+		</property> 
+		<property name="expression"> 
+			<value><![CDATA[execution(* cn.mobilizer..*.*ServiceImpl.*(..)) && @within(org.springframework.stereotype.Service) && 
+			(execution(* create*(..)) || execution(* check*(..)) || execution(* add*(..)) || execution(* insert*(..)) || execution(* delete*(..)) || execution(* update*(..)) || execution(* save*(..)))]]></value> 
+		</property> 
+	</bean>	
+	
+</beans>

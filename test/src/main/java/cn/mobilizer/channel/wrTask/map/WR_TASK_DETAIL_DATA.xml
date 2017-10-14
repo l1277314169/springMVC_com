@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="WR_TASK_DETAIL_DATA" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.wrTask.po.WrTaskDetailData" >
+    <id column="wr_task_detail_id" property="wrTaskDetailId" jdbcType="VARCHAR" />
+    <result column="wr_task_data_id" property="wrTaskDataId" jdbcType="VARCHAR" />
+    <result column="wr_task_parameter_id" property="wrTaskParameterId" jdbcType="INTEGER" />
+    <result column="value" property="value" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="submit_time" property="submitTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    wr_task_detail_id, wr_task_data_id, wr_task_parameter_id, value, client_id, create_time, 
+    submit_time, last_update_time, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wr_task_detail_data
+    where wr_task_detail_id = #{wrTaskDetailId,jdbcType=VARCHAR}
+  </select>
+  
+   <sql id="select_by_param">
+		select
+		<include refid="Base_Column_List" />
+		from wr_task_detail_data
+		<include refid="Base_Query_Column_List" />
+	</sql>
+  
+  <select id="selectByParams" parameterType="java.util.Map" resultMap="BaseResultMap">		 
+		<include refid="select_by_param" />
+		<include refid="basic.mysqlPageSearchFoot" />		
+	</select>
+	
+	<select id="selectByParamCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+		select count(1) from wr_task_detail_data
+		<include refid="Base_Query_Column_List" />
+	</select>
+	
+	<sql id="Base_Query_Column_List">
+	  	<where>	 
+		 	   is_delete = 0  		      
+		      <if test="wrTaskDetailId != null and wrTaskDetailId !=''" >
+		        	and wr_task_detail_id = #{wrTaskDetailId}
+		      </if>
+		      <if test="wrTaskDataId != null and wrTaskDataId !=''" >
+		        	and wr_task_data_id = #{wrTaskDataId}
+		      </if>
+		      <if test="wrTaskParameterId != null and wrTaskParameterId !=''" >
+		        	and wr_task_parameter_id = #{wrTaskParameterId}
+		      </if>
+		      <if test="value != null and value !=''" >
+		        	and value = #{value}
+		      </if>
+		      <if test="clientId != null and clientId !=''" >
+		        	and client_id = #{clientId}
+		      </if>
+		      <if test="createTime != null and createTime !=''" >
+		        	and createTime = #{createTime}
+		      </if>
+		      <if test="submitTime != null and submitTime !=''" >
+		        	and submit_time = #{submitTime}
+		      </if>
+		      <if test="isDelete != null and isDelete !=''" >
+		        	and is_delete = #{isDelete}
+		      </if>
+		      <if test="startTime != null and startTime !=''" >
+		        	<![CDATA[
+						and last_update_time >= #{startTime} 
+					]]>	
+		      </if>
+		      <if test="endTime != null and endTime !=''" >
+		        	<![CDATA[
+						and last_update_time <= #{endTime}
+					]]>	
+		      </if>
+	      </where>
+	</sql>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wr_task_detail_data
+    where wr_task_detail_id = #{wrTaskDetailId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.wrTask.po.WrTaskDetailData" >
+    insert into wr_task_detail_data (wr_task_detail_id, wr_task_data_id, wr_task_parameter_id, 
+      value, client_id, create_time, 
+      submit_time, last_update_time, is_delete
+      )
+    values (#{wrTaskDetailId,jdbcType=VARCHAR}, #{wrTaskDataId,jdbcType=VARCHAR}, #{wrTaskParameterId,jdbcType=INTEGER}, 
+      #{value,jdbcType=VARCHAR}, #{clientId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{submitTime,jdbcType=TIMESTAMP}, #{lastUpdateTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.wrTask.po.WrTaskDetailData" >
+    insert into wr_task_detail_data
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="wrTaskDetailId != null" >
+        wr_task_detail_id,
+      </if>
+      <if test="wrTaskDataId != null" >
+        wr_task_data_id,
+      </if>
+      <if test="wrTaskParameterId != null" >
+        wr_task_parameter_id,
+      </if>
+      <if test="value != null" >
+        value,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="submitTime != null" >
+        submit_time,
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="wrTaskDetailId != null" >
+        #{wrTaskDetailId,jdbcType=VARCHAR},
+      </if>
+      <if test="wrTaskDataId != null" >
+        #{wrTaskDataId,jdbcType=VARCHAR},
+      </if>
+      <if test="wrTaskParameterId != null" >
+        #{wrTaskParameterId,jdbcType=INTEGER},
+      </if>
+      <if test="value != null" >
+        #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="submitTime != null" >
+        #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.wrTask.po.WrTaskDetailData" >
+    update wr_task_detail_data
+    <set >
+      <if test="wrTaskDataId != null" >
+        wr_task_data_id = #{wrTaskDataId,jdbcType=VARCHAR},
+      </if>
+      <if test="wrTaskParameterId != null" >
+        wr_task_parameter_id = #{wrTaskParameterId,jdbcType=INTEGER},
+      </if>
+      <if test="value != null" >
+        value = #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="submitTime != null" >
+        submit_time = #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where wr_task_detail_id = #{wrTaskDetailId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.wrTask.po.WrTaskDetailData" >
+    update wr_task_detail_data
+    set wr_task_data_id = #{wrTaskDataId,jdbcType=VARCHAR},
+      wr_task_parameter_id = #{wrTaskParameterId,jdbcType=INTEGER},
+      value = #{value,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      submit_time = #{submitTime,jdbcType=TIMESTAMP},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where wr_task_detail_id = #{wrTaskDetailId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,607 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="CALL_PLANNING" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.visit.po.CallPlanning" >
+    <id column="planning_id" property="planningId" jdbcType="CHAR" />
+    <result column="client_user_id" property="clientUserId" jdbcType="INTEGER" />
+    <result column="call_date" property="callDate" jdbcType="TIMESTAMP" />
+    <result column="pop_id" property="popId" jdbcType="VARCHAR" />
+    <result column="pop_type" property="popType" jdbcType="TINYINT" />
+    <result column="sequence" property="sequence" jdbcType="INTEGER" /> 
+    <result column="planning_type" property="planningType" jdbcType="INTEGER" />
+     <result column="visit_type" property="visitType" jdbcType="TINYINT" />
+    <result column="work_type" property="workType" jdbcType="TINYINT" />
+     <result column="enum_value" property="enumValue" jdbcType="TINYINT" />
+    <result column="route_id" property="routeId" jdbcType="VARCHAR" />
+    <result column="call_status" property="callStatus" jdbcType="INTEGER" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="submit_time" property="submitTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="position_name" property="positionName" jdbcType="VARCHAR" />
+    <result column="structure_name" property="structureName" jdbcType="VARCHAR" />
+    <result column="planed_times" property="planedTimes" jdbcType="INTEGER" />
+    <result column="visited_times" property="visitedTimes" jdbcType="INTEGER" />
+  </resultMap>
+  
+  
+  <sql id="Base_Column_List" >
+    planning_id, client_user_id, call_date, pop_id, pop_type, sequence, planning_type,visit_type,work_type,enum_value,
+    route_id, call_status, client_id,  is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from call_planning
+    where planning_id = #{planningId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from call_planning
+    where planning_id = #{planningId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.visit.po.CallPlanning" >
+    insert into call_planning (planning_id, client_user_id, call_date, 
+      pop_id, pop_type, sequence, 
+      planning_type, visit_type,route_id, call_status, 
+      client_id, is_delete)
+    values (#{planningId,jdbcType=CHAR}, #{clientUserId,jdbcType=INTEGER}, #{callDate,jdbcType=TIMESTAMP}, 
+      #{popId,jdbcType=VARCHAR}, #{popType,jdbcType=TINYINT}, #{sequence,jdbcType=INTEGER}, 
+      #{planningType,jdbcType=INTEGER}, #{visitType,jdbcType=TINYINT},#{routeId,jdbcType=VARCHAR}, #{callStatus,jdbcType=INTEGER}, 
+      #{clientId,jdbcType=INTEGER}, #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.visit.po.CallPlanning" >
+    insert into call_planning
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="planningId != null" >
+        planning_id,
+      </if>
+      <if test="clientUserId != null" >
+        client_user_id,
+      </if>
+      <if test="callDate != null" >
+        call_date,
+      </if>
+      <if test="popId != null" >
+        pop_id,
+      </if>
+       <if test="popId == null" >
+        pop_id,
+      </if>
+      <if test="popType != null" >
+        pop_type,
+      </if>
+      <if test="sequence != null" >
+        sequence,
+      </if>
+      <if test="planningType != null" >
+        planning_type,
+      </if>
+       <if test="visitType != null" >
+        visit_type,
+      </if>
+       <if test="visitType == null" >
+        visit_type,
+      </if>
+      <if test="routeId != null" >
+        route_id,
+      </if>
+      <if test="workType != null">
+      	work_type,
+      </if>
+       <if test="enumValue != null">
+      	enum_value,
+      </if>
+      <if test="enumValue == null">
+      	enum_value,
+      </if>
+      <if test="callStatus != null" >
+        call_status,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+     
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="planningId != null" >
+        #{planningId,jdbcType=CHAR},
+      </if>
+      <if test="clientUserId != null" >
+        #{clientUserId,jdbcType=INTEGER},
+      </if>
+      <if test="callDate != null" >
+        #{callDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="popId != null" >
+        #{popId,jdbcType=VARCHAR},
+      </if>
+      <if test="popId == null">
+      	null,
+      </if>
+      <if test="popType != null" >
+        #{popType,jdbcType=TINYINT},
+      </if>
+      <if test="sequence != null" >
+        #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="planningType != null" >
+        #{planningType,jdbcType=INTEGER},
+      </if>
+      <if test="visitType != null" >
+        #{visitType,jdbcType=TINYINT},
+      </if>
+      <if test="visitType == null" >
+        null,
+      </if>
+      <if test="routeId != null" >
+        #{routeId,jdbcType=TINYINT},
+      </if>
+       <if test="workType != null">
+      	 #{workType,jdbcType=TINYINT},
+      </if>
+       <if test="enumValue != null">
+      	#{enumValue,jdbcType=TINYINT},
+      </if>
+      <if test="enumValue == null">
+      	null,
+      </if>
+      <if test="callStatus != null" >
+        #{callStatus,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.visit.po.CallPlanning" >
+    update call_planning
+    <set >
+      <if test="clientUserId != null" >
+        client_user_id = #{clientUserId,jdbcType=INTEGER},
+      </if>
+      <if test="callDate != null" >
+        call_date = #{callDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="popId != null" >
+        pop_id = #{popId,jdbcType=VARCHAR},
+      </if>
+      <if test="popType != null" >
+        pop_type = #{popType,jdbcType=TINYINT},
+      </if>
+      <if test="sequence != null" >
+        sequence = #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="planningType != null" >
+        planning_type = #{planningType,jdbcType=INTEGER},
+      </if>
+      <if test="visitType != null" >
+        visit_type = #{visitType,jdbcType=TINYINT},
+      </if>
+      <if test="routeId != null" >
+        route_id = #{routeId,jdbcType=VARCHAR},
+      </if>
+       <if test="workType != null">
+      	work_type = #{workType,jdbcType=TINYINT},
+      </if>
+       <if test="enumValue != null">
+     	enum_value = #{enumValue,jdbcType=TINYINT},
+      </if>
+      <if test="callStatus != null" >
+        call_status = #{callStatus,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+     
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where planning_id = #{planningId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.visit.po.CallPlanning" >
+    update call_planning
+    set client_user_id = #{clientUserId,jdbcType=INTEGER},
+      call_date = #{callDate,jdbcType=TIMESTAMP},
+      pop_id = #{popId,jdbcType=VARCHAR},
+      pop_type = #{popType,jdbcType=TINYINT},
+      sequence = #{sequence,jdbcType=INTEGER},
+      planning_type = #{planningType,jdbcType=INTEGER},
+      route_id = #{routeId,jdbcType=VARCHAR},
+      call_status = #{callStatus,jdbcType=INTEGER},
+      client_id = #{clientId,jdbcType=INTEGER},
+     
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where planning_id = #{planningId,jdbcType=CHAR}
+  </update>
+  
+  <select id="queryTotalCount" parameterType="java.util.Map" resultType="Integer">
+	SELECT COUNT(*) from (select a.*
+		from client_user a
+		inner join call_planning cp on cp.client_user_id = a.client_user_id and cp.is_delete = 0 and cp.client_id = #{clientId} and cp.call_date between #{startCallDate,jdbcType=VARCHAR} and #{endCallDate,jdbcType=VARCHAR} 
+		left join options o on o.option_value = cp.enum_value and o.is_delete = 0  and o.client_id = #{clientId} and o.option_name = 'work_type'
+		where a.client_id= #{clientId,jdbcType=INTEGER}
+		and (FIND_IN_SET(a.client_structure_id,#{subStructureId})>0 or find_in_set(a.client_user_id,#{subordinates})>0)
+		<if test="clientUserName != null and clientUserName != '' " >
+			and a.name like CONCAT('%',#{clientUserName},'%')
+		</if>
+		<if test="clientPositionId != null">
+			and a.client_position_id = #{clientPositionId}
+		</if>
+		<if test="visitType != null">
+			and cp.visit_type = #{visitType}
+		</if>
+		<if test="enumValue != null">
+			and cp.enum_value = #{enumValue}
+		</if>
+		<if test="workType != null">
+			and cp.work_type = #{workType}
+		</if>
+		<if test="clientUserId">
+			and cp.client_user_id = #{clientUserId}
+		</if>
+		and a.is_delete=0
+		GROUP BY a.client_user_id,DATE_FORMAT(cp.call_date, '%Y-%m-%d'),cp.visit_type
+	) aa
+  </select>
+  
+  <select id="selectCallPlanning" resultMap="BaseResultMap" parameterType="java.util.Map">
+      select a.client_user_id,a.name,d.planning_id as planningId,d.visit_type as visitType,d.work_type as workType,b.position_name,c.structure_name,DATE_FORMAT(d.call_date,'%Y-%m-%d') as call_date,
+      	sum(CASE WHEN m.store_id is not null  THEN 1 ELSE 0 END) AS isNotDeleteStore,
+		sum(case when d.planning_type=3 then 1 else 0 end) as temp_times,     
+		sum(case when d.planning_id is not null and d.work_type !=1 then 1 else 0 end) as planed_times,
+		d.enum_value as enumValue,
+		o.option_text as optionText
+		from client_user a
+		left join client_position b on a.client_position_id=b.client_position_id
+		left join client_structure c on a.client_structure_id=c.client_structure_id
+		inner join call_planning d on a.client_user_id=d.client_user_id and d.call_date between #{startCallDate,jdbcType=VARCHAR} and #{endCallDate,jdbcType=VARCHAR} and d.is_delete=0 and d.client_id = #{clientId}
+		LEFT JOIN store_user_mapping m on m.store_id = d.pop_id  and m.client_user_id = d.client_user_id
+		AND m.is_delete = 0
+		AND m.client_id = #{clientId}
+		left join options o on o.option_value = d.enum_value and o.is_delete = 0  and o.client_id = #{clientId} and o.option_name = 'work_type'
+		where a.client_id= #{clientId,jdbcType=INTEGER}
+		and (FIND_IN_SET(a.client_structure_id,#{subStructureId})>0 or find_in_set(a.client_user_id,#{subordinates})>0)
+		<if test="clientUserName != null and clientUserName != '' " >
+			and a.name like CONCAT('%',#{clientUserName},'%')
+		</if>
+		<if test="clientPositionId != null">
+			and a.client_position_id = #{clientPositionId}
+		</if>
+		<if test="visitType != null">
+			and d.visit_type = #{visitType}
+		</if>
+		<if test="enumValue != null">
+			and d.enum_value = #{enumValue}
+		</if>
+		<if test="workType != null">
+			and d.work_type = #{workType}
+		</if>
+		<if test="clientUserId">
+			and d.client_user_id = #{clientUserId}
+		</if>
+		and a.is_delete=0
+		GROUP BY
+		a.client_user_id,
+		DATE_FORMAT(d.call_date, '%Y-%m-%d'),
+		d.visit_type,
+		a. NAME,
+		<!-- d.work_type, -->
+		b.position_name,
+		c.structure_name,
+		o.option_text 
+		order by d.visit_type,d.call_date desc
+		<include refid="basic.mysqlPageSearchFoot"/>
+  </select>
+  
+	<select id="selectNotCallPlanning" resultMap="BaseResultMap" parameterType="java.util.Map">
+		 select a.client_user_id,a.name,d.planning_id as planningId,d.visit_type as visitType,d.work_type as workType,b.position_name,c.structure_name,DATE_FORMAT(d.call_date,'%Y-%m-%d') as call_date,
+		d.enum_value as enumValue,
+		o.option_text as optionText
+		from client_user a
+		left join client_position b on a.client_position_id=b.client_position_id
+		left join client_structure c on a.client_structure_id=c.client_structure_id
+		inner join call_planning d on a.client_user_id=d.client_user_id and d.call_date between #{startCallDate,jdbcType=VARCHAR} and #{endCallDate,jdbcType=VARCHAR} and d.is_delete=0 and d.client_id = #{clientId}
+		left join options o on o.option_value = d.enum_value and o.is_delete = 0  and o.client_id = #{clientId} and o.option_name = 'work_type'
+		where a.client_id= #{clientId,jdbcType=INTEGER}
+		and (FIND_IN_SET(a.client_structure_id,#{subStructureId})>0 or find_in_set(a.client_user_id,#{subordinates})>0)
+		<if test="clientUserName != null and clientUserName != '' " >
+			and a.name like CONCAT('%',#{clientUserName},'%')
+		</if>
+		<if test="clientPositionId != null">
+			and a.client_position_id = #{clientPositionId}
+		</if>
+		<if test="visitType != null">
+			and d.visit_type = #{visitType}
+		</if>
+		<if test="enumValue != null">
+			and d.enum_value = #{enumValue}
+		</if>
+		<if test="workType != null">
+			and d.work_type = #{workType}
+		</if>
+		<if test="clientUserId">
+			and d.client_user_id = #{clientUserId}
+		</if>
+		and a.is_delete=0
+		order by DATE_FORMAT(d.call_date,'%Y-%m-%d') desc,a.client_user_id
+		
+		<include refid="basic.mysqlPageSearchFoot"/>
+	</select>
+	
+	<sql id="select_by_param">
+		select cp.*
+		from call_planning cp 
+		where 1=1
+		<include refid="Base_Query_Column_List" />
+	</sql>
+
+	<sql id="Base_Query_Column_List">
+		<if test="clientUserId != null">
+			and cp.client_user_id = #{clientUserId}
+		</if>
+		<if test="clientId != null">
+			and cp.client_id = #{clientId}
+		</if>
+		<if test="isDelete != null">
+			and cp.is_delete = #{isDelete}
+		</if>
+		<if test="startCallDate != null" >
+			<![CDATA[ and cp.call_date >= #{startCallDate}]]>
+		</if>
+		<if test="endCallDate != null" >
+			<![CDATA[ and cp.call_date <= #{endCallDate}]]>
+		</if>
+	</sql>
+  	<select id="findListByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+		<include refid="select_by_param" />
+		<include refid="basic.mysqlPageSearchFoot" />
+	</select>
+	
+  	<select id="findListByParams4union" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select s.store_name popName, vtd.in_time AS inTime, vtd.out_time AS outTime, cp.*
+		from call_planning cp 
+		INNER JOIN store s ON cp.pop_id = s.store_id AND cp.pop_type = 1 AND cp.visit_type = #{taskType} 
+		LEFT JOIN visiting_task_data vtd ON cp.pop_id = vtd.pop_id 
+		AND cp.client_user_id = vtd.client_user_id AND DATEDIFF(cp.call_date,vtd.in_time)=0 AND vtd.pop_type =1 AND vtd.visit_type = #{taskType} 
+		where 1=1 
+		<if test="clientUserId != null">
+			and cp.client_user_id = #{clientUserId}
+		</if>
+		<if test="clientId != null">
+			and cp.client_id = #{clientId}
+		</if>
+		<if test="isDelete != null">
+			and cp.is_delete = #{isDelete}
+		</if>
+		<if test="startCallDate != null" >
+			<![CDATA[ and cp.call_date >= #{startCallDate}]]>
+		</if>
+		<if test="endCallDate != null" >
+			<![CDATA[ and cp.call_date <= #{endCallDate}]]>
+		</if>
+		order by vtd.in_time desc
+	</select>
+	
+	<select id="findListByClientUserId" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select * from
+		call_planning
+		where 1=1
+		and client_user_id = #{clientUserId} 
+		<if test="startDate != null">
+			<![CDATA[ and call_date >= #{startDate}]]>
+		</if>
+		<if test="endDate != null">
+			<![CDATA[ and call_date <= #{endDate}]]>
+		</if>
+		<if test="callDate !=null">
+			<![CDATA[ and call_date >= #{callDate}]]>
+		</if>
+		<if test="afterDay != null">
+			<![CDATA[ and call_date <= #{afterDay}]]>
+		</if>
+		and is_delete = 0
+	</select>
+	
+	<select id="getCallPlanningByClientUserIdAndStoreId" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select * from
+		call_planning
+		where 1=1
+		<if test="visitType != null">
+			and visit_type = #{visitType}
+		</if>
+		<if test="clientUserId != null">
+			and client_user_id = #{clientUserId}
+		</if>
+		<if test="storeId != null">
+			and pop_id = #{storeId}
+		</if>
+		<if test="callDate !=null">
+			and call_date = #{callDate}
+		</if>
+		and client_id = #{clientId}
+	</select>
+	
+	<select id="getCallPlanningByWorkType" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select * from
+		call_planning
+		where 1=1
+		<if test="clientUserId != null">
+			and client_user_id = #{clientUserId}
+		</if>
+		<if test="callDate !=null">
+			and call_date = #{callDate}
+		</if>
+		<if test="workType !=null">
+			and work_type = #{workType}
+		</if>
+		and client_id = #{clientId}
+	</select>
+	
+	<update id="updateByPlanningId" parameterType="java.util.Map">
+	 	update call_planning
+	    <set>
+	      <if test="isDelete != null" >
+	        is_delete = #{isDelete,jdbcType=TINYINT},
+	      </if>
+	    </set>
+   		where planning_id = #{planningId,jdbcType=CHAR}
+	</update>
+	
+	<update id="cancelCallPalnning" parameterType="java.util.Map">
+		update call_planning cg set cg.call_status = 3 where cg.client_id = #{clientId} and cg.client_user_id = #{clientUserId}
+		and cg.visit_type = #{visitType} and cg.pop_id = #{storeId} and cg.is_delete = 0 and cg.call_status = 0 and cg.call_date = #{callDate}
+	</update>
+	
+	<update id="isdeleteCallpalnning" parameterType="java.util.Map">
+	 update call_planning cg set cg.is_delete = 1 where cg.client_id = #{clientId} and cg.client_user_id = #{clientUserId} and FIND_IN_SET(cg.pop_id,#{popIds})
+	 and cg.visit_type = #{visitType} and cg.is_delete = 0  and cg.call_date = #{callDate}
+	</update>
+	
+	<update id="deleteCallpalnning" parameterType="java.util.Map">
+	 update call_planning cg set cg.is_delete = 1 where cg.client_id = #{clientId} and cg.client_user_id = #{clientUserId} 
+	 and cg.visit_type = #{visitType} and cg.is_delete = 0  and cg.call_date = #{callDate}
+	</update>
+	
+	<select id="findCallplanning" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select * from call_planning cp where cp.call_date between #{startDate} and #{endDate} and cp.client_id = #{clientId} and cp.client_user_id = #{clientUserId} 
+		<if test="workType != null">
+			and cp.work_type = #{workType}
+		</if>
+		<if test="planningId != null">
+			and cp.planning_id != #{planningId}
+		</if>
+		 and cp.is_delete = 0
+	</select>
+	
+	<select id="findCallPlanningIsdelete" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select * from call_planning cp where cp.call_date between #{startDate} and #{endDate} and cp.client_id = #{clientId} and cp.client_user_id = #{clientUserId} and cp.pop_id = #{popId}
+		<if test="workType != null">
+			and cp.work_type = #{workType}
+		</if>
+		ORDER BY is_delete, cp.last_update_time DESC LIMIT 0,1
+	</select>
+	
+	<update id="addCallPlanning" parameterType="java.util.Map">
+		 insert into call_planning (planning_id,client_user_id,call_date,pop_id,pop_type,planning_type,visit_type,work_type,enum_value,call_status,client_id) values
+	  <foreach collection="storeIds" item="item" index="index" separator=",">
+	  	(#{planningId},#{clientUserId},#{callDate},#{item},#{popType},#{planningType},#{visitType},#{workType},#{enumValue},#{callStatus},#{clientId})
+	  </foreach>
+	</update>
+	
+	<update id="deleteCallPlanningByDay" parameterType="java.util.Map">
+		update call_planning cp 
+		set cp.is_delete = 1 
+		where cp.call_date between #{startDate} and #{endDate}
+		and cp.client_id = #{clientId} 
+		and cp.client_user_id = #{clientUserId}
+		<if test="workType != null">
+			and cp.work_type = #{workType}
+		</if>
+		<if test="visitType != null">
+			and cp.visit_type = #{visitType}
+		</if>
+		and cp.is_delete = 0
+	</update>
+	
+	<select id="findCallPlanningExport" parameterType="java.util.Map" resultMap="BaseResultMap">
+	SELECT
+		a. NAME,
+		d.planning_id AS planningId,
+		d.visit_type AS visitType,
+		d.work_type AS workType,
+		b.position_name,
+		s.structure_name as parentStructureName,
+		c.structure_name,
+		a.login_name as loginName,
+		cu.name as parentName,
+		r.store_no as storeNo,
+		r.store_name as storeName,
+		DATE_FORMAT(d.call_date, '%Y-%m-%d') AS call_date,
+		d.enum_value AS enumValue,
+		o.option_text AS optionText
+	FROM
+		client_user a
+			INNER JOIN client_position b ON a.client_position_id = b.client_position_id
+			INNER JOIN client_structure c ON a.client_structure_id = c.client_structure_id
+			INNER join client_structure s on s.parent_id = c.parent_id 
+			INNER JOIN call_planning d ON a.client_user_id = d.client_user_id
+			AND d.call_date BETWEEN  #{startCallDate,jdbcType=VARCHAR} and #{endCallDate,jdbcType=VARCHAR}
+			AND d.is_delete = 0
+			AND d.client_id = #{clientId}
+			left JOIN client_user_relation cr on a.client_user_id = cr.client_user_id and cr.client_id = a.client_id and cr.is_delete = 0
+			left JOIN client_user cu on cu.client_user_id = cr.parent_id and cu.client_id = a.client_id and cu.is_delete = 0
+			LEFT  JOIN store r on r.store_id = d.pop_id and r.client_id = a.client_id and r.is_delete = 0
+			LEFT JOIN OPTIONS o ON o.option_value = d.enum_value
+			AND o.is_delete = 0
+			AND o.client_id = #{clientId}
+			AND o.option_name = 'work_type'
+	WHERE
+		a.client_id = #{clientId}
+		AND (FIND_IN_SET(a.client_structure_id ,#{subStructureId}) > 0 OR find_in_set(a.client_user_id ,#{subordinates}) > 0)
+		<if test="clientUserName != null and clientUserName != '' " >
+			and a.name like CONCAT('%',#{clientUserName},'%')
+		</if>
+		<if test="clientPositionId != null">
+			and a.client_position_id = #{clientPositionId}
+		</if>
+		<if test="visitType != null">
+			and d.visit_type = #{visitType}
+		</if>
+		<if test="enumValue != null">
+			and d.enum_value = #{enumValue}
+		</if>
+		<if test="workType != null">
+			and d.work_type = #{workType}
+		</if>
+		<if test="clientUserId">
+			and d.client_user_id = #{clientUserId}
+		</if>
+		AND a.is_delete = 0
+		GROUP BY
+		a.client_user_id,
+		DATE_FORMAT(d.call_date, '%Y-%m-%d'),
+		d.visit_type,
+		a. NAME,
+		d.work_type,
+		b.position_name,
+		c.structure_name,
+		o.option_text
+	</select>
+	
+	<update id="isdeleteExistCallplanning" parameterType="java.util.Map">
+		UPDATE call_planning cp SET cp.is_delete = 1 WHERE 1 = 1
+		AND cp.client_id = #{clientId}
+		AND cp.client_user_id = #{clientUserId}
+		AND FIND_IN_SET(cp.pop_id, #{storeIds})
+		AND cp.call_date &gt; NOW();
+	</update>
+	
+	<update id="batchIsdeleteExistCallplanning" parameterType="java.util.Map">
+		UPDATE call_planning cp SET cp.is_delete = 1 WHERE 1 = 1
+		AND cp.client_id = #{clientId}
+		AND FIND_IN_SET(cp.client_user_id,#{clientUserIds})
+		AND cp.pop_id = #{storeId}
+		AND cp.call_date &gt; NOW()
+	</update>
+	
+	<select id="findCallIsVisit" parameterType="java.util.Map" resultMap="BaseResultMap">
+		SELECT * from call_planning a where a.is_delete = 0 and a.client_id = #{clientId} and a.client_user_id = #{clientUserId} 
+		and a.pop_id = #{storeId} and a.call_date = #{callDate}
+	</select>
+	
+	<insert id="inserList" parameterType="java.util.List">
+		insert into call_planning (planning_id, client_user_id, call_date, pop_id, planning_type,visit_type,work_type,call_status, client_id) values
+		<foreach collection="list" index="index" item="item" separator=",">
+			(#{item.planningId},#{item.clientUserId},#{item.callDate},#{item.popId},#{item.planningType},#{item.visitType},#{item.workType},#{item.callStatus},#{item.clientId})
+		 </foreach>
+	</insert>
+</mapper>

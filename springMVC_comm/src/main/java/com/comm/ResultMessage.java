@@ -1,5 +1,8 @@
 package com.comm;
 
+import com.utils.*;
+import com.utils.Constants;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -80,10 +83,10 @@ public class ResultMessage implements Serializable {
         return "success".equalsIgnoreCase(this.code);
     }
 
-    public String toString() {
-        return "ResultMessage [code=" + this.code + ", message=" + this.message
-                + "]";
-    }
+//    public String toString() {
+//        return "ResultMessage [code=" + this.code + ", message=" + this.message
+//                + "]";
+//    }
 
     public Map<String, Object> getAttributes() {
         return this.attributes;
@@ -110,4 +113,13 @@ public class ResultMessage implements Serializable {
         ResultMessage msg = new ResultMessage("success", "操作成功");
         return msg;
     }
+
+
+    public static void main(String[] args) {
+
+        System.out.println(Constants.OptionName.USER_STATUS);
+
+
+    }
+
 }

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="SYSTEM_FEEDBACK" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.base.po.SystemFeedback" >
+    <id column="feedback_id" property="feedbackId" jdbcType="CHAR" />
+    <result column="feedback_type" property="feedbackType" jdbcType="TINYINT" />
+    <result column="topic" property="topic" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="log_file" property="logFile" jdbcType="VARCHAR" />
+    <result column="feedback_by" property="feedbackBy" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="submit_time" property="submitTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+    <result column="pictures" property="pictures" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    feedback_id, feedback_type, topic, content, log_file, feedback_by, status, client_id, 
+    create_time, submit_time, last_update_time, is_delete, pictures
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from system_feedback
+    where feedback_id = #{feedbackId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from system_feedback
+    where feedback_id = #{feedbackId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.base.po.SystemFeedback" >
+    insert into system_feedback (feedback_id, feedback_type, topic, 
+      content, log_file, feedback_by, 
+      status, client_id,is_delete, 
+      pictures)
+    values (#{feedbackId,jdbcType=CHAR}, #{feedbackType,jdbcType=TINYINT}, #{topic,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{logFile,jdbcType=VARCHAR}, #{feedbackBy,jdbcType=INTEGER}, 
+      #{status,jdbcType=TINYINT}, #{clientId,jdbcType=INTEGER},  #{isDelete,jdbcType=TINYINT}, 
+      #{pictures,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.base.po.SystemFeedback" >
+    insert into system_feedback
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="feedbackId != null" >
+        feedback_id,
+      </if>
+      <if test="feedbackType != null" >
+        feedback_type,
+      </if>
+      <if test="topic != null" >
+        topic,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="logFile != null" >
+        log_file,
+      </if>
+      <if test="feedbackBy != null" >
+        feedback_by,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="pictures != null" >
+        pictures,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="feedbackId != null" >
+        #{feedbackId,jdbcType=CHAR},
+      </if>
+      <if test="feedbackType != null" >
+        #{feedbackType,jdbcType=TINYINT},
+      </if>
+      <if test="topic != null" >
+        #{topic,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="logFile != null" >
+        #{logFile,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbackBy != null" >
+        #{feedbackBy,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="pictures != null" >
+        #{pictures,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.base.po.SystemFeedback" >
+    update system_feedback
+    <set >
+      <if test="feedbackType != null" >
+        feedback_type = #{feedbackType,jdbcType=TINYINT},
+      </if>
+      <if test="topic != null" >
+        topic = #{topic,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="logFile != null" >
+        log_file = #{logFile,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbackBy != null" >
+        feedback_by = #{feedbackBy,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="pictures != null" >
+        pictures = #{pictures,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where feedback_id = #{feedbackId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.base.po.SystemFeedback" >
+    update system_feedback
+    set feedback_type = #{feedbackType,jdbcType=TINYINT},
+      topic = #{topic,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      log_file = #{logFile,jdbcType=VARCHAR},
+      feedback_by = #{feedbackBy,jdbcType=INTEGER},
+      status = #{status,jdbcType=TINYINT},
+      client_id = #{clientId,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=TINYINT},
+      pictures = #{pictures,jdbcType=VARCHAR}
+    where feedback_id = #{feedbackId,jdbcType=CHAR}
+  </update>
+</mapper>

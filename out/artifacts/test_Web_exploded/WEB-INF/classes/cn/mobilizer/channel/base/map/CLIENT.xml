@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="CLIENT" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.base.po.Client" >
+    <id column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="client_no" property="clientNo" jdbcType="VARCHAR" />
+    <result column="client_name" property="clientName" jdbcType="VARCHAR" />
+    <result column="client_type" property="clientType" jdbcType="INTEGER" />
+    <result column="addr" property="addr" jdbcType="VARCHAR" />
+    <result column="postcode" property="postcode" jdbcType="VARCHAR" />
+    <result column="contact_name" property="contactName" jdbcType="VARCHAR" />
+    <result column="telephone_no" property="telephoneNo" jdbcType="VARCHAR" />
+    <result column="fax" property="fax" jdbcType="VARCHAR" />
+    <result column="website" property="website" jdbcType="VARCHAR" />
+    <result column="product_id" property="productId" jdbcType="INTEGER" />
+    <result column="data_cycle" property="dataCycle" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="logo_prefix" property="logoPrefix" jdbcType="VARCHAR" />
+    <result column="expired_date" property="expiredDate" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <resultMap id="BaseResultMapVO" type="cn.mobilizer.channel.base.vo.ClientVO" >
+    <id column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="client_no" property="clientNo" jdbcType="VARCHAR" />
+    <result column="client_name" property="clientName" jdbcType="VARCHAR" />
+    <result column="client_type" property="clientType" jdbcType="INTEGER" />
+    <result column="addr" property="addr" jdbcType="VARCHAR" />
+    <result column="postcode" property="postcode" jdbcType="VARCHAR" />
+    <result column="contact_name" property="contactName" jdbcType="VARCHAR" />
+    <result column="telephone_no" property="telephoneNo" jdbcType="VARCHAR" />
+    <result column="fax" property="fax" jdbcType="VARCHAR" />
+    <result column="website" property="website" jdbcType="VARCHAR" />
+    <result column="product_id" property="productId" jdbcType="INTEGER" />
+    <result column="data_cycle" property="dataCycle" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="logo_prefix" property="logoPrefix" jdbcType="VARCHAR" />
+    <result column="expired_date" property="expiredDate" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    client_id, client_no, client_name, client_type, addr, postcode, contact_name, telephone_no, 
+    fax, website, product_id, data_cycle, remark, parent_id, status, logo_prefix, expired_date, create_time, 
+    last_update_time, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from client
+    where client_id = #{clientId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from client
+    where client_id = #{clientId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.base.po.Client" >
+    insert into client (client_id, client_no, client_name, 
+      client_type, addr, postcode, 
+      contact_name, telephone_no, fax, 
+      website, product_id, data_cycle, 
+      remark, parent_id, status, logo_prefix, 
+      expired_date,
+      is_delete)
+    values (#{clientId,jdbcType=INTEGER}, #{clientNo,jdbcType=VARCHAR}, #{clientName,jdbcType=VARCHAR}, 
+      #{clientType,jdbcType=INTEGER}, #{addr,jdbcType=VARCHAR}, #{postcode,jdbcType=VARCHAR}, 
+      #{contactName,jdbcType=VARCHAR}, #{telephoneNo,jdbcType=VARCHAR}, #{fax,jdbcType=VARCHAR}, 
+      #{website,jdbcType=VARCHAR}, #{productId,jdbcType=INTEGER}, #{dataCycle,jdbcType=INTEGER}, 
+      #{remark,jdbcType=VARCHAR}, #{parentId,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}, #{logoPrefix,jdbcType=VARCHAR},
+      #{expiredDate,jdbcType=TIMESTAMP},
+      #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.base.po.Client" >
+    insert into client
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="clientNo != null" >
+        client_no,
+      </if>
+      <if test="clientName != null" >
+        client_name,
+      </if>
+      <if test="clientType != null" >
+        client_type,
+      </if>
+      <if test="addr != null" >
+        addr,
+      </if>
+      <if test="postcode != null" >
+        postcode,
+      </if>
+      <if test="contactName != null" >
+        contact_name,
+      </if>
+      <if test="telephoneNo != null" >
+        telephone_no,
+      </if>
+      <if test="fax != null" >
+        fax,
+      </if>
+      <if test="website != null" >
+        website,
+      </if>
+      <if test="productId != null" >
+        product_id,
+      </if>
+      <if test="dataCycle != null" >
+        data_cycle,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="expiredDate != null" >
+        expired_date,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="clientNo != null" >
+        #{clientNo,jdbcType=VARCHAR},
+      </if>
+      <if test="clientName != null" >
+        #{clientName,jdbcType=VARCHAR},
+      </if>
+      <if test="clientType != null" >
+        #{clientType,jdbcType=INTEGER},
+      </if>
+      <if test="addr != null" >
+        #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="postcode != null" >
+        #{postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null" >
+        #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="telephoneNo != null" >
+        #{telephoneNo,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="website != null" >
+        #{website,jdbcType=VARCHAR},
+      </if>
+      <if test="productId != null" >
+        #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="dataCycle != null" >
+        #{dataCycle,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="expiredDate != null" >
+        #{expiredDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.base.po.Client" >
+    update client
+    <set >
+      <if test="clientNo != null" >
+        client_no = #{clientNo,jdbcType=VARCHAR},
+      </if>
+      <if test="clientName != null" >
+        client_name = #{clientName,jdbcType=VARCHAR},
+      </if>
+      <if test="clientType != null" >
+        client_type = #{clientType,jdbcType=INTEGER},
+      </if>
+      <if test="addr != null" >
+        addr = #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="postcode != null" >
+        postcode = #{postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null" >
+        contact_name = #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="telephoneNo != null" >
+        telephone_no = #{telephoneNo,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        fax = #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="website != null" >
+        website = #{website,jdbcType=VARCHAR},
+      </if>
+      <if test="productId != null" >
+        product_id = #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="dataCycle != null" >
+        data_cycle = #{dataCycle,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="expiredDate != null" >
+        expired_date = #{expiredDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where client_id = #{clientId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.base.po.Client" >
+    update client
+    set client_no = #{clientNo,jdbcType=VARCHAR},
+      client_name = #{clientName,jdbcType=VARCHAR},
+      client_type = #{clientType,jdbcType=INTEGER},
+      addr = #{addr,jdbcType=VARCHAR},
+      postcode = #{postcode,jdbcType=VARCHAR},
+      contact_name = #{contactName,jdbcType=VARCHAR},
+      telephone_no = #{telephoneNo,jdbcType=VARCHAR},
+      fax = #{fax,jdbcType=VARCHAR},
+      website = #{website,jdbcType=VARCHAR},
+      product_id = #{productId,jdbcType=INTEGER},
+      data_cycle = #{dataCycle,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      parent_id = #{parentId,jdbcType=INTEGER},
+      status = #{status,jdbcType=TINYINT},
+      expired_date = #{expiredDate,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where client_id = #{clientId,jdbcType=INTEGER}
+  </update>
+  
+	<sql id="Base_Query_Column_List">
+		<if test="clientName != null">
+			and client_name = #{clientName}
+		</if>
+		<if test="isDelete == null">
+			and is_delete = 0
+		</if>
+	</sql>
+  	<select id="selectByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from CLIENT
+		where 1=1
+		<include refid="Base_Query_Column_List" />
+	</select>
+	
+	<select id="findClientByParams" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from client
+    where client_name = #{clientName} and is_delete = 0
+  </select>
+  
+  <select id="loadAllClient" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from client
+    where is_delete = 0
+  </select>
+  
+  <select id="queryAllClient" resultMap="BaseResultMapVO">
+    select * from client where is_delete = 0 order by client_id
+  </select>
+  
+</mapper>

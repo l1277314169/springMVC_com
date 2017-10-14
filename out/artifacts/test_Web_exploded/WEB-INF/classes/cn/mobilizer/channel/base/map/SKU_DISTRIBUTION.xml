@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="SKU_DISTRIBUTION" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.base.po.SkuDistribution" >
+    <id column="sku_distribution_id" property="skuDistributionId" jdbcType="INTEGER" />
+    <result column="group_name" property="groupName" jdbcType="VARCHAR" />
+    <result column="sequence" property="sequence" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sku_distribution_id, group_name, sequence, remark, client_id, create_time, last_update_time, 
+    is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sku_distribution
+    where sku_distribution_id = #{skuDistributionId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sku_distribution
+    where sku_distribution_id = #{skuDistributionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.base.po.SkuDistribution" >
+    insert into sku_distribution (sku_distribution_id, group_name, sequence, 
+      remark, client_id, create_time, 
+      last_update_time, is_delete)
+    values (#{skuDistributionId,jdbcType=INTEGER}, #{groupName,jdbcType=VARCHAR}, #{sequence,jdbcType=INTEGER}, 
+      #{remark,jdbcType=VARCHAR}, #{clientId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{lastUpdateTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.base.po.SkuDistribution" useGeneratedKeys="true" keyProperty="skuDistributionId">
+    insert into sku_distribution
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="skuDistributionId != null" >
+        sku_distribution_id,
+      </if>
+      <if test="groupName != null" >
+        group_name,
+      </if>
+      <if test="sequence != null" >
+        sequence,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="skuDistributionId != null" >
+        #{skuDistributionId,jdbcType=INTEGER},
+      </if>
+      <if test="groupName != null" >
+        #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null" >
+        #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.base.po.SkuDistribution" >
+    update sku_distribution
+    <set >
+      <if test="groupName != null" >
+        group_name = #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null" >
+        sequence = #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where sku_distribution_id = #{skuDistributionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.base.po.SkuDistribution" >
+    update sku_distribution
+    set group_name = #{groupName,jdbcType=VARCHAR},
+      sequence = #{sequence,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where sku_distribution_id = #{skuDistributionId,jdbcType=INTEGER}
+  </update>
+  	<sql id="Query_Column_List">
+		<if test="clientId != null ">
+			and sd.client_id = #{clientId}
+		</if>
+		<if test="isDelete != null">
+			and sd.is_delete = #{isDelete}
+		</if>
+		<if test="groupName != null and groupName != ''">
+			and sd.group_name like CONCAT('%',#{groupName},'%')
+		</if>
+		<if test="channelId != null">
+			and sdpm.channel_id = #{channelId}
+		</if>
+		<if test="chainId != null">
+			and sdpm.chain_id = #{chainId}
+		</if>
+	</sql>
+	
+	<sql id="Query_join_List">
+		LEFT JOIN sku_distribution_mapping sdm on sd.sku_distribution_id = sdm.sku_distribution_id and sdm.is_delete = 0 and sdm.client_id = #{clientId}
+		LEFT JOIN sku_distribution_pop_mapping sdpm on sd.sku_distribution_id = sdpm.sku_distribution_id and sdpm.is_delete = 0 and sdpm.client_id = #{clientId}
+		LEFT JOIN channel c on c.channel_id = sdpm.channel_id and c.is_delete = 0 and c.client_id = #{clientId}
+		LEFT JOIN chain ch on ch.chain_id = sdpm.chain_id and ch.is_delete = 0 and ch.client_id = #{clientId}
+		LEFT JOIN distributor d on d.distributor_id = sdpm.distributor_id and d.is_delete = 0 and d.client_id = #{clientId}
+		LEFT  JOIN sku s on s.sku_id = sdm.sku_id AND s.is_delete = 0 AND s.client_id = #{clientId}
+	</sql>
+  
+  <select id="queryCount" parameterType="java.util.Map" resultType="Integer">
+	 SELECT COUNT(1) from (SELECT sd.group_name,c.channel_name,ch.chain_name,COUNT(s.sku_id)as skuNumber from sku_distribution sd 
+	 <include refid="Query_join_List" />
+	where 1=1
+	<include refid="Query_Column_List" />
+	GROUP BY sd.group_name,c.channel_name,ch.chain_name) ct
+  </select>
+  
+  <select id="selectlistByMap" parameterType="java.util.Map" resultMap="BaseResultMap">
+  	SELECT sd.sku_distribution_id,sd.group_name,c.channel_name as channelName,ch.chain_name as chainName,d.distributor_name as distributorName,COUNT(s.sku_id)as skuNumber from sku_distribution sd 
+	<include refid="Query_join_List" />
+	where 1=1
+	<include refid="Query_Column_List" />
+	GROUP BY sd.group_name,c.channel_name,ch.chain_name
+	<include refid="basic.mysqlPageSearchFoot"/>
+  </select>
+  
+  <select id="findSkuDistribution" parameterType="java.util.Map" resultMap="BaseResultMap">
+	SELECT sd.sku_distribution_id,sd.group_name,sdpm.channel_id as channelId,sdpm.chain_id as chainId,sdpm.distributor_id as distributorId, GROUP_CONCAT(s.sku_id) as skuIds from sku_distribution sd 
+	LEFT JOIN sku_distribution_mapping sdm on sd.sku_distribution_id = sdm.sku_distribution_id and sdm.is_delete = 0 and sdm.client_id = #{clientId}
+	LEFT JOIN sku_distribution_pop_mapping sdpm on sd.sku_distribution_id = sdpm.sku_distribution_id and sdpm.is_delete = 0 and sdpm.client_id = #{clientId}
+	LEFT  JOIN sku s on s.sku_id = sdm.sku_id AND s.is_delete = 0 AND s.client_id = #{clientId}
+	where sd.is_delete = 0 and sd.client_id = #{clientId} and sd.sku_distribution_id = #{skuDistributionId}
+  </select>
+  
+  <update id="updateIsdelte"  parameterType="java.util.Map">
+  	update sku_distribution sd set sd.is_delete = 1 where sd.client_id = #{clientId} and sd.sku_distribution_id = #{skuDistributionId}
+  </update>
+  
+  <select id="findSkuDistributionGroupName" parameterType="java.util.Map" resultMap="BaseResultMap">
+  	select * from sku_distribution sd where sd.client_id = #{clientId} and sd.group_name = #{groupName} and sd.is_delete = 0
+  </select>
+</mapper>

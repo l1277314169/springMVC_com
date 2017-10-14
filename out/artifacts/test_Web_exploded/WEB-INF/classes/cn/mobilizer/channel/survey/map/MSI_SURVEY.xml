@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="MSI_SURVEY" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.survey.po.MsiSurvey" >
+    <id column="msi_survey_id" property="msiSurveyId" jdbcType="INTEGER" />
+    <result column="msi_survey_type_id" property="msiSurveyTypeId" jdbcType="INTEGER" />
+    <result column="survey_no" property="surveyNo" jdbcType="VARCHAR" />
+    <result column="survey_name" property="surveyName" jdbcType="VARCHAR" />
+    <result column="start_date" property="startDate" jdbcType="TIMESTAMP" />
+    <result column="end_date" property="endDate" jdbcType="TIMESTAMP" />
+    <result column="point" property="point" jdbcType="DECIMAL" />
+    <result column="initial_score" property="initialScore" jdbcType="DECIMAL" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="cycle_type" property="cycleType" jdbcType="INTEGER" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    msi_survey_id, msi_survey_type_id, survey_no, survey_name, start_date, end_date, point,initial_score, client_id, create_time, 
+    last_update_time, is_delete,cycle_type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from msi_survey
+    where msi_survey_id = #{msiSurveyId,jdbcType=INTEGER} and is_delete = 0
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from msi_survey
+    where msi_survey_id = #{msiSurveyId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.survey.po.MsiSurvey" >
+    insert into msi_survey (msi_survey_id, survey_no, survey_name, 
+      start_date, end_date, point, 
+      client_id, create_time, last_update_time, 
+      is_delete)
+    values (#{msiSurveyId,jdbcType=INTEGER}, #{surveyNo,jdbcType=VARCHAR}, #{surveyName,jdbcType=VARCHAR}, 
+      #{startDate,jdbcType=TIMESTAMP}, #{endDate,jdbcType=TIMESTAMP}, #{point,jdbcType=DECIMAL}, 
+      #{clientId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{lastUpdateTime,jdbcType=TIMESTAMP}, 
+      #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.survey.po.MsiSurvey" >
+    insert into msi_survey
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="msiSurveyId != null" >
+        msi_survey_id,
+      </if>
+      <if test="surveyNo != null" >
+        survey_no,
+      </if>
+      <if test="surveyName != null" >
+        survey_name,
+      </if>
+      <if test="startDate != null" >
+        start_date,
+      </if>
+      <if test="endDate != null" >
+        end_date,
+      </if>
+      <if test="point != null" >
+        point,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="msiSurveyId != null" >
+        #{msiSurveyId,jdbcType=INTEGER},
+      </if>
+      <if test="surveyNo != null" >
+        #{surveyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="surveyName != null" >
+        #{surveyName,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null" >
+        #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="point != null" >
+        #{point,jdbcType=DECIMAL},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.survey.po.MsiSurvey" >
+    update msi_survey
+    <set >
+      <if test="surveyNo != null" >
+        survey_no = #{surveyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="surveyName != null" >
+        survey_name = #{surveyName,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null" >
+        start_date = #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        end_date = #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="point != null" >
+        point = #{point,jdbcType=DECIMAL},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where msi_survey_id = #{msiSurveyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.survey.po.MsiSurvey" >
+    update msi_survey
+    set survey_no = #{surveyNo,jdbcType=VARCHAR},
+      survey_name = #{surveyName,jdbcType=VARCHAR},
+      start_date = #{startDate,jdbcType=TIMESTAMP},
+      end_date = #{endDate,jdbcType=TIMESTAMP},
+      point = #{point,jdbcType=DECIMAL},
+      client_id = #{clientId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where msi_survey_id = #{msiSurveyId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="findAppleExamMsiSurveyByStoreAndType" parameterType="java.util.Map" resultMap="BaseResultMap" >
+  	SELECT ms.*,mssm.store_id
+	FROM msi_survey ms
+	INNER JOIN msi_survey_store_mapping mssm ON ms.msi_survey_id = mssm.msi_survey_id
+ 	where mssm.client_id = #{clientId} AND	mssm.store_id = #{storeId} AND	ms.client_id = #{clientId}
+	and ms.is_delete = 0 and mssm.is_delete = 0 and ms.msi_survey_id = #{msiSurveyType}  
+  </select>
+  
+  <select id="findAppleMsiSurveyListByStore" parameterType="java.util.Map" resultMap="BaseResultMap" >
+  	SELECT ms.*,mssm.store_id
+	FROM msi_survey ms
+	INNER JOIN msi_survey_store_mapping mssm ON ms.msi_survey_id = mssm.msi_survey_id
+ 	where mssm.client_id = #{clientId} AND	mssm.store_id = #{storeId} AND	ms.client_id = #{clientId}
+	and ms.is_delete = 0 and mssm.is_delete = 0  
+	AND now() >= ms.start_date  
+  </select>
+  
+  <select id="findAppleMsiSurveyListByType" parameterType="java.util.Map" resultMap="BaseResultMap" >
+  	SELECT ms.*,mstsm.store_id
+	FROM msi_survey ms
+	INNER JOIN msi_survey_type_store_mapping mstsm ON ms.msi_survey_type_id = mstsm.msi_survey_type_id
+ 	where mstsm.client_id = #{clientId} AND	mstsm.store_id = #{storeId} AND	ms.client_id = #{clientId}
+	and ms.is_delete = 0 and mstsm.is_delete = 0  
+	AND now() >= ms.start_date  
+  </select>
+  
+  <select id="findMsiSurveyListByStore" parameterType="java.util.Map" resultMap="BaseResultMap" >
+  	SELECT ms.*,mssm.store_id
+	FROM msi_survey ms
+	INNER JOIN msi_survey_store_mapping mssm ON ms.msi_survey_id = mssm.msi_survey_id
+	INNER JOIN msi_survey_type_store_mapping mstsm on ms.msi_survey_type_id = mstsm.msi_survey_type_id
+	where mssm.client_id = #{clientId} AND	mssm.store_id = #{storeId} AND	ms.client_id = #{clientId}
+	and ms.is_delete = 0 and mssm.is_delete = 0 and mstsm.is_delete = 0
+	<![CDATA[
+		AND now() >= ms.start_date AND now() <= ms.end_date 
+	]]> limit 1 
+  </select> 
+  <!-- 获取门店未填写的历史周期问卷 -->
+  <select id="findHistoryMsiSurveyListByStore" parameterType="java.util.Map" resultMap="BaseResultMap">
+  	select DISTINCT ms.* from msi_survey ms 
+  	inner join msi_survey_store_mapping mssm ON ms.msi_survey_id = mssm.msi_survey_id
+  	inner join msi_survey_type_store_mapping mstsm on ms.msi_survey_type_id = mstsm.msi_survey_type_id
+  	left join msi_survey_feedback msf on msf.msi_survey_id = ms.msi_survey_id and msf.is_delete = 0
+  	where mssm.store_id = #{storeId} and msf.feedback_id is null and ms.is_delete = 0 and mssm.is_delete = 0
+  	<![CDATA[
+		 and ms.end_date < now()
+	]]>
+  </select>
+</mapper>

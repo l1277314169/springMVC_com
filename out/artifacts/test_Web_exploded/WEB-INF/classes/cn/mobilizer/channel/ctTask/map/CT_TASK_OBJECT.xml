@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="CT_TASK_OBJECT" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.ctTask.po.CtTaskObject" >
+    <id column="ct_object_id" property="ctObjectId" jdbcType="INTEGER" />
+    <result column="ct_task_id" property="ctTaskId" jdbcType="INTEGER" />
+    <result column="target1_id" property="target1Id" jdbcType="VARCHAR" />
+    <result column="target2_id" property="target2Id" jdbcType="VARCHAR" />
+    <result column="sequence" property="sequence" jdbcType="INTEGER" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ct_object_id, ct_task_id, target1_id, target2_id, sequence, client_id, create_time, 
+    last_update_time, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ct_task_object
+    where ct_object_id = #{ctObjectId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ct_task_object
+    where ct_object_id = #{ctObjectId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.ctTask.po.CtTaskObject" >
+    insert into ct_task_object (ct_object_id, ct_task_id, target1_id, 
+      target2_id, sequence, client_id, 
+      create_time, last_update_time, is_delete
+      )
+    values (#{ctObjectId,jdbcType=INTEGER}, #{ctTaskId,jdbcType=INTEGER}, #{target1Id,jdbcType=VARCHAR}, 
+      #{target2Id,jdbcType=VARCHAR}, #{sequence,jdbcType=INTEGER}, #{clientId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{lastUpdateTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.ctTask.po.CtTaskObject" >
+    insert into ct_task_object
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ctObjectId != null" >
+        ct_object_id,
+      </if>
+      <if test="ctTaskId != null" >
+        ct_task_id,
+      </if>
+      <if test="target1Id != null" >
+        target1_id,
+      </if>
+      <if test="target2Id != null" >
+        target2_id,
+      </if>
+      <if test="sequence != null" >
+        sequence,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ctObjectId != null" >
+        #{ctObjectId,jdbcType=INTEGER},
+      </if>
+      <if test="ctTaskId != null" >
+        #{ctTaskId,jdbcType=INTEGER},
+      </if>
+      <if test="target1Id != null" >
+        #{target1Id,jdbcType=VARCHAR},
+      </if>
+      <if test="target2Id != null" >
+        #{target2Id,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null" >
+        #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.ctTask.po.CtTaskObject" >
+    update ct_task_object
+    <set >
+      <if test="ctTaskId != null" >
+        ct_task_id = #{ctTaskId,jdbcType=INTEGER},
+      </if>
+      <if test="target1Id != null" >
+        target1_id = #{target1Id,jdbcType=VARCHAR},
+      </if>
+      <if test="target2Id != null" >
+        target2_id = #{target2Id,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null" >
+        sequence = #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where ct_object_id = #{ctObjectId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.ctTask.po.CtTaskObject" >
+    update ct_task_object
+    set ct_task_id = #{ctTaskId,jdbcType=INTEGER},
+      target1_id = #{target1Id,jdbcType=VARCHAR},
+      target2_id = #{target2Id,jdbcType=VARCHAR},
+      sequence = #{sequence,jdbcType=INTEGER},
+      client_id = #{clientId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where ct_object_id = #{ctObjectId,jdbcType=INTEGER}
+  </update>
+  
+  <sql id="Base_Query_Column_List">
+  	  <where>
+  	  	   is_delete = 0
+  	  	  <if test="ctTaskId != null and ctTaskId !=''" >
+	        and ct_task_id = #{ctTaskId}
+	      </if>
+	      <if test="target1Id != null and target1Id !=''" >
+	        and target1_id = #{target1Id}
+	      </if>
+	      <if test="target2Id != null and target2Id !=''" >
+	        and target2_id = #{target2Id}
+	      </if>
+	      <if test="sequence != null and sequence !=''" >
+	        and sequence = #{sequence}
+	      </if>
+	      <if test="clientId != null and clientId !=''" >
+	        and client_id = #{clientId}
+	      </if>
+	      <if test="createTime != null and createTime !=''" >
+	        and create_time = #{createTime}
+	      </if>
+	      <if test="lastUpdateTime != null and lastUpdateTime !=''" >
+	        and last_update_time = #{lastUpdateTime}
+	      </if> 
+  	  </where>	
+  </sql>
+	
+	<sql id="select_by_param">
+		select
+		<include refid="Base_Column_List" />
+		from ct_task_object
+		<include refid="Base_Query_Column_List" />
+	</sql>
+	
+	<select id="selectByParams" parameterType="java.util.Map" resultMap="BaseResultMap">		 
+		<include refid="select_by_param" />
+		<include refid="basic.mysqlPageSearchFoot" />		
+	</select>
+	
+	<select id="selectByParamCount" parameterType="java.util.Map" resultType="Integer">		 
+		select count(1) from ct_task_object
+		<include refid="Base_Query_Column_List" />
+	</select>
+		
+	<select id="selectTaskObjectBySku" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select cto.* from ct_task_object cto  
+		<if test="taskType==1">
+			inner join sku on sku.sku_id = cto.target1_id
+		</if>
+		<if test="taskType==2">
+			inner join brand on brand.brand_id = cto.target1_id
+		</if>
+		<if test="taskType==3">
+			inner join category on category.category_id = cto.target1_id
+		</if>
+		<if test="taskType==10">
+			inner join promotion_material pm on pm.material_id = cto.target1_id
+		</if>
+		where cto.client_id = #{clientId} and cto.is_delete = 0 
+		and cto.ct_task_id = #{ctTaskId} 
+		<if test="taskType==1">
+			<if test="brandId != null and brandId !=''">
+				and sku.brand_id  = #{brandId}
+			</if>
+			<if test="categoryId != null and categoryId !=''">
+				and sku.category_id = #{categoryId}
+			</if>
+			<if test="skuSeriesId != null and skuSeriesId != ''">
+				and sku.sku_series_id = #{skuSeriesId}
+			</if>
+			<if test="skuTypeId != null and skuTypeId != ''">
+				and sku.sku_type_id = #{skuTypeId}
+			</if>
+			<if test="objectName !='' and objectName !=null">
+				and sku.sku_name like CONCAT('%',#{objectName},'%') 
+			</if>						
+		</if>
+		<if test="taskType==2 and objectName !='' and objectName !=null">
+			and brand.brand_name like CONCAT('%',#{objectName},'%') 
+		</if>
+		<if test="taskType==3 and objectName !='' and objectName !=null">
+			and category.category_name like CONCAT('%',#{objectName},'%') 
+		</if>
+		<if test="taskType==10 and objectName !='' and objectName !=null">
+			and pm.material_name like CONCAT('%',#{objectName},'%') 
+		</if>
+		<include refid="basic.mysqlPageSearchFoot" />		
+	</select>
+	
+	<select id="selectTaskObjectCountBySku" parameterType="java.util.Map" resultType="java.lang.Integer">
+		select count(1) from ct_task_object cto  
+		<if test="taskType==1">
+			inner join sku on sku.sku_id = cto.target1_id  and sku.is_delete = 0
+		</if>
+		<if test="taskType==2">
+			inner join brand on brand.brand_id = cto.target1_id and brand.is_delete = 0
+		</if>
+		<if test="taskType==3">
+			inner join category on category.category_id = cto.target1_id and category.is_delete = 0
+		</if>
+		<if test="taskType==10">
+			inner join promotion_material pm on pm.material_id = cto.target1_id and pm.is_delete = 0
+		</if>
+		where cto.client_id = #{clientId} and cto.is_delete = 0 
+		and cto.ct_task_id = #{ctTaskId} 
+		<if test="taskType==1">
+			<if test="brandId != null and brandId !=''">
+				and sku.brand_id  = #{brandId}
+			</if>
+			<if test="categoryId != null and categoryId !=''">
+				and sku.category_id = #{categoryId}
+			</if>
+			<if test="skuSeriesId != null and skuSeriesId != ''">
+				and sku.sku_series_id = #{skuSeriesId}
+			</if>
+			<if test="skuTypeId != null and skuTypeId != ''">
+				and sku.sku_type_id = #{skuTypeId}
+			</if>						
+		</if>
+		<if test="taskType==2 and objectName !='' and objectName !=null">
+			and brand.brand_name like CONCAT('%',#{objectName},'%') 
+		</if>
+		<if test="taskType==3 and objectName !='' and objectName !=null">
+			and category.category_name like CONCAT('%',#{objectName},'%') 
+		</if>
+		<if test="taskType==10 and objectName !='' and objectName !=null">
+			and pm.material_name like CONCAT('%',#{objectName},'%') 
+		</if>
+	</select>
+</mapper>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="SKU_DISTRIBUTION_MAPPING" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.base.po.SkuDistributionMapping" >
+    <id column="mapping_id" property="mappingId" jdbcType="INTEGER" />
+    <result column="sku_distribution_id" property="skuDistributionId" jdbcType="INTEGER" />
+    <result column="sku_id" property="skuId" jdbcType="INTEGER" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    mapping_id, sku_distribution_id, sku_id, client_id, create_time, last_update_time, 
+    is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sku_distribution_mapping
+    where mapping_id = #{mappingId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sku_distribution_mapping
+    where mapping_id = #{mappingId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.base.po.SkuDistributionMapping" >
+    insert into sku_distribution_mapping (mapping_id, sku_distribution_id, sku_id, 
+      client_id, create_time, last_update_time, 
+      is_delete)
+    values (#{mappingId,jdbcType=INTEGER}, #{skuDistributionId,jdbcType=INTEGER}, #{skuId,jdbcType=INTEGER}, 
+      #{clientId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{lastUpdateTime,jdbcType=TIMESTAMP}, 
+      #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.base.po.SkuDistributionMapping" >
+    insert into sku_distribution_mapping
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mappingId != null" >
+        mapping_id,
+      </if>
+      <if test="skuDistributionId != null" >
+        sku_distribution_id,
+      </if>
+      <if test="skuId != null" >
+        sku_id,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mappingId != null" >
+        #{mappingId,jdbcType=INTEGER},
+      </if>
+      <if test="skuDistributionId != null" >
+        #{skuDistributionId,jdbcType=INTEGER},
+      </if>
+      <if test="skuId != null" >
+        #{skuId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.base.po.SkuDistributionMapping" >
+    update sku_distribution_mapping
+    <set >
+      <if test="skuDistributionId != null" >
+        sku_distribution_id = #{skuDistributionId,jdbcType=INTEGER},
+      </if>
+      <if test="skuId != null" >
+        sku_id = #{skuId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where mapping_id = #{mappingId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.base.po.SkuDistributionMapping" >
+    update sku_distribution_mapping
+    set sku_distribution_id = #{skuDistributionId,jdbcType=INTEGER},
+      sku_id = #{skuId,jdbcType=INTEGER},
+      client_id = #{clientId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where mapping_id = #{mappingId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectOneByParmas" parameterType="java.util.Map" resultMap="BaseResultMap">
+  	SELECT * from sku_distribution_mapping sdm where sdm.sku_distribution_id = #{skuDistributionId} and sdm.client_id = #{clientId} and sdm.sku_id = #{skuId} 
+  </select>
+  
+  <update id="updateIsdelete" parameterType="java.util.Map">
+  	update sku_distribution_mapping  sdm set sdm.is_delete = 1 where sdm.client_id = #{clientId} and FIND_IN_SET(sdm.sku_id,#{skuId}) >0 and sdm.sku_distribution_id = #{skuDistributionId}
+  </update>
+</mapper>

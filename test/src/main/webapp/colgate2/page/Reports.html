@@ -1,0 +1,2048 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0063)http://colgate.alwaysmkt.com.cn/StoreRadar/Reports/Reports.aspx -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style type="text/css">
+        .HdrColTrunc300
+        {
+            min-width: 300px;
+            max-width: 300px;
+	        width: 300px;
+	        white-space: nowrap;
+	        overflow: hidden;
+	        text-overflow: ellipsis;
+	        background-color: #E6DFDF;
+	        font-weight:bold;
+        }           
+        .HdrColTrunc200
+        {
+            min-width: 200px;
+            max-width: 200px;
+	        width: 200px;
+	        white-space: nowrap;
+	        overflow: hidden;
+	        text-overflow: ellipsis;
+	        background-color: #E6DFDF;
+	        font-weight:bold;
+        }           
+        .HdrColTrunc150
+        {
+            min-width: 150px;
+            max-width: 150px;
+	        width: 150px;
+	        white-space: nowrap;
+	        overflow: hidden;
+	        text-overflow: ellipsis;
+	        background-color: #E6DFDF;
+	        font-weight:bold;
+        }                   
+        .HdrColTrunc120 
+        {
+            min-width: 120px;
+            max-width: 120px;
+	        width: 120px;
+	        white-space: nowrap;
+	        overflow: hidden;
+	        text-overflow: ellipsis;
+	        background-color: #E6DFDF;
+	        font-weight:bold;
+        }           
+        .HdrColTrunc100 
+        {
+            min-width: 100px;
+            max-width: 100px;
+	        width: 100px;
+	        white-space: nowrap;
+	        overflow: hidden;
+	        text-overflow: ellipsis;
+	        background-color: #E6DFDF;
+	        font-weight:bold;
+        }           
+        .HdrColTrunc80
+        {
+            min-width: 80px;
+            max-width: 80px;
+	        width: 80px;
+	        white-space: nowrap;
+	        overflow: hidden;
+	        text-overflow: ellipsis;
+	        background-color: #E6DFDF;
+	        font-weight:bold;
+        }           
+        .HdrColTrunc60
+        {
+            min-width: 60px;
+            max-width: 60px;
+	        width: 60px;
+	        white-space: nowrap;
+	        overflow: hidden;
+	        text-overflow: ellipsis;
+	        background-color: #E6DFDF;
+	        font-weight:bold;
+        }           
+        .HdrColTrunc40
+        {
+            min-width: 40px;
+            max-width: 40px;
+	        width: 40px;
+	        white-space: nowrap;
+	        overflow: hidden;
+	        text-overflow: ellipsis;
+	        background-color: #E6DFDF;
+	        font-weight:bold;
+        }          
+        .DataCol300
+        {
+            min-width: 300px;
+            max-width: 300px;
+	        width: 300px;
+	        white-space: nowrap;
+	        text-align:center;
+        }           
+        .DataCol200
+        {
+            min-width: 200px;
+            max-width: 200px;
+	        width: 200px;
+	        white-space: nowrap;
+	        text-align:center;
+        }           
+        .DataCol150
+        {
+            min-width: 150px;
+            max-width: 150px;
+	        width: 150px;
+	        white-space: nowrap;
+	        text-align:center;
+        }                   
+        .DataCol120 
+        {
+            min-width: 120px;
+            max-width: 120px;
+	        width: 120px;
+	        white-space: nowrap;
+	        text-align:center;
+        }           
+        .DataCol100 
+        {
+            min-width: 100px;
+            max-width: 100px;
+	        width: 100px;
+	        white-space: nowrap;
+	        text-align:center;
+        }           
+        .DataCol80
+        {
+            min-width: 80px;
+            max-width: 80px;
+	        width: 80px;
+	        white-space: nowrap;
+	        text-align:center;
+        }           
+        .DataCol60
+        {
+            min-width: 60px;
+            max-width: 60px;
+	        width: 60px;
+	        white-space: nowrap;
+	        text-align:center;
+        }           
+        .DataCol40
+        {
+            min-width: 40px;
+            max-width: 40px;
+	        width: 40px;
+	        white-space: nowrap;
+	        text-align:center;
+        }   
+        
+       #rbCategory label, #rbBrand label, #cbChannel label,#cbRegion label
+       {
+   	    margin-right:15px;
+   	    text-align:left;
+       }
+       body {
+	    background-color: #ffffff;
+        font-family: Tahoma, Arial, sans serif;
+        }
+        .fakeContainer { /* The parent container */
+            margin: 20px;
+            padding: 0px;
+            border: none;
+            width:900px;
+            overflow: hidden; /* Required to set */
+            background-color: transparent;
+        }
+        .rpReportMenuItem a img
+        {
+    	    border:none;
+    	    text-decoration:none;   
+        }
+   </style>
+    <title>
+
+</title>
+    <script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+    <script src="../js/jquery-ui-1.9.1.custom.min.js" type="text/javascript"></script>
+    <script src="../js/jquery.scrollTo-min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../js/Common.js"></script>
+    <script src="../js/superTables.js" type="text/javascript"></script>
+    <link href="../css/superTables.css" rel="stylesheet" type="text/css">
+    <script src="../js/report.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function scollPos() {
+            var ypos = document.getElementById("divResult").scrollTop;
+            $("#FixedColumn").scrollTop(ypos);
+
+            var xpos = document.getElementById("divResult").scrollLeft;
+            $("#FixedHeader").scrollLeft(xpos);
+        }
+
+        function switchFontColor(obj, num, isOverview) {
+
+            if (num == 0) {
+
+                $(obj).stop().find('.rpNewDashboardMenuItemDesc').animate({ color: '#ffffff' }, 300);
+                $(obj).stop().find('.rpNewDashboardMenuItemName').animate({ color: '#ffffff' }, 300);
+                if (isOverview) {
+                    $(obj).find('img.arrow').attr('src', '../Images/RightArrowBigWhite.png');
+                }
+                else {
+                    $(obj).find('img').attr('src', '../Images/RightArrowWhite.png');
+                }
+
+            }
+            else {
+
+                $(obj).stop().find('.rpNewDashboardMenuItemDesc').animate({ color: '#7c7c7c' }, 300);
+                $(obj).stop().find('.rpNewDashboardMenuItemName').animate({ color: '#C91F27' }, 300);
+                if (isOverview) {
+                    $(obj).find('img.arrow').attr('src', '../Images/RightArrowBig.png');
+                }
+                else {
+                    $(obj).find('img').attr('src', '../Images/RightArrow.png');
+                }
+            }
+        }
+
+        $(document).ready(function () {
+            //currentView = "div.reportMenu";
+            $('#filterContent').hide();
+            $('#btnMenuBackToReport').hide();
+            $('#btnFilterBackToReport').hide();
+
+            $('<img/>').src = '../Images/RightArrowWhite.png';
+            $('<img/>').src = '../Images/RightArrowBigWhite.png';
+
+            $('.rpNewDashboardMenuItem').hover(function () {
+                $(this).css('background-position', '-260px 0');
+                $(this).stop().animate({ "background-position": "0" }, 300, '', switchFontColor(this, 0, 0));
+
+
+            }, function () {
+                $(this).stop().animate({ "background-position": "-260px" }, 300, '', switchFontColor(this, 1, 0));
+            });
+            
+            $('.rpNewDashboardMenuItemOverviewBG').hover(function () {
+                $(this).css('background-position', '-888px 0');
+                $(this).stop().animate({ "background-position": "0" }, 300, '', switchFontColor(this, 0, 1));
+
+
+            }, function () {
+                $(this).stop().animate({ "background-position": "-888px" }, 300, '', switchFontColor(this, 1, 1));
+            });
+
+        });
+
+      
+    </script>
+<link href="../css/buttons.css" type="text/css" rel="stylesheet"><link href="../css/buttonsCN.css" type="text/css" rel="stylesheet"><link href="../css/dashboard.css" type="text/css" rel="stylesheet"><link href="../css/DataEntry.css" type="text/css" rel="stylesheet"><link href="../css/jquery.lightbox-0.5.css" type="text/css" rel="stylesheet"><link href="../css/messageBox.css" type="text/css" rel="stylesheet"><link href="../css/overview.css" type="text/css" rel="stylesheet"><link href="../css/RBControls.css" type="text/css" rel="stylesheet"><link href="../css/report.css" type="text/css" rel="stylesheet"><link href="../css/Site.css" type="text/css" rel="stylesheet"></head>
+<body style="background-image:none;background-color:White;">
+    <form method="post" action="" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="tm_HiddenField" id="tm_HiddenField" value=";;AjaxControlToolkit, Version=3.5.40412.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e:zh-CN:065e08c0-e2d1-42ff-9483-e5c14441b311:5546a2b:475a4ef5:497ef277:effe2a26:a43b07eb:751cdd15:dfad98a5:1d3ed089:3cf12cf1">
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="">
+<input type="hidden" name="__SERVER_VIEWSTATE_KEY" id="__SERVER_VIEWSTATE_KEY" value="09e76d53-f9f8-4773-baf4-eb6bb34320a0">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="../css/WebResource.axd" type="text/javascript"></script>
+
+
+<script src="../css/ScriptResource.axd" type="text/javascript"></script>
+<script src="../css/ScriptResource(1).axd" type="text/javascript"></script>
+<script src="../css/Reports.aspx" type="text/javascript"></script>
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="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">
+</div>
+   <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('tm', 'form1', ['tupProduct','upProduct','tupStore','upStore','tupGeo','upGeo','tupReport','upReport'], [], [], 90, '');
+//]]>
+</script>
+
+    
+<div class="headerNew">
+    
+   <div style="margin:0px auto;width:960px;">
+        <div style="text-align:right;padding-top:10px;padding-right:5px;">
+             <a id="ucHeader_hyChangePwd" class="headerLink" onclick_me="__ShowLB_FrameDelay(&#39;modalIFHeaderTitle&#39;,&#39;Change Password&#39;,&#39;600px&#39;,&#39;200px&#39;,&#39;/StoreRadar/ChangePassword.aspx&#39;);return false;" href="#" style="color:#ce1613;font-size:10px;text-decoration:none;">Change Password</a>
+        <span style="color:#c00700;">|</span>
+        <a id="ucHeader_hyLogout" class="headerLink" href="/colgate/page/Login.html" style="color:#c00700;font-size:10px;text-decoration:none;">Logout</a>
+    
+        </div>
+        <div>
+            <div style="float:left;">
+                <img src="../Images/equity_chevron.png">
+            </div>
+            <div style="float:left;color:#ce1613;font-family:Rockwell,Helvetica, Arial, sans-serif;font-style:italic;font-size:20px;margin:15px 0px 0px 10px;">
+                In-Store Tracking
+            </div>
+            
+            <div style="float:right;margin:23px 0px 0px 0px;text-align:right;width:540px;">
+                <table width="100%" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td>
+                            <a targer="_self" href="/colgate/page/Home.html"><input type="button" name="ucHeader$btnHome" value="" id="ucHeader_btnHome" class="btnHome"></input></a>
+                        </td>
+                        
+                                <td style="padding-left:0px;border-left:solid 1px #969696;" align="center">
+                                    <a targer="_self" href="/colgate/page/Overview.html"><input type="button" name="ucHeader$rpMenu$ctl00$btnMenu" value="Overview" onclick_me="window.location.href=&quot;/StoreRadar/Overview.aspx&quot;;return false;" id="ucHeader_rpMenu_btnMenu_0" class="NewMenuButton"></input></a>
+                                </td>
+                            
+                                <td style="padding-left:0px;border-left:solid 1px #969696;" align="center">
+                                    <a targer="_self" href="/colgate/page/Dashboard.html"><input type="button" name="ucHeader$rpMenu$ctl01$btnMenu" value="Dashboard" onclick_me="window.location.href=&quot;/StoreRadar/Dashboard/Dashboard.aspx?d=5002&quot;;return false;" id="ucHeader_rpMenu_btnMenu_1" class="NewMenuButton"></input></a>
+                                </td>
+                            
+                                <td style="padding-left:0px;border-left:solid 1px #969696;" align="center">
+                                    <input type="button" name="ucHeader$rpMenu$ctl02$btnMenu" value="Reports" onclick_me="window.location.href=&quot;/StoreRadar/Reports/Reports.aspx&quot;;return false;" id="ucHeader_rpMenu_btnMenu_2" class="NewMenuButtonSelected">
+                                </td>
+                            
+                                <td style="padding-left:0px;border-left:solid 1px #969696;" align="center">
+                                    <input type="button" name="ucHeader$rpMenu$ctl03$btnMenu" value="Raw Data" onclick_me="window.location.href=&quot;/StoreRadar/Reports/RawReport.aspx&quot;;return false;" id="ucHeader_rpMenu_btnMenu_3" class="NewMenuButton">
+                                </td>
+                            
+                                <td style="padding-left:0px;border-left:solid 1px #969696;" align="center">
+                                    <input type="button" name="ucHeader$rpMenu$ctl04$btnMenu" value="Gallery" onclick_me="window.location.href=&quot;/StoreRadar/Gallery.aspx&quot;;return false;" id="ucHeader_rpMenu_btnMenu_4" class="NewMenuButton">
+                                </td>
+                            
+                    </tr>
+                </tbody></table>
+               
+            </div>
+            
+        </div>
+   </div>
+   
+</div>
+    <div class="page">
+        
+        <div class="content">
+           
+            <div class="mask">
+                <div class="longContainer">
+                    <div class="reportMenu" style="min-height:320px;">
+                        <div>
+                            <div style="float:left;">
+                                <span id="lblReportMenuTitle" class="ReportTitle" style="display:none;">Reports</span>
+
+                            </div>
+                            <div style="float:right;">
+                                <input type="button" name="btnMenuBackToReport" value="" onclick_me="$(&#39;#reportContent&#39;).show();_rpScrollTo(&#39;div.report&#39;);return false;" id="btnMenuBackToReport" class="btnPreviousReport" style="display: none;">
+                            </div>
+                            <div style="clear:both;">&nbsp;</div>
+                        </div>
+                        <br>
+                        <div>
+                            
+                            <div class="NewReportPanel">
+                                <div class="NewReportPanelTop">
+                
+                                </div>
+                                <div class="NewReportPanelMid">
+                                    <div style="width:838px;margin:0px 0px 0px 0px;">
+                                        <div id="overviewItem" class="rpNewDashboardMenuItemOverview" onclick_me="_rpSelectReport(4013,&#39;Overview&#39;)" style="cursor:pointer;">
+                                            <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                                                <tbody><tr>
+                                                    <td valign="top" style="padding-right:30px;">
+                                                        <img alt="" src="../Images/OverviewStockImage.png">
+                                                    </td>       
+                                                    <td valign="top">
+                                                        <div class="rpNewDashboardMenuItemOverviewBG">
+                                                            <div style="float:left;">
+                                                                <a targer="_self" href="/colgate/page/ReportsFilter.html" onclick_me="_rpSelectReport(4013,&#39;Overview&#39;)"><span class="rpNewDashboardMenuItemName" style="font-size:18px;">Overview</span></a>
+                                                                <div class="rpNewDashboardMenuItemDesc" style="width:340px;font-size:12px;line-height:18px;">Classified by 6 categories of Distribution, Share of Shelf, Promotion ,DM, Plan-O-Gram, Promoter, which make it more convenient for dashboard by Region, Client Type and Brand..</div>
+                                                            </div>
+                                                            <div style="float:right;padding:35px 0px 0px 0px;">
+                                                                <a targer="_self" href="/colgate/page/ReportsFilter.html" onclick_me="_rpSelectReport(4013,&#39;Overview&#39;)">
+                                                                <img class="arrow" style="border:none;" alt="" src="../Images/RightArrowBig.png"></a>
+                                                            </div>
+                                            
+                                                        </div>
+                                        
+                                                    </td>
+                                    
+                                                </tr>
+                                            </tbody></table>
+                                        </div>
+                                    </div>
+                                    <div>
+                        
+                                        
+                                                <div class="rpNewDashboardMenuItem" style="margin-right:88px;" id="divItem4001">
+                                                    <table border="0" cellspacing="0" cellpadding="0">
+                                                        <tbody><tr>
+                                           
+                                                            <td valign="top">
+                                                                <a onclick_me="_rpSelectReport(4001,&#39;Mandated SKU Distribution&#39;)"><span class="rpNewDashboardMenuItemName">Mandated SKU Distribution</span></a>
+                                                                <div class="rpNewDashboardMenuItemDesc" id="aThe distribution status statistics of all categories, brands and Key SKUs by store." onclick_me="_rpSelectReport(4001,&#39;Mandated SKU Distribution&#39;)" style="cursor:pointer;">The distribution status statistics of all categories, brands and Key SKUs by store.</div>
+                                                            </td>
+                                                                <td valign="top" align="right" style="padding:25px 5px 0px 10px;">
+                                                                <a onclick_me="_rpSelectReport(4001,&#39;Mandated SKU Distribution&#39;)">
+                                                                    <img alt="" style="border:none;" src="../Images/RightArrow.png"></a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody></table>
+                                                </div>
+                                            
+                                                <div class="rpNewDashboardMenuItem" style="margin-right:88px;" id="divItem4003">
+                                                    <table border="0" cellspacing="0" cellpadding="0">
+                                                        <tbody><tr>
+                                           
+                                                            <td valign="top">
+                                                                <a onclick_me="_rpSelectReport(4003,&#39;Share of Shelf&#39;)"><span class="rpNewDashboardMenuItemName">Share of Shelf</span></a>
+                                                                <div class="rpNewDashboardMenuItemDesc" id="aThe SOS status statistics of all categories and key brands." onclick_me="_rpSelectReport(4003,&#39;Share of Shelf&#39;)" style="cursor:pointer;">The SOS status statistics of all categories and key brands.</div>
+                                                            </td>
+                                                                <td valign="top" align="right" style="padding:25px 5px 0px 10px;">
+                                                                <a onclick_me="_rpSelectReport(4003,&#39;Share of Shelf&#39;)">
+                                                                    <img alt="" style="border:none;" src="../Images/RightArrow.png"></a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody></table>
+                                                </div>
+                                            
+                                                <div class="rpNewDashboardMenuItem" style="margin-right:88px;" id="divItem4002">
+                                                    <table border="0" cellspacing="0" cellpadding="0">
+                                                        <tbody><tr>
+                                           
+                                                            <td valign="top">
+                                                                <a onclick_me="_rpSelectReport(4002,&#39;Out of Stock&#39;)"><span class="rpNewDashboardMenuItemName">Out of Stock</span></a>
+                                                                <div class="rpNewDashboardMenuItemDesc" id="aLorem ipsum dolor sit amet, consectetuer adipiscing elit." onclick_me="_rpSelectReport(4002,&#39;Out of Stock&#39;)" style="cursor:pointer;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</div>
+                                                            </td>
+                                                                <td valign="top" align="right" style="padding:25px 5px 0px 10px;">
+                                                                <a onclick_me="_rpSelectReport(4002,&#39;Out of Stock&#39;)">
+                                                                    <img alt="" style="border:none;" src="../Images/RightArrow.png"></a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody></table>
+                                                </div>
+                                            
+                                                <div class="rpNewDashboardMenuItem" style="margin-right:88px;" id="divItem4004">
+                                                    <table border="0" cellspacing="0" cellpadding="0">
+                                                        <tbody><tr>
+                                           
+                                                            <td valign="top">
+                                                                <a onclick_me="_rpSelectReport(4004,&#39;SKU on Shelf&#39;)"><span class="rpNewDashboardMenuItemName">SKU on Shelf</span></a>
+                                                                <div class="rpNewDashboardMenuItemDesc" id="aThe SKU # on shelf status statistics of all categories and key brands by store." onclick_me="_rpSelectReport(4004,&#39;SKU on Shelf&#39;)" style="cursor:pointer;">The SKU # on shelf status statistics of all categories and key brands by store.</div>
+                                                            </td>
+                                                                <td valign="top" align="right" style="padding:25px 5px 0px 10px;">
+                                                                <a onclick_me="_rpSelectReport(4004,&#39;SKU on Shelf&#39;)">
+                                                                    <img alt="" style="border:none;" src="../Images/RightArrow.png"></a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody></table>
+                                                </div>
+                                            
+                                                <div class="rpNewDashboardMenuItem" style="margin-right:88px;" id="divItem4005">
+                                                    <table border="0" cellspacing="0" cellpadding="0">
+                                                        <tbody><tr>
+                                           
+                                                            <td valign="top">
+                                                                <a onclick_me="_rpSelectReport(4005,&#39;Price&#39;)"><span class="rpNewDashboardMenuItemName">Price</span></a>
+                                                                <div class="rpNewDashboardMenuItemDesc" id="aStatistics of RSP/ RRSP of all categories, brands and key SKUs by store." onclick_me="_rpSelectReport(4005,&#39;Price&#39;)" style="cursor:pointer;">Statistics of RSP/ RRSP of all categories, brands and key SKUs by store.</div>
+                                                            </td>
+                                                                <td valign="top" align="right" style="padding:25px 5px 0px 10px;">
+                                                                <a onclick_me="_rpSelectReport(4005,&#39;Price&#39;)">
+                                                                    <img alt="" style="border:none;" src="../Images/RightArrow.png"></a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody></table>
+                                                </div>
+                                            
+                                                <div class="rpNewDashboardMenuItem" style="margin-right:88px;" id="divItem4007">
+                                                    <table border="0" cellspacing="0" cellpadding="0">
+                                                        <tbody><tr>
+                                           
+                                                            <td valign="top">
+                                                                <a onclick_me="_rpSelectReport(4007,&#39;Secondary Display&#39;)"><span class="rpNewDashboardMenuItemName">Secondary Display</span></a>
+                                                                <div class="rpNewDashboardMenuItemDesc" id="aAnalyze the 2nd display quantity/area  share rate among all the stores by display  type, category and brand" onclick_me="_rpSelectReport(4007,&#39;Secondary Display&#39;)" style="cursor:pointer;">Analyze the 2nd display quantity/area  share rate among all the stores by display  type, category and brand</div>
+                                                            </td>
+                                                                <td valign="top" align="right" style="padding:25px 5px 0px 10px;">
+                                                                <a onclick_me="_rpSelectReport(4007,&#39;Secondary Display&#39;)">
+                                                                    <img alt="" style="border:none;" src="../Images/RightArrow.png"></a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody></table>
+                                                </div>
+                                            
+                                                <div class="rpNewDashboardMenuItem" style="margin-right:88px;" id="divItem4011">
+                                                    <table border="0" cellspacing="0" cellpadding="0">
+                                                        <tbody><tr>
+                                           
+                                                            <td valign="top">
+                                                                <a onclick_me="_rpSelectReport(4011,&#39;DM&#39;)"><span class="rpNewDashboardMenuItemName">DM</span></a>
+                                                                <div class="rpNewDashboardMenuItemDesc" id="aDM distribution status statistics of categories  and all brands by customer" onclick_me="_rpSelectReport(4011,&#39;DM&#39;)" style="cursor:pointer;">DM distribution status statistics of categories  and all brands by customer</div>
+                                                            </td>
+                                                                <td valign="top" align="right" style="padding:25px 5px 0px 10px;">
+                                                                <a onclick_me="_rpSelectReport(4011,&#39;DM&#39;)">
+                                                                    <img alt="" style="border:none;" src="../Images/RightArrow.png"></a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody></table>
+                                                </div>
+                                            
+                                                <div class="rpNewDashboardMenuItem" style="margin-right:88px;" id="divItem4012">
+                                                    <table border="0" cellspacing="0" cellpadding="0">
+                                                        <tbody><tr>
+                                           
+                                                            <td valign="top">
+                                                                <a onclick_me="_rpSelectReport(4012,&#39;Plan-O-Gram&#39;)"><span class="rpNewDashboardMenuItemName">Plan-O-Gram</span></a>
+                                                                <div class="rpNewDashboardMenuItemDesc" id="aThe Plan-O-Gram  status statistics of all categories  by store." onclick_me="_rpSelectReport(4012,&#39;Plan-O-Gram&#39;)" style="cursor:pointer;">The Plan-O-Gram  status statistics of all categories  by store.</div>
+                                                            </td>
+                                                                <td valign="top" align="right" style="padding:25px 5px 0px 10px;">
+                                                                <a onclick_me="_rpSelectReport(4012,&#39;Plan-O-Gram&#39;)">
+                                                                    <img alt="" style="border:none;" src="../Images/RightArrow.png"></a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody></table>
+                                                </div>
+                                            
+                                                <div class="rpNewDashboardMenuItem" style="margin-right:88px;" id="divItem4010">
+                                                    <table border="0" cellspacing="0" cellpadding="0">
+                                                        <tbody><tr>
+                                           
+                                                            <td valign="top">
+                                                                <a onclick_me="_rpSelectReport(4010,&#39;Promotion&#39;)"><span class="rpNewDashboardMenuItemName">Promotion</span></a>
+                                                                <div class="rpNewDashboardMenuItemDesc" id="aThe promotion status statistics of all categories by store." onclick_me="_rpSelectReport(4010,&#39;Promotion&#39;)" style="cursor:pointer;">The promotion status statistics of all categories by store.</div>
+                                                            </td>
+                                                                <td valign="top" align="right" style="padding:25px 5px 0px 10px;">
+                                                                <a onclick_me="_rpSelectReport(4010,&#39;Promotion&#39;)">
+                                                                    <img alt="" style="border:none;" src="../Images/RightArrow.png"></a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody></table>
+                                                </div>
+                                            
+                                                <div class="rpNewDashboardMenuItem" style="margin-right:88px;" id="divItem4009">
+                                                    <table border="0" cellspacing="0" cellpadding="0">
+                                                        <tbody><tr>
+                                           
+                                                            <td valign="top">
+                                                                <a onclick_me="_rpSelectReport(4009,&#39;Promoter&#39;)"><span class="rpNewDashboardMenuItemName">Promoter</span></a>
+                                                                <div class="rpNewDashboardMenuItemDesc" id="aThe promoter  status statistics by store." onclick_me="_rpSelectReport(4009,&#39;Promoter&#39;)" style="cursor:pointer;">The promoter  status statistics by store.</div>
+                                                            </td>
+                                                                <td valign="top" align="right" style="padding:25px 5px 0px 10px;">
+                                                                <a onclick_me="_rpSelectReport(4009,&#39;Promoter&#39;)">
+                                                                    <img alt="" style="border:none;" src="../Images/RightArrow.png"></a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody></table>
+                                                </div>
+                                            
+                                                <div class="rpNewDashboardMenuItem" style="margin-right:88px;" id="divItem4014">
+                                                    <table border="0" cellspacing="0" cellpadding="0">
+                                                        <tbody><tr>
+                                           
+                                                            <td valign="top">
+                                                                <a onclick_me="_rpSelectReport(4014,&#39;Trend&#39;)"><span class="rpNewDashboardMenuItemName">Trend</span></a>
+                                                                <div class="rpNewDashboardMenuItemDesc" id="aLast 12 month results by store" onclick_me="_rpSelectReport(4014,&#39;Trend&#39;)" style="cursor:pointer;">Last 12 month results by store</div>
+                                                            </td>
+                                                                <td valign="top" align="right" style="padding:25px 5px 0px 10px;">
+                                                                <a onclick_me="_rpSelectReport(4014,&#39;Trend&#39;)">
+                                                                    <img alt="" style="border:none;" src="../Images/RightArrow.png"></a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody></table>
+                                                </div>
+                                            
+                                                <div class="rpNewDashboardMenuItem" style="margin-right: 88px; background-position: -225.692626953125px 50%;" id="divItem4015">
+                                                    <table border="0" cellspacing="0" cellpadding="0">
+                                                        <tbody><tr>
+                                           
+                                                            <td valign="top">
+                                                                <a onclick_me="_rpSelectReport(4015,&#39;Secondary Display: Colgate vs Competitors&#39;)"><span class="rpNewDashboardMenuItemName" style="color: rgb(210, 71, 78);">Secondary Display: Colgate vs Competitors</span></a>
+                                                                <div class="rpNewDashboardMenuItemDesc" id="aAnalyze the 2nd display quantity/area  share rate among all the stores" onclick_me="_rpSelectReport(4015,&#39;Secondary Display: Colgate vs Competitors&#39;)" style="cursor: pointer; color: rgb(147, 147, 147);">Analyze the 2nd display quantity/area  share rate among all the stores</div>
+                                                            </td>
+                                                                <td valign="top" align="right" style="padding:25px 5px 0px 10px;">
+                                                                <a onclick_me="_rpSelectReport(4015,&#39;Secondary Display: Colgate vs Competitors&#39;)">
+                                                                    <img alt="" style="border:none;" src="../Images/RightArrow.png"></a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody></table>
+                                                </div>
+                                            
+                                                <div class="rpNewDashboardMenuItem" style="margin-right:88px;" id="divItem4016">
+                                                    <table border="0" cellspacing="0" cellpadding="0">
+                                                        <tbody><tr>
+                                           
+                                                            <td valign="top">
+                                                                <a onclick_me="_rpSelectReport(4016,&#39;Secondary Display: Breakdown&#39;)"><span class="rpNewDashboardMenuItemName">Secondary Display: Breakdown</span></a>
+                                                                <div class="rpNewDashboardMenuItemDesc" id="aAnalyze the 2nd display area  of Colgate among all the stores by display  type, category and brand" onclick_me="_rpSelectReport(4016,&#39;Secondary Display: Breakdown&#39;)" style="cursor:pointer;">Analyze the 2nd display area  of Colgate among all the stores by display  type, category and brand</div>
+                                                            </td>
+                                                                <td valign="top" align="right" style="padding:25px 5px 0px 10px;">
+                                                                <a onclick_me="_rpSelectReport(4016,&#39;Secondary Display: Breakdown&#39;)">
+                                                                    <img alt="" style="border:none;" src="../Images/RightArrow.png"></a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody></table>
+                                                </div>
+                                            
+                                                <div class="rpNewDashboardMenuItem" style="margin-right:88px;" id="divItem4017">
+                                                    <table border="0" cellspacing="0" cellpadding="0">
+                                                        <tbody><tr>
+                                           
+                                                            <td valign="top">
+                                                                <a onclick_me="_rpSelectReport(4017,&#39;Execution&#39;)"><span class="rpNewDashboardMenuItemName">Execution</span></a>
+                                                                <div class="rpNewDashboardMenuItemDesc" id="aExecution Score Report" onclick_me="_rpSelectReport(4017,&#39;Execution&#39;)" style="cursor:pointer;">Execution Score Report</div>
+                                                            </td>
+                                                                <td valign="top" align="right" style="padding:25px 5px 0px 10px;">
+                                                                <a onclick_me="_rpSelectReport(4017,&#39;Execution&#39;)">
+                                                                    <img alt="" style="border:none;" src="../Images/RightArrow.png"></a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody></table>
+                                                </div>
+                                            
+                                            <div class="rpNewDashboardMenuItem" style="margin-right:88px;">
+                                                    <table border="0" cellspacing="0" cellpadding="0">
+                                                        <tbody><tr>
+                                           
+                                                            <td valign="top">
+                                                                <a href="#"><span class="rpNewDashboardMenuItemName">Requested Reports</span></a>
+                                                                <div class="rpNewDashboardMenuItemDesc" onclick_me="window.location.href=&#39;RequestedReport.aspx&#39;" style="cursor:pointer;">Last 20 requested Trend and Overview Score Report</div>
+                                                            </td>
+                                                                <td valign="top" align="right" style="padding:25px 5px 0px 10px;">
+                                                                <a href="#">
+                                                                    <img alt="" style="border:none;" src="../Images/RightArrow.png"></a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody></table>
+                                                </div>
+                                            <div style="clear:left;">
+                                            &nbsp;
+                                            </div>
+                                    </div>
+                                </div>
+                                <div class="NewReportPanelBtm">
+                
+                                </div>
+            
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reportFilter">
+                         <div>
+                            <div style="float:left;">
+                                <span id="lblReportFilterTitle" class="ReportTitle"></span>
+                                
+                            </div>
+                            <div style="float:right;">
+                                
+                                <input type="button" name="btnFilterBackToMenu" value="" onclick_me="_rpScrollTo(&#39;div.reportMenu&#39;,function(){$(&#39;#filterContent&#39;).hide();});return false;" id="btnFilterBackToMenu" class="btnMenu">
+                                <input type="button" name="btnFilterBackToReport" value="" onclick_me="$(&#39;#reportContent&#39;).show();_rpScrollTo(&#39;div.report&#39;,function(){$(&#39;#filterContent&#39;).hide();});return false;" id="btnFilterBackToReport" class="btnPreviousReport" style="display: none;">
+                            </div>
+                            <div style="clear:both;">&nbsp;</div>
+                        </div>
+                        <div id="filterContent" style="display: none;">
+                            <input type="hidden" name="hfReportId" id="hfReportId">
+                            <input type="hidden" name="hfReportName" id="hfReportName">
+                            <div id="GroupingTitle">
+                                <div class="sectionTitle">
+                                    <div class="sectionTitleLeft"></div>
+                                    <div class="sectionTitleMid">
+                                        <span id="lblRowLabel" class="sectionTitleLbl" style="display:inline-block;font-weight:bold;width:90px;">ROW LABEL</span>
+                                    </div>
+                                    <div class="sectionTitleRight"></div>
+                                    <div style="clear:left;">&nbsp;</div>
+                                </div>
+                            </div>
+                            <div class="filterPanel" style="margin-top:-10px;" id="Grouping">
+                                <table border="0" cellpadding="5" cellspacing="0" width="915">
+                                    <tbody><tr>
+                                        <td>
+                                            <span id="lblLvl1Grouping" class="formLabel">Level 1 Grouping</span>
+                                        </td>
+                                        <td>
+                                            <span id="lblLvl2Grouping" class="formLabel">Level 2 Grouping</span>
+                                        </td>
+                                        <td>
+                                            <span id="lblLvl3Grouping" class="formLabel">Level 3 Grouping</span>
+                                        </td>
+                                        <td rowspan="2">
+                                            <span id="lblErr_Grouping" class="filterError" style="display:inline-block;width:200px;"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <select name="ddlLvl1Grouping" id="ddlLvl1Grouping" style="width:200px;">
+	<option value="Region">Region</option>
+	<option value="Province">Province</option>
+	<option value="City">City</option>
+	<option value="Channel">Channel</option>
+	<option value="KeyAccount">APG</option>
+	<option value="CM">CM</option>
+	<option value="BM">BM</option>
+	<option value="RD">RD</option>
+	<option value="SR">SR</option>
+	<option value="Customer">Account</option>
+
+</select>
+                                        </td>
+                                        <td>
+                                            <select name="ddlLvl2Grouping" id="ddlLvl2Grouping" style="width:200px;">
+	<option value=""></option>
+	<option value="Region">Region</option>
+	<option selected="selected" value="Province">Province</option>
+	<option value="City">City</option>
+	<option value="Channel">Channel</option>
+	<option value="KeyAccount">APG</option>
+	<option value="CM">CM</option>
+	<option value="BM">BM</option>
+	<option value="RD">RD</option>
+	<option value="SR">SR</option>
+	<option value="Customer">Account</option>
+
+</select>
+                                        </td>
+                                        <td>
+                                            <select name="ddlLvl3Grouping" id="ddlLvl3Grouping" style="width:200px;">
+	<option value=""></option>
+	<option value="Region">Region</option>
+	<option value="Province">Province</option>
+	<option selected="selected" value="City">City</option>
+	<option value="Channel">Channel</option>
+	<option value="KeyAccount">APG</option>
+	<option value="CM">CM</option>
+	<option value="BM">BM</option>
+	<option value="RD">RD</option>
+	<option value="SR">SR</option>
+	<option value="Customer">Account</option>
+
+</select>
+                                        </td>
+                                        
+                                    </tr>
+                                </tbody></table>
+                            </div>
+                            <br>
+                            <div>
+                                <div class="sectionTitle">
+                                    <div class="sectionTitleLeft"></div>
+                                    <div class="sectionTitleMid">
+                                        <span id="lblFilter" class="sectionTitleLbl" style="display:inline-block;font-weight:bold;width:90px;">FILTER</span>
+                                    </div>
+                                    <div class="sectionTitleRight"></div>
+                                    <div style="clear:left;">&nbsp;</div>
+                                </div>
+                            </div>
+                            <div class="filterPanel" style="margin-top:-10px;" id="Period">
+                                <table border="0" cellpadding="5" cellspacing="0" width="915">
+                                    <colgroup>
+                                        <col width="15%">
+                                        <col width="85%">
+                                    </colgroup>
+                                    <tbody><tr id="tr_ddlPeriod" class="filterRow">
+                                        <td>
+                                            <span id="lbl_ddlPeriod" class="formLabel">Period</span><span id="lblMand_ddlPeriod"></span>
+                                        </td>
+                                        <td>
+                                            <select name="ddlPeriod" id="ddlPeriod" style="width:220px;">
+	<option value="Aug 2015">Aug 2015</option>
+	<option value="Jul 2015">Jul 2015</option>
+	<option value="Jun 2015">Jun 2015</option>
+	<option value="May 2015">May 2015</option>
+	<option value="Apr 2015">Apr 2015</option>
+	<option value="Mar 2015">Mar 2015</option>
+	<option value="Feb 2015">Feb 2015</option>
+	<option value="Jan 2015">Jan 2015</option>
+	<option value="Dec 2014">Dec 2014</option>
+	<option value="Nov 2014">Nov 2014</option>
+	<option value="Oct 2014">Oct 2014</option>
+	<option value="Sep 2014">Sep 2014</option>
+	<option value="Aug 2014">Aug 2014</option>
+	<option value="Jul 2014">Jul 2014</option>
+	<option value="Jun 2014">Jun 2014</option>
+	<option value="May 2014">May 2014</option>
+	<option value="Apr 2014">Apr 2014</option>
+	<option value="Mar 2014">Mar 2014</option>
+	<option value="Feb 2014">Feb 2014</option>
+	<option value="Jan 2014">Jan 2014</option>
+	<option value="Dec 2013">Dec 2013</option>
+	<option value="Nov 2013">Nov 2013</option>
+	<option value="Oct 2013">Oct 2013</option>
+	<option value="Sep 2013">Sep 2013</option>
+	<option value="Aug 2013">Aug 2013</option>
+	<option value="Jul 2013">Jul 2013</option>
+	<option value="Jun 2013">Jun 2013</option>
+	<option value="May 2013">May 2013</option>
+	<option value="Apr 2013">Apr 2013</option>
+	<option value="Mar 2013">Mar 2013</option>
+	<option value="Feb 2013">Feb 2013</option>
+	<option value="Jan 2013">Jan 2013</option>
+	<option value="Dec 2012">Dec 2012</option>
+	<option value="Nov 2012">Nov 2012</option>
+	<option value="Oct 2012">Oct 2012</option>
+	<option value="Sep 2012">Sep 2012</option>
+
+</select>
+                                            &nbsp;<span id="lblErr_ddlPeriod" class="filterError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr id="tr_ddlPeriodTo" class="filterRow">
+                                        <td>
+                                            <span id="lbl_ddlPeriodTo" class="formLabel">To</span><span id="lblMand_ddlPeriodTo"></span>
+                                        </td>
+                                         <td>
+                                            <select name="ddlPeriodTo" id="ddlPeriodTo" style="width:220px;">
+	<option value="Aug 2015">Aug 2015</option>
+	<option value="Jul 2015">Jul 2015</option>
+	<option value="Jun 2015">Jun 2015</option>
+	<option value="May 2015">May 2015</option>
+	<option value="Apr 2015">Apr 2015</option>
+	<option value="Mar 2015">Mar 2015</option>
+	<option value="Feb 2015">Feb 2015</option>
+	<option value="Jan 2015">Jan 2015</option>
+	<option value="Dec 2014">Dec 2014</option>
+	<option value="Nov 2014">Nov 2014</option>
+	<option value="Oct 2014">Oct 2014</option>
+	<option value="Sep 2014">Sep 2014</option>
+	<option value="Aug 2014">Aug 2014</option>
+	<option value="Jul 2014">Jul 2014</option>
+	<option value="Jun 2014">Jun 2014</option>
+	<option value="May 2014">May 2014</option>
+	<option value="Apr 2014">Apr 2014</option>
+	<option value="Mar 2014">Mar 2014</option>
+	<option value="Feb 2014">Feb 2014</option>
+	<option value="Jan 2014">Jan 2014</option>
+	<option value="Dec 2013">Dec 2013</option>
+	<option value="Nov 2013">Nov 2013</option>
+	<option value="Oct 2013">Oct 2013</option>
+	<option value="Sep 2013">Sep 2013</option>
+	<option value="Aug 2013">Aug 2013</option>
+	<option value="Jul 2013">Jul 2013</option>
+	<option value="Jun 2013">Jun 2013</option>
+	<option value="May 2013">May 2013</option>
+	<option value="Apr 2013">Apr 2013</option>
+	<option value="Mar 2013">Mar 2013</option>
+	<option value="Feb 2013">Feb 2013</option>
+	<option value="Jan 2013">Jan 2013</option>
+	<option value="Dec 2012">Dec 2012</option>
+	<option value="Nov 2012">Nov 2012</option>
+	<option value="Oct 2012">Oct 2012</option>
+	<option value="Sep 2012">Sep 2012</option>
+
+</select>
+                                            &nbsp;<span id="lblErr_ddlPeriodTo" class="filterError"></span>
+                                        </td>
+                                    </tr>
+                                </tbody></table>
+                            </div>
+                            <div id="upProduct">
+	
+                                    <div class="filterPanel" id="Product">
+                                        <table border="0" cellpadding="5" cellspacing="0" width="915">
+                                            <colgroup>
+                                                <col width="15%">
+                                                <col width="85%">
+                                            </colgroup>
+                                            <tbody><tr id="tr_ddlBrand" class="filterRow">
+                                                <td>
+                                                    <span id="lbl_ddlBrand" class="formLabel">Brand</span><span id="lblMand_ddlBrand"></span>
+                                                </td>
+                                                <td>
+                                                    <select name="ddlBrand" id="ddlBrand" style="width:220px;">
+		<option value="0">All Brand</option>
+		<option value="1">Colgate</option>
+		<option value="13">Colgate others</option>
+		<option value="3">Crest</option>
+		<option value="7">Darlie</option>
+		<option value="5">Lion</option>
+		<option value="4">Listerine</option>
+		<option value="8">Other</option>
+		<option value="10">Plax</option>
+		<option value="11">saky</option>
+		<option value="6">Sensodyne</option>
+		<option value="12">Smiclean</option>
+		<option value="9">YNBY</option>
+		<option value="2">Zhonghua</option>
+		<option value="18">三笑</option>
+		<option value="14">高露洁 2</option>
+		<option value="15">高露洁 3</option>
+		<option value="16">高露洁 4</option>
+		<option value="17">高露洁 5</option>
+
+	</select>
+                                                    &nbsp;<span id="lblErr_ddlBrand" class="filterError"></span>
+                                                </td>
+                                            </tr>
+                                            <tr id="tr_rbCategory" class="filterRow">
+                                                <td>
+                                                    <span id="lbl_rbCategory" class="formLabel">Category</span><span id="lblMand_rbCategory"></span>
+                                                </td>
+                                                <td>
+                                                    <span id="rbCategory"><input id="rbCategory_0" type="radio" name="rbCategory" value="1" checked="checked"><label for="rbCategory_0">Toothpaste</label><input id="rbCategory_1" type="radio" name="rbCategory" value="2" onclick_me="javascript:setTimeout(&#39;__doPostBack(\&#39;rbCategory$1\&#39;,\&#39;\&#39;)&#39;, 0)"><label for="rbCategory_1">Toothbrush</label><input id="rbCategory_2" type="radio" name="rbCategory" value="3" onclick_me="javascript:setTimeout(&#39;__doPostBack(\&#39;rbCategory$2\&#39;,\&#39;\&#39;)&#39;, 0)"><label for="rbCategory_2">Mouthwash</label></span>
+                                                    &nbsp;<span id="lblErr_rbCategory" class="filterError"></span>
+                                                </td>
+                                            </tr> 
+                                            <tr id="tr_rbBrand" class="filterRow">
+                                                <td>
+                                                    <span id="lbl_rbBrand" class="formLabel">Brand</span><span id="lblMand_rbBrand"></span>
+                                                </td>
+                                                <td>
+                                                    <span id="rbBrand"><input id="rbBrand_0" type="radio" name="rbBrand" value="1" onclick_me="javascript:setTimeout(&#39;__doPostBack(\&#39;rbBrand$0\&#39;,\&#39;\&#39;)&#39;, 0)"><label for="rbBrand_0">Colgate</label><input id="rbBrand_1" type="radio" name="rbBrand" value="0" checked="checked"><label for="rbBrand_1">All Brands</label><input id="rbBrand_2" type="radio" name="rbBrand" value="2" onclick_me="javascript:setTimeout(&#39;__doPostBack(\&#39;rbBrand$2\&#39;,\&#39;\&#39;)&#39;, 0)"><label for="rbBrand_2">Key Competitors Brands</label></span>
+                                                    &nbsp;<span id="lblErr_rbBrand" class="filterError"></span>
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr id="tr_ddlSKU" class="filterRow">
+                                                <td>
+                                                    <span id="lbl_ddlSKU" class="formLabel">SKU</span><span id="lblMand_ddlSKU"></span>
+                                                </td>
+                                                <td>
+                                                    <select name="ddlSKU" id="ddlSKU" style="width:220px;">
+		<option value="0">All SKU</option>
+		<option value="a119">360全面口腔健康 - 修护牙釉质140克</option>
+		<option value="a120">360全面口腔健康 - 修护牙釉质200克</option>
+		<option value="a118">360全面口腔健康 - 修护牙釉质90克</option>
+		<option value="a008">360全面口腔健康 - 健康牙龈140克</option>
+		<option value="a009">360全面口腔健康 - 健康牙龈200克</option>
+		<option value="a105 ">360全面口腔健康 - 健康牙龈90克 </option>
+		<option value="a012">360全面口腔健康 - 健洁140克 </option>
+		<option value="a013">360全面口腔健康 - 健洁200克</option>
+		<option value="a202 ">360全面口腔健康 - 卓效护龈美白140克 </option>
+		<option value="a201 ">360全面口腔健康 - 卓效护龈美白90克 </option>
+		<option value="a011">360全面口腔健康 - 美白 200克</option>
+		<option value="a010">360全面口腔健康 - 美白140克</option>
+		<option value="a106 ">360全面口腔健康 - 美白90克 </option>
+		<option value="a115">360全面口腔健康-健康牙龈140克3支装</option>
+		<option value="a110">360全面口腔健康-健康牙龈200克2支装</option>
+		<option value="a117">360全面口腔健康-健康牙龈90克6支装</option>
+		<option value="a108 ">360全面口腔健康-备长炭120克 </option>
+		<option value="a109 ">360全面口腔健康-备长炭180克 </option>
+		<option value="a107 ">360全面口腔健康-备长炭90克 </option>
+		<option value="a112">360全面口腔健康-美白200克2支装</option>
+		<option value="a104">360卓效护龈牙膏140克</option>
+		<option value="a111">360卓效护龈牙膏140克2支装</option>
+		<option value="a103">360卓效护龈牙膏90克</option>
+		<option value="a001">专效抗敏多重保护50克</option>
+		<option value="a005">专效抗敏多重保护牙膏110克</option>
+		<option value="a006">专效抗敏牙膏 110克</option>
+		<option value="a004">专效抗敏牙釉质修护110克</option>
+		<option value="a003">专效抗敏美白牙膏110克</option>
+		<option value="a020">健白防蛀牙膏－140克</option>
+		<option value="a021">健白防蛀牙膏－200克</option>
+		<option value="a113">健白防蛀牙膏200克2支装</option>
+		<option value="a122 ">健白防蛀牙膏－90克 </option>
+		<option value="a204 ">儿童牙膏苹果味送赠品(2-5岁) 40克 </option>
+		<option value="a203 ">儿童牙膏蓝莓味送赠品(2-5岁)40克 </option>
+		<option value="a207 ">光感白(沁亮薄荷)牙膏170克</option>
+		<option value="a208">光感白(沁亮薄荷)牙膏70克</option>
+		<option value="a209">光感白(清悦薄荷)牙膏170克</option>
+		<option value="a034">光感白沁亮薄荷牙膏113克</option>
+		<option value="a102">光感白清悦薄荷70克</option>
+		<option value="a033">光感白清悦薄荷牙膏113克</option>
+		<option value="a024">全面防蛀冰凉薄荷牙膏-140 克</option>
+		<option value="a116">全面防蛀冰凉薄荷牙膏140克3支装</option>
+		<option value="a025">全面防蛀冰凉薄荷牙膏-250 克</option>
+		<option value="a123 ">全面防蛀冰凉薄荷牙膏-90克 </option>
+		<option value="a022">全面防蛀清新香型牙膏-140 克</option>
+		<option value="a023">全面防蛀清新香型牙膏-250 克</option>
+		<option value="a018">冰爽劲白牙膏－120克</option>
+		<option value="a019">冰爽劲白牙膏－180克</option>
+		<option value="a017">冰爽激凉牙膏－180克</option>
+		<option value="a101">冰爽茶香牙膏－120 克</option>
+		<option value="a016">冰爽茶香牙膏－180克</option>
+		<option value="a014">冰爽薄荷牙膏－120克</option>
+		<option value="a015">冰爽薄荷牙膏－180克</option>
+		<option value="a114">冰爽薄荷牙膏180克2支装</option>
+		<option value="a121 ">冰爽薄荷牙膏－90克</option>
+		<option value="d001">所有高露洁牙膏</option>
+		<option value="a035">所有高露洁牙膏</option>
+		<option value="a002">抗敏清新彩条120克</option>
+		<option value="a007">抗敏美白牙膏 120克</option>
+		<option value="a028">草本牙膏140克</option>
+		<option value="a026">超强牙膏140克-高钙</option>
+		<option value="a027">超强牙膏200克-高钙</option>
+		<option value="a031">防蛀健齿儿童牙膏水果香型(蜘蛛侠)40 克 </option>
+		<option value="a032">防蛀健齿儿童牙膏草莓香型(芭比娃娃)40 克 </option>
+		<option value="a030">防蛀美白牙膏140克</option>
+		<option value="a205">高露洁劲白竹炭薄荷牙膏-120克</option>
+		<option value="a206">高露洁劲白竹炭薄荷牙膏-180克</option>
+		<option value="a210">高露洁劲白竹炭薄荷牙膏-90克（冰爽激凉牙膏90克）</option>
+		<option value="a211">高露洁劲白茉莉花牙膏牙膏-90克</option>
+		<option value="a029">高露洁草本牙膏200克</option>
+		<option value="a037">中华健齿白牙膏155g</option>
+		<option value="a036">中华双钙防蛀沁爽薄荷味170克</option>
+		<option value="a038">中华皓清牙膏130g</option>
+		<option value="a039">中华魔丽迅白冰极薄荷味100g</option>
+		<option value="a040">所有中华牙膏</option>
+		<option value="d005">所有中华牙膏</option>
+		<option value="a052">佳洁士健康科学快速抗敏90g</option>
+		<option value="a053">佳洁士健康科学新生护龈140g</option>
+		<option value="a051">佳洁士全优7效牙膏140g</option>
+		<option value="a050">佳洁士全优7效牙膏90g</option>
+		<option value="a058">佳洁士双效炫白120g</option>
+		<option value="a059">佳洁士双效炫白180g</option>
+		<option value="a048">佳洁士海洋草本牙膏140g</option>
+		<option value="a056">佳洁士茶爽炫白茉莉香型牙膏120g </option>
+		<option value="a057">佳洁士茶爽炫白茉莉香型牙膏180g  </option>
+		<option value="a047">佳洁士草本水晶140g</option>
+		<option value="a060">佳洁士闪耀炫白牙膏116g</option>
+		<option value="a601">佳洁士闪耀炫白牙膏140g</option>
+		<option value="a054">佳洁士防蛀修护牙膏140g </option>
+		<option value="a055">佳洁士防蛀修护牙膏200g</option>
+		<option value="a061">所有佳洁士牙膏</option>
+		<option value="d002">所有佳洁士牙膏</option>
+		<option value="a049">盐白140克</option>
+		<option value="a065">所有舒适达牙膏</option>
+		<option value="d006">所有舒适达牙膏</option>
+		<option value="a064">舒适达专业修复100g</option>
+		<option value="a062">舒适达薄荷牙膏120g</option>
+		<option value="a063">舒适达速效抗敏120g</option>
+		<option value="a046">所有黑人牙膏</option>
+		<option value="d003">所有黑人牙膏</option>
+		<option value="a042">黑人双重薄荷牙膏175g</option>
+		<option value="a041">黑人双重薄荷牙膏225g </option>
+		<option value="a043">黑人茶倍健牙膏(薄荷)140g</option>
+		<option value="a044">黑人超白牙膏140g</option>
+		<option value="a045">黑人透心爽薄荷牙膏120g</option>
+		<option value="d007">其他品牌牙膏</option>
+		<option value="a066">所有其他牙膏</option>
+		<option value="a067 ">所有云南白药牙膏</option>
+		<option value="d004">所有云南白药牙膏</option>
+		<option value="a068">所有舒客牙膏</option>
+		<option value="a251">高露洁基础抗敏-美白</option>
+		<option value="a250">高露洁基础抗敏-酷凉薄荷</option>
+
+	</select>
+                                                    &nbsp;<span id="lblErr_ddlSKU" class="filterError"></span>
+                                                </td>
+                                            </tr>
+                                        </tbody></table>
+
+                                    </div>
+                               
+</div>
+                            <div class="filterPanel" id="DisplayType">
+                                <table border="0" cellpadding="5" cellspacing="0" width="915">
+                                    <colgroup>
+                                        <col width="15%">
+                                        <col width="85%">
+                                    </colgroup>
+                                    <tbody><tr id="tr_ddlDisplayType" class="filterRow">
+                                        <td>
+                                            <span id="lbl_ddlDisplayType" class="formLabel">Display Type</span><span id="lblMand_ddlDisplayType"></span>
+                                        </td>
+                                        <td>
+                                            <select name="ddlDisplayType" id="ddlDisplayType" style="width:220px;">
+	<option value="0">All Display</option>
+	<option value="4">门店柱子</option>
+	<option value="5">落地架</option>
+	<option value="3">端架</option>
+	<option value="12">牙刷陈列中心</option>
+	<option value="8">牙刷多支装陈列架</option>
+	<option value="7">挂条</option>
+	<option value="9">所有的货架外陈列和嵌入式的主货架</option>
+	<option value="2">小堆</option>
+	<option value="1">大堆</option>
+	<option value="10">其他</option>
+	<option value="11">促销篮</option>
+	<option value="6">侧挂架</option>
+
+</select>
+                                            &nbsp;<span id="lblErr_ddlDisplayType" class="filterError"></span>
+                                        </td>
+                                    </tr>
+                                </tbody></table>
+                            </div>
+                             <div id="upStore">
+	
+                                 <div class="filterPanel" id="Store">
+                                    <table border="0" cellpadding="5" cellspacing="0" width="915">
+                                        <colgroup>
+                                            <col width="15%">
+                                            <col width="85%">
+                                        </colgroup>
+                                        <tbody><tr id="tr_cbChannel" class="filterRow">
+                                            <td>
+                                                <span id="lbl_cbChannel" class="formLabel">Channel</span><span id="lblMand_cbChannel"></span>
+                                            </td>
+                                            <td>
+                                                <table id="cbChannel">
+		<tbody><tr>
+			<td><input id="cbChannel_0" type="checkbox" name="cbChannel$0" checked="checked" value="2"><label for="cbChannel_0">Big Supermarket</label></td><td><input id="cbChannel_1" type="checkbox" name="cbChannel$1" checked="checked" value="12"><label for="cbChannel_1">Cash &amp; Carry</label></td><td><input id="cbChannel_2" type="checkbox" name="cbChannel$2" checked="checked" value="1"><label for="cbChannel_2">Hypermarket</label></td><td><input id="cbChannel_3" type="checkbox" name="cbChannel$3" checked="checked" value="13"><label for="cbChannel_3">Supermarket</label></td><td></td><td></td>
+		</tr>
+	</tbody></table>
+                                                <span id="lblErr_cbChannel" class="filterError"></span>
+                                            </td>
+                                        </tr>
+                                        <tr id="tr_ddlKeyAccount" class="filterRow">
+                                            <td>
+                                                <span id="lbl_ddlKeyAccount" class="formLabel">APG</span><span id="lblMand_ddlKeyAccount"></span>
+                                            </td>
+                                            <td>
+                                                 <select name="ddlKeyAccount" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ddlKeyAccount\&#39;,\&#39;\&#39;)&#39;, 0)" id="ddlKeyAccount" style="width:220px;">
+		<option selected="selected" value="0">All APG</option>
+		<option value="-1">Key Account</option>
+		<option value="28">A-BEST - SOUTH </option>
+		<option value="29">A-BEST - WEST </option>
+		<option value="30">AH HEFEI BAIDA HEJIAFU </option>
+		<option value="1">AuChan</option>
+		<option value="31">AUCHAN - EAST </option>
+		<option value="32">AUCHAN - NORTH </option>
+		<option value="105">AUCHAN - SOUTH</option>
+		<option value="33">AUCHAN - WEST </option>
+		<option value="34">BEIJING JINGKELONG </option>
+		<option value="2">BJ HL</option>
+		<option value="35">BJ HUALIAN </option>
+		<option value="36">BJ HUALIAN - EAST </option>
+		<option value="37">BJ HUALIAN - NORTH </option>
+		<option value="38">BJ HUALIAN - SOUTH </option>
+		<option value="39">BJ HUALIAN - WEST </option>
+		<option value="3">BJ_Wumart</option>
+		<option value="40">BUBUGAO </option>
+		<option value="4">Carrefour</option>
+		<option value="41">CARREFOUR -  EAST</option>
+		<option value="43">CARREFOUR -  NORTH</option>
+		<option value="45">CARREFOUR - WEST </option>
+		<option value="48">CARREFOUR -SOUTH</option>
+		<option value="107">CHENGDU HONGQI</option>
+		<option value="50">CRC - EAST </option>
+		<option value="55">CRC - SOUTH </option>
+		<option value="58">DENNIS  </option>
+		<option value="61">DIRECT - EAST - OTHERS </option>
+		<option value="63">DIRECT - NORTH - OTHERS </option>
+		<option value="65">DIRECT - SOUTH - OTHERS </option>
+		<option value="68">DIRECT - WEST - OTHERS </option>
+		<option value="16">Direct_East</option>
+		<option value="5">Direct_North</option>
+		<option value="19">Direct_South</option>
+		<option value="14">Direct_West</option>
+		<option value="18">Dist_East</option>
+		<option value="6">Dist_North</option>
+		<option value="20">Dist_South</option>
+		<option value="15">Dist_West</option>
+		<option value="70">DISTRIBUTOR - NORTH </option>
+		<option value="71">DISTRIBUTOR - WEST </option>
+		<option value="72">DISTRIBUTOR- EAST </option>
+		<option value="73">DISTRIBUTOR -SOUTH </option>
+		<option value="76">FJ XINHUADU SHIYE </option>
+		<option value="79">GD DONGGUAN JIARONG </option>
+		<option value="80">GD SHENZHEN SUIBAO </option>
+		<option value="81">GX XINNANCHENG </option>
+		<option value="83">HANGZHOU HUASHANG </option>
+		<option value="84">HENAN DAZHANG </option>
+		<option value="86">HUBEI WUHAN ZHONGBAI </option>
+		<option value="89">JIA JIA YUE </option>
+		<option value="91">JUSCO - SOUTH </option>
+		<option value="93">JX NANCHANG HONGKELONG </option>
+		<option value="95">LOTUS - EAST </option>
+		<option value="96">LOTUS - NORTH </option>
+		<option value="98">LOTUS - SOUTH </option>
+		<option value="100">LOTUS - WEST </option>
+		<option value="13">Metro</option>
+		<option value="101">METRO - EAST </option>
+		<option value="102">METRO - NORTH </option>
+		<option value="99">METRO - SOUTH </option>
+		<option value="97">METRO - WEST </option>
+		<option value="10">NCT</option>
+		<option value="106">NX XINHUA</option>
+		<option value="27">other</option>
+		<option value="103">PARKN SHOP - SOUTH </option>
+		<option value="104">PARKN SHOP - WEST </option>
+		<option value="21">PNS South</option>
+		<option value="94">RRL - NORTH </option>
+		<option value="92">RRL - SOUTH </option>
+		<option value="90">RRL - WEST </option>
+		<option value="11">RT_Mart</option>
+		<option value="88">RT-MART - EAST </option>
+		<option value="87">RT-MART - NORTH </option>
+		<option value="85">RT-MART - SOUTH </option>
+		<option value="82">RT-MART - WEST </option>
+		<option value="17">Sam's Club</option>
+		<option value="78">SD YINGZUO </option>
+		<option value="77">SHANGHAI HUALIAN </option>
+		<option value="75">SHIDAI </option>
+		<option value="74">SHIJI LIANHUA - EAST </option>
+		<option value="69">SHIJI LIANHUA - NORTH </option>
+		<option value="67">SHIJI LIANHUA - WEST </option>
+		<option value="66">SUGUO </option>
+		<option value="64">SX QINGXU MEITEHAO </option>
+		<option value="7">Tesco</option>
+		<option value="62">TIANHONG - EAST </option>
+		<option value="60">TIANHONG - NORTH </option>
+		<option value="59">TIANHONG - SOUTH </option>
+		<option value="57">TIANHONG - WEST </option>
+		<option value="12">Trust-Mart</option>
+		<option value="56">VANGUARD - NORTH </option>
+		<option value="54">VANGUARD - SOUTH </option>
+		<option value="53">VANGUARD - WEST </option>
+		<option value="52">WAL MART </option>
+		<option value="8">Wal't Mart</option>
+		<option value="51">WH WUSHANG </option>
+		<option value="49">WUHAN ZHONGBAI BIANMIN </option>
+		<option value="9">Wumart</option>
+		<option value="47">WUMART - EAST </option>
+		<option value="46">WUMART - NORHT </option>
+		<option value="44">WUXI HUIQUAN </option>
+		<option value="109">YONGHUI - EAST</option>
+		<option value="110">YONGHUI - NORTH</option>
+		<option value="111">YONGHUI - SOUTH</option>
+		<option value="108">YONGHUI - WEST</option>
+		<option value="42">ZHONGSHAN YIJIAYI </option>
+
+	</select>
+                                                 &nbsp;<span id="lblErr_ddlKeyAccount" class="filterError"></span>
+                                            </td>
+                                        </tr>
+                                        <tr id="tr_ddlCustomer" class="filterRow">
+                                            <td>
+                                                <span id="lbl_ddlCustomer" class="formLabel">Account</span><span id="lblMand_ddlCustomer"></span>
+                                            </td>
+                                            <td>
+                                                 <select name="ddlCustomer" id="ddlCustomer" style="width:220px;">
+		<option value="0">All Accounts</option>
+		<option value="174">**SH 上海AuChan(沈阳店)</option>
+		<option value="309">1+1连锁</option>
+		<option value="288">7/11</option>
+		<option value="431">A-BEST </option>
+		<option value="432">AH HEFEI BAIDA HEJIAFU </option>
+		<option value="310">Auchan</option>
+		<option value="433">BEIJING JINGKELONG </option>
+		<option value="1">BJ HL</option>
+		<option value="347">BJ HUALIAN </option>
+		<option value="2">BJHL</option>
+		<option value="434">BUBUGAO </option>
+		<option value="251">C4</option>
+		<option value="3">C4 Anhui</option>
+		<option value="4">C4 Beijing</option>
+		<option value="220">C4 Changchun</option>
+		<option value="218">C4 Changsha</option>
+		<option value="175">C4 Chengdu</option>
+		<option value="176">C4 Chongqing</option>
+		<option value="217">C4 Dongguan</option>
+		<option value="5">C4 Fujian</option>
+		<option value="6">C4 Guangzhou</option>
+		<option value="219">C4 Guiyang</option>
+		<option value="7">C4 Haerbin</option>
+		<option value="8">C4 Henan</option>
+		<option value="9">C4 Hubei</option>
+		<option value="10">C4 Jiangsu</option>
+		<option value="252">C4 Jiangxi</option>
+		<option value="289">C4 Kunming</option>
+		<option value="11">C4 Liaoning</option>
+		<option value="221">C4 Qingdao</option>
+		<option value="12">C4 Shandong</option>
+		<option value="13">C4 Shanghai</option>
+		<option value="14">C4 Shenzhen</option>
+		<option value="15">C4 Shijiazhuang</option>
+		<option value="222">C4 Tianjin</option>
+		<option value="16">C4 Urumuqi</option>
+		<option value="17">C4 Zhejiang</option>
+		<option value="311">Carrefour</option>
+		<option value="18">Changchun HeKeLong C</option>
+		<option value="19">ChangChun OuYaShangD</option>
+		<option value="435">Chengdu hongqi </option>
+		<option value="20">CRC</option>
+		<option value="302">C-Store</option>
+		<option value="348">DaShang JiTuan</option>
+		<option value="436">Dashang Xinmate </option>
+		<option value="437">DENNIS  </option>
+		<option value="372">DIA</option>
+		<option value="438">FJ XINHUADU SHIYE </option>
+		<option value="439">GD DONGGUAN JIARONG </option>
+		<option value="440">GD SHENZHEN SUIBAO </option>
+		<option value="441">GX XINNANCHENG </option>
+		<option value="442">HANGZHOU HUASHANG </option>
+		<option value="443">HENAN DAZHANG </option>
+		<option value="21">HLJ DaQing QingKeLon</option>
+		<option value="22">Homeclub</option>
+		<option value="444">HUBEI WUHAN ZHONGBAI </option>
+		<option value="250">IDT</option>
+		<option value="445">JIA JIA YUE </option>
+		<option value="446">Jia Le Jia </option>
+		<option value="224">Jusco</option>
+		<option value="447">JX NANCHANG HONGKELONG </option>
+		<option value="23">LN Dalian ChangLin W</option>
+		<option value="24">LN DaLian JingMa</option>
+		<option value="177">LN ShenYang AiKeJia ChaoShi</option>
+		<option value="178">LN ShenYang HomeClub </option>
+		<option value="25">Lottemart</option>
+		<option value="26">Lotus</option>
+		<option value="179">Meet ALL</option>
+		<option value="253">Metro</option>
+		<option value="464">NaN</option>
+		<option value="448">NGS </option>
+		<option value="180">North Wal-Mart</option>
+		<option value="465">NX XINHUA</option>
+		<option value="430">other</option>
+		<option value="181">Others</option>
+		<option value="449">PARKN SHOP</option>
+		<option value="349">PNS - SOUTH</option>
+		<option value="450">RRL </option>
+		<option value="312">RT-Mart</option>
+		<option value="313">Sam</option>
+		<option value="254">Sam‘s</option>
+		<option value="255">Sam’s Club</option>
+		<option value="451">SAMS </option>
+		<option value="452">SD YINGZUO </option>
+		<option value="453">SHANGHAI HUALIAN </option>
+		<option value="454">SHIDAI </option>
+		<option value="27">Shiji LianHua</option>
+		<option value="422">Suguo</option>
+		<option value="455">SX QINGXU MEITEHAO </option>
+		<option value="28">Tangshan HuaSheng</option>
+		<option value="256">Tesco</option>
+		<option value="456">TIANHONG </option>
+		<option value="29">Trust-Mart</option>
+		<option value="423">Vanguard</option>
+		<option value="328">WAL MART</option>
+		<option value="30">Wal't Mart</option>
+		<option value="457">WH WUSHANG </option>
+		<option value="458">WUHAN ZHONGBAI BIANMIN </option>
+		<option value="350">WUMART</option>
+		<option value="314">Wu-Mart</option>
+		<option value="459">WUXI HUIQUAN </option>
+		<option value="460">Xin Shi Ji Chaoshi </option>
+		<option value="461">Yiteng Yanghuatang &amp; Wudongfeng </option>
+		<option value="462">YongHui </option>
+		<option value="463">ZHONGSHAN YIJIAYI </option>
+		<option value="373">万众连锁</option>
+		<option value="31">万佳连锁超市</option>
+		<option value="374">万家福连锁</option>
+		<option value="332">万联</option>
+		<option value="225">三和连锁</option>
+		<option value="32">三江购物俱乐部股份</option>
+		<option value="33">上海华联</option>
+		<option value="290">上海华联连锁</option>
+		<option value="34">上海文峰购物广场有限公司</option>
+		<option value="257">世纪华联连锁</option>
+		<option value="375">世纪联众</option>
+		<option value="35">世纪联华</option>
+		<option value="36">世纪联华超市</option>
+		<option value="37">东北区RTM</option>
+		<option value="38">东北区Tesco</option>
+		<option value="39">东区RTM</option>
+		<option value="40">东区Tesco</option>
+		<option value="258">东方冷库连锁</option>
+		<option value="376">东方连锁</option>
+		<option value="335">东泰</option>
+		<option value="41">东港城超级市场</option>
+		<option value="259">东莞市东孚商贸有限公司</option>
+		<option value="377">中新超市连锁</option>
+		<option value="42">中百仓储超市</option>
+		<option value="182">中营购物连锁</option>
+		<option value="43">丰和</option>
+		<option value="359">丰采超市</option>
+		<option value="378">临沂市东方系统</option>
+		<option value="379">临沂市桃源超市系统</option>
+		<option value="226">临海耀达连锁</option>
+		<option value="44">丹尼斯</option>
+		<option value="260">乐万家购物中心连锁</option>
+		<option value="291">乐万家连锁超市</option>
+		<option value="360">乐兴百货</option>
+		<option value="45">乐天</option>
+		<option value="303">乐天玛特</option>
+		<option value="227">乐玛特购物连锁</option>
+		<option value="183">乐玛特连锁</option>
+		<option value="361">乐福广场</option>
+		<option value="184">乐购</option>
+		<option value="185">九龙连锁超市</option>
+		<option value="380">五洲华联</option>
+		<option value="46">京客隆商业集团股份</option>
+		<option value="419">京鹏日化</option>
+		<option value="47">人人乐</option>
+		<option value="48">人人乐商业</option>
+		<option value="49">伊藤洋华堂</option>
+		<option value="424">余姚华联</option>
+		<option value="50">佳惠超市</option>
+		<option value="51">供销超市</option>
+		<option value="186">保定惠友连锁</option>
+		<option value="340">信佳连锁</option>
+		<option value="52">信和商业连锁</option>
+		<option value="327">信誉楼</option>
+		<option value="381">信阳西亚连锁</option>
+		<option value="261">六和连锁</option>
+		<option value="53">兴客隆超市</option>
+		<option value="54">兴福兴超市</option>
+		<option value="315">其他</option>
+		<option value="55">农工商连锁超市</option>
+		<option value="56">利客隆超市</option>
+		<option value="351">利群利客来</option>
+		<option value="187">利群集团</option>
+		<option value="188">北京北京</option>
+		<option value="216">北京华联</option>
+		<option value="262">北京天虹商业管理有限公司 </option>
+		<option value="57">北京物美</option>
+		<option value="358">北京超市发连锁股份有限公司</option>
+		<option value="189">北国商城股份有限公司</option>
+		<option value="228">北国超市</option>
+		<option value="382">北斗星</option>
+		<option value="58">北方国贸 </option>
+		<option value="304">华东区RTM</option>
+		<option value="59">华东物美</option>
+		<option value="60">华中区RTM</option>
+		<option value="263">华亿购物中心连锁</option>
+		<option value="190">华亿购物连锁</option>
+		<option value="229">华亿超市</option>
+		<option value="292">华亿连锁超市</option>
+		<option value="230">华北区RTM</option>
+		<option value="191">华北区Tesco</option>
+		<option value="305">华南区RTM</option>
+		<option value="316">华商</option>
+		<option value="61">华堂</option>
+		<option value="62">华大贸易</option>
+		<option value="63">华强</option>
+		<option value="64">华普</option>
+		<option value="65">华润万家</option>
+		<option value="264">华润万家有限公司</option>
+		<option value="66">华润万家生活超市</option>
+		<option value="67">华润万家超市</option>
+		<option value="68">华润万家超市-江苏</option>
+		<option value="69">华润万家超市-河南</option>
+		<option value="70">华润万家超市-浙江</option>
+		<option value="71">华联吉买盛购物中心</option>
+		<option value="425">华联超市</option>
+		<option value="72">南区RTM</option>
+		<option value="73">南区Tesco</option>
+		<option value="265">南区Walmart </option>
+		<option value="192">南城百货</option>
+		<option value="383">南大超市连锁</option>
+		<option value="74">南天大新集团</option>
+		<option value="75">南海大沥泰广商场</option>
+		<option value="266">博美超市连锁</option>
+		<option value="76">友好集团股份</option>
+		<option value="193">双流快乐购物连锁</option>
+		<option value="194">台州华联</option>
+		<option value="77">台州华联超市</option>
+		<option value="231">台州华联连锁</option>
+		<option value="78">合力超市</option>
+		<option value="79">合肥娴洁商贸有限公司</option>
+		<option value="232">吉之岛</option>
+		<option value="384">和大福超市</option>
+		<option value="80">唐久便利</option>
+		<option value="81">嘉荣商贸</option>
+		<option value="362">国惠康</option>
+		<option value="82">国泰</option>
+		<option value="83">国芳综超连锁</option>
+		<option value="267">国货</option>
+		<option value="268">城市购物连锁</option>
+		<option value="84">壹加壹商业连锁</option>
+		<option value="85">大商</option>
+		<option value="233">大商新玛特连锁</option>
+		<option value="385">大张实业</option>
+		<option value="269">大润发</option>
+		<option value="86">天客隆</option>
+		<option value="87">天恒</option>
+		<option value="234">天虹</option>
+		<option value="88">天虹商场</option>
+		<option value="89">奥士凯</option>
+		<option value="342">奥德隆</option>
+		<option value="90">好又多</option>
+		<option value="235">好又多超市</option>
+		<option value="236">好又多连锁</option>
+		<option value="91">好家乡超市</option>
+		<option value="92">好家乡连锁</option>
+		<option value="93">好家乡连锁超市</option>
+		<option value="195">威海家家悦</option>
+		<option value="94">季华货仓商场</option>
+		<option value="95">宁波加贝超市</option>
+		<option value="237">宁波加贝超市连锁</option>
+		<option value="96">宁波新江厦超市</option>
+		<option value="196">安岳家和超市连锁</option>
+		<option value="97">安德利</option>
+		<option value="270">安德利连锁</option>
+		<option value="98">家乐福</option>
+		<option value="363">家家乐超市</option>
+		<option value="99">家得利超市</option>
+		<option value="426">家润多</option>
+		<option value="100">家润多超市</option>
+		<option value="101">家美家</option>
+		<option value="102">宾隆超市</option>
+		<option value="103">富万家超市</option>
+		<option value="386">小型超市</option>
+		<option value="333">山东圣豪</option>
+		<option value="238">山东银座</option>
+		<option value="197">山西美特好</option>
+		<option value="104">岁宝百货</option>
+		<option value="387">岛内价</option>
+		<option value="198">崇州三羊开泰连锁</option>
+		<option value="105">崇州九龙超市连锁</option>
+		<option value="106">平和堂</option>
+		<option value="271">广东吉之岛天贸百货有限公司</option>
+		<option value="199">广西利客隆超市</option>
+		<option value="326">建都</option>
+		<option value="388">开化利群</option>
+		<option value="389">得一</option>
+		<option value="293">德惠超市</option>
+		<option value="107">德惠超市连锁</option>
+		<option value="200">德惠连锁超市</option>
+		<option value="352">心连心超市</option>
+		<option value="108">心连心连锁</option>
+		<option value="294">恒生</option>
+		<option value="109">成商集团股份武侯超市</option>
+		<option value="110">成都百货大楼</option>
+		<option value="111">房山华冠</option>
+		<option value="329">振华商厦</option>
+		<option value="364">捷龙购物广场</option>
+		<option value="317">摩尔</option>
+		<option value="272">摩尔华盛连锁</option>
+		<option value="295">摩尔百盛</option>
+		<option value="273">摩尔百盛连锁</option>
+		<option value="112">新一佳超市</option>
+		<option value="390">新世界购物广场</option>
+		<option value="239">新世纪</option>
+		<option value="391">新世纪超市</option>
+		<option value="392">新乡儿童超市连锁</option>
+		<option value="393">新乡华隆超市连锁</option>
+		<option value="394">新乡金城连锁</option>
+		<option value="113">新华都购物广场股份</option>
+		<option value="114">新合作家佳乐</option>
+		<option value="353">新星</option>
+		<option value="343">新玛特</option>
+		<option value="201">新郑万佳</option>
+		<option value="274">新郑万佳连锁</option>
+		<option value="395">无</option>
+		<option value="354">日新超市</option>
+		<option value="275">时代摩尔购物连锁</option>
+		<option value="276">昌平新世纪</option>
+		<option value="396">明湖</option>
+		<option value="397">明豪超市</option>
+		<option value="115">易买得超市</option>
+		<option value="116">易买得连锁超市</option>
+		<option value="296">易初莲花</option>
+		<option value="117">易初莲花连锁超市</option>
+		<option value="118">星力超市</option>
+		<option value="365">有荣</option>
+		<option value="119">有荣配销</option>
+		<option value="120">杭州联华华商集团</option>
+		<option value="277">桂湖摩尔连锁</option>
+		<option value="306">梅尼百货</option>
+		<option value="366">梅尼超市</option>
+		<option value="202">欧尚</option>
+		<option value="121">欧尚(中国)投资</option>
+		<option value="278">欧尚(中国)投资有限公司</option>
+		<option value="203">欧玲珑超市连锁</option>
+		<option value="122">正道思达连锁商业</option>
+		<option value="123">步步高商业连锁股份</option>
+		<option value="240">武汉中百</option>
+		<option value="241">武汉武商</option>
+		<option value="367">民乐福</option>
+		<option value="124">民润农产品</option>
+		<option value="125">永旺</option>
+		<option value="126">永辉</option>
+		<option value="127">永辉超市</option>
+		<option value="128">永辉超市连锁</option>
+		<option value="398">汇丰商贸</option>
+		<option value="428">汉中华盛连锁超市</option>
+		<option value="399">汉中天天超市</option>
+		<option value="429">汉中桃心岛连锁超市</option>
+		<option value="400">汉中镇巴心连心超市</option>
+		<option value="204">沃尔玛</option>
+		<option value="279">沃尔玛(中国)投资有限公司</option>
+		<option value="129">河北保定惠友连锁超市</option>
+		<option value="205">河北天客隆商业有限公司(一店)</option>
+		<option value="130">河南大商新玛特</option>
+		<option value="131">河南开封三毛</option>
+		<option value="132">河南郑州世纪联华</option>
+		<option value="418">泃阳小燕</option>
+		<option value="133">法宝</option>
+		<option value="242">洪客隆</option>
+		<option value="280">济南华联</option>
+		<option value="341">淄博商厦</option>
+		<option value="344">淄博惠仟佳</option>
+		<option value="281">深圳市百佳华百货有限公司</option>
+		<option value="134">温州人本超市</option>
+		<option value="135">温州民丰超市</option>
+		<option value="136">温州永丰超市</option>
+		<option value="368">湾畔百货</option>
+		<option value="330">潍坊中百大厦系统</option>
+		<option value="282">潍坊佳乐家系统</option>
+		<option value="334">潍坊百货大楼连锁</option>
+		<option value="337">烟台振华商场</option>
+		<option value="345">爱客多</option>
+		<option value="137">爱家超市</option>
+		<option value="138">爱家超市集团</option>
+		<option value="346">特信</option>
+		<option value="139">玉环六和超市</option>
+		<option value="401">王一实业集团衡阳香江百货有限公司</option>
+		<option value="140">王府井</option>
+		<option value="369">瑞丰园</option>
+		<option value="402">甘肃天水宝商佳美佳连锁超市</option>
+		<option value="141">百事佳亨晖商贸</option>
+		<option value="142">百佳</option>
+		<option value="143">百佳华百货</option>
+		<option value="206">百佳超市</option>
+		<option value="243">百佳超级市场</option>
+		<option value="403">百分百连锁</option>
+		<option value="404">百和超市</option>
+		<option value="144">百大集团合家福百大</option>
+		<option value="370">百姓超市</option>
+		<option value="145">百家惠商贸</option>
+		<option value="307">百惠</option>
+		<option value="146">百杨</option>
+		<option value="355">百汇购物中心</option>
+		<option value="297">百汇超市</option>
+		<option value="147">百货大楼股份</option>
+		<option value="339">益康连锁超市</option>
+		<option value="207">石家庄北人集团连锁</option>
+		<option value="405">福泰隆连锁</option>
+		<option value="208">简阳美好家园连锁</option>
+		<option value="406">红塔连锁</option>
+		<option value="148">红府超市</option>
+		<option value="244">红府超市连锁</option>
+		<option value="149">红旗</option>
+		<option value="298">红旗连锁</option>
+		<option value="209">红旗连锁批发</option>
+		<option value="210">红运来连锁</option>
+		<option value="299">红运连锁超市</option>
+		<option value="150">统一优玛特</option>
+		<option value="151">统一优马特</option>
+		<option value="152">统一银座</option>
+		<option value="283">维客</option>
+		<option value="407">绿源</option>
+		<option value="153">置禾商业连锁</option>
+		<option value="211">美好家园</option>
+		<option value="245">美好家园连锁</option>
+		<option value="154">美好家园连锁超市</option>
+		<option value="300">美特好</option>
+		<option value="301">联华超市</option>
+		<option value="155">联华超市股份</option>
+		<option value="318">联合一百</option>
+		<option value="212">联合一百连锁</option>
+		<option value="156">胶南糖酒 </option>
+		<option value="157">苏果超市</option>
+		<option value="420">荣盛旗</option>
+		<option value="158">西单</option>
+		<option value="159">西太华连锁超市</option>
+		<option value="421">诚盛百佳</option>
+		<option value="466">诸暨一百</option>
+		<option value="213">资阳好人家连锁</option>
+		<option value="214">资阳龙汇连锁</option>
+		<option value="160">辽宁大连大红福</option>
+		<option value="284">辽宁大连好易家</option>
+		<option value="161">辽宁沈阳兴隆</option>
+		<option value="408">辽宁鞍山佳泰</option>
+		<option value="409">辽宁鞍山泰纳隆</option>
+		<option value="410">辽宁鞍山百姓</option>
+		<option value="223">连锁店</option>
+		<option value="162">连锁店Store Hierarchy (DT Chain Store+IDT Chain Store)</option>
+		<option value="163">通程万惠</option>
+		<option value="356">邹平联华</option>
+		<option value="246">郑州世纪联华连锁</option>
+		<option value="247">重客隆</option>
+		<option value="285">重庆百货大楼股份</option>
+		<option value="411">重百超市</option>
+		<option value="412">金华联连锁</option>
+		<option value="164">金声超市</option>
+		<option value="427">金玛</option>
+		<option value="357">金盛隆（连锁）百货</option>
+		<option value="371">金鹏百货</option>
+		<option value="413">铁岭兴隆</option>
+		<option value="414">银川新华百货连锁超市</option>
+		<option value="286">银座</option>
+		<option value="338">长江汇泉</option>
+		<option value="248">长沙人人乐</option>
+		<option value="249">长沙天虹百货</option>
+		<option value="415">阜阳华联集团股份</option>
+		<option value="165">陕西民生家乐投资有限公司</option>
+		<option value="166">陕西省军人服务社</option>
+		<option value="167">陕西老百姓医药连锁超市</option>
+		<option value="168">陕西隆顺和街坊集市有限公司</option>
+		<option value="319">青岛国货集团</option>
+		<option value="320">青岛家佳源集团</option>
+		<option value="321">青岛维客</option>
+		<option value="215">青白江博美超市连锁</option>
+		<option value="169">顺天府</option>
+		<option value="308">顺客隆</option>
+		<option value="170">首航国力商贸</option>
+		<option value="336">香江百货</option>
+		<option value="171">香江百货超市</option>
+		<option value="322">鸿通超市</option>
+		<option value="323">鹏泰连锁</option>
+		<option value="324">麦凯乐</option>
+		<option value="287">麦德龙</option>
+		<option value="331">黄岛国货</option>
+		<option value="172">黄岩百货</option>
+		<option value="325">鼎润连锁系统</option>
+		<option value="416">齐齐哈尔正源超市</option>
+		<option value="417">齐齐哈尔百花超市</option>
+		<option value="173">龙田贸易</option>
+
+	</select>
+                                                 &nbsp;<span id="lblErr_ddlCustomer" class="filterError"></span>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div>
+                                
+</div>
+                             <div id="upGeo">
+	
+                                 <div class="filterPanel" id="Geo">
+                                    <table border="0" cellpadding="5" cellspacing="0" width="915">
+                                        <colgroup>
+                                            <col width="15%">
+                                            <col width="85%">
+                                        </colgroup>
+                                        <tbody><tr id="tr_cbRegion" class="filterRow">
+                                            <td>
+                                                <span id="lbl_cbRegion" class="formLabel">Region</span><span id="lblMand_cbRegion"></span>
+                                            </td>
+                                            <td>
+                                                <table id="cbRegion">
+		<tbody><tr>
+			<td><input id="cbRegion_0" type="checkbox" name="cbRegion$0" checked="checked" onclick_me="javascript:setTimeout(&#39;__doPostBack(\&#39;cbRegion$0\&#39;,\&#39;\&#39;)&#39;, 0)" value="1"><label for="cbRegion_0">East</label></td><td><input id="cbRegion_1" type="checkbox" name="cbRegion$1" checked="checked" onclick_me="javascript:setTimeout(&#39;__doPostBack(\&#39;cbRegion$1\&#39;,\&#39;\&#39;)&#39;, 0)" value="4"><label for="cbRegion_1">North</label></td><td><input id="cbRegion_2" type="checkbox" name="cbRegion$2" checked="checked" onclick_me="javascript:setTimeout(&#39;__doPostBack(\&#39;cbRegion$2\&#39;,\&#39;\&#39;)&#39;, 0)" value="2"><label for="cbRegion_2">South</label></td><td><input id="cbRegion_3" type="checkbox" name="cbRegion$3" checked="checked" onclick_me="javascript:setTimeout(&#39;__doPostBack(\&#39;cbRegion$3\&#39;,\&#39;\&#39;)&#39;, 0)" value="3"><label for="cbRegion_3">West</label></td><td></td><td></td>
+		</tr>
+	</tbody></table>
+                                                &nbsp;<span id="lblErr_cbRegion" class="filterError"></span>
+                                            </td>
+                                        </tr>
+                                        <tr id="tr_ddlProvince" class="filterRow">
+                                            <td>
+                                                <span id="lbl_ddlProvince" class="formLabel">Province</span><span id="lblMand_ddlProvince"></span>
+                                            </td>
+                                            <td>
+                                                <select name="ddlProvince" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ddlProvince\&#39;,\&#39;\&#39;)&#39;, 0)" id="ddlProvince" style="width:220px;">
+		<option selected="selected" value="0">All Provinces in selected region</option>
+		<option value="20">Anhui</option>
+		<option value="1">Beijing</option>
+		<option value="11">Chongqing</option>
+		<option value="22">Fujian</option>
+		<option value="15">Gansu</option>
+		<option value="26">Guangdong</option>
+		<option value="10">Guangxi</option>
+		<option value="13">Guizhou</option>
+		<option value="28">Hainan</option>
+		<option value="3">Hebei</option>
+		<option value="8">Heilongjiang</option>
+		<option value="21">Henan</option>
+		<option value="24">Hubei</option>
+		<option value="25">Hunan</option>
+		<option value="18">Jiangsu</option>
+		<option value="23">Jiangxi</option>
+		<option value="7">Jilin</option>
+		<option value="6">Liaoning</option>
+		<option value="5">Neimenggu</option>
+		<option value="29">Ningxia</option>
+		<option value="9">Shandong</option>
+		<option value="17">Shanghai</option>
+		<option value="4">Shanxi</option>
+		<option value="14">Shanxi</option>
+		<option value="12">Sichuan</option>
+		<option value="2">Tianjin</option>
+		<option value="16">Xinjiang</option>
+		<option value="27">Yunnan</option>
+		<option value="19">Zhejiang</option>
+
+	</select>
+                                                &nbsp;<span id="lblErr_ddlProvince" class="filterError"></span>
+                                            </td>
+                                        </tr>
+                                        <tr id="tr_ddlCity" class="filterRow">
+                                            <td>
+                                                <span id="lbl_ddlCity" class="formLabel">City</span><span id="lblMand_ddlCity"></span>
+                                            </td>
+                                            <td>
+                                                <select name="ddlCity" id="ddlCity" style="width:220px;">
+		<option value="0">All Cities in selected region</option>
+		<option value="-4">All Tier C cities</option>
+		<option value="-3">All Tier B cities</option>
+		<option value="-2">All Tier A cities</option>
+		<option value="-1">All Key cities</option>
+		<option value="71">Anqing</option>
+		<option value="72">Anshan</option>
+		<option value="149">anyang</option>
+		<option value="3">Baoding</option>
+		<option value="73">Baotou</option>
+		<option value="74">Beihai</option>
+		<option value="1">Beijing</option>
+		<option value="147">bengbu</option>
+		<option value="75">Cangzhou</option>
+		<option value="11">Changchun</option>
+		<option value="46">Changde</option>
+		<option value="45">Changsha</option>
+		<option value="26">Changzhou</option>
+		<option value="76">Chaozhou</option>
+		<option value="18">Chengdu</option>
+		<option value="159">chenzhou</option>
+		<option value="17">Chongqing</option>
+		<option value="10">Dalian</option>
+		<option value="77">Datong</option>
+		<option value="78">Dawukou</option>
+		<option value="143">dazhou</option>
+		<option value="144">deyang</option>
+		<option value="50">Dongguan</option>
+		<option value="132">dongying</option>
+		<option value="47">Foshan</option>
+		<option value="79">Fushun</option>
+		<option value="81">Fuyang</option>
+		<option value="42">Fuzhou-fj</option>
+		<option value="80">Fuzhou-jx</option>
+		<option value="82">Ganzhou</option>
+		<option value="48">Guangzhou</option>
+		<option value="16">Guilin</option>
+		<option value="19">Guiyang</option>
+		<option value="84">Haikou</option>
+		<option value="83">Hami</option>
+		<option value="6">Handan</option>
+		<option value="33">Hangzhou</option>
+		<option value="85">Hanzhong</option>
+		<option value="12">Harbin</option>
+		<option value="86">Hechi</option>
+		<option value="38">Hefei</option>
+		<option value="87">Hengyang</option>
+		<option value="8">Hohhot</option>
+		<option value="61">Huaian</option>
+		<option value="152">huaihua</option>
+		<option value="150">huainan</option>
+		<option value="155">huanggang</option>
+		<option value="89">Huangshi</option>
+		<option value="90">Huizhou</option>
+		<option value="88">Huzhou</option>
+		<option value="53">Jiangmen</option>
+		<option value="93">Jiangyou</option>
+		<option value="92">Jiaxing</option>
+		<option value="91">Jilin</option>
+		<option value="14">Jinan</option>
+		<option value="96">Jingmen</option>
+		<option value="139">jingzhou</option>
+		<option value="94">Jinhua</option>
+		<option value="57">Jining</option>
+		<option value="95">Jinzhou</option>
+		<option value="97">Jiujiang</option>
+		<option value="55">Kunming</option>
+		<option value="25">Kunshan</option>
+		<option value="153">langfang</option>
+		<option value="21">Lanzhou</option>
+		<option value="68">Leshan</option>
+		<option value="62">Lianyungang</option>
+		<option value="158">liaocheng</option>
+		<option value="98">Lijiang</option>
+		<option value="100">Linfen</option>
+		<option value="101">Linyi</option>
+		<option value="99">Lishui</option>
+		<option value="138">liuzhou</option>
+		<option value="102">Longyan</option>
+		<option value="103">Luoyang</option>
+		<option value="145">luzhou</option>
+		<option value="104">Maanshan</option>
+		<option value="105">Maoming</option>
+		<option value="106">Meizhou</option>
+		<option value="69">Mianyang</option>
+		<option value="107">Mudanjiang</option>
+		<option value="40">Nanchang</option>
+		<option value="70">Nanchong</option>
+		<option value="30">Nanjing</option>
+		<option value="15">Nanning</option>
+		<option value="29">Nantong</option>
+		<option value="134">nanyang</option>
+		<option value="34">Ningbo</option>
+		<option value="157">panzhihua</option>
+		<option value="108">Puer</option>
+		<option value="109">Puning</option>
+		<option value="13">Qingdao</option>
+		<option value="111">Qingyuan</option>
+		<option value="110">Qiqihaer</option>
+		<option value="43">Quanzhou</option>
+		<option value="113">Qujing</option>
+		<option value="112">Quzhou</option>
+		<option value="114">Ruian</option>
+		<option value="23">Shanghai</option>
+		<option value="135">shangqiu</option>
+		<option value="156">shangrao</option>
+		<option value="52">Shantou</option>
+		<option value="115">Shaoxing</option>
+		<option value="9">Shenyang</option>
+		<option value="49">Shenzhen</option>
+		<option value="4">Shijiazhuang</option>
+		<option value="140">shiyan</option>
+		<option value="116">Shuangyashan</option>
+		<option value="137">suqian</option>
+		<option value="24">Suzhou</option>
+		<option value="133">taian</option>
+		<option value="7">Taiyuan</option>
+		<option value="63">Taizhou-js</option>
+		<option value="35">Taizhou-zj</option>
+		<option value="5">Tangshan</option>
+		<option value="2">Tianjin</option>
+		<option value="117">Tianshui</option>
+		<option value="118">Tongliao</option>
+		<option value="160">tongren</option>
+		<option value="22">Urumchi</option>
+		<option value="58">Weifang</option>
+		<option value="56">Weihai</option>
+		<option value="37">Wenzhou</option>
+		<option value="44">Wuhan</option>
+		<option value="148">wuhu</option>
+		<option value="27">Wuxi</option>
+		<option value="119">Wuzhou</option>
+		<option value="41">Xiamen</option>
+		<option value="20">Xi'an</option>
+		<option value="141">xiangfan</option>
+		<option value="65">Xiangtan</option>
+		<option value="142">xiaogan</option>
+		<option value="36">Xiaoshan</option>
+		<option value="154">xichang</option>
+		<option value="120">Xinxiang</option>
+		<option value="121">Xinyang</option>
+		<option value="31">Xuzhou</option>
+		<option value="32">Yancheng</option>
+		<option value="28">Yangzhou</option>
+		<option value="59">Yantai</option>
+		<option value="122">Yibin</option>
+		<option value="123">Yichang</option>
+		<option value="124">Yinchuan</option>
+		<option value="66">Yongzhou</option>
+		<option value="126">Yueyang</option>
+		<option value="151">yulin</option>
+		<option value="125">Yuxi</option>
+		<option value="127">Zhanjiang</option>
+		<option value="128">Zhaoqing</option>
+		<option value="39">Zhengzhou</option>
+		<option value="64">Zhenjiang</option>
+		<option value="51">Zhongshan</option>
+		<option value="136">zhoukou</option>
+		<option value="129">Zhuhai</option>
+		<option value="130">Zhumadian</option>
+		<option value="67">Zhuzhou</option>
+		<option value="60">Zibo</option>
+		<option value="146">ziyang</option>
+		<option value="131">Zunyi</option>
+
+	</select>
+                                                &nbsp;<span id="lblErr_ddlCity" class="filterError"></span>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div>
+                                
+</div>
+                            <div class="filterPanel" id="Email">
+                                <table border="0" cellpadding="5" cellspacing="0" width="915">
+                                    <colgroup>
+                                        <col width="15%">
+                                        <col width="85%">
+                                    </colgroup>
+                                    <tbody><tr id="tr_tbEmail" class="filterRow">
+                                        <td>
+                                            <span id="lbl_tbEmail" class="formLabel">电子邮件地址</span><span id="lblMand_tbEmail"></span>
+                                        </td>
+                                        <td>
+                                            <input name="tbEmail" type="text" value="Nicke.Jiang@alwaysmkt.com" id="tbEmail" class="textBox" style="width:220px;">
+                                            &nbsp;<span id="lblErr_tbEmail" class="filterError"></span>
+                                        </td>
+                                    </tr>
+                                </tbody></table>
+                            </div>
+                            <div style="text-align:right;">
+                                <input type="button" name="btnDownload" value="" onclick_me="return _rpValidate(1);" id="btnDownload" class="btnDownload">
+                                <input type="button" name="btnRefresh" value="" onclick_me="$(&#39;#lblReportTitle&#39;).html(selectedReportName);_rpSetReportDesc(selectedReportId);_rpValidate();return false;" id="btnRefresh" class="btnRefresh">
+                            </div>
+                        </div>
+                        <div id="filterLoading" style="text-align:center;">
+                            <img alt="loading" src="../Images/loader.gif">
+                        </div>
+                    
+                </div>
+                <div class="report">
+                    <div>
+                        <div style="float:left;">
+                            <span id="lblReportTitle" class="ReportTitle"></span>&nbsp;&nbsp;
+                            <span id="lblReportDesc"></span>
+                        </div>
+                        <div style="float:right;">
+                            <input type="button" name="btnMenu" value="" onclick_me="_rpScrollTo(&#39;div.reportMenu&#39;,function(){$(&#39;#reportContent&#39;).hide();});return false;" id="btnMenu" class="icoMenu">&nbsp;
+                            <input type="button" name="btnBackToFilter" value="" onclick_me="$(&#39;#filterContent&#39;).show();_rpScrollTo(&#39;div.reportFilter&#39;,function(){$(&#39;#reportContent&#39;).hide();});return false;" id="btnBackToFilter" class="icoFilter">&nbsp;
+                            <input type="button" name="btnExport" value="" id="btnExport" class="icoSave">
+                        </div>
+                        <div style="clear:both;">&nbsp;</div>
+                    </div>
+                    <div id="reportContent">
+                        <div id="upReport">
+	
+                                <input type="button" name="btnLoadReport" value="" id="btnLoadReport" style="display:none;">
+                                <input type="hidden" name="hfTimeStamp" id="hfTimeStamp">
+                                <div id="reportTable" class="fakeContainer">
+                                    
+                                </div>
+                            
+</div>
+                    </div>
+                    <div id="reportLoading" style="text-align:center;">
+                            <img alt="loading" src="../Images/loader.gif">
+                        </div>
+                </div>
+                <div style="clear:left;">
+                    &nbsp;
+                </div>
+            </div>
+            
+            
+        </div>
+        
+<div class="footerNew">
+<div style="margin:5px 0px 0px 20px;">
+    Copyright© 2015 Mobilizer<br>
+  All Rights Reserved. <br>
+</div>
+  
+</div>
+
+    </div>
+    </div>
+    <input type="button" name="msg_btn" value="" id="msg_btn" style="display:none;visibility:hidden;"><div id="msg_pnl" class="modalPopupMessageBox" style="display: none; position: fixed;">
+	<div class="modalMessageHeader"><table width="100%" border="0"><tbody><tr><td><span class="Title" id="msglblHeader"></span></td></tr></tbody></table></div><div class="modalMessageBody"><div class="modalMessageContent"><span id="msgltMessage"></span></div> <div id="msg__divConfirm"><table border="0" cellspacing="0" cellpadding="0" width="100%"><tbody><tr><td align="center"><input type="button" class="buttonYes" onclick_me="__YesButton_Clicked();return false;">&nbsp;<input type="button" class="buttonNo" onclick_me="__NoButton_Clicked();"></td></tr></tbody></table></div><div id="msg__divAlert"><input type="button" class="buttonOk" onclick_me="__OkButton_Clicked();"></div><div id="msg__divContinue"><input type="button" class="buttonContinue" onclick_me="__ContinueButton_Clicked();"></div></div><div class="modalMessageHeaderXButtonContainer" align="right" style="position:absolute;top:0px;right:0px;"><input class="buttonX" onclick_me="__XButton_Clicked();return false;" type="button"></div>
+</div><input type="button" name="lbi_btn" value="" id="lbi_btn" style="display:none;visibility:hidden;"><div id="lbi_pnl" class="modalPopupIF" style="display: none; position: fixed;">
+	<div class="modalIFHeader"><table width="100%" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="left"></td><td class="middle" align="left"><div id="__ifHeaderImgTitle" class=""></div></td><td class="middle" align="right"></td><td class="right"></td></tr></tbody></table></div><iframe id="__iFModal" allowtransparency="true" style="background-color:Transparent;" scrolling="no" frameborder="0" marginheight="0" marginwidth="0"></iframe><div class="modalMessageHeaderXButtonContainer" align="right" style="position:absolute;top:0px;right:0px;"><input type="button" class="buttonX" onclick_me="__HideLB_Frame(&#39;&#39;);return false;"></div>
+</div><input type="button" name="lb_btn" value="" id="lb_btn" style="display:none;visibility:hidden;"><div id="lb_pnl" class="modalPopupLoading" style="display: none; position: fixed;">
+	<div><table width="100%" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td align="right"><img src="../css/WebResource(1).axd"></td><td>&nbsp;</td><td align="left"><span class="loading">This page is Loading, please wait....</span></td></tr></tbody></table></div>
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var __callback_LB;var __callback_LB_NoButton;var __curMode_LB;var __callBackDelay = 10;var __callBackBtnId;var __countDownTimer=0;var __countDownMsg;var __countDownTimeoutMsg;var __countDownObj;function __YesButton_Clicked() {$find("msg_mpeMessage").hide();if( __callback_LB && __callback_LB.length > 0 ) {setTimeout("__evalCallBack_LB()", __callBackDelay);} else {var prm = Sys.WebForms.PageRequestManager.getInstance();prm._doPostBack(__callBackBtnId, '');__callBackBtnId="";}}function __ContinueButton_Clicked() {$find("msg_mpeMessage").hide();__polling('SSU');if(__countDownObj){clearTimeout(__countDownObj);}}function __OkButton_Clicked() {$find("msg_mpeMessage").hide();setTimeout("__evalCallBack_LB()", __callBackDelay);}function __XButton_Clicked() {$find("msg_mpeMessage").hide();if( __curMode_LB == 0) {setTimeout("__evalCallBack_LB()", __callBackDelay);}else if(__curMode_LB==2){__pollingStart(30000);if(__countDownObj){clearTimeout(__countDownObj);}}}function __evalCallBack_LB() {eval(__callback_LB);__callback_LB = "";}function __evalCallBack_LB_No() {eval(__callback_LB_NoButton);__callback_LB_NoButton = "";}function __NoButton_Clicked() {$find("msg_mpeMessage").hide();if( __callback_LB_NoButton && __callback_LB_NoButton.length > 0 ) {setTimeout("__evalCallBack_LB_No()", __callBackDelay);}}function ShowMessageLBDelay(title, msg, bid, mode, callback) {if($find("msg_mpeMessage")) {ShowMessageLB(title, msg, bid, mode, callback);}else{setTimeout(function(){ShowMessageLBDelay(title, msg, bid, mode, callback)}, 20);}}function UpdateCountDown(){var tmp = __countDownMsg.replace('[TIMER]', __countDownTimer);$get("msgltMessage").innerHTML = tmp;__countDownTimer--; if( __countDownTimer >= 0 ){__countDownObj = setTimeout('UpdateCountDown()', 1000);}else {__curMode_LB=0;$get("msgltMessage").innerHTML = __countDownTimeoutMsg;$common.setVisible($get("msg__divAlert"), true);$common.setVisible($get("msg__divConfirm"), false);$common.setVisible($get("msg__divContinue"), false);}}function ShowMessageLBCountDown(title, msg, tmsg, bid, mode, callback, timer) {if($find("msg_mpeMessage")) {__countDownTimer=timer;__countDownMsg=msg;__countDownTimeoutMsg=tmsg;var tmp = __countDownMsg.replace('[TIMER]', __countDownTimer);ShowMessageLB(title, tmp, bid, mode, callback);UpdateCountDown();}else{setTimeout(function(){ShowMessageLBCountDown(title, msg, bid, mode, callback, timer)}, 20);}}function ShowMessageLBYesNo(title, msg, bid, mode, callbackYes, callbackJsNo) {__callback_LB_NoButton = callbackJsNo;ShowMessageLB(title,msg,bid,mode,callbackYes);}function ShowMessageLB(title, msg, bid, mode, callback) {__callback_LB = callback;__curMode_LB = mode;__callBackBtnId = bid;$get("msglblHeader").innerHTML = title;$get("msgltMessage").innerHTML = msg;if( mode && mode == 1){$common.setVisible($get("msg__divConfirm"), true);$common.setVisible($get("msg__divAlert"), false);$common.setVisible($get("msg__divContinue"), false);}else if( mode && mode == 2){$common.setVisible($get("msg__divConfirm"), false);$common.setVisible($get("msg__divAlert"), false);$common.setVisible($get("msg__divContinue"), true);} else {$common.setVisible($get("msg__divAlert"), true);$common.setVisible($get("msg__divConfirm"), false);$common.setVisible($get("msg__divContinue"), false);}$find("msg_mpeMessage").show();}function __ShowLB_FrameDelay(clsName, hText, width, height, url) {if( $find("lbi_mpeIframe") ){__ShowLB_Frame(clsName, hText, width, height, url);}else{setTimeout(new function(){__ShowLB_FrameDelay(clsName, hText, width, height, url)}, 100);}}function __SetTitle_Frame(hText){$get("__ifHeaderImgTitle").innerHTML = hText;}function __SetClass_Frame(clsName){$get("__ifHeaderImgTitle").className = clsName;}function __ShowLB_Frame(clsName, hText, width, height, url){var myi = $get("__ifHeaderImgTitle");var myf = $get("__iFModal");var div = $get("lbi_pnl");myi.className = clsName;myi.innerHTML = hText;div.style.width = width;myf.style.width = width;myf.style.height = height;myf.src = url;$find("lbi_mpeIframe").show();}function __HideLB_Frame(callbackJs){$find("lbi_mpeIframe").hide();$get("__iFModal").src = "";if( callbackJs && callbackJs != '' ){eval(callbackJs);}}__InitUpdateProgressPanel();
+WebForm_InitCallback();function __polling(message){var context = 'polling';WebForm_DoCallback('__Page',message,__pollingCallBack,context,__pollingErrorCallBack,true);}function __pollingCallBack(returnmessage, context){if(returnmessage.length > 0){eval(returnmessage)}else{__pollingStart(300000);}}function __pollingErrorCallBack(returnmessage, context){alert("Callback Error: " + returnmessage + ", " + context);}function __pollingStart(timeInterval){setTimeout("__polling('SS')", timeInterval);}__pollingStart(300000);(function() {var fn = function() {$get('tm_HiddenField').value = '';Sys.Application.remove_init(fn);};Sys.Application.add_init(fn);})();function __ShowLBLoading() { var lf = $find("lb_mpeLoading"); if( lf ) lf.show();} function __HideLBLoading() { var lf = $find("lb_mpeLoading"); if( lf ) lf.hide(); else setTimeout(function(){__HideLBLoading();}, 100);}Sys.Net.WebRequestManager.add_invokingRequest(__onInvoke); Sys.Net.WebRequestManager.add_completedRequest(__onComplete); var __loadingDigShowed = false; var __loadingST;var __showAjaxLoading=false;function __onInvoke(sender, args) { if( !__showAjaxLoading) return; __loadingST = setTimeout("__ShowLoadingDig()", 100);} function __ShowLoadingDig() { if( !__loadingDigShowed ) top.__ShowLBLoading(); __loadingDigShowed = true; } function __onComplete(sender, args) { __showAjaxLoading=false;if( __loadingDigShowed ) top.__HideLBLoading(); __loadingDigShowed = false; clearTimeout(__loadingST); } function pageUnload() { Sys.Net.WebRequestManager.remove_invokingRequest(__onInvoke); Sys.Net.WebRequestManager.remove_completedRequest(__onComplete); }Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.ModalPopupBehavior, {"BackgroundCssClass":"modalBackground","PopupControlID":"msg_pnl","dynamicServicePath":"/StoreRadar/Reports/Reports.aspx","id":"msg_mpeMessage"}, null, null, $get("msg_btn"));
+});
+Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.ModalPopupBehavior, {"BackgroundCssClass":"modalBackground","PopupControlID":"lbi_pnl","dynamicServicePath":"/StoreRadar/Reports/Reports.aspx","id":"lbi_mpeIframe"}, null, null, $get("lbi_btn"));
+});
+Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.ModalPopupBehavior, {"BackgroundCssClass":"modalBackground","PopupControlID":"lb_pnl","dynamicServicePath":"/StoreRadar/Reports/Reports.aspx","id":"lb_mpeLoading"}, null, null, $get("lb_btn"));
+});
+//]]>
+</script>
+<div id="msg_mpeMessage_backgroundElement" class="modalBackground" style="display: none; position: fixed; left: 0px; top: 0px;"></div><div id="lbi_mpeIframe_backgroundElement" class="modalBackground" style="display: none; position: fixed; left: 0px; top: 0px;"></div><div id="lb_mpeLoading_backgroundElement" class="modalBackground" style="display: none; position: fixed; left: 0px; top: 0px;"></div></form>
+
+
+</body></html>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="DIMWEEK" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.sales.po.DimWeek" >
+    <id column="week_id" property="weekId" jdbcType="INTEGER" />
+    <id column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="year_id" property="yearId" jdbcType="INTEGER" />
+    <result column="week_desc" property="weekDesc" jdbcType="VARCHAR" />
+    <result column="week_desc_en" property="weekDescEn" jdbcType="VARCHAR" />
+    <result column="start_day" property="startDay" jdbcType="DATE" />
+    <result column="end_day" property="endDay" jdbcType="DATE" />
+    <result column="week_long_desc" property="weekLongDesc" jdbcType="VARCHAR" />
+    <result column="week_long_desc_en" property="weekLongDescEn" jdbcType="VARCHAR" />
+    <result column="pre_week_id" property="preWeekId" jdbcType="INTEGER" />
+    <result column="ly_week_id" property="lyWeekId" jdbcType="INTEGER" />
+    <result column="has_data" property="hasData" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    week_id, client_id, year_id, week_desc, week_desc_en, start_day, end_day, week_long_desc, 
+    week_long_desc_en, pre_week_id, ly_week_id, has_data
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="cn.mobilizer.channel.sales.po.DimWeekKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from dim_week
+    where week_id = #{weekId,jdbcType=INTEGER}
+      and client_id = #{clientId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="cn.mobilizer.channel.sales.po.DimWeekKey" >
+    delete from dim_week
+    where week_id = #{weekId,jdbcType=INTEGER}
+      and client_id = #{clientId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.sales.po.DimWeek" >
+    insert into dim_week (week_id, client_id, year_id, 
+      week_desc, week_desc_en, start_day, 
+      end_day, week_long_desc, week_long_desc_en, 
+      pre_week_id, ly_week_id, has_data
+      )
+    values (#{weekId,jdbcType=INTEGER}, #{clientId,jdbcType=INTEGER}, #{yearId,jdbcType=INTEGER}, 
+      #{weekDesc,jdbcType=VARCHAR}, #{weekDescEn,jdbcType=VARCHAR}, #{startDay,jdbcType=DATE}, 
+      #{endDay,jdbcType=DATE}, #{weekLongDesc,jdbcType=VARCHAR}, #{weekLongDescEn,jdbcType=VARCHAR}, 
+      #{preWeekId,jdbcType=INTEGER}, #{lyWeekId,jdbcType=INTEGER}, #{hasData,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.sales.po.DimWeek" >
+    insert into dim_week
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="weekId != null" >
+        week_id,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="yearId != null" >
+        year_id,
+      </if>
+      <if test="weekDesc != null" >
+        week_desc,
+      </if>
+      <if test="weekDescEn != null" >
+        week_desc_en,
+      </if>
+      <if test="startDay != null" >
+        start_day,
+      </if>
+      <if test="endDay != null" >
+        end_day,
+      </if>
+      <if test="weekLongDesc != null" >
+        week_long_desc,
+      </if>
+      <if test="weekLongDescEn != null" >
+        week_long_desc_en,
+      </if>
+      <if test="preWeekId != null" >
+        pre_week_id,
+      </if>
+      <if test="lyWeekId != null" >
+        ly_week_id,
+      </if>
+      <if test="hasData != null" >
+        has_data,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="weekId != null" >
+        #{weekId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="yearId != null" >
+        #{yearId,jdbcType=INTEGER},
+      </if>
+      <if test="weekDesc != null" >
+        #{weekDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="weekDescEn != null" >
+        #{weekDescEn,jdbcType=VARCHAR},
+      </if>
+      <if test="startDay != null" >
+        #{startDay,jdbcType=DATE},
+      </if>
+      <if test="endDay != null" >
+        #{endDay,jdbcType=DATE},
+      </if>
+      <if test="weekLongDesc != null" >
+        #{weekLongDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="weekLongDescEn != null" >
+        #{weekLongDescEn,jdbcType=VARCHAR},
+      </if>
+      <if test="preWeekId != null" >
+        #{preWeekId,jdbcType=INTEGER},
+      </if>
+      <if test="lyWeekId != null" >
+        #{lyWeekId,jdbcType=INTEGER},
+      </if>
+      <if test="hasData != null" >
+        #{hasData,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.sales.po.DimWeek" >
+    update dim_week
+    <set >
+      <if test="yearId != null" >
+        year_id = #{yearId,jdbcType=INTEGER},
+      </if>
+      <if test="weekDesc != null" >
+        week_desc = #{weekDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="weekDescEn != null" >
+        week_desc_en = #{weekDescEn,jdbcType=VARCHAR},
+      </if>
+      <if test="startDay != null" >
+        start_day = #{startDay,jdbcType=DATE},
+      </if>
+      <if test="endDay != null" >
+        end_day = #{endDay,jdbcType=DATE},
+      </if>
+      <if test="weekLongDesc != null" >
+        week_long_desc = #{weekLongDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="weekLongDescEn != null" >
+        week_long_desc_en = #{weekLongDescEn,jdbcType=VARCHAR},
+      </if>
+      <if test="preWeekId != null" >
+        pre_week_id = #{preWeekId,jdbcType=INTEGER},
+      </if>
+      <if test="lyWeekId != null" >
+        ly_week_id = #{lyWeekId,jdbcType=INTEGER},
+      </if>
+      <if test="hasData != null" >
+        has_data = #{hasData,jdbcType=TINYINT},
+      </if>
+    </set>
+    where week_id = #{weekId,jdbcType=INTEGER}
+      and client_id = #{clientId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.sales.po.DimWeek" >
+    update dim_week
+    set year_id = #{yearId,jdbcType=INTEGER},
+      week_desc = #{weekDesc,jdbcType=VARCHAR},
+      week_desc_en = #{weekDescEn,jdbcType=VARCHAR},
+      start_day = #{startDay,jdbcType=DATE},
+      end_day = #{endDay,jdbcType=DATE},
+      week_long_desc = #{weekLongDesc,jdbcType=VARCHAR},
+      week_long_desc_en = #{weekLongDescEn,jdbcType=VARCHAR},
+      pre_week_id = #{preWeekId,jdbcType=INTEGER},
+      ly_week_id = #{lyWeekId,jdbcType=INTEGER},
+      has_data = #{hasData,jdbcType=TINYINT}
+    where week_id = #{weekId,jdbcType=INTEGER}
+      and client_id = #{clientId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="VISITING_TASK" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.visit.po.VisitingTask" >
+    <id column="visiting_task_id" property="visitingTaskId" jdbcType="INTEGER" />
+    <result column="visiting_task_no" property="visitingTaskNo" jdbcType="VARCHAR" />
+    <result column="visiting_task_name" property="visitingTaskName" jdbcType="VARCHAR" />
+    <result column="visiting_task_name_en" property="visitingTaskNameEn" jdbcType="VARCHAR" />
+    <result column="visiting_task_type" property="visitingTaskType" jdbcType="TINYINT" />
+    <result column="client_position_id" property="clientPositionId" jdbcType="INTEGER" />
+    <result column="pop_type" property="popType" jdbcType="TINYINT" />
+    <result column="pop_group_id" property="popGroupId" jdbcType="INTEGER" />
+    <result column="start_date" property="startDate" jdbcType="TIMESTAMP" />
+    <result column="end_date" property="endDate" jdbcType="TIMESTAMP" />
+    <result column="start_locating" property="startLocating" jdbcType="TINYINT" />
+    <result column="end_locating" property="endLocating" jdbcType="TINYINT" />
+    <result column="start_pic" property="startPic" jdbcType="TINYINT" />
+    <result column="end_pic" property="endPic" jdbcType="TINYINT" />
+    <result column="task_priority" property="taskPriority" jdbcType="TINYINT" />
+    <result column="is_combin" property="isCombin" jdbcType="TINYINT" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    visiting_task_id, visiting_task_no, visiting_task_name, visiting_task_name_en, visiting_task_type, 
+    client_position_id, pop_type, pop_group_id, start_date, end_date, start_locating, 
+    end_locating, start_pic, end_pic, task_priority, is_combin, remark, client_id, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from visiting_task
+    where visiting_task_id = #{visitingTaskId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from visiting_task
+    where visiting_task_id = #{visitingTaskId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.visit.po.VisitingTask" >
+    insert into visiting_task (visiting_task_id, visiting_task_no, visiting_task_name, 
+      visiting_task_name_en, visiting_task_type, client_position_id, 
+      pop_type, pop_group_id, start_date, 
+      end_date, start_locating, end_locating, 
+      start_pic, end_pic, task_priority, 
+      is_combin, remark, client_id, 
+       is_delete
+      )
+    values (#{visitingTaskId,jdbcType=INTEGER}, #{visitingTaskNo,jdbcType=VARCHAR}, #{visitingTaskName,jdbcType=VARCHAR}, 
+      #{visitingTaskNameEn,jdbcType=VARCHAR}, #{visitingTaskType,jdbcType=TINYINT}, #{clientPositionId,jdbcType=INTEGER}, 
+      #{popType,jdbcType=TINYINT}, #{popGroupId,jdbcType=INTEGER}, #{startDate,jdbcType=TIMESTAMP}, 
+      #{endDate,jdbcType=TIMESTAMP}, #{startLocating,jdbcType=TINYINT}, #{endLocating,jdbcType=TINYINT}, 
+      #{startPic,jdbcType=TINYINT}, #{endPic,jdbcType=TINYINT}, #{taskPriority,jdbcType=TINYINT}, 
+      #{isCombin,jdbcType=TINYINT}, #{remark,jdbcType=VARCHAR}, #{clientId,jdbcType=INTEGER}, 
+      #{isDelete,jdbcType=TINYINT}
+      )
+  </insert>
+  <!-- 注意：返回值已经改为插入记录的id值 -->
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.visit.po.VisitingTask" useGeneratedKeys="true" keyProperty="visitingTaskId" >
+    insert into visiting_task
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="visitingTaskId != null" >
+        visiting_task_id,
+      </if>
+      <if test="visitingTaskNo != null" >
+        visiting_task_no,
+      </if>
+      <if test="visitingTaskName != null" >
+        visiting_task_name,
+      </if>
+      <if test="visitingTaskNameEn != null" >
+        visiting_task_name_en,
+      </if>
+      <if test="visitingTaskType != null" >
+        visiting_task_type,
+      </if>
+      <if test="clientPositionId != null" >
+        client_position_id,
+      </if>
+      <if test="popType != null" >
+        pop_type,
+      </if>
+      <if test="popGroupId != null" >
+        pop_group_id,
+      </if>
+      <if test="startDate != null" >
+        start_date,
+      </if>
+      <if test="endDate != null" >
+        end_date,
+      </if>
+      <if test="startLocating != null" >
+        start_locating,
+      </if>
+      <if test="endLocating != null" >
+        end_locating,
+      </if>
+      <if test="startPic != null" >
+        start_pic,
+      </if>
+      <if test="endPic != null" >
+        end_pic,
+      </if>
+      <if test="taskPriority != null" >
+        task_priority,
+      </if>
+      <if test="isCombin != null" >
+        is_combin,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+   
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="visitingTaskId != null" >
+        #{visitingTaskId,jdbcType=INTEGER},
+      </if>
+      <if test="visitingTaskNo != null" >
+        #{visitingTaskNo,jdbcType=VARCHAR},
+      </if>
+      <if test="visitingTaskName != null" >
+        #{visitingTaskName,jdbcType=VARCHAR},
+      </if>
+      <if test="visitingTaskNameEn != null" >
+        #{visitingTaskNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="visitingTaskType != null" >
+        #{visitingTaskType,jdbcType=TINYINT},
+      </if>
+      <if test="clientPositionId != null" >
+        #{clientPositionId,jdbcType=INTEGER},
+      </if>
+      <if test="popType != null" >
+        #{popType,jdbcType=TINYINT},
+      </if>
+      <if test="popGroupId != null" >
+        #{popGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="startDate != null" >
+        #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="startLocating != null" >
+        #{startLocating,jdbcType=TINYINT},
+      </if>
+      <if test="endLocating != null" >
+        #{endLocating,jdbcType=TINYINT},
+      </if>
+      <if test="startPic != null" >
+        #{startPic,jdbcType=TINYINT},
+      </if>
+      <if test="endPic != null" >
+        #{endPic,jdbcType=TINYINT},
+      </if>
+      <if test="taskPriority != null" >
+        #{taskPriority,jdbcType=TINYINT},
+      </if>
+      <if test="isCombin != null" >
+        #{isCombin,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+     
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.visit.po.VisitingTask" >
+    update visiting_task
+    <set >
+      <if test="visitingTaskNo != null" >
+        visiting_task_no = #{visitingTaskNo,jdbcType=VARCHAR},
+      </if>
+      <if test="visitingTaskName != null" >
+        visiting_task_name = #{visitingTaskName,jdbcType=VARCHAR},
+      </if>
+      <if test="visitingTaskNameEn != null" >
+        visiting_task_name_en = #{visitingTaskNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="visitingTaskType != null" >
+        visiting_task_type = #{visitingTaskType,jdbcType=TINYINT},
+      </if>
+      <if test="clientPositionId != null" >
+        client_position_id = #{clientPositionId,jdbcType=INTEGER},
+      </if>
+      <if test="popType != null" >
+        pop_type = #{popType,jdbcType=TINYINT},
+      </if>
+      <if test="popGroupId != null" >
+        pop_group_id = #{popGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="startDate != null" >
+        start_date = #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        end_date = #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="startLocating != null" >
+        start_locating = #{startLocating,jdbcType=TINYINT},
+      </if>
+      <if test="endLocating != null" >
+        end_locating = #{endLocating,jdbcType=TINYINT},
+      </if>
+      <if test="startPic != null" >
+        start_pic = #{startPic,jdbcType=TINYINT},
+      </if>
+      <if test="endPic != null" >
+        end_pic = #{endPic,jdbcType=TINYINT},
+      </if>
+      <if test="taskPriority != null" >
+        task_priority = #{taskPriority,jdbcType=TINYINT},
+      </if>
+      <if test="isCombin != null" >
+        is_combin = #{isCombin,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where visiting_task_id = #{visitingTaskId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.visit.po.VisitingTask" >
+    update visiting_task
+    set visiting_task_no = #{visitingTaskNo,jdbcType=VARCHAR},
+      visiting_task_name = #{visitingTaskName,jdbcType=VARCHAR},
+      visiting_task_name_en = #{visitingTaskNameEn,jdbcType=VARCHAR},
+      visiting_task_type = #{visitingTaskType,jdbcType=TINYINT},
+      client_position_id = #{clientPositionId,jdbcType=INTEGER},
+      pop_type = #{popType,jdbcType=TINYINT},
+      pop_group_id = #{popGroupId,jdbcType=INTEGER},
+      start_date = #{startDate,jdbcType=TIMESTAMP},
+      end_date = #{endDate,jdbcType=TIMESTAMP},
+      start_locating = #{startLocating,jdbcType=TINYINT},
+      end_locating = #{endLocating,jdbcType=TINYINT},
+      start_pic = #{startPic,jdbcType=TINYINT},
+      end_pic = #{endPic,jdbcType=TINYINT},
+      task_priority = #{taskPriority,jdbcType=TINYINT},
+      is_combin = #{isCombin,jdbcType=TINYINT},
+      remark = #{remark,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+  
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where visiting_task_id = #{visitingTaskId,jdbcType=INTEGER}
+  </update>
+  
+  <sql id="Query_Column_List">
+  		<if test="clientPositionId != null">
+      	 	and vt.client_position_id = #{clientPositionId}
+      	 </if> 
+		<if test="clientId != null and clientId !=''">
+			and vt.client_id = #{clientId}
+		</if>
+		<if test="isDelete != null">
+			and vt.is_delete = #{isDelete}
+		</if>
+		<if test="visitingTaskName != null and visitingTaskName != ''" >
+       		and vt.visiting_task_name like CONCAT('%',#{visitingTaskName},'%') 
+      	</if>
+	</sql>
+  
+	 <select id="queryTotalCount" parameterType="java.util.Map" resultType="Integer">
+		select  count(1) from VISITING_TASK vt where 1=1 
+		<include refid="Query_Column_List" />
+	</select>
+	
+	<select id="findListByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+		-- select * from VISITING_TASK vt where 1=1
+		select vt.*,cp.position_name clientPositionName from VISITING_TASK vt right join  client_position cp on vt.client_position_id=cp.client_position_id where  vt.is_delete = 0 	and cp.is_delete = 0
+		<include refid="Query_Column_List" />
+		<include refid="basic.mysqlPageSearchFoot"/>  
+	</select>
+	
+	<select id="getTasksByStoreTaskMapping" parameterType="java.util.Map" resultMap="BaseResultMap">
+		SELECT vt.*
+		FROM visiting_task vt
+		INNER JOIN visiting_pop_mapping vpm ON vpm.visiting_task_id = vt.visiting_task_id
+		AND vt.client_id = #{clientId}
+		AND vt.pop_type = #{popType}
+		AND vpm.pop_id = #{popId}
+		<if test="taskType != null" >
+			AND vt.visiting_task_type = #{taskType}
+		</if>
+		<if test="clientPositionId != null" >
+			AND vt.client_position_id = #{clientPositionId}
+		</if>
+		AND vpm.is_delete = 0
+		AND vt.is_delete = 0
+		<![CDATA[ AND vt.start_date <= #{startDate}]]>
+		<![CDATA[ AND DATEDIFF(IFNULL(vt.end_date,CURDATE()),#{endDate})>=0]]> 
+		ORDER BY vt.task_priority
+	</select>
+
+	<select id="getTasksByStoreTaskGroup" parameterType="java.util.Map" resultMap="BaseResultMap">
+		SELECT vt.*
+		FROM visiting_task vt
+		INNER JOIN store s ON s.store_group_id = vt.pop_group_id
+		AND vt.client_id = #{clientId}
+		AND s.store_id = #{popId}
+		AND vt.pop_type = #{popType}
+		<if test="taskType != null" >
+			AND vt.visiting_task_type = #{taskType}
+		</if>
+		<if test="clientPositionId != null" >
+			AND vt.client_position_id = #{clientPositionId}
+		</if>
+		AND s.is_delete = 0 
+		AND vt.is_delete = 0 
+		<![CDATA[ AND vt.start_date <= #{startDate}]]>
+		<![CDATA[ AND DATEDIFF(IFNULL(vt.end_date,CURDATE()),#{endDate})>=0]]> 
+		ORDER BY vt.task_priority
+	</select>
+	
+	<select id="getTasksByChannel" parameterType="java.util.Map" resultMap="BaseResultMap">
+		SELECT vt.*
+		FROM visiting_task vt 
+		INNER JOIN visiting_task_channel_mapping vtcm 
+		ON vt.visiting_task_id = vtcm.visiting_task_id 
+		AND vt.client_id = #{clientId}
+		AND vt.pop_type = #{popType} 
+		<if test="taskType != null" >
+			AND vt.visiting_task_type = #{taskType}
+		</if>
+		<![CDATA[AND FIND_IN_SET(vtcm.channel_id,fn_get_channel_parent(#{channelId}))>0]]>
+		<if test="clientPositionId != null" >
+			AND vt.client_position_id = #{clientPositionId}
+		</if>
+		AND vtcm.is_delete = 0 
+		AND vt.is_delete = 0 
+		<![CDATA[ AND vt.start_date <= #{startDate}]]>
+		<![CDATA[ AND DATEDIFF(IFNULL(vt.end_date,CURDATE()),#{endDate})>=0]]> 
+		ORDER BY vt.task_priority
+	</select>
+	
+	<select id="getTasksByClientPosition" parameterType="java.util.Map" resultMap="BaseResultMap">
+		SELECT vt.*
+		FROM visiting_task vt 
+		INNER JOIN visiting_task_position_mapping vtpm ON vt.visiting_task_id = vtpm.visiting_task_id AND vtpm.is_delete = 0
+		WHERE vt.is_delete = 0
+		AND vt.client_id = #{clientId}
+		AND vt.pop_type = #{popType} 
+		<if test="taskType != null" >
+			AND vt.visiting_task_type = #{taskType}
+		</if>
+		<if test="clientPositionId != null" >
+			AND vtpm.client_position_id = #{clientPositionId}
+		</if>
+		<![CDATA[ AND vt.start_date <= #{startDate}]]>
+		<![CDATA[ AND DATEDIFF(IFNULL(vt.end_date,CURDATE()),#{endDate})>=0]]> 
+		ORDER BY vt.task_priority
+	</select>
+	
+	<select id="getTasksByClientPositionAndRoles" parameterType="java.util.Map" resultMap="BaseResultMap">
+		SELECT vt.*
+		FROM visiting_task vt 
+		INNER JOIN visiting_task_position_mapping vtpm ON vt.visiting_task_id = vtpm.visiting_task_id AND vtpm.is_delete = 0
+		WHERE vt.is_delete = 0
+		AND vt.client_id = #{clientId}
+		AND vt.pop_type = #{popType} 
+		AND vt.visiting_task_type = #{taskType}
+		AND vtpm.client_position_id = #{clientPositionId}
+		<![CDATA[ AND vt.start_date <= #{startDate}]]>
+		<![CDATA[ AND DATEDIFF(IFNULL(vt.end_date,CURDATE()),#{endDate})>=0]]>
+		UNION
+		SELECT vt.*
+		FROM visiting_task vt 
+		INNER JOIN client_roles_task_mapping crtm ON vt.visiting_task_id = crtm.visiting_task_id AND crtm.is_delete = 0
+		WHERE vt.is_delete = 0
+		AND vt.client_id = #{clientId}
+		AND vt.pop_type = #{popType} 
+		AND vt.visiting_task_type = #{taskType}
+		AND find_in_set(crtm.role_id,#{roleIds})>0
+		<![CDATA[ AND vt.start_date <= #{startDate}]]>
+		<![CDATA[ AND DATEDIFF(IFNULL(vt.end_date,CURDATE()),#{endDate})>=0]]>
+		ORDER BY task_priority
+	</select>
+	
+  <select id="findExtendOjByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select vt.*, sg.group_name as storeGroupName
+    from visiting_task vt 
+    left join store_group sg on vt.pop_group_id = sg.store_group_id 
+    where vt.visiting_task_id = #{visitingTaskId,jdbcType=INTEGER} 
+    and vt.is_delete = 0
+  </select>
+</mapper>

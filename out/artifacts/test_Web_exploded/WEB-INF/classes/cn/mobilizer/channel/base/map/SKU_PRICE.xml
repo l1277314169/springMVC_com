@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="SKU_PRICE" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.base.po.SkuPrice" >
+    <id column="sku_price_id" property="skuPriceId" jdbcType="INTEGER" />
+    <result column="sku_id" property="skuId" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="sku_price_group_id" property="skuPriceGroupId" jdbcType="INTEGER" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sku_price_id, sku_id, price, remark, sku_price_group_id, client_id, create_time, 
+    last_update_time, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sku_price
+    where sku_price_id = #{skuPriceId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sku_price
+    where sku_price_id = #{skuPriceId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.base.po.SkuPrice" >
+    insert into sku_price (sku_price_id, sku_id, price, 
+      remark, sku_price_group_id, client_id, 
+      is_delete
+      )
+    values (#{skuPriceId,jdbcType=INTEGER}, #{skuId,jdbcType=INTEGER}, #{price,jdbcType=DECIMAL}, 
+      #{remark,jdbcType=VARCHAR}, #{skuPriceGroupId,jdbcType=INTEGER}, #{clientId,jdbcType=INTEGER}, 
+      #{isDelete,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.base.po.SkuPrice" >
+    insert into sku_price
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="skuPriceId != null" >
+        sku_price_id,
+      </if>
+      <if test="skuId != null" >
+        sku_id,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="skuPriceGroupId != null" >
+        sku_price_group_id,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="skuPriceId != null" >
+        #{skuPriceId,jdbcType=INTEGER},
+      </if>
+      <if test="skuId != null" >
+        #{skuId,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="skuPriceGroupId != null" >
+        #{skuPriceGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.base.po.SkuPrice" >
+    update sku_price
+    <set >
+      <if test="skuId != null" >
+        sku_id = #{skuId,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="skuPriceGroupId != null" >
+        sku_price_group_id = #{skuPriceGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where sku_price_id = #{skuPriceId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.base.po.SkuPrice" >
+    update sku_price
+    set sku_id = #{skuId,jdbcType=INTEGER},
+      price = #{price,jdbcType=DECIMAL},
+      remark = #{remark,jdbcType=VARCHAR},
+      sku_price_group_id = #{skuPriceGroupId,jdbcType=INTEGER},
+      client_id = #{clientId,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where sku_price_id = #{skuPriceId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="queryTotalCount" parameterType="java.util.Map" resultType="Integer">
+		SELECT COUNT(1) from (SELECT spg.group_name,c.channel_name,cn.chain_name,d.distributor_name,COUNT(sp.sku_price_id)as skuNumber from sku_price_group spg
+		LEFT JOIN sku_price sp on sp.sku_price_group_id = spg.sku_price_group_id
+		and sp.client_id = #{clientId} and sp.is_delete = 0
+		LEFT JOIN pop_sku_price_group_mapping psm on psm.sku_price_group_id = spg.sku_price_group_id
+		and psm.client_id = #{clientId} and psm.is_delete = 0
+		LEFT JOIN channel c on c.channel_id = psm.channel_id
+		and c.client_id = #{clientId} and c.is_delete = 0
+		LEFT JOIN chain cn on cn.chain_id = psm.chain_id
+		and cn.client_id = #{clientId} and cn.is_delete = 0
+		LEFT JOIN distributor d on d.distributor_id = psm.distributor_id
+		and d.client_id = #{clientId} and d.is_delete = 0
+		where 1=1
+		<include refid="Query_Column_List" />
+		GROUP BY spg.sku_price_group_id)aa
+	</select>
+  
+  <select id="selectByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+		<include refid="select_by_param" />
+		<include refid="basic.mysqlPageSearchFoot"/>  
+	</select>
+  
+    <sql id="select_by_param">
+		SELECT spg.group_name as groupName,c.channel_name as channelName,cn.chain_name as chainName,d.distributor_name as distributorName,COUNT(sp.sku_price_id)as sku from sku_price_group spg
+		LEFT JOIN sku_price sp on sp.sku_price_group_id = spg.sku_price_group_id
+		and sp.client_id = #{clientId} and sp.is_delete = 0
+		LEFT JOIN pop_sku_price_group_mapping psm on psm.sku_price_group_id = spg.sku_price_group_id
+		and psm.client_id = #{clientId} and psm.is_delete = 0
+		LEFT JOIN channel c on c.channel_id = psm.channel_id
+		and c.client_id = #{clientId} and c.is_delete = 0
+		LEFT JOIN chain cn on cn.chain_id = psm.chain_id
+		and cn.client_id = #{clientId} and cn.is_delete = 0
+		LEFT JOIN distributor d on d.distributor_id = psm.distributor_id
+		and d.client_id = #{clientId} and d.is_delete = 0
+		where 1=1
+		<include refid="Query_Column_List" />
+		GROUP BY spg.sku_price_group_id
+	</sql>
+  <sql id="Query_Column_List">
+		<if test="clientId != null ">
+			and spg.client_id = #{clientId}
+		</if>
+		<if test="skuId != null ">
+			and sp.sku_id = #{skuId}
+		</if>
+		<if test="channelId != null">
+			and c.channel_id =#{channelId}
+		</if>
+		<if test="chainId != null">
+			and cn.chain_id=#{chainId} 
+		</if>
+		<if test="distributorId != null ">
+			and psm.distributor_id = #{distributorId}
+		</if>
+		<if test="isDelete != null">
+			and spg.is_delete = #{isDelete}
+		</if>
+		<if test="isDelete == null">
+			and spg.is_delete = 0
+		</if>
+	</sql>
+	
+	
+	<update id="updateIsdelete" parameterType="java.util.Map"> 
+		update  sku_price set is_delete=1 where sku_price_group_id=#{skuPriceGroupId,jdbcType=INTEGER} and client_id=#{clientId,jdbcType=INTEGER}
+	</update>
+	
+	 <select id="selectOnById" resultMap="BaseResultMap" parameterType="java.util.Map">
+ 		 select * from sku_price where sku_price_group_id=#{skuPriceGroupId} and sku_id=#{skuId}
+  	 </select>
+  	 
+  	  <select id="findSkuPriceId" resultMap="BaseResultMap" parameterType="java.util.Map">
+ 		 select GROUP_CONCAT(sku_id) as skuIdList,GROUP_CONCAT(price) as priceList from sku_price where sku_price_group_id=#{skuPriceGroupId} and client_id=#{clientId} and is_delete = 0
+  	 </select>
+  	 
+  	 <select id="findSkuAndPrices" resultType="cn.mobilizer.channel.base.vo.SkuPriceVO" parameterType="java.util.Map">
+  		 SELECT sp.sku_id as skuId,sp.price as price from sku_price sp where  sp.client_id = #{clientId} and sp.sku_price_group_id = #{skuPriceGroupId} and sp.is_delete = 0
+  	 </select>
+  	 
+  	 <select id="findSkuPriceByParmarter" parameterType="java.util.Map" resultMap="BaseResultMap">
+  	 	SELECT * from sku_price sp
+		where sp.client_id = #{clientId}  and sp.sku_id = #{skuId} and sp.sku_price_group_id = #{skuPriceGroupId} 
+  	 </select>
+  	 
+  	 <update id="updatefininset"  parameterType="java.util.Map">
+  		 update  sku_price set is_delete=1 where sku_price_group_id=#{skuPriceGroupId,jdbcType=INTEGER} and client_id=#{clientId,jdbcType=INTEGER} and FIND_IN_SET(sku_id,#{skuIds})
+  	 </update>
+  
+</mapper>

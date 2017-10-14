@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="REPORT">
+  <resultMap id="VisitingCount" type="cn.mobilizer.channel.api.po.VisitingCount" >
+    <result column="client_user_id" property="clientUserId" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="visited_date" property="visitedDate" jdbcType="VARCHAR" />
+    <result column="planned_times" property="plannedTimes" jdbcType="INTEGER" />
+    <result column="tmp_planned_times" property="tmpPlannedTimes" jdbcType="INTEGER" />
+    <result column="visited_times" property="visitedTimes" jdbcType="INTEGER" />
+    <result column="visited_by_planned" property="visitedByPlanned" jdbcType="INTEGER" />
+  </resultMap>
+
+  <resultMap id="VisitingDetail" type="cn.mobilizer.channel.api.po.VisitingDetail" >
+    <result column="client_user_id" property="clientUserId" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="store_no" property="storeNo" jdbcType="VARCHAR" />
+    <result column="store_name" property="storeName" jdbcType="VARCHAR" />
+    <result column="in_time" property="inTime" jdbcType="VARCHAR" />
+    <result column="out_time" property="outTime" jdbcType="VARCHAR" />
+    <result column="planning_type" property="planningType" jdbcType="INTEGER" />
+    <result column="call_status" property="callStatus" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <resultMap id="StoreScoreMap" type="cn.mobilizer.channel.mobile.po.ClientUserStoreScore" >
+	<result column="client_user_id" property="clientUserId" jdbcType="INTEGER" />
+	<result column="client_id" property="clientId" jdbcType="INTEGER" />
+	<result column="store_no" property="storeNo" jdbcType="VARCHAR" />
+	<result column="name" property="name" jdbcType="VARCHAR" />
+	<result column="store_name" property="storeName" jdbcType="VARCHAR" />
+	<result column="channel_name" property="channelName" jdbcType="VARCHAR" />
+	<result column="actual_score" property="actualScore" jdbcType="DECIMAL" />
+	<result column="toothpaste_dist_target" property="toothpasteDistTarget" jdbcType="DECIMAL" />
+	<result column="toothpaste_dist_actual" property="toothpasteDistActual" jdbcType="DECIMAL" />
+	<result column="toothbrush_dist_target" property="toothbrushDistTarget" jdbcType="DECIMAL" />
+	<result column="toothbrush_dist_actual" property="toothbrushDistActual" jdbcType="DECIMAL" />
+	<result column="toothpaste_distribution" property="toothpasteDistribution" jdbcType="DOUBLE" />
+	<result column="toothbrush_distribution" property="toothbrushDistribution" jdbcType="DECIMAL" />
+    <result column="toothpaste_sos" property="toothpasteSos" jdbcType="DECIMAL" />
+    <result column="toothbrush_sos" property="toothbrushSos" jdbcType="DECIMAL" />
+    <result column="toothpaste_5p" property="toothpaste5p" jdbcType="DECIMAL" />
+    <result column="toothbrush_5p" property="toothbrush5p" jdbcType="DECIMAL" />
+    <result column="toothpaste_2nd" property="toothpaste2nd" jdbcType="DECIMAL" />
+    <result column="toothbrush_2nd" property="toothbrush2nd" jdbcType="DECIMAL" />
+    <result column="regimen_display" property="regimenDisplay" jdbcType="DECIMAL" />
+  </resultMap>
+  
+   <select id="queryVisitingCount" resultMap="VisitingCount" parameterType="java.util.Map" >
+   call sp_visited_statistics_4_leader(#{clientId,jdbcType=INTEGER},#{clientUserId,jdbcType=INTEGER},#{startTime,jdbcType=TIMESTAMP},#{endTime,jdbcType=TIMESTAMP})
+   </select>
+   
+   <select id="queryVisitingDetail" resultMap="VisitingDetail" parameterType="java.util.Map" >
+   call sp_visited_detail_4_leader(#{clientId,jdbcType=INTEGER},#{clientUserId,jdbcType=INTEGER},#{startTime,jdbcType=TIMESTAMP},#{endTime,jdbcType=TIMESTAMP})
+   </select>
+   
+   <select id="getStoreScoreList" resultMap="StoreScoreMap" parameterType="java.util.Map" >
+   call sp_execution_score_detail_by_user(
+   #{clientId},
+   #{clientUserId},
+   #{clientUserIds},
+   <if test="storeNo != null and storeNo != ''">
+   #{storeNo},
+   </if>
+   <if test="storeNo == null or storeNo == ''">
+    null,
+   </if>
+   #{monthId},
+   #{scoreType},
+   null,
+   null,
+   #{flag}
+   )
+   </select>
+</mapper>

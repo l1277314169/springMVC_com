@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="basic"> 
+	<sql id="pageSearchHead" >
+		 <if test="_start != null and _end != null" >
+			SELECT * FROM (SELECT P_T.*,ROWNUM AS RN FROM ( 
+	  	 </if>
+	</sql>
+	<sql id="pageSearchFoot" >
+	    <if test="_orderby != null"  >
+				ORDER BY ${_orderby} ${_order}
+	 	</if>
+		<if test="_start != null and _end != null" >
+			) P_T ) WHERE RN BETWEEN  #{_start} AND #{_end}
+		</if>
+	</sql>
+	<sql id="mysqlPageSearchFoot" >
+		<if test="_orderby != null"  >
+				ORDER BY ${_orderby} ${_order}
+	 	</if>
+		 <if test="_start != null and _size != null" >
+			LIMIT  #{_start} , #{_size}
+	  	 </if>
+	</sql>
+</mapper>

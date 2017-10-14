@@ -1,0 +1,693 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0055)http://colgate.alwaysmkt.com.cn/StoreRadar/Gallery.aspx -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link href="../css/colorbox.css" rel="stylesheet" type="text/css"><title>
+
+</title>
+   
+    
+    <script src="../js/jquery-1.8.2.js" type="text/javascript"></script>
+    <script src="../js/jquery.colorbox.js" type="text/javascript"></script>
+    <script src="../js/jquery-ui-1.9.1.custom.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../js/Common.js"></script>
+    <script type="text/javascript">
+        var refreshClass;
+        function Unrefresh() {
+           
+            $('#btnSearch').removeClass('btnNewRefreshLoading');
+            $('#btnSearch').attr('onclick', 'return Refresh();');
+        }
+        function Refresh() {
+
+
+            var refreshbtn = $('#btnSearch');
+            refreshClass = refreshbtn.attr('class');
+            refreshbtn.addClass('btnNewRefreshLoading');
+            refreshbtn.attr('onclick', 'return false;');
+            return true;
+
+        }
+    </script>
+
+<link href="../css/buttons.css" type="text/css" rel="stylesheet">
+<link href="../css/buttonsCN.css" type="text/css" rel="stylesheet">
+<link href="../css/dashboard.css" type="text/css" rel="stylesheet">
+<link href="../css/DataEntry.css" type="text/css" rel="stylesheet">
+<link href="../css/jquery.lightbox-0.5.css" type="text/css" rel="stylesheet">
+<link href="../css/messageBox.css" type="text/css" rel="stylesheet">
+<link href="../css/overview.css" type="text/css" rel="stylesheet">
+<link href="../css/RBControls.css" type="text/css" rel="stylesheet">
+<link href="../css/report.css" type="text/css" rel="stylesheet">
+<link href="../css/Site.css" type="text/css" rel="stylesheet">
+</head>
+<body style="background-image:none;background-color:White;" cz-shortcut-listen="true">
+    <form method="post" action="./Gallery.html" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="tm_HiddenField" id="tm_HiddenField" value=";;AjaxControlToolkit, Version=3.5.40412.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e:zh-CN:065e08c0-e2d1-42ff-9483-e5c14441b311:475a4ef5:5546a2b:d2e10b12:effe2a26:37e2e5c9:5a682656:12bbc599:497ef277:a43b07eb:751cdd15:dfad98a5:1d3ed089:3cf12cf1">
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTM2ODA1OTk0NA9kFgICAw9kFiACAw9kFgYCCQ8PZBYCHgdvbmNsaWNrBXtfX1Nob3dMQl9GcmFtZURlbGF5KCdtb2RhbElGSGVhZGVyVGl0bGUnLCdDaGFuZ2UgUGFzc3dvcmQnLCc2MDBweCcsJzIwMHB4JywnL1N0b3JlUmFkYXIvQ2hhbmdlUGFzc3dvcmQuYXNweCcpO3JldHVybiBmYWxzZTtkAg8PDxYEHghDc3NDbGFzcwUHYnRuSG9tZR4EXyFTQgICZGQCEQ8WAh4LXyFJdGVtQ291bnQCBRYKZg9kFgICAQ8PFgYeBFRleHQFCE92ZXJ2aWV3HwEFDU5ld01lbnVCdXR0b24fAgICFgIfAAU+d2luZG93LmxvY2F0aW9uLmhyZWY9Ii9TdG9yZVJhZGFyL092ZXJ2aWV3LmFzcHgiO3JldHVybiBmYWxzZTtkAgEPZBYCAgEPDxYGHwQFCURhc2hib2FyZB8BBQ1OZXdNZW51QnV0dG9uHwICAhYCHwAFUHdpbmRvdy5sb2NhdGlvbi5ocmVmPSIvU3RvcmVSYWRhci9EYXNoYm9hcmQvRGFzaGJvYXJkLmFzcHg/ZD01MDAyIjtyZXR1cm4gZmFsc2U7ZAICD2QWAgIBDw8WBh8EBQdSZXBvcnRzHwEFDU5ld01lbnVCdXR0b24fAgICFgIfAAVFd2luZG93LmxvY2F0aW9uLmhyZWY9Ii9TdG9yZVJhZGFyL1JlcG9ydHMvUmVwb3J0cy5hc3B4IjtyZXR1cm4gZmFsc2U7ZAIDD2QWAgIBDw8WBh8EBQhSYXcgRGF0YR8BBQ1OZXdNZW51QnV0dG9uHwICAhYCHwAFR3dpbmRvdy5sb2NhdGlvbi5ocmVmPSIvU3RvcmVSYWRhci9SZXBvcnRzL1Jhd1JlcG9ydC5hc3B4IjtyZXR1cm4gZmFsc2U7ZAIED2QWAgIBDw8WBh8EBQdHYWxsZXJ5HwEFFU5ld01lbnVCdXR0b25TZWxlY3RlZB8CAgIWAh8ABT13aW5kb3cubG9jYXRpb24uaHJlZj0iL1N0b3JlUmFkYXIvR2FsbGVyeS5hc3B4IjtyZXR1cm4gZmFsc2U7ZAIFDw8WAh8EBQblkajmnJ9kZAIHDxAPFgYeDURhdGFUZXh0RmllbGQFCnR4UGVyaW9kQ24eDkRhdGFWYWx1ZUZpZWxkBQh0eFBlcmlvZB4LXyFEYXRhQm91bmRnZBAVGAoyMDE15YWr5pyICjIwMTXkuIPmnIgKMjAxNeWFreaciAoyMDE15LqU5pyICjIwMTXlm5vmnIgKMjAxNeS4ieaciAoyMDE15LqM5pyICjIwMTXkuIDmnIgNMjAxNOWNgeS6jOaciA0yMDE05Y2B5LiA5pyICjIwMTTljYHmnIgKMjAxNOS5neaciAoyMDE05YWr5pyICjIwMTTkuIPmnIgKMjAxNOWFreaciAoyMDE05LqU5pyICjIwMTTlm5vmnIgKMjAxNOS4ieaciAoyMDE05LqM5pyICjIwMTTkuIDmnIgNMjAxM+WNgeS6jOaciA0yMDEz5Y2B5LiA5pyICjIwMTPljYHmnIgKMjAxM+S5neaciBUYCEF1ZyAyMDE1CEp1bCAyMDE1CEp1biAyMDE1CE1heSAyMDE1CEFwciAyMDE1CE1hciAyMDE1CEZlYiAyMDE1CEphbiAyMDE1CERlYyAyMDE0CE5vdiAyMDE0CE9jdCAyMDE0CFNlcCAyMDE0CEF1ZyAyMDE0CEp1bCAyMDE0CEp1biAyMDE0CE1heSAyMDE0CEFwciAyMDE0CE1hciAyMDE0CEZlYiAyMDE0CEphbiAyMDE0CERlYyAyMDEzCE5vdiAyMDEzCE9jdCAyMDEzCFNlcCAyMDEzFCsDGGdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2RkAgkPDxYCHwQFBuWMuuWfn2RkAgsPEA8WBh8FBQh0eFJlZ2lvbh8GBQlpUmVnaW9uSWQfB2cWBB4QVXBkYXRlUHJvZ3Jlc3NJRAUdcHJvZ3Jlc3NQcm92aW5jZSxwcm9ncmVzc0NpdHkeEUNvbnRyb2xzVG9EaXNhYmxlBRNkZGxQcm92aW5jZSxkZGxDaXR5EBUFAAbkuJzljLoG5YyX5Yy6BuWNl+WMugbopb/ljLoVBQEwATEBNAEyATMUKwMFZ2dnZ2cWAWZkAg0PDxYCHwQFDOmXqOW6l+WQjeensGRkAhMPDxYCHwQFDOWuouaIt+exu+Wei2RkAhUPEA8WBh8FBQx0eEtleUFjY291bnQfBgUNaUtleUFjY291bnRJZB8HZ2QQFWoAD0EtQkVTVCAtIFNPVVRIIA5BLUJFU1QgLSBXRVNUIBdBSCBIRUZFSSBCQUlEQSBIRUpJQUZVIAZBdUNoYW4OQVVDSEFOIC0gRUFTVCAPQVVDSEFOIC0gTk9SVEggDkFVQ0hBTiAtIFNPVVRIDkFVQ0hBTiAtIFdFU1QgE0JFSUpJTkcgSklOR0tFTE9ORyAFQkogSEwLQkogSFVBTElBTiASQkogSFVBTElBTiAtIEVBU1QgE0JKIEhVQUxJQU4gLSBOT1JUSCATQkogSFVBTElBTiAtIFNPVVRIIBJCSiBIVUFMSUFOIC0gV0VTVCAJQkpfV3VtYXJ0CEJVQlVHQU8gCUNhcnJlZm91chFDQVJSRUZPVVIgLSAgRUFTVBJDQVJSRUZPVVIgLSAgTk9SVEgRQ0FSUkVGT1VSIC0gV0VTVCAQQ0FSUkVGT1VSIC1TT1VUSA5DSEVOR0RVIEhPTkdRSQtDUkMgLSBFQVNUIAxDUkMgLSBTT1VUSCAIREVOTklTICAXRElSRUNUIC0gRUFTVCAtIE9USEVSUyAYRElSRUNUIC0gTk9SVEggLSBPVEhFUlMgGERJUkVDVCAtIFNPVVRIIC0gT1RIRVJTIBdESVJFQ1QgLSBXRVNUIC0gT1RIRVJTIAtEaXJlY3RfRWFzdAxEaXJlY3RfTm9ydGgMRGlyZWN0X1NvdXRoC0RpcmVjdF9XZXN0CURpc3RfRWFzdApEaXN0X05vcnRoCkRpc3RfU291dGgJRGlzdF9XZXN0FERJU1RSSUJVVE9SIC0gTk9SVEggE0RJU1RSSUJVVE9SIC0gV0VTVCASRElTVFJJQlVUT1ItIEVBU1QgE0RJU1RSSUJVVE9SIC1TT1VUSCASRkogWElOSFVBRFUgU0hJWUUgFEdEIERPTkdHVUFOIEpJQVJPTkcgE0dEIFNIRU5aSEVOIFNVSUJBTyAPR1ggWElOTkFOQ0hFTkcgEkhBTkdaSE9VIEhVQVNIQU5HIA5IRU5BTiBEQVpIQU5HIBVIVUJFSSBXVUhBTiBaSE9OR0JBSSAMSklBIEpJQSBZVUUgDkpVU0NPIC0gU09VVEggF0pYIE5BTkNIQU5HIEhPTkdLRUxPTkcgDUxPVFVTIC0gRUFTVCAOTE9UVVMgLSBOT1JUSCAOTE9UVVMgLSBTT1VUSCANTE9UVVMgLSBXRVNUIAVNZXRybw1NRVRSTyAtIEVBU1QgDk1FVFJPIC0gTk9SVEggDk1FVFJPIC0gU09VVEggDU1FVFJPIC0gV0VTVCADTkNUCU5YIFhJTkhVQQVvdGhlchNQQVJLTiBTSE9QIC0gU09VVEggElBBUktOIFNIT1AgLSBXRVNUIAlQTlMgU291dGgMUlJMIC0gTk9SVEggDFJSTCAtIFNPVVRIIAtSUkwgLSBXRVNUIAdSVF9NYXJ0D1JULU1BUlQgLSBFQVNUIBBSVC1NQVJUIC0gTk9SVEggEFJULU1BUlQgLSBTT1VUSCAPUlQtTUFSVCAtIFdFU1QgClNhbSdzIENsdWILU0QgWUlOR1pVTyARU0hBTkdIQUkgSFVBTElBTiAHU0hJREFJIBVTSElKSSBMSUFOSFVBIC0gRUFTVCAWU0hJSkkgTElBTkhVQSAtIE5PUlRIIBVTSElKSSBMSUFOSFVBIC0gV0VTVCAGU1VHVU8gE1NYIFFJTkdYVSBNRUlURUhBTyAFVGVzY28QVElBTkhPTkcgLSBFQVNUIBFUSUFOSE9ORyAtIE5PUlRIIBFUSUFOSE9ORyAtIFNPVVRIIBBUSUFOSE9ORyAtIFdFU1QgClRydXN0LU1hcnQRVkFOR1VBUkQgLSBOT1JUSCARVkFOR1VBUkQgLSBTT1VUSCAQVkFOR1VBUkQgLSBXRVNUIAlXQUwgTUFSVCAKV2FsJ3QgTWFydAtXSCBXVVNIQU5HIBdXVUhBTiBaSE9OR0JBSSBCSUFOTUlOIAZXdW1hcnQOV1VNQVJUIC0gRUFTVCAPV1VNQVJUIC0gTk9SSFQgDllPTkdIVUkgLSBFQVNUD1lPTkdIVUkgLSBOT1JUSA9ZT05HSFVJIC0gU09VVEgOWU9OR0hVSSAtIFdFU1QSWkhPTkdTSEFOIFlJSklBWUkgFWoBMAIyOAIyOQIzMAExAjMxAjMyAzEwNQIzMwIzNAEyAjM1AjM2AjM3AjM4AjM5ATMCNDABNAI0MQI0MwI0NQI0OAMxMDcCNTACNTUCNTgCNjECNjMCNjUCNjgCMTYBNQIxOQIxNAIxOAE2AjIwAjE1AjcwAjcxAjcyAjczAjc2Ajc5AjgwAjgxAjgzAjg0Ajg2Ajg5AjkxAjkzAjk1Ajk2Ajk4AzEwMAIxMwMxMDEDMTAyAjk5Ajk3AjEwAzEwNgIyNwMxMDMDMTA0AjIxAjk0AjkyAjkwAjExAjg4Ajg3Ajg1AjgyAjE3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">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="../css/WebResource.axd" type="text/javascript"></script>
+
+
+<script src="../css/ScriptResource.axd" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side framework failed to load.');
+//]]>
+</script>
+
+<script src="../css/ScriptResource(1).axd" type="text/javascript"></script>
+<script src="../css/Gallery.aspx" type="text/javascript"></script>
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="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">
+</div>
+    <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('tm', 'form1', ['tupProvince','upProvince','tupCity','upCity','tupResults','upResults'], ['ddlRegion','ddlRegion','ddlProvince','ddlProvince','btnSearch','btnSearch'], [], 90, '');
+//]]>
+</script>
+
+     
+<div class="headerNew">
+    
+   <div style="margin:0px auto;width:960px;">
+        <div style="text-align:right;padding-top:10px;padding-right:5px;">
+        <a id="ucHeader_hyDataEntry" class="headerLink" href="http://colgate.alwaysmkt.com.cn/StoreRadar/DataEntry/Search.aspx" style="color:#c00700;font-size:10px;text-decoration:none;">Data Entry</a>
+        <span id="ucHeader_dataEntrySeparator" style="color:#c00700;">|</span>
+         <a id="ucHeader_hyAdmin" class="headerLink" href="http://colgate.alwaysmkt.com.cn/StoreRadar/Admin/AcctMngt/SearchUserAccount.aspx" style="color:#c00700;font-size:10px;text-decoration:none;">Admin</a>
+        <span id="ucHeader_adminSeparator" style="color:#c00700;">|</span>
+             <a id="ucHeader_hyChangePwd" class="headerLink" onclick="__ShowLB_FrameDelay(&#39;modalIFHeaderTitle&#39;,&#39;Change Password&#39;,&#39;600px&#39;,&#39;200px&#39;,&#39;/StoreRadar/ChangePassword.aspx&#39;);return false;" href="http://colgate.alwaysmkt.com.cn/StoreRadar/UserControl/#" style="color:#ce1613;font-size:10px;text-decoration:none;">Change Password</a>
+        <span style="color:#c00700;">|</span>
+        <a id="ucHeader_hyLogout" class="headerLink" href="http://colgate.alwaysmkt.com.cn/StoreRadar/Login.aspx" style="color:#c00700;font-size:10px;text-decoration:none;">Logout</a>
+    
+        </div>
+        <div>
+            <div style="float:left;">
+                <img src="../Images/equity_chevron.png">
+            </div>
+            <div style="float:left;color:#ce1613;font-family:Rockwell,Helvetica, Arial, sans-serif;font-style:italic;font-size:20px;margin:15px 0px 0px 10px;">
+                In-Store Tracking
+            </div>
+            
+            <div style="float:right;margin:23px 0px 0px 0px;text-align:right;width:540px;">
+                <table width="100%" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td>
+                            <input type="submit" name="ucHeader$btnHome" value="" id="ucHeader_btnHome" class="btnHome">
+                        </td>
+                        
+                                <td style="padding-left:0px;border-left:solid 1px #969696;" align="center">
+                                    <input type="submit" name="ucHeader$rpMenu$ctl00$btnMenu" value="Overview" onclick="window.location.href=&quot;/StoreRadar/Overview.aspx&quot;;return false;" id="ucHeader_rpMenu_btnMenu_0" class="NewMenuButton">
+                                </td>
+                            
+                                <td style="padding-left:0px;border-left:solid 1px #969696;" align="center">
+                                    <input type="submit" name="ucHeader$rpMenu$ctl01$btnMenu" value="Dashboard" onclick="window.location.href=&quot;/StoreRadar/Dashboard/Dashboard.aspx?d=5002&quot;;return false;" id="ucHeader_rpMenu_btnMenu_1" class="NewMenuButton">
+                                </td>
+                            
+                                <td style="padding-left:0px;border-left:solid 1px #969696;" align="center">
+                                    <input type="submit" name="ucHeader$rpMenu$ctl02$btnMenu" value="Reports" onclick="window.location.href=&quot;/StoreRadar/Reports/Reports.aspx&quot;;return false;" id="ucHeader_rpMenu_btnMenu_2" class="NewMenuButton">
+                                </td>
+                            
+                                <td style="padding-left:0px;border-left:solid 1px #969696;" align="center">
+                                    <input type="submit" name="ucHeader$rpMenu$ctl03$btnMenu" value="Raw Data" onclick="window.location.href=&quot;/StoreRadar/Reports/RawReport.aspx&quot;;return false;" id="ucHeader_rpMenu_btnMenu_3" class="NewMenuButton">
+                                </td>
+                            
+                                <td style="padding-left:0px;border-left:solid 1px #969696;" align="center">
+                                    <input type="submit" name="ucHeader$rpMenu$ctl04$btnMenu" value="Gallery" onclick="window.location.href=&quot;/StoreRadar/Gallery.aspx&quot;;return false;" id="ucHeader_rpMenu_btnMenu_4" class="NewMenuButtonSelected">
+                                </td>
+                            
+                    </tr>
+                </tbody></table>
+               
+            </div>
+            
+        </div>
+   </div>
+   
+</div>
+    <div class="page">
+       
+        <div class="content">
+            <br>
+            <div class="NewReportPanel">
+                <div class="NewPanelTop">
+                    GALLERY
+                </div>
+                <div class="NewReportPanelMid" style="padding-left:20px;width:960px;">
+                    <table cellpadding="3" cellspacing="0" border="0">
+                        <colgroup>
+                            <col width="10px">
+                            <col width="70px">
+                            <col width="250px">
+                            <col width="75px">
+                            <col width="250px">
+                            <col width="70px">
+                            <col width="130px">
+                          
+                        </colgroup>
+                        <tbody><tr>
+                            <td></td>
+                            <td>
+                                <span id="lblPeriod" class="formLabel">周期</span>*
+                            </td>
+                            <td>
+                                <select name="ddlPeriod" id="ddlPeriod" style="width:140px;">
+	<option value="Aug 2015">2015八月</option>
+	<option value="Jul 2015">2015七月</option>
+	<option value="Jun 2015">2015六月</option>
+	<option value="May 2015">2015五月</option>
+	<option value="Apr 2015">2015四月</option>
+	<option value="Mar 2015">2015三月</option>
+	<option value="Feb 2015">2015二月</option>
+	<option value="Jan 2015">2015一月</option>
+	<option value="Dec 2014">2014十二月</option>
+	<option value="Nov 2014">2014十一月</option>
+	<option value="Oct 2014">2014十月</option>
+	<option value="Sep 2014">2014九月</option>
+	<option value="Aug 2014">2014八月</option>
+	<option value="Jul 2014">2014七月</option>
+	<option value="Jun 2014">2014六月</option>
+	<option value="May 2014">2014五月</option>
+	<option value="Apr 2014">2014四月</option>
+	<option value="Mar 2014">2014三月</option>
+	<option value="Feb 2014">2014二月</option>
+	<option value="Jan 2014">2014一月</option>
+	<option value="Dec 2013">2013十二月</option>
+	<option value="Nov 2013">2013十一月</option>
+	<option value="Oct 2013">2013十月</option>
+	<option value="Sep 2013">2013九月</option>
+
+</select>
+                            </td>
+                            <td>
+                                <span id="lblRegion" class="formLabel">区域</span>
+                            </td>
+                            <td>
+                                <select name="ddlRegion" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ddlRegion\&#39;,\&#39;\&#39;)&#39;, 0)" id="ddlRegion" updateprogressid="progressProvince,progressCity" controlstodisable="ddlProvince,ddlCity" style="width:140px;">
+	<option selected="selected" value="0"></option>
+	<option value="1">东区</option>
+	<option value="4">北区</option>
+	<option value="2">南区</option>
+	<option value="3">西区</option>
+
+</select>
+                            </td>
+                             <td>
+                                <span id="lblStoreName" class="formLabel">门店名称</span>
+                            </td>
+                            <td>
+                                <input name="txtStoreName" type="text" id="txtStoreName" style="width:135px;" autocomplete="off">
+                                
+                            </td>
+                           
+                        </tr>
+                        <tr>
+                            <td></td>
+                             <td>
+                                <span id="lblClientType" class="formLabel">客户类型</span>
+                            </td>
+                            <td>
+                                <select name="ddlClientType" id="ddlClientType" style="width:140px;">
+	<option value="0"></option>
+	<option value="28">A-BEST - SOUTH </option>
+	<option value="29">A-BEST - WEST </option>
+	<option value="30">AH HEFEI BAIDA HEJIAFU </option>
+	<option value="1">AuChan</option>
+	<option value="31">AUCHAN - EAST </option>
+	<option value="32">AUCHAN - NORTH </option>
+	<option value="105">AUCHAN - SOUTH</option>
+	<option value="33">AUCHAN - WEST </option>
+	<option value="34">BEIJING JINGKELONG </option>
+	<option value="2">BJ HL</option>
+	<option value="35">BJ HUALIAN </option>
+	<option value="36">BJ HUALIAN - EAST </option>
+	<option value="37">BJ HUALIAN - NORTH </option>
+	<option value="38">BJ HUALIAN - SOUTH </option>
+	<option value="39">BJ HUALIAN - WEST </option>
+	<option value="3">BJ_Wumart</option>
+	<option value="40">BUBUGAO </option>
+	<option value="4">Carrefour</option>
+	<option value="41">CARREFOUR -  EAST</option>
+	<option value="43">CARREFOUR -  NORTH</option>
+	<option value="45">CARREFOUR - WEST </option>
+	<option value="48">CARREFOUR -SOUTH</option>
+	<option value="107">CHENGDU HONGQI</option>
+	<option value="50">CRC - EAST </option>
+	<option value="55">CRC - SOUTH </option>
+	<option value="58">DENNIS  </option>
+	<option value="61">DIRECT - EAST - OTHERS </option>
+	<option value="63">DIRECT - NORTH - OTHERS </option>
+	<option value="65">DIRECT - SOUTH - OTHERS </option>
+	<option value="68">DIRECT - WEST - OTHERS </option>
+	<option value="16">Direct_East</option>
+	<option value="5">Direct_North</option>
+	<option value="19">Direct_South</option>
+	<option value="14">Direct_West</option>
+	<option value="18">Dist_East</option>
+	<option value="6">Dist_North</option>
+	<option value="20">Dist_South</option>
+	<option value="15">Dist_West</option>
+	<option value="70">DISTRIBUTOR - NORTH </option>
+	<option value="71">DISTRIBUTOR - WEST </option>
+	<option value="72">DISTRIBUTOR- EAST </option>
+	<option value="73">DISTRIBUTOR -SOUTH </option>
+	<option value="76">FJ XINHUADU SHIYE </option>
+	<option value="79">GD DONGGUAN JIARONG </option>
+	<option value="80">GD SHENZHEN SUIBAO </option>
+	<option value="81">GX XINNANCHENG </option>
+	<option value="83">HANGZHOU HUASHANG </option>
+	<option value="84">HENAN DAZHANG </option>
+	<option value="86">HUBEI WUHAN ZHONGBAI </option>
+	<option value="89">JIA JIA YUE </option>
+	<option value="91">JUSCO - SOUTH </option>
+	<option value="93">JX NANCHANG HONGKELONG </option>
+	<option value="95">LOTUS - EAST </option>
+	<option value="96">LOTUS - NORTH </option>
+	<option value="98">LOTUS - SOUTH </option>
+	<option value="100">LOTUS - WEST </option>
+	<option value="13">Metro</option>
+	<option value="101">METRO - EAST </option>
+	<option value="102">METRO - NORTH </option>
+	<option value="99">METRO - SOUTH </option>
+	<option value="97">METRO - WEST </option>
+	<option value="10">NCT</option>
+	<option value="106">NX XINHUA</option>
+	<option value="27">other</option>
+	<option value="103">PARKN SHOP - SOUTH </option>
+	<option value="104">PARKN SHOP - WEST </option>
+	<option value="21">PNS South</option>
+	<option value="94">RRL - NORTH </option>
+	<option value="92">RRL - SOUTH </option>
+	<option value="90">RRL - WEST </option>
+	<option value="11">RT_Mart</option>
+	<option value="88">RT-MART - EAST </option>
+	<option value="87">RT-MART - NORTH </option>
+	<option value="85">RT-MART - SOUTH </option>
+	<option value="82">RT-MART - WEST </option>
+	<option value="17">Sam's Club</option>
+	<option value="78">SD YINGZUO </option>
+	<option value="77">SHANGHAI HUALIAN </option>
+	<option value="75">SHIDAI </option>
+	<option value="74">SHIJI LIANHUA - EAST </option>
+	<option value="69">SHIJI LIANHUA - NORTH </option>
+	<option value="67">SHIJI LIANHUA - WEST </option>
+	<option value="66">SUGUO </option>
+	<option value="64">SX QINGXU MEITEHAO </option>
+	<option value="7">Tesco</option>
+	<option value="62">TIANHONG - EAST </option>
+	<option value="60">TIANHONG - NORTH </option>
+	<option value="59">TIANHONG - SOUTH </option>
+	<option value="57">TIANHONG - WEST </option>
+	<option value="12">Trust-Mart</option>
+	<option value="56">VANGUARD - NORTH </option>
+	<option value="54">VANGUARD - SOUTH </option>
+	<option value="53">VANGUARD - WEST </option>
+	<option value="52">WAL MART </option>
+	<option value="8">Wal't Mart</option>
+	<option value="51">WH WUSHANG </option>
+	<option value="49">WUHAN ZHONGBAI BIANMIN </option>
+	<option value="9">Wumart</option>
+	<option value="47">WUMART - EAST </option>
+	<option value="46">WUMART - NORHT </option>
+	<option value="109">YONGHUI - EAST</option>
+	<option value="110">YONGHUI - NORTH</option>
+	<option value="111">YONGHUI - SOUTH</option>
+	<option value="108">YONGHUI - WEST</option>
+	<option value="42">ZHONGSHAN YIJIAYI </option>
+
+</select>
+                            </td>
+                            <td>
+                                <span id="lblProvince" class="formLabel">省份</span>
+                            </td>
+                            <td>
+                                <table cellpadding="0" cellspacing="0" border="0">
+                                    <tbody><tr>
+                                        <td>
+                                            <span id="upProvince">
+                                                    <select name="ddlProvince" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ddlProvince\&#39;,\&#39;\&#39;)&#39;, 0)" id="ddlProvince" updateprogressid="progressCity" controlstodisable="ddlCity" style="width:140px;">
+	<option selected="selected" value="0"></option>
+	<option value="17">上海</option>
+	<option value="27">云南</option>
+	<option value="5">内蒙古</option>
+	<option value="1">北京</option>
+	<option value="7">吉林</option>
+	<option value="12">四川</option>
+	<option value="2">天津</option>
+	<option value="29">宁夏</option>
+	<option value="20">安徽</option>
+	<option value="9">山东</option>
+	<option value="4">山西</option>
+	<option value="26">广东</option>
+	<option value="10">广西</option>
+	<option value="16">新疆</option>
+	<option value="18">江苏</option>
+	<option value="23">江西</option>
+	<option value="3">河北</option>
+	<option value="21">河南</option>
+	<option value="19">浙江</option>
+	<option value="28">海南</option>
+	<option value="24">湖北</option>
+	<option value="25">湖南</option>
+	<option value="15">甘肃</option>
+	<option value="22">福建</option>
+	<option value="13">贵州</option>
+	<option value="6">辽宁</option>
+	<option value="11">重庆</option>
+	<option value="14">陕西</option>
+	<option value="8">黑龙江</option>
+
+</select>
+                                                </span>
+                                        </td>
+                                        <td style="padding: 2px 0px 0px 2px;">
+                                            <div id="progressProvince" style="display:none;" role="status" aria-hidden="true">
+	
+                                                    <img id="imgLoadingProv" src="../Images/ajax-loader-small.gif">
+                                                
+</div>
+                                        </td>
+                                    </tr>
+                                </tbody></table>
+                            </td>
+                            <td>
+                                <span id="lblStoreNo" class="formLabel">门店编号</span>
+                            </td>
+                            <td>
+                                <input name="txtStoreNo" type="text" id="txtStoreNo" style="width:135px;" autocomplete="off">
+                                
+                            </td>
+                          
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <span id="lblChannel" class="formLabel">渠道类型</span>
+                            </td>
+                            <td>
+                                <select name="ddlChannel" id="ddlChannel" style="width:140px;">
+	<option value="0"></option>
+	<option value="2">Big Supermarket</option>
+	<option value="12">Cash &amp; Carry</option>
+	<option value="1">Hypermarket</option>
+	<option value="13">Supermarket</option>
+
+</select>
+                            </td>
+                            <td>
+                                <span id="lblCity" class="formLabel">城市</span>
+                            </td>
+                            <td>
+                                <table cellpadding="0" cellspacing="0" border="0">
+                                    <tbody><tr>
+                                        <td>
+                                            <span id="upCity">
+                                                    <select name="ddlCity" id="ddlCity" style="width:140px;">
+	<option value="0"></option>
+	<option value="23">上海</option>
+	<option value="156">上饶</option>
+	<option value="50">东莞</option>
+	<option value="132">东营 </option>
+	<option value="51">中山</option>
+	<option value="100">临汾</option>
+	<option value="101">临沂</option>
+	<option value="99">丽水</option>
+	<option value="98">丽江</option>
+	<option value="22">乌鲁木齐</option>
+	<option value="68">乐山</option>
+	<option value="97">九江</option>
+	<option value="47">佛山</option>
+	<option value="3">保定</option>
+	<option value="121">信阳</option>
+	<option value="21">兰州</option>
+	<option value="73">包头</option>
+	<option value="1">北京</option>
+	<option value="74">北海</option>
+	<option value="140">十堰</option>
+	<option value="30">南京</option>
+	<option value="70">南充</option>
+	<option value="15">南宁</option>
+	<option value="40">南昌</option>
+	<option value="29">南通</option>
+	<option value="134">南阳</option>
+	<option value="41">厦门</option>
+	<option value="116">双鸭山</option>
+	<option value="35">台州</option>
+	<option value="38">合肥</option>
+	<option value="91">吉林</option>
+	<option value="136">周口</option>
+	<option value="8">呼和浩特</option>
+	<option value="83">哈密</option>
+	<option value="12">哈尔滨</option>
+	<option value="5">唐山</option>
+	<option value="135">商丘</option>
+	<option value="92">嘉兴</option>
+	<option value="77">大同</option>
+	<option value="78">大武口</option>
+	<option value="10">大连</option>
+	<option value="117">天水</option>
+	<option value="2">天津</option>
+	<option value="7">太原</option>
+	<option value="56">威海</option>
+	<option value="142">孝感</option>
+	<option value="34">宁波</option>
+	<option value="71">安庆</option>
+	<option value="149">安阳</option>
+	<option value="122">宜宾</option>
+	<option value="123">宜昌</option>
+	<option value="137">宿迁</option>
+	<option value="126">岳阳</option>
+	<option value="26">常州</option>
+	<option value="46">常德</option>
+	<option value="48">广州</option>
+	<option value="153">廊坊</option>
+	<option value="31">徐州</option>
+	<option value="144">德阳</option>
+	<option value="152">怀化</option>
+	<option value="90">惠州</option>
+	<option value="18">成都</option>
+	<option value="28">扬州</option>
+	<option value="80">抚州</option>
+	<option value="79">抚顺</option>
+	<option value="157">攀枝花</option>
+	<option value="120">新乡</option>
+	<option value="27">无锡</option>
+	<option value="25">昆山</option>
+	<option value="55">昆明</option>
+	<option value="109">普宁</option>
+	<option value="108">普洱</option>
+	<option value="113">曲靖</option>
+	<option value="33">杭州</option>
+	<option value="138">柳州</option>
+	<option value="67">株洲</option>
+	<option value="16">桂林</option>
+	<option value="106">梅州</option>
+	<option value="119">梧州</option>
+	<option value="151">榆林</option>
+	<option value="44">武汉</option>
+	<option value="66">永州</option>
+	<option value="85">汉中</option>
+	<option value="52">汕头</option>
+	<option value="93">江油</option>
+	<option value="53">江门</option>
+	<option value="9">沈阳</option>
+	<option value="75">沧州</option>
+	<option value="86">河池</option>
+	<option value="43">泉州</option>
+	<option value="133">泰安</option>
+	<option value="63">泰州</option>
+	<option value="145">泸州</option>
+	<option value="103">洛阳</option>
+	<option value="14">济南</option>
+	<option value="57">济宁</option>
+	<option value="84">海口</option>
+	<option value="60">淄博</option>
+	<option value="150">淮南</option>
+	<option value="61">淮安</option>
+	<option value="49">深圳</option>
+	<option value="111">清远</option>
+	<option value="37">温州</option>
+	<option value="88">湖州</option>
+	<option value="65">湘潭</option>
+	<option value="127">湛江</option>
+	<option value="58">潍坊</option>
+	<option value="76">潮州</option>
+	<option value="59">烟台</option>
+	<option value="107">牡丹江</option>
+	<option value="125">玉溪</option>
+	<option value="129">珠海</option>
+	<option value="114">瑞安</option>
+	<option value="32">盐城</option>
+	<option value="4">石家庄</option>
+	<option value="42">福州</option>
+	<option value="115">绍兴</option>
+	<option value="69">绵阳</option>
+	<option value="158">聊城</option>
+	<option value="128">肇庆</option>
+	<option value="148">芜湖</option>
+	<option value="24">苏州</option>
+	<option value="105">茂名</option>
+	<option value="139">荆州</option>
+	<option value="96">荆门</option>
+	<option value="36">萧山</option>
+	<option value="147">蚌埠</option>
+	<option value="87">衡阳</option>
+	<option value="112">衢州</option>
+	<option value="141">襄樊</option>
+	<option value="20">西安</option>
+	<option value="154">西昌</option>
+	<option value="19">贵阳</option>
+	<option value="146">资阳</option>
+	<option value="82">赣州</option>
+	<option value="143">达州</option>
+	<option value="62">连云港</option>
+	<option value="118">通辽</option>
+	<option value="131">遵义</option>
+	<option value="6">邯郸</option>
+	<option value="39">郑州</option>
+	<option value="159">郴州</option>
+	<option value="17">重庆</option>
+	<option value="94">金华</option>
+	<option value="160">铜仁</option>
+	<option value="124">银川</option>
+	<option value="95">锦州</option>
+	<option value="64">镇江</option>
+	<option value="11">长春</option>
+	<option value="45">长沙</option>
+	<option value="81">阜阳</option>
+	<option value="13">青岛</option>
+	<option value="72">鞍山</option>
+	<option value="104">马鞍山</option>
+	<option value="130">驻马店</option>
+	<option value="155">黄冈</option>
+	<option value="89">黄石</option>
+	<option value="110">齐齐哈尔</option>
+	<option value="102">龙岩</option>
+
+</select>
+                                                </span>
+                                        </td>
+                                        <td style="padding: 2px 0px 0px 2px;">
+                                            <div id="progressCity" style="display:none;" role="status" aria-hidden="true">
+	
+                                                    <img id="imgLoadingCity" src="../Images/ajax-loader-small.gif">
+                                                
+</div>
+                                        </td>
+                                    </tr>
+                                </tbody></table>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                           
+                        </tr>
+                    </tbody></table>
+                    <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                        <tbody><tr>
+                               
+                            <td align="right" style="padding-right:85px;">
+                                <input type="submit" name="btnSearch" value="" onclick="Refresh();" id="btnSearch" class="btnRefresh">
+                            </td>
+                        </tr>
+                    </tbody></table>
+                    
+                </div>
+                <div class="NewReportPanelBtm">
+                </div>
+            </div>
+            <div style="min-height:340px;">
+                <div id="upResults">
+	
+                        <div>
+                                
+                            <div style="float:left;">
+                                
+                            </div>
+                            <div style="float:right;margin-right:15px;"></div>
+                            <div style="clear:both">&nbsp;</div>
+                               
+                        </div>
+                        <div style="background-color:#f1f1f1;margin:0px  auto 0px auto;width:943px;">
+                            <div style="margin:0px auto;">
+                                <div>
+
+	</div>
+                            </div>
+                        
+                        </div>
+                    
+</div>
+            </div>
+        </div>
+    
+    </div>
+    <input type="submit" name="msg_btn" value="" id="msg_btn" style="display:none;visibility:hidden;"><div id="msg_pnl" class="modalPopupMessageBox" style="display: none; position: fixed;">
+	<div class="modalMessageHeader"><table width="100%" border="0"><tbody><tr><td><span class="Title" id="msglblHeader"></span></td></tr></tbody></table></div><div class="modalMessageBody"><div class="modalMessageContent"><span id="msgltMessage"></span></div> <div id="msg__divConfirm"><table border="0" cellspacing="0" cellpadding="0" width="100%"><tbody><tr><td align="center"><input type="button" class="buttonYes" onclick="__YesButton_Clicked();return false;">&nbsp;<input type="button" class="buttonNo" onclick="__NoButton_Clicked();"></td></tr></tbody></table></div><div id="msg__divAlert"><input type="button" class="buttonOk" onclick="__OkButton_Clicked();"></div><div id="msg__divContinue"><input type="button" class="buttonContinue" onclick="__ContinueButton_Clicked();"></div></div><div class="modalMessageHeaderXButtonContainer" align="right" style="position:absolute;top:0px;right:0px;"><input class="buttonX" onclick="__XButton_Clicked();return false;" type="button"></div>
+</div><input type="submit" name="lbi_btn" value="" id="lbi_btn" style="display:none;visibility:hidden;"><div id="lbi_pnl" class="modalPopupIF" style="display: none; position: fixed;">
+	<div class="modalIFHeader"><table width="100%" cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+	<td class="left"></td><td class="middle" align="left"><div id="__ifHeaderImgTitle" class="">
+	</div></td><td class="middle" align="right">
+	</td><td class="right"></td></tr></tbody></table></div><iframe id="__iFModal" allowtransparency="true"
+	 style="background-color:Transparent;" scrolling="no" frameborder="0" marginheight="0" marginwidth="0">
+	 </iframe><div class="modalMessageHeaderXButtonContainer" align="right" 
+	 style="position:absolute;top:0px;right:0px;"><input type="button" class="buttonX" 
+	 onclick="__HideLB_Frame(&#39;&#39;);return false;"></div>
+</div><input type="submit" name="lb_btn" value="" id="lb_btn" style="display:none;visibility:hidden;"><div id="lb_pnl" class="modalPopupLoading" style="display: none; position: fixed;">
+	<div><table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tbody><tr><td align="right"><img src="../css/WebResource(1).axd"></td><td>&nbsp;</td><td align="left"><span class="loading">This page is Loading, please wait....</span></td></tr></tbody></table></div>
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var __callback_LB;var __callback_LB_NoButton;var __curMode_LB;var __callBackDelay = 10;var __callBackBtnId;var __countDownTimer=0;var __countDownMsg;var __countDownTimeoutMsg;var __countDownObj;function __YesButton_Clicked() {$find("msg_mpeMessage").hide();if( __callback_LB && __callback_LB.length > 0 ) {setTimeout("__evalCallBack_LB()", __callBackDelay);} else {var prm = Sys.WebForms.PageRequestManager.getInstance();prm._doPostBack(__callBackBtnId, '');__callBackBtnId="";}}function __ContinueButton_Clicked() {$find("msg_mpeMessage").hide();__polling('SSU');if(__countDownObj){clearTimeout(__countDownObj);}}function __OkButton_Clicked() {$find("msg_mpeMessage").hide();setTimeout("__evalCallBack_LB()", __callBackDelay);}function __XButton_Clicked() {$find("msg_mpeMessage").hide();if( __curMode_LB == 0) {setTimeout("__evalCallBack_LB()", __callBackDelay);}else if(__curMode_LB==2){__pollingStart(30000);if(__countDownObj){clearTimeout(__countDownObj);}}}function __evalCallBack_LB() {eval(__callback_LB);__callback_LB = "";}function __evalCallBack_LB_No() {eval(__callback_LB_NoButton);__callback_LB_NoButton = "";}function __NoButton_Clicked() {$find("msg_mpeMessage").hide();if( __callback_LB_NoButton && __callback_LB_NoButton.length > 0 ) {setTimeout("__evalCallBack_LB_No()", __callBackDelay);}}function ShowMessageLBDelay(title, msg, bid, mode, callback) {if($find("msg_mpeMessage")) {ShowMessageLB(title, msg, bid, mode, callback);}else{setTimeout(function(){ShowMessageLBDelay(title, msg, bid, mode, callback)}, 20);}}function UpdateCountDown(){var tmp = __countDownMsg.replace('[TIMER]', __countDownTimer);$get("msgltMessage").innerHTML = tmp;__countDownTimer--; if( __countDownTimer >= 0 ){__countDownObj = setTimeout('UpdateCountDown()', 1000);}else {__curMode_LB=0;$get("msgltMessage").innerHTML = __countDownTimeoutMsg;$common.setVisible($get("msg__divAlert"), true);$common.setVisible($get("msg__divConfirm"), false);$common.setVisible($get("msg__divContinue"), false);}}function ShowMessageLBCountDown(title, msg, tmsg, bid, mode, callback, timer) {if($find("msg_mpeMessage")) {__countDownTimer=timer;__countDownMsg=msg;__countDownTimeoutMsg=tmsg;var tmp = __countDownMsg.replace('[TIMER]', __countDownTimer);ShowMessageLB(title, tmp, bid, mode, callback);UpdateCountDown();}else{setTimeout(function(){ShowMessageLBCountDown(title, msg, bid, mode, callback, timer)}, 20);}}function ShowMessageLBYesNo(title, msg, bid, mode, callbackYes, callbackJsNo) {__callback_LB_NoButton = callbackJsNo;ShowMessageLB(title,msg,bid,mode,callbackYes);}function ShowMessageLB(title, msg, bid, mode, callback) {__callback_LB = callback;__curMode_LB = mode;__callBackBtnId = bid;$get("msglblHeader").innerHTML = title;$get("msgltMessage").innerHTML = msg;if( mode && mode == 1){$common.setVisible($get("msg__divConfirm"), true);$common.setVisible($get("msg__divAlert"), false);$common.setVisible($get("msg__divContinue"), false);}else if( mode && mode == 2){$common.setVisible($get("msg__divConfirm"), false);$common.setVisible($get("msg__divAlert"), false);$common.setVisible($get("msg__divContinue"), true);} else {$common.setVisible($get("msg__divAlert"), true);$common.setVisible($get("msg__divConfirm"), false);$common.setVisible($get("msg__divContinue"), false);}$find("msg_mpeMessage").show();}function __ShowLB_FrameDelay(clsName, hText, width, height, url) {if( $find("lbi_mpeIframe") ){__ShowLB_Frame(clsName, hText, width, height, url);}else{setTimeout(new function(){__ShowLB_FrameDelay(clsName, hText, width, height, url)}, 100);}}function __SetTitle_Frame(hText){$get("__ifHeaderImgTitle").innerHTML = hText;}function __SetClass_Frame(clsName){$get("__ifHeaderImgTitle").className = clsName;}function __ShowLB_Frame(clsName, hText, width, height, url){var myi = $get("__ifHeaderImgTitle");var myf = $get("__iFModal");var div = $get("lbi_pnl");myi.className = clsName;myi.innerHTML = hText;div.style.width = width;myf.style.width = width;myf.style.height = height;myf.src = url;$find("lbi_mpeIframe").show();}function __HideLB_Frame(callbackJs){$find("lbi_mpeIframe").hide();$get("__iFModal").src = "";if( callbackJs && callbackJs != '' ){eval(callbackJs);}}__InitUpdateProgressPanel();
+WebForm_InitCallback();function __polling(message){var context = 'polling';WebForm_DoCallback('__Page',message,__pollingCallBack,context,__pollingErrorCallBack,true);}function __pollingCallBack(returnmessage, context){if(returnmessage.length > 0){eval(returnmessage)}else{__pollingStart(300000);}}function __pollingErrorCallBack(returnmessage, context){alert("Callback Error: " + returnmessage + ", " + context);}function __pollingStart(timeInterval){setTimeout("__polling('SS')", timeInterval);}__pollingStart(300000);(function() {var fn = function() {$get('tm_HiddenField').value = '';Sys.Application.remove_init(fn);};Sys.Application.add_init(fn);})();function __ShowLBLoading() { var lf = $find("lb_mpeLoading"); if( lf ) lf.show();} function __HideLBLoading() { var lf = $find("lb_mpeLoading"); if( lf ) lf.hide(); else setTimeout(function(){__HideLBLoading();}, 100);}Sys.Net.WebRequestManager.add_invokingRequest(__onInvoke); Sys.Net.WebRequestManager.add_completedRequest(__onComplete); var __loadingDigShowed = false; var __loadingST;var __showAjaxLoading=false;function __onInvoke(sender, args) { if( !__showAjaxLoading) return; __loadingST = setTimeout("__ShowLoadingDig()", 100);} function __ShowLoadingDig() { if( !__loadingDigShowed ) top.__ShowLBLoading(); __loadingDigShowed = true; } function __onComplete(sender, args) { __showAjaxLoading=false;if( __loadingDigShowed ) top.__HideLBLoading(); __loadingDigShowed = false; clearTimeout(__loadingST); } function pageUnload() { Sys.Net.WebRequestManager.remove_invokingRequest(__onInvoke); Sys.Net.WebRequestManager.remove_completedRequest(__onComplete); }Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.AutoCompleteBehavior, {"completionListCssClass":"autocomplete_completionListElement","completionListItemCssClass":"autocomplete_listItem","delimiterCharacters":"#","enableCaching":false,"highlightedItemCssClass":"autocomplete_highlightedListItem","id":"aceStoreName","serviceMethod":"GetStoreNames","servicePath":"CommonWS.asmx","useContextKey":true}, null, null, $get("txtStoreName"));
+});
+Sys.Application.add_init(function() {
+    $create(Sys.UI._UpdateProgress, {"associatedUpdatePanelId":"upProvince","displayAfter":500,"dynamicLayout":true}, null, null, $get("progressProvince"));
+});
+Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.AutoCompleteBehavior, {"completionListCssClass":"autocomplete_completionListElement","completionListItemCssClass":"autocomplete_listItem","delimiterCharacters":"#","enableCaching":false,"highlightedItemCssClass":"autocomplete_highlightedListItem","id":"aceStoreNo","minimumPrefixLength":5,"serviceMethod":"GetStoreNos","servicePath":"CommonWS.asmx","useContextKey":true}, null, null, $get("txtStoreNo"));
+});
+Sys.Application.add_init(function() {
+    $create(Sys.UI._UpdateProgress, {"associatedUpdatePanelId":"upCity","displayAfter":500,"dynamicLayout":true}, null, null, $get("progressCity"));
+});
+Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.ModalPopupBehavior, {"BackgroundCssClass":"modalBackground","PopupControlID":"msg_pnl","dynamicServicePath":"/StoreRadar/Gallery.aspx","id":"msg_mpeMessage"}, null, null, $get("msg_btn"));
+});
+Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.ModalPopupBehavior, {"BackgroundCssClass":"modalBackground","PopupControlID":"lbi_pnl","dynamicServicePath":"/StoreRadar/Gallery.aspx","id":"lbi_mpeIframe"}, null, null, $get("lbi_btn"));
+});
+Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.ModalPopupBehavior, {"BackgroundCssClass":"modalBackground","PopupControlID":"lb_pnl","dynamicServicePath":"/StoreRadar/Gallery.aspx","id":"lb_mpeLoading"}, null, null, $get("lb_btn"));
+});
+//]]>
+</script>
+<input type="hidden" value="1" id="hiddenInputToUpdateATBuffer_CommonToolkitScripts" name="hiddenInputToUpdateATBuffer_CommonToolkitScripts"><div id="msg_mpeMessage_backgroundElement" class="modalBackground" style="display: none; position: fixed; left: 0px; top: 0px;"></div><div id="lbi_mpeIframe_backgroundElement" class="modalBackground" style="display: none; position: fixed; left: 0px; top: 0px;"></div><div id="lb_mpeLoading_backgroundElement" class="modalBackground" style="display: none; position: fixed; left: 0px; top: 0px;"></div></form>
+
+
+<div id="cboxOverlay" style="display: none;"></div><div id="colorbox" class="" style="display: none;"><div id="cboxWrapper"><div><div id="cboxTopLeft" style="float: left;"></div><div id="cboxTopCenter" style="float: left;"></div><div id="cboxTopRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxMiddleLeft" style="float: left;"></div><div id="cboxContent" style="float: left;"><div id="cboxLoadedContent" style="width: 0px; height: 0px; overflow: hidden; float: left;"></div><div id="cboxTitle" style="float: left;"></div><div id="cboxCurrent" style="float: left;"></div><div id="cboxNext" style="float: left;"></div><div id="cboxPrevious" style="float: left;"></div><div id="cboxSlideshow" style="float: left;"></div><div id="cboxClose" style="float: left;"></div></div><div id="cboxMiddleRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxBottomLeft" style="float: left;"></div><div id="cboxBottomCenter" style="float: left;"></div><div id="cboxBottomRight" style="float: left;"></div></div></div><div style="position: absolute; width: 9999px; visibility: hidden; display: none;"></div></div><ul id="aceStoreName_completionListElem" class="autocomplete_completionListElement" style="position: absolute;"></ul><ul id="aceStoreNo_completionListElem" class="autocomplete_completionListElement" style="position: absolute;"></ul></body></html>

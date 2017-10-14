@@ -1,0 +1,1747 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="WYETH_CONTRACT">
+	<resultMap id="BaseResultMap" type="cn.mobilizer.channel.base.po.WyethContract">
+		<id column="contract_id" property="contractId" jdbcType="VARCHAR" />
+		<result column="contract_no" property="contractNo" jdbcType="VARCHAR" />
+		<result column="store_id" property="storeId" jdbcType="CHAR" />
+		<result column="client_user_id" property="clientUserId"
+			jdbcType="INTEGER" />
+		<result column="sign_date" property="signDate" jdbcType="TIMESTAMP" />
+		<result column="start_date" property="startDate" jdbcType="TIMESTAMP" />
+		<result column="end_date" property="endDate" jdbcType="TIMESTAMP" />
+		<result column="gift" property="gift" jdbcType="VARCHAR" />
+		<result column="gift_price" property="giftPrice" jdbcType="DECIMAL" />
+		<result column="other_gift" property="otherGift" jdbcType="VARCHAR" />
+		<result column="other_price" property="otherPrice" jdbcType="DECIMAL" />
+		<result column="options_of_invest" property="optionsOfInvest"
+			jdbcType="VARCHAR" />
+		<result column="val_of_shelf" property="valOfShelf" jdbcType="DECIMAL" />
+		<result column="other_invest" property="otherInvest" jdbcType="VARCHAR" />
+		<result column="has_invoice" property="hasInvoice" jdbcType="CHAR" />
+		<result column="invoice_type" property="invoiceType" jdbcType="VARCHAR" />
+		<result column="other_invoice" property="otherInvoice"
+			jdbcType="VARCHAR" />
+		<result column="license_type" property="licenseType" jdbcType="VARCHAR" />
+		<result column="acct_type" property="acctType" jdbcType="VARCHAR" />
+		<result column="bank_name" property="bankName" jdbcType="VARCHAR" />
+		<result column="bank_acct" property="bankAcct" jdbcType="VARCHAR" />
+		<result column="acct_holder" property="acctHolder" jdbcType="VARCHAR" />
+		<result column="client_id" property="clientId" jdbcType="INTEGER" />
+		<result column="create_by" property="createBy" jdbcType="INTEGER" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="last_update_by" property="lastUpdateBy"
+			jdbcType="INTEGER" />
+		<result column="last_update_time" property="lastUpdateTime"
+			jdbcType="TIMESTAMP" />
+		<result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+	</resultMap>
+	<resultMap id="ResultMap" type="cn.mobilizer.channel.base.vo.ContractContent">
+		<result column="store_no" property="storeNo" jdbcType="VARCHAR" />
+		<result column="structure_name" property="structureName" jdbcType="VARCHAR" />
+		<result column="province" property="province" jdbcType="VARCHAR" />
+		<result column="city" property="city" jdbcType="VARCHAR" />
+		<result column="store_name" property="storeName" jdbcType="VARCHAR" />
+		<result column="sign_date" property="signDate" jdbcType="TIMESTAMP" />
+		<result column="start_date" property="startDate" jdbcType="TIMESTAMP" />
+		<result column="end_date" property="endDate" jdbcType="TIMESTAMP" />
+		<result column="channel_name" property="channelName" jdbcType="VARCHAR" />
+		<result column="chain_name" property="chainName" jdbcType="VARCHAR" />
+		<result column="contract_id" property="contractId" jdbcType="VARCHAR" />
+		<result column="contract_pic" property="contractPic" jdbcType="VARCHAR" />
+		<result column="client_id" property="clientId" jdbcType="INTEGER" />
+		<result column="gift" property="gift" jdbcType="VARCHAR" />
+		<result column="gift_price" property="giftPrice" jdbcType="DECIMAL" />
+		<result column="other_gift" property="otherGift" jdbcType="VARCHAR" />
+		<result column="other_price" property="otherPrice" jdbcType="DECIMAL" />
+		<result column="options_of_invest" property="optionsOfInvest"
+			jdbcType="VARCHAR" />
+		<result column="val_of_shelf" property="valOfShelf" jdbcType="DECIMAL" />
+		<result column="other_invest" property="otherInvest" jdbcType="VARCHAR" />
+		<result column="has_invoice" property="hasInvoice" jdbcType="CHAR" />
+		<result column="invoice_type" property="invoiceType" jdbcType="VARCHAR" />
+		<result column="other_invoice" property="otherInvoice"
+			jdbcType="VARCHAR" />
+		<result column="license_type" property="licenseType" jdbcType="VARCHAR" />
+		<result column="acct_type" property="acctType" jdbcType="VARCHAR" />
+		<result column="bank_name" property="bankName" jdbcType="VARCHAR" />
+		<result column="bank_acct" property="bankAcct" jdbcType="VARCHAR" />
+		<result column="acct_holder" property="acctHolder" jdbcType="VARCHAR" />
+		<!-- <result column="other_gift" property="otherGift" jdbcType="VARCHAR" />
+		<result column="other_price" property="otherPrice" jdbcType="DECIMAL" />
+		<result column="options_of_invest" property="optionsOfInvest"
+			jdbcType="VARCHAR" />
+		<result column="val_of_shelf" property="valOfShelf" jdbcType="DECIMAL" />
+		<result column="other_invest" property="otherInvest" jdbcType="VARCHAR" />
+		<result column="has_invoice" property="hasInvoice" jdbcType="CHAR" />
+		<result column="invoice_type" property="invoiceType" jdbcType="VARCHAR" />
+		<result column="other_invoice" property="otherInvoice"
+			jdbcType="VARCHAR" />
+		<result column="license_type" property="licenseType" jdbcType="VARCHAR" />
+		<result column="acct_type" property="acctType" jdbcType="VARCHAR" />
+		<result column="bank_name" property="bankName" jdbcType="VARCHAR" />
+		<result column="bank_acct" property="bankAcct" jdbcType="VARCHAR" />
+		<result column="acct_holder" property="acctHolder" jdbcType="VARCHAR" />
+		<result column="client_id" property="clientId" jdbcType="INTEGER" />
+		<result column="create_by" property="createBy" jdbcType="INTEGER" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="last_update_by" property="lastUpdateBy"
+			jdbcType="INTEGER" />
+		<result column="last_update_time" property="lastUpdateTime"
+			jdbcType="TIMESTAMP" />
+		<result column="is_delete" property="isDelete" jdbcType="TINYINT" /> -->
+	</resultMap>
+	<resultMap id="ContractFeedbackMap" type="cn.mobilizer.channel.base.vo.ContractFeedbackVo" >
+		<result column="store_no" property="storeCode" jdbcType="VARCHAR" />
+		<result column="feedback_id" property="feedbackId" jdbcType="VARCHAR" />
+		<result column="store_name" property="storeName" jdbcType="VARCHAR" />
+		<result column="structure_name" property="structureName" jdbcType="VARCHAR" />
+		<result column="city" property="city" jdbcType="VARCHAR" />
+		<result column="has_invoice" property="hasInvoice" jdbcType="VARCHAR" />
+		<result column="invoice_type" property="invoiceType" jdbcType="VARCHAR" />
+		<result column="acct_type" property="acctType" jdbcType="VARCHAR" />
+		<result column="bank_name" property="bankName" jdbcType="VARCHAR" />
+		<result column="bank_acct" property="bankAcct" jdbcType="VARCHAR" />
+		<result column="acct_holder" property="acctHolder" jdbcType="VARCHAR" />
+		<result column="sign_date" property="signDate"/>
+		<result column="num_of_gift" property="numOfGift"/>
+		<result column="num_of_member" property="numOfMember"/>
+		<result column="rate_of_review" property="rateOfReview"/>
+		<result column="num1_of_unqualified" property="num1OfUnqualified"/>
+		<result column="num2_of_unqualified" property="num2OfUnqualified"/>
+		<result column="num_of_verification" property="numOfVerification"/>
+		<result column="status" property="status"/>
+		<result column="contract_id" property="contractId" />
+		<result column="client_id" property="clientId" />
+		<result column="invoice_pic" property="invoicePic" />
+		<result column="month_id" property="monthId"/>
+		<result column="reason" property="reason"/>
+	</resultMap>
+	<resultMap id="ContractVoMap" type="cn.mobilizer.channel.base.vo.ContractVo">
+		<result column="contract_id" property="contractId" />
+		<result column="store_name" property="storeName" jdbcType="VARCHAR" />
+		<result column="sign_date" property="signDate" jdbcType="TIMESTAMP" />
+		<result column="start_date" property="startDate" jdbcType="TIMESTAMP" />
+		<result column="end_date" property="endDate" jdbcType="TIMESTAMP" />
+		<result column="gift" property="gift" jdbcType="VARCHAR" />
+		<result column="gift_price" property="giftPrice" jdbcType="DECIMAL" />
+		<result column="other_gift" property="otherGift" jdbcType="VARCHAR" />
+		<result column="other_price" property="otherPrice" jdbcType="DECIMAL" />
+		<result column="options_of_invest" property="optionsOfInvest"
+			jdbcType="VARCHAR" />
+		<result column="other_invest" property="otherInvest" jdbcType="VARCHAR" />
+		<result column="has_invoice" property="hasInvoice" jdbcType="CHAR" />
+		<result column="invoice_type" property="invoiceType" jdbcType="VARCHAR" />
+		<result column="other_invoice" property="otherInvoice"
+			jdbcType="VARCHAR" />
+		<result column="license_type" property="licenseType" jdbcType="VARCHAR" />
+		<result column="acct_type" property="acctType" jdbcType="VARCHAR" />
+		<result column="bank_name" property="bankName" jdbcType="VARCHAR" />
+		<result column="bank_acct" property="bankAcct" jdbcType="VARCHAR" />
+		<result column="acct_holder" property="acctHolder" jdbcType="VARCHAR" />
+		<result column="store_id" property="storeId" jdbcType="VARCHAR" />
+		<result column="other_invest" property="otherInvest" jdbcType="VARCHAR" />
+		<result column="contract_pic" property="contractPic" jdbcType="VARCHAR" />
+		<result column="permit_pic" property="permitPic" jdbcType="VARCHAR" />
+		<result column="store_no" property="storeNo" jdbcType="VARCHAR" />
+		
+	</resultMap>
+	<resultMap id="ContractFeedbackAppMap" type="cn.mobilizer.channel.base.vo.ContractFeedbackAppVo" >
+		<result column="store_no" property="storeCode" jdbcType="VARCHAR" />
+		<result column="feedback_id" property="feedbackId" jdbcType="VARCHAR" />
+		<result column="store_name" property="storeName" jdbcType="VARCHAR" />
+		<result column="structure_name" property="structureName" jdbcType="VARCHAR" />
+		<result column="city" property="city" jdbcType="VARCHAR" />
+		<result column="has_invoice" property="hasInvoice" jdbcType="VARCHAR" />
+		<result column="invoice_type" property="invoiceType" jdbcType="VARCHAR" />
+		<result column="acct_type" property="acctType" jdbcType="VARCHAR" />
+		<result column="bank_name" property="bankName" jdbcType="VARCHAR" />
+		<result column="bank_acct" property="bankAcct" jdbcType="VARCHAR" />
+		<result column="acct_holder" property="acctHolder" jdbcType="VARCHAR" />
+		<result column="sign_date" property="signDate"/>
+		<result column="num_of_gift" property="numOfGift"/>
+		<result column="num_of_member" property="numOfMember"/>
+		<result column="rate_of_review" property="rateOfReview"/>
+		<result column="num1_of_unqualified" property="num1OfUnqualified"/>
+		<result column="num2_of_unqualified" property="num2OfUnqualified"/>
+		<result column="num_of_verification" property="numOfVerification"/>
+		<result column="status" property="status"/>
+		<result column="contract_id" property="contractId" />
+		<result column="client_id" property="clientId" />
+		<result column="invoice_pic" property="invoicePic" />
+		<result column="month_id" property="monthId"/>
+		<result column="reason" property="reason"/>
+		<result column="start_date" property="startDate"  />
+		<result column="end_date" property="endDate" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		contract_id, contract_no, store_id, client_user_id,
+		sign_date, start_date,
+		end_date,
+		gift, gift_price, other_gift,
+		other_price, options_of_invest, val_of_shelf,
+		other_invest,
+		has_invoice, invoice_type, other_invoice, license_type, acct_type,
+		bank_name,
+		bank_acct,
+		acct_holder, client_id, create_by, create_time,
+		last_update_by, last_update_time,
+		is_delete
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from wyeth_contract
+		where contract_id = #{contractId,jdbcType=CHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from
+		wyeth_contract
+		where contract_id = #{contractId,jdbcType=CHAR}
+	</delete>
+	<insert id="insert" parameterType="cn.mobilizer.channel.base.po.WyethContract">
+		insert into wyeth_contract
+		(contract_id, contract_no, store_id,
+		client_user_id, sign_date,
+		start_date,
+		end_date, gift, gift_price,
+		other_gift, other_price,
+		options_of_invest,
+		val_of_shelf, other_invest, has_invoice,
+		invoice_type, other_invoice, license_type,
+		acct_type, bank_name,
+		bank_acct,
+		acct_holder, client_id, create_by,
+		create_time,
+		last_update_by, last_update_time,
+		is_delete)
+		values
+		(#{contractId,jdbcType=CHAR}, #{contractNo,jdbcType=VARCHAR},
+		#{storeId,jdbcType=CHAR},
+		#{clientUserId,jdbcType=INTEGER},
+		#{signDate,jdbcType=TIMESTAMP}, #{startDate,jdbcType=TIMESTAMP},
+		#{endDate,jdbcType=TIMESTAMP}, #{gift,jdbcType=VARCHAR},
+		#{giftPrice,jdbcType=DECIMAL},
+		#{otherGift,jdbcType=VARCHAR},
+		#{otherPrice,jdbcType=DECIMAL}, #{optionsOfInvest,jdbcType=VARCHAR},
+		#{valOfShelf,jdbcType=DECIMAL}, #{otherInvest,jdbcType=VARCHAR},
+		#{hasInvoice,jdbcType=CHAR},
+		#{invoiceType,jdbcType=VARCHAR},
+		#{otherInvoice,jdbcType=VARCHAR}, #{licenseType,jdbcType=VARCHAR},
+		#{acctType,jdbcType=VARCHAR}, #{bankName,jdbcType=VARCHAR},
+		#{bankAcct,jdbcType=VARCHAR},
+		#{acctHolder,jdbcType=VARCHAR},
+		#{clientId,jdbcType=INTEGER}, #{createBy,jdbcType=INTEGER},
+		#{createTime,jdbcType=TIMESTAMP}, #{lastUpdateBy,jdbcType=INTEGER},
+		#{lastUpdateTime,jdbcType=TIMESTAMP},
+		#{isDelete,jdbcType=TINYINT})
+	</insert>
+	<insert id="insertSelective" parameterType="cn.mobilizer.channel.base.po.WyethContract">
+		insert into wyeth_contract
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="contractId != null">
+				contract_id,
+			</if>
+			<if test="contractNo != null">
+				contract_no,
+			</if>
+			<if test="storeId != null">
+				store_id,
+			</if>
+			<if test="clientUserId != null">
+				client_user_id,
+			</if>
+			<if test="signDate != null">
+				sign_date,
+			</if>
+			<if test="startDate != null">
+				start_date,
+			</if>
+			<if test="endDate != null">
+				end_date,
+			</if>
+			<if test="gift != null">
+				gift,
+			</if>
+			<if test="giftPrice != null">
+				gift_price,
+			</if>
+			<if test="otherGift != null">
+				other_gift,
+			</if>
+			<if test="otherPrice != null">
+				other_price,
+			</if>
+			<if test="optionsOfInvest != null">
+				options_of_invest,
+			</if>
+			<if test="valOfShelf != null">
+				val_of_shelf,
+			</if>
+			<if test="otherInvest != null">
+				other_invest,
+			</if>
+			<if test="hasInvoice != null">
+				has_invoice,
+			</if>
+			<if test="invoiceType != null">
+				invoice_type,
+			</if>
+			<if test="otherInvoice != null">
+				other_invoice,
+			</if>
+			<if test="licenseType != null">
+				license_type,
+			</if>
+			<if test="acctType != null">
+				acct_type,
+			</if>
+			<if test="bankName != null">
+				bank_name,
+			</if>
+			<if test="bankAcct != null">
+				bank_acct,
+			</if>
+			<if test="acctHolder != null">
+				acct_holder,
+			</if>
+			<if test="clientId != null">
+				client_id,
+			</if>
+			<if test="createBy != null">
+				create_by,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="lastUpdateBy != null">
+				last_update_by,
+			</if>
+			<if test="lastUpdateTime != null">
+				last_update_time,
+			</if>
+			<if test="isDelete != null">
+				is_delete,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="contractId != null">
+				#{contractId,jdbcType=CHAR},
+			</if>
+			<if test="contractNo != null">
+				#{contractNo,jdbcType=VARCHAR},
+			</if>
+			<if test="storeId != null">
+				#{storeId,jdbcType=CHAR},
+			</if>
+			<if test="clientUserId != null">
+				#{clientUserId,jdbcType=INTEGER},
+			</if>
+			<if test="signDate != null">
+				#{signDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="startDate != null">
+				#{startDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="endDate != null">
+				#{endDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="gift != null">
+				#{gift,jdbcType=VARCHAR},
+			</if>
+			<if test="giftPrice != null">
+				#{giftPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="otherGift != null">
+				#{otherGift,jdbcType=VARCHAR},
+			</if>
+			<if test="otherPrice != null">
+				#{otherPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="optionsOfInvest != null">
+				#{optionsOfInvest,jdbcType=VARCHAR},
+			</if>
+			<if test="valOfShelf != null">
+				#{valOfShelf,jdbcType=DECIMAL},
+			</if>
+			<if test="otherInvest != null">
+				#{otherInvest,jdbcType=VARCHAR},
+			</if>
+			<if test="hasInvoice != null">
+				#{hasInvoice,jdbcType=CHAR},
+			</if>
+			<if test="invoiceType != null">
+				#{invoiceType,jdbcType=VARCHAR},
+			</if>
+			<if test="otherInvoice != null">
+				#{otherInvoice,jdbcType=VARCHAR},
+			</if>
+			<if test="licenseType != null">
+				#{licenseType,jdbcType=VARCHAR},
+			</if>
+			<if test="acctType != null">
+				#{acctType,jdbcType=VARCHAR},
+			</if>
+			<if test="bankName != null">
+				#{bankName,jdbcType=VARCHAR},
+			</if>
+			<if test="bankAcct != null">
+				#{bankAcct,jdbcType=VARCHAR},
+			</if>
+			<if test="acctHolder != null">
+				#{acctHolder,jdbcType=VARCHAR},
+			</if>
+			<if test="clientId != null">
+				#{clientId,jdbcType=INTEGER},
+			</if>
+			<if test="createBy != null">
+				#{createBy,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="lastUpdateBy != null">
+				#{lastUpdateBy,jdbcType=INTEGER},
+			</if>
+			<if test="lastUpdateTime != null">
+				#{lastUpdateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="isDelete != null">
+				#{isDelete,jdbcType=TINYINT},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.base.po.WyethContract">
+		update wyeth_contract
+		<set>
+			<if test="contractNo != null">
+				contract_no = #{contractNo,jdbcType=VARCHAR},
+			</if>
+			<if test="storeId != null">
+				store_id = #{storeId,jdbcType=CHAR},
+			</if>
+			<if test="clientUserId != null">
+				client_user_id = #{clientUserId,jdbcType=INTEGER},
+			</if>
+			<if test="signDate != null">
+				sign_date = #{signDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="startDate != null">
+				start_date = #{startDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="endDate != null">
+				end_date = #{endDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="gift != null">
+				gift = #{gift,jdbcType=VARCHAR},
+			</if>
+			<if test="giftPrice != null">
+				gift_price = #{giftPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="otherGift != null">
+				other_gift = #{otherGift,jdbcType=VARCHAR},
+			</if>
+			<if test="otherPrice != null">
+				other_price = #{otherPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="optionsOfInvest != null">
+				options_of_invest = #{optionsOfInvest,jdbcType=VARCHAR},
+			</if>
+			<if test="valOfShelf != null">
+				val_of_shelf = #{valOfShelf,jdbcType=DECIMAL},
+			</if>
+			<if test="otherInvest != null">
+				other_invest = #{otherInvest,jdbcType=VARCHAR},
+			</if>
+			<if test="hasInvoice != null">
+				has_invoice = #{hasInvoice,jdbcType=CHAR},
+			</if>
+			<if test="invoiceType != null">
+				invoice_type = #{invoiceType,jdbcType=VARCHAR},
+			</if>
+			<if test="otherInvoice != null">
+				other_invoice = #{otherInvoice,jdbcType=VARCHAR},
+			</if>
+			<if test="licenseType != null">
+				license_type = #{licenseType,jdbcType=VARCHAR},
+			</if>
+			<if test="acctType != null">
+				acct_type = #{acctType,jdbcType=VARCHAR},
+			</if>
+			<if test="bankName != null">
+				bank_name = #{bankName,jdbcType=VARCHAR},
+			</if>
+			<if test="bankAcct != null">
+				bank_acct = #{bankAcct,jdbcType=VARCHAR},
+			</if>
+			<if test="acctHolder != null">
+				acct_holder = #{acctHolder,jdbcType=VARCHAR},
+			</if>
+			<if test="clientId != null">
+				client_id = #{clientId,jdbcType=INTEGER},
+			</if>
+			<if test="contractPic != null">
+				contract_pic = #{contractPic,jdbcType=CHAR},
+			</if>
+			<if test="isDelete != null">
+				is_delete = #{isDelete},
+			</if>
+			<if test="lastUpdateBy != null">
+				last_update_by = #{lastUpdateBy,jdbcType=INTEGER},
+			</if>
+		</set>
+		where contract_id = #{contractId,jdbcType=CHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.base.po.WyethContract">
+		update
+		wyeth_contract
+		set contract_no = #{contractNo,jdbcType=VARCHAR},
+		store_id = #{storeId,jdbcType=CHAR},
+		client_user_id =
+		#{clientUserId,jdbcType=INTEGER},
+		sign_date =
+		#{signDate,jdbcType=TIMESTAMP},
+		start_date =
+		#{startDate,jdbcType=TIMESTAMP},
+		end_date =
+		#{endDate,jdbcType=TIMESTAMP},
+		gift = #{gift,jdbcType=VARCHAR},
+		gift_price = #{giftPrice,jdbcType=DECIMAL},
+		other_gift =
+		#{otherGift,jdbcType=VARCHAR},
+		other_price =
+		#{otherPrice,jdbcType=DECIMAL},
+		options_of_invest =
+		#{optionsOfInvest,jdbcType=VARCHAR},
+		val_of_shelf =
+		#{valOfShelf,jdbcType=DECIMAL},
+		other_invest =
+		#{otherInvest,jdbcType=VARCHAR},
+		has_invoice =
+		#{hasInvoice,jdbcType=CHAR},
+		invoice_type =
+		#{invoiceType,jdbcType=VARCHAR},
+		other_invoice =
+		#{otherInvoice,jdbcType=VARCHAR},
+		license_type =
+		#{licenseType,jdbcType=VARCHAR},
+		acct_type =
+		#{acctType,jdbcType=VARCHAR},
+		bank_name = #{bankName,jdbcType=VARCHAR},
+		bank_acct = #{bankAcct,jdbcType=VARCHAR},
+		acct_holder =
+		#{acctHolder,jdbcType=VARCHAR},
+		client_id =
+		#{clientId,jdbcType=INTEGER},
+		create_by = #{createBy,jdbcType=INTEGER},
+		create_time = #{createTime,jdbcType=TIMESTAMP},
+		last_update_by =
+		#{lastUpdateBy,jdbcType=INTEGER},
+		last_update_time =
+		#{lastUpdateTime,jdbcType=TIMESTAMP},
+		is_delete =
+		#{isDelete,jdbcType=TINYINT}
+		where contract_id =
+		#{contractId,jdbcType=CHAR}
+	</update>
+	<insert id="batchAddSales" parameterType="java.util.List">
+		insert into wyeth_contract
+		(contract_id,contract_no,store_id,client_user_id,sign_date,start_date,
+		end_date,
+		gift, gift_price, other_gift, other_price, options_of_invest,
+		val_of_shelf,
+		other_invest,
+		has_invoice, invoice_type, other_invoice,
+		license_type, acct_type, bank_name,
+		bank_acct,
+		acct_holder,
+		client_id,create_by,last_update_by,is_delete)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{item.contractId},#{item.contractNo},#{item.storeId},#{item.clientUserId},#{item.signDate},#{item.startDate},
+			#{item.endDate},
+			#{item.gift},#{item.giftPrice},#{item.otherGift},#{item.otherPrice},#{item.optionsOfInvest},#{item.valOfShelf},
+			#{item.otherInvest},
+			#{item.hasInvoice},#{item.invoiceType},#{item.otherInvoice},#{item.licenseType},#{item.acctType},#{item.bankName},
+			#{item.bankAcct},
+			#{item.acctHolder},
+			#{item.clientId},#{item.createBy},#{item.lastUpdateBy},#{item.isDelete})
+		</foreach>
+	</insert>
+	<select id="queryWyethContractByMonthId" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		select s.store_no as
+		storeNo,wc.contract_id,wc.contract_no,wcd.month_id from
+		wyeth_contract
+		wc  LEFT JOIN wyeth_contract_detail wcd
+		on wcd.contract_id =
+		wc.contract_id INNER JOIN store s on s.store_id=wc.store_id
+		where
+		wc.is_delete = 0 and wc.client_id = #{clientId}
+		and wcd.is_delete = 0
+		and
+		s.is_delete =0 and s.client_id = #{clientId}
+		and wcd.month_id = #{monthId}
+		GROUP
+		BY
+		wc.contract_id
+	</select>
+	<select id="queryWyethContract" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		select s.store_name as
+		storeName,wc.contract_id,wc.contract_no,wcd.month_id from
+		wyeth_contract
+		wc  LEFT JOIN wyeth_contract_detail wcd
+		on wcd.contract_id =
+		wc.contract_id INNER JOIN store s on s.store_id=wc.store_id
+		where
+		wc.is_delete = 0 and wc.client_id = #{clientId}
+		and wcd.is_delete = 0
+		and
+		s.is_delete =0 and s.client_id = #{clientId}
+		and wcd.month_id = #{monthId}
+		GROUP
+		BY
+		wc.contract_id
+	</select>
+	<select id="queryAll" parameterType="java.util.Map" resultMap="BaseResultMap">
+		SELECT CONCAT(b.store_no,b.store_name,DATE_FORMAT(a.start_date,'%Y%m%d'),DATE_FORMAT(a.end_date,'%Y%m%d'))AS keyName,a.contract_id FROM wyeth_contract a 
+		LEFT JOIN store b ON a.store_id=b.store_id
+		WHERE a.is_delete=#{isDelete} AND a.client_id=#{clientId}
+		AND b.is_delete=#{isDelete} AND b.client_id=#{clientId}
+	</select>
+	<select id="queryAllKeyName" parameterType="java.util.Map" resultMap="BaseResultMap">
+	SELECT CONCAT(DATE_FORMAT(a.sign_date,'%Y%m%d'),b.store_name,b.store_no)AS keyName,a.contract_id FROM wyeth_contract a 
+		LEFT JOIN store b ON a.store_id=b.store_id
+		WHERE a.is_delete=#{isDelete} AND a.client_id=#{clientId}
+		AND b.is_delete=#{isDelete} AND b.client_id=#{clientId}
+	</select>
+	<select id="queryAllMap" parameterType="java.util.Map" resultMap="BaseResultMap">
+		SELECT CONCAT(DATE_FORMAT(a.sign_date,'%Y%m%d'),b.store_no)AS keyName,a.contract_id FROM wyeth_contract a 
+		LEFT JOIN store b ON a.store_id=b.store_id
+		WHERE a.is_delete=#{isDelete} AND a.client_id=#{clientId}
+		AND b.is_delete=#{isDelete} AND b.client_id=#{clientId}
+	</select>
+	
+	
+	<select id="findContractsByparam" parameterType="java.util.Map"  resultMap="ResultMap">
+		select
+		a.contract_id,a.license_type,s.structure_name AS city ,n.structure_name,a.contract_pic,a.client_id,b.store_no,e.province,b.store_name,c.channel_name,d.chain_name,a.sign_date,a.start_date,a.end_date
+		from wyeth_contract a INNER JOIN store b on a.store_id = b.store_id
+		LEFT JOIN channel c on c.channel_id = b.channel_id and c.is_delete = 0 and c.client_id = #{clientId}
+		LEFT JOIN `chain` d on d.chain_id = b.chain_id and d.is_delete = 0 and d.client_id = #{clientId}
+		LEFT JOIN province e on b.province_id = e.province_id and e.is_delete = 0
+		LEFT JOIN client_structure s on s.client_structure_id = b.client_structure_id and s.is_delete = 0 and s.client_id = #{clientId}
+		LEFT JOIN client_structure n ON n.client_structure_id =s.parent_id AND n.is_delete=0 AND n.client_id=#{clientId}
+		where a.is_delete = 0 and a.client_id = #{clientId}
+		and b.is_delete = 0 and b.client_id = #{clientId}
+		AND (FIND_IN_SET(b.client_structure_id,#{subStructureId})>0)
+		
+		<if test="structureId !=null and structureId !=''">	
+			AND (FIND_IN_SET(s.client_structure_id,#{structureId})>0 or FIND_IN_SET(s.parent_id,#{structureId})>0 )
+		</if>
+		<if test="storeNo!=null and storeNo !=''">
+			and b.store_no like CONCAT('%',#{storeNo},'%') 
+		</if>
+		<if test="storeName !=null and storeName !=''">
+			and b.store_name like CONCAT('%',#{storeName},'%') 
+		</if>
+		
+		
+		<if test="signDate !=null and signDate !=''">
+			and DATE_FORMAT(a.sign_date,'%Y-%m-%d') = #{signDate}
+		</if>
+		<if test="startDate !=null and startDate !=''">
+			<![CDATA[  
+				and a.start_date >= #{startDate}
+			]]>
+		</if>
+		<if test="endDate !=null and endDate !=''">
+			<![CDATA[  
+				and a.end_date <= #{endDate}
+			]]>
+		</if>
+		
+		<if test="city !=null and city !=''">
+			and s.structure_name like CONCAT('%',#{city},'%')
+		</if>
+		<include refid="basic.mysqlPageSearchFoot" />
+	</select>
+	
+	
+	<select id="findContractsByparam2" parameterType="java.util.Map"  resultMap="ResultMap">
+		select
+		a.contract_id,a.license_type,s.structure_name AS city ,n.structure_name,a.contract_pic,a.client_id,b.store_no,e.province,b.store_name,c.channel_name,d.chain_name,a.sign_date,a.start_date,a.end_date
+		from wyeth_contract a INNER JOIN store b on a.store_id = b.store_id
+		INNER JOIN store_user_mapping m on m.store_id = b.store_id
+		LEFT JOIN channel c on c.channel_id = b.channel_id and c.is_delete = 0 and c.client_id = #{clientId}
+		LEFT JOIN `chain` d on d.chain_id = b.chain_id and d.is_delete = 0 and d.client_id = #{clientId}
+		LEFT JOIN province e on b.province_id = e.province_id and e.is_delete = 0
+		LEFT JOIN client_structure s on s.client_structure_id = b.client_structure_id and s.is_delete = 0 and s.client_id = #{clientId}
+		LEFT JOIN client_structure n ON n.client_structure_id =s.parent_id AND n.is_delete=0 AND n.client_id=#{clientId}
+		where a.is_delete = 0 and a.client_id = #{clientId}
+		and b.is_delete = 0 and b.client_id = #{clientId}
+		and m.is_delete = 0 and m.client_id = #{clientId}
+		and m.client_user_id = #{clientUserId}
+		
+		<if test="structureId !=null and structureId !=''">	
+			AND (FIND_IN_SET(s.client_structure_id,#{structureId})>0 or FIND_IN_SET(s.parent_id,#{structureId})>0 )
+		</if>
+		<if test="storeNo!=null and storeNo !=''">
+			and b.store_no like CONCAT('%',#{storeNo},'%') 
+		</if>
+		<if test="storeName !=null and storeName !=''">
+			and b.store_name like CONCAT('%',#{storeName},'%') 
+		</if>
+		
+		
+		<if test="signDate !=null and signDate !=''">
+			and DATE_FORMAT(a.sign_date,'%Y-%m-%d') = #{signDate}
+		</if>
+		<if test="startDate !=null and startDate !=''">
+			<![CDATA[  
+				and a.start_date >= #{startDate}
+			]]>
+		</if>
+		<if test="endDate !=null and endDate !=''">
+			<![CDATA[  
+				and a.end_date <= #{endDate}
+			]]>
+		</if>
+		
+		<if test="city !=null and city !=''">
+			and s.structure_name like CONCAT('%',#{city},'%')
+		</if>
+		<include refid="basic.mysqlPageSearchFoot" />
+	</select>
+	
+	
+	<select id="findContractCountByparam" parameterType="java.util.Map"  resultType="java.lang.Integer">
+		select count(1) from wyeth_contract a INNER JOIN store b on a.store_id = b.store_id
+		LEFT JOIN channel c on c.channel_id = b.channel_id and c.is_delete = 0 and c.client_id = #{clientId}
+		LEFT JOIN `chain` d on d.chain_id = b.chain_id and d.is_delete = 0 and d.client_id = #{clientId}
+		LEFT JOIN province e on b.province_id = e.province_id and e.is_delete = 0
+		LEFT JOIN client_structure s on s.client_structure_id = b.client_structure_id and s.is_delete = 0 and s.client_id = #{clientId}
+		LEFT JOIN client_structure n ON n.client_structure_id =s.parent_id AND n.is_delete=0 AND n.client_id=#{clientId}
+		where a.is_delete = 0 and a.client_id = #{clientId}
+		and b.is_delete = 0 and b.client_id = #{clientId}
+		AND (FIND_IN_SET(b.client_structure_id,#{subStructureId})>0)
+		
+		
+		<if test="structureId !=null and structureId !=''">	
+			AND (FIND_IN_SET(s.client_structure_id,#{structureId})>0 or FIND_IN_SET(s.parent_id,#{structureId})>0 )
+		</if>
+		
+		<if test="storeNo!=null and storeNo !=''">
+			and b.store_no like CONCAT('%',#{storeNo},'%') 
+		</if>
+		<if test="storeName !=null and storeName !=''">
+			and b.store_name like CONCAT('%',#{storeName},'%') 
+		</if>
+		
+	
+		<if test="signDate !=null and signDate !=''">
+			and DATE_FORMAT(a.sign_date,'%Y-%m-%d') = #{signDate}
+		</if>
+		<if test="startDate !=null and startDate !=''">
+			<![CDATA[  
+				and a.start_date >= #{startDate}
+			]]>
+		</if>
+		<if test="endDate !=null and endDate !=''">
+			<![CDATA[  
+				and a.end_date <= #{endDate}
+			]]>
+		</if>
+		
+		<if test="city !=null and city !=''">
+			and s.structure_name like CONCAT('%',#{city},'%')
+		</if>
+	</select>
+	
+	<select id="findContractCountByparam2" parameterType="java.util.Map"  resultType="java.lang.Integer">
+		select count(1) from wyeth_contract a INNER JOIN store b on a.store_id = b.store_id
+		INNER JOIN store_user_mapping m on m.store_id = b.store_id
+		LEFT JOIN channel c on c.channel_id = b.channel_id and c.is_delete = 0 and c.client_id = #{clientId}
+		LEFT JOIN `chain` d on d.chain_id = b.chain_id and d.is_delete = 0 and d.client_id = #{clientId}
+		LEFT JOIN province e on b.province_id = e.province_id and e.is_delete = 0
+		LEFT JOIN client_structure s on s.client_structure_id = b.client_structure_id and s.is_delete = 0 and s.client_id = #{clientId}
+		LEFT JOIN client_structure n ON n.client_structure_id =s.parent_id AND n.is_delete=0 AND n.client_id=#{clientId}
+		where a.is_delete = 0 and a.client_id = #{clientId}
+		and b.is_delete = 0 and b.client_id = #{clientId}
+		and m.is_delete = 0 and m.client_id = #{clientId}
+		and m.client_user_id = #{clientUserId}
+		
+		<if test="structureId !=null and structureId !=''">	
+			AND (FIND_IN_SET(s.client_structure_id,#{structureId})>0 or FIND_IN_SET(s.parent_id,#{structureId})>0 )
+		</if>
+		
+		<if test="storeNo!=null and storeNo !=''">
+			and b.store_no like CONCAT('%',#{storeNo},'%') 
+		</if>
+		<if test="storeName !=null and storeName !=''">
+			and b.store_name like CONCAT('%',#{storeName},'%') 
+		</if>
+		
+	
+		<if test="signDate !=null and signDate !=''">
+			and DATE_FORMAT(a.sign_date,'%Y-%m-%d') = #{signDate}
+		</if>
+		<if test="startDate !=null and startDate !=''">
+			<![CDATA[  
+				and a.start_date >= #{startDate}
+			]]>
+		</if>
+		<if test="endDate !=null and endDate !=''">
+			<![CDATA[  
+				and a.end_date <= #{endDate}
+			]]>
+		</if>
+		
+		<if test="city !=null and city !=''">
+			and s.structure_name like CONCAT('%',#{city},'%')
+		</if>
+	</select>
+ 
+	<select id="findCheckedWyethContract" parameterType="java.util.Map" resultMap="ContractFeedbackMap">
+
+		SELECT d.invoice_pic,d.month_id, a.client_id,d.feedback_id,d.reason,a.contract_id,n.structure_name,s.store_no,s.store_name,cs.structure_name as city,a.has_invoice,a.invoice_type,a.acct_type,a.bank_name,a.bank_acct,a.acct_holder
+
+		,a.sign_date,d.num_of_gift,d.num_of_member,d.rate_of_review,d.num1_of_unqualified,d.num2_of_unqualified,d.num_of_verification,d.`status`
+		FROM wyeth_contract a INNER JOIN store s ON s.store_id = a.store_id
+		left join client_structure cs on cs.client_structure_id = s.client_structure_id
+		LEFT JOIN client_structure n ON n.client_structure_id =cs.parent_id AND n.is_delete=0 AND n.client_id=#{clientId}
+		INNER JOIN wyeth_contract_feedback d ON d.contract_id = a.contract_id
+		WHERE a.is_delete = 0 AND a.client_id = #{clientId} 
+		AND s.is_delete = 0 AND s.client_id = #{clientId}
+		AND d.is_delete = 0
+		AND (FIND_IN_SET(s.client_structure_id,#{subStructureId})>0)
+		
+		<if test="structureId!=null and structureId!=''">
+			AND (FIND_IN_SET(cs.client_structure_id,#{structureId})>0 or FIND_IN_SET(cs.parent_id,#{structureId})>0 )
+		</if>
+		and a.is_delete = 0 AND a.client_id = #{clientId} 
+		AND s.is_delete = 0 AND s.client_id = #{clientId}
+		AND d.is_delete = 0
+		<if test="bankAcct!=null and bankAcct!=''">
+			and a.bank_acct = #{bankAcct}
+		</if>
+		<if test="storeName!=null and storeName!=''">
+			and s.store_name like CONCAT('%',#{storeName},'%') 
+		</if>
+		<if test="storeCode!=null and storeCode!=''">
+			and s.store_No = #{storeCode}
+		</if>
+		<if test="acctHolder!=null and acctHolder!=''">
+			and a.acct_holder = #{acctHolder}
+		</if>
+		<if test="bankName!=null and bankName!=''">
+			and a.bank_name = #{bankName}
+		</if>
+		
+		<if test="city!=null and city!=''">
+			and cs.structure_name like CONCAT('%',#{city},'%')
+		</if>
+		<if test="monthId!=null and monthId!=''">
+			and d.month_Id = #{monthId}
+		</if>
+		<if test="status!=null">
+			and d.`status` = #{status}
+		</if>
+		<include refid="basic.mysqlPageSearchFoot" />
+	</select>
+	
+	
+	<select id="findCheckedWyethContract2" parameterType="java.util.Map" resultMap="ContractFeedbackMap">
+
+		SELECT d.invoice_pic,d.month_id, a.client_id,d.feedback_id,d.reason,a.contract_id,n.structure_name,s.store_no,s.store_name,cs.structure_name as city,a.has_invoice,a.invoice_type,a.acct_type,a.bank_name,a.bank_acct,a.acct_holder
+		,a.sign_date,d.num_of_gift,d.num_of_member,d.rate_of_review,d.num1_of_unqualified,d.num2_of_unqualified,d.num_of_verification,d.`status`
+		FROM wyeth_contract a INNER JOIN store s ON s.store_id = a.store_id
+		INNER JOIN store_user_mapping m on m.store_id = s.store_id
+		
+		left join client_structure cs on cs.client_structure_id = s.client_structure_id
+		LEFT JOIN client_structure n ON n.client_structure_id =cs.parent_id AND n.is_delete=0 AND n.client_id=#{clientId}
+		INNER JOIN wyeth_contract_feedback d ON d.contract_id = a.contract_id
+		WHERE a.is_delete = 0 AND a.client_id = #{clientId} 
+		AND s.is_delete = 0 AND s.client_id = #{clientId}
+		AND d.is_delete = 0
+		and m.client_user_id = #{clientUserId}
+		
+		<if test="structureId!=null and structureId!=''">
+			AND (FIND_IN_SET(cs.client_structure_id,#{structureId})>0 or FIND_IN_SET(cs.parent_id,#{structureId})>0 )
+		</if>
+		
+		and a.is_delete = 0 AND a.client_id = #{clientId} 
+		AND s.is_delete = 0 AND s.client_id = #{clientId}
+		AND d.is_delete = 0
+		<if test="bankAcct!=null and bankAcct!=''">
+			and a.bank_acct = #{bankAcct}
+		</if>
+		<if test="storeName!=null and storeName!=''">
+			and s.store_name like CONCAT('%',#{storeName},'%') 
+		</if>
+		<if test="storeCode!=null and storeCode!=''">
+			and s.store_No = #{storeCode}
+		</if>
+		<if test="acctHolder!=null and acctHolder!=''">
+			and a.acct_holder = #{acctHolder}
+		</if>
+		<if test="bankName!=null and bankName!=''">
+			and a.bank_name = #{bankName}
+		</if>
+		
+		<if test="city!=null and city!=''">
+			and cs.structure_name like CONCAT('%',#{city},'%')
+		</if>
+		<if test="monthId!=null and monthId!=''">
+			and d.month_Id = #{monthId}
+		</if>
+		<if test="status!=null">
+			and d.`status` = #{status}
+		</if>
+		<include refid="basic.mysqlPageSearchFoot" />
+	</select>
+	
+	
+	
+	<select id="findCheckedWyethContractCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+		SELECT count(1)
+		FROM wyeth_contract a INNER JOIN store s ON s.store_id = a.store_id
+		left join client_structure cs on cs.client_structure_id = s.client_structure_id
+		LEFT JOIN client_structure n ON n.client_structure_id =cs.parent_id AND n.is_delete=0 AND n.client_id=#{clientId}
+		INNER JOIN wyeth_contract_feedback d ON d.contract_id = a.contract_id
+		WHERE a.is_delete = 0 AND a.client_id = #{clientId}
+		AND s.is_delete = 0 AND s.client_id = #{clientId}
+		AND d.is_delete = 0
+		AND (FIND_IN_SET(s.client_structure_id,#{subStructureId})>0)
+		
+		<if test="structureId!=null and structureId!=''">
+			AND (FIND_IN_SET(cs.client_structure_id,#{structureId})>0 or FIND_IN_SET(cs.parent_id,#{structureId})>0 )
+		</if>
+		and a.is_delete = 0 AND a.client_id = #{clientId} 
+		AND s.is_delete = 0 AND s.client_id = #{clientId}
+		AND d.is_delete = 0
+		<if test="bankAcct!=null and bankAcct!=''">
+			and a.bank_acct = #{bankAcct}
+		</if>
+		<if test="storeName!=null and storeName!=''">
+			and s.store_name like CONCAT('%',#{storeName},'%') 
+		</if>
+		<if test="storeCode!=null and storeCode!=''">
+			and s.store_No = #{storeCode}
+		</if>
+		<if test="acctHolder!=null and acctHolder!=''">
+			and a.acct_holder = #{acctHolder}
+		</if>
+		<if test="bankName!=null and bankName!=''">
+			and a.bank_name = #{bankName}
+		</if>
+		<if test="city!=null and city!=''">
+			and cs.structure_name like CONCAT('%',#{city},'%')
+		</if>
+		<if test="monthId!=null and monthId!=''">
+			and d.month_Id = #{monthId}
+		</if>
+		<if test="status!=null">
+			and d.`status` = #{status}
+		</if>
+	</select>
+	
+	
+	<select id="findCheckedWyethContractCount2" parameterType="java.util.Map" resultType="java.lang.Integer">
+		SELECT count(1)
+		FROM wyeth_contract a INNER JOIN store s ON s.store_id = a.store_id
+		INNER JOIN store_user_mapping m on m.store_id = s.store_id
+		
+		left join client_structure cs on cs.client_structure_id = s.client_structure_id
+		LEFT JOIN client_structure n ON n.client_structure_id =cs.parent_id AND n.is_delete=0 AND n.client_id=#{clientId}
+		INNER JOIN wyeth_contract_feedback d ON d.contract_id = a.contract_id
+		WHERE a.is_delete = 0 AND a.client_id = #{clientId}
+		AND s.is_delete = 0 AND s.client_id = #{clientId}
+		AND d.is_delete = 0
+		and m.client_user_id = #{clientUserId}
+		
+		<if test="structureId!=null and structureId!=''">
+			AND (FIND_IN_SET(cs.client_structure_id,#{structureId})>0 or FIND_IN_SET(cs.parent_id,#{structureId})>0 )
+		</if>
+		and a.is_delete = 0 AND a.client_id = #{clientId} 
+		AND s.is_delete = 0 AND s.client_id = #{clientId}
+		AND d.is_delete = 0
+		<if test="bankAcct!=null and bankAcct!=''">
+			and a.bank_acct = #{bankAcct}
+		</if>
+		<if test="storeName!=null and storeName!=''">
+			and s.store_name like CONCAT('%',#{storeName},'%') 
+		</if>
+		<if test="storeCode!=null and storeCode!=''">
+			and s.store_No = #{storeCode}
+		</if>
+		<if test="acctHolder!=null and acctHolder!=''">
+			and a.acct_holder = #{acctHolder}
+		</if>
+		<if test="bankName!=null and bankName!=''">
+			and a.bank_name = #{bankName}
+		</if>
+		<if test="city!=null and city!=''">
+			and cs.structure_name like CONCAT('%',#{city},'%')
+		</if>
+		<if test="monthId!=null and monthId!=''">
+			and d.month_Id = #{monthId}
+		</if>
+		<if test="status!=null">
+			and d.`status` = #{status}
+		</if>
+	</select>
+	
+	<select id="findApiCheckedWyethContract" parameterType="java.util.Map" resultMap="ContractFeedbackAppMap">
+		SELECT d.invoice_pic,d.month_id, a.client_id,d.feedback_id,d.reason,a.contract_id,n.structure_name,s.store_no,s.store_name,cs.structure_name as city,a.has_invoice,a.invoice_type,a.acct_type,a.bank_name,a.bank_acct,a.acct_holder
+		,a.sign_date,a.start_date,a.end_date,d.num_of_gift,d.num_of_member,d.rate_of_review,d.num1_of_unqualified,d.num2_of_unqualified,d.num_of_verification,d.`status`
+		FROM wyeth_contract a INNER JOIN store s ON s.store_id = a.store_id
+		left join client_structure cs on cs.client_structure_id = s.client_structure_id
+		LEFT JOIN client_structure n ON n.client_structure_id =cs.parent_id AND n.is_delete=0 AND n.client_id=#{clientId}
+		INNER JOIN wyeth_contract_feedback d ON d.contract_id = a.contract_id
+		WHERE a.is_delete = 0 AND a.client_id = #{clientId} 
+		AND s.is_delete = 0 AND s.client_id = #{clientId}
+		AND d.is_delete = 0
+		AND (FIND_IN_SET(s.client_structure_id,#{subStructureId})>0) 
+		and a.is_delete = 0 AND a.client_id = #{clientId} 
+		AND s.is_delete = 0 AND s.client_id = #{clientId}
+		AND d.is_delete = 0
+		<if test="bankAcct!=null and bankAcct!=''">
+			and a.bank_acct = #{bankAcct}
+		</if>
+		<if test="keyWord!=null and keyWord!=''">
+			and (s.store_name like CONCAT('%',#{keyWord},'%') or s.store_No = #{keyWord})
+		</if>
+		<if test="acctHolder!=null and acctHolder!=''">
+			and a.acct_holder = #{acctHolder}
+		</if>
+		<if test="bankName!=null and bankName!=''">
+			and a.bank_name = #{bankName}
+		</if>
+		
+		<if test="city!=null and city!=''">
+			and cs.structure_name like CONCAT('%',#{city},'%')
+		</if>
+		<if test="monthId!=null and monthId!=''">
+			and d.month_Id = #{monthId}
+		</if>
+		<if test="status!=null">
+			and d.`status` = #{status}
+		</if>
+		<include refid="basic.mysqlPageSearchFoot" />
+	</select>
+	
+	<select id="findApiCheckedWyethContract2" parameterType="java.util.Map" resultMap="ContractFeedbackAppMap">
+		SELECT d.invoice_pic,d.month_id, a.client_id,d.feedback_id,d.reason,a.contract_id,n.structure_name,s.store_no,s.store_name,cs.structure_name as city,a.has_invoice,a.invoice_type,a.acct_type,a.bank_name,a.bank_acct,a.acct_holder
+		,a.sign_date,a.start_date,a.end_date,d.num_of_gift,d.num_of_member,d.rate_of_review,d.num1_of_unqualified,d.num2_of_unqualified,d.num_of_verification,d.`status`
+		FROM wyeth_contract a INNER JOIN store s ON s.store_id = a.store_id
+		INNER JOIN store_user_mapping sum ON sum.store_id = s.store_id and sum.is_delete = 0
+		left join client_structure cs on cs.client_structure_id = s.client_structure_id
+		LEFT JOIN client_structure n ON n.client_structure_id =cs.parent_id AND n.is_delete=0 AND n.client_id=#{clientId}
+		INNER JOIN wyeth_contract_feedback d ON d.contract_id = a.contract_id
+		WHERE a.is_delete = 0 AND a.client_id = #{clientId} 
+		AND s.is_delete = 0 AND s.client_id = #{clientId}
+		AND d.is_delete = 0
+		and a.is_delete = 0 AND a.client_id = #{clientId} 
+		AND s.is_delete = 0 AND s.client_id = #{clientId}
+		AND d.is_delete = 0
+		and sum.client_user_id = #{clientUserId}
+		<if test="bankAcct!=null and bankAcct!=''">
+			and a.bank_acct = #{bankAcct}
+		</if>
+		<if test="keyWord!=null and keyWord!=''">
+			and (s.store_name like CONCAT('%',#{keyWord},'%') or s.store_No = #{keyWord})
+		</if>
+		<if test="acctHolder!=null and acctHolder!=''">
+			and a.acct_holder = #{acctHolder}
+		</if>
+		<if test="bankName!=null and bankName!=''">
+			and a.bank_name = #{bankName}
+		</if>
+		
+		<if test="city!=null and city!=''">
+			and cs.structure_name like CONCAT('%',#{city},'%')
+		</if>
+		<if test="monthId!=null and monthId!=''">
+			and d.month_Id = #{monthId}
+		</if>
+		<if test="status!=null">
+			and d.`status` = #{status}
+		</if>
+		<include refid="basic.mysqlPageSearchFoot" />
+	</select>
+	
+	<select id="findApiCheckedWyethContractCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+		SELECT count(1) FROM wyeth_contract a INNER JOIN store s ON s.store_id = a.store_id
+		left join client_structure cs on cs.client_structure_id = s.client_structure_id
+		LEFT JOIN client_structure n ON n.client_structure_id =cs.parent_id AND n.is_delete=0 AND n.client_id=#{clientId}
+		INNER JOIN wyeth_contract_feedback d ON d.contract_id = a.contract_id
+		WHERE a.is_delete = 0 AND a.client_id = #{clientId} 
+		AND s.is_delete = 0 AND s.client_id = #{clientId}
+		AND d.is_delete = 0
+		AND (FIND_IN_SET(s.client_structure_id,#{subStructureId})>0)
+		and a.is_delete = 0 AND a.client_id = #{clientId} 
+		AND s.is_delete = 0 AND s.client_id = #{clientId}
+		AND d.is_delete = 0
+		<if test="bankAcct!=null and bankAcct!=''">
+			and a.bank_acct = #{bankAcct}
+		</if>
+		<if test="keyWord!=null and keyWord!=''">
+			and (s.store_name like CONCAT('%',#{keyWord},'%') or s.store_No = #{keyWord})
+		</if>
+		<if test="acctHolder!=null and acctHolder!=''">
+			and a.acct_holder = #{acctHolder}
+		</if>
+		<if test="bankName!=null and bankName!=''">
+			and a.bank_name = #{bankName}
+		</if>
+		
+		<if test="city!=null and city!=''">
+			and cs.structure_name like CONCAT('%',#{city},'%')
+		</if>
+		<if test="monthId!=null and monthId!=''">
+			and d.month_Id = #{monthId}
+		</if>
+		<if test="status!=null">
+			and d.`status` = #{status}
+		</if>
+	</select>
+	
+	<select id="findApiCheckedWyethContractCount2" parameterType="java.util.Map" resultType="java.lang.Integer">
+		SELECT count(1) FROM wyeth_contract a INNER JOIN store s ON s.store_id = a.store_id
+		INNER JOIN store_user_mapping sum ON sum.store_id = s.store_id and sum.is_delete = 0
+		left join client_structure cs on cs.client_structure_id = s.client_structure_id
+		LEFT JOIN client_structure n ON n.client_structure_id =cs.parent_id AND n.is_delete=0 AND n.client_id=#{clientId}
+		INNER JOIN wyeth_contract_feedback d ON d.contract_id = a.contract_id
+		WHERE a.is_delete = 0 AND a.client_id = #{clientId} 
+		AND s.is_delete = 0 AND s.client_id = #{clientId}
+		AND d.is_delete = 0
+		and a.is_delete = 0 AND a.client_id = #{clientId} 
+		AND s.is_delete = 0 AND s.client_id = #{clientId}
+		AND d.is_delete = 0
+		and sum.client_user_id = #{clientUserId}
+		<if test="bankAcct!=null and bankAcct!=''">
+			and a.bank_acct = #{bankAcct}
+		</if>
+		<if test="keyWord!=null and keyWord!=''">
+			and (s.store_name like CONCAT('%',#{keyWord},'%') or s.store_No = #{keyWord})
+		</if>
+		<if test="acctHolder!=null and acctHolder!=''">
+			and a.acct_holder = #{acctHolder}
+		</if>
+		<if test="bankName!=null and bankName!=''">
+			and a.bank_name = #{bankName}
+		</if>
+		
+		<if test="city!=null and city!=''">
+			and cs.structure_name like CONCAT('%',#{city},'%')
+		</if>
+		<if test="monthId!=null and monthId!=''">
+			and d.month_Id = #{monthId}
+		</if>
+		<if test="status!=null">
+			and d.`status` = #{status}
+		</if>
+	</select>
+	
+	<resultMap type="java.util.TreeMap" id="dataLists"></resultMap>
+	<select id="selectExportData" parameterType="java.util.Map" resultMap="dataLists">
+		select b.store_no,s.structure_name as province,n.structure_name as city,b.store_name,c.channel_name,d.chain_name,
+		date_format(a.sign_date,'%Y-%m-%d') as sign_date,
+		date_format(a.start_date,'%Y-%m-%d') as start_date,
+		date_format(a.end_date,'%Y-%m-%d') as end_date,
+		
+		MAX(if(i.month_id=201508 and i.data_type=1,i.`value`,null)) as `other_201508`,MAX(if(i.month_id=201509 and i.data_type=1,i.`value`,null)) as `other_201509`,
+		MAX(if(i.month_id=201510 and i.data_type=1,i.`value`,null)) as `other_201510`,MAX(if(i.month_id=201511 and i.data_type=1,i.`value`,null)) as `other_201511`,
+		MAX(if(i.month_id=201512 and i.data_type=1,i.`value`,null)) as `other_201512`,MAX(if(i.month_id=201601 and i.data_type=1,i.`value`,null)) as `other_201601`,
+		MAX(if(i.month_id=201602 and i.data_type=1,i.`value`,null)) as `other_201602`,MAX(if(i.month_id=201603 and i.data_type=1,i.`value`,null)) as `other_201603`,
+		MAX(if(i.month_id=201604 and i.data_type=1,i.`value`,null)) as `other_201604`,MAX(if(i.month_id=201605 and i.data_type=1,i.`value`,null)) as `other_201605`,
+		MAX(if(i.month_id=201606 and i.data_type=1,i.`value`,null)) as `other_201606`,MAX(if(i.month_id=201607 and i.data_type=1,i.`value`,null)) as `other_201607`,
+		
+		MAX(if(i.month_id=201508 and i.data_type = 2,i.`value`,null)) as `gift_201508`,MAX(if(i.month_id=201509 and i.data_type = 2,i.`value`,null)) as `gift_201509`,
+		MAX(if(i.month_id=201510 and i.data_type = 2,i.`value`,null)) as `gift_201510`,MAX(if(i.month_id=201511 and i.data_type = 2,i.`value`,null)) as `gift_201511`,
+		MAX(if(i.month_id=201512 and i.data_type = 2,i.`value`,null)) as `gift_201512`,MAX(if(i.month_id=201601 and i.data_type = 2,i.`value`,null)) as `gift_201601`,
+		MAX(if(i.month_id=201602 and i.data_type = 2,i.`value`,null)) as `gift_201602`,MAX(if(i.month_id=201603 and i.data_type = 2,i.`value`,null)) as `gift_201603`,
+		MAX(if(i.month_id=201604 and i.data_type = 2,i.`value`,null)) as `gift_201604`,MAX(if(i.month_id=201605 and i.data_type = 2,i.`value`,null)) as `gift_201605`,
+		MAX(if(i.month_id=201606 and i.data_type = 2,i.`value`,null)) as `gift_201606`,MAX(if(i.month_id=201607 and i.data_type = 2,i.`value`,null)) as `gift_201607`,
+		
+		MAX(if(i.month_id=201508 and i.data_type = 3,i.`value`,null)) as `jhje_201508`,MAX(if(i.month_id=201509 and i.data_type = 3,i.`value`,null)) as `jhje_201509`,
+		MAX(if(i.month_id=201510 and i.data_type = 3,i.`value`,null)) as `jhje_201510`,MAX(if(i.month_id=201511 and i.data_type = 3,i.`value`,null)) as `jhje_201511`,
+		MAX(if(i.month_id=201512 and i.data_type = 3,i.`value`,null)) as `jhje_201512`,MAX(if(i.month_id=201601 and i.data_type = 3,i.`value`,null)) as `jhje_201601`,
+		MAX(if(i.month_id=201602 and i.data_type = 3,i.`value`,null)) as `jhje_201602`,MAX(if(i.month_id=201603 and i.data_type = 3,i.`value`,null)) as `jhje_201603`,
+		MAX(if(i.month_id=201604 and i.data_type = 3,i.`value`,null)) as `jhje_201604`,MAX(if(i.month_id=201605 and i.data_type = 3,i.`value`,null)) as `jhje_201605`,
+		MAX(if(i.month_id=201606 and i.data_type = 3,i.`value`,null)) as `jhje_201606`,MAX(if(i.month_id=201607 and i.data_type = 3,i.`value`,null)) as `jhje_201607`,
+		
+		MAX(if(i.month_id=201508 and i.data_type = 4,i.`value`,null)) as `pos_201508`,MAX(if(i.month_id=201509 and i.data_type = 4,i.`value`,null)) as `pos_201509`,
+		MAX(if(i.month_id=201510 and i.data_type = 4,i.`value`,null)) as `pos_201510`,MAX(if(i.month_id=201511 and i.data_type = 4,i.`value`,null)) as `pos_201511`,
+		MAX(if(i.month_id=201512 and i.data_type = 4,i.`value`,null)) as `pos_201512`,MAX(if(i.month_id=201601 and i.data_type = 4,i.`value`,null)) as `pos_201601`,
+		MAX(if(i.month_id=201602 and i.data_type = 4,i.`value`,null)) as `pos_201602`,MAX(if(i.month_id=201603 and i.data_type = 4,i.`value`,null)) as `pos_201603`,
+		MAX(if(i.month_id=201604 and i.data_type = 4,i.`value`,null)) as `pos_201604`,MAX(if(i.month_id=201605 and i.data_type = 4,i.`value`,null)) as `pos_201605`,
+		MAX(if(i.month_id=201606 and i.data_type = 4,i.`value`,null)) as `pos_201606`,MAX(if(i.month_id=201607 and i.data_type = 4,i.`value`,null)) as `pos_201607`,
+
+		a.gift,a.gift_price,a.other_gift,a.other_price,a.options_of_invest,a.val_of_shelf,a.other_invest,a.has_invoice,
+		a.invoice_type,a.other_invoice,a.license_type,a.acct_type,a.bank_name,a.bank_acct,a.acct_holder,
+		w.month_id,w.num_of_gift,w.num_of_member,w.rate_of_review,w.num1_of_unqualified,w.num2_of_unqualified,w.num_of_verification,
+		
+		ifnull(w.num_of_verification,0)*100 + ifnull(w.num_of_gift,0)*30 as amount,
+		if(w.`status`=0,'待确认','已确认') as `status`,
+		if(w.`status`=0,'待确认','已确认') as `status2`,
+		if(w.`status`=3,'核销完毕','确认核销') as `status3`
+		
+		from wyeth_contract a INNER JOIN store b on a.store_id = b.store_id
+		LEFT JOIN channel c on c.channel_id = b.channel_id and c.is_delete = 0 and c.client_id = #{clientId}
+		LEFT JOIN `chain` d on d.chain_id = b.chain_id and d.is_delete = 0 and d.client_id = #{clientId}
+		
+		LEFT JOIN client_structure s on s.client_structure_id = b.client_structure_id and s.is_delete = 0 and s.client_id = #{clientId}
+		LEFT JOIN client_structure n ON n.client_structure_id =s.parent_id AND n.is_delete=0 AND n.client_id=#{clientId}
+		
+		LEFT JOIN wyeth_contract_feedback w on w.contract_id = a.contract_id and w.is_delete= 0
+		LEFT JOIN wyeth_contract_detail i on i.contract_id = a.contract_id and i.is_delete = 0
+		
+		where a.is_delete = 0 and a.client_id = #{clientId}
+		and b.is_delete = 0 and b.client_id = #{clientId}
+		AND (FIND_IN_SET(b.client_structure_id,#{subStructureId})>0)
+		
+		<if test="storeNo!=null and storeNo !=''">
+			and b.store_no like CONCAT('%',#{storeNo},'%') 
+		</if>
+		<if test="storeName !=null and storeName !=''">
+			and b.store_name like CONCAT('%',#{storeName},'%') 
+		</if>
+		<if test="cityId !=null and cityId !=''">
+			and b.city_id = #{cityId}
+		</if>
+		<if test="structureId !=null and structureId !=''">
+			and b.client_structure_id = #{structureId}
+		</if>
+		<if test="signDate !=null and signDate !=''">
+			and DATE_FORMAT(a.sign_date,'%Y-%m-%d') = #{signDate}
+		</if>
+		<if test="startDate !=null and startDate !=''">
+			<![CDATA[  
+				and a.start_date >= #{startDate}
+			]]>
+		</if>
+		<if test="endDate !=null and endDate !=''">
+			<![CDATA[  
+				and a.end_date <= #{endDate}
+			]]>
+		</if>
+
+		group by b.store_no,province,city,b.store_name,c.channel_name,d.chain_name,a.sign_date,a.start_date,a.end_date,
+		a.gift,a.gift_price,a.other_gift,a.other_price,a.options_of_invest,a.val_of_shelf,a.other_invest,a.has_invoice,
+		a.invoice_type,a.other_invoice,a.license_type,a.acct_type,a.bank_name,a.bank_acct,a.acct_holder,
+		w.month_id,w.num_of_gift,w.num_of_member,w.rate_of_review,w.num1_of_unqualified,w.num2_of_unqualified,w.num_of_verification,
+		amount,`status`,`status2`,`status3`
+	</select>
+	<select id="findContractPicByparam" parameterType="java.util.Map"  resultMap="ResultMap">
+	
+		SELECT * FROM wyeth_contract WHERE client_id =#{clientId} and is_delete=0 AND contract_id=#{contractId}
+	</select>
+	<select id="getContractsByparam" parameterType="java.util.Map"  resultMap="ResultMap">
+	select
+		a.contract_id,s.structure_name,a.contract_pic,a.client_id,b.store_no,e.province,f.city,b.store_name,c.channel_name,d.chain_name,a.sign_date,a.start_date,a.end_date,a.*
+		from wyeth_contract a INNER JOIN store b on a.store_id = b.store_id
+		LEFT JOIN channel c on c.channel_id = b.channel_id and c.is_delete = 0 and c.client_id = #{clientId}
+		LEFT JOIN `chain` d on d.chain_id = b.chain_id and d.is_delete = 0 and d.client_id = #{clientId}
+		LEFT JOIN province e on b.province_id = e.province_id and e.is_delete = 0
+		LEFT JOIN city f on f.city_id = b.city_id
+		LEFT JOIN client_structure s on s.client_structure_id = b.client_structure_id and s.is_delete = 0 and s.client_id = #{clientId}
+		where a.is_delete = 0 and a.client_id = #{clientId}
+		and b.is_delete = 0 and b.client_id = #{clientId}
+		AND contract_id=#{contractId}
+	</select>
+	<select id="findCheckedWyethContractById" parameterType="java.util.Map" resultMap="ContractFeedbackMap">
+		SELECT d.invoice_pic,d.month_id, a.client_id,d.feedback_id,a.contract_id,s.store_no,s.store_name,cs.structure_name,city.city,a.has_invoice,a.invoice_type,a.acct_type,a.bank_name,a.bank_acct,a.acct_holder
+		,a.sign_date,d.num_of_gift,d.num_of_member,d.rate_of_review,d.num1_of_unqualified,d.num2_of_unqualified,d.num_of_verification,d.`status`
+		FROM wyeth_contract a INNER JOIN store s ON s.store_id = a.store_id
+		left join client_structure cs on cs.client_structure_id = s.client_structure_id
+		LEFT JOIN city on s.city_id = city.city_id
+		INNER JOIN wyeth_contract_feedback d ON d.contract_id = a.contract_id
+		WHERE a.is_delete = 0 AND a.client_id = #{clientId} 
+		AND s.is_delete = 0 AND s.client_id = #{clientId}
+		AND d.is_delete = 0 AND feedback_id=#{feedbackId}
+	</select>
+	
+	<update id="batchDelContract" parameterType="java.lang.String">
+		update wyeth_contract set is_delete = 1 where is_delete=0 and FIND_IN_SET(contract_id,#{contractIds}) > 0
+	</update>
+	<select id="getCountContractList" parameterType="java.util.Map" resultType="java.lang.Integer">
+	SELECT count(1)
+		FROM wyeth_contract a INNER JOIN store s ON s.store_id = a.store_id
+		and a.is_delete = 0 AND a.client_id = #{clientId} 
+		AND s.is_delete = 0 AND s.client_id = #{clientId}
+		AND (FIND_IN_SET(s.client_structure_id,#{subStructureId})>0)
+		<if test="keyWord!=null and keyWord!=''">
+			and (s.store_name like CONCAT('%',#{keyWord},'%') or s.store_No like CONCAT('%',#{keyWord},'%'))
+		</if>
+		<if test="startDate !=null and startDate !=''">
+			<![CDATA[  
+				and a.start_date >= #{startDate}
+			]]>
+		</if>
+		<if test="endDate !=null and endDate !=''">
+			<![CDATA[  
+				and a.end_date <= #{endDate}
+			]]>
+		</if>
+	</select>
+	<select id="getCountContractList2" parameterType="java.util.Map" resultType="java.lang.Integer">
+	SELECT count(1)
+		FROM wyeth_contract a INNER JOIN store s ON s.store_id = a.store_id
+		INNER JOIN store_user_mapping m ON m.store_id = s.store_id
+		and a.is_delete = 0 AND a.client_id = #{clientId} 
+		AND s.is_delete = 0 AND s.client_id = #{clientId}
+		AND m.is_delete = 0 AND m.client_id = #{clientId}
+		AND m.client_user_id=#{clientUserId}
+		<if test="keyWord!=null and keyWord!=''">
+			and (s.store_name like CONCAT('%',#{keyWord},'%') or s.store_No like CONCAT('%',#{keyWord},'%'))
+		</if>
+		<if test="startDate !=null and startDate !=''">
+			<![CDATA[  
+				and a.start_date >= #{startDate}
+			]]>
+		</if>
+		<if test="endDate !=null and endDate !=''">
+			<![CDATA[  
+				and a.end_date <= #{endDate}
+			]]>
+		</if>
+	</select>
+	<select id="getContractList" parameterType="java.util.Map" resultMap="ContractVoMap" >
+		SELECT a.contract_id,a.store_id, s.store_no,a.start_date,a.other_invest,s.store_name,a.sign_date,a.end_date,a.gift,a.gift_price,a.other_gift,a.other_price,a.options_of_invest,a.has_invoice,a.invoice_type,a.other_invoice,a.license_type,a.acct_type,a.bank_name,a.bank_acct,a.acct_holder,a.contract_pic, a.permit_pic
+		FROM wyeth_contract a INNER JOIN store s ON s.store_id = a.store_id 
+		and a.is_delete = 0 AND a.client_id = #{clientId} 
+		AND s.is_delete = 0 AND s.client_id = #{clientId}
+		AND (FIND_IN_SET(s.client_structure_id,#{subStructureId})>0)
+		<if test="keyWord!=null and keyWord!=''">
+			and (s.store_name like CONCAT('%',#{keyWord},'%') or s.store_no like CONCAT('%',#{keyWord},'%'))
+		</if>
+		<if test="startDate !=null and startDate !=''">
+			<![CDATA[  
+				and a.start_date >= #{startDate}
+			]]>
+		</if>
+		<if test="endDate !=null and endDate !=''">
+			<![CDATA[  
+				and a.end_date <= #{endDate}
+			]]>
+		</if>
+		<include refid="basic.mysqlPageSearchFoot" />
+	</select>
+	<select id="getContractList2" parameterType="java.util.Map" resultMap="ContractVoMap" >
+		SELECT a.contract_id,a.store_id,s.store_no,a.other_invest, a.start_date,s.store_name,a.sign_date,a.end_date,a.gift,a.gift_price,a.other_gift,a.other_price,a.options_of_invest,a.has_invoice,a.invoice_type,a.other_invoice,a.license_type,a.acct_type,a.bank_name,a.bank_acct,a.acct_holder,a.contract_pic, a.permit_pic
+		FROM wyeth_contract a INNER JOIN store s ON s.store_id = a.store_id 
+		INNER JOIN store_user_mapping m ON m.store_id = s.store_id
+		and a.is_delete = 0 AND a.client_id = #{clientId} 
+		AND s.is_delete = 0 AND s.client_id = #{clientId}
+		AND m.is_delete = 0 AND m.client_id = #{clientId}
+		AND m.client_user_id=#{clientUserId}
+		<if test="keyWord!=null and keyWord!=''">
+			and (s.store_name like CONCAT('%',#{keyWord},'%') or s.store_no like CONCAT('%',#{keyWord},'%'))
+		</if>
+		<if test="startDate !=null and startDate !=''">
+			<![CDATA[  
+				and a.start_date >= #{startDate}
+			]]>
+		</if>
+		<if test="endDate !=null and endDate !=''">
+			<![CDATA[  
+				and a.end_date <= #{endDate}
+			]]>
+		</if>
+		<include refid="basic.mysqlPageSearchFoot" />
+	</select>
+
+	
+	
+	<select id="selectExportHTData" parameterType="java.util.Map" resultMap="dataLists">
+		select b.store_no,s.structure_name as province,n.structure_name as city,b.store_name,c.channel_name,d.chain_name,
+		date_format(a.sign_date,'%Y-%m-%d') as sign_date,
+		date_format(a.start_date,'%Y-%m-%d') as start_date,
+		date_format(a.end_date,'%Y-%m-%d') as end_date,
+		
+		MAX(if(i.month_id=201508 and i.data_type=1,i.`value`,null)) as `other_201508`,MAX(if(i.month_id=201509 and i.data_type=1,i.`value`,null)) as `other_201509`,
+		MAX(if(i.month_id=201510 and i.data_type=1,i.`value`,null)) as `other_201510`,MAX(if(i.month_id=201511 and i.data_type=1,i.`value`,null)) as `other_201511`,
+		MAX(if(i.month_id=201512 and i.data_type=1,i.`value`,null)) as `other_201512`,MAX(if(i.month_id=201601 and i.data_type=1,i.`value`,null)) as `other_201601`,
+		MAX(if(i.month_id=201602 and i.data_type=1,i.`value`,null)) as `other_201602`,MAX(if(i.month_id=201603 and i.data_type=1,i.`value`,null)) as `other_201603`,
+		MAX(if(i.month_id=201604 and i.data_type=1,i.`value`,null)) as `other_201604`,MAX(if(i.month_id=201605 and i.data_type=1,i.`value`,null)) as `other_201605`,
+		MAX(if(i.month_id=201606 and i.data_type=1,i.`value`,null)) as `other_201606`,MAX(if(i.month_id=201607 and i.data_type=1,i.`value`,null)) as `other_201607`,
+		
+		MAX(if(i.month_id=201508 and i.data_type = 2,i.`value`,null)) as `gift_201508`,MAX(if(i.month_id=201509 and i.data_type = 2,i.`value`,null)) as `gift_201509`,
+		MAX(if(i.month_id=201510 and i.data_type = 2,i.`value`,null)) as `gift_201510`,MAX(if(i.month_id=201511 and i.data_type = 2,i.`value`,null)) as `gift_201511`,
+		MAX(if(i.month_id=201512 and i.data_type = 2,i.`value`,null)) as `gift_201512`,MAX(if(i.month_id=201601 and i.data_type = 2,i.`value`,null)) as `gift_201601`,
+		MAX(if(i.month_id=201602 and i.data_type = 2,i.`value`,null)) as `gift_201602`,MAX(if(i.month_id=201603 and i.data_type = 2,i.`value`,null)) as `gift_201603`,
+		MAX(if(i.month_id=201604 and i.data_type = 2,i.`value`,null)) as `gift_201604`,MAX(if(i.month_id=201605 and i.data_type = 2,i.`value`,null)) as `gift_201605`,
+		MAX(if(i.month_id=201606 and i.data_type = 2,i.`value`,null)) as `gift_201606`,MAX(if(i.month_id=201607 and i.data_type = 2,i.`value`,null)) as `gift_201607`,
+		
+		MAX(if(i.month_id=201508 and i.data_type = 3,i.`value`,null)) as `jhje_201508`,MAX(if(i.month_id=201509 and i.data_type = 3,i.`value`,null)) as `jhje_201509`,
+		MAX(if(i.month_id=201510 and i.data_type = 3,i.`value`,null)) as `jhje_201510`,MAX(if(i.month_id=201511 and i.data_type = 3,i.`value`,null)) as `jhje_201511`,
+		MAX(if(i.month_id=201512 and i.data_type = 3,i.`value`,null)) as `jhje_201512`,MAX(if(i.month_id=201601 and i.data_type = 3,i.`value`,null)) as `jhje_201601`,
+		MAX(if(i.month_id=201602 and i.data_type = 3,i.`value`,null)) as `jhje_201602`,MAX(if(i.month_id=201603 and i.data_type = 3,i.`value`,null)) as `jhje_201603`,
+		MAX(if(i.month_id=201604 and i.data_type = 3,i.`value`,null)) as `jhje_201604`,MAX(if(i.month_id=201605 and i.data_type = 3,i.`value`,null)) as `jhje_201605`,
+		MAX(if(i.month_id=201606 and i.data_type = 3,i.`value`,null)) as `jhje_201606`,MAX(if(i.month_id=201607 and i.data_type = 3,i.`value`,null)) as `jhje_201607`,
+		
+		MAX(if(i.month_id=201508 and i.data_type = 4,i.`value`,null)) as `pos_201508`,MAX(if(i.month_id=201509 and i.data_type = 4,i.`value`,null)) as `pos_201509`,
+		MAX(if(i.month_id=201510 and i.data_type = 4,i.`value`,null)) as `pos_201510`,MAX(if(i.month_id=201511 and i.data_type = 4,i.`value`,null)) as `pos_201511`,
+		MAX(if(i.month_id=201512 and i.data_type = 4,i.`value`,null)) as `pos_201512`,MAX(if(i.month_id=201601 and i.data_type = 4,i.`value`,null)) as `pos_201601`,
+		MAX(if(i.month_id=201602 and i.data_type = 4,i.`value`,null)) as `pos_201602`,MAX(if(i.month_id=201603 and i.data_type = 4,i.`value`,null)) as `pos_201603`,
+		MAX(if(i.month_id=201604 and i.data_type = 4,i.`value`,null)) as `pos_201604`,MAX(if(i.month_id=201605 and i.data_type = 4,i.`value`,null)) as `pos_201605`,
+		MAX(if(i.month_id=201606 and i.data_type = 4,i.`value`,null)) as `pos_201606`,MAX(if(i.month_id=201607 and i.data_type = 4,i.`value`,null)) as `pos_201607`,
+
+		a.gift,a.gift_price,a.other_gift,a.other_price,a.options_of_invest,a.val_of_shelf,a.other_invest,a.has_invoice,
+		a.invoice_type,a.other_invoice,a.license_type,a.acct_type,a.bank_name,a.bank_acct,a.acct_holder
+		
+		from wyeth_contract a INNER JOIN store b on a.store_id = b.store_id
+		LEFT JOIN channel c on c.channel_id = b.channel_id and c.is_delete = 0 and c.client_id = #{clientId}
+		LEFT JOIN `chain` d on d.chain_id = b.chain_id and d.is_delete = 0 and d.client_id = #{clientId}
+		
+		LEFT JOIN client_structure s on s.client_structure_id = b.client_structure_id and s.is_delete = 0 and s.client_id = #{clientId}
+		LEFT JOIN client_structure n ON n.client_structure_id =s.parent_id AND n.is_delete=0 AND n.client_id=#{clientId}
+		
+		LEFT JOIN wyeth_contract_feedback w on w.contract_id = a.contract_id and w.is_delete= 0
+		LEFT JOIN wyeth_contract_detail i on i.contract_id = a.contract_id and i.is_delete = 0
+		
+		where a.is_delete = 0 and a.client_id = #{clientId}
+		and b.is_delete = 0 and b.client_id = #{clientId}
+		AND (FIND_IN_SET(b.client_structure_id,#{subStructureId})>0)
+		
+		<if test="storeNo!=null and storeNo !=''">
+			and b.store_no like CONCAT('%',#{storeNo},'%') 
+		</if>
+		<if test="storeName !=null and storeName !=''">
+			and b.store_name like CONCAT('%',#{storeName},'%') 
+		</if>
+		<if test="cityId !=null and cityId !=''">
+			and b.city_id = #{cityId}
+		</if>
+		<if test="structureId !=null and structureId !=''">
+			AND (FIND_IN_SET(b.client_structure_id,#{structureId})>0 or FIND_IN_SET(b.parent_id,#{structureId})>0)
+		</if>
+		<if test="signDate !=null and signDate !=''">
+			and DATE_FORMAT(a.sign_date,'%Y-%m-%d') = #{signDate}
+		</if>
+		<if test="startDate !=null and startDate !=''">
+			<![CDATA[  
+				and a.start_date >= #{startDate}
+			]]>
+		</if>
+		<if test="endDate !=null and endDate !=''">
+			<![CDATA[  
+				and a.end_date <= #{endDate}
+			]]>
+		</if>
+		
+		group by b.store_no,province,city,b.store_name,c.channel_name,d.chain_name,a.sign_date,a.start_date,a.end_date,
+		a.gift,a.gift_price,a.other_gift,a.other_price,a.options_of_invest,a.val_of_shelf,a.other_invest,a.has_invoice,
+		a.invoice_type,a.other_invoice,a.license_type,a.acct_type,a.bank_name,a.bank_acct,a.acct_holder
+	</select>
+	
+	<select id="selectExportHTData2" parameterType="java.util.Map" resultMap="dataLists">
+		select b.store_no,s.structure_name as province,n.structure_name as city,b.store_name,c.channel_name,d.chain_name,
+		date_format(a.sign_date,'%Y-%m-%d') as sign_date,
+		date_format(a.start_date,'%Y-%m-%d') as start_date,
+		date_format(a.end_date,'%Y-%m-%d') as end_date,
+		
+		MAX(if(i.month_id=201508 and i.data_type=1,i.`value`,null)) as `other_201508`,MAX(if(i.month_id=201509 and i.data_type=1,i.`value`,null)) as `other_201509`,
+		MAX(if(i.month_id=201510 and i.data_type=1,i.`value`,null)) as `other_201510`,MAX(if(i.month_id=201511 and i.data_type=1,i.`value`,null)) as `other_201511`,
+		MAX(if(i.month_id=201512 and i.data_type=1,i.`value`,null)) as `other_201512`,MAX(if(i.month_id=201601 and i.data_type=1,i.`value`,null)) as `other_201601`,
+		MAX(if(i.month_id=201602 and i.data_type=1,i.`value`,null)) as `other_201602`,MAX(if(i.month_id=201603 and i.data_type=1,i.`value`,null)) as `other_201603`,
+		MAX(if(i.month_id=201604 and i.data_type=1,i.`value`,null)) as `other_201604`,MAX(if(i.month_id=201605 and i.data_type=1,i.`value`,null)) as `other_201605`,
+		MAX(if(i.month_id=201606 and i.data_type=1,i.`value`,null)) as `other_201606`,MAX(if(i.month_id=201607 and i.data_type=1,i.`value`,null)) as `other_201607`,
+		
+		MAX(if(i.month_id=201508 and i.data_type = 2,i.`value`,null)) as `gift_201508`,MAX(if(i.month_id=201509 and i.data_type = 2,i.`value`,null)) as `gift_201509`,
+		MAX(if(i.month_id=201510 and i.data_type = 2,i.`value`,null)) as `gift_201510`,MAX(if(i.month_id=201511 and i.data_type = 2,i.`value`,null)) as `gift_201511`,
+		MAX(if(i.month_id=201512 and i.data_type = 2,i.`value`,null)) as `gift_201512`,MAX(if(i.month_id=201601 and i.data_type = 2,i.`value`,null)) as `gift_201601`,
+		MAX(if(i.month_id=201602 and i.data_type = 2,i.`value`,null)) as `gift_201602`,MAX(if(i.month_id=201603 and i.data_type = 2,i.`value`,null)) as `gift_201603`,
+		MAX(if(i.month_id=201604 and i.data_type = 2,i.`value`,null)) as `gift_201604`,MAX(if(i.month_id=201605 and i.data_type = 2,i.`value`,null)) as `gift_201605`,
+		MAX(if(i.month_id=201606 and i.data_type = 2,i.`value`,null)) as `gift_201606`,MAX(if(i.month_id=201607 and i.data_type = 2,i.`value`,null)) as `gift_201607`,
+		
+		MAX(if(i.month_id=201508 and i.data_type = 3,i.`value`,null)) as `jhje_201508`,MAX(if(i.month_id=201509 and i.data_type = 3,i.`value`,null)) as `jhje_201509`,
+		MAX(if(i.month_id=201510 and i.data_type = 3,i.`value`,null)) as `jhje_201510`,MAX(if(i.month_id=201511 and i.data_type = 3,i.`value`,null)) as `jhje_201511`,
+		MAX(if(i.month_id=201512 and i.data_type = 3,i.`value`,null)) as `jhje_201512`,MAX(if(i.month_id=201601 and i.data_type = 3,i.`value`,null)) as `jhje_201601`,
+		MAX(if(i.month_id=201602 and i.data_type = 3,i.`value`,null)) as `jhje_201602`,MAX(if(i.month_id=201603 and i.data_type = 3,i.`value`,null)) as `jhje_201603`,
+		MAX(if(i.month_id=201604 and i.data_type = 3,i.`value`,null)) as `jhje_201604`,MAX(if(i.month_id=201605 and i.data_type = 3,i.`value`,null)) as `jhje_201605`,
+		MAX(if(i.month_id=201606 and i.data_type = 3,i.`value`,null)) as `jhje_201606`,MAX(if(i.month_id=201607 and i.data_type = 3,i.`value`,null)) as `jhje_201607`,
+		
+		MAX(if(i.month_id=201508 and i.data_type = 4,i.`value`,null)) as `pos_201508`,MAX(if(i.month_id=201509 and i.data_type = 4,i.`value`,null)) as `pos_201509`,
+		MAX(if(i.month_id=201510 and i.data_type = 4,i.`value`,null)) as `pos_201510`,MAX(if(i.month_id=201511 and i.data_type = 4,i.`value`,null)) as `pos_201511`,
+		MAX(if(i.month_id=201512 and i.data_type = 4,i.`value`,null)) as `pos_201512`,MAX(if(i.month_id=201601 and i.data_type = 4,i.`value`,null)) as `pos_201601`,
+		MAX(if(i.month_id=201602 and i.data_type = 4,i.`value`,null)) as `pos_201602`,MAX(if(i.month_id=201603 and i.data_type = 4,i.`value`,null)) as `pos_201603`,
+		MAX(if(i.month_id=201604 and i.data_type = 4,i.`value`,null)) as `pos_201604`,MAX(if(i.month_id=201605 and i.data_type = 4,i.`value`,null)) as `pos_201605`,
+		MAX(if(i.month_id=201606 and i.data_type = 4,i.`value`,null)) as `pos_201606`,MAX(if(i.month_id=201607 and i.data_type = 4,i.`value`,null)) as `pos_201607`,
+
+		a.gift,a.gift_price,a.other_gift,a.other_price,a.options_of_invest,a.val_of_shelf,a.other_invest,a.has_invoice,
+		a.invoice_type,a.other_invoice,a.license_type,a.acct_type,a.bank_name,a.bank_acct,a.acct_holder
+		
+		from wyeth_contract a INNER JOIN store b on a.store_id = b.store_id
+		INNER JOIN store_user_mapping m on m.store_id = b.store_id
+		LEFT JOIN channel c on c.channel_id = b.channel_id and c.is_delete = 0 and c.client_id = #{clientId}
+		LEFT JOIN `chain` d on d.chain_id = b.chain_id and d.is_delete = 0 and d.client_id = #{clientId}
+		
+		LEFT JOIN client_structure s on s.client_structure_id = b.client_structure_id and s.is_delete = 0 and s.client_id = #{clientId}
+		LEFT JOIN client_structure n ON n.client_structure_id =s.parent_id AND n.is_delete=0 AND n.client_id=#{clientId}
+		
+		LEFT JOIN wyeth_contract_feedback w on w.contract_id = a.contract_id and w.is_delete= 0
+		LEFT JOIN wyeth_contract_detail i on i.contract_id = a.contract_id and i.is_delete = 0
+		
+		where a.is_delete = 0 and a.client_id = #{clientId}
+		and b.is_delete = 0 and b.client_id = #{clientId}
+		and m.client_user_id = #{clientUserId}
+		
+		
+		<if test="storeNo!=null and storeNo !=''">
+			and b.store_no like CONCAT('%',#{storeNo},'%') 
+		</if>
+		<if test="storeName !=null and storeName !=''">
+			and b.store_name like CONCAT('%',#{storeName},'%') 
+		</if>
+		<if test="cityId !=null and cityId !=''">
+			and b.city_id = #{cityId}
+		</if>
+		<if test="structureId !=null and structureId !=''">
+			AND (FIND_IN_SET(b.client_structure_id,#{structureId})>0 or FIND_IN_SET(b.parent_id,#{structureId})>0)
+		</if>
+		<if test="signDate !=null and signDate !=''">
+			and DATE_FORMAT(a.sign_date,'%Y-%m-%d') = #{signDate}
+		</if>
+		<if test="startDate !=null and startDate !=''">
+			<![CDATA[  
+				and a.start_date >= #{startDate}
+			]]>
+		</if>
+		<if test="endDate !=null and endDate !=''">
+			<![CDATA[  
+				and a.end_date <= #{endDate}
+			]]>
+		</if>
+
+		group by b.store_no,province,city,b.store_name,c.channel_name,d.chain_name,a.sign_date,a.start_date,a.end_date,
+		a.gift,a.gift_price,a.other_gift,a.other_price,a.options_of_invest,a.val_of_shelf,a.other_invest,a.has_invoice,
+		a.invoice_type,a.other_invoice,a.license_type,a.acct_type,a.bank_name,a.bank_acct,a.acct_holder
+	</select>
+	
+	<select id="selectExportData2" parameterType="java.util.Map" resultMap="dataLists">
+		select b.store_no,s.structure_name as province,n.structure_name as city,b.store_name,c.channel_name,d.chain_name,
+		date_format(a.sign_date,'%Y-%m-%d') as sign_date,
+		date_format(a.start_date,'%Y-%m-%d') as start_date,
+		date_format(a.end_date,'%Y-%m-%d') as end_date,
+		
+		MAX(if(i.month_id=201508 and i.data_type=1,i.`value`,null)) as `other_201508`,MAX(if(i.month_id=201509 and i.data_type=1,i.`value`,null)) as `other_201509`,
+		MAX(if(i.month_id=201510 and i.data_type=1,i.`value`,null)) as `other_201510`,MAX(if(i.month_id=201511 and i.data_type=1,i.`value`,null)) as `other_201511`,
+		MAX(if(i.month_id=201512 and i.data_type=1,i.`value`,null)) as `other_201512`,MAX(if(i.month_id=201601 and i.data_type=1,i.`value`,null)) as `other_201601`,
+		MAX(if(i.month_id=201602 and i.data_type=1,i.`value`,null)) as `other_201602`,MAX(if(i.month_id=201603 and i.data_type=1,i.`value`,null)) as `other_201603`,
+		MAX(if(i.month_id=201604 and i.data_type=1,i.`value`,null)) as `other_201604`,MAX(if(i.month_id=201605 and i.data_type=1,i.`value`,null)) as `other_201605`,
+		MAX(if(i.month_id=201606 and i.data_type=1,i.`value`,null)) as `other_201606`,MAX(if(i.month_id=201607 and i.data_type=1,i.`value`,null)) as `other_201607`,
+		
+		MAX(if(i.month_id=201508 and i.data_type = 2,i.`value`,null)) as `gift_201508`,MAX(if(i.month_id=201509 and i.data_type = 2,i.`value`,null)) as `gift_201509`,
+		MAX(if(i.month_id=201510 and i.data_type = 2,i.`value`,null)) as `gift_201510`,MAX(if(i.month_id=201511 and i.data_type = 2,i.`value`,null)) as `gift_201511`,
+		MAX(if(i.month_id=201512 and i.data_type = 2,i.`value`,null)) as `gift_201512`,MAX(if(i.month_id=201601 and i.data_type = 2,i.`value`,null)) as `gift_201601`,
+		MAX(if(i.month_id=201602 and i.data_type = 2,i.`value`,null)) as `gift_201602`,MAX(if(i.month_id=201603 and i.data_type = 2,i.`value`,null)) as `gift_201603`,
+		MAX(if(i.month_id=201604 and i.data_type = 2,i.`value`,null)) as `gift_201604`,MAX(if(i.month_id=201605 and i.data_type = 2,i.`value`,null)) as `gift_201605`,
+		MAX(if(i.month_id=201606 and i.data_type = 2,i.`value`,null)) as `gift_201606`,MAX(if(i.month_id=201607 and i.data_type = 2,i.`value`,null)) as `gift_201607`,
+		
+		MAX(if(i.month_id=201508 and i.data_type = 3,i.`value`,null)) as `jhje_201508`,MAX(if(i.month_id=201509 and i.data_type = 3,i.`value`,null)) as `jhje_201509`,
+		MAX(if(i.month_id=201510 and i.data_type = 3,i.`value`,null)) as `jhje_201510`,MAX(if(i.month_id=201511 and i.data_type = 3,i.`value`,null)) as `jhje_201511`,
+		MAX(if(i.month_id=201512 and i.data_type = 3,i.`value`,null)) as `jhje_201512`,MAX(if(i.month_id=201601 and i.data_type = 3,i.`value`,null)) as `jhje_201601`,
+		MAX(if(i.month_id=201602 and i.data_type = 3,i.`value`,null)) as `jhje_201602`,MAX(if(i.month_id=201603 and i.data_type = 3,i.`value`,null)) as `jhje_201603`,
+		MAX(if(i.month_id=201604 and i.data_type = 3,i.`value`,null)) as `jhje_201604`,MAX(if(i.month_id=201605 and i.data_type = 3,i.`value`,null)) as `jhje_201605`,
+		MAX(if(i.month_id=201606 and i.data_type = 3,i.`value`,null)) as `jhje_201606`,MAX(if(i.month_id=201607 and i.data_type = 3,i.`value`,null)) as `jhje_201607`,
+		
+		MAX(if(i.month_id=201508 and i.data_type = 4,i.`value`,null)) as `pos_201508`,MAX(if(i.month_id=201509 and i.data_type = 4,i.`value`,null)) as `pos_201509`,
+		MAX(if(i.month_id=201510 and i.data_type = 4,i.`value`,null)) as `pos_201510`,MAX(if(i.month_id=201511 and i.data_type = 4,i.`value`,null)) as `pos_201511`,
+		MAX(if(i.month_id=201512 and i.data_type = 4,i.`value`,null)) as `pos_201512`,MAX(if(i.month_id=201601 and i.data_type = 4,i.`value`,null)) as `pos_201601`,
+		MAX(if(i.month_id=201602 and i.data_type = 4,i.`value`,null)) as `pos_201602`,MAX(if(i.month_id=201603 and i.data_type = 4,i.`value`,null)) as `pos_201603`,
+		MAX(if(i.month_id=201604 and i.data_type = 4,i.`value`,null)) as `pos_201604`,MAX(if(i.month_id=201605 and i.data_type = 4,i.`value`,null)) as `pos_201605`,
+		MAX(if(i.month_id=201606 and i.data_type = 4,i.`value`,null)) as `pos_201606`,MAX(if(i.month_id=201607 and i.data_type = 4,i.`value`,null)) as `pos_201607`,
+
+		a.gift,a.gift_price,a.other_gift,a.other_price,a.options_of_invest,a.val_of_shelf,a.other_invest,a.has_invoice,
+		a.invoice_type,a.other_invoice,a.license_type,a.acct_type,a.bank_name,a.bank_acct,a.acct_holder,
+		w.month_id,w.num_of_gift,w.num_of_member,w.rate_of_review,w.num1_of_unqualified,w.num2_of_unqualified,w.num_of_verification,
+		
+		ifnull(w.num_of_verification,0)*100 + ifnull(w.num_of_gift,0)*30 as amount,
+		if(w.`status`=0,'待确认','已确认') as `status`,
+		if(w.`status`=0,'待确认','已确认') as `status2`,
+		if(w.`status`=3,'核销完毕','确认核销') as `status3`
+		
+		from wyeth_contract a INNER JOIN store b on a.store_id = b.store_id
+		INNER JOIN store_user_mapping m on m.store_id = b.store_id
+		
+		LEFT JOIN channel c on c.channel_id = b.channel_id and c.is_delete = 0 and c.client_id = #{clientId}
+		LEFT JOIN `chain` d on d.chain_id = b.chain_id and d.is_delete = 0 and d.client_id = #{clientId}
+		
+		LEFT JOIN client_structure s on s.client_structure_id = b.client_structure_id and s.is_delete = 0 and s.client_id = #{clientId}
+		LEFT JOIN client_structure n ON n.client_structure_id =s.parent_id AND n.is_delete=0 AND n.client_id=#{clientId}
+		
+		LEFT JOIN wyeth_contract_feedback w on w.contract_id = a.contract_id and w.is_delete= 0
+		LEFT JOIN wyeth_contract_detail i on i.contract_id = a.contract_id and i.is_delete = 0
+		
+		where a.is_delete = 0 and a.client_id = #{clientId}
+		and b.is_delete = 0 and b.client_id = #{clientId}
+		and m.client_user_id = #{clientUserId}
+		
+		<if test="storeNo!=null and storeNo !=''">
+			and b.store_no like CONCAT('%',#{storeNo},'%') 
+		</if>
+		<if test="storeName !=null and storeName !=''">
+			and b.store_name like CONCAT('%',#{storeName},'%') 
+		</if>
+		<if test="cityId !=null and cityId !=''">
+			and b.city_id = #{cityId}
+		</if>
+		<if test="structureId !=null and structureId !=''">
+			AND (FIND_IN_SET(b.client_structure_id,#{structureId})>0 or FIND_IN_SET(b.parent_id,#{structureId})>0)
+		</if>
+		<if test="signDate !=null and signDate !=''">
+			and DATE_FORMAT(a.sign_date,'%Y-%m-%d') = #{signDate}
+		</if>
+		<if test="startDate !=null and startDate !=''">
+			<![CDATA[  
+				and a.start_date >= #{startDate}
+			]]>
+		</if>
+		<if test="endDate !=null and endDate !=''">
+			<![CDATA[  
+				and a.end_date <= #{endDate}
+			]]>
+		</if>
+
+		group by b.store_no,province,city,b.store_name,c.channel_name,d.chain_name,a.sign_date,a.start_date,a.end_date,
+		a.gift,a.gift_price,a.other_gift,a.other_price,a.options_of_invest,a.val_of_shelf,a.other_invest,a.has_invoice,
+		a.invoice_type,a.other_invoice,a.license_type,a.acct_type,a.bank_name,a.bank_acct,a.acct_holder,
+		w.month_id,w.num_of_gift,w.num_of_member,w.rate_of_review,w.num1_of_unqualified,w.num2_of_unqualified,w.num_of_verification,
+		amount,`status`,`status2`,`status3`
+	</select>
+	
+	  
+	   <select id="selectExportData3" parameterType="java.util.Map" resultMap="dataLists">
+	      SELECT b.store_no,n.structure_name as province,s.structure_name as city,b.store_name,d.chain_name,
+	      date_format(a.sign_date,'%Y-%m-%d') as sign_date,
+		  date_format(a.start_date,'%Y-%m-%d') as start_date,
+		  date_format(a.end_date,'%Y-%m-%d') as end_date,
+		  a.has_invoice,a.invoice_type,a.other_invoice,a.license_type,a.acct_type,a.bank_name,
+		  a.bank_acct,a.acct_holder,w.month_id,w.num_of_gift,w.num_of_member,w.rate_of_review,
+		  w.num1_of_unqualified,w.num2_of_unqualified,w.num_of_verification,
+          ifnull(w.num_of_verification,0)*100 + ifnull(w.num_of_gift,0)*30 as amount,
+		   CASE w.status 
+		    WHEN 0 THEN '待确认'
+		    WHEN 1 THEN '已确认'
+		    WHEN 2 THEN '已申诉'
+		    WHEN 3 THEN '核销完成'
+		    END AS status
+	  FROM wyeth_contract a INNER JOIN store b ON a.store_id = b.store_id 
+	 INNER JOIN wyeth_contract_feedback w ON w.contract_id = a.contract_id AND w.is_delete= 0
+     LEFT JOIN `chain` d ON d.chain_id = b.chain_id AND d.is_delete = 0 and d.client_id = #{clientId}
+     LEFT JOIN client_structure s on s.client_structure_id = b.client_structure_id and s.is_delete = 0 and s.client_id = #{clientId}
+	 LEFT JOIN client_structure n ON n.client_structure_id =s.parent_id AND n.is_delete=0 AND n.client_id=#{clientId}
+     where a.is_delete = 0 and a.client_id = #{clientId}
+	 and b.is_delete = 0 and b.client_id = #{clientId} 
+	 AND (FIND_IN_SET(b.client_structure_id,#{subStructureId})>0)
+	 
+		<if test="storeCode!=null and storeCode !=''">
+			and b.store_no like CONCAT('%',#{storeCode},'%') 
+		</if>
+		<if test="storeName !=null and storeName !=''">
+			and b.store_name like CONCAT('%',#{storeName},'%') 
+		</if>
+		<if test="bankAcct !=null and bankAcct !=''">
+			and a.bank_acct = #{bankAcct}
+		</if>
+		<if test="bankName !=null and bankName !=''">
+		    and a.bank_name = #{bankName}
+		</if>
+		<if test="acctHolder!=null and acctHolder!=''">
+			and a.acct_holder = #{acctHolder}
+		</if>
+		<if test="structureId!=null and structureId!=''">
+			AND (FIND_IN_SET(s.client_structure_id,#{structureId})>0 or FIND_IN_SET(s.parent_id,#{structureId})>0 )
+		</if>
+		<if test="city!=null and city!=''">
+			and s.structure_name like CONCAT('%',#{city},'%')
+		</if>
+		<if test="monthId!=null and monthId!=''">
+			and w.month_Id = #{monthId}
+		</if>
+		<if test="status!=null">
+			and w.`status` = #{status}
+		</if>
+		
+       GROUP BY  b.store_no,province,city,b.store_name,d.chain_name,a.has_invoice,a.invoice_type,a.other_invoice,a.license_type,a.acct_type,a.bank_name,
+		  a.bank_acct,a.acct_holder,w.month_id,w.num_of_gift,w.num_of_member,w.rate_of_review,
+		  w.num1_of_unqualified,w.num2_of_unqualified,w.num_of_verification,a.sign_date,a.start_date,a.end_date,amount,`status`
+	   </select>
+	
+	  <select id="selectExportData4" parameterType="java.util.Map" resultMap="dataLists">
+	      SELECT b.store_no,n.structure_name as province,s.structure_name as city,b.store_name,d.chain_name,
+	      date_format(a.sign_date,'%Y-%m-%d') as sign_date,
+		  date_format(a.start_date,'%Y-%m-%d') as start_date,
+		  date_format(a.end_date,'%Y-%m-%d') as end_date,
+		  a.has_invoice,a.invoice_type,a.other_invoice,a.license_type,a.acct_type,a.bank_name,
+		  a.bank_acct,a.acct_holder,w.month_id,w.num_of_gift,w.num_of_member,w.rate_of_review,
+		  w.num1_of_unqualified,w.num2_of_unqualified,w.num_of_verification,
+          ifnull(w.num_of_verification,0)*100 + ifnull(w.num_of_gift,0)*30 as amount,
+		   CASE w.status 
+		    WHEN 0 THEN '待确认'
+		    WHEN 1 THEN '已确认'
+		    WHEN 2 THEN '已申诉'
+		    WHEN 3 THEN '核销完成'
+		    END AS status
+	  FROM wyeth_contract a INNER JOIN store b ON a.store_id = b.store_id 
+	  INNER JOIN store_user_mapping m on m.store_id = b.store_id
+	 INNER JOIN wyeth_contract_feedback w ON w.contract_id = a.contract_id AND w.is_delete= 0
+     LEFT JOIN `chain` d ON d.chain_id = b.chain_id AND d.is_delete = 0 and d.client_id = #{clientId}
+     LEFT JOIN client_structure s on s.client_structure_id = b.client_structure_id and s.is_delete = 0 and s.client_id = #{clientId}
+	 LEFT JOIN client_structure n ON n.client_structure_id =s.parent_id AND n.is_delete=0 AND n.client_id=#{clientId}
+     where a.is_delete = 0 and a.client_id = #{clientId}
+	 and b.is_delete = 0 and b.client_id = #{clientId} 
+	 and m.client_user_id = #{clientUserId}
+	 
+	    <if test="storeCode!=null and storeCode !=''">
+			and b.store_no like CONCAT('%',#{storeCode},'%') 
+		</if>
+		<if test="storeName !=null and storeName !=''">
+			and b.store_name like CONCAT('%',#{storeName},'%') 
+		</if>
+		<if test="bankAcct !=null and bankAcct !=''">
+			and a.bank_acct = #{bankAcct}
+		</if>
+		<if test="bankName !=null and bankName !=''">
+		    and a.bank_name = #{bankName}
+		</if>
+		<if test="acctHolder!=null and acctHolder!=''">
+			and a.acct_holder = #{acctHolder}
+		</if>
+		<if test="structureId!=null and structureId!=''">
+			AND (FIND_IN_SET(s.client_structure_id,#{structureId})>0 or FIND_IN_SET(s.parent_id,#{structureId})>0 )
+		</if>
+		<if test="city!=null and city!=''">
+			and s.structure_name like CONCAT('%',#{city},'%')
+		</if>
+		<if test="monthId!=null and monthId!=''">
+			and w.month_Id = #{monthId}
+		</if>
+		<if test="status!=null">
+			and w.`status` = #{status}
+		</if>
+       GROUP BY  b.store_no,province,city,b.store_name,d.chain_name,a.has_invoice,a.invoice_type,a.other_invoice,a.license_type,a.acct_type,a.bank_name,
+		  a.bank_acct,a.acct_holder,w.month_id,w.num_of_gift,w.num_of_member,w.rate_of_review,
+		  w.num1_of_unqualified,w.num2_of_unqualified,w.num_of_verification,a.sign_date,a.start_date,a.end_date,amount,`status`
+	   </select>
+	   	<select id="getCheckContract" parameterType="java.util.Map" resultType="java.lang.Integer">
+		SELECT count(1)
+		FROM wyeth_contract a INNER JOIN store s ON s.store_id = a.store_id 
+		and a.is_delete = 0 AND a.client_id = #{clientId} 
+		AND s.is_delete = 0 AND s.client_id = #{clientId} 
+		<if test="endDate!=null and endDate!=''">
+			and a.start_date &lt;= #{endDate}
+		</if>
+		<if test="startDate!=null and startDate!=''">
+			and a.end_date  &gt;= #{startDate}
+		</if>
+		and a.store_id=#{storeId}
+	</select>
+
+</mapper>

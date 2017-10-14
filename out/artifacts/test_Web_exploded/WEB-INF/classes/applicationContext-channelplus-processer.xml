@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans default-autowire="byName">
+	 
+	<bean id="sysTestPushProcesser" class="cn.mobilizer.channel.pub.processer.SysTestPushProcesser" />
+	<bean id="photoPushProcesser" class="cn.mobilizer.channel.pub.processer.PhotoPushProcesser" />
+	
+	<bean id="testMessageConsumer" class="cn.mobilizer.channel.comm.jms.TopicMessageConsumer">
+		<property name="destName"><value>ActiveMQ.MOBI_CHANNELPLUS.${jms_node}</value></property>
+		<property name="processerList">
+			<list>
+				<ref local="sysTestPushProcesser"/>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 订阅 -->
+	<bean id="testMessageListener" class="org.springframework.jms.listener.adapter.MessageListenerAdapter">
+		<constructor-arg ref="testMessageConsumer" />
+		<property name="defaultListenerMethod" value="receive" />
+	</bean>
+	
+	<!-- 消息监听 TOPIC 模式    -->
+	 <bean id="testTopicListenerContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+		<property name="connectionFactory" ref="jmsConnectionFactory" />
+		<property name="destination" ref="MOBI_CHANNELPLUS_TOPIC" />
+		<property name="messageListener" ref="testMessageListener" />
+	</bean>
+	
+	<bean id="photoMessageConsumer" class="cn.mobilizer.channel.comm.jms.TopicMessageConsumer">
+		<property name="destName"><value>ActiveMQ.MOBI_CHANNELPLUS_PHOTO.${jms_node}</value></property>
+		<property name="processerList">
+			<list>
+				<ref local="photoPushProcesser"/>
+			</list>
+		</property>
+	</bean>
+	
+		<!-- 订阅 -->
+	<bean id="photoMessageListener" class="org.springframework.jms.listener.adapter.MessageListenerAdapter">
+		<constructor-arg ref="photoMessageConsumer" />
+		<property name="defaultListenerMethod" value="receive" />
+	</bean>
+	
+	<!-- 消息监听 TOPIC 模式    -->
+	<bean id="photoTopicListenerContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+		<property name="connectionFactory" ref="jmsConnectionFactory" />
+		<property name="destination" ref="MOBI_CHANNELPLUS_PHOTO_TOPIC" />
+		<property name="messageListener" ref="photoMessageListener" />
+	</bean>
+</beans>

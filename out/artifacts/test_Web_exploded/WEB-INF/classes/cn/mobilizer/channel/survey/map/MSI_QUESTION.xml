@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="MSI_QUESTION" >
+  <resultMap id="BaseResultMap" type="cn.mobilizer.channel.survey.po.MsiQuestion" >
+    <id column="msi_question_id" property="msiQuestionId" jdbcType="INTEGER" />
+    <result column="msi_survey_id" property="msiSurveyId" jdbcType="INTEGER" />
+    <result column="question_no" property="questionNo" jdbcType="VARCHAR" />
+    <result column="question" property="question" jdbcType="VARCHAR" />
+    <result column="question_type" property="questionType" jdbcType="TINYINT" />
+    <result column="point" property="point" jdbcType="DECIMAL" />
+    <result column="sequence" property="sequence" jdbcType="INTEGER" />
+    <result column="col1" property="col1" jdbcType="VARCHAR" />
+    <result column="col2" property="col2" jdbcType="VARCHAR" />
+    <result column="col3" property="col3" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+    <result column="question_group_id" property="questionGroupId" jdbcType="INTEGER" />
+    <result column="is_editable" property="isEditable"  jdbcType="INTEGER"/>
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <resultMap id="BaseResultVOMap" type="cn.mobilizer.channel.survey.vo.MsiQuestionVO" >
+    <id column="msi_question_id" property="msiQuestionId" jdbcType="INTEGER" />
+    <result column="msi_survey_id" property="msiSurveyId" jdbcType="INTEGER" />
+    <result column="question_no" property="questionNo" jdbcType="VARCHAR" />
+    <result column="question" property="question" jdbcType="VARCHAR" />
+    <result column="question_type" property="questionType" jdbcType="TINYINT" />
+    <result column="point" property="point" jdbcType="DECIMAL" />
+    <result column="sequence" property="sequence" jdbcType="INTEGER" />
+    <result column="col1" property="col1" jdbcType="VARCHAR" />
+    <result column="col2" property="col2" jdbcType="VARCHAR" />
+    <result column="col3" property="col3" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="is_editable" property="isEditable"  jdbcType="INTEGER"/>
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+    <result column="question_group_id" property="questionGroupId" jdbcType="INTEGER" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+    <collection property="msiAnswerList" ofType="cn.mobilizer.channel.survey.po.MsiAnswer" column="msi_question_id">
+    	<id column="msi_answer_id" property="msiAnswerId" jdbcType="INTEGER" />
+		<result column="answer_msi_question_id" property="msiQuestionId" jdbcType="INTEGER" />
+		<result column="answer_no" property="answerNo" jdbcType="VARCHAR" />
+		<result column="answer" property="answer" jdbcType="VARCHAR" />
+		<result column="is_reset" property="isReset" jdbcType="TINYINT" />
+		<result column="answer_point" property="point" jdbcType="DECIMAL" />
+		<result column="answer_sequence" property="sequence" jdbcType="INTEGER" />
+		<result column="col1" property="col1" jdbcType="VARCHAR" />
+		<result column="col2" property="col2" jdbcType="VARCHAR" />
+		<result column="col3" property="col3" jdbcType="VARCHAR" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+		<result column="parameter_ids" property="parameterIds" jdbcType="VARCHAR" />
+		<result column="client_id" property="clientId" jdbcType="INTEGER" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+		<result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+		<result column="checked" property="checked" jdbcType="TINYINT" />
+   	</collection>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    msi_question_id, msi_survey_id, question_no, question, question_type, point, sequence,is_editable, 
+    col1, col2, col3, remark, client_id, create_time, last_update_time, is_delete,parent_id,question_group_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from msi_question
+    where msi_question_id = #{msiQuestionId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from msi_question
+    where msi_question_id = #{msiQuestionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.mobilizer.channel.survey.po.MsiQuestion" >
+    insert into msi_question (msi_question_id, msi_survey_id, question_no, 
+      question, question_type, point, 
+      sequence, col1, col2, 
+      col3, remark, client_id, 
+      create_time, last_update_time, is_delete
+      )
+    values (#{msiQuestionId,jdbcType=INTEGER}, #{msiSurveyId,jdbcType=INTEGER}, #{questionNo,jdbcType=VARCHAR}, 
+      #{question,jdbcType=VARCHAR}, #{questionType,jdbcType=TINYINT}, #{point,jdbcType=DECIMAL}, 
+      #{sequence,jdbcType=INTEGER}, #{col1,jdbcType=VARCHAR}, #{col2,jdbcType=VARCHAR}, 
+      #{col3,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{clientId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{lastUpdateTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.mobilizer.channel.survey.po.MsiQuestion" >
+    insert into msi_question
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="msiQuestionId != null" >
+        msi_question_id,
+      </if>
+      <if test="msiSurveyId != null" >
+        msi_survey_id,
+      </if>
+      <if test="questionNo != null" >
+        question_no,
+      </if>
+      <if test="question != null" >
+        question,
+      </if>
+      <if test="questionType != null" >
+        question_type,
+      </if>
+      <if test="point != null" >
+        point,
+      </if>
+      <if test="sequence != null" >
+        sequence,
+      </if>
+      <if test="col1 != null" >
+        col1,
+      </if>
+      <if test="col2 != null" >
+        col2,
+      </if>
+      <if test="col3 != null" >
+        col3,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="msiQuestionId != null" >
+        #{msiQuestionId,jdbcType=INTEGER},
+      </if>
+      <if test="msiSurveyId != null" >
+        #{msiSurveyId,jdbcType=INTEGER},
+      </if>
+      <if test="questionNo != null" >
+        #{questionNo,jdbcType=VARCHAR},
+      </if>
+      <if test="question != null" >
+        #{question,jdbcType=VARCHAR},
+      </if>
+      <if test="questionType != null" >
+        #{questionType,jdbcType=TINYINT},
+      </if>
+      <if test="point != null" >
+        #{point,jdbcType=DECIMAL},
+      </if>
+      <if test="sequence != null" >
+        #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="col1 != null" >
+        #{col1,jdbcType=VARCHAR},
+      </if>
+      <if test="col2 != null" >
+        #{col2,jdbcType=VARCHAR},
+      </if>
+      <if test="col3 != null" >
+        #{col3,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mobilizer.channel.survey.po.MsiQuestion" >
+    update msi_question
+    <set >
+      <if test="msiSurveyId != null" >
+        msi_survey_id = #{msiSurveyId,jdbcType=INTEGER},
+      </if>
+      <if test="questionNo != null" >
+        question_no = #{questionNo,jdbcType=VARCHAR},
+      </if>
+      <if test="question != null" >
+        question = #{question,jdbcType=VARCHAR},
+      </if>
+      <if test="questionType != null" >
+        question_type = #{questionType,jdbcType=TINYINT},
+      </if>
+      <if test="point != null" >
+        point = #{point,jdbcType=DECIMAL},
+      </if>
+      <if test="sequence != null" >
+        sequence = #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="col1 != null" >
+        col1 = #{col1,jdbcType=VARCHAR},
+      </if>
+      <if test="col2 != null" >
+        col2 = #{col2,jdbcType=VARCHAR},
+      </if>
+      <if test="col3 != null" >
+        col3 = #{col3,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where msi_question_id = #{msiQuestionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.mobilizer.channel.survey.po.MsiQuestion" >
+    update msi_question
+    set msi_survey_id = #{msiSurveyId,jdbcType=INTEGER},
+      question_no = #{questionNo,jdbcType=VARCHAR},
+      question = #{question,jdbcType=VARCHAR},
+      question_type = #{questionType,jdbcType=TINYINT},
+      point = #{point,jdbcType=DECIMAL},
+      sequence = #{sequence,jdbcType=INTEGER},
+      col1 = #{col1,jdbcType=VARCHAR},
+      col2 = #{col2,jdbcType=VARCHAR},
+      col3 = #{col3,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where msi_question_id = #{msiQuestionId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="getMsiQuestionListByMsiSurveyId" parameterType="int" resultMap="BaseResultVOMap" >
+  	SELECT mq.*,
+  	ma.msi_answer_id, ma.answer_no, ma.answer, ma.is_reset,
+  	ma.msi_question_id AS answer_msi_question_id, ma.point AS answer_point, ma.sequence AS answer_sequence FROM msi_question mq 
+  	INNER JOIN msi_answer ma ON mq.msi_question_id = ma.msi_question_id 
+  	AND mq.msi_survey_id = #{msiSurveyId} 
+  	AND ma.is_delete = 0 
+  	AND mq.is_delete = 0
+  	ORDER BY mq.sequence,ma.sequence
+  </select>
+  
+  <select id="getAppleExamMsiQuestionAndAnswerByMsiSurveyId" parameterType="java.util.Map" resultMap="BaseResultVOMap" >
+  	SELECT mq.*,
+  	ma.msi_answer_id, ma.answer_no, ma.answer, ma.is_reset,
+  	ma.msi_question_id AS answer_msi_question_id, ma.point AS answer_point, ma.sequence AS answer_sequence FROM msi_question mq 
+  	INNER JOIN msi_answer ma ON mq.msi_question_id = ma.msi_question_id 
+  	AND mq.msi_survey_id = #{msiSurveyId} 
+  	AND ma.is_delete = 0 
+  	AND mq.is_delete = 0 
+  	ORDER BY mq.sequence,ma.sequence;  
+  </select>
+  
+  <select id="getAppleExamMsiQuestionByMsiSurveyId" parameterType="int" resultMap="BaseResultMap">
+  	select * from msi_question mq where mq.msi_survey_id = #{msiSurveyId} AND mq.is_delete = 0
+  </select>
+  
+  <select id="getAppleExamMsiQuestionCountByMsiSurveyId" parameterType="int" resultType="java.lang.Integer">
+  	select count(1) from msi_question mq where mq.msi_survey_id = #{msiSurveyId} AND mq.is_delete = 0
+  </select>
+  
+  <select id="getMsiQuestionsByMsiSurveyIdAndParentId" parameterType="java.util.Map" resultMap="BaseResultVOMap" >
+  	SELECT mq.*,
+  	ma.msi_answer_id, ma.answer_no, ma.answer, ma.is_reset,ma.parameter_ids,
+  	ma.msi_question_id AS answer_msi_question_id, ma.point AS answer_point, ma.sequence AS answer_sequence FROM msi_question mq 
+  	left JOIN msi_answer ma ON mq.msi_question_id = ma.msi_question_id 
+  	AND mq.msi_survey_id = #{msiSurveyId} 
+  	AND ma.is_delete = 0 
+  	AND mq.is_delete = 0
+  	where 1=1
+  	<choose>
+		<when test="parentId != null and parentId !=''">
+			and mq.parent_id = #{parentId}
+		</when>
+		<otherwise>
+			and mq.parent_id is null
+		</otherwise>
+	</choose>
+  	and mq.question_group_id = #{questionQroupId}
+  	ORDER BY mq.sequence,ma.sequence
+  </select> 
+  
+  <select id="getMsiQuestionListWithChecked"  parameterType="java.util.Map" resultMap="BaseResultVOMap" >
+  	SELECT
+		mq.*, ma.msi_answer_id,
+		ma.answer_no,
+		ma.answer,
+		ma.is_reset,
+		ma.msi_question_id AS answer_msi_question_id,
+		ma.point AS answer_point,
+		ma.sequence AS answer_sequence,
+		(
+			CASE
+			WHEN msfd.detail_id IS NULL THEN
+				FALSE
+			ELSE
+				TRUE
+			END
+		) AS checked
+	FROM
+		msi_question mq
+	INNER JOIN msi_answer ma ON mq.msi_question_id = ma.msi_question_id
+	AND ma.is_delete = 0
+	AND mq.msi_survey_id = #{msiSurveyId} AND mq.is_delete = 0
+	LEFT JOIN msi_survey_feedback_detail msfd ON ma.msi_answer_id = msfd.msi_answer_id AND msfd.is_delete = 0
+	AND msfd.feedback_id = #{feedbackId}
+	ORDER BY
+		mq.sequence,
+		ma.sequence
+  </select> 
+  
+  <select id="getAppleMsiQuestionListWithChecked"  parameterType="java.util.Map" resultMap="BaseResultVOMap" >
+  	SELECT
+		mq.msi_question_id, mq.msi_survey_id, mq.question_no, mq.question, mq.question_type, mq.point, mq.sequence, 
+        mq.remark,mq.client_id,mq.create_time,mq.last_update_time,mq.is_delete,mq.parent_id,mq.question_group_id,mq.is_editable
+		, ma.msi_answer_id,
+		ma.answer_no,
+		ma.answer,
+		ma.is_reset,
+		ma.msi_question_id AS answer_msi_question_id,
+		ma.point AS answer_point,ma.parameter_ids,
+		ma.sequence AS answer_sequence,
+		(
+			CASE
+			WHEN msfd.msi_answer_id = ma.msi_answer_id THEN
+				TRUE
+			ELSE
+				FALSE
+			END
+		) AS checked,msfd.col1
+	FROM
+		msi_question mq
+	left JOIN msi_answer ma ON mq.msi_question_id = ma.msi_question_id
+	AND ma.is_delete = 0
+	AND mq.msi_survey_id = #{msiSurveyId} AND mq.is_delete = 0
+	LEFT JOIN msi_survey_feedback_detail msfd ON mq.msi_question_id = msfd.msi_question_id AND msfd.is_delete = 0
+	AND msfd.feedback_id = #{feedbackId}
+	where 1=1
+	<choose>
+		<when test="parentId != null and parentId !=''">
+			and mq.parent_id = #{parentId}
+		</when>
+		<otherwise>
+			and mq.parent_id is null
+		</otherwise>
+	</choose>
+  	and mq.question_group_id = #{questionQroupId}
+	ORDER BY
+		mq.sequence,
+		ma.sequence
+  </select> 
+  
+   <select id="getMsiQuestionIdsByFeedbackId"  parameterType="java.lang.String" resultType="java.lang.String" >
+   	select GROUP_CONCAT(msfd.msi_question_id) from msi_survey_feedback msf inner join msi_survey_feedback_detail msfd on msf.feedback_id = msfd.feedback_id
+   	where msf.feedback_id = #{feedbackId} and msf.is_delete = 0
+  </select>
+  
+  <select id="getMsiQuestionListWithCheckedByIds"  parameterType="java.util.Map" resultMap="BaseResultVOMap" >
+  	SELECT
+		mq.*, ma.msi_answer_id,
+		ma.answer_no,
+		ma.answer,
+		ma.is_reset,
+		ma.msi_question_id AS answer_msi_question_id,
+		ma.point AS answer_point,
+		ma.sequence AS answer_sequence,
+		(
+			CASE
+			WHEN msfd.detail_id IS NULL THEN
+				FALSE
+			ELSE
+				TRUE
+			END
+		) AS checked
+	FROM
+		msi_question mq
+	INNER JOIN msi_answer ma ON mq.msi_question_id = ma.msi_question_id
+	AND ma.is_delete = 0
+	AND mq.msi_survey_id = #{msiSurveyId} AND mq.is_delete = 0
+	left JOIN msi_survey_feedback_detail msfd ON ma.msi_answer_id = msfd.msi_answer_id AND msfd.is_delete = 0
+	AND msfd.feedback_id = #{feedbackId} where FIND_IN_SET(mq.msi_question_id,#{msiQuestionIds})>0
+	ORDER BY
+		mq.sequence,
+		ma.sequence
+  </select>
+</mapper>
